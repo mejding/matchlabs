@@ -1,0 +1,8 @@
+feature_group,mean_abs_shap
+xG,0.3932093
+tactical_profile,0.22402245
+baseline,0.15167831
+fatigue,0.08425378
+style_embedding,0.07102855
+matchup,0.062020242
+lineup_stability,0.0

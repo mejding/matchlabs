@@ -1,0 +1,89 @@
+# Odds Column Inventory
+
+This audit inspects football-data.co.uk CSV files currently downloaded in `data/`.
+
+Conservative timing rule: odds are not production-safe unless their pre-match availability is explicitly verified. Closing, average and maximum market prices are treated as benchmark-only because they may represent late or closing prices.
+
+## Summary
+
+- Total match-result odds columns: 66
+- SAFE_PREMATCH columns: 0
+- BENCHMARK_ONLY columns: 39
+- UNKNOWN_TIMING columns: 27
+
+## Inventory
+
+| column | bookmaker_or_source | outcome | odds_type | timing_classification | recommended_usage_category | seasons_covered | non_missing_values | missing_values |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1XBA | 1xBet | away | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 2425 | 371 | 9 |
+| 1XBCA | 1xBet | away | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 2425 | 380 | 0 |
+| 1XBCD | 1xBet | draw | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 2425 | 380 | 0 |
+| 1XBCH | 1xBet | home | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 2425 | 380 | 0 |
+| 1XBD | 1xBet | draw | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 2425 | 371 | 9 |
+| 1XBH | 1xBet | home | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 2425 | 371 | 9 |
+| AvgA | Market average | away | average listed | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| AvgCA | Market average | away | average closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| AvgCD | Market average | draw | average closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| AvgCH | Market average | home | average closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| AvgD | Market average | draw | average listed | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| AvgH | Market average | home | average listed | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| B365A | Bet365 | away | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| B365CA | Bet365 | away | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| B365CD | Bet365 | draw | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| B365CH | Bet365 | home | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| B365D | Bet365 | draw | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| B365H | Bet365 | home | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| BFA | Betfair sportsbook | away | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 2425 | 379 | 1 |
+| BFCA | Betfair sportsbook | away | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 2425 | 380 | 0 |
+| BFCD | Betfair sportsbook | draw | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 2425 | 380 | 0 |
+| BFCH | Betfair sportsbook | home | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 2425 | 380 | 0 |
+| BFD | Betfair sportsbook | draw | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 2425 | 379 | 1 |
+| BFEA | Betfair Exchange | away | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 2425 | 380 | 0 |
+| BFECA | Betfair Exchange | away | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 2425 | 380 | 0 |
+| BFECD | Betfair Exchange | draw | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 2425 | 380 | 0 |
+| BFECH | Betfair Exchange | home | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 2425 | 380 | 0 |
+| BFED | Betfair Exchange | draw | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 2425 | 380 | 0 |
+| BFEH | Betfair Exchange | home | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 2425 | 380 | 0 |
+| BFH | Betfair sportsbook | home | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 2425 | 379 | 1 |
+| BWA | Bet&Win/Bwin | away | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324, 2425 | 2137 | 143 |
+| BWCA | Bet&Win/Bwin | away | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2127 | 153 |
+| BWCD | Bet&Win/Bwin | draw | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2127 | 153 |
+| BWCH | Bet&Win/Bwin | home | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2127 | 153 |
+| BWD | Bet&Win/Bwin | draw | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324, 2425 | 2137 | 143 |
+| BWH | Bet&Win/Bwin | home | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324, 2425 | 2137 | 143 |
+| IWA | Interwetten | away | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324 | 1718 | 182 |
+| IWCA | Interwetten | away | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324 | 1715 | 185 |
+| IWCD | Interwetten | draw | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324 | 1715 | 185 |
+| IWCH | Interwetten | home | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324 | 1715 | 185 |
+| IWD | Interwetten | draw | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324 | 1718 | 182 |
+| IWH | Interwetten | home | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324 | 1718 | 182 |
+| MaxA | Market maximum | away | maximum listed | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| MaxCA | Market maximum | away | maximum closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| MaxCD | Market maximum | draw | maximum closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| MaxCH | Market maximum | home | maximum closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| MaxD | Market maximum | draw | maximum listed | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| MaxH | Market maximum | home | maximum listed | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| PSA | Pinnacle | away | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| PSCA | Pinnacle | away | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| PSCD | Pinnacle | draw | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| PSCH | Pinnacle | home | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| PSD | Pinnacle | draw | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| PSH | Pinnacle | home | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324, 2425 | 2280 | 0 |
+| VCA | VC Bet | away | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324 | 1900 | 0 |
+| VCCA | VC Bet | away | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324 | 1900 | 0 |
+| VCCD | VC Bet | draw | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324 | 1900 | 0 |
+| VCCH | VC Bet | home | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324 | 1900 | 0 |
+| VCD | VC Bet | draw | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324 | 1900 | 0 |
+| VCH | VC Bet | home | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324 | 1900 | 0 |
+| WHA | William Hill | away | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324, 2425 | 2189 | 91 |
+| WHCA | William Hill | away | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2189 | 91 |
+| WHCD | William Hill | draw | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2189 | 91 |
+| WHCH | William Hill | home | single-bookmaker closing | BENCHMARK_ONLY | Benchmark only | 1920, 2021, 2122, 2223, 2324, 2425 | 2189 | 91 |
+| WHD | William Hill | draw | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324, 2425 | 2189 | 91 |
+| WHH | William Hill | home | single-bookmaker listed | UNKNOWN_TIMING | Research only until collection time is verified | 1920, 2021, 2122, 2223, 2324, 2425 | 2189 | 91 |
+
+## Recommended Usage
+
+- SAFE_PREMATCH: may be used in production only if the live data feed guarantees values are known before kickoff.
+- BENCHMARK_ONLY: useful for model-vs-market evaluation, not production training.
+- RESEARCH_ONLY / UNKNOWN_TIMING: can be tested offline, but must not be used in production.

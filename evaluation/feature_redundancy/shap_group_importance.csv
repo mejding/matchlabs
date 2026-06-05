@@ -1,0 +1,8 @@
+feature_group,mean_abs_shap
+Venue-specific features,0.31264937
+Tactical pressure,0.17155075
+xG differential,0.13341084
+Form,0.100782834
+Fatigue,0.06746104
+xG,0.061517414
+xGA,0.05994937

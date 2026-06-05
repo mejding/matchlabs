@@ -1,0 +1,4 @@
+model_variant,average_position_error,average_points_error,rank_correlation,champion_prediction_accuracy,top_4_prediction_accuracy,relegation_prediction_accuracy
+current_plus_elo_calibrated,3.2989574999999998,11.4043225,0.7135338345864661,0.0,0.625,0.3333333333333333
+current_plus_elo,3.308955,10.9688625,0.7248120300751879,0.25,0.5625,0.3333333333333333
+current_without_elo,3.8068650000000006,11.95441375,0.6300751879699247,0.25,0.4375,0.3333333333333333

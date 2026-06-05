@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Neutral Aston Villa placeholder badge">
+  <circle cx="64" cy="64" r="60" fill="#7c2d12" stroke="rgba(255,255,255,0.72)" stroke-width="4"/>
+  <circle cx="64" cy="64" r="49" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="3"/>
+  <text x="64" y="74" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800" fill="#60a5fa" letter-spacing="1">AVL</text>
+</svg>
