@@ -1,5 +1,7 @@
 # Minimal Football Prediction Prototype
 
+Football analytics and prediction platform powered by machine learning. Predicts match outcomes, calculates fair odds, explains predictions with SHAP, and simulates full league seasons using historical results, xG, form and advanced statistical modelling.
+
 This is a deliberately simple Python prototype that predicts Premier League match outcomes:
 
 - home win
