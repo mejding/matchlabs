@@ -1,0 +1,761 @@
+match_id,season,date,source,source_url,source_collected_at,team,opponent,is_home,manager_name
+cc5b4244,2425,2024-08-16,fbref_match_cache,/en/matches/cc5b4244/Manchester-United-Fulham-August-16-2024-Premier-League,2024-08-17,Man United,Fulham,1,Erik ten Hag
+cc5b4244,2425,2024-08-16,fbref_match_cache,/en/matches/cc5b4244/Manchester-United-Fulham-August-16-2024-Premier-League,2024-08-17,Fulham,Man United,0,Marco Silva
+c0e3342a,2425,2024-08-17,fbref_match_cache,/en/matches/c0e3342a/Arsenal-Wolverhampton-Wanderers-August-17-2024-Premier-League,2024-08-18,Arsenal,Wolves,1,Mikel Arteta
+c0e3342a,2425,2024-08-17,fbref_match_cache,/en/matches/c0e3342a/Arsenal-Wolverhampton-Wanderers-August-17-2024-Premier-League,2024-08-18,Wolves,Arsenal,0,Gary O'Neil
+71618ace,2425,2024-08-17,fbref_match_cache,/en/matches/71618ace/Everton-Brighton-and-Hove-Albion-August-17-2024-Premier-League,2024-08-18,Everton,Brighton,1,Sean Dyche
+71618ace,2425,2024-08-17,fbref_match_cache,/en/matches/71618ace/Everton-Brighton-and-Hove-Albion-August-17-2024-Premier-League,2024-08-18,Brighton,Everton,0,Fabian Hürzeler
+a1d0d529,2425,2024-08-17,fbref_match_cache,/en/matches/a1d0d529/Ipswich-Town-Liverpool-August-17-2024-Premier-League,2024-08-18,Ipswich,Liverpool,1,Kieran McKenna
+a1d0d529,2425,2024-08-17,fbref_match_cache,/en/matches/a1d0d529/Ipswich-Town-Liverpool-August-17-2024-Premier-League,2024-08-18,Liverpool,Ipswich,0,Arne Slot
+34557647,2425,2024-08-17,fbref_match_cache,/en/matches/34557647/Newcastle-United-Southampton-August-17-2024-Premier-League,2024-08-18,Newcastle,Southampton,1,Eddie Howe
+34557647,2425,2024-08-17,fbref_match_cache,/en/matches/34557647/Newcastle-United-Southampton-August-17-2024-Premier-League,2024-08-18,Southampton,Newcastle,0,Russell Martin
+4efc72e4,2425,2024-08-17,fbref_match_cache,/en/matches/4efc72e4/Nottingham-Forest-Bournemouth-August-17-2024-Premier-League,2024-08-18,Nott'm Forest,Bournemouth,1,Nuno Espírito Santo
+4efc72e4,2425,2024-08-17,fbref_match_cache,/en/matches/4efc72e4/Nottingham-Forest-Bournemouth-August-17-2024-Premier-League,2024-08-18,Bournemouth,Nott'm Forest,0,Andoni Iraola
+eac7c00b,2425,2024-08-17,fbref_match_cache,/en/matches/eac7c00b/West-Ham-United-Aston-Villa-August-17-2024-Premier-League,2024-08-18,West Ham,Aston Villa,1,Julen Lopetegui
+eac7c00b,2425,2024-08-17,fbref_match_cache,/en/matches/eac7c00b/West-Ham-United-Aston-Villa-August-17-2024-Premier-League,2024-08-18,Aston Villa,West Ham,0,Unai Emery
+b63822b9,2425,2024-08-18,fbref_match_cache,/en/matches/b63822b9/Brentford-Crystal-Palace-August-18-2024-Premier-League,2024-08-19,Brentford,Crystal Palace,1,Thomas Frank
+b63822b9,2425,2024-08-18,fbref_match_cache,/en/matches/b63822b9/Brentford-Crystal-Palace-August-18-2024-Premier-League,2024-08-19,Crystal Palace,Brentford,0,Oliver Glasner
+67a0c715,2425,2024-08-18,fbref_match_cache,/en/matches/67a0c715/Chelsea-Manchester-City-August-18-2024-Premier-League,2024-08-19,Chelsea,Man City,1,Enzo Maresca
+67a0c715,2425,2024-08-18,fbref_match_cache,/en/matches/67a0c715/Chelsea-Manchester-City-August-18-2024-Premier-League,2024-08-19,Man City,Chelsea,0,Pep Guardiola
+62eea1d6,2425,2024-08-19,fbref_match_cache,/en/matches/62eea1d6/Leicester-City-Tottenham-Hotspur-August-19-2024-Premier-League,2024-08-20,Leicester,Tottenham,1,Steve Cooper
+62eea1d6,2425,2024-08-19,fbref_match_cache,/en/matches/62eea1d6/Leicester-City-Tottenham-Hotspur-August-19-2024-Premier-League,2024-08-20,Tottenham,Leicester,0,Ange Postecoglou
+4692171a,2425,2024-08-24,fbref_match_cache,/en/matches/4692171a/Aston-Villa-Arsenal-August-24-2024-Premier-League,2024-08-25,Aston Villa,Arsenal,1,Unai Emery
+4692171a,2425,2024-08-24,fbref_match_cache,/en/matches/4692171a/Aston-Villa-Arsenal-August-24-2024-Premier-League,2024-08-25,Arsenal,Aston Villa,0,Mikel Arteta
+fc8ab8b2,2425,2024-08-24,fbref_match_cache,/en/matches/fc8ab8b2/Brighton-and-Hove-Albion-Manchester-United-August-24-2024-Premier-League,2024-08-25,Brighton,Man United,1,Fabian Hürzeler
+fc8ab8b2,2425,2024-08-24,fbref_match_cache,/en/matches/fc8ab8b2/Brighton-and-Hove-Albion-Manchester-United-August-24-2024-Premier-League,2024-08-25,Man United,Brighton,0,Erik ten Hag
+540cfb68,2425,2024-08-24,fbref_match_cache,/en/matches/540cfb68/Crystal-Palace-West-Ham-United-August-24-2024-Premier-League,2024-08-25,Crystal Palace,West Ham,1,Oliver Glasner
+540cfb68,2425,2024-08-24,fbref_match_cache,/en/matches/540cfb68/Crystal-Palace-West-Ham-United-August-24-2024-Premier-League,2024-08-25,West Ham,Crystal Palace,0,Julen Lopetegui
+4d0079fb,2425,2024-08-24,fbref_match_cache,/en/matches/4d0079fb/Fulham-Leicester-City-August-24-2024-Premier-League,2024-08-25,Fulham,Leicester,1,Marco Silva
+4d0079fb,2425,2024-08-24,fbref_match_cache,/en/matches/4d0079fb/Fulham-Leicester-City-August-24-2024-Premier-League,2024-08-25,Leicester,Fulham,0,Steve Cooper
+a24b7a43,2425,2024-08-24,fbref_match_cache,/en/matches/a24b7a43/Manchester-City-Ipswich-Town-August-24-2024-Premier-League,2024-08-25,Man City,Ipswich,1,Pep Guardiola
+a24b7a43,2425,2024-08-24,fbref_match_cache,/en/matches/a24b7a43/Manchester-City-Ipswich-Town-August-24-2024-Premier-League,2024-08-25,Ipswich,Man City,0,Kieran McKenna
+a641f3a0,2425,2024-08-24,fbref_match_cache,/en/matches/a641f3a0/Southampton-Nottingham-Forest-August-24-2024-Premier-League,2024-08-25,Southampton,Nott'm Forest,1,Russell Martin
+a641f3a0,2425,2024-08-24,fbref_match_cache,/en/matches/a641f3a0/Southampton-Nottingham-Forest-August-24-2024-Premier-League,2024-08-25,Nott'm Forest,Southampton,0,Nuno Espírito Santo
+1eef1717,2425,2024-08-24,fbref_match_cache,/en/matches/1eef1717/Tottenham-Hotspur-Everton-August-24-2024-Premier-League,2024-08-25,Tottenham,Everton,1,Ange Postecoglou
+1eef1717,2425,2024-08-24,fbref_match_cache,/en/matches/1eef1717/Tottenham-Hotspur-Everton-August-24-2024-Premier-League,2024-08-25,Everton,Tottenham,0,Sean Dyche
+1934f267,2425,2024-08-25,fbref_match_cache,/en/matches/1934f267/Bournemouth-Newcastle-United-August-25-2024-Premier-League,2024-08-26,Bournemouth,Newcastle,1,Andoni Iraola
+1934f267,2425,2024-08-25,fbref_match_cache,/en/matches/1934f267/Bournemouth-Newcastle-United-August-25-2024-Premier-League,2024-08-26,Newcastle,Bournemouth,0,Eddie Howe
+09b1742e,2425,2024-08-25,fbref_match_cache,/en/matches/09b1742e/Liverpool-Brentford-August-25-2024-Premier-League,2024-08-26,Liverpool,Brentford,1,Arne Slot
+09b1742e,2425,2024-08-25,fbref_match_cache,/en/matches/09b1742e/Liverpool-Brentford-August-25-2024-Premier-League,2024-08-26,Brentford,Liverpool,0,Thomas Frank
+e76c15c9,2425,2024-08-25,fbref_match_cache,/en/matches/e76c15c9/Wolverhampton-Wanderers-Chelsea-August-25-2024-Premier-League,2024-08-26,Wolves,Chelsea,1,Gary O'Neil
+e76c15c9,2425,2024-08-25,fbref_match_cache,/en/matches/e76c15c9/Wolverhampton-Wanderers-Chelsea-August-25-2024-Premier-League,2024-08-26,Chelsea,Wolves,0,Enzo Maresca
+a843d023,2425,2024-08-31,fbref_match_cache,/en/matches/a843d023/Arsenal-Brighton-and-Hove-Albion-August-31-2024-Premier-League,2024-09-01,Arsenal,Brighton,1,Mikel Arteta
+a843d023,2425,2024-08-31,fbref_match_cache,/en/matches/a843d023/Arsenal-Brighton-and-Hove-Albion-August-31-2024-Premier-League,2024-09-01,Brighton,Arsenal,0,Fabian Hürzeler
+fec3438b,2425,2024-08-31,fbref_match_cache,/en/matches/fec3438b/Brentford-Southampton-August-31-2024-Premier-League,2024-09-01,Brentford,Southampton,1,Thomas Frank
+fec3438b,2425,2024-08-31,fbref_match_cache,/en/matches/fec3438b/Brentford-Southampton-August-31-2024-Premier-League,2024-09-01,Southampton,Brentford,0,Russell Martin
+58bbe046,2425,2024-08-31,fbref_match_cache,/en/matches/58bbe046/Everton-Bournemouth-August-31-2024-Premier-League,2024-09-01,Everton,Bournemouth,1,Sean Dyche
+58bbe046,2425,2024-08-31,fbref_match_cache,/en/matches/58bbe046/Everton-Bournemouth-August-31-2024-Premier-League,2024-09-01,Bournemouth,Everton,0,Andoni Iraola
+cec85838,2425,2024-08-31,fbref_match_cache,/en/matches/cec85838/Ipswich-Town-Fulham-August-31-2024-Premier-League,2024-09-01,Ipswich,Fulham,1,Kieran McKenna
+cec85838,2425,2024-08-31,fbref_match_cache,/en/matches/cec85838/Ipswich-Town-Fulham-August-31-2024-Premier-League,2024-09-01,Fulham,Ipswich,0,Marco Silva
+5af68b76,2425,2024-08-31,fbref_match_cache,/en/matches/5af68b76/Leicester-City-Aston-Villa-August-31-2024-Premier-League,2024-09-01,Leicester,Aston Villa,1,Steve Cooper
+5af68b76,2425,2024-08-31,fbref_match_cache,/en/matches/5af68b76/Leicester-City-Aston-Villa-August-31-2024-Premier-League,2024-09-01,Aston Villa,Leicester,0,Unai Emery
+837f0304,2425,2024-08-31,fbref_match_cache,/en/matches/837f0304/Nottingham-Forest-Wolverhampton-Wanderers-August-31-2024-Premier-League,2024-09-01,Nott'm Forest,Wolves,1,Nuno Espírito Santo
+837f0304,2425,2024-08-31,fbref_match_cache,/en/matches/837f0304/Nottingham-Forest-Wolverhampton-Wanderers-August-31-2024-Premier-League,2024-09-01,Wolves,Nott'm Forest,0,Gary O'Neil
+97ce60d4,2425,2024-08-31,fbref_match_cache,/en/matches/97ce60d4/West-Ham-United-Manchester-City-August-31-2024-Premier-League,2024-09-01,West Ham,Man City,1,Julen Lopetegui
+97ce60d4,2425,2024-08-31,fbref_match_cache,/en/matches/97ce60d4/West-Ham-United-Manchester-City-August-31-2024-Premier-League,2024-09-01,Man City,West Ham,0,Pep Guardiola
+3387c2c8,2425,2024-09-01,fbref_match_cache,/en/matches/3387c2c8/Chelsea-Crystal-Palace-September-1-2024-Premier-League,2024-09-02,Chelsea,Crystal Palace,1,Enzo Maresca
+3387c2c8,2425,2024-09-01,fbref_match_cache,/en/matches/3387c2c8/Chelsea-Crystal-Palace-September-1-2024-Premier-League,2024-09-02,Crystal Palace,Chelsea,0,Oliver Glasner
+a7ab7a12,2425,2024-09-01,fbref_match_cache,/en/matches/a7ab7a12/North-West-Derby-Manchester-United-Liverpool-September-1-2024-Premier-League,2024-09-02,Man United,Liverpool,1,Erik ten Hag
+a7ab7a12,2425,2024-09-01,fbref_match_cache,/en/matches/a7ab7a12/North-West-Derby-Manchester-United-Liverpool-September-1-2024-Premier-League,2024-09-02,Liverpool,Man United,0,Arne Slot
+0c994746,2425,2024-09-01,fbref_match_cache,/en/matches/0c994746/Newcastle-United-Tottenham-Hotspur-September-1-2024-Premier-League,2024-09-02,Newcastle,Tottenham,1,Eddie Howe
+0c994746,2425,2024-09-01,fbref_match_cache,/en/matches/0c994746/Newcastle-United-Tottenham-Hotspur-September-1-2024-Premier-League,2024-09-02,Tottenham,Newcastle,0,Ange Postecoglou
+cdb4c33b,2425,2024-09-14,fbref_match_cache,/en/matches/cdb4c33b/Aston-Villa-Everton-September-14-2024-Premier-League,2024-09-15,Aston Villa,Everton,1,Unai Emery
+cdb4c33b,2425,2024-09-14,fbref_match_cache,/en/matches/cdb4c33b/Aston-Villa-Everton-September-14-2024-Premier-League,2024-09-15,Everton,Aston Villa,0,Sean Dyche
+456b4762,2425,2024-09-14,fbref_match_cache,/en/matches/456b4762/Bournemouth-Chelsea-September-14-2024-Premier-League,2024-09-15,Bournemouth,Chelsea,1,Andoni Iraola
+456b4762,2425,2024-09-14,fbref_match_cache,/en/matches/456b4762/Bournemouth-Chelsea-September-14-2024-Premier-League,2024-09-15,Chelsea,Bournemouth,0,Enzo Maresca
+2ffa4354,2425,2024-09-14,fbref_match_cache,/en/matches/2ffa4354/Brighton-and-Hove-Albion-Ipswich-Town-September-14-2024-Premier-League,2024-09-15,Brighton,Ipswich,1,Fabian Hürzeler
+2ffa4354,2425,2024-09-14,fbref_match_cache,/en/matches/2ffa4354/Brighton-and-Hove-Albion-Ipswich-Town-September-14-2024-Premier-League,2024-09-15,Ipswich,Brighton,0,Kieran McKenna
+430cce12,2425,2024-09-14,fbref_match_cache,/en/matches/430cce12/Crystal-Palace-Leicester-City-September-14-2024-Premier-League,2024-09-15,Crystal Palace,Leicester,1,Oliver Glasner
+430cce12,2425,2024-09-14,fbref_match_cache,/en/matches/430cce12/Crystal-Palace-Leicester-City-September-14-2024-Premier-League,2024-09-15,Leicester,Crystal Palace,0,Steve Cooper
+fa2b1777,2425,2024-09-14,fbref_match_cache,/en/matches/fa2b1777/Fulham-West-Ham-United-September-14-2024-Premier-League,2024-09-15,Fulham,West Ham,1,Marco Silva
+fa2b1777,2425,2024-09-14,fbref_match_cache,/en/matches/fa2b1777/Fulham-West-Ham-United-September-14-2024-Premier-League,2024-09-15,West Ham,Fulham,0,Julen Lopetegui
+674bfe9e,2425,2024-09-14,fbref_match_cache,/en/matches/674bfe9e/Liverpool-Nottingham-Forest-September-14-2024-Premier-League,2024-09-15,Liverpool,Nott'm Forest,1,Arne Slot
+674bfe9e,2425,2024-09-14,fbref_match_cache,/en/matches/674bfe9e/Liverpool-Nottingham-Forest-September-14-2024-Premier-League,2024-09-15,Nott'm Forest,Liverpool,0,Nuno Espírito Santo
+54405f8a,2425,2024-09-14,fbref_match_cache,/en/matches/54405f8a/Manchester-City-Brentford-September-14-2024-Premier-League,2024-09-15,Man City,Brentford,1,Pep Guardiola
+54405f8a,2425,2024-09-14,fbref_match_cache,/en/matches/54405f8a/Manchester-City-Brentford-September-14-2024-Premier-League,2024-09-15,Brentford,Man City,0,Thomas Frank
+b96c3759,2425,2024-09-14,fbref_match_cache,/en/matches/b96c3759/Southampton-Manchester-United-September-14-2024-Premier-League,2024-09-15,Southampton,Man United,1,Russell Martin
+b96c3759,2425,2024-09-14,fbref_match_cache,/en/matches/b96c3759/Southampton-Manchester-United-September-14-2024-Premier-League,2024-09-15,Man United,Southampton,0,Erik ten Hag
+17774a57,2425,2024-09-15,fbref_match_cache,/en/matches/17774a57/North-London-Derby-Tottenham-Hotspur-Arsenal-September-15-2024-Premier-League,2024-09-16,Tottenham,Arsenal,1,Ange Postecoglou
+17774a57,2425,2024-09-15,fbref_match_cache,/en/matches/17774a57/North-London-Derby-Tottenham-Hotspur-Arsenal-September-15-2024-Premier-League,2024-09-16,Arsenal,Tottenham,0,Mikel Arteta
+4b01981e,2425,2024-09-15,fbref_match_cache,/en/matches/4b01981e/Wolverhampton-Wanderers-Newcastle-United-September-15-2024-Premier-League,2024-09-16,Wolves,Newcastle,1,Gary O'Neil
+4b01981e,2425,2024-09-15,fbref_match_cache,/en/matches/4b01981e/Wolverhampton-Wanderers-Newcastle-United-September-15-2024-Premier-League,2024-09-16,Newcastle,Wolves,0,Eddie Howe
+e2b62260,2425,2024-09-21,fbref_match_cache,/en/matches/e2b62260/Aston-Villa-Wolverhampton-Wanderers-September-21-2024-Premier-League,2024-09-22,Aston Villa,Wolves,1,Unai Emery
+e2b62260,2425,2024-09-21,fbref_match_cache,/en/matches/e2b62260/Aston-Villa-Wolverhampton-Wanderers-September-21-2024-Premier-League,2024-09-22,Wolves,Aston Villa,0,Gary O'Neil
+929e225f,2425,2024-09-21,fbref_match_cache,/en/matches/929e225f/Crystal-Palace-Manchester-United-September-21-2024-Premier-League,2024-09-22,Crystal Palace,Man United,1,Oliver Glasner
+929e225f,2425,2024-09-21,fbref_match_cache,/en/matches/929e225f/Crystal-Palace-Manchester-United-September-21-2024-Premier-League,2024-09-22,Man United,Crystal Palace,0,Erik ten Hag
+de7298df,2425,2024-09-21,fbref_match_cache,/en/matches/de7298df/Fulham-Newcastle-United-September-21-2024-Premier-League,2024-09-22,Fulham,Newcastle,1,Marco Silva
+de7298df,2425,2024-09-21,fbref_match_cache,/en/matches/de7298df/Fulham-Newcastle-United-September-21-2024-Premier-League,2024-09-22,Newcastle,Fulham,0,Eddie Howe
+4e6e1cc7,2425,2024-09-21,fbref_match_cache,/en/matches/4e6e1cc7/Leicester-City-Everton-September-21-2024-Premier-League,2024-09-22,Leicester,Everton,1,Steve Cooper
+4e6e1cc7,2425,2024-09-21,fbref_match_cache,/en/matches/4e6e1cc7/Leicester-City-Everton-September-21-2024-Premier-League,2024-09-22,Everton,Leicester,0,Sean Dyche
+32a9539b,2425,2024-09-21,fbref_match_cache,/en/matches/32a9539b/Liverpool-Bournemouth-September-21-2024-Premier-League,2024-09-22,Liverpool,Bournemouth,1,Arne Slot
+32a9539b,2425,2024-09-21,fbref_match_cache,/en/matches/32a9539b/Liverpool-Bournemouth-September-21-2024-Premier-League,2024-09-22,Bournemouth,Liverpool,0,Andoni Iraola
+948d52cc,2425,2024-09-21,fbref_match_cache,/en/matches/948d52cc/Southampton-Ipswich-Town-September-21-2024-Premier-League,2024-09-22,Southampton,Ipswich,1,Russell Martin
+948d52cc,2425,2024-09-21,fbref_match_cache,/en/matches/948d52cc/Southampton-Ipswich-Town-September-21-2024-Premier-League,2024-09-22,Ipswich,Southampton,0,Kieran McKenna
+9511708f,2425,2024-09-21,fbref_match_cache,/en/matches/9511708f/Tottenham-Hotspur-Brentford-September-21-2024-Premier-League,2024-09-22,Tottenham,Brentford,1,Ange Postecoglou
+9511708f,2425,2024-09-21,fbref_match_cache,/en/matches/9511708f/Tottenham-Hotspur-Brentford-September-21-2024-Premier-League,2024-09-22,Brentford,Tottenham,0,Thomas Frank
+ce0fb1f5,2425,2024-09-21,fbref_match_cache,/en/matches/ce0fb1f5/West-Ham-United-Chelsea-September-21-2024-Premier-League,2024-09-22,West Ham,Chelsea,1,Julen Lopetegui
+ce0fb1f5,2425,2024-09-21,fbref_match_cache,/en/matches/ce0fb1f5/West-Ham-United-Chelsea-September-21-2024-Premier-League,2024-09-22,Chelsea,West Ham,0,Enzo Maresca
+d701a1df,2425,2024-09-22,fbref_match_cache,/en/matches/d701a1df/Brighton-and-Hove-Albion-Nottingham-Forest-September-22-2024-Premier-League,2024-09-23,Brighton,Nott'm Forest,1,Fabian Hürzeler
+d701a1df,2425,2024-09-22,fbref_match_cache,/en/matches/d701a1df/Brighton-and-Hove-Albion-Nottingham-Forest-September-22-2024-Premier-League,2024-09-23,Nott'm Forest,Brighton,0,Nuno Espírito Santo
+d7538020,2425,2024-09-22,fbref_match_cache,/en/matches/d7538020/Manchester-City-Arsenal-September-22-2024-Premier-League,2024-09-23,Man City,Arsenal,1,Pep Guardiola
+d7538020,2425,2024-09-22,fbref_match_cache,/en/matches/d7538020/Manchester-City-Arsenal-September-22-2024-Premier-League,2024-09-23,Arsenal,Man City,0,Mikel Arteta
+2ee60ac7,2425,2024-09-28,fbref_match_cache,/en/matches/2ee60ac7/Arsenal-Leicester-City-September-28-2024-Premier-League,2024-09-29,Arsenal,Leicester,1,Mikel Arteta
+2ee60ac7,2425,2024-09-28,fbref_match_cache,/en/matches/2ee60ac7/Arsenal-Leicester-City-September-28-2024-Premier-League,2024-09-29,Leicester,Arsenal,0,Steve Cooper
+9c4f2bcd,2425,2024-09-28,fbref_match_cache,/en/matches/9c4f2bcd/Brentford-West-Ham-United-September-28-2024-Premier-League,2024-09-29,Brentford,West Ham,1,Thomas Frank
+9c4f2bcd,2425,2024-09-28,fbref_match_cache,/en/matches/9c4f2bcd/Brentford-West-Ham-United-September-28-2024-Premier-League,2024-09-29,West Ham,Brentford,0,Julen Lopetegui
+1714cebe,2425,2024-09-28,fbref_match_cache,/en/matches/1714cebe/Chelsea-Brighton-and-Hove-Albion-September-28-2024-Premier-League,2024-09-29,Chelsea,Brighton,1,Enzo Maresca
+1714cebe,2425,2024-09-28,fbref_match_cache,/en/matches/1714cebe/Chelsea-Brighton-and-Hove-Albion-September-28-2024-Premier-League,2024-09-29,Brighton,Chelsea,0,Fabian Hürzeler
+d47382cd,2425,2024-09-28,fbref_match_cache,/en/matches/d47382cd/Everton-Crystal-Palace-September-28-2024-Premier-League,2024-09-29,Everton,Crystal Palace,1,Sean Dyche
+d47382cd,2425,2024-09-28,fbref_match_cache,/en/matches/d47382cd/Everton-Crystal-Palace-September-28-2024-Premier-League,2024-09-29,Crystal Palace,Everton,0,Oliver Glasner
+b4df0bca,2425,2024-09-28,fbref_match_cache,/en/matches/b4df0bca/Newcastle-United-Manchester-City-September-28-2024-Premier-League,2024-09-29,Newcastle,Man City,1,Eddie Howe
+b4df0bca,2425,2024-09-28,fbref_match_cache,/en/matches/b4df0bca/Newcastle-United-Manchester-City-September-28-2024-Premier-League,2024-09-29,Man City,Newcastle,0,Pep Guardiola
+ee7d3371,2425,2024-09-28,fbref_match_cache,/en/matches/ee7d3371/Nottingham-Forest-Fulham-September-28-2024-Premier-League,2024-09-29,Nott'm Forest,Fulham,1,Nuno Espírito Santo
+ee7d3371,2425,2024-09-28,fbref_match_cache,/en/matches/ee7d3371/Nottingham-Forest-Fulham-September-28-2024-Premier-League,2024-09-29,Fulham,Nott'm Forest,0,Marco Silva
+f2633f1d,2425,2024-09-28,fbref_match_cache,/en/matches/f2633f1d/Wolverhampton-Wanderers-Liverpool-September-28-2024-Premier-League,2024-09-29,Wolves,Liverpool,1,Gary O'Neil
+f2633f1d,2425,2024-09-28,fbref_match_cache,/en/matches/f2633f1d/Wolverhampton-Wanderers-Liverpool-September-28-2024-Premier-League,2024-09-29,Liverpool,Wolves,0,Arne Slot
+ef742b9c,2425,2024-09-29,fbref_match_cache,/en/matches/ef742b9c/Ipswich-Town-Aston-Villa-September-29-2024-Premier-League,2024-09-30,Ipswich,Aston Villa,1,Kieran McKenna
+ef742b9c,2425,2024-09-29,fbref_match_cache,/en/matches/ef742b9c/Ipswich-Town-Aston-Villa-September-29-2024-Premier-League,2024-09-30,Aston Villa,Ipswich,0,Unai Emery
+c4b97377,2425,2024-09-29,fbref_match_cache,/en/matches/c4b97377/Manchester-United-Tottenham-Hotspur-September-29-2024-Premier-League,2024-09-30,Man United,Tottenham,1,Erik ten Hag
+c4b97377,2425,2024-09-29,fbref_match_cache,/en/matches/c4b97377/Manchester-United-Tottenham-Hotspur-September-29-2024-Premier-League,2024-09-30,Tottenham,Man United,0,Ange Postecoglou
+04d2cc03,2425,2024-09-30,fbref_match_cache,/en/matches/04d2cc03/Bournemouth-Southampton-September-30-2024-Premier-League,2024-10-01,Bournemouth,Southampton,1,Andoni Iraola
+04d2cc03,2425,2024-09-30,fbref_match_cache,/en/matches/04d2cc03/Bournemouth-Southampton-September-30-2024-Premier-League,2024-10-01,Southampton,Bournemouth,0,Russell Martin
+c6439e5b,2425,2024-10-05,fbref_match_cache,/en/matches/c6439e5b/Arsenal-Southampton-October-5-2024-Premier-League,2024-10-06,Arsenal,Southampton,1,Mikel Arteta
+c6439e5b,2425,2024-10-05,fbref_match_cache,/en/matches/c6439e5b/Arsenal-Southampton-October-5-2024-Premier-League,2024-10-06,Southampton,Arsenal,0,Russell Martin
+909090f8,2425,2024-10-05,fbref_match_cache,/en/matches/909090f8/Brentford-Wolverhampton-Wanderers-October-5-2024-Premier-League,2024-10-06,Brentford,Wolves,1,Thomas Frank
+909090f8,2425,2024-10-05,fbref_match_cache,/en/matches/909090f8/Brentford-Wolverhampton-Wanderers-October-5-2024-Premier-League,2024-10-06,Wolves,Brentford,0,Gary O'Neil
+49ea224b,2425,2024-10-05,fbref_match_cache,/en/matches/49ea224b/Crystal-Palace-Liverpool-October-5-2024-Premier-League,2024-10-06,Crystal Palace,Liverpool,1,Oliver Glasner
+49ea224b,2425,2024-10-05,fbref_match_cache,/en/matches/49ea224b/Crystal-Palace-Liverpool-October-5-2024-Premier-League,2024-10-06,Liverpool,Crystal Palace,0,Arne Slot
+e99a7857,2425,2024-10-05,fbref_match_cache,/en/matches/e99a7857/Everton-Newcastle-United-October-5-2024-Premier-League,2024-10-06,Everton,Newcastle,1,Sean Dyche
+e99a7857,2425,2024-10-05,fbref_match_cache,/en/matches/e99a7857/Everton-Newcastle-United-October-5-2024-Premier-League,2024-10-06,Newcastle,Everton,0,Eddie Howe
+d153872e,2425,2024-10-05,fbref_match_cache,/en/matches/d153872e/Leicester-City-Bournemouth-October-5-2024-Premier-League,2024-10-06,Leicester,Bournemouth,1,Steve Cooper
+d153872e,2425,2024-10-05,fbref_match_cache,/en/matches/d153872e/Leicester-City-Bournemouth-October-5-2024-Premier-League,2024-10-06,Bournemouth,Leicester,0,Andoni Iraola
+61d60f62,2425,2024-10-05,fbref_match_cache,/en/matches/61d60f62/Manchester-City-Fulham-October-5-2024-Premier-League,2024-10-06,Man City,Fulham,1,Pep Guardiola
+61d60f62,2425,2024-10-05,fbref_match_cache,/en/matches/61d60f62/Manchester-City-Fulham-October-5-2024-Premier-League,2024-10-06,Fulham,Man City,0,Marco Silva
+93e19c5e,2425,2024-10-05,fbref_match_cache,/en/matches/93e19c5e/West-Ham-United-Ipswich-Town-October-5-2024-Premier-League,2024-10-06,West Ham,Ipswich,1,Julen Lopetegui
+93e19c5e,2425,2024-10-05,fbref_match_cache,/en/matches/93e19c5e/West-Ham-United-Ipswich-Town-October-5-2024-Premier-League,2024-10-06,Ipswich,West Ham,0,Kieran McKenna
+abef5f2a,2425,2024-10-06,fbref_match_cache,/en/matches/abef5f2a/Aston-Villa-Manchester-United-October-6-2024-Premier-League,2024-10-07,Aston Villa,Man United,1,Unai Emery
+abef5f2a,2425,2024-10-06,fbref_match_cache,/en/matches/abef5f2a/Aston-Villa-Manchester-United-October-6-2024-Premier-League,2024-10-07,Man United,Aston Villa,0,Erik ten Hag
+dac142c7,2425,2024-10-06,fbref_match_cache,/en/matches/dac142c7/Brighton-and-Hove-Albion-Tottenham-Hotspur-October-6-2024-Premier-League,2024-10-07,Brighton,Tottenham,1,Fabian Hürzeler
+dac142c7,2425,2024-10-06,fbref_match_cache,/en/matches/dac142c7/Brighton-and-Hove-Albion-Tottenham-Hotspur-October-6-2024-Premier-League,2024-10-07,Tottenham,Brighton,0,Ange Postecoglou
+b9e00aac,2425,2024-10-06,fbref_match_cache,/en/matches/b9e00aac/Chelsea-Nottingham-Forest-October-6-2024-Premier-League,2024-10-07,Chelsea,Nott'm Forest,1,Enzo Maresca
+b9e00aac,2425,2024-10-06,fbref_match_cache,/en/matches/b9e00aac/Chelsea-Nottingham-Forest-October-6-2024-Premier-League,2024-10-07,Nott'm Forest,Chelsea,0,Nuno Espírito Santo
+01e63a1f,2425,2024-10-19,fbref_match_cache,/en/matches/01e63a1f/Bournemouth-Arsenal-October-19-2024-Premier-League,2024-10-20,Bournemouth,Arsenal,1,Andoni Iraola
+01e63a1f,2425,2024-10-19,fbref_match_cache,/en/matches/01e63a1f/Bournemouth-Arsenal-October-19-2024-Premier-League,2024-10-20,Arsenal,Bournemouth,0,Mikel Arteta
+615d637e,2425,2024-10-19,fbref_match_cache,/en/matches/615d637e/Fulham-Aston-Villa-October-19-2024-Premier-League,2024-10-20,Fulham,Aston Villa,1,Marco Silva
+615d637e,2425,2024-10-19,fbref_match_cache,/en/matches/615d637e/Fulham-Aston-Villa-October-19-2024-Premier-League,2024-10-20,Aston Villa,Fulham,0,Unai Emery
+2273e126,2425,2024-10-19,fbref_match_cache,/en/matches/2273e126/Ipswich-Town-Everton-October-19-2024-Premier-League,2024-10-20,Ipswich,Everton,1,Kieran McKenna
+2273e126,2425,2024-10-19,fbref_match_cache,/en/matches/2273e126/Ipswich-Town-Everton-October-19-2024-Premier-League,2024-10-20,Everton,Ipswich,0,Sean Dyche
+7f2c3291,2425,2024-10-19,fbref_match_cache,/en/matches/7f2c3291/Manchester-United-Brentford-October-19-2024-Premier-League,2024-10-20,Man United,Brentford,1,Erik ten Hag
+7f2c3291,2425,2024-10-19,fbref_match_cache,/en/matches/7f2c3291/Manchester-United-Brentford-October-19-2024-Premier-League,2024-10-20,Brentford,Man United,0,Thomas Frank
+48081db0,2425,2024-10-19,fbref_match_cache,/en/matches/48081db0/Newcastle-United-Brighton-and-Hove-Albion-October-19-2024-Premier-League,2024-10-20,Newcastle,Brighton,1,Eddie Howe
+48081db0,2425,2024-10-19,fbref_match_cache,/en/matches/48081db0/Newcastle-United-Brighton-and-Hove-Albion-October-19-2024-Premier-League,2024-10-20,Brighton,Newcastle,0,Fabian Hürzeler
+03d28c48,2425,2024-10-19,fbref_match_cache,/en/matches/03d28c48/Southampton-Leicester-City-October-19-2024-Premier-League,2024-10-20,Southampton,Leicester,1,Russell Martin
+03d28c48,2425,2024-10-19,fbref_match_cache,/en/matches/03d28c48/Southampton-Leicester-City-October-19-2024-Premier-League,2024-10-20,Leicester,Southampton,0,Steve Cooper
+923bfab0,2425,2024-10-19,fbref_match_cache,/en/matches/923bfab0/Tottenham-Hotspur-West-Ham-United-October-19-2024-Premier-League,2024-10-20,Tottenham,West Ham,1,Ange Postecoglou
+923bfab0,2425,2024-10-19,fbref_match_cache,/en/matches/923bfab0/Tottenham-Hotspur-West-Ham-United-October-19-2024-Premier-League,2024-10-20,West Ham,Tottenham,0,Julen Lopetegui
+99b4737c,2425,2024-10-20,fbref_match_cache,/en/matches/99b4737c/Liverpool-Chelsea-October-20-2024-Premier-League,2024-10-21,Liverpool,Chelsea,1,Arne Slot
+99b4737c,2425,2024-10-20,fbref_match_cache,/en/matches/99b4737c/Liverpool-Chelsea-October-20-2024-Premier-League,2024-10-21,Chelsea,Liverpool,0,Enzo Maresca
+90b22cd5,2425,2024-10-20,fbref_match_cache,/en/matches/90b22cd5/Wolverhampton-Wanderers-Manchester-City-October-20-2024-Premier-League,2024-10-21,Wolves,Man City,1,Gary O'Neil
+90b22cd5,2425,2024-10-20,fbref_match_cache,/en/matches/90b22cd5/Wolverhampton-Wanderers-Manchester-City-October-20-2024-Premier-League,2024-10-21,Man City,Wolves,0,Pep Guardiola
+5ed3894e,2425,2024-10-21,fbref_match_cache,/en/matches/5ed3894e/Nottingham-Forest-Crystal-Palace-October-21-2024-Premier-League,2024-10-22,Nott'm Forest,Crystal Palace,1,Nuno Espírito Santo
+5ed3894e,2425,2024-10-21,fbref_match_cache,/en/matches/5ed3894e/Nottingham-Forest-Crystal-Palace-October-21-2024-Premier-League,2024-10-22,Crystal Palace,Nott'm Forest,0,Oliver Glasner
+292d8bc4,2425,2024-10-25,fbref_match_cache,/en/matches/292d8bc4/Leicester-City-Nottingham-Forest-October-25-2024-Premier-League,2024-10-26,Leicester,Nott'm Forest,1,Steve Cooper
+292d8bc4,2425,2024-10-25,fbref_match_cache,/en/matches/292d8bc4/Leicester-City-Nottingham-Forest-October-25-2024-Premier-League,2024-10-26,Nott'm Forest,Leicester,0,Nuno Espírito Santo
+bce300b2,2425,2024-10-26,fbref_match_cache,/en/matches/bce300b2/Aston-Villa-Bournemouth-October-26-2024-Premier-League,2024-10-27,Aston Villa,Bournemouth,1,Unai Emery
+bce300b2,2425,2024-10-26,fbref_match_cache,/en/matches/bce300b2/Aston-Villa-Bournemouth-October-26-2024-Premier-League,2024-10-27,Bournemouth,Aston Villa,0,Andoni Iraola
+1fb2dcde,2425,2024-10-26,fbref_match_cache,/en/matches/1fb2dcde/Brentford-Ipswich-Town-October-26-2024-Premier-League,2024-10-27,Brentford,Ipswich,1,Thomas Frank
+1fb2dcde,2425,2024-10-26,fbref_match_cache,/en/matches/1fb2dcde/Brentford-Ipswich-Town-October-26-2024-Premier-League,2024-10-27,Ipswich,Brentford,0,Kieran McKenna
+9487e056,2425,2024-10-26,fbref_match_cache,/en/matches/9487e056/Brighton-and-Hove-Albion-Wolverhampton-Wanderers-October-26-2024-Premier-League,2024-10-27,Brighton,Wolves,1,Fabian Hürzeler
+9487e056,2425,2024-10-26,fbref_match_cache,/en/matches/9487e056/Brighton-and-Hove-Albion-Wolverhampton-Wanderers-October-26-2024-Premier-League,2024-10-27,Wolves,Brighton,0,Gary O'Neil
+1e5152bf,2425,2024-10-26,fbref_match_cache,/en/matches/1e5152bf/Everton-Fulham-October-26-2024-Premier-League,2024-10-27,Everton,Fulham,1,Sean Dyche
+1e5152bf,2425,2024-10-26,fbref_match_cache,/en/matches/1e5152bf/Everton-Fulham-October-26-2024-Premier-League,2024-10-27,Fulham,Everton,0,Marco Silva
+b66f6389,2425,2024-10-26,fbref_match_cache,/en/matches/b66f6389/Manchester-City-Southampton-October-26-2024-Premier-League,2024-10-27,Man City,Southampton,1,Pep Guardiola
+b66f6389,2425,2024-10-26,fbref_match_cache,/en/matches/b66f6389/Manchester-City-Southampton-October-26-2024-Premier-League,2024-10-27,Southampton,Man City,0,Russell Martin
+68aa1099,2425,2024-10-27,fbref_match_cache,/en/matches/68aa1099/Arsenal-Liverpool-October-27-2024-Premier-League,2024-10-28,Arsenal,Liverpool,1,Mikel Arteta
+68aa1099,2425,2024-10-27,fbref_match_cache,/en/matches/68aa1099/Arsenal-Liverpool-October-27-2024-Premier-League,2024-10-28,Liverpool,Arsenal,0,Arne Slot
+33571b04,2425,2024-10-27,fbref_match_cache,/en/matches/33571b04/Chelsea-Newcastle-United-October-27-2024-Premier-League,2024-10-28,Chelsea,Newcastle,1,Enzo Maresca
+33571b04,2425,2024-10-27,fbref_match_cache,/en/matches/33571b04/Chelsea-Newcastle-United-October-27-2024-Premier-League,2024-10-28,Newcastle,Chelsea,0,Eddie Howe
+e995d937,2425,2024-10-27,fbref_match_cache,/en/matches/e995d937/Crystal-Palace-Tottenham-Hotspur-October-27-2024-Premier-League,2024-10-28,Crystal Palace,Tottenham,1,Oliver Glasner
+e995d937,2425,2024-10-27,fbref_match_cache,/en/matches/e995d937/Crystal-Palace-Tottenham-Hotspur-October-27-2024-Premier-League,2024-10-28,Tottenham,Crystal Palace,0,Ange Postecoglou
+38c31a07,2425,2024-10-27,fbref_match_cache,/en/matches/38c31a07/West-Ham-United-Manchester-United-October-27-2024-Premier-League,2024-10-28,West Ham,Man United,1,Julen Lopetegui
+38c31a07,2425,2024-10-27,fbref_match_cache,/en/matches/38c31a07/West-Ham-United-Manchester-United-October-27-2024-Premier-League,2024-10-28,Man United,West Ham,0,Erik ten Hag
+ed970fef,2425,2024-11-02,fbref_match_cache,/en/matches/ed970fef/Bournemouth-Manchester-City-November-2-2024-Premier-League,2024-11-03,Bournemouth,Man City,1,Andoni Iraola
+ed970fef,2425,2024-11-02,fbref_match_cache,/en/matches/ed970fef/Bournemouth-Manchester-City-November-2-2024-Premier-League,2024-11-03,Man City,Bournemouth,0,Pep Guardiola
+ed8f93a0,2425,2024-11-02,fbref_match_cache,/en/matches/ed8f93a0/Ipswich-Town-Leicester-City-November-2-2024-Premier-League,2024-11-03,Ipswich,Leicester,1,Kieran McKenna
+ed8f93a0,2425,2024-11-02,fbref_match_cache,/en/matches/ed8f93a0/Ipswich-Town-Leicester-City-November-2-2024-Premier-League,2024-11-03,Leicester,Ipswich,0,Steve Cooper
+7d114c70,2425,2024-11-02,fbref_match_cache,/en/matches/7d114c70/Liverpool-Brighton-and-Hove-Albion-November-2-2024-Premier-League,2024-11-03,Liverpool,Brighton,1,Arne Slot
+7d114c70,2425,2024-11-02,fbref_match_cache,/en/matches/7d114c70/Liverpool-Brighton-and-Hove-Albion-November-2-2024-Premier-League,2024-11-03,Brighton,Liverpool,0,Fabian Hürzeler
+cc960c22,2425,2024-11-02,fbref_match_cache,/en/matches/cc960c22/Newcastle-United-Arsenal-November-2-2024-Premier-League,2024-11-03,Newcastle,Arsenal,1,Eddie Howe
+cc960c22,2425,2024-11-02,fbref_match_cache,/en/matches/cc960c22/Newcastle-United-Arsenal-November-2-2024-Premier-League,2024-11-03,Arsenal,Newcastle,0,Mikel Arteta
+c2505640,2425,2024-11-02,fbref_match_cache,/en/matches/c2505640/Nottingham-Forest-West-Ham-United-November-2-2024-Premier-League,2024-11-03,Nott'm Forest,West Ham,1,Nuno Espírito Santo
+c2505640,2425,2024-11-02,fbref_match_cache,/en/matches/c2505640/Nottingham-Forest-West-Ham-United-November-2-2024-Premier-League,2024-11-03,West Ham,Nott'm Forest,0,Julen Lopetegui
+2be42fdb,2425,2024-11-02,fbref_match_cache,/en/matches/2be42fdb/Southampton-Everton-November-2-2024-Premier-League,2024-11-03,Southampton,Everton,1,Russell Martin
+2be42fdb,2425,2024-11-02,fbref_match_cache,/en/matches/2be42fdb/Southampton-Everton-November-2-2024-Premier-League,2024-11-03,Everton,Southampton,0,Sean Dyche
+a4251fae,2425,2024-11-02,fbref_match_cache,/en/matches/a4251fae/Wolverhampton-Wanderers-Crystal-Palace-November-2-2024-Premier-League,2024-11-03,Wolves,Crystal Palace,1,Gary O'Neil
+a4251fae,2425,2024-11-02,fbref_match_cache,/en/matches/a4251fae/Wolverhampton-Wanderers-Crystal-Palace-November-2-2024-Premier-League,2024-11-03,Crystal Palace,Wolves,0,Oliver Glasner
+1273ae28,2425,2024-11-03,fbref_match_cache,/en/matches/1273ae28/Manchester-United-Chelsea-November-3-2024-Premier-League,2024-11-04,Man United,Chelsea,1,Ruud van Nistelrooy
+1273ae28,2425,2024-11-03,fbref_match_cache,/en/matches/1273ae28/Manchester-United-Chelsea-November-3-2024-Premier-League,2024-11-04,Chelsea,Man United,0,Enzo Maresca
+8fa951f9,2425,2024-11-03,fbref_match_cache,/en/matches/8fa951f9/Tottenham-Hotspur-Aston-Villa-November-3-2024-Premier-League,2024-11-04,Tottenham,Aston Villa,1,Ange Postecoglou
+8fa951f9,2425,2024-11-03,fbref_match_cache,/en/matches/8fa951f9/Tottenham-Hotspur-Aston-Villa-November-3-2024-Premier-League,2024-11-04,Aston Villa,Tottenham,0,Unai Emery
+e1590847,2425,2024-11-04,fbref_match_cache,/en/matches/e1590847/Fulham-Brentford-November-4-2024-Premier-League,2024-11-05,Fulham,Brentford,1,Marco Silva
+e1590847,2425,2024-11-04,fbref_match_cache,/en/matches/e1590847/Fulham-Brentford-November-4-2024-Premier-League,2024-11-05,Brentford,Fulham,0,Thomas Frank
+1c998ef5,2425,2024-11-09,fbref_match_cache,/en/matches/1c998ef5/Brentford-Bournemouth-November-9-2024-Premier-League,2024-11-10,Brentford,Bournemouth,1,Thomas Frank
+1c998ef5,2425,2024-11-09,fbref_match_cache,/en/matches/1c998ef5/Brentford-Bournemouth-November-9-2024-Premier-League,2024-11-10,Bournemouth,Brentford,0,Andoni Iraola
+62aa7905,2425,2024-11-09,fbref_match_cache,/en/matches/62aa7905/Brighton-and-Hove-Albion-Manchester-City-November-9-2024-Premier-League,2024-11-10,Brighton,Man City,1,Fabian Hürzeler
+62aa7905,2425,2024-11-09,fbref_match_cache,/en/matches/62aa7905/Brighton-and-Hove-Albion-Manchester-City-November-9-2024-Premier-League,2024-11-10,Man City,Brighton,0,Pep Guardiola
+d5015ba4,2425,2024-11-09,fbref_match_cache,/en/matches/d5015ba4/Crystal-Palace-Fulham-November-9-2024-Premier-League,2024-11-10,Crystal Palace,Fulham,1,Oliver Glasner
+d5015ba4,2425,2024-11-09,fbref_match_cache,/en/matches/d5015ba4/Crystal-Palace-Fulham-November-9-2024-Premier-League,2024-11-10,Fulham,Crystal Palace,0,Marco Silva
+737af5bf,2425,2024-11-09,fbref_match_cache,/en/matches/737af5bf/Liverpool-Aston-Villa-November-9-2024-Premier-League,2024-11-10,Liverpool,Aston Villa,1,Arne Slot
+737af5bf,2425,2024-11-09,fbref_match_cache,/en/matches/737af5bf/Liverpool-Aston-Villa-November-9-2024-Premier-League,2024-11-10,Aston Villa,Liverpool,0,Unai Emery
+a4cf40b4,2425,2024-11-09,fbref_match_cache,/en/matches/a4cf40b4/West-Ham-United-Everton-November-9-2024-Premier-League,2024-11-10,West Ham,Everton,1,Julen Lopetegui
+a4cf40b4,2425,2024-11-09,fbref_match_cache,/en/matches/a4cf40b4/West-Ham-United-Everton-November-9-2024-Premier-League,2024-11-10,Everton,West Ham,0,Sean Dyche
+dbec2d40,2425,2024-11-09,fbref_match_cache,/en/matches/dbec2d40/Wolverhampton-Wanderers-Southampton-November-9-2024-Premier-League,2024-11-10,Wolves,Southampton,1,Gary O'Neil
+dbec2d40,2425,2024-11-09,fbref_match_cache,/en/matches/dbec2d40/Wolverhampton-Wanderers-Southampton-November-9-2024-Premier-League,2024-11-10,Southampton,Wolves,0,Russell Martin
+2874d56e,2425,2024-11-10,fbref_match_cache,/en/matches/2874d56e/North-West-London-Derby-Chelsea-Arsenal-November-10-2024-Premier-League,2024-11-11,Chelsea,Arsenal,1,Enzo Maresca
+2874d56e,2425,2024-11-10,fbref_match_cache,/en/matches/2874d56e/North-West-London-Derby-Chelsea-Arsenal-November-10-2024-Premier-League,2024-11-11,Arsenal,Chelsea,0,Mikel Arteta
+35888afe,2425,2024-11-10,fbref_match_cache,/en/matches/35888afe/Manchester-United-Leicester-City-November-10-2024-Premier-League,2024-11-11,Man United,Leicester,1,Ruud van Nistelrooy
+35888afe,2425,2024-11-10,fbref_match_cache,/en/matches/35888afe/Manchester-United-Leicester-City-November-10-2024-Premier-League,2024-11-11,Leicester,Man United,0,Steve Cooper
+a41ce5c3,2425,2024-11-10,fbref_match_cache,/en/matches/a41ce5c3/Nottingham-Forest-Newcastle-United-November-10-2024-Premier-League,2024-11-11,Nott'm Forest,Newcastle,1,Nuno Espírito Santo
+a41ce5c3,2425,2024-11-10,fbref_match_cache,/en/matches/a41ce5c3/Nottingham-Forest-Newcastle-United-November-10-2024-Premier-League,2024-11-11,Newcastle,Nott'm Forest,0,Eddie Howe
+f9b9c3c4,2425,2024-11-10,fbref_match_cache,/en/matches/f9b9c3c4/Tottenham-Hotspur-Ipswich-Town-November-10-2024-Premier-League,2024-11-11,Tottenham,Ipswich,1,Ange Postecoglou
+f9b9c3c4,2425,2024-11-10,fbref_match_cache,/en/matches/f9b9c3c4/Tottenham-Hotspur-Ipswich-Town-November-10-2024-Premier-League,2024-11-11,Ipswich,Tottenham,0,Kieran McKenna
+0cb4129b,2425,2024-11-23,fbref_match_cache,/en/matches/0cb4129b/Arsenal-Nottingham-Forest-November-23-2024-Premier-League,2024-11-24,Arsenal,Nott'm Forest,1,Mikel Arteta
+0cb4129b,2425,2024-11-23,fbref_match_cache,/en/matches/0cb4129b/Arsenal-Nottingham-Forest-November-23-2024-Premier-League,2024-11-24,Nott'm Forest,Arsenal,0,Nuno Espírito Santo
+bf2e07a1,2425,2024-11-23,fbref_match_cache,/en/matches/bf2e07a1/Aston-Villa-Crystal-Palace-November-23-2024-Premier-League,2024-11-24,Aston Villa,Crystal Palace,1,Unai Emery
+bf2e07a1,2425,2024-11-23,fbref_match_cache,/en/matches/bf2e07a1/Aston-Villa-Crystal-Palace-November-23-2024-Premier-League,2024-11-24,Crystal Palace,Aston Villa,0,Oliver Glasner
+4708a5bf,2425,2024-11-23,fbref_match_cache,/en/matches/4708a5bf/Bournemouth-Brighton-and-Hove-Albion-November-23-2024-Premier-League,2024-11-24,Bournemouth,Brighton,1,Andoni Iraola
+4708a5bf,2425,2024-11-23,fbref_match_cache,/en/matches/4708a5bf/Bournemouth-Brighton-and-Hove-Albion-November-23-2024-Premier-League,2024-11-24,Brighton,Bournemouth,0,Fabian Hürzeler
+dd7675a7,2425,2024-11-23,fbref_match_cache,/en/matches/dd7675a7/Everton-Brentford-November-23-2024-Premier-League,2024-11-24,Everton,Brentford,1,Sean Dyche
+dd7675a7,2425,2024-11-23,fbref_match_cache,/en/matches/dd7675a7/Everton-Brentford-November-23-2024-Premier-League,2024-11-24,Brentford,Everton,0,Thomas Frank
+ed24aeb8,2425,2024-11-23,fbref_match_cache,/en/matches/ed24aeb8/Fulham-Wolverhampton-Wanderers-November-23-2024-Premier-League,2024-11-24,Fulham,Wolves,1,Marco Silva
+ed24aeb8,2425,2024-11-23,fbref_match_cache,/en/matches/ed24aeb8/Fulham-Wolverhampton-Wanderers-November-23-2024-Premier-League,2024-11-24,Wolves,Fulham,0,Gary O'Neil
+bb885467,2425,2024-11-23,fbref_match_cache,/en/matches/bb885467/Leicester-City-Chelsea-November-23-2024-Premier-League,2024-11-24,Leicester,Chelsea,1,Steve Cooper
+bb885467,2425,2024-11-23,fbref_match_cache,/en/matches/bb885467/Leicester-City-Chelsea-November-23-2024-Premier-League,2024-11-24,Chelsea,Leicester,0,Enzo Maresca
+c48b896c,2425,2024-11-23,fbref_match_cache,/en/matches/c48b896c/Manchester-City-Tottenham-Hotspur-November-23-2024-Premier-League,2024-11-24,Man City,Tottenham,1,Pep Guardiola
+c48b896c,2425,2024-11-23,fbref_match_cache,/en/matches/c48b896c/Manchester-City-Tottenham-Hotspur-November-23-2024-Premier-League,2024-11-24,Tottenham,Man City,0,Ange Postecoglou
+db1e4ea5,2425,2024-11-24,fbref_match_cache,/en/matches/db1e4ea5/Ipswich-Town-Manchester-United-November-24-2024-Premier-League,2024-11-25,Ipswich,Man United,1,Kieran McKenna
+db1e4ea5,2425,2024-11-24,fbref_match_cache,/en/matches/db1e4ea5/Ipswich-Town-Manchester-United-November-24-2024-Premier-League,2024-11-25,Man United,Ipswich,0,Rúben Amorim
+eb6f8e39,2425,2024-11-24,fbref_match_cache,/en/matches/eb6f8e39/Southampton-Liverpool-November-24-2024-Premier-League,2024-11-25,Southampton,Liverpool,1,Russell Martin
+eb6f8e39,2425,2024-11-24,fbref_match_cache,/en/matches/eb6f8e39/Southampton-Liverpool-November-24-2024-Premier-League,2024-11-25,Liverpool,Southampton,0,Arne Slot
+79f46eec,2425,2024-11-25,fbref_match_cache,/en/matches/79f46eec/Newcastle-United-West-Ham-United-November-25-2024-Premier-League,2024-11-26,Newcastle,West Ham,1,Eddie Howe
+79f46eec,2425,2024-11-25,fbref_match_cache,/en/matches/79f46eec/Newcastle-United-West-Ham-United-November-25-2024-Premier-League,2024-11-26,West Ham,Newcastle,0,Julen Lopetegui
+d38c4a31,2425,2024-11-29,fbref_match_cache,/en/matches/d38c4a31/Brighton-and-Hove-Albion-Southampton-November-29-2024-Premier-League,2024-11-30,Brighton,Southampton,1,Fabian Hürzeler
+d38c4a31,2425,2024-11-29,fbref_match_cache,/en/matches/d38c4a31/Brighton-and-Hove-Albion-Southampton-November-29-2024-Premier-League,2024-11-30,Southampton,Brighton,0,Russell Martin
+f4f9a64f,2425,2024-11-30,fbref_match_cache,/en/matches/f4f9a64f/Brentford-Leicester-City-November-30-2024-Premier-League,2024-12-01,Brentford,Leicester,1,Thomas Frank
+f4f9a64f,2425,2024-11-30,fbref_match_cache,/en/matches/f4f9a64f/Brentford-Leicester-City-November-30-2024-Premier-League,2024-12-01,Leicester,Brentford,0,Ben Dawson
+a4f03af0,2425,2024-11-30,fbref_match_cache,/en/matches/a4f03af0/Crystal-Palace-Newcastle-United-November-30-2024-Premier-League,2024-12-01,Crystal Palace,Newcastle,1,Oliver Glasner
+a4f03af0,2425,2024-11-30,fbref_match_cache,/en/matches/a4f03af0/Crystal-Palace-Newcastle-United-November-30-2024-Premier-League,2024-12-01,Newcastle,Crystal Palace,0,Eddie Howe
+ddc8856c,2425,2024-11-30,fbref_match_cache,/en/matches/ddc8856c/Nottingham-Forest-Ipswich-Town-November-30-2024-Premier-League,2024-12-01,Nott'm Forest,Ipswich,1,Nuno Espírito Santo
+ddc8856c,2425,2024-11-30,fbref_match_cache,/en/matches/ddc8856c/Nottingham-Forest-Ipswich-Town-November-30-2024-Premier-League,2024-12-01,Ipswich,Nott'm Forest,0,Kieran McKenna
+f78bee62,2425,2024-11-30,fbref_match_cache,/en/matches/f78bee62/West-Ham-United-Arsenal-November-30-2024-Premier-League,2024-12-01,West Ham,Arsenal,1,Julen Lopetegui
+f78bee62,2425,2024-11-30,fbref_match_cache,/en/matches/f78bee62/West-Ham-United-Arsenal-November-30-2024-Premier-League,2024-12-01,Arsenal,West Ham,0,Mikel Arteta
+adfb1b89,2425,2024-11-30,fbref_match_cache,/en/matches/adfb1b89/Wolverhampton-Wanderers-Bournemouth-November-30-2024-Premier-League,2024-12-01,Wolves,Bournemouth,1,Gary O'Neil
+adfb1b89,2425,2024-11-30,fbref_match_cache,/en/matches/adfb1b89/Wolverhampton-Wanderers-Bournemouth-November-30-2024-Premier-League,2024-12-01,Bournemouth,Wolves,0,Andoni Iraola
+080b797b,2425,2024-12-01,fbref_match_cache,/en/matches/080b797b/Chelsea-Aston-Villa-December-1-2024-Premier-League,2024-12-02,Chelsea,Aston Villa,1,Enzo Maresca
+080b797b,2425,2024-12-01,fbref_match_cache,/en/matches/080b797b/Chelsea-Aston-Villa-December-1-2024-Premier-League,2024-12-02,Aston Villa,Chelsea,0,Unai Emery
+0bd6ad44,2425,2024-12-01,fbref_match_cache,/en/matches/0bd6ad44/Liverpool-Manchester-City-December-1-2024-Premier-League,2024-12-02,Liverpool,Man City,1,Arne Slot
+0bd6ad44,2425,2024-12-01,fbref_match_cache,/en/matches/0bd6ad44/Liverpool-Manchester-City-December-1-2024-Premier-League,2024-12-02,Man City,Liverpool,0,Pep Guardiola
+e6eef20f,2425,2024-12-01,fbref_match_cache,/en/matches/e6eef20f/Manchester-United-Everton-December-1-2024-Premier-League,2024-12-02,Man United,Everton,1,Rúben Amorim
+e6eef20f,2425,2024-12-01,fbref_match_cache,/en/matches/e6eef20f/Manchester-United-Everton-December-1-2024-Premier-League,2024-12-02,Everton,Man United,0,Sean Dyche
+9aaa6ed5,2425,2024-12-01,fbref_match_cache,/en/matches/9aaa6ed5/Tottenham-Hotspur-Fulham-December-1-2024-Premier-League,2024-12-02,Tottenham,Fulham,1,Ange Postecoglou
+9aaa6ed5,2425,2024-12-01,fbref_match_cache,/en/matches/9aaa6ed5/Tottenham-Hotspur-Fulham-December-1-2024-Premier-League,2024-12-02,Fulham,Tottenham,0,Marco Silva
+f7a96e82,2425,2024-12-03,fbref_match_cache,/en/matches/f7a96e82/Ipswich-Town-Crystal-Palace-December-3-2024-Premier-League,2024-12-04,Ipswich,Crystal Palace,1,Kieran McKenna
+f7a96e82,2425,2024-12-03,fbref_match_cache,/en/matches/f7a96e82/Ipswich-Town-Crystal-Palace-December-3-2024-Premier-League,2024-12-04,Crystal Palace,Ipswich,0,Oliver Glasner
+355fd8ce,2425,2024-12-03,fbref_match_cache,/en/matches/355fd8ce/Leicester-City-West-Ham-United-December-3-2024-Premier-League,2024-12-04,Leicester,West Ham,1,Ruud van Nistelrooy
+355fd8ce,2425,2024-12-03,fbref_match_cache,/en/matches/355fd8ce/Leicester-City-West-Ham-United-December-3-2024-Premier-League,2024-12-04,West Ham,Leicester,0,Julen Lopetegui
+9938aa27,2425,2024-12-04,fbref_match_cache,/en/matches/9938aa27/Arsenal-Manchester-United-December-4-2024-Premier-League,2024-12-05,Arsenal,Man United,1,Mikel Arteta
+9938aa27,2425,2024-12-04,fbref_match_cache,/en/matches/9938aa27/Arsenal-Manchester-United-December-4-2024-Premier-League,2024-12-05,Man United,Arsenal,0,Rúben Amorim
+c24a734b,2425,2024-12-04,fbref_match_cache,/en/matches/c24a734b/Aston-Villa-Brentford-December-4-2024-Premier-League,2024-12-05,Aston Villa,Brentford,1,Unai Emery
+c24a734b,2425,2024-12-04,fbref_match_cache,/en/matches/c24a734b/Aston-Villa-Brentford-December-4-2024-Premier-League,2024-12-05,Brentford,Aston Villa,0,Thomas Frank
+71f00b04,2425,2024-12-04,fbref_match_cache,/en/matches/71f00b04/Everton-Wolverhampton-Wanderers-December-4-2024-Premier-League,2024-12-05,Everton,Wolves,1,Sean Dyche
+71f00b04,2425,2024-12-04,fbref_match_cache,/en/matches/71f00b04/Everton-Wolverhampton-Wanderers-December-4-2024-Premier-League,2024-12-05,Wolves,Everton,0,Gary O'Neil
+dedb0eee,2425,2024-12-04,fbref_match_cache,/en/matches/dedb0eee/Manchester-City-Nottingham-Forest-December-4-2024-Premier-League,2024-12-05,Man City,Nott'm Forest,1,Pep Guardiola
+dedb0eee,2425,2024-12-04,fbref_match_cache,/en/matches/dedb0eee/Manchester-City-Nottingham-Forest-December-4-2024-Premier-League,2024-12-05,Nott'm Forest,Man City,0,Nuno Espírito Santo
+ca898c29,2425,2024-12-04,fbref_match_cache,/en/matches/ca898c29/Newcastle-United-Liverpool-December-4-2024-Premier-League,2024-12-05,Newcastle,Liverpool,1,Eddie Howe
+ca898c29,2425,2024-12-04,fbref_match_cache,/en/matches/ca898c29/Newcastle-United-Liverpool-December-4-2024-Premier-League,2024-12-05,Liverpool,Newcastle,0,Arne Slot
+e4480630,2425,2024-12-04,fbref_match_cache,/en/matches/e4480630/Southampton-Chelsea-December-4-2024-Premier-League,2024-12-05,Southampton,Chelsea,1,Russell Martin
+e4480630,2425,2024-12-04,fbref_match_cache,/en/matches/e4480630/Southampton-Chelsea-December-4-2024-Premier-League,2024-12-05,Chelsea,Southampton,0,Enzo Maresca
+c7e59a0a,2425,2024-12-05,fbref_match_cache,/en/matches/c7e59a0a/Bournemouth-Tottenham-Hotspur-December-5-2024-Premier-League,2024-12-06,Bournemouth,Tottenham,1,Andoni Iraola
+c7e59a0a,2425,2024-12-05,fbref_match_cache,/en/matches/c7e59a0a/Bournemouth-Tottenham-Hotspur-December-5-2024-Premier-League,2024-12-06,Tottenham,Bournemouth,0,Ange Postecoglou
+32aaf579,2425,2024-12-05,fbref_match_cache,/en/matches/32aaf579/Fulham-Brighton-and-Hove-Albion-December-5-2024-Premier-League,2024-12-06,Fulham,Brighton,1,Marco Silva
+32aaf579,2425,2024-12-05,fbref_match_cache,/en/matches/32aaf579/Fulham-Brighton-and-Hove-Albion-December-5-2024-Premier-League,2024-12-06,Brighton,Fulham,0,Fabian Hürzeler
+92cfde2c,2425,2024-12-07,fbref_match_cache,/en/matches/92cfde2c/Aston-Villa-Southampton-December-7-2024-Premier-League,2024-12-08,Aston Villa,Southampton,1,Unai Emery
+92cfde2c,2425,2024-12-07,fbref_match_cache,/en/matches/92cfde2c/Aston-Villa-Southampton-December-7-2024-Premier-League,2024-12-08,Southampton,Aston Villa,0,Russell Martin
+1042592d,2425,2024-12-07,fbref_match_cache,/en/matches/1042592d/Brentford-Newcastle-United-December-7-2024-Premier-League,2024-12-08,Brentford,Newcastle,1,Thomas Frank
+1042592d,2425,2024-12-07,fbref_match_cache,/en/matches/1042592d/Brentford-Newcastle-United-December-7-2024-Premier-League,2024-12-08,Newcastle,Brentford,0,Eddie Howe
+6b7fbda1,2425,2024-12-07,fbref_match_cache,/en/matches/6b7fbda1/Crystal-Palace-Manchester-City-December-7-2024-Premier-League,2024-12-08,Crystal Palace,Man City,1,Oliver Glasner
+6b7fbda1,2425,2024-12-07,fbref_match_cache,/en/matches/6b7fbda1/Crystal-Palace-Manchester-City-December-7-2024-Premier-League,2024-12-08,Man City,Crystal Palace,0,Pep Guardiola
+08966ea6,2425,2024-12-07,fbref_match_cache,/en/matches/08966ea6/Manchester-United-Nottingham-Forest-December-7-2024-Premier-League,2024-12-08,Man United,Nott'm Forest,1,Rúben Amorim
+08966ea6,2425,2024-12-07,fbref_match_cache,/en/matches/08966ea6/Manchester-United-Nottingham-Forest-December-7-2024-Premier-League,2024-12-08,Nott'm Forest,Man United,0,Nuno Espírito Santo
+038dfa98,2425,2024-12-08,fbref_match_cache,/en/matches/038dfa98/Fulham-Arsenal-December-8-2024-Premier-League,2024-12-09,Fulham,Arsenal,1,Marco Silva
+038dfa98,2425,2024-12-08,fbref_match_cache,/en/matches/038dfa98/Fulham-Arsenal-December-8-2024-Premier-League,2024-12-09,Arsenal,Fulham,0,Mikel Arteta
+392c7b1f,2425,2024-12-08,fbref_match_cache,/en/matches/392c7b1f/Ipswich-Town-Bournemouth-December-8-2024-Premier-League,2024-12-09,Ipswich,Bournemouth,1,Kieran McKenna
+392c7b1f,2425,2024-12-08,fbref_match_cache,/en/matches/392c7b1f/Ipswich-Town-Bournemouth-December-8-2024-Premier-League,2024-12-09,Bournemouth,Ipswich,0,Andoni Iraola
+7b549f8f,2425,2024-12-08,fbref_match_cache,/en/matches/7b549f8f/Leicester-City-Brighton-and-Hove-Albion-December-8-2024-Premier-League,2024-12-09,Leicester,Brighton,1,Ruud van Nistelrooy
+7b549f8f,2425,2024-12-08,fbref_match_cache,/en/matches/7b549f8f/Leicester-City-Brighton-and-Hove-Albion-December-8-2024-Premier-League,2024-12-09,Brighton,Leicester,0,Fabian Hürzeler
+abff9b73,2425,2024-12-08,fbref_match_cache,/en/matches/abff9b73/Tottenham-Hotspur-Chelsea-December-8-2024-Premier-League,2024-12-09,Tottenham,Chelsea,1,Ange Postecoglou
+abff9b73,2425,2024-12-08,fbref_match_cache,/en/matches/abff9b73/Tottenham-Hotspur-Chelsea-December-8-2024-Premier-League,2024-12-09,Chelsea,Tottenham,0,Enzo Maresca
+4d72ec87,2425,2024-12-09,fbref_match_cache,/en/matches/4d72ec87/West-Ham-United-Wolverhampton-Wanderers-December-9-2024-Premier-League,2024-12-10,West Ham,Wolves,1,Julen Lopetegui
+4d72ec87,2425,2024-12-09,fbref_match_cache,/en/matches/4d72ec87/West-Ham-United-Wolverhampton-Wanderers-December-9-2024-Premier-League,2024-12-10,Wolves,West Ham,0,Gary O'Neil
+32aa9e8e,2425,2024-12-14,fbref_match_cache,/en/matches/32aa9e8e/Arsenal-Everton-December-14-2024-Premier-League,2024-12-15,Arsenal,Everton,1,Mikel Arteta
+32aa9e8e,2425,2024-12-14,fbref_match_cache,/en/matches/32aa9e8e/Arsenal-Everton-December-14-2024-Premier-League,2024-12-15,Everton,Arsenal,0,Sean Dyche
+a436996c,2425,2024-12-14,fbref_match_cache,/en/matches/a436996c/Liverpool-Fulham-December-14-2024-Premier-League,2024-12-15,Liverpool,Fulham,1,Arne Slot
+a436996c,2425,2024-12-14,fbref_match_cache,/en/matches/a436996c/Liverpool-Fulham-December-14-2024-Premier-League,2024-12-15,Fulham,Liverpool,0,Marco Silva
+0b6fe43f,2425,2024-12-14,fbref_match_cache,/en/matches/0b6fe43f/Newcastle-United-Leicester-City-December-14-2024-Premier-League,2024-12-15,Newcastle,Leicester,1,Eddie Howe
+0b6fe43f,2425,2024-12-14,fbref_match_cache,/en/matches/0b6fe43f/Newcastle-United-Leicester-City-December-14-2024-Premier-League,2024-12-15,Leicester,Newcastle,0,Ruud van Nistelrooy
+26926fd3,2425,2024-12-14,fbref_match_cache,/en/matches/26926fd3/Nottingham-Forest-Aston-Villa-December-14-2024-Premier-League,2024-12-15,Nott'm Forest,Aston Villa,1,Nuno Espírito Santo
+26926fd3,2425,2024-12-14,fbref_match_cache,/en/matches/26926fd3/Nottingham-Forest-Aston-Villa-December-14-2024-Premier-League,2024-12-15,Aston Villa,Nott'm Forest,0,Unai Emery
+46d52e33,2425,2024-12-14,fbref_match_cache,/en/matches/46d52e33/Wolverhampton-Wanderers-Ipswich-Town-December-14-2024-Premier-League,2024-12-15,Wolves,Ipswich,1,Gary O'Neil
+46d52e33,2425,2024-12-14,fbref_match_cache,/en/matches/46d52e33/Wolverhampton-Wanderers-Ipswich-Town-December-14-2024-Premier-League,2024-12-15,Ipswich,Wolves,0,Kieran McKenna
+c8314a05,2425,2024-12-15,fbref_match_cache,/en/matches/c8314a05/Brighton-and-Hove-Albion-Crystal-Palace-December-15-2024-Premier-League,2024-12-16,Brighton,Crystal Palace,1,Fabian Hürzeler
+c8314a05,2425,2024-12-15,fbref_match_cache,/en/matches/c8314a05/Brighton-and-Hove-Albion-Crystal-Palace-December-15-2024-Premier-League,2024-12-16,Crystal Palace,Brighton,0,Oliver Glasner
+5f0803f7,2425,2024-12-15,fbref_match_cache,/en/matches/5f0803f7/Chelsea-Brentford-December-15-2024-Premier-League,2024-12-16,Chelsea,Brentford,1,Enzo Maresca
+5f0803f7,2425,2024-12-15,fbref_match_cache,/en/matches/5f0803f7/Chelsea-Brentford-December-15-2024-Premier-League,2024-12-16,Brentford,Chelsea,0,Thomas Frank
+3d772028,2425,2024-12-15,fbref_match_cache,/en/matches/3d772028/Manchester-Derby-Manchester-City-Manchester-United-December-15-2024-Premier-League,2024-12-16,Man City,Man United,1,Pep Guardiola
+3d772028,2425,2024-12-15,fbref_match_cache,/en/matches/3d772028/Manchester-Derby-Manchester-City-Manchester-United-December-15-2024-Premier-League,2024-12-16,Man United,Man City,0,Rúben Amorim
+37afd6da,2425,2024-12-15,fbref_match_cache,/en/matches/37afd6da/Southampton-Tottenham-Hotspur-December-15-2024-Premier-League,2024-12-16,Southampton,Tottenham,1,Russell Martin
+37afd6da,2425,2024-12-15,fbref_match_cache,/en/matches/37afd6da/Southampton-Tottenham-Hotspur-December-15-2024-Premier-League,2024-12-16,Tottenham,Southampton,0,Ange Postecoglou
+49cd674b,2425,2024-12-16,fbref_match_cache,/en/matches/49cd674b/Bournemouth-West-Ham-United-December-16-2024-Premier-League,2024-12-17,Bournemouth,West Ham,1,Andoni Iraola
+49cd674b,2425,2024-12-16,fbref_match_cache,/en/matches/49cd674b/Bournemouth-West-Ham-United-December-16-2024-Premier-League,2024-12-17,West Ham,Bournemouth,0,Julen Lopetegui
+ce9dc982,2425,2024-12-21,fbref_match_cache,/en/matches/ce9dc982/Aston-Villa-Manchester-City-December-21-2024-Premier-League,2024-12-22,Aston Villa,Man City,1,Unai Emery
+ce9dc982,2425,2024-12-21,fbref_match_cache,/en/matches/ce9dc982/Aston-Villa-Manchester-City-December-21-2024-Premier-League,2024-12-22,Man City,Aston Villa,0,Pep Guardiola
+1c60d037,2425,2024-12-21,fbref_match_cache,/en/matches/1c60d037/Brentford-Nottingham-Forest-December-21-2024-Premier-League,2024-12-22,Brentford,Nott'm Forest,1,Thomas Frank
+1c60d037,2425,2024-12-21,fbref_match_cache,/en/matches/1c60d037/Brentford-Nottingham-Forest-December-21-2024-Premier-League,2024-12-22,Nott'm Forest,Brentford,0,Nuno Espírito Santo
+5e7aa707,2425,2024-12-21,fbref_match_cache,/en/matches/5e7aa707/Crystal-Palace-Arsenal-December-21-2024-Premier-League,2024-12-22,Crystal Palace,Arsenal,1,Oliver Glasner
+5e7aa707,2425,2024-12-21,fbref_match_cache,/en/matches/5e7aa707/Crystal-Palace-Arsenal-December-21-2024-Premier-League,2024-12-22,Arsenal,Crystal Palace,0,Mikel Arteta
+764fc51e,2425,2024-12-21,fbref_match_cache,/en/matches/764fc51e/Ipswich-Town-Newcastle-United-December-21-2024-Premier-League,2024-12-22,Ipswich,Newcastle,1,Kieran McKenna
+764fc51e,2425,2024-12-21,fbref_match_cache,/en/matches/764fc51e/Ipswich-Town-Newcastle-United-December-21-2024-Premier-League,2024-12-22,Newcastle,Ipswich,0,Eddie Howe
+04be8e87,2425,2024-12-21,fbref_match_cache,/en/matches/04be8e87/West-Ham-United-Brighton-and-Hove-Albion-December-21-2024-Premier-League,2024-12-22,West Ham,Brighton,1,Julen Lopetegui
+04be8e87,2425,2024-12-21,fbref_match_cache,/en/matches/04be8e87/West-Ham-United-Brighton-and-Hove-Albion-December-21-2024-Premier-League,2024-12-22,Brighton,West Ham,0,Fabian Hürzeler
+de72140c,2425,2024-12-22,fbref_match_cache,/en/matches/de72140c/Everton-Chelsea-December-22-2024-Premier-League,2024-12-23,Everton,Chelsea,1,Sean Dyche
+de72140c,2425,2024-12-22,fbref_match_cache,/en/matches/de72140c/Everton-Chelsea-December-22-2024-Premier-League,2024-12-23,Chelsea,Everton,0,Enzo Maresca
+ba3fcb1e,2425,2024-12-22,fbref_match_cache,/en/matches/ba3fcb1e/Fulham-Southampton-December-22-2024-Premier-League,2024-12-23,Fulham,Southampton,1,Marco Silva
+ba3fcb1e,2425,2024-12-22,fbref_match_cache,/en/matches/ba3fcb1e/Fulham-Southampton-December-22-2024-Premier-League,2024-12-23,Southampton,Fulham,0,Simon Rusk
+ecd6cb1d,2425,2024-12-22,fbref_match_cache,/en/matches/ecd6cb1d/Leicester-City-Wolverhampton-Wanderers-December-22-2024-Premier-League,2024-12-23,Leicester,Wolves,1,Ruud van Nistelrooy
+ecd6cb1d,2425,2024-12-22,fbref_match_cache,/en/matches/ecd6cb1d/Leicester-City-Wolverhampton-Wanderers-December-22-2024-Premier-League,2024-12-23,Wolves,Leicester,0,Vítor Pereira
+8381ba53,2425,2024-12-22,fbref_match_cache,/en/matches/8381ba53/Manchester-United-Bournemouth-December-22-2024-Premier-League,2024-12-23,Man United,Bournemouth,1,Rúben Amorim
+8381ba53,2425,2024-12-22,fbref_match_cache,/en/matches/8381ba53/Manchester-United-Bournemouth-December-22-2024-Premier-League,2024-12-23,Bournemouth,Man United,0,Andoni Iraola
+1e1cea4c,2425,2024-12-22,fbref_match_cache,/en/matches/1e1cea4c/Tottenham-Hotspur-Liverpool-December-22-2024-Premier-League,2024-12-23,Tottenham,Liverpool,1,Ange Postecoglou
+1e1cea4c,2425,2024-12-22,fbref_match_cache,/en/matches/1e1cea4c/Tottenham-Hotspur-Liverpool-December-22-2024-Premier-League,2024-12-23,Liverpool,Tottenham,0,Arne Slot
+886ca6b3,2425,2024-12-26,fbref_match_cache,/en/matches/886ca6b3/Bournemouth-Crystal-Palace-December-26-2024-Premier-League,2024-12-27,Bournemouth,Crystal Palace,1,Andoni Iraola
+886ca6b3,2425,2024-12-26,fbref_match_cache,/en/matches/886ca6b3/Bournemouth-Crystal-Palace-December-26-2024-Premier-League,2024-12-27,Crystal Palace,Bournemouth,0,Oliver Glasner
+03d6159c,2425,2024-12-26,fbref_match_cache,/en/matches/03d6159c/Chelsea-Fulham-December-26-2024-Premier-League,2024-12-27,Chelsea,Fulham,1,Enzo Maresca
+03d6159c,2425,2024-12-26,fbref_match_cache,/en/matches/03d6159c/Chelsea-Fulham-December-26-2024-Premier-League,2024-12-27,Fulham,Chelsea,0,Marco Silva
+1f604fbd,2425,2024-12-26,fbref_match_cache,/en/matches/1f604fbd/Liverpool-Leicester-City-December-26-2024-Premier-League,2024-12-27,Liverpool,Leicester,1,Arne Slot
+1f604fbd,2425,2024-12-26,fbref_match_cache,/en/matches/1f604fbd/Liverpool-Leicester-City-December-26-2024-Premier-League,2024-12-27,Leicester,Liverpool,0,Ruud van Nistelrooy
+87f2d794,2425,2024-12-26,fbref_match_cache,/en/matches/87f2d794/Manchester-City-Everton-December-26-2024-Premier-League,2024-12-27,Man City,Everton,1,Pep Guardiola
+87f2d794,2425,2024-12-26,fbref_match_cache,/en/matches/87f2d794/Manchester-City-Everton-December-26-2024-Premier-League,2024-12-27,Everton,Man City,0,Sean Dyche
+9985f304,2425,2024-12-26,fbref_match_cache,/en/matches/9985f304/Newcastle-United-Aston-Villa-December-26-2024-Premier-League,2024-12-27,Newcastle,Aston Villa,1,Eddie Howe
+9985f304,2425,2024-12-26,fbref_match_cache,/en/matches/9985f304/Newcastle-United-Aston-Villa-December-26-2024-Premier-League,2024-12-27,Aston Villa,Newcastle,0,Unai Emery
+eb738106,2425,2024-12-26,fbref_match_cache,/en/matches/eb738106/Nottingham-Forest-Tottenham-Hotspur-December-26-2024-Premier-League,2024-12-27,Nott'm Forest,Tottenham,1,Nuno Espírito Santo
+eb738106,2425,2024-12-26,fbref_match_cache,/en/matches/eb738106/Nottingham-Forest-Tottenham-Hotspur-December-26-2024-Premier-League,2024-12-27,Tottenham,Nott'm Forest,0,Ange Postecoglou
+8050686b,2425,2024-12-26,fbref_match_cache,/en/matches/8050686b/Southampton-West-Ham-United-December-26-2024-Premier-League,2024-12-27,Southampton,West Ham,1,Ivan Jurić
+8050686b,2425,2024-12-26,fbref_match_cache,/en/matches/8050686b/Southampton-West-Ham-United-December-26-2024-Premier-League,2024-12-27,West Ham,Southampton,0,Julen Lopetegui
+77bcad49,2425,2024-12-26,fbref_match_cache,/en/matches/77bcad49/Wolverhampton-Wanderers-Manchester-United-December-26-2024-Premier-League,2024-12-27,Wolves,Man United,1,Vítor Pereira
+77bcad49,2425,2024-12-26,fbref_match_cache,/en/matches/77bcad49/Wolverhampton-Wanderers-Manchester-United-December-26-2024-Premier-League,2024-12-27,Man United,Wolves,0,Rúben Amorim
+668dad03,2425,2024-12-27,fbref_match_cache,/en/matches/668dad03/Arsenal-Ipswich-Town-December-27-2024-Premier-League,2024-12-28,Arsenal,Ipswich,1,Mikel Arteta
+668dad03,2425,2024-12-27,fbref_match_cache,/en/matches/668dad03/Arsenal-Ipswich-Town-December-27-2024-Premier-League,2024-12-28,Ipswich,Arsenal,0,Kieran McKenna
+15b10b33,2425,2024-12-27,fbref_match_cache,/en/matches/15b10b33/Brighton-and-Hove-Albion-Brentford-December-27-2024-Premier-League,2024-12-28,Brighton,Brentford,1,Fabian Hürzeler
+15b10b33,2425,2024-12-27,fbref_match_cache,/en/matches/15b10b33/Brighton-and-Hove-Albion-Brentford-December-27-2024-Premier-League,2024-12-28,Brentford,Brighton,0,Thomas Frank
+6d06b29c,2425,2024-12-29,fbref_match_cache,/en/matches/6d06b29c/Crystal-Palace-Southampton-December-29-2024-Premier-League,2024-12-30,Crystal Palace,Southampton,1,Oliver Glasner
+6d06b29c,2425,2024-12-29,fbref_match_cache,/en/matches/6d06b29c/Crystal-Palace-Southampton-December-29-2024-Premier-League,2024-12-30,Southampton,Crystal Palace,0,Ivan Jurić
+5fa986dc,2425,2024-12-29,fbref_match_cache,/en/matches/5fa986dc/Everton-Nottingham-Forest-December-29-2024-Premier-League,2024-12-30,Everton,Nott'm Forest,1,Sean Dyche
+5fa986dc,2425,2024-12-29,fbref_match_cache,/en/matches/5fa986dc/Everton-Nottingham-Forest-December-29-2024-Premier-League,2024-12-30,Nott'm Forest,Everton,0,Nuno Espírito Santo
+4b4023dc,2425,2024-12-29,fbref_match_cache,/en/matches/4b4023dc/Fulham-Bournemouth-December-29-2024-Premier-League,2024-12-30,Fulham,Bournemouth,1,Marco Silva
+4b4023dc,2425,2024-12-29,fbref_match_cache,/en/matches/4b4023dc/Fulham-Bournemouth-December-29-2024-Premier-League,2024-12-30,Bournemouth,Fulham,0,Andoni Iraola
+8bbb6d95,2425,2024-12-29,fbref_match_cache,/en/matches/8bbb6d95/Leicester-City-Manchester-City-December-29-2024-Premier-League,2024-12-30,Leicester,Man City,1,Ruud van Nistelrooy
+8bbb6d95,2425,2024-12-29,fbref_match_cache,/en/matches/8bbb6d95/Leicester-City-Manchester-City-December-29-2024-Premier-League,2024-12-30,Man City,Leicester,0,Pep Guardiola
+3d2ef5b4,2425,2024-12-29,fbref_match_cache,/en/matches/3d2ef5b4/Tottenham-Hotspur-Wolverhampton-Wanderers-December-29-2024-Premier-League,2024-12-30,Tottenham,Wolves,1,Ange Postecoglou
+3d2ef5b4,2425,2024-12-29,fbref_match_cache,/en/matches/3d2ef5b4/Tottenham-Hotspur-Wolverhampton-Wanderers-December-29-2024-Premier-League,2024-12-30,Wolves,Tottenham,0,Vítor Pereira
+c1a66ac0,2425,2024-12-29,fbref_match_cache,/en/matches/c1a66ac0/West-Ham-United-Liverpool-December-29-2024-Premier-League,2024-12-30,West Ham,Liverpool,1,Julen Lopetegui
+c1a66ac0,2425,2024-12-29,fbref_match_cache,/en/matches/c1a66ac0/West-Ham-United-Liverpool-December-29-2024-Premier-League,2024-12-30,Liverpool,West Ham,0,Arne Slot
+5e8340e9,2425,2024-12-30,fbref_match_cache,/en/matches/5e8340e9/Aston-Villa-Brighton-and-Hove-Albion-December-30-2024-Premier-League,2024-12-31,Aston Villa,Brighton,1,Unai Emery
+5e8340e9,2425,2024-12-30,fbref_match_cache,/en/matches/5e8340e9/Aston-Villa-Brighton-and-Hove-Albion-December-30-2024-Premier-League,2024-12-31,Brighton,Aston Villa,0,Fabian Hürzeler
+88073205,2425,2024-12-30,fbref_match_cache,/en/matches/88073205/Ipswich-Town-Chelsea-December-30-2024-Premier-League,2024-12-31,Ipswich,Chelsea,1,Kieran McKenna
+88073205,2425,2024-12-30,fbref_match_cache,/en/matches/88073205/Ipswich-Town-Chelsea-December-30-2024-Premier-League,2024-12-31,Chelsea,Ipswich,0,Enzo Maresca
+8cff7a63,2425,2024-12-30,fbref_match_cache,/en/matches/8cff7a63/Manchester-United-Newcastle-United-December-30-2024-Premier-League,2024-12-31,Man United,Newcastle,1,Rúben Amorim
+8cff7a63,2425,2024-12-30,fbref_match_cache,/en/matches/8cff7a63/Manchester-United-Newcastle-United-December-30-2024-Premier-League,2024-12-31,Newcastle,Man United,0,Eddie Howe
+7e6892e4,2425,2025-01-01,fbref_match_cache,/en/matches/7e6892e4/Brentford-Arsenal-January-1-2025-Premier-League,2025-01-02,Brentford,Arsenal,1,Thomas Frank
+7e6892e4,2425,2025-01-01,fbref_match_cache,/en/matches/7e6892e4/Brentford-Arsenal-January-1-2025-Premier-League,2025-01-02,Arsenal,Brentford,0,Mikel Arteta
+f5ae8d7d,2425,2025-01-04,fbref_match_cache,/en/matches/f5ae8d7d/Aston-Villa-Leicester-City-January-4-2025-Premier-League,2025-01-05,Aston Villa,Leicester,1,Unai Emery
+f5ae8d7d,2425,2025-01-04,fbref_match_cache,/en/matches/f5ae8d7d/Aston-Villa-Leicester-City-January-4-2025-Premier-League,2025-01-05,Leicester,Aston Villa,0,Ruud van Nistelrooy
+43f0c302,2425,2025-01-04,fbref_match_cache,/en/matches/43f0c302/Bournemouth-Everton-January-4-2025-Premier-League,2025-01-05,Bournemouth,Everton,1,Andoni Iraola
+43f0c302,2425,2025-01-04,fbref_match_cache,/en/matches/43f0c302/Bournemouth-Everton-January-4-2025-Premier-League,2025-01-05,Everton,Bournemouth,0,Sean Dyche
+52186da4,2425,2025-01-04,fbref_match_cache,/en/matches/52186da4/Brighton-and-Hove-Albion-Arsenal-January-4-2025-Premier-League,2025-01-05,Brighton,Arsenal,1,Fabian Hürzeler
+52186da4,2425,2025-01-04,fbref_match_cache,/en/matches/52186da4/Brighton-and-Hove-Albion-Arsenal-January-4-2025-Premier-League,2025-01-05,Arsenal,Brighton,0,Mikel Arteta
+cd9861d5,2425,2025-01-04,fbref_match_cache,/en/matches/cd9861d5/Crystal-Palace-Chelsea-January-4-2025-Premier-League,2025-01-05,Crystal Palace,Chelsea,1,Oliver Glasner
+cd9861d5,2425,2025-01-04,fbref_match_cache,/en/matches/cd9861d5/Crystal-Palace-Chelsea-January-4-2025-Premier-League,2025-01-05,Chelsea,Crystal Palace,0,Enzo Maresca
+d7773a4c,2425,2025-01-04,fbref_match_cache,/en/matches/d7773a4c/Manchester-City-West-Ham-United-January-4-2025-Premier-League,2025-01-05,Man City,West Ham,1,Pep Guardiola
+d7773a4c,2425,2025-01-04,fbref_match_cache,/en/matches/d7773a4c/Manchester-City-West-Ham-United-January-4-2025-Premier-League,2025-01-05,West Ham,Man City,0,Julen Lopetegui
+36fc576a,2425,2025-01-04,fbref_match_cache,/en/matches/36fc576a/Southampton-Brentford-January-4-2025-Premier-League,2025-01-05,Southampton,Brentford,1,Ivan Jurić
+36fc576a,2425,2025-01-04,fbref_match_cache,/en/matches/36fc576a/Southampton-Brentford-January-4-2025-Premier-League,2025-01-05,Brentford,Southampton,0,Thomas Frank
+be247ac3,2425,2025-01-04,fbref_match_cache,/en/matches/be247ac3/Tottenham-Hotspur-Newcastle-United-January-4-2025-Premier-League,2025-01-05,Tottenham,Newcastle,1,Ange Postecoglou
+be247ac3,2425,2025-01-04,fbref_match_cache,/en/matches/be247ac3/Tottenham-Hotspur-Newcastle-United-January-4-2025-Premier-League,2025-01-05,Newcastle,Tottenham,0,Eddie Howe
+8b69ef69,2425,2025-01-05,fbref_match_cache,/en/matches/8b69ef69/Fulham-Ipswich-Town-January-5-2025-Premier-League,2025-01-06,Fulham,Ipswich,1,Marco Silva
+8b69ef69,2425,2025-01-05,fbref_match_cache,/en/matches/8b69ef69/Fulham-Ipswich-Town-January-5-2025-Premier-League,2025-01-06,Ipswich,Fulham,0,Kieran McKenna
+4cef863f,2425,2025-01-05,fbref_match_cache,/en/matches/4cef863f/North-West-Derby-Liverpool-Manchester-United-January-5-2025-Premier-League,2025-01-06,Liverpool,Man United,1,Arne Slot
+4cef863f,2425,2025-01-05,fbref_match_cache,/en/matches/4cef863f/North-West-Derby-Liverpool-Manchester-United-January-5-2025-Premier-League,2025-01-06,Man United,Liverpool,0,Rúben Amorim
+56c4250a,2425,2025-01-06,fbref_match_cache,/en/matches/56c4250a/Wolverhampton-Wanderers-Nottingham-Forest-January-6-2025-Premier-League,2025-01-07,Wolves,Nott'm Forest,1,Vítor Pereira
+56c4250a,2425,2025-01-06,fbref_match_cache,/en/matches/56c4250a/Wolverhampton-Wanderers-Nottingham-Forest-January-6-2025-Premier-League,2025-01-07,Nott'm Forest,Wolves,0,Nuno Espírito Santo
+68c2e6b8,2425,2025-01-14,fbref_match_cache,/en/matches/68c2e6b8/Brentford-Manchester-City-January-14-2025-Premier-League,2025-01-15,Brentford,Man City,1,Thomas Frank
+68c2e6b8,2425,2025-01-14,fbref_match_cache,/en/matches/68c2e6b8/Brentford-Manchester-City-January-14-2025-Premier-League,2025-01-15,Man City,Brentford,0,Pep Guardiola
+fff671a9,2425,2025-01-14,fbref_match_cache,/en/matches/fff671a9/Chelsea-Bournemouth-January-14-2025-Premier-League,2025-01-15,Chelsea,Bournemouth,1,Enzo Maresca
+fff671a9,2425,2025-01-14,fbref_match_cache,/en/matches/fff671a9/Chelsea-Bournemouth-January-14-2025-Premier-League,2025-01-15,Bournemouth,Chelsea,0,Andoni Iraola
+118f8df8,2425,2025-01-14,fbref_match_cache,/en/matches/118f8df8/Nottingham-Forest-Liverpool-January-14-2025-Premier-League,2025-01-15,Nott'm Forest,Liverpool,1,Nuno Espírito Santo
+118f8df8,2425,2025-01-14,fbref_match_cache,/en/matches/118f8df8/Nottingham-Forest-Liverpool-January-14-2025-Premier-League,2025-01-15,Liverpool,Nott'm Forest,0,Arne Slot
+c6168c73,2425,2025-01-14,fbref_match_cache,/en/matches/c6168c73/West-Ham-United-Fulham-January-14-2025-Premier-League,2025-01-15,West Ham,Fulham,1,Graham Potter
+c6168c73,2425,2025-01-14,fbref_match_cache,/en/matches/c6168c73/West-Ham-United-Fulham-January-14-2025-Premier-League,2025-01-15,Fulham,West Ham,0,Marco Silva
+ee9ce5e2,2425,2025-01-15,fbref_match_cache,/en/matches/ee9ce5e2/North-London-Derby-Arsenal-Tottenham-Hotspur-January-15-2025-Premier-League,2025-01-16,Arsenal,Tottenham,1,Mikel Arteta
+ee9ce5e2,2425,2025-01-15,fbref_match_cache,/en/matches/ee9ce5e2/North-London-Derby-Arsenal-Tottenham-Hotspur-January-15-2025-Premier-League,2025-01-16,Tottenham,Arsenal,0,Ange Postecoglou
+3e70b855,2425,2025-01-15,fbref_match_cache,/en/matches/3e70b855/Everton-Aston-Villa-January-15-2025-Premier-League,2025-01-16,Everton,Aston Villa,1,David Moyes
+3e70b855,2425,2025-01-15,fbref_match_cache,/en/matches/3e70b855/Everton-Aston-Villa-January-15-2025-Premier-League,2025-01-16,Aston Villa,Everton,0,Unai Emery
+99eb6105,2425,2025-01-15,fbref_match_cache,/en/matches/99eb6105/Leicester-City-Crystal-Palace-January-15-2025-Premier-League,2025-01-16,Leicester,Crystal Palace,1,Ruud van Nistelrooy
+99eb6105,2425,2025-01-15,fbref_match_cache,/en/matches/99eb6105/Leicester-City-Crystal-Palace-January-15-2025-Premier-League,2025-01-16,Crystal Palace,Leicester,0,Oliver Glasner
+535d70d7,2425,2025-01-15,fbref_match_cache,/en/matches/535d70d7/Newcastle-United-Wolverhampton-Wanderers-January-15-2025-Premier-League,2025-01-16,Newcastle,Wolves,1,Eddie Howe
+535d70d7,2425,2025-01-15,fbref_match_cache,/en/matches/535d70d7/Newcastle-United-Wolverhampton-Wanderers-January-15-2025-Premier-League,2025-01-16,Wolves,Newcastle,0,Vítor Pereira
+ace86fcc,2425,2025-01-16,fbref_match_cache,/en/matches/ace86fcc/Ipswich-Town-Brighton-and-Hove-Albion-January-16-2025-Premier-League,2025-01-17,Ipswich,Brighton,1,Kieran McKenna
+ace86fcc,2425,2025-01-16,fbref_match_cache,/en/matches/ace86fcc/Ipswich-Town-Brighton-and-Hove-Albion-January-16-2025-Premier-League,2025-01-17,Brighton,Ipswich,0,Fabian Hürzeler
+f443a602,2425,2025-01-16,fbref_match_cache,/en/matches/f443a602/Manchester-United-Southampton-January-16-2025-Premier-League,2025-01-17,Man United,Southampton,1,Rúben Amorim
+f443a602,2425,2025-01-16,fbref_match_cache,/en/matches/f443a602/Manchester-United-Southampton-January-16-2025-Premier-League,2025-01-17,Southampton,Man United,0,Ivan Jurić
+1fdaaaba,2425,2025-01-18,fbref_match_cache,/en/matches/1fdaaaba/Arsenal-Aston-Villa-January-18-2025-Premier-League,2025-01-19,Arsenal,Aston Villa,1,Mikel Arteta
+1fdaaaba,2425,2025-01-18,fbref_match_cache,/en/matches/1fdaaaba/Arsenal-Aston-Villa-January-18-2025-Premier-League,2025-01-19,Aston Villa,Arsenal,0,Unai Emery
+5e8445c1,2425,2025-01-18,fbref_match_cache,/en/matches/5e8445c1/Brentford-Liverpool-January-18-2025-Premier-League,2025-01-19,Brentford,Liverpool,1,Thomas Frank
+5e8445c1,2425,2025-01-18,fbref_match_cache,/en/matches/5e8445c1/Brentford-Liverpool-January-18-2025-Premier-League,2025-01-19,Liverpool,Brentford,0,Arne Slot
+bc3ae18e,2425,2025-01-18,fbref_match_cache,/en/matches/bc3ae18e/Leicester-City-Fulham-January-18-2025-Premier-League,2025-01-19,Leicester,Fulham,1,Ruud van Nistelrooy
+bc3ae18e,2425,2025-01-18,fbref_match_cache,/en/matches/bc3ae18e/Leicester-City-Fulham-January-18-2025-Premier-League,2025-01-19,Fulham,Leicester,0,Marco Silva
+99d11a39,2425,2025-01-18,fbref_match_cache,/en/matches/99d11a39/Newcastle-United-Bournemouth-January-18-2025-Premier-League,2025-01-19,Newcastle,Bournemouth,1,Eddie Howe
+99d11a39,2425,2025-01-18,fbref_match_cache,/en/matches/99d11a39/Newcastle-United-Bournemouth-January-18-2025-Premier-League,2025-01-19,Bournemouth,Newcastle,0,Andoni Iraola
+03ac4a9c,2425,2025-01-18,fbref_match_cache,/en/matches/03ac4a9c/West-Ham-United-Crystal-Palace-January-18-2025-Premier-League,2025-01-19,West Ham,Crystal Palace,1,Graham Potter
+03ac4a9c,2425,2025-01-18,fbref_match_cache,/en/matches/03ac4a9c/West-Ham-United-Crystal-Palace-January-18-2025-Premier-League,2025-01-19,Crystal Palace,West Ham,0,Oliver Glasner
+e9f61cb0,2425,2025-01-19,fbref_match_cache,/en/matches/e9f61cb0/Everton-Tottenham-Hotspur-January-19-2025-Premier-League,2025-01-20,Everton,Tottenham,1,David Moyes
+e9f61cb0,2425,2025-01-19,fbref_match_cache,/en/matches/e9f61cb0/Everton-Tottenham-Hotspur-January-19-2025-Premier-League,2025-01-20,Tottenham,Everton,0,Ange Postecoglou
+6c829b8f,2425,2025-01-19,fbref_match_cache,/en/matches/6c829b8f/Ipswich-Town-Manchester-City-January-19-2025-Premier-League,2025-01-20,Ipswich,Man City,1,Kieran McKenna
+6c829b8f,2425,2025-01-19,fbref_match_cache,/en/matches/6c829b8f/Ipswich-Town-Manchester-City-January-19-2025-Premier-League,2025-01-20,Man City,Ipswich,0,Pep Guardiola
+45028d5b,2425,2025-01-19,fbref_match_cache,/en/matches/45028d5b/Manchester-United-Brighton-and-Hove-Albion-January-19-2025-Premier-League,2025-01-20,Man United,Brighton,1,Rúben Amorim
+45028d5b,2425,2025-01-19,fbref_match_cache,/en/matches/45028d5b/Manchester-United-Brighton-and-Hove-Albion-January-19-2025-Premier-League,2025-01-20,Brighton,Man United,0,Fabian Hürzeler
+e0f90407,2425,2025-01-19,fbref_match_cache,/en/matches/e0f90407/Nottingham-Forest-Southampton-January-19-2025-Premier-League,2025-01-20,Nott'm Forest,Southampton,1,Nuno Espírito Santo
+e0f90407,2425,2025-01-19,fbref_match_cache,/en/matches/e0f90407/Nottingham-Forest-Southampton-January-19-2025-Premier-League,2025-01-20,Southampton,Nott'm Forest,0,Ivan Jurić
+e62cfa12,2425,2025-01-20,fbref_match_cache,/en/matches/e62cfa12/Chelsea-Wolverhampton-Wanderers-January-20-2025-Premier-League,2025-01-21,Chelsea,Wolves,1,Enzo Maresca
+e62cfa12,2425,2025-01-20,fbref_match_cache,/en/matches/e62cfa12/Chelsea-Wolverhampton-Wanderers-January-20-2025-Premier-League,2025-01-21,Wolves,Chelsea,0,Vítor Pereira
+efa8ddd7,2425,2025-01-25,fbref_match_cache,/en/matches/efa8ddd7/Bournemouth-Nottingham-Forest-January-25-2025-Premier-League,2025-01-26,Bournemouth,Nott'm Forest,1,Andoni Iraola
+efa8ddd7,2425,2025-01-25,fbref_match_cache,/en/matches/efa8ddd7/Bournemouth-Nottingham-Forest-January-25-2025-Premier-League,2025-01-26,Nott'm Forest,Bournemouth,0,Nuno Espírito Santo
+b54aac79,2425,2025-01-25,fbref_match_cache,/en/matches/b54aac79/Brighton-and-Hove-Albion-Everton-January-25-2025-Premier-League,2025-01-26,Brighton,Everton,1,Fabian Hürzeler
+b54aac79,2425,2025-01-25,fbref_match_cache,/en/matches/b54aac79/Brighton-and-Hove-Albion-Everton-January-25-2025-Premier-League,2025-01-26,Everton,Brighton,0,David Moyes
+ee59115f,2425,2025-01-25,fbref_match_cache,/en/matches/ee59115f/Liverpool-Ipswich-Town-January-25-2025-Premier-League,2025-01-26,Liverpool,Ipswich,1,Arne Slot
+ee59115f,2425,2025-01-25,fbref_match_cache,/en/matches/ee59115f/Liverpool-Ipswich-Town-January-25-2025-Premier-League,2025-01-26,Ipswich,Liverpool,0,Kieran McKenna
+bfd54040,2425,2025-01-25,fbref_match_cache,/en/matches/bfd54040/Manchester-City-Chelsea-January-25-2025-Premier-League,2025-01-26,Man City,Chelsea,1,Pep Guardiola
+bfd54040,2425,2025-01-25,fbref_match_cache,/en/matches/bfd54040/Manchester-City-Chelsea-January-25-2025-Premier-League,2025-01-26,Chelsea,Man City,0,Enzo Maresca
+7d05223b,2425,2025-01-25,fbref_match_cache,/en/matches/7d05223b/Southampton-Newcastle-United-January-25-2025-Premier-League,2025-01-26,Southampton,Newcastle,1,Ivan Jurić
+7d05223b,2425,2025-01-25,fbref_match_cache,/en/matches/7d05223b/Southampton-Newcastle-United-January-25-2025-Premier-League,2025-01-26,Newcastle,Southampton,0,Eddie Howe
+0b39252e,2425,2025-01-25,fbref_match_cache,/en/matches/0b39252e/Wolverhampton-Wanderers-Arsenal-January-25-2025-Premier-League,2025-01-26,Wolves,Arsenal,1,Vítor Pereira
+0b39252e,2425,2025-01-25,fbref_match_cache,/en/matches/0b39252e/Wolverhampton-Wanderers-Arsenal-January-25-2025-Premier-League,2025-01-26,Arsenal,Wolves,0,Mikel Arteta
+bb05246c,2425,2025-01-26,fbref_match_cache,/en/matches/bb05246c/Aston-Villa-West-Ham-United-January-26-2025-Premier-League,2025-01-27,Aston Villa,West Ham,1,Unai Emery
+bb05246c,2425,2025-01-26,fbref_match_cache,/en/matches/bb05246c/Aston-Villa-West-Ham-United-January-26-2025-Premier-League,2025-01-27,West Ham,Aston Villa,0,Graham Potter
+68d6e8fe,2425,2025-01-26,fbref_match_cache,/en/matches/68d6e8fe/Crystal-Palace-Brentford-January-26-2025-Premier-League,2025-01-27,Crystal Palace,Brentford,1,Oliver Glasner
+68d6e8fe,2425,2025-01-26,fbref_match_cache,/en/matches/68d6e8fe/Crystal-Palace-Brentford-January-26-2025-Premier-League,2025-01-27,Brentford,Crystal Palace,0,Thomas Frank
+eb14e391,2425,2025-01-26,fbref_match_cache,/en/matches/eb14e391/Fulham-Manchester-United-January-26-2025-Premier-League,2025-01-27,Fulham,Man United,1,Marco Silva
+eb14e391,2425,2025-01-26,fbref_match_cache,/en/matches/eb14e391/Fulham-Manchester-United-January-26-2025-Premier-League,2025-01-27,Man United,Fulham,0,Rúben Amorim
+8226bca2,2425,2025-01-26,fbref_match_cache,/en/matches/8226bca2/Tottenham-Hotspur-Leicester-City-January-26-2025-Premier-League,2025-01-27,Tottenham,Leicester,1,Ange Postecoglou
+8226bca2,2425,2025-01-26,fbref_match_cache,/en/matches/8226bca2/Tottenham-Hotspur-Leicester-City-January-26-2025-Premier-League,2025-01-27,Leicester,Tottenham,0,Ruud van Nistelrooy
+886603cd,2425,2025-02-01,fbref_match_cache,/en/matches/886603cd/Bournemouth-Liverpool-February-1-2025-Premier-League,2025-02-02,Bournemouth,Liverpool,1,Andoni Iraola
+886603cd,2425,2025-02-01,fbref_match_cache,/en/matches/886603cd/Bournemouth-Liverpool-February-1-2025-Premier-League,2025-02-02,Liverpool,Bournemouth,0,Arne Slot
+475670fb,2425,2025-02-01,fbref_match_cache,/en/matches/475670fb/Everton-Leicester-City-February-1-2025-Premier-League,2025-02-02,Everton,Leicester,1,David Moyes
+475670fb,2425,2025-02-01,fbref_match_cache,/en/matches/475670fb/Everton-Leicester-City-February-1-2025-Premier-League,2025-02-02,Leicester,Everton,0,Ruud van Nistelrooy
+1098cac0,2425,2025-02-01,fbref_match_cache,/en/matches/1098cac0/Ipswich-Town-Southampton-February-1-2025-Premier-League,2025-02-02,Ipswich,Southampton,1,Kieran McKenna
+1098cac0,2425,2025-02-01,fbref_match_cache,/en/matches/1098cac0/Ipswich-Town-Southampton-February-1-2025-Premier-League,2025-02-02,Southampton,Ipswich,0,Ivan Jurić
+5ec3f48b,2425,2025-02-01,fbref_match_cache,/en/matches/5ec3f48b/Newcastle-United-Fulham-February-1-2025-Premier-League,2025-02-02,Newcastle,Fulham,1,Eddie Howe
+5ec3f48b,2425,2025-02-01,fbref_match_cache,/en/matches/5ec3f48b/Newcastle-United-Fulham-February-1-2025-Premier-League,2025-02-02,Fulham,Newcastle,0,Marco Silva
+897ab235,2425,2025-02-01,fbref_match_cache,/en/matches/897ab235/Nottingham-Forest-Brighton-and-Hove-Albion-February-1-2025-Premier-League,2025-02-02,Nott'm Forest,Brighton,1,Nuno Espírito Santo
+897ab235,2425,2025-02-01,fbref_match_cache,/en/matches/897ab235/Nottingham-Forest-Brighton-and-Hove-Albion-February-1-2025-Premier-League,2025-02-02,Brighton,Nott'm Forest,0,Fabian Hürzeler
+693ab427,2425,2025-02-01,fbref_match_cache,/en/matches/693ab427/Wolverhampton-Wanderers-Aston-Villa-February-1-2025-Premier-League,2025-02-02,Wolves,Aston Villa,1,Vítor Pereira
+693ab427,2425,2025-02-01,fbref_match_cache,/en/matches/693ab427/Wolverhampton-Wanderers-Aston-Villa-February-1-2025-Premier-League,2025-02-02,Aston Villa,Wolves,0,Unai Emery
+2906e921,2425,2025-02-02,fbref_match_cache,/en/matches/2906e921/Arsenal-Manchester-City-February-2-2025-Premier-League,2025-02-03,Arsenal,Man City,1,Mikel Arteta
+2906e921,2425,2025-02-02,fbref_match_cache,/en/matches/2906e921/Arsenal-Manchester-City-February-2-2025-Premier-League,2025-02-03,Man City,Arsenal,0,Pep Guardiola
+7193a229,2425,2025-02-02,fbref_match_cache,/en/matches/7193a229/Brentford-Tottenham-Hotspur-February-2-2025-Premier-League,2025-02-03,Brentford,Tottenham,1,Thomas Frank
+7193a229,2425,2025-02-02,fbref_match_cache,/en/matches/7193a229/Brentford-Tottenham-Hotspur-February-2-2025-Premier-League,2025-02-03,Tottenham,Brentford,0,Ange Postecoglou
+83dba981,2425,2025-02-02,fbref_match_cache,/en/matches/83dba981/Manchester-United-Crystal-Palace-February-2-2025-Premier-League,2025-02-03,Man United,Crystal Palace,1,Rúben Amorim
+83dba981,2425,2025-02-02,fbref_match_cache,/en/matches/83dba981/Manchester-United-Crystal-Palace-February-2-2025-Premier-League,2025-02-03,Crystal Palace,Man United,0,Oliver Glasner
+ed7df9b1,2425,2025-02-03,fbref_match_cache,/en/matches/ed7df9b1/Chelsea-West-Ham-United-February-3-2025-Premier-League,2025-02-04,Chelsea,West Ham,1,Enzo Maresca
+ed7df9b1,2425,2025-02-03,fbref_match_cache,/en/matches/ed7df9b1/Chelsea-West-Ham-United-February-3-2025-Premier-League,2025-02-04,West Ham,Chelsea,0,Graham Potter
+92627434,2425,2025-02-12,fbref_match_cache,/en/matches/92627434/Merseyside-Derby-Everton-Liverpool-February-12-2025-Premier-League,2025-02-13,Everton,Liverpool,1,David Moyes
+92627434,2425,2025-02-12,fbref_match_cache,/en/matches/92627434/Merseyside-Derby-Everton-Liverpool-February-12-2025-Premier-League,2025-02-13,Liverpool,Everton,0,Arne Slot
+ed780e1d,2425,2025-02-14,fbref_match_cache,/en/matches/ed780e1d/Brighton-and-Hove-Albion-Chelsea-February-14-2025-Premier-League,2025-02-15,Brighton,Chelsea,1,Fabian Hürzeler
+ed780e1d,2425,2025-02-14,fbref_match_cache,/en/matches/ed780e1d/Brighton-and-Hove-Albion-Chelsea-February-14-2025-Premier-League,2025-02-15,Chelsea,Brighton,0,Enzo Maresca
+06fee8c4,2425,2025-02-15,fbref_match_cache,/en/matches/06fee8c4/Aston-Villa-Ipswich-Town-February-15-2025-Premier-League,2025-02-16,Aston Villa,Ipswich,1,Unai Emery
+06fee8c4,2425,2025-02-15,fbref_match_cache,/en/matches/06fee8c4/Aston-Villa-Ipswich-Town-February-15-2025-Premier-League,2025-02-16,Ipswich,Aston Villa,0,Kieran McKenna
+35ee3617,2425,2025-02-15,fbref_match_cache,/en/matches/35ee3617/Crystal-Palace-Everton-February-15-2025-Premier-League,2025-02-16,Crystal Palace,Everton,1,Oliver Glasner
+35ee3617,2425,2025-02-15,fbref_match_cache,/en/matches/35ee3617/Crystal-Palace-Everton-February-15-2025-Premier-League,2025-02-16,Everton,Crystal Palace,0,David Moyes
+5968d7ad,2425,2025-02-15,fbref_match_cache,/en/matches/5968d7ad/Fulham-Nottingham-Forest-February-15-2025-Premier-League,2025-02-16,Fulham,Nott'm Forest,1,Marco Silva
+5968d7ad,2425,2025-02-15,fbref_match_cache,/en/matches/5968d7ad/Fulham-Nottingham-Forest-February-15-2025-Premier-League,2025-02-16,Nott'm Forest,Fulham,0,Nuno Espírito Santo
+af8aa0dd,2425,2025-02-15,fbref_match_cache,/en/matches/af8aa0dd/Leicester-City-Arsenal-February-15-2025-Premier-League,2025-02-16,Leicester,Arsenal,1,Ruud van Nistelrooy
+af8aa0dd,2425,2025-02-15,fbref_match_cache,/en/matches/af8aa0dd/Leicester-City-Arsenal-February-15-2025-Premier-League,2025-02-16,Arsenal,Leicester,0,Mikel Arteta
+8c51fa01,2425,2025-02-15,fbref_match_cache,/en/matches/8c51fa01/Manchester-City-Newcastle-United-February-15-2025-Premier-League,2025-02-16,Man City,Newcastle,1,Pep Guardiola
+8c51fa01,2425,2025-02-15,fbref_match_cache,/en/matches/8c51fa01/Manchester-City-Newcastle-United-February-15-2025-Premier-League,2025-02-16,Newcastle,Man City,0,Eddie Howe
+ce3da486,2425,2025-02-15,fbref_match_cache,/en/matches/ce3da486/Southampton-Bournemouth-February-15-2025-Premier-League,2025-02-16,Southampton,Bournemouth,1,Ivan Jurić
+ce3da486,2425,2025-02-15,fbref_match_cache,/en/matches/ce3da486/Southampton-Bournemouth-February-15-2025-Premier-League,2025-02-16,Bournemouth,Southampton,0,Andoni Iraola
+79406a7e,2425,2025-02-15,fbref_match_cache,/en/matches/79406a7e/West-Ham-United-Brentford-February-15-2025-Premier-League,2025-02-16,West Ham,Brentford,1,Graham Potter
+79406a7e,2425,2025-02-15,fbref_match_cache,/en/matches/79406a7e/West-Ham-United-Brentford-February-15-2025-Premier-League,2025-02-16,Brentford,West Ham,0,Thomas Frank
+6a917c79,2425,2025-02-16,fbref_match_cache,/en/matches/6a917c79/Liverpool-Wolverhampton-Wanderers-February-16-2025-Premier-League,2025-02-17,Liverpool,Wolves,1,Arne Slot
+6a917c79,2425,2025-02-16,fbref_match_cache,/en/matches/6a917c79/Liverpool-Wolverhampton-Wanderers-February-16-2025-Premier-League,2025-02-17,Wolves,Liverpool,0,Vítor Pereira
+09db2a2f,2425,2025-02-16,fbref_match_cache,/en/matches/09db2a2f/Tottenham-Hotspur-Manchester-United-February-16-2025-Premier-League,2025-02-17,Tottenham,Man United,1,Ange Postecoglou
+09db2a2f,2425,2025-02-16,fbref_match_cache,/en/matches/09db2a2f/Tottenham-Hotspur-Manchester-United-February-16-2025-Premier-League,2025-02-17,Man United,Tottenham,0,Rúben Amorim
+39c7b656,2425,2025-02-19,fbref_match_cache,/en/matches/39c7b656/Aston-Villa-Liverpool-February-19-2025-Premier-League,2025-02-20,Aston Villa,Liverpool,1,Unai Emery
+39c7b656,2425,2025-02-19,fbref_match_cache,/en/matches/39c7b656/Aston-Villa-Liverpool-February-19-2025-Premier-League,2025-02-20,Liverpool,Aston Villa,0,Arne Slot
+da5a149a,2425,2025-02-21,fbref_match_cache,/en/matches/da5a149a/Leicester-City-Brentford-February-21-2025-Premier-League,2025-02-22,Leicester,Brentford,1,Ruud van Nistelrooy
+da5a149a,2425,2025-02-21,fbref_match_cache,/en/matches/da5a149a/Leicester-City-Brentford-February-21-2025-Premier-League,2025-02-22,Brentford,Leicester,0,Thomas Frank
+e511e91c,2425,2025-02-22,fbref_match_cache,/en/matches/e511e91c/Arsenal-West-Ham-United-February-22-2025-Premier-League,2025-02-23,Arsenal,West Ham,1,Mikel Arteta
+e511e91c,2425,2025-02-22,fbref_match_cache,/en/matches/e511e91c/Arsenal-West-Ham-United-February-22-2025-Premier-League,2025-02-23,West Ham,Arsenal,0,Graham Potter
+5109d405,2425,2025-02-22,fbref_match_cache,/en/matches/5109d405/Aston-Villa-Chelsea-February-22-2025-Premier-League,2025-02-23,Aston Villa,Chelsea,1,Unai Emery
+5109d405,2425,2025-02-22,fbref_match_cache,/en/matches/5109d405/Aston-Villa-Chelsea-February-22-2025-Premier-League,2025-02-23,Chelsea,Aston Villa,0,Enzo Maresca
+ccdda6d3,2425,2025-02-22,fbref_match_cache,/en/matches/ccdda6d3/Bournemouth-Wolverhampton-Wanderers-February-22-2025-Premier-League,2025-02-23,Bournemouth,Wolves,1,Andoni Iraola
+ccdda6d3,2425,2025-02-22,fbref_match_cache,/en/matches/ccdda6d3/Bournemouth-Wolverhampton-Wanderers-February-22-2025-Premier-League,2025-02-23,Wolves,Bournemouth,0,Vítor Pereira
+e5b45c4d,2425,2025-02-22,fbref_match_cache,/en/matches/e5b45c4d/Everton-Manchester-United-February-22-2025-Premier-League,2025-02-23,Everton,Man United,1,David Moyes
+e5b45c4d,2425,2025-02-22,fbref_match_cache,/en/matches/e5b45c4d/Everton-Manchester-United-February-22-2025-Premier-League,2025-02-23,Man United,Everton,0,Rúben Amorim
+7289bcdf,2425,2025-02-22,fbref_match_cache,/en/matches/7289bcdf/Fulham-Crystal-Palace-February-22-2025-Premier-League,2025-02-23,Fulham,Crystal Palace,1,Marco Silva
+7289bcdf,2425,2025-02-22,fbref_match_cache,/en/matches/7289bcdf/Fulham-Crystal-Palace-February-22-2025-Premier-League,2025-02-23,Crystal Palace,Fulham,0,Oliver Glasner
+7853cd1a,2425,2025-02-22,fbref_match_cache,/en/matches/7853cd1a/Ipswich-Town-Tottenham-Hotspur-February-22-2025-Premier-League,2025-02-23,Ipswich,Tottenham,1,Kieran McKenna
+7853cd1a,2425,2025-02-22,fbref_match_cache,/en/matches/7853cd1a/Ipswich-Town-Tottenham-Hotspur-February-22-2025-Premier-League,2025-02-23,Tottenham,Ipswich,0,Ange Postecoglou
+e757bea1,2425,2025-02-22,fbref_match_cache,/en/matches/e757bea1/Southampton-Brighton-and-Hove-Albion-February-22-2025-Premier-League,2025-02-23,Southampton,Brighton,1,Ivan Jurić
+e757bea1,2425,2025-02-22,fbref_match_cache,/en/matches/e757bea1/Southampton-Brighton-and-Hove-Albion-February-22-2025-Premier-League,2025-02-23,Brighton,Southampton,0,Fabian Hürzeler
+e51a316b,2425,2025-02-23,fbref_match_cache,/en/matches/e51a316b/Manchester-City-Liverpool-February-23-2025-Premier-League,2025-02-24,Man City,Liverpool,1,Pep Guardiola
+e51a316b,2425,2025-02-23,fbref_match_cache,/en/matches/e51a316b/Manchester-City-Liverpool-February-23-2025-Premier-League,2025-02-24,Liverpool,Man City,0,Arne Slot
+93caf0bc,2425,2025-02-23,fbref_match_cache,/en/matches/93caf0bc/Newcastle-United-Nottingham-Forest-February-23-2025-Premier-League,2025-02-24,Newcastle,Nott'm Forest,1,Eddie Howe
+93caf0bc,2425,2025-02-23,fbref_match_cache,/en/matches/93caf0bc/Newcastle-United-Nottingham-Forest-February-23-2025-Premier-League,2025-02-24,Nott'm Forest,Newcastle,0,Nuno Espírito Santo
+fade9277,2425,2025-02-25,fbref_match_cache,/en/matches/fade9277/Brighton-and-Hove-Albion-Bournemouth-February-25-2025-Premier-League,2025-02-26,Brighton,Bournemouth,1,Fabian Hürzeler
+fade9277,2425,2025-02-25,fbref_match_cache,/en/matches/fade9277/Brighton-and-Hove-Albion-Bournemouth-February-25-2025-Premier-League,2025-02-26,Bournemouth,Brighton,0,Andoni Iraola
+21d4a457,2425,2025-02-25,fbref_match_cache,/en/matches/21d4a457/Chelsea-Southampton-February-25-2025-Premier-League,2025-02-26,Chelsea,Southampton,1,Enzo Maresca
+21d4a457,2425,2025-02-25,fbref_match_cache,/en/matches/21d4a457/Chelsea-Southampton-February-25-2025-Premier-League,2025-02-26,Southampton,Chelsea,0,Ivan Jurić
+0a97629a,2425,2025-02-25,fbref_match_cache,/en/matches/0a97629a/Crystal-Palace-Aston-Villa-February-25-2025-Premier-League,2025-02-26,Crystal Palace,Aston Villa,1,Oliver Glasner
+0a97629a,2425,2025-02-25,fbref_match_cache,/en/matches/0a97629a/Crystal-Palace-Aston-Villa-February-25-2025-Premier-League,2025-02-26,Aston Villa,Crystal Palace,0,Unai Emery
+7aecfc4c,2425,2025-02-25,fbref_match_cache,/en/matches/7aecfc4c/Wolverhampton-Wanderers-Fulham-February-25-2025-Premier-League,2025-02-26,Wolves,Fulham,1,Vítor Pereira
+7aecfc4c,2425,2025-02-25,fbref_match_cache,/en/matches/7aecfc4c/Wolverhampton-Wanderers-Fulham-February-25-2025-Premier-League,2025-02-26,Fulham,Wolves,0,Marco Silva
+1218933c,2425,2025-02-26,fbref_match_cache,/en/matches/1218933c/Brentford-Everton-February-26-2025-Premier-League,2025-02-27,Brentford,Everton,1,Thomas Frank
+1218933c,2425,2025-02-26,fbref_match_cache,/en/matches/1218933c/Brentford-Everton-February-26-2025-Premier-League,2025-02-27,Everton,Brentford,0,David Moyes
+a0975f8c,2425,2025-02-26,fbref_match_cache,/en/matches/a0975f8c/Liverpool-Newcastle-United-February-26-2025-Premier-League,2025-02-27,Liverpool,Newcastle,1,Arne Slot
+a0975f8c,2425,2025-02-26,fbref_match_cache,/en/matches/a0975f8c/Liverpool-Newcastle-United-February-26-2025-Premier-League,2025-02-27,Newcastle,Liverpool,0,Eddie Howe
+bf6aa8ee,2425,2025-02-26,fbref_match_cache,/en/matches/bf6aa8ee/Manchester-United-Ipswich-Town-February-26-2025-Premier-League,2025-02-27,Man United,Ipswich,1,Rúben Amorim
+bf6aa8ee,2425,2025-02-26,fbref_match_cache,/en/matches/bf6aa8ee/Manchester-United-Ipswich-Town-February-26-2025-Premier-League,2025-02-27,Ipswich,Man United,0,Kieran McKenna
+d4387bc1,2425,2025-02-26,fbref_match_cache,/en/matches/d4387bc1/Nottingham-Forest-Arsenal-February-26-2025-Premier-League,2025-02-27,Nott'm Forest,Arsenal,1,Nuno Espírito Santo
+d4387bc1,2425,2025-02-26,fbref_match_cache,/en/matches/d4387bc1/Nottingham-Forest-Arsenal-February-26-2025-Premier-League,2025-02-27,Arsenal,Nott'm Forest,0,Mikel Arteta
+3b8160bd,2425,2025-02-26,fbref_match_cache,/en/matches/3b8160bd/Tottenham-Hotspur-Manchester-City-February-26-2025-Premier-League,2025-02-27,Tottenham,Man City,1,Ange Postecoglou
+3b8160bd,2425,2025-02-26,fbref_match_cache,/en/matches/3b8160bd/Tottenham-Hotspur-Manchester-City-February-26-2025-Premier-League,2025-02-27,Man City,Tottenham,0,Pep Guardiola
+08b1b7de,2425,2025-02-27,fbref_match_cache,/en/matches/08b1b7de/West-Ham-United-Leicester-City-February-27-2025-Premier-League,2025-02-28,West Ham,Leicester,1,Graham Potter
+08b1b7de,2425,2025-02-27,fbref_match_cache,/en/matches/08b1b7de/West-Ham-United-Leicester-City-February-27-2025-Premier-League,2025-02-28,Leicester,West Ham,0,Ruud van Nistelrooy
+fb9126ab,2425,2025-03-08,fbref_match_cache,/en/matches/fb9126ab/Brentford-Aston-Villa-March-8-2025-Premier-League,2025-03-09,Brentford,Aston Villa,1,Thomas Frank
+fb9126ab,2425,2025-03-08,fbref_match_cache,/en/matches/fb9126ab/Brentford-Aston-Villa-March-8-2025-Premier-League,2025-03-09,Aston Villa,Brentford,0,Unai Emery
+fb4bb61d,2425,2025-03-08,fbref_match_cache,/en/matches/fb4bb61d/Brighton-and-Hove-Albion-Fulham-March-8-2025-Premier-League,2025-03-09,Brighton,Fulham,1,Fabian Hürzeler
+fb4bb61d,2425,2025-03-08,fbref_match_cache,/en/matches/fb4bb61d/Brighton-and-Hove-Albion-Fulham-March-8-2025-Premier-League,2025-03-09,Fulham,Brighton,0,Marco Silva
+b1ad79e4,2425,2025-03-08,fbref_match_cache,/en/matches/b1ad79e4/Crystal-Palace-Ipswich-Town-March-8-2025-Premier-League,2025-03-09,Crystal Palace,Ipswich,1,Oliver Glasner
+b1ad79e4,2425,2025-03-08,fbref_match_cache,/en/matches/b1ad79e4/Crystal-Palace-Ipswich-Town-March-8-2025-Premier-League,2025-03-09,Ipswich,Crystal Palace,0,Kieran McKenna
+049341ab,2425,2025-03-08,fbref_match_cache,/en/matches/049341ab/Liverpool-Southampton-March-8-2025-Premier-League,2025-03-09,Liverpool,Southampton,1,Arne Slot
+049341ab,2425,2025-03-08,fbref_match_cache,/en/matches/049341ab/Liverpool-Southampton-March-8-2025-Premier-League,2025-03-09,Southampton,Liverpool,0,Ivan Jurić
+d53c0405,2425,2025-03-08,fbref_match_cache,/en/matches/d53c0405/Nottingham-Forest-Manchester-City-March-8-2025-Premier-League,2025-03-09,Nott'm Forest,Man City,1,Nuno Espírito Santo
+d53c0405,2425,2025-03-08,fbref_match_cache,/en/matches/d53c0405/Nottingham-Forest-Manchester-City-March-8-2025-Premier-League,2025-03-09,Man City,Nott'm Forest,0,Pep Guardiola
+2ac7408b,2425,2025-03-08,fbref_match_cache,/en/matches/2ac7408b/Wolverhampton-Wanderers-Everton-March-8-2025-Premier-League,2025-03-09,Wolves,Everton,1,Vítor Pereira
+2ac7408b,2425,2025-03-08,fbref_match_cache,/en/matches/2ac7408b/Wolverhampton-Wanderers-Everton-March-8-2025-Premier-League,2025-03-09,Everton,Wolves,0,David Moyes
+236640be,2425,2025-03-09,fbref_match_cache,/en/matches/236640be/Chelsea-Leicester-City-March-9-2025-Premier-League,2025-03-10,Chelsea,Leicester,1,Enzo Maresca
+236640be,2425,2025-03-09,fbref_match_cache,/en/matches/236640be/Chelsea-Leicester-City-March-9-2025-Premier-League,2025-03-10,Leicester,Chelsea,0,Ruud van Nistelrooy
+8efec987,2425,2025-03-09,fbref_match_cache,/en/matches/8efec987/Manchester-United-Arsenal-March-9-2025-Premier-League,2025-03-10,Man United,Arsenal,1,Rúben Amorim
+8efec987,2425,2025-03-09,fbref_match_cache,/en/matches/8efec987/Manchester-United-Arsenal-March-9-2025-Premier-League,2025-03-10,Arsenal,Man United,0,Mikel Arteta
+81575514,2425,2025-03-09,fbref_match_cache,/en/matches/81575514/Tottenham-Hotspur-Bournemouth-March-9-2025-Premier-League,2025-03-10,Tottenham,Bournemouth,1,Ange Postecoglou
+81575514,2425,2025-03-09,fbref_match_cache,/en/matches/81575514/Tottenham-Hotspur-Bournemouth-March-9-2025-Premier-League,2025-03-10,Bournemouth,Tottenham,0,Andoni Iraola
+61ad9d6a,2425,2025-03-10,fbref_match_cache,/en/matches/61ad9d6a/West-Ham-United-Newcastle-United-March-10-2025-Premier-League,2025-03-11,West Ham,Newcastle,1,Graham Potter
+61ad9d6a,2425,2025-03-10,fbref_match_cache,/en/matches/61ad9d6a/West-Ham-United-Newcastle-United-March-10-2025-Premier-League,2025-03-11,Newcastle,West Ham,0,Eddie Howe
+f3480c01,2425,2025-03-15,fbref_match_cache,/en/matches/f3480c01/Bournemouth-Brentford-March-15-2025-Premier-League,2025-03-16,Bournemouth,Brentford,1,Andoni Iraola
+f3480c01,2425,2025-03-15,fbref_match_cache,/en/matches/f3480c01/Bournemouth-Brentford-March-15-2025-Premier-League,2025-03-16,Brentford,Bournemouth,0,Thomas Frank
+d4bd829f,2425,2025-03-15,fbref_match_cache,/en/matches/d4bd829f/Everton-West-Ham-United-March-15-2025-Premier-League,2025-03-16,Everton,West Ham,1,David Moyes
+d4bd829f,2425,2025-03-15,fbref_match_cache,/en/matches/d4bd829f/Everton-West-Ham-United-March-15-2025-Premier-League,2025-03-16,West Ham,Everton,0,Graham Potter
+a44e04e9,2425,2025-03-15,fbref_match_cache,/en/matches/a44e04e9/Ipswich-Town-Nottingham-Forest-March-15-2025-Premier-League,2025-03-16,Ipswich,Nott'm Forest,1,Kieran McKenna
+a44e04e9,2425,2025-03-15,fbref_match_cache,/en/matches/a44e04e9/Ipswich-Town-Nottingham-Forest-March-15-2025-Premier-League,2025-03-16,Nott'm Forest,Ipswich,0,Nuno Espírito Santo
+83fc3d29,2425,2025-03-15,fbref_match_cache,/en/matches/83fc3d29/Manchester-City-Brighton-and-Hove-Albion-March-15-2025-Premier-League,2025-03-16,Man City,Brighton,1,Pep Guardiola
+83fc3d29,2425,2025-03-15,fbref_match_cache,/en/matches/83fc3d29/Manchester-City-Brighton-and-Hove-Albion-March-15-2025-Premier-League,2025-03-16,Brighton,Man City,0,Fabian Hürzeler
+eea61e7f,2425,2025-03-15,fbref_match_cache,/en/matches/eea61e7f/Southampton-Wolverhampton-Wanderers-March-15-2025-Premier-League,2025-03-16,Southampton,Wolves,1,Ivan Jurić
+eea61e7f,2425,2025-03-15,fbref_match_cache,/en/matches/eea61e7f/Southampton-Wolverhampton-Wanderers-March-15-2025-Premier-League,2025-03-16,Wolves,Southampton,0,Vítor Pereira
+22de525d,2425,2025-03-16,fbref_match_cache,/en/matches/22de525d/North-West-London-Derby-Arsenal-Chelsea-March-16-2025-Premier-League,2025-03-17,Arsenal,Chelsea,1,Mikel Arteta
+22de525d,2425,2025-03-16,fbref_match_cache,/en/matches/22de525d/North-West-London-Derby-Arsenal-Chelsea-March-16-2025-Premier-League,2025-03-17,Chelsea,Arsenal,0,Enzo Maresca
+61428001,2425,2025-03-16,fbref_match_cache,/en/matches/61428001/Fulham-Tottenham-Hotspur-March-16-2025-Premier-League,2025-03-17,Fulham,Tottenham,1,Marco Silva
+61428001,2425,2025-03-16,fbref_match_cache,/en/matches/61428001/Fulham-Tottenham-Hotspur-March-16-2025-Premier-League,2025-03-17,Tottenham,Fulham,0,Ange Postecoglou
+7bab156e,2425,2025-03-16,fbref_match_cache,/en/matches/7bab156e/Leicester-City-Manchester-United-March-16-2025-Premier-League,2025-03-17,Leicester,Man United,1,Ruud van Nistelrooy
+7bab156e,2425,2025-03-16,fbref_match_cache,/en/matches/7bab156e/Leicester-City-Manchester-United-March-16-2025-Premier-League,2025-03-17,Man United,Leicester,0,Rúben Amorim
+777d595c,2425,2025-04-01,fbref_match_cache,/en/matches/777d595c/Arsenal-Fulham-April-1-2025-Premier-League,2025-04-02,Arsenal,Fulham,1,Mikel Arteta
+777d595c,2425,2025-04-01,fbref_match_cache,/en/matches/777d595c/Arsenal-Fulham-April-1-2025-Premier-League,2025-04-02,Fulham,Arsenal,0,Marco Silva
+9f8a856e,2425,2025-04-01,fbref_match_cache,/en/matches/9f8a856e/Nottingham-Forest-Manchester-United-April-1-2025-Premier-League,2025-04-02,Nott'm Forest,Man United,1,Nuno Espírito Santo
+9f8a856e,2425,2025-04-01,fbref_match_cache,/en/matches/9f8a856e/Nottingham-Forest-Manchester-United-April-1-2025-Premier-League,2025-04-02,Man United,Nott'm Forest,0,Rúben Amorim
+6e6e9d8b,2425,2025-04-01,fbref_match_cache,/en/matches/6e6e9d8b/Wolverhampton-Wanderers-West-Ham-United-April-1-2025-Premier-League,2025-04-02,Wolves,West Ham,1,Vítor Pereira
+6e6e9d8b,2425,2025-04-01,fbref_match_cache,/en/matches/6e6e9d8b/Wolverhampton-Wanderers-West-Ham-United-April-1-2025-Premier-League,2025-04-02,West Ham,Wolves,0,Graham Potter
+19c54be2,2425,2025-04-02,fbref_match_cache,/en/matches/19c54be2/Bournemouth-Ipswich-Town-April-2-2025-Premier-League,2025-04-03,Bournemouth,Ipswich,1,Andoni Iraola
+19c54be2,2425,2025-04-02,fbref_match_cache,/en/matches/19c54be2/Bournemouth-Ipswich-Town-April-2-2025-Premier-League,2025-04-03,Ipswich,Bournemouth,0,Kieran McKenna
+158e64b3,2425,2025-04-02,fbref_match_cache,/en/matches/158e64b3/Brighton-and-Hove-Albion-Aston-Villa-April-2-2025-Premier-League,2025-04-03,Brighton,Aston Villa,1,Fabian Hürzeler
+158e64b3,2425,2025-04-02,fbref_match_cache,/en/matches/158e64b3/Brighton-and-Hove-Albion-Aston-Villa-April-2-2025-Premier-League,2025-04-03,Aston Villa,Brighton,0,Unai Emery
+7e2a8ebe,2425,2025-04-02,fbref_match_cache,/en/matches/7e2a8ebe/Merseyside-Derby-Liverpool-Everton-April-2-2025-Premier-League,2025-04-03,Liverpool,Everton,1,Arne Slot
+7e2a8ebe,2425,2025-04-02,fbref_match_cache,/en/matches/7e2a8ebe/Merseyside-Derby-Liverpool-Everton-April-2-2025-Premier-League,2025-04-03,Everton,Liverpool,0,David Moyes
+464a9c6c,2425,2025-04-02,fbref_match_cache,/en/matches/464a9c6c/Manchester-City-Leicester-City-April-2-2025-Premier-League,2025-04-03,Man City,Leicester,1,Pep Guardiola
+464a9c6c,2425,2025-04-02,fbref_match_cache,/en/matches/464a9c6c/Manchester-City-Leicester-City-April-2-2025-Premier-League,2025-04-03,Leicester,Man City,0,Ruud van Nistelrooy
+e202c3b7,2425,2025-04-02,fbref_match_cache,/en/matches/e202c3b7/Newcastle-United-Brentford-April-2-2025-Premier-League,2025-04-03,Newcastle,Brentford,1,Eddie Howe
+e202c3b7,2425,2025-04-02,fbref_match_cache,/en/matches/e202c3b7/Newcastle-United-Brentford-April-2-2025-Premier-League,2025-04-03,Brentford,Newcastle,0,Thomas Frank
+1c75bcda,2425,2025-04-02,fbref_match_cache,/en/matches/1c75bcda/Southampton-Crystal-Palace-April-2-2025-Premier-League,2025-04-03,Southampton,Crystal Palace,1,Ivan Jurić
+1c75bcda,2425,2025-04-02,fbref_match_cache,/en/matches/1c75bcda/Southampton-Crystal-Palace-April-2-2025-Premier-League,2025-04-03,Crystal Palace,Southampton,0,Oliver Glasner
+33e26065,2425,2025-04-03,fbref_match_cache,/en/matches/33e26065/Chelsea-Tottenham-Hotspur-April-3-2025-Premier-League,2025-04-04,Chelsea,Tottenham,1,Enzo Maresca
+33e26065,2425,2025-04-03,fbref_match_cache,/en/matches/33e26065/Chelsea-Tottenham-Hotspur-April-3-2025-Premier-League,2025-04-04,Tottenham,Chelsea,0,Ange Postecoglou
+7b024699,2425,2025-04-05,fbref_match_cache,/en/matches/7b024699/Aston-Villa-Nottingham-Forest-April-5-2025-Premier-League,2025-04-06,Aston Villa,Nott'm Forest,1,Unai Emery
+7b024699,2425,2025-04-05,fbref_match_cache,/en/matches/7b024699/Aston-Villa-Nottingham-Forest-April-5-2025-Premier-League,2025-04-06,Nott'm Forest,Aston Villa,0,Nuno Espírito Santo
+e9cb51b4,2425,2025-04-05,fbref_match_cache,/en/matches/e9cb51b4/Crystal-Palace-Brighton-and-Hove-Albion-April-5-2025-Premier-League,2025-04-06,Crystal Palace,Brighton,1,Oliver Glasner
+e9cb51b4,2425,2025-04-05,fbref_match_cache,/en/matches/e9cb51b4/Crystal-Palace-Brighton-and-Hove-Albion-April-5-2025-Premier-League,2025-04-06,Brighton,Crystal Palace,0,Fabian Hürzeler
+8a72e3dc,2425,2025-04-05,fbref_match_cache,/en/matches/8a72e3dc/Everton-Arsenal-April-5-2025-Premier-League,2025-04-06,Everton,Arsenal,1,David Moyes
+8a72e3dc,2425,2025-04-05,fbref_match_cache,/en/matches/8a72e3dc/Everton-Arsenal-April-5-2025-Premier-League,2025-04-06,Arsenal,Everton,0,Mikel Arteta
+b6f200da,2425,2025-04-05,fbref_match_cache,/en/matches/b6f200da/Ipswich-Town-Wolverhampton-Wanderers-April-5-2025-Premier-League,2025-04-06,Ipswich,Wolves,1,Kieran McKenna
+b6f200da,2425,2025-04-05,fbref_match_cache,/en/matches/b6f200da/Ipswich-Town-Wolverhampton-Wanderers-April-5-2025-Premier-League,2025-04-06,Wolves,Ipswich,0,Vítor Pereira
+3812dc28,2425,2025-04-05,fbref_match_cache,/en/matches/3812dc28/West-Ham-United-Bournemouth-April-5-2025-Premier-League,2025-04-06,West Ham,Bournemouth,1,Graham Potter
+3812dc28,2425,2025-04-05,fbref_match_cache,/en/matches/3812dc28/West-Ham-United-Bournemouth-April-5-2025-Premier-League,2025-04-06,Bournemouth,West Ham,0,Andoni Iraola
+5984e216,2425,2025-04-06,fbref_match_cache,/en/matches/5984e216/Brentford-Chelsea-April-6-2025-Premier-League,2025-04-07,Brentford,Chelsea,1,Thomas Frank
+5984e216,2425,2025-04-06,fbref_match_cache,/en/matches/5984e216/Brentford-Chelsea-April-6-2025-Premier-League,2025-04-07,Chelsea,Brentford,0,Enzo Maresca
+b34400d3,2425,2025-04-06,fbref_match_cache,/en/matches/b34400d3/Fulham-Liverpool-April-6-2025-Premier-League,2025-04-07,Fulham,Liverpool,1,Marco Silva
+b34400d3,2425,2025-04-06,fbref_match_cache,/en/matches/b34400d3/Fulham-Liverpool-April-6-2025-Premier-League,2025-04-07,Liverpool,Fulham,0,Arne Slot
+53e359bb,2425,2025-04-06,fbref_match_cache,/en/matches/53e359bb/Manchester-Derby-Manchester-United-Manchester-City-April-6-2025-Premier-League,2025-04-07,Man United,Man City,1,Rúben Amorim
+53e359bb,2425,2025-04-06,fbref_match_cache,/en/matches/53e359bb/Manchester-Derby-Manchester-United-Manchester-City-April-6-2025-Premier-League,2025-04-07,Man City,Man United,0,Pep Guardiola
+f671e515,2425,2025-04-06,fbref_match_cache,/en/matches/f671e515/Tottenham-Hotspur-Southampton-April-6-2025-Premier-League,2025-04-07,Tottenham,Southampton,1,Ange Postecoglou
+f671e515,2425,2025-04-06,fbref_match_cache,/en/matches/f671e515/Tottenham-Hotspur-Southampton-April-6-2025-Premier-League,2025-04-07,Southampton,Tottenham,0,Ivan Jurić
+d8efb6cc,2425,2025-04-07,fbref_match_cache,/en/matches/d8efb6cc/Leicester-City-Newcastle-United-April-7-2025-Premier-League,2025-04-08,Leicester,Newcastle,1,Ruud van Nistelrooy
+d8efb6cc,2425,2025-04-07,fbref_match_cache,/en/matches/d8efb6cc/Leicester-City-Newcastle-United-April-7-2025-Premier-League,2025-04-08,Newcastle,Leicester,0,Eddie Howe
+471d2141,2425,2025-04-12,fbref_match_cache,/en/matches/471d2141/Arsenal-Brentford-April-12-2025-Premier-League,2025-04-13,Arsenal,Brentford,1,Mikel Arteta
+471d2141,2425,2025-04-12,fbref_match_cache,/en/matches/471d2141/Arsenal-Brentford-April-12-2025-Premier-League,2025-04-13,Brentford,Arsenal,0,Thomas Frank
+6c4e0e71,2425,2025-04-12,fbref_match_cache,/en/matches/6c4e0e71/Brighton-and-Hove-Albion-Leicester-City-April-12-2025-Premier-League,2025-04-13,Brighton,Leicester,1,Fabian Hürzeler
+6c4e0e71,2425,2025-04-12,fbref_match_cache,/en/matches/6c4e0e71/Brighton-and-Hove-Albion-Leicester-City-April-12-2025-Premier-League,2025-04-13,Leicester,Brighton,0,Ruud van Nistelrooy
+7be33a60,2425,2025-04-12,fbref_match_cache,/en/matches/7be33a60/Manchester-City-Crystal-Palace-April-12-2025-Premier-League,2025-04-13,Man City,Crystal Palace,1,Pep Guardiola
+7be33a60,2425,2025-04-12,fbref_match_cache,/en/matches/7be33a60/Manchester-City-Crystal-Palace-April-12-2025-Premier-League,2025-04-13,Crystal Palace,Man City,0,Oliver Glasner
+83138c75,2425,2025-04-12,fbref_match_cache,/en/matches/83138c75/Nottingham-Forest-Everton-April-12-2025-Premier-League,2025-04-13,Nott'm Forest,Everton,1,Nuno Espírito Santo
+83138c75,2425,2025-04-12,fbref_match_cache,/en/matches/83138c75/Nottingham-Forest-Everton-April-12-2025-Premier-League,2025-04-13,Everton,Nott'm Forest,0,David Moyes
+eb58af0b,2425,2025-04-12,fbref_match_cache,/en/matches/eb58af0b/Southampton-Aston-Villa-April-12-2025-Premier-League,2025-04-13,Southampton,Aston Villa,1,Simon Rusk
+eb58af0b,2425,2025-04-12,fbref_match_cache,/en/matches/eb58af0b/Southampton-Aston-Villa-April-12-2025-Premier-League,2025-04-13,Aston Villa,Southampton,0,Unai Emery
+a45626b5,2425,2025-04-13,fbref_match_cache,/en/matches/a45626b5/Chelsea-Ipswich-Town-April-13-2025-Premier-League,2025-04-14,Chelsea,Ipswich,1,Enzo Maresca
+a45626b5,2425,2025-04-13,fbref_match_cache,/en/matches/a45626b5/Chelsea-Ipswich-Town-April-13-2025-Premier-League,2025-04-14,Ipswich,Chelsea,0,Kieran McKenna
+4975981b,2425,2025-04-13,fbref_match_cache,/en/matches/4975981b/Liverpool-West-Ham-United-April-13-2025-Premier-League,2025-04-14,Liverpool,West Ham,1,Arne Slot
+4975981b,2425,2025-04-13,fbref_match_cache,/en/matches/4975981b/Liverpool-West-Ham-United-April-13-2025-Premier-League,2025-04-14,West Ham,Liverpool,0,Graham Potter
+4254acea,2425,2025-04-13,fbref_match_cache,/en/matches/4254acea/Newcastle-United-Manchester-United-April-13-2025-Premier-League,2025-04-14,Newcastle,Man United,1,Eddie Howe
+4254acea,2425,2025-04-13,fbref_match_cache,/en/matches/4254acea/Newcastle-United-Manchester-United-April-13-2025-Premier-League,2025-04-14,Man United,Newcastle,0,Rúben Amorim
+5a44bda9,2425,2025-04-13,fbref_match_cache,/en/matches/5a44bda9/Wolverhampton-Wanderers-Tottenham-Hotspur-April-13-2025-Premier-League,2025-04-14,Wolves,Tottenham,1,Vítor Pereira
+5a44bda9,2425,2025-04-13,fbref_match_cache,/en/matches/5a44bda9/Wolverhampton-Wanderers-Tottenham-Hotspur-April-13-2025-Premier-League,2025-04-14,Tottenham,Wolves,0,Ange Postecoglou
+12ecaa9f,2425,2025-04-14,fbref_match_cache,/en/matches/12ecaa9f/Bournemouth-Fulham-April-14-2025-Premier-League,2025-04-15,Bournemouth,Fulham,1,Andoni Iraola
+12ecaa9f,2425,2025-04-14,fbref_match_cache,/en/matches/12ecaa9f/Bournemouth-Fulham-April-14-2025-Premier-League,2025-04-15,Fulham,Bournemouth,0,Marco Silva
+6e87f6cf,2425,2025-04-16,fbref_match_cache,/en/matches/6e87f6cf/Newcastle-United-Crystal-Palace-April-16-2025-Premier-League,2025-04-17,Newcastle,Crystal Palace,1,Eddie Howe
+6e87f6cf,2425,2025-04-16,fbref_match_cache,/en/matches/6e87f6cf/Newcastle-United-Crystal-Palace-April-16-2025-Premier-League,2025-04-17,Crystal Palace,Newcastle,0,Oliver Glasner
+45a3960e,2425,2025-04-19,fbref_match_cache,/en/matches/45a3960e/Aston-Villa-Newcastle-United-April-19-2025-Premier-League,2025-04-20,Aston Villa,Newcastle,1,Unai Emery
+45a3960e,2425,2025-04-19,fbref_match_cache,/en/matches/45a3960e/Aston-Villa-Newcastle-United-April-19-2025-Premier-League,2025-04-20,Newcastle,Aston Villa,0,Eddie Howe
+36afccb6,2425,2025-04-19,fbref_match_cache,/en/matches/36afccb6/Brentford-Brighton-and-Hove-Albion-April-19-2025-Premier-League,2025-04-20,Brentford,Brighton,1,Thomas Frank
+36afccb6,2425,2025-04-19,fbref_match_cache,/en/matches/36afccb6/Brentford-Brighton-and-Hove-Albion-April-19-2025-Premier-League,2025-04-20,Brighton,Brentford,0,Fabian Hürzeler
+9d095ebf,2425,2025-04-19,fbref_match_cache,/en/matches/9d095ebf/Crystal-Palace-Bournemouth-April-19-2025-Premier-League,2025-04-20,Crystal Palace,Bournemouth,1,Oliver Glasner
+9d095ebf,2425,2025-04-19,fbref_match_cache,/en/matches/9d095ebf/Crystal-Palace-Bournemouth-April-19-2025-Premier-League,2025-04-20,Bournemouth,Crystal Palace,0,Andoni Iraola
+a95e25da,2425,2025-04-19,fbref_match_cache,/en/matches/a95e25da/Everton-Manchester-City-April-19-2025-Premier-League,2025-04-20,Everton,Man City,1,David Moyes
+a95e25da,2425,2025-04-19,fbref_match_cache,/en/matches/a95e25da/Everton-Manchester-City-April-19-2025-Premier-League,2025-04-20,Man City,Everton,0,Pep Guardiola
+8d613b28,2425,2025-04-19,fbref_match_cache,/en/matches/8d613b28/West-Ham-United-Southampton-April-19-2025-Premier-League,2025-04-20,West Ham,Southampton,1,Graham Potter
+8d613b28,2425,2025-04-19,fbref_match_cache,/en/matches/8d613b28/West-Ham-United-Southampton-April-19-2025-Premier-League,2025-04-20,Southampton,West Ham,0,Simon Rusk
+aaac9748,2425,2025-04-20,fbref_match_cache,/en/matches/aaac9748/Fulham-Chelsea-April-20-2025-Premier-League,2025-04-21,Fulham,Chelsea,1,Marco Silva
+aaac9748,2425,2025-04-20,fbref_match_cache,/en/matches/aaac9748/Fulham-Chelsea-April-20-2025-Premier-League,2025-04-21,Chelsea,Fulham,0,Enzo Maresca
+2b599f1a,2425,2025-04-20,fbref_match_cache,/en/matches/2b599f1a/Ipswich-Town-Arsenal-April-20-2025-Premier-League,2025-04-21,Ipswich,Arsenal,1,Kieran McKenna
+2b599f1a,2425,2025-04-20,fbref_match_cache,/en/matches/2b599f1a/Ipswich-Town-Arsenal-April-20-2025-Premier-League,2025-04-21,Arsenal,Ipswich,0,Mikel Arteta
+0a2030a0,2425,2025-04-20,fbref_match_cache,/en/matches/0a2030a0/Leicester-City-Liverpool-April-20-2025-Premier-League,2025-04-21,Leicester,Liverpool,1,Ruud van Nistelrooy
+0a2030a0,2425,2025-04-20,fbref_match_cache,/en/matches/0a2030a0/Leicester-City-Liverpool-April-20-2025-Premier-League,2025-04-21,Liverpool,Leicester,0,Arne Slot
+e50fd749,2425,2025-04-20,fbref_match_cache,/en/matches/e50fd749/Manchester-United-Wolverhampton-Wanderers-April-20-2025-Premier-League,2025-04-21,Man United,Wolves,1,Rúben Amorim
+e50fd749,2425,2025-04-20,fbref_match_cache,/en/matches/e50fd749/Manchester-United-Wolverhampton-Wanderers-April-20-2025-Premier-League,2025-04-21,Wolves,Man United,0,Vítor Pereira
+708743bf,2425,2025-04-21,fbref_match_cache,/en/matches/708743bf/Tottenham-Hotspur-Nottingham-Forest-April-21-2025-Premier-League,2025-04-22,Tottenham,Nott'm Forest,1,Ange Postecoglou
+708743bf,2425,2025-04-21,fbref_match_cache,/en/matches/708743bf/Tottenham-Hotspur-Nottingham-Forest-April-21-2025-Premier-League,2025-04-22,Nott'm Forest,Tottenham,0,Nuno Espírito Santo
+3de68b91,2425,2025-04-22,fbref_match_cache,/en/matches/3de68b91/Manchester-City-Aston-Villa-April-22-2025-Premier-League,2025-04-23,Man City,Aston Villa,1,Pep Guardiola
+3de68b91,2425,2025-04-22,fbref_match_cache,/en/matches/3de68b91/Manchester-City-Aston-Villa-April-22-2025-Premier-League,2025-04-23,Aston Villa,Man City,0,Unai Emery
+67651145,2425,2025-04-23,fbref_match_cache,/en/matches/67651145/Arsenal-Crystal-Palace-April-23-2025-Premier-League,2025-04-24,Arsenal,Crystal Palace,1,Mikel Arteta
+67651145,2425,2025-04-23,fbref_match_cache,/en/matches/67651145/Arsenal-Crystal-Palace-April-23-2025-Premier-League,2025-04-24,Crystal Palace,Arsenal,0,Oliver Glasner
+e1669507,2425,2025-04-26,fbref_match_cache,/en/matches/e1669507/Brighton-and-Hove-Albion-West-Ham-United-April-26-2025-Premier-League,2025-04-27,Brighton,West Ham,1,Fabian Hürzeler
+e1669507,2425,2025-04-26,fbref_match_cache,/en/matches/e1669507/Brighton-and-Hove-Albion-West-Ham-United-April-26-2025-Premier-League,2025-04-27,West Ham,Brighton,0,Graham Potter
+06c5f0ab,2425,2025-04-26,fbref_match_cache,/en/matches/06c5f0ab/Chelsea-Everton-April-26-2025-Premier-League,2025-04-27,Chelsea,Everton,1,Enzo Maresca
+06c5f0ab,2425,2025-04-26,fbref_match_cache,/en/matches/06c5f0ab/Chelsea-Everton-April-26-2025-Premier-League,2025-04-27,Everton,Chelsea,0,David Moyes
+3402b61b,2425,2025-04-26,fbref_match_cache,/en/matches/3402b61b/Newcastle-United-Ipswich-Town-April-26-2025-Premier-League,2025-04-27,Newcastle,Ipswich,1,Eddie Howe
+3402b61b,2425,2025-04-26,fbref_match_cache,/en/matches/3402b61b/Newcastle-United-Ipswich-Town-April-26-2025-Premier-League,2025-04-27,Ipswich,Newcastle,0,Kieran McKenna
+9c6532bc,2425,2025-04-26,fbref_match_cache,/en/matches/9c6532bc/Southampton-Fulham-April-26-2025-Premier-League,2025-04-27,Southampton,Fulham,1,Simon Rusk
+9c6532bc,2425,2025-04-26,fbref_match_cache,/en/matches/9c6532bc/Southampton-Fulham-April-26-2025-Premier-League,2025-04-27,Fulham,Southampton,0,Marco Silva
+1ced4069,2425,2025-04-26,fbref_match_cache,/en/matches/1ced4069/Wolverhampton-Wanderers-Leicester-City-April-26-2025-Premier-League,2025-04-27,Wolves,Leicester,1,Vítor Pereira
+1ced4069,2425,2025-04-26,fbref_match_cache,/en/matches/1ced4069/Wolverhampton-Wanderers-Leicester-City-April-26-2025-Premier-League,2025-04-27,Leicester,Wolves,0,Ruud van Nistelrooy
+81b6c6b4,2425,2025-04-27,fbref_match_cache,/en/matches/81b6c6b4/Bournemouth-Manchester-United-April-27-2025-Premier-League,2025-04-28,Bournemouth,Man United,1,Andoni Iraola
+81b6c6b4,2425,2025-04-27,fbref_match_cache,/en/matches/81b6c6b4/Bournemouth-Manchester-United-April-27-2025-Premier-League,2025-04-28,Man United,Bournemouth,0,Rúben Amorim
+64bc833f,2425,2025-04-27,fbref_match_cache,/en/matches/64bc833f/Liverpool-Tottenham-Hotspur-April-27-2025-Premier-League,2025-04-28,Liverpool,Tottenham,1,Arne Slot
+64bc833f,2425,2025-04-27,fbref_match_cache,/en/matches/64bc833f/Liverpool-Tottenham-Hotspur-April-27-2025-Premier-League,2025-04-28,Tottenham,Liverpool,0,Ange Postecoglou
+a896a308,2425,2025-05-01,fbref_match_cache,/en/matches/a896a308/Nottingham-Forest-Brentford-May-1-2025-Premier-League,2025-05-02,Nott'm Forest,Brentford,1,Nuno Espírito Santo
+a896a308,2425,2025-05-01,fbref_match_cache,/en/matches/a896a308/Nottingham-Forest-Brentford-May-1-2025-Premier-League,2025-05-02,Brentford,Nott'm Forest,0,Thomas Frank
+6a433468,2425,2025-05-02,fbref_match_cache,/en/matches/6a433468/Manchester-City-Wolverhampton-Wanderers-May-2-2025-Premier-League,2025-05-03,Man City,Wolves,1,Pep Guardiola
+6a433468,2425,2025-05-02,fbref_match_cache,/en/matches/6a433468/Manchester-City-Wolverhampton-Wanderers-May-2-2025-Premier-League,2025-05-03,Wolves,Man City,0,Vítor Pereira
+ad3827f3,2425,2025-05-03,fbref_match_cache,/en/matches/ad3827f3/Arsenal-Bournemouth-May-3-2025-Premier-League,2025-05-04,Arsenal,Bournemouth,1,Mikel Arteta
+ad3827f3,2425,2025-05-03,fbref_match_cache,/en/matches/ad3827f3/Arsenal-Bournemouth-May-3-2025-Premier-League,2025-05-04,Bournemouth,Arsenal,0,Andoni Iraola
+d8e391ab,2425,2025-05-03,fbref_match_cache,/en/matches/d8e391ab/Aston-Villa-Fulham-May-3-2025-Premier-League,2025-05-04,Aston Villa,Fulham,1,Unai Emery
+d8e391ab,2425,2025-05-03,fbref_match_cache,/en/matches/d8e391ab/Aston-Villa-Fulham-May-3-2025-Premier-League,2025-05-04,Fulham,Aston Villa,0,Marco Silva
+b93c98b0,2425,2025-05-03,fbref_match_cache,/en/matches/b93c98b0/Everton-Ipswich-Town-May-3-2025-Premier-League,2025-05-04,Everton,Ipswich,1,David Moyes
+b93c98b0,2425,2025-05-03,fbref_match_cache,/en/matches/b93c98b0/Everton-Ipswich-Town-May-3-2025-Premier-League,2025-05-04,Ipswich,Everton,0,Kieran McKenna
+e89fe486,2425,2025-05-03,fbref_match_cache,/en/matches/e89fe486/Leicester-City-Southampton-May-3-2025-Premier-League,2025-05-04,Leicester,Southampton,1,Ruud van Nistelrooy
+e89fe486,2425,2025-05-03,fbref_match_cache,/en/matches/e89fe486/Leicester-City-Southampton-May-3-2025-Premier-League,2025-05-04,Southampton,Leicester,0,Simon Rusk
+29dbd7d1,2425,2025-05-04,fbref_match_cache,/en/matches/29dbd7d1/Brentford-Manchester-United-May-4-2025-Premier-League,2025-05-05,Brentford,Man United,1,Thomas Frank
+29dbd7d1,2425,2025-05-04,fbref_match_cache,/en/matches/29dbd7d1/Brentford-Manchester-United-May-4-2025-Premier-League,2025-05-05,Man United,Brentford,0,Rúben Amorim
+e09b4b94,2425,2025-05-04,fbref_match_cache,/en/matches/e09b4b94/Brighton-and-Hove-Albion-Newcastle-United-May-4-2025-Premier-League,2025-05-05,Brighton,Newcastle,1,Fabian Hürzeler
+e09b4b94,2425,2025-05-04,fbref_match_cache,/en/matches/e09b4b94/Brighton-and-Hove-Albion-Newcastle-United-May-4-2025-Premier-League,2025-05-05,Newcastle,Brighton,0,Eddie Howe
+157740ee,2425,2025-05-04,fbref_match_cache,/en/matches/157740ee/Chelsea-Liverpool-May-4-2025-Premier-League,2025-05-05,Chelsea,Liverpool,1,Enzo Maresca
+157740ee,2425,2025-05-04,fbref_match_cache,/en/matches/157740ee/Chelsea-Liverpool-May-4-2025-Premier-League,2025-05-05,Liverpool,Chelsea,0,Arne Slot
+70dcad6e,2425,2025-05-04,fbref_match_cache,/en/matches/70dcad6e/West-Ham-United-Tottenham-Hotspur-May-4-2025-Premier-League,2025-05-05,West Ham,Tottenham,1,Graham Potter
+70dcad6e,2425,2025-05-04,fbref_match_cache,/en/matches/70dcad6e/West-Ham-United-Tottenham-Hotspur-May-4-2025-Premier-League,2025-05-05,Tottenham,West Ham,0,Ange Postecoglou
+89cb2963,2425,2025-05-05,fbref_match_cache,/en/matches/89cb2963/Crystal-Palace-Nottingham-Forest-May-5-2025-Premier-League,2025-05-06,Crystal Palace,Nott'm Forest,1,Oliver Glasner
+89cb2963,2425,2025-05-05,fbref_match_cache,/en/matches/89cb2963/Crystal-Palace-Nottingham-Forest-May-5-2025-Premier-League,2025-05-06,Nott'm Forest,Crystal Palace,0,Nuno Espírito Santo
+dd48659a,2425,2025-05-10,fbref_match_cache,/en/matches/dd48659a/Bournemouth-Aston-Villa-May-10-2025-Premier-League,2025-05-11,Bournemouth,Aston Villa,1,Andoni Iraola
+dd48659a,2425,2025-05-10,fbref_match_cache,/en/matches/dd48659a/Bournemouth-Aston-Villa-May-10-2025-Premier-League,2025-05-11,Aston Villa,Bournemouth,0,Unai Emery
+a637fb4e,2425,2025-05-10,fbref_match_cache,/en/matches/a637fb4e/Fulham-Everton-May-10-2025-Premier-League,2025-05-11,Fulham,Everton,1,Marco Silva
+a637fb4e,2425,2025-05-10,fbref_match_cache,/en/matches/a637fb4e/Fulham-Everton-May-10-2025-Premier-League,2025-05-11,Everton,Fulham,0,David Moyes
+ea2685e0,2425,2025-05-10,fbref_match_cache,/en/matches/ea2685e0/Ipswich-Town-Brentford-May-10-2025-Premier-League,2025-05-11,Ipswich,Brentford,1,Kieran McKenna
+ea2685e0,2425,2025-05-10,fbref_match_cache,/en/matches/ea2685e0/Ipswich-Town-Brentford-May-10-2025-Premier-League,2025-05-11,Brentford,Ipswich,0,Thomas Frank
+35a46606,2425,2025-05-10,fbref_match_cache,/en/matches/35a46606/Southampton-Manchester-City-May-10-2025-Premier-League,2025-05-11,Southampton,Man City,1,Simon Rusk
+35a46606,2425,2025-05-10,fbref_match_cache,/en/matches/35a46606/Southampton-Manchester-City-May-10-2025-Premier-League,2025-05-11,Man City,Southampton,0,Pep Guardiola
+f1bf04cb,2425,2025-05-10,fbref_match_cache,/en/matches/f1bf04cb/Wolverhampton-Wanderers-Brighton-and-Hove-Albion-May-10-2025-Premier-League,2025-05-11,Wolves,Brighton,1,Vítor Pereira
+f1bf04cb,2425,2025-05-10,fbref_match_cache,/en/matches/f1bf04cb/Wolverhampton-Wanderers-Brighton-and-Hove-Albion-May-10-2025-Premier-League,2025-05-11,Brighton,Wolves,0,Fabian Hürzeler
+0dc9bdd9,2425,2025-05-11,fbref_match_cache,/en/matches/0dc9bdd9/Liverpool-Arsenal-May-11-2025-Premier-League,2025-05-12,Liverpool,Arsenal,1,Arne Slot
+0dc9bdd9,2425,2025-05-11,fbref_match_cache,/en/matches/0dc9bdd9/Liverpool-Arsenal-May-11-2025-Premier-League,2025-05-12,Arsenal,Liverpool,0,Mikel Arteta
+c4548397,2425,2025-05-11,fbref_match_cache,/en/matches/c4548397/Manchester-United-West-Ham-United-May-11-2025-Premier-League,2025-05-12,Man United,West Ham,1,Rúben Amorim
+c4548397,2425,2025-05-11,fbref_match_cache,/en/matches/c4548397/Manchester-United-West-Ham-United-May-11-2025-Premier-League,2025-05-12,West Ham,Man United,0,Graham Potter
+b409de42,2425,2025-05-11,fbref_match_cache,/en/matches/b409de42/Newcastle-United-Chelsea-May-11-2025-Premier-League,2025-05-12,Newcastle,Chelsea,1,Eddie Howe
+b409de42,2425,2025-05-11,fbref_match_cache,/en/matches/b409de42/Newcastle-United-Chelsea-May-11-2025-Premier-League,2025-05-12,Chelsea,Newcastle,0,Enzo Maresca
+c3e242fc,2425,2025-05-11,fbref_match_cache,/en/matches/c3e242fc/Nottingham-Forest-Leicester-City-May-11-2025-Premier-League,2025-05-12,Nott'm Forest,Leicester,1,Nuno Espírito Santo
+c3e242fc,2425,2025-05-11,fbref_match_cache,/en/matches/c3e242fc/Nottingham-Forest-Leicester-City-May-11-2025-Premier-League,2025-05-12,Leicester,Nott'm Forest,0,Ruud van Nistelrooy
+a442e11f,2425,2025-05-11,fbref_match_cache,/en/matches/a442e11f/Tottenham-Hotspur-Crystal-Palace-May-11-2025-Premier-League,2025-05-12,Tottenham,Crystal Palace,1,Ange Postecoglou
+a442e11f,2425,2025-05-11,fbref_match_cache,/en/matches/a442e11f/Tottenham-Hotspur-Crystal-Palace-May-11-2025-Premier-League,2025-05-12,Crystal Palace,Tottenham,0,Oliver Glasner
+b2651680,2425,2025-05-16,fbref_match_cache,/en/matches/b2651680/Aston-Villa-Tottenham-Hotspur-May-16-2025-Premier-League,2025-05-17,Aston Villa,Tottenham,1,Unai Emery
+b2651680,2425,2025-05-16,fbref_match_cache,/en/matches/b2651680/Aston-Villa-Tottenham-Hotspur-May-16-2025-Premier-League,2025-05-17,Tottenham,Aston Villa,0,Ange Postecoglou
+c95dd208,2425,2025-05-16,fbref_match_cache,/en/matches/c95dd208/Chelsea-Manchester-United-May-16-2025-Premier-League,2025-05-17,Chelsea,Man United,1,Enzo Maresca
+c95dd208,2425,2025-05-16,fbref_match_cache,/en/matches/c95dd208/Chelsea-Manchester-United-May-16-2025-Premier-League,2025-05-17,Man United,Chelsea,0,Rúben Amorim
+0a51acae,2425,2025-05-18,fbref_match_cache,/en/matches/0a51acae/Arsenal-Newcastle-United-May-18-2025-Premier-League,2025-05-19,Arsenal,Newcastle,1,Mikel Arteta
+0a51acae,2425,2025-05-18,fbref_match_cache,/en/matches/0a51acae/Arsenal-Newcastle-United-May-18-2025-Premier-League,2025-05-19,Newcastle,Arsenal,0,Eddie Howe
+064e6a34,2425,2025-05-18,fbref_match_cache,/en/matches/064e6a34/Brentford-Fulham-May-18-2025-Premier-League,2025-05-19,Brentford,Fulham,1,Thomas Frank
+064e6a34,2425,2025-05-18,fbref_match_cache,/en/matches/064e6a34/Brentford-Fulham-May-18-2025-Premier-League,2025-05-19,Fulham,Brentford,0,Marco Silva
+9e338dfb,2425,2025-05-18,fbref_match_cache,/en/matches/9e338dfb/Everton-Southampton-May-18-2025-Premier-League,2025-05-19,Everton,Southampton,1,David Moyes
+9e338dfb,2425,2025-05-18,fbref_match_cache,/en/matches/9e338dfb/Everton-Southampton-May-18-2025-Premier-League,2025-05-19,Southampton,Everton,0,Simon Rusk
+20b5a00b,2425,2025-05-18,fbref_match_cache,/en/matches/20b5a00b/Leicester-City-Ipswich-Town-May-18-2025-Premier-League,2025-05-19,Leicester,Ipswich,1,Ruud van Nistelrooy
+20b5a00b,2425,2025-05-18,fbref_match_cache,/en/matches/20b5a00b/Leicester-City-Ipswich-Town-May-18-2025-Premier-League,2025-05-19,Ipswich,Leicester,0,Kieran McKenna
+79180ca6,2425,2025-05-18,fbref_match_cache,/en/matches/79180ca6/West-Ham-United-Nottingham-Forest-May-18-2025-Premier-League,2025-05-19,West Ham,Nott'm Forest,1,Graham Potter
+79180ca6,2425,2025-05-18,fbref_match_cache,/en/matches/79180ca6/West-Ham-United-Nottingham-Forest-May-18-2025-Premier-League,2025-05-19,Nott'm Forest,West Ham,0,Nuno Espírito Santo
+1f3db37a,2425,2025-05-19,fbref_match_cache,/en/matches/1f3db37a/Brighton-and-Hove-Albion-Liverpool-May-19-2025-Premier-League,2025-05-20,Brighton,Liverpool,1,Fabian Hürzeler
+1f3db37a,2425,2025-05-19,fbref_match_cache,/en/matches/1f3db37a/Brighton-and-Hove-Albion-Liverpool-May-19-2025-Premier-League,2025-05-20,Liverpool,Brighton,0,Arne Slot
+f85454d3,2425,2025-05-20,fbref_match_cache,/en/matches/f85454d3/Crystal-Palace-Wolverhampton-Wanderers-May-20-2025-Premier-League,2025-05-21,Crystal Palace,Wolves,1,Oliver Glasner
+f85454d3,2425,2025-05-20,fbref_match_cache,/en/matches/f85454d3/Crystal-Palace-Wolverhampton-Wanderers-May-20-2025-Premier-League,2025-05-21,Wolves,Crystal Palace,0,Vítor Pereira
+e5e516e9,2425,2025-05-20,fbref_match_cache,/en/matches/e5e516e9/Manchester-City-Bournemouth-May-20-2025-Premier-League,2025-05-21,Man City,Bournemouth,1,Pep Guardiola
+e5e516e9,2425,2025-05-20,fbref_match_cache,/en/matches/e5e516e9/Manchester-City-Bournemouth-May-20-2025-Premier-League,2025-05-21,Bournemouth,Man City,0,Andoni Iraola
+1ff370e8,2425,2025-05-25,fbref_match_cache,/en/matches/1ff370e8/Bournemouth-Leicester-City-May-25-2025-Premier-League,2025-05-26,Bournemouth,Leicester,1,Andoni Iraola
+1ff370e8,2425,2025-05-25,fbref_match_cache,/en/matches/1ff370e8/Bournemouth-Leicester-City-May-25-2025-Premier-League,2025-05-26,Leicester,Bournemouth,0,Ruud van Nistelrooy
+3d22336e,2425,2025-05-25,fbref_match_cache,/en/matches/3d22336e/Fulham-Manchester-City-May-25-2025-Premier-League,2025-05-26,Fulham,Man City,1,Marco Silva
+3d22336e,2425,2025-05-25,fbref_match_cache,/en/matches/3d22336e/Fulham-Manchester-City-May-25-2025-Premier-League,2025-05-26,Man City,Fulham,0,Pep Guardiola
+15559cff,2425,2025-05-25,fbref_match_cache,/en/matches/15559cff/Ipswich-Town-West-Ham-United-May-25-2025-Premier-League,2025-05-26,Ipswich,West Ham,1,Kieran McKenna
+15559cff,2425,2025-05-25,fbref_match_cache,/en/matches/15559cff/Ipswich-Town-West-Ham-United-May-25-2025-Premier-League,2025-05-26,West Ham,Ipswich,0,Graham Potter
+0958eb7a,2425,2025-05-25,fbref_match_cache,/en/matches/0958eb7a/Liverpool-Crystal-Palace-May-25-2025-Premier-League,2025-05-26,Liverpool,Crystal Palace,1,Arne Slot
+0958eb7a,2425,2025-05-25,fbref_match_cache,/en/matches/0958eb7a/Liverpool-Crystal-Palace-May-25-2025-Premier-League,2025-05-26,Crystal Palace,Liverpool,0,Oliver Glasner
+7ea43929,2425,2025-05-25,fbref_match_cache,/en/matches/7ea43929/Manchester-United-Aston-Villa-May-25-2025-Premier-League,2025-05-26,Man United,Aston Villa,1,Rúben Amorim
+7ea43929,2425,2025-05-25,fbref_match_cache,/en/matches/7ea43929/Manchester-United-Aston-Villa-May-25-2025-Premier-League,2025-05-26,Aston Villa,Man United,0,Unai Emery
+36844e73,2425,2025-05-25,fbref_match_cache,/en/matches/36844e73/Newcastle-United-Everton-May-25-2025-Premier-League,2025-05-26,Newcastle,Everton,1,Eddie Howe
+36844e73,2425,2025-05-25,fbref_match_cache,/en/matches/36844e73/Newcastle-United-Everton-May-25-2025-Premier-League,2025-05-26,Everton,Newcastle,0,David Moyes
+464cbad6,2425,2025-05-25,fbref_match_cache,/en/matches/464cbad6/Nottingham-Forest-Chelsea-May-25-2025-Premier-League,2025-05-26,Nott'm Forest,Chelsea,1,Nuno Espírito Santo
+464cbad6,2425,2025-05-25,fbref_match_cache,/en/matches/464cbad6/Nottingham-Forest-Chelsea-May-25-2025-Premier-League,2025-05-26,Chelsea,Nott'm Forest,0,Enzo Maresca
+01d155b4,2425,2025-05-25,fbref_match_cache,/en/matches/01d155b4/Southampton-Arsenal-May-25-2025-Premier-League,2025-05-26,Southampton,Arsenal,1,Simon Rusk
+01d155b4,2425,2025-05-25,fbref_match_cache,/en/matches/01d155b4/Southampton-Arsenal-May-25-2025-Premier-League,2025-05-26,Arsenal,Southampton,0,Mikel Arteta
+e4bb1c35,2425,2025-05-25,fbref_match_cache,/en/matches/e4bb1c35/Tottenham-Hotspur-Brighton-and-Hove-Albion-May-25-2025-Premier-League,2025-05-26,Tottenham,Brighton,1,Ange Postecoglou
+e4bb1c35,2425,2025-05-25,fbref_match_cache,/en/matches/e4bb1c35/Tottenham-Hotspur-Brighton-and-Hove-Albion-May-25-2025-Premier-League,2025-05-26,Brighton,Tottenham,0,Fabian Hürzeler
+812ef8ad,2425,2025-05-25,fbref_match_cache,/en/matches/812ef8ad/Wolverhampton-Wanderers-Brentford-May-25-2025-Premier-League,2025-05-26,Wolves,Brentford,1,Vítor Pereira
+812ef8ad,2425,2025-05-25,fbref_match_cache,/en/matches/812ef8ad/Wolverhampton-Wanderers-Brentford-May-25-2025-Premier-League,2025-05-26,Brentford,Wolves,0,Thomas Frank

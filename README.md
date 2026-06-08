@@ -657,6 +657,14 @@ python lineup_stability_engine_experiments.py
 
 The ingestion writes normalized lineup tables to `data/match_lineups.csv`, `data/player_appearances.csv`, `data/formation_history.csv`, and `data/match_substitutions.csv`. One full 2024/25 FBref season is currently available and validated, but lineup features remain research-only because they worsened out-of-sample log loss, Brier score, and calibration in the latest experiment. See `lineup_fbref_ingestion_report.md` and `lineup_data_quality_report.md`.
 
+Run the manager consistency experiment:
+
+```bash
+python manager_intelligence_experiments.py
+```
+
+This extracts 2024/25 match-level manager rows from the local FBref cache and writes `manager_consistency_report.md`, `manager_data_quality_report.md`, `manager_bounce_analysis.md`, and outputs in `evaluation/manager_intelligence/`. Manager features remain research-only because the latest run worsened out-of-sample log loss and Brier score versus the production baseline.
+
 ## Robustness upgrade
 
 Useful commands:
