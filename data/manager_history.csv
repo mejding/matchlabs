@@ -1,31 +1,43 @@
 team,manager,start_date,end_date,source,source_collected_at
-Arsenal,Mikel Arteta,2024-08-17,,fbref_match_cache_inferred_period,2024-08-18
-Aston Villa,Unai Emery,2024-08-17,,fbref_match_cache_inferred_period,2024-08-18
-Bournemouth,Andoni Iraola,2024-08-17,,fbref_match_cache_inferred_period,2024-08-18
-Brentford,Thomas Frank,2024-08-18,,fbref_match_cache_inferred_period,2024-08-19
+Arsenal,Mikel Arteta,2023-08-12,,fbref_match_cache_inferred_period,2023-08-13
+Aston Villa,Unai Emery,2023-08-12,,fbref_match_cache_inferred_period,2023-08-13
+Bournemouth,Andoni Iraola,2023-08-12,,fbref_match_cache_inferred_period,2023-08-13
+Brentford,Thomas Frank,2023-08-13,,fbref_match_cache_inferred_period,2023-08-14
+Brighton,Roberto De Zerbi,2023-08-12,2024-08-16,fbref_match_cache_inferred_period,2023-08-13
 Brighton,Fabian Hürzeler,2024-08-17,,fbref_match_cache_inferred_period,2024-08-18
+Burnley,Vincent Kompany,2023-08-11,,fbref_match_cache_inferred_period,2023-08-12
+Chelsea,Mauricio Pochettino,2023-08-13,2024-08-17,fbref_match_cache_inferred_period,2023-08-14
 Chelsea,Enzo Maresca,2024-08-18,,fbref_match_cache_inferred_period,2024-08-19
-Crystal Palace,Oliver Glasner,2024-08-18,,fbref_match_cache_inferred_period,2024-08-19
-Everton,Sean Dyche,2024-08-17,2025-01-14,fbref_match_cache_inferred_period,2024-08-18
+Crystal Palace,Roy Hodgson,2023-08-12,2024-02-18,fbref_match_cache_inferred_period,2023-08-13
+Crystal Palace,Oliver Glasner,2024-02-19,,fbref_match_cache_inferred_period,2024-02-20
+Everton,Sean Dyche,2023-08-12,2025-01-14,fbref_match_cache_inferred_period,2023-08-13
 Everton,David Moyes,2025-01-15,,fbref_match_cache_inferred_period,2025-01-16
-Fulham,Marco Silva,2024-08-16,,fbref_match_cache_inferred_period,2024-08-17
+Fulham,Marco Silva,2023-08-12,,fbref_match_cache_inferred_period,2023-08-13
 Ipswich,Kieran McKenna,2024-08-17,,fbref_match_cache_inferred_period,2024-08-18
 Leicester,Steve Cooper,2024-08-19,2024-11-29,fbref_match_cache_inferred_period,2024-08-20
 Leicester,Ben Dawson,2024-11-30,2024-12-02,fbref_match_cache_inferred_period,2024-12-01
 Leicester,Ruud van Nistelrooy,2024-12-03,,fbref_match_cache_inferred_period,2024-12-04
+Liverpool,Jürgen Klopp,2023-08-13,2024-08-16,fbref_match_cache_inferred_period,2023-08-14
 Liverpool,Arne Slot,2024-08-17,,fbref_match_cache_inferred_period,2024-08-18
-Man City,Pep Guardiola,2024-08-18,,fbref_match_cache_inferred_period,2024-08-19
-Man United,Erik ten Hag,2024-08-16,2024-11-02,fbref_match_cache_inferred_period,2024-08-17
+Luton Town,Rob Edwards,2023-08-12,,fbref_match_cache_inferred_period,2023-08-13
+Man City,Pep Guardiola,2023-08-11,2023-08-26,fbref_match_cache_inferred_period,2023-08-12
+Man City,Juanma Lillo,2023-08-27,2023-09-01,fbref_match_cache_inferred_period,2023-08-28
+Man City,Pep Guardiola,2023-09-02,,fbref_match_cache_inferred_period,2023-09-03
+Man United,Erik ten Hag,2023-08-14,2024-11-02,fbref_match_cache_inferred_period,2023-08-15
 Man United,Ruud van Nistelrooy,2024-11-03,2024-11-23,fbref_match_cache_inferred_period,2024-11-04
 Man United,Rúben Amorim,2024-11-24,,fbref_match_cache_inferred_period,2024-11-25
-Newcastle,Eddie Howe,2024-08-17,,fbref_match_cache_inferred_period,2024-08-18
-Nott'm Forest,Nuno Espírito Santo,2024-08-17,,fbref_match_cache_inferred_period,2024-08-18
+Newcastle,Eddie Howe,2023-08-12,,fbref_match_cache_inferred_period,2023-08-13
+Nott'm Forest,Steve Cooper,2023-08-12,2023-12-22,fbref_match_cache_inferred_period,2023-08-13
+Nott'm Forest,Nuno Espírito Santo,2023-12-23,,fbref_match_cache_inferred_period,2023-12-24
+Sheffield United,Paul Heckingbottom,2023-08-12,2023-12-05,fbref_match_cache_inferred_period,2023-08-13
+Sheffield United,Chris Wilder,2023-12-06,,fbref_match_cache_inferred_period,2023-12-07
 Southampton,Russell Martin,2024-08-17,2024-12-21,fbref_match_cache_inferred_period,2024-08-18
 Southampton,Simon Rusk,2024-12-22,2024-12-25,fbref_match_cache_inferred_period,2024-12-23
 Southampton,Ivan Jurić,2024-12-26,2025-04-11,fbref_match_cache_inferred_period,2024-12-27
 Southampton,Simon Rusk,2025-04-12,,fbref_match_cache_inferred_period,2025-04-13
-Tottenham,Ange Postecoglou,2024-08-19,,fbref_match_cache_inferred_period,2024-08-20
+Tottenham,Ange Postecoglou,2023-08-13,,fbref_match_cache_inferred_period,2023-08-14
+West Ham,David Moyes,2023-08-12,2024-08-16,fbref_match_cache_inferred_period,2023-08-13
 West Ham,Julen Lopetegui,2024-08-17,2025-01-13,fbref_match_cache_inferred_period,2024-08-18
 West Ham,Graham Potter,2025-01-14,,fbref_match_cache_inferred_period,2025-01-15
-Wolves,Gary O'Neil,2024-08-17,2024-12-21,fbref_match_cache_inferred_period,2024-08-18
+Wolves,Gary O'Neil,2023-08-14,2024-12-21,fbref_match_cache_inferred_period,2023-08-15
 Wolves,Vítor Pereira,2024-12-22,,fbref_match_cache_inferred_period,2024-12-23

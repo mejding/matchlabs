@@ -1,5 +1,5 @@
 check,status,details
 duplicate_team_match_managers,pass,0 duplicate team-match manager rows.
-two_manager_rows_per_match,pass,"{""2"": 380}"
-match_coverage,pass,"{""covered_matches"": 380, ""season_coverage"": {""2425"": 380}}"
-full_project_coverage,warn,Manager data covers 380 of 2660 project matches. Missing seasons are neutral-zero in experiments.
+two_manager_rows_per_match,pass,"{""2"": 760}"
+match_coverage,pass,"{""covered_matches"": 760, ""season_coverage"": {""2324"": 380, ""2425"": 380}}"
+full_project_coverage,warn,Manager data covers 760 of 2660 project matches. Missing seasons are neutral-zero in experiments.

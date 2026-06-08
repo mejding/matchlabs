@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import html
+import argparse
 import json
 import os
 import re
@@ -34,7 +35,9 @@ RESULTS_PATH = Path("experiments") / "manager_intelligence_results.csv"
 MATCH_MANAGERS_PATH = Path("data") / "match_managers.csv"
 MANAGER_HISTORY_PATH = Path("data") / "manager_history.csv"
 FBREF_SCHEDULE_PATH = Path("data") / "fbref_schedule_raw.csv"
+FBREF_MANAGER_SCHEDULE_PATH = Path("data") / "fbref_manager_schedule_raw.csv"
 FBREF_CACHE_DIR = Path("data") / "fbref" / "soccerdata_cache"
+DEFAULT_MANAGER_SEASONS = [2019, 2020, 2021, 2022, 2023, 2024]
 
 TACTICAL_PRESSURE_COLUMNS = [
     "home_attacking_pressure_score_last5",
@@ -105,6 +108,56 @@ def _extract_managers_from_html(path: Path) -> list[str]:
     return [_strip_tags(manager) for manager in managers[:2]]
 
 
+def fetch_fbref_manager_cache(seasons: list[int], force: bool = False) -> pd.DataFrame:
+    """Fetch FBref schedules and warm the soccerdata match-page cache.
+
+    Direct FBref match-page requests can be blocked. The reliable path in this
+    project is soccerdata's FBref reader, which fetches and caches the same
+    match pages while reading lineup data. Manager parsing then reuses those
+    locally cached pages.
+    """
+    try:
+        import soccerdata as sd
+    except ImportError as exc:
+        raise RuntimeError("soccerdata is not installed. Install it with `pip install soccerdata`.") from exc
+
+    soccerdata_home = Path("data") / "fbref" / "soccerdata_home"
+    soccerdata_home.mkdir(parents=True, exist_ok=True)
+    os.environ.setdefault("SOCCERDATA_DIR", str(soccerdata_home.resolve()))
+    FBREF_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+
+    fbref = sd.FBref(
+        leagues="ENG-Premier League",
+        seasons=seasons,
+        data_dir=FBREF_CACHE_DIR,
+        no_cache=force,
+    )
+    schedule = fbref.read_schedule(force_cache=False).reset_index()
+    schedule.columns = [str(column) for column in schedule.columns]
+    schedule.to_csv(FBREF_MANAGER_SCHEDULE_PATH, index=False)
+    lineup_rows = 0
+    try:
+        lineup = fbref.read_lineup(force_cache=False)
+        lineup_rows = int(len(lineup))
+    except Exception as exc:
+        print(f"Warning: soccerdata lineup cache warming failed: {exc}")
+    print(json.dumps({"manager_schedule_rows": len(schedule), "lineup_rows_cached": lineup_rows}, indent=2))
+    return schedule
+
+
+def _load_manager_schedules() -> pd.DataFrame:
+    frames = []
+    for path in [FBREF_MANAGER_SCHEDULE_PATH, FBREF_SCHEDULE_PATH]:
+        if path.exists() and path.stat().st_size > 0:
+            frames.append(pd.read_csv(path))
+    if not frames:
+        return pd.DataFrame()
+    combined = pd.concat(frames, ignore_index=True)
+    if "game_id" in combined.columns:
+        combined = combined.drop_duplicates("game_id", keep="first")
+    return combined
+
+
 def ingest_fbref_match_managers() -> pd.DataFrame:
     """Extract match-level managers from local FBref match HTML cache.
 
@@ -113,10 +166,10 @@ def ingest_fbref_match_managers() -> pd.DataFrame:
     known before kickoff. Feature generation below uses current-match manager
     identity and only previous matches for performance/tenure statistics.
     """
-    if not FBREF_SCHEDULE_PATH.exists():
+    schedule = _load_manager_schedules()
+    if schedule.empty:
         return pd.DataFrame(columns=["match_id", "season", "date", "team", "opponent", "is_home", "manager_name", "source"])
 
-    schedule = pd.read_csv(FBREF_SCHEDULE_PATH)
     rows: list[dict[str, object]] = []
     for _, match in schedule.iterrows():
         game_id = str(match.get("game_id", "")).strip()
@@ -327,7 +380,7 @@ def available_columns(dataset: pd.DataFrame, columns: list[str]) -> list[str]:
 
 def build_manager_dataset() -> tuple[pd.DataFrame, pd.DataFrame, dict[str, list[str]], pd.DataFrame]:
     matches = load_matches_with_xg().sort_values("Date").reset_index(drop=True)
-    base_dataset, _ = build_features(matches, include_xg=True, include_schedule=True)
+    base_dataset, _ = build_features(matches, include_xg=True, include_schedule=True, include_shot_volume=True)
     elo_features, _ = build_elo_features(matches, ELO_CONFIG)
     match_managers = ingest_fbref_match_managers()
     manager_features = build_manager_features(matches, match_managers, elo_features)
@@ -530,18 +583,26 @@ def _delta(results: pd.DataFrame, model_a: str, model_b: str, metric: str) -> fl
 def write_reports(results: pd.DataFrame, shap_importance: pd.DataFrame, match_managers: pd.DataFrame, metadata: pd.DataFrame) -> None:
     quality = manager_data_quality(match_managers, metadata)
     quality.to_csv(OUTPUT_DIR / "manager_data_quality.csv", index=False)
+    covered_matches = match_managers["match_id"].nunique() if not match_managers.empty else 0
+    covered_seasons = sorted(match_managers["season"].unique()) if not match_managers.empty else []
+    covered_seasons_text = ", ".join(map(str, covered_seasons)) if covered_seasons else "None"
+    coverage_text = (
+        f"{covered_matches} matches across seasons {covered_seasons_text}"
+        if covered_matches
+        else "no locally cached seasons"
+    )
     Path("manager_data_quality_report.md").write_text(
         f"""# Manager Data Quality Report
 
 ## Source
 
-Manager rows are extracted from local FBref match HTML cache files generated by soccerdata. The current local cache covers the 2024/25 Premier League season.
+Manager rows are extracted from local FBref match HTML cache files generated by soccerdata. The current local cache covers {coverage_text}.
 
 ## Coverage
 
 - Match-manager rows: {len(match_managers)}
-- Covered matches: {match_managers['match_id'].nunique() if not match_managers.empty else 0}
-- Covered seasons: {', '.join(map(str, sorted(match_managers['season'].unique()))) if not match_managers.empty else 'None'}
+- Covered matches: {covered_matches}
+- Covered seasons: {covered_seasons_text}
 
 ## Validation
 
@@ -571,7 +632,7 @@ Manager rows are extracted from local FBref match HTML cache files generated by 
         "Move manager consistency forward as a production candidate."
         if production_ready
         else (
-            "Do not activate manager consistency yet. The current test has only one full season of manager rows, "
+            f"Do not activate manager consistency yet. The current test has manager rows for {coverage_text}, "
             "and production activation requires out-of-sample log loss or Brier improvement without calibration damage."
         )
     )
@@ -602,7 +663,7 @@ Top manager SHAP features:
 
 ## Interpretation
 
-The experiment is conservative: manager identity for the current fixture is used, but manager performance and continuity statistics are calculated only from prior matches. The current local data covers 2024/25 only, so this is a first evidence check rather than a final production decision.
+The experiment is conservative: manager identity for the current fixture is used, but manager performance and continuity statistics are calculated only from prior matches. The current local manager cache covers {coverage_text}, so this is broader than the first one-season check but still not full-project coverage.
 
 ## Production Decision
 
@@ -638,7 +699,7 @@ def write_discovery_report() -> None:
 | Source | Local availability | Fields available | Historical reliability | Implementation notes |
 | --- | --- | --- | --- | --- |
 | Existing `data/manager_history.csv` | Empty before this sprint | Team, manager, start/end dates | Low before ingestion | Used as the normalized output target. |
-| FBref match pages via soccerdata cache | Available for 2024/25 | Match date, teams, manager per team | Medium | Historically reproducible from cached match reports. Does not provide official appointment dates, so periods are inferred from first seen match. |
+| FBref match pages via soccerdata cache | Available for locally cached seasons | Match date, teams, manager per team | Medium | Historically reproducible from cached match reports. Does not provide official appointment dates, so periods are inferred from first seen match. |
 | football-data.co.uk | Available | Match results, odds, cards, shots | Not applicable | Does not include manager identity. |
 | Understat | Available | xG and match data | Not applicable | Does not include manager identity in the local project data. |
 | Transfermarkt | Not locally ingested | Manager appointments, departures, caretaker periods | Potentially high | Good candidate for future official tenure dates, but requires a separate ingestion policy and terms review. |
@@ -682,6 +743,13 @@ def write_manager_bounce_report(metadata: pd.DataFrame) -> None:
     history = pd.read_csv(MANAGER_HISTORY_PATH)
     if history.empty:
         return
+    if MATCH_MANAGERS_PATH.exists():
+        match_managers = pd.read_csv(MATCH_MANAGERS_PATH)
+        covered_matches = match_managers["match_id"].nunique() if not match_managers.empty else 0
+        covered_seasons = ", ".join(map(str, sorted(match_managers["season"].unique()))) if not match_managers.empty else "None"
+        coverage_text = f"{covered_matches} matches across seasons {covered_seasons}"
+    else:
+        coverage_text = "the currently cached manager rows"
     matches = load_matches_with_xg().sort_values("Date").reset_index(drop=True)
     matches["Date"] = pd.to_datetime(matches["Date"])
     history["start_date"] = pd.to_datetime(history["start_date"])
@@ -742,7 +810,7 @@ def write_manager_bounce_report(metadata: pd.DataFrame) -> None:
 
 For each detected in-season manager change, compare the team's previous 5 matches with the first 5 and first 10 matches after the new manager first appears in the FBref match data.
 
-This is exploratory only. The current manager source covers 2024/25, so sample size is small and should not be treated as stable evidence.
+This is exploratory only. The current manager source covers {coverage_text}, so sample size is still limited and should not be treated as stable evidence.
 
 ## Results
 
@@ -755,8 +823,29 @@ This analysis is useful for spotting possible new-manager-bounce patterns, but t
     )
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Evaluate manager consistency features for the EPL prediction model.")
+    parser.add_argument(
+        "--fetch-managers",
+        action="store_true",
+        help="Fetch missing FBref match-report pages needed to parse manager names.",
+    )
+    parser.add_argument(
+        "--seasons",
+        nargs="*",
+        type=int,
+        default=DEFAULT_MANAGER_SEASONS,
+        help="FBref season start years to fetch, e.g. 2019 2020 2021 2022 2023 2024.",
+    )
+    parser.add_argument("--force", action="store_true", help="Refetch match pages even when local cache exists.")
+    return parser.parse_args()
+
+
 def main() -> None:
+    args = parse_args()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    if args.fetch_managers:
+        fetch_fbref_manager_cache(args.seasons, force=args.force)
     dataset, metadata, feature_sets, match_managers = build_manager_dataset()
     results = [evaluate_feature_set(dataset, metadata, columns, version) for version, columns in feature_sets.items()]
     results_frame = save_results(results)

@@ -1,5 +1,5 @@
 feature_group,mean_abs_shap
-production,0.87744045
-manager_performance,0.07190681
-manager_continuity,0.054158147
-manager_change,0.0036806625
+production,0.9473589
+manager_continuity,0.11018855
+manager_performance,0.047052275
+manager_change,0.011735251

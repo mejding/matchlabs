@@ -8,11 +8,11 @@ Manager features are tested against a production baseline that already contains 
 
 | feature_group | mean_abs_shap |
 | --- | --- |
-| production | 0.8774 |
-| manager_performance | 0.0719 |
-| manager_continuity | 0.0542 |
-| manager_change | 0.0037 |
+| production | 0.9474 |
+| manager_continuity | 0.1102 |
+| manager_performance | 0.0471 |
+| manager_change | 0.0117 |
 
 ## Redundancy Decision
 
-Do not activate manager consistency yet. The current test has only one full season of manager rows, and production activation requires out-of-sample log loss or Brier improvement without calibration damage.
+Do not activate manager consistency yet. The current test has manager rows for 760 matches across seasons 2324, 2425, and production activation requires out-of-sample log loss or Brier improvement without calibration damage.
