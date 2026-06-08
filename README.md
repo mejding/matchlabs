@@ -647,6 +647,16 @@ python season_simulation.py --fixture-csv fixtures.csv --simulations 10000
 
 This generates `season_simulation_report.md` and outputs in `evaluation/season_simulation/`.
 
+Run the FBref lineup data ingestion:
+
+```bash
+python -m pip install -r requirements-ingestion.txt
+python fbref_lineup_ingestion.py --fetch --seasons 2024
+python lineup_stability_engine_experiments.py
+```
+
+The ingestion writes normalized lineup tables to `data/match_lineups.csv`, `data/player_appearances.csv`, `data/formation_history.csv`, and `data/match_substitutions.csv`. Lineup features remain inactive until real historical rows exist and improve out-of-sample log loss or Brier score. See `lineup_fbref_ingestion_report.md` and `lineup_data_quality_report.md`.
+
 ## Robustness upgrade
 
 Useful commands:

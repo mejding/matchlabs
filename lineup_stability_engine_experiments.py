@@ -26,7 +26,8 @@ from lineup_stability_features import (
 )
 from tactical_data import ensure_tactical_tables, load_team_match_tactics
 from tactical_features import build_tactical_features
-from train_model import SCHEDULE_FEATURE_COLUMNS, build_features, load_matches_with_xg
+from train_model import ELO_CONFIG, PRODUCTION_FEATURE_COLUMNS, build_features, load_matches_with_xg
+from elo_rating_features import build_elo_features
 from visualizations.plots import gain_importance, plot_feature_importance
 
 matplotlib.use("Agg")
@@ -51,6 +52,7 @@ def build_lineup_dataset() -> tuple[pd.DataFrame, pd.DataFrame, dict[str, list[s
     ensure_lineup_tables()
     matches = load_matches_with_xg().sort_values("Date").reset_index(drop=True)
     base_dataset, _ = build_features(matches, include_xg=True, include_schedule=True)
+    elo_features, _ = build_elo_features(matches, ELO_CONFIG)
     appearances = load_player_appearances()
     managers = load_manager_history()
     lineup_features = build_lineup_stability_features(matches, appearances, managers)
@@ -62,14 +64,19 @@ def build_lineup_dataset() -> tuple[pd.DataFrame, pd.DataFrame, dict[str, list[s
         tactical_features, _ = build_tactical_features(matches, tactics)
         tactical_columns = available_columns(tactical_features, TACTICAL_PRESSURE_COLUMNS)
         dataset = pd.concat(
-            [base_dataset.reset_index(drop=True), tactical_features[tactical_columns].reset_index(drop=True), lineup_features],
+            [
+                base_dataset.reset_index(drop=True),
+                elo_features.reset_index(drop=True),
+                tactical_features[tactical_columns].reset_index(drop=True),
+                lineup_features,
+            ],
             axis=1,
         )
     except Exception as exc:
         print(f"Warning: tactical pressure unavailable for lineup experiment: {exc}")
-        dataset = pd.concat([base_dataset.reset_index(drop=True), lineup_features], axis=1)
+        dataset = pd.concat([base_dataset.reset_index(drop=True), elo_features.reset_index(drop=True), lineup_features], axis=1)
 
-    production_columns = SCHEDULE_FEATURE_COLUMNS + tactical_columns
+    production_columns = PRODUCTION_FEATURE_COLUMNS + tactical_columns
     feature_sets = {
         "model_a_current_production": production_columns,
         "model_b_lineup_continuity": production_columns + lineup_feature_columns(),

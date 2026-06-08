@@ -12,4 +12,7 @@ __pycache__/
 .ipynb_checkpoints/
 .streamlit/secrets.toml
 evaluation/.matplotlib-cache/
+downloaded_files/
+data/fbref/soccerdata_home/
+data/fbref/soccerdata_cache/
 *.log

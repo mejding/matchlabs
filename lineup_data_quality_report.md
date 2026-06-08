@@ -1,12 +1,8 @@
 # Lineup Data Quality Report
 
-## Source Discovery
+## Source
 
-- existing match_lineups.csv: found at `data/match_lineups.csv`; rows=0; usable=False; File exists but lacks required team/player rows.
-- existing player_appearances.csv: found at `data/player_appearances.csv`; rows=0; usable=False; File exists but lacks required team/player rows.
-- FBref lineup export: missing at `data/fbref_lineups.csv`; rows=0; usable=False; No local source file found.
-- Understat lineup export: missing at `data/understat_lineups.csv`; rows=0; usable=False; No local source file found.
-- generic available lineup dataset: missing at `data/lineups.csv`; rows=0; usable=False; No local source file found.
+No live fetch requested; only local raw FBref exports/cache were used.
 
 ## Normalized Table Coverage
 
@@ -15,13 +11,29 @@
 - `data/formation_history.csv`: 0 rows
 - `data/match_substitutions.csv`: 0 rows
 
-## Production Decision
+## Match Coverage
 
-Do not activate lineup stability features. No historical player appearance rows are available locally.
+No seasons covered.
+
+## Ingestion Stats
+
+- Raw rows: 0
+- Matched team rows: 0
+- Unmatched team rows: 0
+
+## Validation
+
+| check | status | details |
+| --- | --- | --- |
+| player_appearances | missing | No historical lineup rows available. |
 
 ## Leakage Controls
 
-- Actual current-match XIs are not used as pre-match features.
-- Historical actual appearances are used only before the fixture date.
-- Expected/projected lineups require `source_collected_at` before kickoff.
-- No lineup, captain, formation or substitution rows are simulated.
+- Actual lineups are stored as post-match facts with `source_collected_at = date + 1 day`.
+- Pre-match features only use appearance rows dated before the fixture being predicted.
+- Current-match actual XI is not used for normal production predictions.
+- Expected/projected lineups can be added later only if `source_collected_at` is before kickoff.
+
+## Production Decision
+
+Do not activate lineup stability features. No historical player appearance rows are available locally yet.

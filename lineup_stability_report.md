@@ -8,10 +8,10 @@
 
 | model_version | accuracy | log_loss | Brier_score | calibration_score | expected_calibration_error |
 | --- | --- | --- | --- | --- | --- |
-| model_a_current_production | 0.5142 | 0.9946 | 0.5946 | 0.0499 | 0.0499 |
-| model_b_lineup_continuity | 0.5142 | 0.9946 | 0.5946 | 0.0499 | 0.0499 |
-| model_c_continuity_familiarity | 0.5142 | 0.9946 | 0.5946 | 0.0499 | 0.0499 |
-| model_d_full_lineup_stability | 0.5142 | 0.9946 | 0.5946 | 0.0499 | 0.0499 |
+| model_a_current_production | 0.4860 | 1.0633 | 0.6369 | 0.0592 | 0.0592 |
+| model_b_lineup_continuity | 0.4860 | 1.0633 | 0.6369 | 0.0592 | 0.0592 |
+| model_c_continuity_familiarity | 0.4860 | 1.0633 | 0.6369 | 0.0592 | 0.0592 |
+| model_d_full_lineup_stability | 0.4860 | 1.0633 | 0.6369 | 0.0592 | 0.0592 |
 
 ## Does lineup continuity create genuine predictive signal?
 
@@ -23,18 +23,18 @@ Model D vs Model A:
 
 Top lineup SHAP features:
 
-- `away_shared_starts_score` (familiarity): 0.0000
+- `home_squad_consistency_score` (stability): 0.0000
+- `home_lineup_familiarity_score` (familiarity): 0.0000
+- `away_same_attack` (continuity): 0.0000
 - `away_lineup_similarity_last_win` (continuity): 0.0000
 - `home_shared_starts_score` (familiarity): 0.0000
 - `home_shared_minutes_score` (familiarity): 0.0000
-- `home_lineup_familiarity_score` (familiarity): 0.0000
-- `home_lineup_rotation_rate` (stability): 0.0000
-- `away_shared_minutes_score` (familiarity): 0.0000
 - `away_lineup_familiarity_score` (familiarity): 0.0000
-- `home_manager_stability_score` (stability): 0.0000
+- `away_shared_starts_score` (familiarity): 0.0000
+- `away_shared_minutes_score` (familiarity): 0.0000
 - `away_lineup_rotation_rate` (stability): 0.0000
-- `away_same_midfield` (continuity): 0.0000
-- `home_squad_consistency_score` (stability): 0.0000
+- `away_same_back_four` (continuity): 0.0000
+- `away_manager_stability_score` (stability): 0.0000
 
 ## Production Decision
 
