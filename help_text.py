@@ -13,22 +13,22 @@ def _bullet_lines(items: list[str]) -> str:
 
 def how_model_works_text() -> str:
     return (
-        "Modellen bruger machine learning til at estimere sandsynligheder for hjemmesejr, uafgjort og udesejr. "
-        "Den er trænet og testet på historiske Premier League-kampe og bruger kun produktionsfeatures, der kan "
-        "beregnes ud fra data, som findes før kampen. Den forudsiger sandsynligheder, ikke sikre resultater."
+        "The model uses machine learning to estimate probabilities for home win, draw and away win. "
+        "It is trained and tested on historical Premier League matches and only uses production features "
+        "that can be calculated from information available before kickoff. It predicts probabilities, not certainties."
     )
 
 
 def active_features_text(feature_columns: list[str]) -> str:
     entries = active_feature_statuses(feature_columns)
     if not entries:
-        return "Der er ikke registreret aktive produktionsfeatures for den indlæste model."
+        return "No active production features are registered for the loaded model."
     lines = []
     for name, entry in entries.items():
         if name == "Calibrated probabilities":
-            lines.append(f"**{name}**: {entry.short_description} Det gør de viste sandsynligheder mere realistiske historisk.")
+            lines.append(f"**{name}**: {entry.short_description} This makes the displayed probabilities more realistic historically.")
         else:
-            lines.append(f"**{name}**: {entry.short_description} Det hjælper modellen med at vurdere kampens styrkeforhold.")
+            lines.append(f"**{name}**: {entry.short_description} This helps the model assess the balance of the match.")
     return "\n\n".join(lines)
 
 
@@ -49,36 +49,36 @@ def investigated_features_text() -> str:
 
 def probability_confidence_text() -> str:
     return (
-        "**Probability** er modellens estimerede chance for et udfald. Hvis Arsenal står til 58%, betyder det ikke, "
-        "at Arsenal vinder med sikkerhed, men at modellen vurderer hjemmesejr som mest sandsynlig.\n\n"
-        "**Confidence** beskriver hvor stabil og pålidelig selve estimatet virker. En kamp kan godt have en klar "
-        "favorit, men stadig lavere confidence, hvis data er mangelfuld, sandsynlighederne er tætte, eller modellen "
-        "historisk har haft sværere ved den type kamp."
+        "**Probability** is the model's estimated chance of an outcome. If Arsenal is shown at 58%, it does not mean "
+        "Arsenal will definitely win; it means the model rates that outcome as the most likely one.\n\n"
+        "**Confidence** describes how stable and reliable the estimate appears. A match can have a clear favorite "
+        "but still lower confidence if data quality is weaker, the probabilities are close, or this type of match "
+        "has historically been harder for the model."
     )
 
 
 def raw_vs_displayed_probability_text() -> str:
     return (
-        "**Raw probability** er den direkte sandsynlighed fra XGBoost-modellen.\n\n"
-        "**Displayed probability** er den sandsynlighed brugeren ser. Hvis et valideret kalibreringslag er aktivt, "
-        "justeres raw output, så sandsynlighederne bedre matcher historiske udfald i testperioden."
+        "**Raw probability** is the direct probability output from the XGBoost model.\n\n"
+        "**Displayed probability** is the probability shown to users. If a validated calibration layer is active, "
+        "the raw output is adjusted so predicted probabilities better match historical outcomes in the test period."
     )
 
 
 def fair_odds_text() -> str:
     return (
-        "Fair odds beregnes som `1 / sandsynlighed`. Hvis modellen giver 50% sandsynlighed, er fair odds 2.00. "
-        "Et bookmakerodds over modellens fair odds kan ligne value, men det er ikke i sig selv et betsignal. "
-        "Det skal valideres historisk mod bookmaker odds og timing, før det kan bruges seriøst."
+        "Fair odds are calculated as `1 / probability`. If the model gives an outcome a 50% probability, the fair odds are 2.00. "
+        "A bookmaker price above the model's fair odds may look like value, but it is not a betting signal by itself. "
+        "It must be validated historically against bookmaker odds and odds timing before it can be used seriously."
     )
 
 
 def season_projection_text() -> str:
     return (
-        "Sæsonprojektionen forudsiger hver kamp med matchmodellen og simulerer derefter sæsonen mange gange. "
-        "Resultatet viser forventede point, forventet placering og sandsynligheder for titel, top 4, top 6 og nedrykning. "
-        "Hvis der ikke findes en officiel fixtureliste i `data/upcoming_fixtures.csv`, bruger appen en neutral "
-        "home/away fixture-skeleton. Så er projektionen nyttig som styrkebillede, men ikke som en fuld fixture-aware forecast."
+        "The season projection predicts every fixture with the match model and then simulates the season many times. "
+        "The output includes expected points, expected position, and probabilities for title, top 4, top 6 and relegation. "
+        "If no official fixture list exists in `data/upcoming_fixtures.csv`, the app uses a neutral home/away fixture skeleton. "
+        "In that case, the projection is useful as a strength estimate, but not as a fully fixture-aware forecast."
     )
 
 
@@ -112,8 +112,8 @@ def validation_text(metrics: dict[str, Any], model_path: Path) -> str:
             f"Log Loss: {float(row.get('log_loss', 0.0)):.4f}",
             f"Brier Score: {float(row.get('brier_score', 0.0)):.4f}",
             f"Calibration Error/ECE: {float(row.get('mean_absolute_calibration_error', 0.0)):.4f}",
-            f"Test period starts: {row.get('test_start_date', 'unknown')}",
-            f"Test matches: {int(row.get('test_rows', 0))}",
+            f"Training data: matches before {row.get('test_start_date', 'unknown')}",
+            f"Test data: {int(row.get('test_rows', 0))} later matches from {row.get('test_start_date', 'unknown')}",
             f"Model file updated: {updated}",
         ]
     )

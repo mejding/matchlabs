@@ -844,8 +844,8 @@ def render_validation_card(metrics: dict) -> None:
         cols[2].metric("Brier", f"{float(row.get('brier_score', 0.0)):.3f}")
         cols[3].metric("ECE", f"{float(row.get('mean_absolute_calibration_error', 0.0)):.3f}")
         st.caption(
-            f"Time-based test from {row.get('test_start_date', 'unknown')} "
-            f"across {int(row.get('test_rows', 0))} matches."
+            f"Trained on matches before {row.get('test_start_date', 'unknown')}. "
+            f"Tested on {int(row.get('test_rows', 0))} later matches from {row.get('test_start_date', 'unknown')} onward."
         )
 
 
@@ -1484,7 +1484,10 @@ def main() -> None:
                 or {}
             )
             if latest.get("test_start_date"):
-                st.caption(f"Saved model test period starts: {latest['test_start_date']}")
+                st.caption(
+                    f"Validation split: trained before {latest['test_start_date']}; "
+                    f"tested on {int(latest.get('test_rows', 0))} later matches."
+                )
 
     if home_team == away_team:
         st.error("Choose two different teams.")
