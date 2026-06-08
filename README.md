@@ -665,6 +665,14 @@ python manager_intelligence_experiments.py
 
 This extracts 2024/25 match-level manager rows from the local FBref cache and writes `manager_consistency_report.md`, `manager_data_quality_report.md`, `manager_bounce_analysis.md`, and outputs in `evaluation/manager_intelligence/`. Manager features remain research-only because the latest run worsened out-of-sample log loss and Brier score versus the production baseline.
 
+Run the shot efficiency evaluation:
+
+```bash
+python shot_efficiency_experiments.py
+```
+
+This generates `shot_efficiency_report.md` and outputs in `evaluation/shot_efficiency/`. The latest run found that simple shot volume features are a production candidate because they improved out-of-sample log loss, Brier score, and ECE. Finishing-efficiency features such as `goals_minus_xg` remain research-only because they appear noisier and were not the best-performing feature family.
+
 ## Robustness upgrade
 
 Useful commands:

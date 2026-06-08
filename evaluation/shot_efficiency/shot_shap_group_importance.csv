@@ -1,0 +1,5 @@
+feature_group,mean_abs_shap
+production,0.6476116
+shot_efficiency,0.2685319
+defensive_shot_prevention,0.24399428
+shot_volume,0.056953814
