@@ -38,6 +38,12 @@ Activation requirements:
 
 Current decision: market odds remain benchmark-only. The market-only benchmark beats the model, but no odds fields are currently verified as safe pre-match production inputs.
 
+OddsPortal opening odds status:
+
+- OddsPortal explicitly distinguishes opening odds from closing odds, so opening odds are a promising `SAFE_PREMATCH_CANDIDATE`.
+- They are not production-active until we have a reproducible and permitted data path with separate opening prices, bookmaker, market, kickoff date/time and source audit trail.
+- Closing OddsPortal prices should remain benchmark-only for the same reason as football-data closing odds: they may contain late pre-match information that would leak into early predictions.
+
 ## Research / Inactive Features
 
 These features should stay out of production unless real historical data is added and they improve out-of-sample metrics:
