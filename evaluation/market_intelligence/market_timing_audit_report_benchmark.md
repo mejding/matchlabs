@@ -12,7 +12,7 @@ Edges are calculated as model probability minus market probability.
 
 Important timing note: benchmark mode uses audited benchmark-only prices, preferring average closing odds when available. Research mode uses listed football-data odds with unknown timing. Opening mode requires a separate verified opening-odds file. Closing, average and maximum prices may contain information unavailable at early prediction time, so market odds should not be used in live production until odds timing is controlled.
 
-Market mode evaluated in this run: `research`.
+Market mode evaluated in this run: `benchmark`.
 
 Safe pre-match odds fields currently verified: None.
 
@@ -21,18 +21,18 @@ Safe pre-match odds fields currently verified: None.
 | model | accuracy | log_loss | brier_score | calibration_score | ece |
 | --- | --- | --- | --- | --- | --- |
 | Model A: current production model | 0.4860 | 1.0488 | 0.6295 | 0.0528 | 0.0528 |
-| Model B: market-only research model | 0.5121 | 1.0045 | 0.6017 | 0.0320 | 0.0320 |
-| Model C: current model + research odds (research only) | 0.4486 | 1.3197 | 0.7397 | 0.1723 | 0.1723 |
+| Model B: market-only benchmark model | 0.5178 | 0.9980 | 0.5976 | 0.0253 | 0.0253 |
+| Model C: current model + benchmark odds (research only) | 0.4355 | 1.3589 | 0.7569 | 0.1859 | 0.1859 |
 | Model D: production + safe-prematch odds | nan | nan | nan | nan | nan |
 
-Best model by log loss: `Model B: market-only research model`.
+Best model by log loss: `Model B: market-only benchmark model`.
 
 ## 1. Does market information improve predictions?
 
 Model C vs Model A:
 
-- Log loss change: 0.2709
-- Brier score change: 0.1101
+- Log loss change: 0.3101
+- Brier score change: 0.1274
 
 Answer: No, adding market odds as model features did not improve the current model in this run.
 
@@ -40,8 +40,8 @@ Answer: No, adding market odds as model features did not improve the current mod
 
 Model B vs Model A:
 
-- Log loss change: -0.0443
-- Brier score change: -0.0278
+- Log loss change: -0.0507
+- Brier score change: -0.0319
 
 Answer: Yes. Market-only probabilities are stronger than the current model on this historical test period.
 
@@ -51,9 +51,9 @@ Disagreement summary:
 
 | segment | matches | model_accuracy | market_accuracy | mean_abs_edge |
 | --- | --- | --- | --- | --- |
-| all_test_matches | 535 | 0.4860 | 0.5121 | 0.1078 |
-| model_market_disagreements | 85 | 0.3059 | 0.4706 | 0.1707 |
-| large_edges_top_quartile | 134 | 0.4701 | 0.5821 | 0.2017 |
+| all_test_matches | 535 | 0.4860 | 0.5178 | 0.1103 |
+| model_market_disagreements | 88 | 0.2955 | 0.4886 | 0.1710 |
+| large_edges_top_quartile | 134 | 0.4851 | 0.5821 | 0.2040 |
 
 Largest individual disagreements are saved to `evaluation/market_intelligence/market_disagreements.csv`.
 
@@ -65,15 +65,15 @@ If model accuracy on disagreement segments is higher than market accuracy, the m
 
 Top market/edge SHAP features:
 
-- `model_vs_market_draw_edge` (edge): 0.5383
-- `market_home_prob` (market): 0.2554
-- `model_vs_market_away_edge` (edge): 0.2306
-- `market_away_prob` (market): 0.2000
-- `model_vs_market_home_edge` (edge): 0.1471
-- `market_draw_prob` (market): 0.0837
-- `market_favorite_prob` (market): 0.0361
-- `market_favorite_class` (market): 0.0106
-- `market_margin` (market): 0.0066
+- `model_vs_market_draw_edge` (edge): 0.5547
+- `market_home_prob` (market): 0.3082
+- `model_vs_market_away_edge` (edge): 0.2194
+- `model_vs_market_home_edge` (edge): 0.1582
+- `market_away_prob` (market): 0.1542
+- `market_draw_prob` (market): 0.0764
+- `market_favorite_prob` (market): 0.0525
+- `market_margin` (market): 0.0364
+- `market_favorite_class` (market): 0.0127
 
 Full SHAP outputs:
 

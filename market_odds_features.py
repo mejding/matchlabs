@@ -24,6 +24,16 @@ ODDS_PRIORITY = [
     ("AvgH", "AvgD", "AvgA", "average listed odds"),
     ("MaxH", "MaxD", "MaxA", "maximum listed odds"),
 ]
+OPENING_ODDS_PATH = DATA_DIR / "oddsportal_opening_odds.csv"
+OPENING_ODDS_REQUIRED_COLUMNS = [
+    "Season",
+    "Date",
+    "HomeTeam",
+    "AwayTeam",
+    "home_open_odds",
+    "draw_open_odds",
+    "away_open_odds",
+]
 SINGLE_BOOKMAKER_LISTED_PRIORITY = [
     ("B365H", "B365D", "B365A", "Bet365 listed odds"),
     ("BWH", "BWD", "BWA", "Bwin listed odds"),
@@ -50,7 +60,7 @@ def decimal_odds_to_probabilities(home_odds: float, draw_odds: float, away_odds:
 
 
 def odds_priority_for_mode(market_mode: str) -> list[tuple[str, str, str, str]]:
-    if market_mode == "none":
+    if market_mode in {"none", "opening"}:
         return []
     if market_mode == "safe-prematch":
         safe_columns = set(safe_prematch_columns())
@@ -63,10 +73,51 @@ def odds_priority_for_mode(market_mode: str) -> list[tuple[str, str, str, str]]:
         return SINGLE_BOOKMAKER_LISTED_PRIORITY + ODDS_PRIORITY
     if market_mode == "benchmark":
         return ODDS_PRIORITY
-    raise ValueError("market_mode must be one of: none, benchmark, research, safe-prematch")
+    raise ValueError("market_mode must be one of: none, benchmark, research, safe-prematch, opening")
+
+
+def load_opening_market_odds() -> pd.DataFrame:
+    """Load verified opening odds if a separately audited dataset exists."""
+    if not OPENING_ODDS_PATH.exists():
+        return pd.DataFrame()
+
+    frame = pd.read_csv(OPENING_ODDS_PATH)
+    missing = [column for column in OPENING_ODDS_REQUIRED_COLUMNS if column not in frame.columns]
+    if missing:
+        raise ValueError(f"{OPENING_ODDS_PATH} is missing required columns: {missing}")
+
+    frame = frame.copy()
+    frame["Date"] = pd.to_datetime(frame["Date"], errors="coerce").dt.date
+    rows = []
+    for _, row in frame.iterrows():
+        values = [row.get("home_open_odds"), row.get("draw_open_odds"), row.get("away_open_odds")]
+        if not all(pd.notna(value) and float(value) > 1.0 for value in values):
+            continue
+        probs = decimal_odds_to_probabilities(float(values[0]), float(values[1]), float(values[2]))
+        favorite_class = int(np.argmax([probs["market_home_prob"], probs["market_draw_prob"], probs["market_away_prob"]]))
+        rows.append(
+            {
+                "Season": str(row["Season"]),
+                "Date": row["Date"],
+                "HomeTeam": row["HomeTeam"],
+                "AwayTeam": row["AwayTeam"],
+                "odds_source": row.get("odds_source", "OddsPortal opening odds"),
+                "market_mode": "opening",
+                "home_odds": float(values[0]),
+                "draw_odds": float(values[1]),
+                "away_odds": float(values[2]),
+                **probs,
+                "market_favorite_prob": max(probs["market_home_prob"], probs["market_draw_prob"], probs["market_away_prob"]),
+                "market_favorite_class": favorite_class,
+            }
+        )
+    return pd.DataFrame(rows)
 
 
 def load_market_odds(market_mode: str = "benchmark") -> pd.DataFrame:
+    if market_mode == "opening":
+        return load_opening_market_odds()
+
     priority = odds_priority_for_mode(market_mode)
     if not priority:
         return pd.DataFrame()

@@ -22,7 +22,8 @@ from market_odds_features import add_market_features
 from odds_timing_audit import safe_prematch_columns, write_odds_column_inventory
 from tactical_data import ensure_tactical_tables, load_team_match_tactics
 from tactical_features import build_tactical_features
-from train_model import SCHEDULE_FEATURE_COLUMNS, build_features, load_matches_with_xg
+from elo_rating_features import build_elo_features
+from train_model import ELO_CONFIG, PRODUCTION_FEATURE_COLUMNS, build_features, load_matches_with_xg
 from visualizations.plots import gain_importance, plot_feature_importance
 
 matplotlib.use("Agg")
@@ -75,7 +76,9 @@ def build_market_dataset(market_mode: str = "benchmark") -> tuple[pd.DataFrame, 
         matches = load_matches_with_xg().sort_values("Date").reset_index(drop=True)
     else:
         matches = matches.dropna(subset=MARKET_COLUMNS).reset_index(drop=True)
-    base_dataset, _ = build_features(matches, include_xg=True, include_schedule=True)
+    base_dataset, _ = build_features(matches, include_xg=True, include_schedule=True, include_shot_volume=True)
+    elo_features, _ = build_elo_features(matches, ELO_CONFIG)
+    base_dataset = pd.concat([base_dataset.reset_index(drop=True), elo_features.reset_index(drop=True)], axis=1)
 
     tactical_columns: list[str] = []
     try:
@@ -95,7 +98,7 @@ def build_market_dataset(market_mode: str = "benchmark") -> tuple[pd.DataFrame, 
     else:
         metadata_columns = ["Season", "Date", "HomeTeam", "AwayTeam", "FTR"]
     metadata = matches[metadata_columns].reset_index(drop=True)
-    return dataset, metadata, SCHEDULE_FEATURE_COLUMNS + tactical_columns
+    return dataset, metadata, PRODUCTION_FEATURE_COLUMNS + tactical_columns
 
 
 def evaluate_probabilities(name: str, y_true: pd.Series, probabilities: np.ndarray) -> dict[str, float | str]:
@@ -211,7 +214,13 @@ def shap_outputs(model, X_test: pd.DataFrame) -> pd.DataFrame:
     return shap_importance
 
 
-def write_report(results: pd.DataFrame, disagreements: pd.DataFrame, summary: pd.DataFrame, shap_importance: pd.DataFrame) -> None:
+def write_report(
+    results: pd.DataFrame,
+    disagreements: pd.DataFrame,
+    summary: pd.DataFrame,
+    shap_importance: pd.DataFrame,
+    market_mode: str,
+) -> None:
     best = results.sort_values(["log_loss", "brier_score"]).iloc[0]
     model_a = results[results["model"].str.startswith("Model A")].iloc[0]
     model_b = results[results["model"].str.startswith("Model B")].iloc[0]
@@ -235,7 +244,9 @@ Bookmaker odds are converted from decimal odds to normalized implied probabiliti
 
 Edges are calculated as model probability minus market probability.
 
-Important timing note: benchmark mode uses audited benchmark-only prices, preferring average closing odds when available. Closing, average and maximum prices may contain information unavailable at early prediction time, so market odds should not be used in live production until odds timing is controlled.
+Important timing note: benchmark mode uses audited benchmark-only prices, preferring average closing odds when available. Research mode uses listed football-data odds with unknown timing. Opening mode requires a separate verified opening-odds file. Closing, average and maximum prices may contain information unavailable at early prediction time, so market odds should not be used in live production until odds timing is controlled.
+
+Market mode evaluated in this run: `{market_mode}`.
 
 Safe pre-match odds fields currently verified: {', '.join(safe_columns) if safe_columns else 'None'}.
 
@@ -289,7 +300,7 @@ Full SHAP outputs:
 
 ## Production Decision
 
-{'Move market odds forward as a production candidate only if odds timing is controlled.' if model_plus_market_improves else 'Do not move market odds into production. Keep as benchmark/research-only until model + market improves out-of-sample and odds timing is controlled.'}
+{'Move market odds forward as a production candidate only if odds timing is controlled and the evaluated mode is opening/safe-prematch.' if model_plus_market_improves and market_mode in {'opening', 'safe-prematch'} else 'Do not move market odds into production. Keep as benchmark/research-only until model + market improves out-of-sample and odds timing is controlled.'}
 """
     )
     Path("market_intelligence_report.md").write_text(Path("market_timing_audit_report.md").read_text())
@@ -298,13 +309,72 @@ Full SHAP outputs:
 def run_comparison(market_mode: str = "benchmark") -> pd.DataFrame:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     write_odds_column_inventory()
+    evaluated_market_mode = market_mode if market_mode != "none" else "benchmark"
     dataset, metadata, production_columns = build_market_dataset(market_mode="none")
     split = time_based_split(dataset[production_columns], dataset["target"], metadata)
     model_a = train_xgb(split.X_train, split.y_train)
     model_a_train_probs = normalize_probabilities(model_a.predict_proba(split.X_train))
     model_a_test_probs = normalize_probabilities(model_a.predict_proba(split.X_test))
 
-    benchmark_dataset, benchmark_metadata, benchmark_production_columns = build_market_dataset(market_mode="benchmark")
+    benchmark_dataset, benchmark_metadata, benchmark_production_columns = build_market_dataset(market_mode=evaluated_market_mode)
+    has_evaluated_market = all(column in benchmark_dataset.columns for column in MARKET_COLUMNS)
+    if not has_evaluated_market:
+        rows = [
+            evaluate_probabilities("Model A: current production model", split.y_test, model_a_test_probs),
+            {
+                "model": f"Model B: market-only {evaluated_market_mode} model",
+                "accuracy": np.nan,
+                "log_loss": np.nan,
+                "brier_score": np.nan,
+                "calibration_score": np.nan,
+                "ece": np.nan,
+            },
+            {
+                "model": f"Model C: current model + {evaluated_market_mode} odds",
+                "accuracy": np.nan,
+                "log_loss": np.nan,
+                "brier_score": np.nan,
+                "calibration_score": np.nan,
+                "ece": np.nan,
+            },
+            {
+                "model": "Model D: production + safe-prematch odds",
+                "accuracy": np.nan,
+                "log_loss": np.nan,
+                "brier_score": np.nan,
+                "calibration_score": np.nan,
+                "ece": np.nan,
+            },
+        ]
+        results = pd.DataFrame(rows)
+        results.to_csv(OUTPUT_DIR / "market_model_comparison.csv", index=False)
+        results.to_csv(OUTPUT_DIR / f"market_model_comparison_{evaluated_market_mode}.csv", index=False)
+        results.to_csv("market_intelligence_results.csv", index=False)
+        results.to_csv(RESULTS_PATH, index=False)
+        Path("market_timing_audit_report.md").write_text(
+            f"""# Market Intelligence Report
+
+Market mode evaluated in this run: `{evaluated_market_mode}`.
+
+No usable market odds were available for this mode.
+
+For `opening` mode, create `data/oddsportal_opening_odds.csv` with verified pre-match opening prices before rerunning the experiment.
+
+## Model Comparison
+
+{_markdown_table(results, ['model', 'accuracy', 'log_loss', 'brier_score', 'calibration_score', 'ece'])}
+
+## Production Decision
+
+Do not move market odds into production. There is not enough verified opening/pre-match data in the project yet.
+"""
+        )
+        Path("market_intelligence_report.md").write_text(Path("market_timing_audit_report.md").read_text())
+        (OUTPUT_DIR / f"market_timing_audit_report_{evaluated_market_mode}.md").write_text(
+            Path("market_timing_audit_report.md").read_text()
+        )
+        return results
+
     benchmark_split = time_based_split(benchmark_dataset[benchmark_production_columns], benchmark_dataset["target"], benchmark_metadata)
     benchmark_model = train_xgb(benchmark_split.X_train, benchmark_split.y_train)
     benchmark_model_train_probs = normalize_probabilities(benchmark_model.predict_proba(benchmark_split.X_train))
@@ -323,8 +393,8 @@ def run_comparison(market_mode: str = "benchmark") -> pd.DataFrame:
 
     rows = [
         evaluate_probabilities("Model A: current production model", split.y_test, model_a_test_probs),
-        evaluate_probabilities("Model B: market-only benchmark model", benchmark_split.y_test, market_test_probs),
-        evaluate_probabilities("Model C: current model + benchmark odds (research only)", split_c.y_test, model_c_probs),
+        evaluate_probabilities(f"Model B: market-only {evaluated_market_mode} model", benchmark_split.y_test, market_test_probs),
+        evaluate_probabilities(f"Model C: current model + {evaluated_market_mode} odds (research only)", split_c.y_test, model_c_probs),
     ]
 
     safe_dataset, safe_metadata, safe_production_columns = build_market_dataset(market_mode="safe-prematch")
@@ -346,7 +416,7 @@ def run_comparison(market_mode: str = "benchmark") -> pd.DataFrame:
             }
         )
 
-    if market_mode == "benchmark":
+    if evaluated_market_mode == "benchmark":
         # Keep the previously useful calibrated benchmark blend as a side artifact, not a production model.
         blend_probs = fit_calibrated_blend(
             benchmark_split.y_train,
@@ -361,6 +431,7 @@ def run_comparison(market_mode: str = "benchmark") -> pd.DataFrame:
 
     results = pd.DataFrame(rows)
     results.to_csv(OUTPUT_DIR / "market_model_comparison.csv", index=False)
+    results.to_csv(OUTPUT_DIR / f"market_model_comparison_{evaluated_market_mode}.csv", index=False)
     results.to_csv("market_intelligence_results.csv", index=False)
     results.to_csv(RESULTS_PATH, index=False)
     plot_model_comparison(results, OUTPUT_DIR / "market_model_comparison.png")
@@ -394,7 +465,10 @@ def run_comparison(market_mode: str = "benchmark") -> pd.DataFrame:
     gain.to_csv(OUTPUT_DIR / "market_gain_importance.csv", index=False)
     plot_feature_importance(gain.head(35), "gain_importance", "Market Intelligence Gain Importance", OUTPUT_DIR / "market_gain_importance.png")
     shap_importance = shap_outputs(model_c, split_c.X_test)
-    write_report(results, disagreements, summary, shap_importance)
+    write_report(results, disagreements, summary, shap_importance, evaluated_market_mode)
+    (OUTPUT_DIR / f"market_timing_audit_report_{evaluated_market_mode}.md").write_text(
+        Path("market_timing_audit_report.md").read_text()
+    )
     return results
 
 
@@ -402,7 +476,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run market timing and odds intelligence experiments.")
     parser.add_argument(
         "--market-mode",
-        choices=["none", "benchmark", "research", "safe-prematch"],
+        choices=["none", "benchmark", "research", "safe-prematch", "opening"],
         default="benchmark",
         help="Controls odds feature usage. Benchmark compares market without production training; research trains offline; safe-prematch only uses verified safe fields.",
     )

@@ -10,7 +10,9 @@ Bookmaker odds are converted from decimal odds to normalized implied probabiliti
 
 Edges are calculated as model probability minus market probability.
 
-Important timing note: benchmark mode uses audited benchmark-only prices, preferring average closing odds when available. Closing, average and maximum prices may contain information unavailable at early prediction time, so market odds should not be used in live production until odds timing is controlled.
+Important timing note: benchmark mode uses audited benchmark-only prices, preferring average closing odds when available. Research mode uses listed football-data odds with unknown timing. Opening mode requires a separate verified opening-odds file. Closing, average and maximum prices may contain information unavailable at early prediction time, so market odds should not be used in live production until odds timing is controlled.
+
+Market mode evaluated in this run: `research`.
 
 Safe pre-match odds fields currently verified: None.
 
@@ -18,19 +20,19 @@ Safe pre-match odds fields currently verified: None.
 
 | model | accuracy | log_loss | brier_score | calibration_score | ece |
 | --- | --- | --- | --- | --- | --- |
-| Model A: current production model | 0.5142 | 0.9946 | 0.5946 | 0.0499 | 0.0499 |
-| Model B: market-only benchmark model | 0.5733 | 0.9467 | 0.5603 | 0.0416 | 0.0416 |
-| Model C: current model + benchmark odds (research only) | 0.5098 | 1.1793 | 0.6738 | 0.1233 | 0.1233 |
+| Model A: current production model | 0.4860 | 1.0488 | 0.6295 | 0.0528 | 0.0528 |
+| Model B: market-only research model | 0.5121 | 1.0045 | 0.6017 | 0.0320 | 0.0320 |
+| Model C: current model + research odds (research only) | 0.4486 | 1.3197 | 0.7397 | 0.1723 | 0.1723 |
 | Model D: production + safe-prematch odds | nan | nan | nan | nan | nan |
 
-Best model by log loss: `Model B: market-only benchmark model`.
+Best model by log loss: `Model B: market-only research model`.
 
 ## 1. Does market information improve predictions?
 
 Model C vs Model A:
 
-- Log loss change: 0.1846
-- Brier score change: 0.0792
+- Log loss change: 0.2709
+- Brier score change: 0.1101
 
 Answer: No, adding market odds as model features did not improve the current model in this run.
 
@@ -38,8 +40,8 @@ Answer: No, adding market odds as model features did not improve the current mod
 
 Model B vs Model A:
 
-- Log loss change: -0.0479
-- Brier score change: -0.0343
+- Log loss change: -0.0443
+- Brier score change: -0.0278
 
 Answer: Yes. Market-only probabilities are stronger than the current model on this historical test period.
 
@@ -49,9 +51,9 @@ Disagreement summary:
 
 | segment | matches | model_accuracy | market_accuracy | mean_abs_edge |
 | --- | --- | --- | --- | --- |
-| all_test_matches | 457 | 0.5142 | 0.5733 | 0.1314 |
-| model_market_disagreements | 99 | 0.2323 | 0.5051 | 0.1966 |
-| large_edges_top_quartile | 115 | 0.4609 | 0.6087 | 0.2507 |
+| all_test_matches | 535 | 0.4860 | 0.5121 | 0.1078 |
+| model_market_disagreements | 85 | 0.3059 | 0.4706 | 0.1707 |
+| large_edges_top_quartile | 134 | 0.4701 | 0.5821 | 0.2017 |
 
 Largest individual disagreements are saved to `evaluation/market_intelligence/market_disagreements.csv`.
 
@@ -63,15 +65,15 @@ If model accuracy on disagreement segments is higher than market accuracy, the m
 
 Top market/edge SHAP features:
 
-- `model_vs_market_draw_edge` (edge): 0.4589
-- `market_home_prob` (market): 0.2809
-- `model_vs_market_away_edge` (edge): 0.2107
-- `market_away_prob` (market): 0.1923
-- `model_vs_market_home_edge` (edge): 0.1614
-- `market_draw_prob` (market): 0.1183
-- `market_favorite_prob` (market): 0.0550
-- `market_favorite_class` (market): 0.0369
-- `market_margin` (market): 0.0122
+- `model_vs_market_draw_edge` (edge): 0.5383
+- `market_home_prob` (market): 0.2554
+- `model_vs_market_away_edge` (edge): 0.2306
+- `market_away_prob` (market): 0.2000
+- `model_vs_market_home_edge` (edge): 0.1471
+- `market_draw_prob` (market): 0.0837
+- `market_favorite_prob` (market): 0.0361
+- `market_favorite_class` (market): 0.0106
+- `market_margin` (market): 0.0066
 
 Full SHAP outputs:
 

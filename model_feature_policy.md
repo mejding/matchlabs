@@ -44,6 +44,12 @@ OddsPortal opening odds status:
 - They are not production-active until we have a reproducible and permitted data path with separate opening prices, bookmaker, market, kickoff date/time and source audit trail.
 - Closing OddsPortal prices should remain benchmark-only for the same reason as football-data closing odds: they may contain late pre-match information that would leak into early predictions.
 
+Latest market production decision:
+
+- Benchmark and research-mode market-only probabilities beat the current production model on the time-based test.
+- Directly adding benchmark/research odds to the XGBoost feature set worsened out-of-sample Log Loss, Brier Score and calibration.
+- Keep market odds as benchmark/edge context only until a verified opening-odds dataset exists and direct integration or a calibrated blend improves out-of-sample metrics.
+
 ## Research / Inactive Features
 
 These features should stay out of production unless real historical data is added and they improve out-of-sample metrics:
