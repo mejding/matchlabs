@@ -680,7 +680,7 @@ Run the manager consistency experiment:
 python manager_intelligence_experiments.py
 ```
 
-This extracts 2024/25 match-level manager rows from the local FBref cache and writes `manager_consistency_report.md`, `manager_data_quality_report.md`, `manager_bounce_analysis.md`, and outputs in `evaluation/manager_intelligence/`. Manager features remain research-only because the latest run worsened out-of-sample log loss and Brier score versus the production baseline.
+This extracts locally cached FBref match-level manager rows and writes `manager_consistency_report.md`, `manager_data_quality_report.md`, `manager_bounce_analysis.md`, and outputs in `evaluation/manager_intelligence/`. The current local manager coverage is 2023/24 and 2024/25. Manager features remain research-only because the latest run worsened out-of-sample log loss and Brier score versus the production baseline.
 
 Run the shot efficiency evaluation:
 
@@ -715,6 +715,41 @@ Generated reports:
 - `robustness_upgrade_report.md`
 
 Calibration means adjusting probability outputs so that, for example, predictions around 60% happen about 60% of the time. Confidence is not the same as probability: probability is the model's estimated chance of each outcome, while confidence reflects stability, calibration and data quality.
+
+## Feature Status Source Of Truth
+
+Feature status is maintained in `model_feature_status.py` and surfaced in the Streamlit help text through `help_text.py`. A feature should only be marked `Active` when it is actually present in `models/football_model.joblib` or is an active production post-processing layer such as calibrated probabilities.
+
+Current feature status:
+
+| Feature family | Status | Used in production | Evidence |
+| --- | --- | --- | --- |
+| Recent form | Active | yes | Present in models/football_model.joblib as team points last 5 and goals scored averages. |
+| Home advantage | Active | yes | Present in models/football_model.joblib as home_advantage. |
+| xG strength | Active | yes | Present in models/football_model.joblib as home/away xG, xGA and xG differential columns. |
+| Schedule and fatigue | Active | yes | Present in models/football_model.joblib as rest and last-14-days scheduling columns. |
+| Elo rating | Active | yes | Elo was promoted after Sprint 4B and is present in models/football_model.joblib. |
+| Shot volume | Active | yes | Activated after shot_efficiency_report.md and production retrain improved Log Loss and Brier. |
+| Calibrated probabilities | Active | yes | models/calibrated_probability_layer.joblib is loaded by app.py when its feature list matches the production model. |
+| Market odds | Benchmark only | no | market_timing_audit_report.md keeps odds out of production because timing may reflect closing prices. |
+| Head-to-head | Tested - Not adopted | no | head_to_head_intelligence_report.md keeps H2H research-only despite some draw-metric improvement. |
+| Manager consistency | Tested - Not adopted | no | manager_consistency_report.md shows worse Log Loss, Brier and ECE than production. |
+| Lineup stability | Research | no | lineup_stability_report.md shows worse out-of-sample Log Loss and Brier than production. |
+| Injuries and suspensions | Missing | no | injury_data_quality_report.md and injury_engine_report.md say injury features should not be activated. |
+| Tactical intelligence | Research | no | tactical_intelligence_report.md says only limited shots-derived tactical data is available; broader tactics stay research-only. |
+| Venue-specific form | Tested - Not adopted | no | venue_specific_features_report.md says the venue-specific set did not improve both Log Loss and Brier robustly. |
+| Shot efficiency | Tested - Not adopted | no | shot_efficiency_report.md keeps finishing-efficiency and goals-minus-xG research-only/noisy. |
+
+Refresh model metrics:
+
+```bash
+python train_model.py --mode production
+python calibration_improvement.py
+python evaluate_model.py
+python feature_status_checks.py
+```
+
+After future experiments, update `model_feature_status.py` only when the evidence comes from out-of-sample, time-based validation. Do not promote a feature based only on intuition, in-sample accuracy, or SHAP importance.
 
 ## Troubleshooting
 

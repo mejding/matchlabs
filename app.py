@@ -13,6 +13,18 @@ import pandas as pd
 import streamlit as st
 
 from data_quality import assess_prediction_data_quality
+from help_text import (
+    active_features_text,
+    fair_odds_text,
+    how_model_works_text,
+    investigated_features_text,
+    probability_confidence_text,
+    raw_vs_displayed_probability_text,
+    season_projection_text,
+    validation_metrics,
+    validation_text,
+)
+from model_feature_status import FEATURE_STATUS, active_feature_statuses, inactive_feature_statuses, status_tone
 from predict import MODEL_PATH, build_prediction_features
 from season_simulation import (
     expected_points_from_probabilities,
@@ -767,24 +779,29 @@ def render_confidence_badge(probabilities, warnings: list[str]) -> None:
 
 def render_model_status(feature_columns: list[str], checks: dict[str, str] | None = None) -> None:
     checks = checks or {}
-    shot_volume_active = any("shots_avg" in feature or "shots_on_target_avg" in feature for feature in feature_columns)
-    statuses = [
-        ("Match results data", checks.get("Match results data", "Active"), "good"),
-        ("xG data", checks.get("xG data", "Active"), "good" if any("xg" in feature for feature in feature_columns) else "warn"),
-        ("Fatigue features", checks.get("Fatigue features", "Active"), "good" if any("days_rest" in feature for feature in feature_columns) else "warn"),
-        ("Elo rating", checks.get("Elo rating", "Active"), "good" if any("elo" in feature for feature in feature_columns) else "warn"),
-        ("Shot volume", checks.get("Shot volume", "Active"), "good" if shot_volume_active else "warn"),
-        ("Market odds", checks.get("Market odds", "Benchmark only"), "warn"),
+    active = active_feature_statuses(feature_columns)
+    inactive = inactive_feature_statuses()
+    names_to_show = [
+        "Recent form",
+        "xG strength",
+        "Schedule and fatigue",
+        "Elo rating",
+        "Shot volume",
+        "Market odds",
+        "Injuries and suspensions",
+        "Lineup stability",
+        "Tactical intelligence",
+        "Head-to-head",
+        "Manager consistency",
     ]
-    if checks.get("Injury data") == "Available":
-        statuses.append(("Injury data", "Available", "good"))
-    if checks.get("Lineup stability") == "Available":
-        statuses.append(("Lineup stability", "Available", "good"))
-    if checks.get("Tactical pressure") in {"Active", "Candidate"} or any("attacking_pressure" in feature for feature in feature_columns):
-        statuses.append(("Tactical pressure", checks.get("Tactical pressure", "Active"), "good"))
+    statuses = []
+    for name in names_to_show:
+        entry = active.get(name) or inactive.get(name) or FEATURE_STATUS.get(name)
+        if entry is None:
+            continue
+        statuses.append((name, entry.status, status_tone(entry.status), entry.evidence))
     html = '<div class="status-grid">'
-    for name, state, tone in statuses:
-        tooltip = STATUS_EXPLANATIONS.get(state, f"{name}: {state}")
+    for name, state, tone, tooltip in statuses:
         html += dedent(
             f"""
         <div class="status-item" title="{html_lib.escape(tooltip)}">
@@ -795,6 +812,41 @@ def render_model_status(feature_columns: list[str], checks: dict[str, str] | Non
         )
     html += "</div>"
     st.markdown(html, unsafe_allow_html=True)
+
+
+def render_model_help(feature_columns: list[str], metrics: dict) -> None:
+    with st.expander("About the model", expanded=False):
+        st.write(how_model_works_text())
+    with st.expander("Active model features", expanded=False):
+        st.markdown(active_features_text(feature_columns))
+    with st.expander("Tested but not adopted / research", expanded=False):
+        st.markdown(investigated_features_text())
+    with st.expander("Probability, confidence and fair odds", expanded=False):
+        st.markdown(probability_confidence_text())
+        st.markdown(raw_vs_displayed_probability_text())
+        st.markdown(fair_odds_text())
+    with st.expander("Season projections", expanded=False):
+        st.write(season_projection_text())
+    with st.expander("Model validation", expanded=False):
+        st.markdown(validation_text(metrics, MODEL_PATH))
+
+
+def render_validation_card(metrics: dict) -> None:
+    row = validation_metrics(metrics)
+    with st.container(border=True):
+        st.markdown("#### Model Validation")
+        if row is None:
+            st.caption("Validation metrics are not available yet. Run `python evaluate_model.py`.")
+            return
+        cols = st.columns(4)
+        cols[0].metric("Accuracy", f"{float(row.get('accuracy', 0.0)):.3f}")
+        cols[1].metric("Log Loss", f"{float(row.get('log_loss', 0.0)):.3f}")
+        cols[2].metric("Brier", f"{float(row.get('brier_score', 0.0)):.3f}")
+        cols[3].metric("ECE", f"{float(row.get('mean_absolute_calibration_error', 0.0)):.3f}")
+        st.caption(
+            f"Time-based test from {row.get('test_start_date', 'unknown')} "
+            f"across {int(row.get('test_rows', 0))} matches."
+        )
 
 
 def render_data_quality_card(quality_result) -> None:
@@ -1527,8 +1579,12 @@ def main() -> None:
                 "Market odds are currently used as a benchmark only because the available historical odds may represent "
                 "closing prices. They are not used in production predictions until pre-match timing is verified."
             )
+            render_validation_card(metrics)
 
     with technical_tab:
+        st.subheader("Model Help")
+        render_model_help(feature_columns, metrics)
+        st.divider()
         if is_calibrated:
             st.write("Raw model probabilities")
             raw_display = pd.DataFrame(
