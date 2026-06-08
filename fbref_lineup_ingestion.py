@@ -35,6 +35,9 @@ TEAM_ALIASES = {
     "Manchester Utd": "Man United",
     "Manchester United": "Man United",
     "Manchester City": "Man City",
+    "Brighton & Hove Albion": "Brighton",
+    "Ipswich Town": "Ipswich",
+    "Leicester City": "Leicester",
     "Newcastle Utd": "Newcastle",
     "Newcastle United": "Newcastle",
     "Nott'ham Forest": "Nott'm Forest",
@@ -200,8 +203,11 @@ def _enrich_raw_lineups_with_schedule(raw: pd.DataFrame) -> pd.DataFrame:
 
     frame = _flatten_columns(raw)
     schedule = _flatten_columns(pd.read_csv(SCHEDULE_RAW_PATH))
-    raw_match_col = _first_column(frame, ["match_id", "game_id"])
-    schedule_match_col = _first_column(schedule, ["match_id", "game_id"])
+    raw_match_col = _first_column(frame, ["match_id", "game_id", "game"])
+    if raw_match_col and raw_match_col.lower().replace(" ", "_") == "game":
+        schedule_match_col = _first_column(schedule, ["game"])
+    else:
+        schedule_match_col = _first_column(schedule, ["match_id", "game_id", "game"])
     if raw_match_col is None or schedule_match_col is None:
         return frame
 
@@ -357,6 +363,7 @@ def validate_lineup_tables(match_lineups: pd.DataFrame, player_appearances: pd.D
 
     starters = player_appearances[player_appearances["started"] >= 1]
     starter_counts = starters.groupby(["match_id", "team"]).size().reset_index(name="starters")
+    team_rows_per_match = match_lineups.groupby("match_id")["team"].nunique() if not match_lineups.empty else pd.Series(dtype=float)
     duplicate_players = player_appearances.duplicated(["match_id", "team", "player"]).sum()
     duplicate_lineups = match_lineups.duplicated(["match_id", "team"]).sum() if not match_lineups.empty else 0
     missing_dates = int(player_appearances["date"].isna().sum())
@@ -380,6 +387,11 @@ def validate_lineup_tables(match_lineups: pd.DataFrame, player_appearances: pd.D
             "check": "starter_count",
             "status": "pass" if starter_counts["starters"].between(10, 12).mean() > 0.95 else "warn",
             "details": json.dumps(starter_counts["starters"].describe().to_dict()),
+        },
+        {
+            "check": "two_team_lineups_per_match",
+            "status": "pass" if (not team_rows_per_match.empty and team_rows_per_match.eq(2).mean() > 0.95) else "warn",
+            "details": json.dumps(team_rows_per_match.value_counts().sort_index().to_dict()),
         },
     ]
     return pd.DataFrame(rows)
@@ -408,7 +420,7 @@ def write_outputs(
     source_note = (
         "soccerdata fetch was requested; raw FBref rows were normalized when available."
         if fetch_attempted
-        else "No live fetch requested; only local raw FBref exports/cache were used."
+        else "Local raw FBref/soccerdata rows were normalized. Run with `--fetch` to refresh the raw source file."
     )
     coverage = (
         player_appearances.assign(date=pd.to_datetime(player_appearances["date"], errors="coerce"))
@@ -416,7 +428,7 @@ def write_outputs(
         else player_appearances
     )
     seasons = (
-        coverage.groupby("season")["match_id"].nunique().reset_index(name="matches_with_lineups").to_markdown(index=False)
+        _markdown_table(coverage.groupby("season")["match_id"].nunique().reset_index(name="matches_with_lineups"))
         if not coverage.empty
         else "No seasons covered."
     )

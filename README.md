@@ -655,7 +655,7 @@ python fbref_lineup_ingestion.py --fetch --seasons 2024
 python lineup_stability_engine_experiments.py
 ```
 
-The ingestion writes normalized lineup tables to `data/match_lineups.csv`, `data/player_appearances.csv`, `data/formation_history.csv`, and `data/match_substitutions.csv`. Lineup features remain inactive until real historical rows exist and improve out-of-sample log loss or Brier score. See `lineup_fbref_ingestion_report.md` and `lineup_data_quality_report.md`.
+The ingestion writes normalized lineup tables to `data/match_lineups.csv`, `data/player_appearances.csv`, `data/formation_history.csv`, and `data/match_substitutions.csv`. One full 2024/25 FBref season is currently available and validated, but lineup features remain research-only because they worsened out-of-sample log loss, Brier score, and calibration in the latest experiment. See `lineup_fbref_ingestion_report.md` and `lineup_data_quality_report.md`.
 
 ## Robustness upgrade
 

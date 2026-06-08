@@ -1,1 +1,761 @@
 match_id,season,date,team,opponent,is_home,formation,captain,lineup_type,source,source_collected_at
+2425_20240816_man_united_fulham,2425,2024-08-16,Man United,Fulham,1,,,actual,fbref_soccerdata,2024-08-17
+2425_20240816_man_united_fulham,2425,2024-08-16,Fulham,Man United,0,,,actual,fbref_soccerdata,2024-08-17
+2425_20240817_arsenal_wolves,2425,2024-08-17,Arsenal,Wolves,1,,,actual,fbref_soccerdata,2024-08-18
+2425_20240817_arsenal_wolves,2425,2024-08-17,Wolves,Arsenal,0,,,actual,fbref_soccerdata,2024-08-18
+2425_20240817_everton_brighton,2425,2024-08-17,Everton,Brighton,1,,,actual,fbref_soccerdata,2024-08-18
+2425_20240817_everton_brighton,2425,2024-08-17,Brighton,Everton,0,,,actual,fbref_soccerdata,2024-08-18
+2425_20240817_ipswich_liverpool,2425,2024-08-17,Ipswich,Liverpool,1,,,actual,fbref_soccerdata,2024-08-18
+2425_20240817_ipswich_liverpool,2425,2024-08-17,Liverpool,Ipswich,0,,,actual,fbref_soccerdata,2024-08-18
+2425_20240817_newcastle_southampton,2425,2024-08-17,Newcastle,Southampton,1,,,actual,fbref_soccerdata,2024-08-18
+2425_20240817_newcastle_southampton,2425,2024-08-17,Southampton,Newcastle,0,,,actual,fbref_soccerdata,2024-08-18
+2425_20240817_nottm_forest_bournemouth,2425,2024-08-17,Nott'm Forest,Bournemouth,1,,,actual,fbref_soccerdata,2024-08-18
+2425_20240817_nottm_forest_bournemouth,2425,2024-08-17,Bournemouth,Nott'm Forest,0,,,actual,fbref_soccerdata,2024-08-18
+2425_20240817_west_ham_aston_villa,2425,2024-08-17,West Ham,Aston Villa,1,,,actual,fbref_soccerdata,2024-08-18
+2425_20240817_west_ham_aston_villa,2425,2024-08-17,Aston Villa,West Ham,0,,,actual,fbref_soccerdata,2024-08-18
+2425_20240818_brentford_crystal_palace,2425,2024-08-18,Brentford,Crystal Palace,1,,,actual,fbref_soccerdata,2024-08-19
+2425_20240818_brentford_crystal_palace,2425,2024-08-18,Crystal Palace,Brentford,0,,,actual,fbref_soccerdata,2024-08-19
+2425_20240818_chelsea_man_city,2425,2024-08-18,Chelsea,Man City,1,,,actual,fbref_soccerdata,2024-08-19
+2425_20240818_chelsea_man_city,2425,2024-08-18,Man City,Chelsea,0,,,actual,fbref_soccerdata,2024-08-19
+2425_20240819_leicester_tottenham,2425,2024-08-19,Leicester,Tottenham,1,,,actual,fbref_soccerdata,2024-08-20
+2425_20240819_leicester_tottenham,2425,2024-08-19,Tottenham,Leicester,0,,,actual,fbref_soccerdata,2024-08-20
+2425_20240824_aston_villa_arsenal,2425,2024-08-24,Aston Villa,Arsenal,1,,,actual,fbref_soccerdata,2024-08-25
+2425_20240824_aston_villa_arsenal,2425,2024-08-24,Arsenal,Aston Villa,0,,,actual,fbref_soccerdata,2024-08-25
+2425_20240824_brighton_man_united,2425,2024-08-24,Brighton,Man United,1,,,actual,fbref_soccerdata,2024-08-25
+2425_20240824_brighton_man_united,2425,2024-08-24,Man United,Brighton,0,,,actual,fbref_soccerdata,2024-08-25
+2425_20240824_crystal_palace_west_ham,2425,2024-08-24,Crystal Palace,West Ham,1,,,actual,fbref_soccerdata,2024-08-25
+2425_20240824_crystal_palace_west_ham,2425,2024-08-24,West Ham,Crystal Palace,0,,,actual,fbref_soccerdata,2024-08-25
+2425_20240824_fulham_leicester,2425,2024-08-24,Fulham,Leicester,1,,,actual,fbref_soccerdata,2024-08-25
+2425_20240824_fulham_leicester,2425,2024-08-24,Leicester,Fulham,0,,,actual,fbref_soccerdata,2024-08-25
+2425_20240824_man_city_ipswich,2425,2024-08-24,Man City,Ipswich,1,,,actual,fbref_soccerdata,2024-08-25
+2425_20240824_man_city_ipswich,2425,2024-08-24,Ipswich,Man City,0,,,actual,fbref_soccerdata,2024-08-25
+2425_20240824_southampton_nottm_forest,2425,2024-08-24,Southampton,Nott'm Forest,1,,,actual,fbref_soccerdata,2024-08-25
+2425_20240824_southampton_nottm_forest,2425,2024-08-24,Nott'm Forest,Southampton,0,,,actual,fbref_soccerdata,2024-08-25
+2425_20240824_tottenham_everton,2425,2024-08-24,Tottenham,Everton,1,,,actual,fbref_soccerdata,2024-08-25
+2425_20240824_tottenham_everton,2425,2024-08-24,Everton,Tottenham,0,,,actual,fbref_soccerdata,2024-08-25
+2425_20240825_bournemouth_newcastle,2425,2024-08-25,Bournemouth,Newcastle,1,,,actual,fbref_soccerdata,2024-08-26
+2425_20240825_bournemouth_newcastle,2425,2024-08-25,Newcastle,Bournemouth,0,,,actual,fbref_soccerdata,2024-08-26
+2425_20240825_liverpool_brentford,2425,2024-08-25,Liverpool,Brentford,1,,,actual,fbref_soccerdata,2024-08-26
+2425_20240825_liverpool_brentford,2425,2024-08-25,Brentford,Liverpool,0,,,actual,fbref_soccerdata,2024-08-26
+2425_20240825_wolves_chelsea,2425,2024-08-25,Wolves,Chelsea,1,,,actual,fbref_soccerdata,2024-08-26
+2425_20240825_wolves_chelsea,2425,2024-08-25,Chelsea,Wolves,0,,,actual,fbref_soccerdata,2024-08-26
+2425_20240831_arsenal_brighton,2425,2024-08-31,Arsenal,Brighton,1,,,actual,fbref_soccerdata,2024-09-01
+2425_20240831_arsenal_brighton,2425,2024-08-31,Brighton,Arsenal,0,,,actual,fbref_soccerdata,2024-09-01
+2425_20240831_brentford_southampton,2425,2024-08-31,Brentford,Southampton,1,,,actual,fbref_soccerdata,2024-09-01
+2425_20240831_brentford_southampton,2425,2024-08-31,Southampton,Brentford,0,,,actual,fbref_soccerdata,2024-09-01
+2425_20240831_everton_bournemouth,2425,2024-08-31,Everton,Bournemouth,1,,,actual,fbref_soccerdata,2024-09-01
+2425_20240831_everton_bournemouth,2425,2024-08-31,Bournemouth,Everton,0,,,actual,fbref_soccerdata,2024-09-01
+2425_20240831_ipswich_fulham,2425,2024-08-31,Ipswich,Fulham,1,,,actual,fbref_soccerdata,2024-09-01
+2425_20240831_ipswich_fulham,2425,2024-08-31,Fulham,Ipswich,0,,,actual,fbref_soccerdata,2024-09-01
+2425_20240831_leicester_aston_villa,2425,2024-08-31,Leicester,Aston Villa,1,,,actual,fbref_soccerdata,2024-09-01
+2425_20240831_leicester_aston_villa,2425,2024-08-31,Aston Villa,Leicester,0,,,actual,fbref_soccerdata,2024-09-01
+2425_20240831_nottm_forest_wolves,2425,2024-08-31,Nott'm Forest,Wolves,1,,,actual,fbref_soccerdata,2024-09-01
+2425_20240831_nottm_forest_wolves,2425,2024-08-31,Wolves,Nott'm Forest,0,,,actual,fbref_soccerdata,2024-09-01
+2425_20240831_west_ham_man_city,2425,2024-08-31,West Ham,Man City,1,,,actual,fbref_soccerdata,2024-09-01
+2425_20240831_west_ham_man_city,2425,2024-08-31,Man City,West Ham,0,,,actual,fbref_soccerdata,2024-09-01
+2425_20240901_chelsea_crystal_palace,2425,2024-09-01,Chelsea,Crystal Palace,1,,,actual,fbref_soccerdata,2024-09-02
+2425_20240901_chelsea_crystal_palace,2425,2024-09-01,Crystal Palace,Chelsea,0,,,actual,fbref_soccerdata,2024-09-02
+2425_20240901_man_united_liverpool,2425,2024-09-01,Man United,Liverpool,1,,,actual,fbref_soccerdata,2024-09-02
+2425_20240901_man_united_liverpool,2425,2024-09-01,Liverpool,Man United,0,,,actual,fbref_soccerdata,2024-09-02
+2425_20240901_newcastle_tottenham,2425,2024-09-01,Newcastle,Tottenham,1,,,actual,fbref_soccerdata,2024-09-02
+2425_20240901_newcastle_tottenham,2425,2024-09-01,Tottenham,Newcastle,0,,,actual,fbref_soccerdata,2024-09-02
+2425_20240914_aston_villa_everton,2425,2024-09-14,Aston Villa,Everton,1,,,actual,fbref_soccerdata,2024-09-15
+2425_20240914_aston_villa_everton,2425,2024-09-14,Everton,Aston Villa,0,,,actual,fbref_soccerdata,2024-09-15
+2425_20240914_bournemouth_chelsea,2425,2024-09-14,Bournemouth,Chelsea,1,,,actual,fbref_soccerdata,2024-09-15
+2425_20240914_bournemouth_chelsea,2425,2024-09-14,Chelsea,Bournemouth,0,,,actual,fbref_soccerdata,2024-09-15
+2425_20240914_brighton_ipswich,2425,2024-09-14,Brighton,Ipswich,1,,,actual,fbref_soccerdata,2024-09-15
+2425_20240914_brighton_ipswich,2425,2024-09-14,Ipswich,Brighton,0,,,actual,fbref_soccerdata,2024-09-15
+2425_20240914_crystal_palace_leicester,2425,2024-09-14,Crystal Palace,Leicester,1,,,actual,fbref_soccerdata,2024-09-15
+2425_20240914_crystal_palace_leicester,2425,2024-09-14,Leicester,Crystal Palace,0,,,actual,fbref_soccerdata,2024-09-15
+2425_20240914_fulham_west_ham,2425,2024-09-14,Fulham,West Ham,1,,,actual,fbref_soccerdata,2024-09-15
+2425_20240914_fulham_west_ham,2425,2024-09-14,West Ham,Fulham,0,,,actual,fbref_soccerdata,2024-09-15
+2425_20240914_liverpool_nottm_forest,2425,2024-09-14,Liverpool,Nott'm Forest,1,,,actual,fbref_soccerdata,2024-09-15
+2425_20240914_liverpool_nottm_forest,2425,2024-09-14,Nott'm Forest,Liverpool,0,,,actual,fbref_soccerdata,2024-09-15
+2425_20240914_man_city_brentford,2425,2024-09-14,Man City,Brentford,1,,,actual,fbref_soccerdata,2024-09-15
+2425_20240914_man_city_brentford,2425,2024-09-14,Brentford,Man City,0,,,actual,fbref_soccerdata,2024-09-15
+2425_20240914_southampton_man_united,2425,2024-09-14,Southampton,Man United,1,,,actual,fbref_soccerdata,2024-09-15
+2425_20240914_southampton_man_united,2425,2024-09-14,Man United,Southampton,0,,,actual,fbref_soccerdata,2024-09-15
+2425_20240915_tottenham_arsenal,2425,2024-09-15,Tottenham,Arsenal,1,,,actual,fbref_soccerdata,2024-09-16
+2425_20240915_tottenham_arsenal,2425,2024-09-15,Arsenal,Tottenham,0,,,actual,fbref_soccerdata,2024-09-16
+2425_20240915_wolves_newcastle,2425,2024-09-15,Wolves,Newcastle,1,,,actual,fbref_soccerdata,2024-09-16
+2425_20240915_wolves_newcastle,2425,2024-09-15,Newcastle,Wolves,0,,,actual,fbref_soccerdata,2024-09-16
+2425_20240921_aston_villa_wolves,2425,2024-09-21,Aston Villa,Wolves,1,,,actual,fbref_soccerdata,2024-09-22
+2425_20240921_aston_villa_wolves,2425,2024-09-21,Wolves,Aston Villa,0,,,actual,fbref_soccerdata,2024-09-22
+2425_20240921_crystal_palace_man_united,2425,2024-09-21,Crystal Palace,Man United,1,,,actual,fbref_soccerdata,2024-09-22
+2425_20240921_crystal_palace_man_united,2425,2024-09-21,Man United,Crystal Palace,0,,,actual,fbref_soccerdata,2024-09-22
+2425_20240921_fulham_newcastle,2425,2024-09-21,Fulham,Newcastle,1,,,actual,fbref_soccerdata,2024-09-22
+2425_20240921_fulham_newcastle,2425,2024-09-21,Newcastle,Fulham,0,,,actual,fbref_soccerdata,2024-09-22
+2425_20240921_leicester_everton,2425,2024-09-21,Leicester,Everton,1,,,actual,fbref_soccerdata,2024-09-22
+2425_20240921_leicester_everton,2425,2024-09-21,Everton,Leicester,0,,,actual,fbref_soccerdata,2024-09-22
+2425_20240921_liverpool_bournemouth,2425,2024-09-21,Liverpool,Bournemouth,1,,,actual,fbref_soccerdata,2024-09-22
+2425_20240921_liverpool_bournemouth,2425,2024-09-21,Bournemouth,Liverpool,0,,,actual,fbref_soccerdata,2024-09-22
+2425_20240921_southampton_ipswich,2425,2024-09-21,Southampton,Ipswich,1,,,actual,fbref_soccerdata,2024-09-22
+2425_20240921_southampton_ipswich,2425,2024-09-21,Ipswich,Southampton,0,,,actual,fbref_soccerdata,2024-09-22
+2425_20240921_tottenham_brentford,2425,2024-09-21,Tottenham,Brentford,1,,,actual,fbref_soccerdata,2024-09-22
+2425_20240921_tottenham_brentford,2425,2024-09-21,Brentford,Tottenham,0,,,actual,fbref_soccerdata,2024-09-22
+2425_20240921_west_ham_chelsea,2425,2024-09-21,West Ham,Chelsea,1,,,actual,fbref_soccerdata,2024-09-22
+2425_20240921_west_ham_chelsea,2425,2024-09-21,Chelsea,West Ham,0,,,actual,fbref_soccerdata,2024-09-22
+2425_20240922_brighton_nottm_forest,2425,2024-09-22,Brighton,Nott'm Forest,1,,,actual,fbref_soccerdata,2024-09-23
+2425_20240922_brighton_nottm_forest,2425,2024-09-22,Nott'm Forest,Brighton,0,,,actual,fbref_soccerdata,2024-09-23
+2425_20240922_man_city_arsenal,2425,2024-09-22,Man City,Arsenal,1,,,actual,fbref_soccerdata,2024-09-23
+2425_20240922_man_city_arsenal,2425,2024-09-22,Arsenal,Man City,0,,,actual,fbref_soccerdata,2024-09-23
+2425_20240928_arsenal_leicester,2425,2024-09-28,Arsenal,Leicester,1,,,actual,fbref_soccerdata,2024-09-29
+2425_20240928_arsenal_leicester,2425,2024-09-28,Leicester,Arsenal,0,,,actual,fbref_soccerdata,2024-09-29
+2425_20240928_brentford_west_ham,2425,2024-09-28,Brentford,West Ham,1,,,actual,fbref_soccerdata,2024-09-29
+2425_20240928_brentford_west_ham,2425,2024-09-28,West Ham,Brentford,0,,,actual,fbref_soccerdata,2024-09-29
+2425_20240928_chelsea_brighton,2425,2024-09-28,Chelsea,Brighton,1,,,actual,fbref_soccerdata,2024-09-29
+2425_20240928_chelsea_brighton,2425,2024-09-28,Brighton,Chelsea,0,,,actual,fbref_soccerdata,2024-09-29
+2425_20240928_everton_crystal_palace,2425,2024-09-28,Everton,Crystal Palace,1,,,actual,fbref_soccerdata,2024-09-29
+2425_20240928_everton_crystal_palace,2425,2024-09-28,Crystal Palace,Everton,0,,,actual,fbref_soccerdata,2024-09-29
+2425_20240928_newcastle_man_city,2425,2024-09-28,Newcastle,Man City,1,,,actual,fbref_soccerdata,2024-09-29
+2425_20240928_newcastle_man_city,2425,2024-09-28,Man City,Newcastle,0,,,actual,fbref_soccerdata,2024-09-29
+2425_20240928_nottm_forest_fulham,2425,2024-09-28,Nott'm Forest,Fulham,1,,,actual,fbref_soccerdata,2024-09-29
+2425_20240928_nottm_forest_fulham,2425,2024-09-28,Fulham,Nott'm Forest,0,,,actual,fbref_soccerdata,2024-09-29
+2425_20240928_wolves_liverpool,2425,2024-09-28,Wolves,Liverpool,1,,,actual,fbref_soccerdata,2024-09-29
+2425_20240928_wolves_liverpool,2425,2024-09-28,Liverpool,Wolves,0,,,actual,fbref_soccerdata,2024-09-29
+2425_20240929_ipswich_aston_villa,2425,2024-09-29,Ipswich,Aston Villa,1,,,actual,fbref_soccerdata,2024-09-30
+2425_20240929_ipswich_aston_villa,2425,2024-09-29,Aston Villa,Ipswich,0,,,actual,fbref_soccerdata,2024-09-30
+2425_20240929_man_united_tottenham,2425,2024-09-29,Man United,Tottenham,1,,,actual,fbref_soccerdata,2024-09-30
+2425_20240929_man_united_tottenham,2425,2024-09-29,Tottenham,Man United,0,,,actual,fbref_soccerdata,2024-09-30
+2425_20240930_bournemouth_southampton,2425,2024-09-30,Bournemouth,Southampton,1,,,actual,fbref_soccerdata,2024-10-01
+2425_20240930_bournemouth_southampton,2425,2024-09-30,Southampton,Bournemouth,0,,,actual,fbref_soccerdata,2024-10-01
+2425_20241005_arsenal_southampton,2425,2024-10-05,Arsenal,Southampton,1,,,actual,fbref_soccerdata,2024-10-06
+2425_20241005_arsenal_southampton,2425,2024-10-05,Southampton,Arsenal,0,,,actual,fbref_soccerdata,2024-10-06
+2425_20241005_brentford_wolves,2425,2024-10-05,Brentford,Wolves,1,,,actual,fbref_soccerdata,2024-10-06
+2425_20241005_brentford_wolves,2425,2024-10-05,Wolves,Brentford,0,,,actual,fbref_soccerdata,2024-10-06
+2425_20241005_crystal_palace_liverpool,2425,2024-10-05,Crystal Palace,Liverpool,1,,,actual,fbref_soccerdata,2024-10-06
+2425_20241005_crystal_palace_liverpool,2425,2024-10-05,Liverpool,Crystal Palace,0,,,actual,fbref_soccerdata,2024-10-06
+2425_20241005_everton_newcastle,2425,2024-10-05,Everton,Newcastle,1,,,actual,fbref_soccerdata,2024-10-06
+2425_20241005_everton_newcastle,2425,2024-10-05,Newcastle,Everton,0,,,actual,fbref_soccerdata,2024-10-06
+2425_20241005_leicester_bournemouth,2425,2024-10-05,Leicester,Bournemouth,1,,,actual,fbref_soccerdata,2024-10-06
+2425_20241005_leicester_bournemouth,2425,2024-10-05,Bournemouth,Leicester,0,,,actual,fbref_soccerdata,2024-10-06
+2425_20241005_man_city_fulham,2425,2024-10-05,Man City,Fulham,1,,,actual,fbref_soccerdata,2024-10-06
+2425_20241005_man_city_fulham,2425,2024-10-05,Fulham,Man City,0,,,actual,fbref_soccerdata,2024-10-06
+2425_20241005_west_ham_ipswich,2425,2024-10-05,West Ham,Ipswich,1,,,actual,fbref_soccerdata,2024-10-06
+2425_20241005_west_ham_ipswich,2425,2024-10-05,Ipswich,West Ham,0,,,actual,fbref_soccerdata,2024-10-06
+2425_20241006_aston_villa_man_united,2425,2024-10-06,Aston Villa,Man United,1,,,actual,fbref_soccerdata,2024-10-07
+2425_20241006_aston_villa_man_united,2425,2024-10-06,Man United,Aston Villa,0,,,actual,fbref_soccerdata,2024-10-07
+2425_20241006_brighton_tottenham,2425,2024-10-06,Brighton,Tottenham,1,,,actual,fbref_soccerdata,2024-10-07
+2425_20241006_brighton_tottenham,2425,2024-10-06,Tottenham,Brighton,0,,,actual,fbref_soccerdata,2024-10-07
+2425_20241006_chelsea_nottm_forest,2425,2024-10-06,Chelsea,Nott'm Forest,1,,,actual,fbref_soccerdata,2024-10-07
+2425_20241006_chelsea_nottm_forest,2425,2024-10-06,Nott'm Forest,Chelsea,0,,,actual,fbref_soccerdata,2024-10-07
+2425_20241019_bournemouth_arsenal,2425,2024-10-19,Bournemouth,Arsenal,1,,,actual,fbref_soccerdata,2024-10-20
+2425_20241019_bournemouth_arsenal,2425,2024-10-19,Arsenal,Bournemouth,0,,,actual,fbref_soccerdata,2024-10-20
+2425_20241019_fulham_aston_villa,2425,2024-10-19,Fulham,Aston Villa,1,,,actual,fbref_soccerdata,2024-10-20
+2425_20241019_fulham_aston_villa,2425,2024-10-19,Aston Villa,Fulham,0,,,actual,fbref_soccerdata,2024-10-20
+2425_20241019_ipswich_everton,2425,2024-10-19,Ipswich,Everton,1,,,actual,fbref_soccerdata,2024-10-20
+2425_20241019_ipswich_everton,2425,2024-10-19,Everton,Ipswich,0,,,actual,fbref_soccerdata,2024-10-20
+2425_20241019_man_united_brentford,2425,2024-10-19,Man United,Brentford,1,,,actual,fbref_soccerdata,2024-10-20
+2425_20241019_man_united_brentford,2425,2024-10-19,Brentford,Man United,0,,,actual,fbref_soccerdata,2024-10-20
+2425_20241019_newcastle_brighton,2425,2024-10-19,Newcastle,Brighton,1,,,actual,fbref_soccerdata,2024-10-20
+2425_20241019_newcastle_brighton,2425,2024-10-19,Brighton,Newcastle,0,,,actual,fbref_soccerdata,2024-10-20
+2425_20241019_southampton_leicester,2425,2024-10-19,Southampton,Leicester,1,,,actual,fbref_soccerdata,2024-10-20
+2425_20241019_southampton_leicester,2425,2024-10-19,Leicester,Southampton,0,,,actual,fbref_soccerdata,2024-10-20
+2425_20241019_tottenham_west_ham,2425,2024-10-19,Tottenham,West Ham,1,,,actual,fbref_soccerdata,2024-10-20
+2425_20241019_tottenham_west_ham,2425,2024-10-19,West Ham,Tottenham,0,,,actual,fbref_soccerdata,2024-10-20
+2425_20241020_liverpool_chelsea,2425,2024-10-20,Liverpool,Chelsea,1,,,actual,fbref_soccerdata,2024-10-21
+2425_20241020_liverpool_chelsea,2425,2024-10-20,Chelsea,Liverpool,0,,,actual,fbref_soccerdata,2024-10-21
+2425_20241020_wolves_man_city,2425,2024-10-20,Wolves,Man City,1,,,actual,fbref_soccerdata,2024-10-21
+2425_20241020_wolves_man_city,2425,2024-10-20,Man City,Wolves,0,,,actual,fbref_soccerdata,2024-10-21
+2425_20241021_nottm_forest_crystal_palace,2425,2024-10-21,Nott'm Forest,Crystal Palace,1,,,actual,fbref_soccerdata,2024-10-22
+2425_20241021_nottm_forest_crystal_palace,2425,2024-10-21,Crystal Palace,Nott'm Forest,0,,,actual,fbref_soccerdata,2024-10-22
+2425_20241025_leicester_nottm_forest,2425,2024-10-25,Leicester,Nott'm Forest,1,,,actual,fbref_soccerdata,2024-10-26
+2425_20241025_leicester_nottm_forest,2425,2024-10-25,Nott'm Forest,Leicester,0,,,actual,fbref_soccerdata,2024-10-26
+2425_20241026_aston_villa_bournemouth,2425,2024-10-26,Aston Villa,Bournemouth,1,,,actual,fbref_soccerdata,2024-10-27
+2425_20241026_aston_villa_bournemouth,2425,2024-10-26,Bournemouth,Aston Villa,0,,,actual,fbref_soccerdata,2024-10-27
+2425_20241026_brentford_ipswich,2425,2024-10-26,Brentford,Ipswich,1,,,actual,fbref_soccerdata,2024-10-27
+2425_20241026_brentford_ipswich,2425,2024-10-26,Ipswich,Brentford,0,,,actual,fbref_soccerdata,2024-10-27
+2425_20241026_brighton_wolves,2425,2024-10-26,Brighton,Wolves,1,,,actual,fbref_soccerdata,2024-10-27
+2425_20241026_brighton_wolves,2425,2024-10-26,Wolves,Brighton,0,,,actual,fbref_soccerdata,2024-10-27
+2425_20241026_everton_fulham,2425,2024-10-26,Everton,Fulham,1,,,actual,fbref_soccerdata,2024-10-27
+2425_20241026_everton_fulham,2425,2024-10-26,Fulham,Everton,0,,,actual,fbref_soccerdata,2024-10-27
+2425_20241026_man_city_southampton,2425,2024-10-26,Man City,Southampton,1,,,actual,fbref_soccerdata,2024-10-27
+2425_20241026_man_city_southampton,2425,2024-10-26,Southampton,Man City,0,,,actual,fbref_soccerdata,2024-10-27
+2425_20241027_arsenal_liverpool,2425,2024-10-27,Arsenal,Liverpool,1,,,actual,fbref_soccerdata,2024-10-28
+2425_20241027_arsenal_liverpool,2425,2024-10-27,Liverpool,Arsenal,0,,,actual,fbref_soccerdata,2024-10-28
+2425_20241027_chelsea_newcastle,2425,2024-10-27,Chelsea,Newcastle,1,,,actual,fbref_soccerdata,2024-10-28
+2425_20241027_chelsea_newcastle,2425,2024-10-27,Newcastle,Chelsea,0,,,actual,fbref_soccerdata,2024-10-28
+2425_20241027_crystal_palace_tottenham,2425,2024-10-27,Crystal Palace,Tottenham,1,,,actual,fbref_soccerdata,2024-10-28
+2425_20241027_crystal_palace_tottenham,2425,2024-10-27,Tottenham,Crystal Palace,0,,,actual,fbref_soccerdata,2024-10-28
+2425_20241027_west_ham_man_united,2425,2024-10-27,West Ham,Man United,1,,,actual,fbref_soccerdata,2024-10-28
+2425_20241027_west_ham_man_united,2425,2024-10-27,Man United,West Ham,0,,,actual,fbref_soccerdata,2024-10-28
+2425_20241102_bournemouth_man_city,2425,2024-11-02,Bournemouth,Man City,1,,,actual,fbref_soccerdata,2024-11-03
+2425_20241102_bournemouth_man_city,2425,2024-11-02,Man City,Bournemouth,0,,,actual,fbref_soccerdata,2024-11-03
+2425_20241102_ipswich_leicester,2425,2024-11-02,Ipswich,Leicester,1,,,actual,fbref_soccerdata,2024-11-03
+2425_20241102_ipswich_leicester,2425,2024-11-02,Leicester,Ipswich,0,,,actual,fbref_soccerdata,2024-11-03
+2425_20241102_liverpool_brighton,2425,2024-11-02,Liverpool,Brighton,1,,,actual,fbref_soccerdata,2024-11-03
+2425_20241102_liverpool_brighton,2425,2024-11-02,Brighton,Liverpool,0,,,actual,fbref_soccerdata,2024-11-03
+2425_20241102_newcastle_arsenal,2425,2024-11-02,Newcastle,Arsenal,1,,,actual,fbref_soccerdata,2024-11-03
+2425_20241102_newcastle_arsenal,2425,2024-11-02,Arsenal,Newcastle,0,,,actual,fbref_soccerdata,2024-11-03
+2425_20241102_nottm_forest_west_ham,2425,2024-11-02,Nott'm Forest,West Ham,1,,,actual,fbref_soccerdata,2024-11-03
+2425_20241102_nottm_forest_west_ham,2425,2024-11-02,West Ham,Nott'm Forest,0,,,actual,fbref_soccerdata,2024-11-03
+2425_20241102_southampton_everton,2425,2024-11-02,Southampton,Everton,1,,,actual,fbref_soccerdata,2024-11-03
+2425_20241102_southampton_everton,2425,2024-11-02,Everton,Southampton,0,,,actual,fbref_soccerdata,2024-11-03
+2425_20241102_wolves_crystal_palace,2425,2024-11-02,Wolves,Crystal Palace,1,,,actual,fbref_soccerdata,2024-11-03
+2425_20241102_wolves_crystal_palace,2425,2024-11-02,Crystal Palace,Wolves,0,,,actual,fbref_soccerdata,2024-11-03
+2425_20241103_man_united_chelsea,2425,2024-11-03,Man United,Chelsea,1,,,actual,fbref_soccerdata,2024-11-04
+2425_20241103_man_united_chelsea,2425,2024-11-03,Chelsea,Man United,0,,,actual,fbref_soccerdata,2024-11-04
+2425_20241103_tottenham_aston_villa,2425,2024-11-03,Tottenham,Aston Villa,1,,,actual,fbref_soccerdata,2024-11-04
+2425_20241103_tottenham_aston_villa,2425,2024-11-03,Aston Villa,Tottenham,0,,,actual,fbref_soccerdata,2024-11-04
+2425_20241104_fulham_brentford,2425,2024-11-04,Fulham,Brentford,1,,,actual,fbref_soccerdata,2024-11-05
+2425_20241104_fulham_brentford,2425,2024-11-04,Brentford,Fulham,0,,,actual,fbref_soccerdata,2024-11-05
+2425_20241109_brentford_bournemouth,2425,2024-11-09,Brentford,Bournemouth,1,,,actual,fbref_soccerdata,2024-11-10
+2425_20241109_brentford_bournemouth,2425,2024-11-09,Bournemouth,Brentford,0,,,actual,fbref_soccerdata,2024-11-10
+2425_20241109_brighton_man_city,2425,2024-11-09,Brighton,Man City,1,,,actual,fbref_soccerdata,2024-11-10
+2425_20241109_brighton_man_city,2425,2024-11-09,Man City,Brighton,0,,,actual,fbref_soccerdata,2024-11-10
+2425_20241109_crystal_palace_fulham,2425,2024-11-09,Crystal Palace,Fulham,1,,,actual,fbref_soccerdata,2024-11-10
+2425_20241109_crystal_palace_fulham,2425,2024-11-09,Fulham,Crystal Palace,0,,,actual,fbref_soccerdata,2024-11-10
+2425_20241109_liverpool_aston_villa,2425,2024-11-09,Liverpool,Aston Villa,1,,,actual,fbref_soccerdata,2024-11-10
+2425_20241109_liverpool_aston_villa,2425,2024-11-09,Aston Villa,Liverpool,0,,,actual,fbref_soccerdata,2024-11-10
+2425_20241109_west_ham_everton,2425,2024-11-09,West Ham,Everton,1,,,actual,fbref_soccerdata,2024-11-10
+2425_20241109_west_ham_everton,2425,2024-11-09,Everton,West Ham,0,,,actual,fbref_soccerdata,2024-11-10
+2425_20241109_wolves_southampton,2425,2024-11-09,Wolves,Southampton,1,,,actual,fbref_soccerdata,2024-11-10
+2425_20241109_wolves_southampton,2425,2024-11-09,Southampton,Wolves,0,,,actual,fbref_soccerdata,2024-11-10
+2425_20241110_chelsea_arsenal,2425,2024-11-10,Chelsea,Arsenal,1,,,actual,fbref_soccerdata,2024-11-11
+2425_20241110_chelsea_arsenal,2425,2024-11-10,Arsenal,Chelsea,0,,,actual,fbref_soccerdata,2024-11-11
+2425_20241110_man_united_leicester,2425,2024-11-10,Man United,Leicester,1,,,actual,fbref_soccerdata,2024-11-11
+2425_20241110_man_united_leicester,2425,2024-11-10,Leicester,Man United,0,,,actual,fbref_soccerdata,2024-11-11
+2425_20241110_nottm_forest_newcastle,2425,2024-11-10,Nott'm Forest,Newcastle,1,,,actual,fbref_soccerdata,2024-11-11
+2425_20241110_nottm_forest_newcastle,2425,2024-11-10,Newcastle,Nott'm Forest,0,,,actual,fbref_soccerdata,2024-11-11
+2425_20241110_tottenham_ipswich,2425,2024-11-10,Tottenham,Ipswich,1,,,actual,fbref_soccerdata,2024-11-11
+2425_20241110_tottenham_ipswich,2425,2024-11-10,Ipswich,Tottenham,0,,,actual,fbref_soccerdata,2024-11-11
+2425_20241123_arsenal_nottm_forest,2425,2024-11-23,Arsenal,Nott'm Forest,1,,,actual,fbref_soccerdata,2024-11-24
+2425_20241123_arsenal_nottm_forest,2425,2024-11-23,Nott'm Forest,Arsenal,0,,,actual,fbref_soccerdata,2024-11-24
+2425_20241123_aston_villa_crystal_palace,2425,2024-11-23,Aston Villa,Crystal Palace,1,,,actual,fbref_soccerdata,2024-11-24
+2425_20241123_aston_villa_crystal_palace,2425,2024-11-23,Crystal Palace,Aston Villa,0,,,actual,fbref_soccerdata,2024-11-24
+2425_20241123_bournemouth_brighton,2425,2024-11-23,Bournemouth,Brighton,1,,,actual,fbref_soccerdata,2024-11-24
+2425_20241123_bournemouth_brighton,2425,2024-11-23,Brighton,Bournemouth,0,,,actual,fbref_soccerdata,2024-11-24
+2425_20241123_everton_brentford,2425,2024-11-23,Everton,Brentford,1,,,actual,fbref_soccerdata,2024-11-24
+2425_20241123_everton_brentford,2425,2024-11-23,Brentford,Everton,0,,,actual,fbref_soccerdata,2024-11-24
+2425_20241123_fulham_wolves,2425,2024-11-23,Fulham,Wolves,1,,,actual,fbref_soccerdata,2024-11-24
+2425_20241123_fulham_wolves,2425,2024-11-23,Wolves,Fulham,0,,,actual,fbref_soccerdata,2024-11-24
+2425_20241123_leicester_chelsea,2425,2024-11-23,Leicester,Chelsea,1,,,actual,fbref_soccerdata,2024-11-24
+2425_20241123_leicester_chelsea,2425,2024-11-23,Chelsea,Leicester,0,,,actual,fbref_soccerdata,2024-11-24
+2425_20241123_man_city_tottenham,2425,2024-11-23,Man City,Tottenham,1,,,actual,fbref_soccerdata,2024-11-24
+2425_20241123_man_city_tottenham,2425,2024-11-23,Tottenham,Man City,0,,,actual,fbref_soccerdata,2024-11-24
+2425_20241124_ipswich_man_united,2425,2024-11-24,Ipswich,Man United,1,,,actual,fbref_soccerdata,2024-11-25
+2425_20241124_ipswich_man_united,2425,2024-11-24,Man United,Ipswich,0,,,actual,fbref_soccerdata,2024-11-25
+2425_20241124_southampton_liverpool,2425,2024-11-24,Southampton,Liverpool,1,,,actual,fbref_soccerdata,2024-11-25
+2425_20241124_southampton_liverpool,2425,2024-11-24,Liverpool,Southampton,0,,,actual,fbref_soccerdata,2024-11-25
+2425_20241125_newcastle_west_ham,2425,2024-11-25,Newcastle,West Ham,1,,,actual,fbref_soccerdata,2024-11-26
+2425_20241125_newcastle_west_ham,2425,2024-11-25,West Ham,Newcastle,0,,,actual,fbref_soccerdata,2024-11-26
+2425_20241129_brighton_southampton,2425,2024-11-29,Brighton,Southampton,1,,,actual,fbref_soccerdata,2024-11-30
+2425_20241129_brighton_southampton,2425,2024-11-29,Southampton,Brighton,0,,,actual,fbref_soccerdata,2024-11-30
+2425_20241130_brentford_leicester,2425,2024-11-30,Brentford,Leicester,1,,,actual,fbref_soccerdata,2024-12-01
+2425_20241130_brentford_leicester,2425,2024-11-30,Leicester,Brentford,0,,,actual,fbref_soccerdata,2024-12-01
+2425_20241130_crystal_palace_newcastle,2425,2024-11-30,Crystal Palace,Newcastle,1,,,actual,fbref_soccerdata,2024-12-01
+2425_20241130_crystal_palace_newcastle,2425,2024-11-30,Newcastle,Crystal Palace,0,,,actual,fbref_soccerdata,2024-12-01
+2425_20241130_nottm_forest_ipswich,2425,2024-11-30,Nott'm Forest,Ipswich,1,,,actual,fbref_soccerdata,2024-12-01
+2425_20241130_nottm_forest_ipswich,2425,2024-11-30,Ipswich,Nott'm Forest,0,,,actual,fbref_soccerdata,2024-12-01
+2425_20241130_west_ham_arsenal,2425,2024-11-30,West Ham,Arsenal,1,,,actual,fbref_soccerdata,2024-12-01
+2425_20241130_west_ham_arsenal,2425,2024-11-30,Arsenal,West Ham,0,,,actual,fbref_soccerdata,2024-12-01
+2425_20241130_wolves_bournemouth,2425,2024-11-30,Wolves,Bournemouth,1,,,actual,fbref_soccerdata,2024-12-01
+2425_20241130_wolves_bournemouth,2425,2024-11-30,Bournemouth,Wolves,0,,,actual,fbref_soccerdata,2024-12-01
+2425_20241201_chelsea_aston_villa,2425,2024-12-01,Chelsea,Aston Villa,1,,,actual,fbref_soccerdata,2024-12-02
+2425_20241201_chelsea_aston_villa,2425,2024-12-01,Aston Villa,Chelsea,0,,,actual,fbref_soccerdata,2024-12-02
+2425_20241201_liverpool_man_city,2425,2024-12-01,Liverpool,Man City,1,,,actual,fbref_soccerdata,2024-12-02
+2425_20241201_liverpool_man_city,2425,2024-12-01,Man City,Liverpool,0,,,actual,fbref_soccerdata,2024-12-02
+2425_20241201_man_united_everton,2425,2024-12-01,Man United,Everton,1,,,actual,fbref_soccerdata,2024-12-02
+2425_20241201_man_united_everton,2425,2024-12-01,Everton,Man United,0,,,actual,fbref_soccerdata,2024-12-02
+2425_20241201_tottenham_fulham,2425,2024-12-01,Tottenham,Fulham,1,,,actual,fbref_soccerdata,2024-12-02
+2425_20241201_tottenham_fulham,2425,2024-12-01,Fulham,Tottenham,0,,,actual,fbref_soccerdata,2024-12-02
+2425_20241203_ipswich_crystal_palace,2425,2024-12-03,Ipswich,Crystal Palace,1,,,actual,fbref_soccerdata,2024-12-04
+2425_20241203_ipswich_crystal_palace,2425,2024-12-03,Crystal Palace,Ipswich,0,,,actual,fbref_soccerdata,2024-12-04
+2425_20241203_leicester_west_ham,2425,2024-12-03,Leicester,West Ham,1,,,actual,fbref_soccerdata,2024-12-04
+2425_20241203_leicester_west_ham,2425,2024-12-03,West Ham,Leicester,0,,,actual,fbref_soccerdata,2024-12-04
+2425_20241204_arsenal_man_united,2425,2024-12-04,Arsenal,Man United,1,,,actual,fbref_soccerdata,2024-12-05
+2425_20241204_arsenal_man_united,2425,2024-12-04,Man United,Arsenal,0,,,actual,fbref_soccerdata,2024-12-05
+2425_20241204_aston_villa_brentford,2425,2024-12-04,Aston Villa,Brentford,1,,,actual,fbref_soccerdata,2024-12-05
+2425_20241204_aston_villa_brentford,2425,2024-12-04,Brentford,Aston Villa,0,,,actual,fbref_soccerdata,2024-12-05
+2425_20241204_everton_wolves,2425,2024-12-04,Everton,Wolves,1,,,actual,fbref_soccerdata,2024-12-05
+2425_20241204_everton_wolves,2425,2024-12-04,Wolves,Everton,0,,,actual,fbref_soccerdata,2024-12-05
+2425_20241204_man_city_nottm_forest,2425,2024-12-04,Man City,Nott'm Forest,1,,,actual,fbref_soccerdata,2024-12-05
+2425_20241204_man_city_nottm_forest,2425,2024-12-04,Nott'm Forest,Man City,0,,,actual,fbref_soccerdata,2024-12-05
+2425_20241204_newcastle_liverpool,2425,2024-12-04,Newcastle,Liverpool,1,,,actual,fbref_soccerdata,2024-12-05
+2425_20241204_newcastle_liverpool,2425,2024-12-04,Liverpool,Newcastle,0,,,actual,fbref_soccerdata,2024-12-05
+2425_20241204_southampton_chelsea,2425,2024-12-04,Southampton,Chelsea,1,,,actual,fbref_soccerdata,2024-12-05
+2425_20241204_southampton_chelsea,2425,2024-12-04,Chelsea,Southampton,0,,,actual,fbref_soccerdata,2024-12-05
+2425_20241205_bournemouth_tottenham,2425,2024-12-05,Bournemouth,Tottenham,1,,,actual,fbref_soccerdata,2024-12-06
+2425_20241205_bournemouth_tottenham,2425,2024-12-05,Tottenham,Bournemouth,0,,,actual,fbref_soccerdata,2024-12-06
+2425_20241205_fulham_brighton,2425,2024-12-05,Fulham,Brighton,1,,,actual,fbref_soccerdata,2024-12-06
+2425_20241205_fulham_brighton,2425,2024-12-05,Brighton,Fulham,0,,,actual,fbref_soccerdata,2024-12-06
+2425_20241207_aston_villa_southampton,2425,2024-12-07,Aston Villa,Southampton,1,,,actual,fbref_soccerdata,2024-12-08
+2425_20241207_aston_villa_southampton,2425,2024-12-07,Southampton,Aston Villa,0,,,actual,fbref_soccerdata,2024-12-08
+2425_20241207_brentford_newcastle,2425,2024-12-07,Brentford,Newcastle,1,,,actual,fbref_soccerdata,2024-12-08
+2425_20241207_brentford_newcastle,2425,2024-12-07,Newcastle,Brentford,0,,,actual,fbref_soccerdata,2024-12-08
+2425_20241207_crystal_palace_man_city,2425,2024-12-07,Crystal Palace,Man City,1,,,actual,fbref_soccerdata,2024-12-08
+2425_20241207_crystal_palace_man_city,2425,2024-12-07,Man City,Crystal Palace,0,,,actual,fbref_soccerdata,2024-12-08
+2425_20241207_man_united_nottm_forest,2425,2024-12-07,Man United,Nott'm Forest,1,,,actual,fbref_soccerdata,2024-12-08
+2425_20241207_man_united_nottm_forest,2425,2024-12-07,Nott'm Forest,Man United,0,,,actual,fbref_soccerdata,2024-12-08
+2425_20241208_fulham_arsenal,2425,2024-12-08,Fulham,Arsenal,1,,,actual,fbref_soccerdata,2024-12-09
+2425_20241208_fulham_arsenal,2425,2024-12-08,Arsenal,Fulham,0,,,actual,fbref_soccerdata,2024-12-09
+2425_20241208_ipswich_bournemouth,2425,2024-12-08,Ipswich,Bournemouth,1,,,actual,fbref_soccerdata,2024-12-09
+2425_20241208_ipswich_bournemouth,2425,2024-12-08,Bournemouth,Ipswich,0,,,actual,fbref_soccerdata,2024-12-09
+2425_20241208_leicester_brighton,2425,2024-12-08,Leicester,Brighton,1,,,actual,fbref_soccerdata,2024-12-09
+2425_20241208_leicester_brighton,2425,2024-12-08,Brighton,Leicester,0,,,actual,fbref_soccerdata,2024-12-09
+2425_20241208_tottenham_chelsea,2425,2024-12-08,Tottenham,Chelsea,1,,,actual,fbref_soccerdata,2024-12-09
+2425_20241208_tottenham_chelsea,2425,2024-12-08,Chelsea,Tottenham,0,,,actual,fbref_soccerdata,2024-12-09
+2425_20241209_west_ham_wolves,2425,2024-12-09,West Ham,Wolves,1,,,actual,fbref_soccerdata,2024-12-10
+2425_20241209_west_ham_wolves,2425,2024-12-09,Wolves,West Ham,0,,,actual,fbref_soccerdata,2024-12-10
+2425_20241214_arsenal_everton,2425,2024-12-14,Arsenal,Everton,1,,,actual,fbref_soccerdata,2024-12-15
+2425_20241214_arsenal_everton,2425,2024-12-14,Everton,Arsenal,0,,,actual,fbref_soccerdata,2024-12-15
+2425_20241214_liverpool_fulham,2425,2024-12-14,Liverpool,Fulham,1,,,actual,fbref_soccerdata,2024-12-15
+2425_20241214_liverpool_fulham,2425,2024-12-14,Fulham,Liverpool,0,,,actual,fbref_soccerdata,2024-12-15
+2425_20241214_newcastle_leicester,2425,2024-12-14,Newcastle,Leicester,1,,,actual,fbref_soccerdata,2024-12-15
+2425_20241214_newcastle_leicester,2425,2024-12-14,Leicester,Newcastle,0,,,actual,fbref_soccerdata,2024-12-15
+2425_20241214_nottm_forest_aston_villa,2425,2024-12-14,Nott'm Forest,Aston Villa,1,,,actual,fbref_soccerdata,2024-12-15
+2425_20241214_nottm_forest_aston_villa,2425,2024-12-14,Aston Villa,Nott'm Forest,0,,,actual,fbref_soccerdata,2024-12-15
+2425_20241214_wolves_ipswich,2425,2024-12-14,Wolves,Ipswich,1,,,actual,fbref_soccerdata,2024-12-15
+2425_20241214_wolves_ipswich,2425,2024-12-14,Ipswich,Wolves,0,,,actual,fbref_soccerdata,2024-12-15
+2425_20241215_brighton_crystal_palace,2425,2024-12-15,Brighton,Crystal Palace,1,,,actual,fbref_soccerdata,2024-12-16
+2425_20241215_brighton_crystal_palace,2425,2024-12-15,Crystal Palace,Brighton,0,,,actual,fbref_soccerdata,2024-12-16
+2425_20241215_chelsea_brentford,2425,2024-12-15,Chelsea,Brentford,1,,,actual,fbref_soccerdata,2024-12-16
+2425_20241215_chelsea_brentford,2425,2024-12-15,Brentford,Chelsea,0,,,actual,fbref_soccerdata,2024-12-16
+2425_20241215_man_city_man_united,2425,2024-12-15,Man City,Man United,1,,,actual,fbref_soccerdata,2024-12-16
+2425_20241215_man_city_man_united,2425,2024-12-15,Man United,Man City,0,,,actual,fbref_soccerdata,2024-12-16
+2425_20241215_southampton_tottenham,2425,2024-12-15,Southampton,Tottenham,1,,,actual,fbref_soccerdata,2024-12-16
+2425_20241215_southampton_tottenham,2425,2024-12-15,Tottenham,Southampton,0,,,actual,fbref_soccerdata,2024-12-16
+2425_20241216_bournemouth_west_ham,2425,2024-12-16,Bournemouth,West Ham,1,,,actual,fbref_soccerdata,2024-12-17
+2425_20241216_bournemouth_west_ham,2425,2024-12-16,West Ham,Bournemouth,0,,,actual,fbref_soccerdata,2024-12-17
+2425_20241221_aston_villa_man_city,2425,2024-12-21,Aston Villa,Man City,1,,,actual,fbref_soccerdata,2024-12-22
+2425_20241221_aston_villa_man_city,2425,2024-12-21,Man City,Aston Villa,0,,,actual,fbref_soccerdata,2024-12-22
+2425_20241221_brentford_nottm_forest,2425,2024-12-21,Brentford,Nott'm Forest,1,,,actual,fbref_soccerdata,2024-12-22
+2425_20241221_brentford_nottm_forest,2425,2024-12-21,Nott'm Forest,Brentford,0,,,actual,fbref_soccerdata,2024-12-22
+2425_20241221_crystal_palace_arsenal,2425,2024-12-21,Crystal Palace,Arsenal,1,,,actual,fbref_soccerdata,2024-12-22
+2425_20241221_crystal_palace_arsenal,2425,2024-12-21,Arsenal,Crystal Palace,0,,,actual,fbref_soccerdata,2024-12-22
+2425_20241221_ipswich_newcastle,2425,2024-12-21,Ipswich,Newcastle,1,,,actual,fbref_soccerdata,2024-12-22
+2425_20241221_ipswich_newcastle,2425,2024-12-21,Newcastle,Ipswich,0,,,actual,fbref_soccerdata,2024-12-22
+2425_20241221_west_ham_brighton,2425,2024-12-21,West Ham,Brighton,1,,,actual,fbref_soccerdata,2024-12-22
+2425_20241221_west_ham_brighton,2425,2024-12-21,Brighton,West Ham,0,,,actual,fbref_soccerdata,2024-12-22
+2425_20241222_everton_chelsea,2425,2024-12-22,Everton,Chelsea,1,,,actual,fbref_soccerdata,2024-12-23
+2425_20241222_everton_chelsea,2425,2024-12-22,Chelsea,Everton,0,,,actual,fbref_soccerdata,2024-12-23
+2425_20241222_fulham_southampton,2425,2024-12-22,Fulham,Southampton,1,,,actual,fbref_soccerdata,2024-12-23
+2425_20241222_fulham_southampton,2425,2024-12-22,Southampton,Fulham,0,,,actual,fbref_soccerdata,2024-12-23
+2425_20241222_leicester_wolves,2425,2024-12-22,Leicester,Wolves,1,,,actual,fbref_soccerdata,2024-12-23
+2425_20241222_leicester_wolves,2425,2024-12-22,Wolves,Leicester,0,,,actual,fbref_soccerdata,2024-12-23
+2425_20241222_man_united_bournemouth,2425,2024-12-22,Man United,Bournemouth,1,,,actual,fbref_soccerdata,2024-12-23
+2425_20241222_man_united_bournemouth,2425,2024-12-22,Bournemouth,Man United,0,,,actual,fbref_soccerdata,2024-12-23
+2425_20241222_tottenham_liverpool,2425,2024-12-22,Tottenham,Liverpool,1,,,actual,fbref_soccerdata,2024-12-23
+2425_20241222_tottenham_liverpool,2425,2024-12-22,Liverpool,Tottenham,0,,,actual,fbref_soccerdata,2024-12-23
+2425_20241226_bournemouth_crystal_palace,2425,2024-12-26,Bournemouth,Crystal Palace,1,,,actual,fbref_soccerdata,2024-12-27
+2425_20241226_bournemouth_crystal_palace,2425,2024-12-26,Crystal Palace,Bournemouth,0,,,actual,fbref_soccerdata,2024-12-27
+2425_20241226_chelsea_fulham,2425,2024-12-26,Chelsea,Fulham,1,,,actual,fbref_soccerdata,2024-12-27
+2425_20241226_chelsea_fulham,2425,2024-12-26,Fulham,Chelsea,0,,,actual,fbref_soccerdata,2024-12-27
+2425_20241226_liverpool_leicester,2425,2024-12-26,Liverpool,Leicester,1,,,actual,fbref_soccerdata,2024-12-27
+2425_20241226_liverpool_leicester,2425,2024-12-26,Leicester,Liverpool,0,,,actual,fbref_soccerdata,2024-12-27
+2425_20241226_man_city_everton,2425,2024-12-26,Man City,Everton,1,,,actual,fbref_soccerdata,2024-12-27
+2425_20241226_man_city_everton,2425,2024-12-26,Everton,Man City,0,,,actual,fbref_soccerdata,2024-12-27
+2425_20241226_newcastle_aston_villa,2425,2024-12-26,Newcastle,Aston Villa,1,,,actual,fbref_soccerdata,2024-12-27
+2425_20241226_newcastle_aston_villa,2425,2024-12-26,Aston Villa,Newcastle,0,,,actual,fbref_soccerdata,2024-12-27
+2425_20241226_nottm_forest_tottenham,2425,2024-12-26,Nott'm Forest,Tottenham,1,,,actual,fbref_soccerdata,2024-12-27
+2425_20241226_nottm_forest_tottenham,2425,2024-12-26,Tottenham,Nott'm Forest,0,,,actual,fbref_soccerdata,2024-12-27
+2425_20241226_southampton_west_ham,2425,2024-12-26,Southampton,West Ham,1,,,actual,fbref_soccerdata,2024-12-27
+2425_20241226_southampton_west_ham,2425,2024-12-26,West Ham,Southampton,0,,,actual,fbref_soccerdata,2024-12-27
+2425_20241226_wolves_man_united,2425,2024-12-26,Wolves,Man United,1,,,actual,fbref_soccerdata,2024-12-27
+2425_20241226_wolves_man_united,2425,2024-12-26,Man United,Wolves,0,,,actual,fbref_soccerdata,2024-12-27
+2425_20241227_arsenal_ipswich,2425,2024-12-27,Arsenal,Ipswich,1,,,actual,fbref_soccerdata,2024-12-28
+2425_20241227_arsenal_ipswich,2425,2024-12-27,Ipswich,Arsenal,0,,,actual,fbref_soccerdata,2024-12-28
+2425_20241227_brighton_brentford,2425,2024-12-27,Brighton,Brentford,1,,,actual,fbref_soccerdata,2024-12-28
+2425_20241227_brighton_brentford,2425,2024-12-27,Brentford,Brighton,0,,,actual,fbref_soccerdata,2024-12-28
+2425_20241229_crystal_palace_southampton,2425,2024-12-29,Crystal Palace,Southampton,1,,,actual,fbref_soccerdata,2024-12-30
+2425_20241229_crystal_palace_southampton,2425,2024-12-29,Southampton,Crystal Palace,0,,,actual,fbref_soccerdata,2024-12-30
+2425_20241229_everton_nottm_forest,2425,2024-12-29,Everton,Nott'm Forest,1,,,actual,fbref_soccerdata,2024-12-30
+2425_20241229_everton_nottm_forest,2425,2024-12-29,Nott'm Forest,Everton,0,,,actual,fbref_soccerdata,2024-12-30
+2425_20241229_fulham_bournemouth,2425,2024-12-29,Fulham,Bournemouth,1,,,actual,fbref_soccerdata,2024-12-30
+2425_20241229_fulham_bournemouth,2425,2024-12-29,Bournemouth,Fulham,0,,,actual,fbref_soccerdata,2024-12-30
+2425_20241229_leicester_man_city,2425,2024-12-29,Leicester,Man City,1,,,actual,fbref_soccerdata,2024-12-30
+2425_20241229_leicester_man_city,2425,2024-12-29,Man City,Leicester,0,,,actual,fbref_soccerdata,2024-12-30
+2425_20241229_tottenham_wolves,2425,2024-12-29,Tottenham,Wolves,1,,,actual,fbref_soccerdata,2024-12-30
+2425_20241229_tottenham_wolves,2425,2024-12-29,Wolves,Tottenham,0,,,actual,fbref_soccerdata,2024-12-30
+2425_20241229_west_ham_liverpool,2425,2024-12-29,West Ham,Liverpool,1,,,actual,fbref_soccerdata,2024-12-30
+2425_20241229_west_ham_liverpool,2425,2024-12-29,Liverpool,West Ham,0,,,actual,fbref_soccerdata,2024-12-30
+2425_20241230_aston_villa_brighton,2425,2024-12-30,Aston Villa,Brighton,1,,,actual,fbref_soccerdata,2024-12-31
+2425_20241230_aston_villa_brighton,2425,2024-12-30,Brighton,Aston Villa,0,,,actual,fbref_soccerdata,2024-12-31
+2425_20241230_ipswich_chelsea,2425,2024-12-30,Ipswich,Chelsea,1,,,actual,fbref_soccerdata,2024-12-31
+2425_20241230_ipswich_chelsea,2425,2024-12-30,Chelsea,Ipswich,0,,,actual,fbref_soccerdata,2024-12-31
+2425_20241230_man_united_newcastle,2425,2024-12-30,Man United,Newcastle,1,,,actual,fbref_soccerdata,2024-12-31
+2425_20241230_man_united_newcastle,2425,2024-12-30,Newcastle,Man United,0,,,actual,fbref_soccerdata,2024-12-31
+2425_20250101_brentford_arsenal,2425,2025-01-01,Brentford,Arsenal,1,,,actual,fbref_soccerdata,2025-01-02
+2425_20250101_brentford_arsenal,2425,2025-01-01,Arsenal,Brentford,0,,,actual,fbref_soccerdata,2025-01-02
+2425_20250104_aston_villa_leicester,2425,2025-01-04,Aston Villa,Leicester,1,,,actual,fbref_soccerdata,2025-01-05
+2425_20250104_aston_villa_leicester,2425,2025-01-04,Leicester,Aston Villa,0,,,actual,fbref_soccerdata,2025-01-05
+2425_20250104_bournemouth_everton,2425,2025-01-04,Bournemouth,Everton,1,,,actual,fbref_soccerdata,2025-01-05
+2425_20250104_bournemouth_everton,2425,2025-01-04,Everton,Bournemouth,0,,,actual,fbref_soccerdata,2025-01-05
+2425_20250104_brighton_arsenal,2425,2025-01-04,Brighton,Arsenal,1,,,actual,fbref_soccerdata,2025-01-05
+2425_20250104_brighton_arsenal,2425,2025-01-04,Arsenal,Brighton,0,,,actual,fbref_soccerdata,2025-01-05
+2425_20250104_crystal_palace_chelsea,2425,2025-01-04,Crystal Palace,Chelsea,1,,,actual,fbref_soccerdata,2025-01-05
+2425_20250104_crystal_palace_chelsea,2425,2025-01-04,Chelsea,Crystal Palace,0,,,actual,fbref_soccerdata,2025-01-05
+2425_20250104_man_city_west_ham,2425,2025-01-04,Man City,West Ham,1,,,actual,fbref_soccerdata,2025-01-05
+2425_20250104_man_city_west_ham,2425,2025-01-04,West Ham,Man City,0,,,actual,fbref_soccerdata,2025-01-05
+2425_20250104_southampton_brentford,2425,2025-01-04,Southampton,Brentford,1,,,actual,fbref_soccerdata,2025-01-05
+2425_20250104_southampton_brentford,2425,2025-01-04,Brentford,Southampton,0,,,actual,fbref_soccerdata,2025-01-05
+2425_20250104_tottenham_newcastle,2425,2025-01-04,Tottenham,Newcastle,1,,,actual,fbref_soccerdata,2025-01-05
+2425_20250104_tottenham_newcastle,2425,2025-01-04,Newcastle,Tottenham,0,,,actual,fbref_soccerdata,2025-01-05
+2425_20250105_fulham_ipswich,2425,2025-01-05,Fulham,Ipswich,1,,,actual,fbref_soccerdata,2025-01-06
+2425_20250105_fulham_ipswich,2425,2025-01-05,Ipswich,Fulham,0,,,actual,fbref_soccerdata,2025-01-06
+2425_20250105_liverpool_man_united,2425,2025-01-05,Liverpool,Man United,1,,,actual,fbref_soccerdata,2025-01-06
+2425_20250105_liverpool_man_united,2425,2025-01-05,Man United,Liverpool,0,,,actual,fbref_soccerdata,2025-01-06
+2425_20250106_wolves_nottm_forest,2425,2025-01-06,Wolves,Nott'm Forest,1,,,actual,fbref_soccerdata,2025-01-07
+2425_20250106_wolves_nottm_forest,2425,2025-01-06,Nott'm Forest,Wolves,0,,,actual,fbref_soccerdata,2025-01-07
+2425_20250114_brentford_man_city,2425,2025-01-14,Brentford,Man City,1,,,actual,fbref_soccerdata,2025-01-15
+2425_20250114_brentford_man_city,2425,2025-01-14,Man City,Brentford,0,,,actual,fbref_soccerdata,2025-01-15
+2425_20250114_chelsea_bournemouth,2425,2025-01-14,Chelsea,Bournemouth,1,,,actual,fbref_soccerdata,2025-01-15
+2425_20250114_chelsea_bournemouth,2425,2025-01-14,Bournemouth,Chelsea,0,,,actual,fbref_soccerdata,2025-01-15
+2425_20250114_nottm_forest_liverpool,2425,2025-01-14,Nott'm Forest,Liverpool,1,,,actual,fbref_soccerdata,2025-01-15
+2425_20250114_nottm_forest_liverpool,2425,2025-01-14,Liverpool,Nott'm Forest,0,,,actual,fbref_soccerdata,2025-01-15
+2425_20250114_west_ham_fulham,2425,2025-01-14,West Ham,Fulham,1,,,actual,fbref_soccerdata,2025-01-15
+2425_20250114_west_ham_fulham,2425,2025-01-14,Fulham,West Ham,0,,,actual,fbref_soccerdata,2025-01-15
+2425_20250115_arsenal_tottenham,2425,2025-01-15,Arsenal,Tottenham,1,,,actual,fbref_soccerdata,2025-01-16
+2425_20250115_arsenal_tottenham,2425,2025-01-15,Tottenham,Arsenal,0,,,actual,fbref_soccerdata,2025-01-16
+2425_20250115_everton_aston_villa,2425,2025-01-15,Everton,Aston Villa,1,,,actual,fbref_soccerdata,2025-01-16
+2425_20250115_everton_aston_villa,2425,2025-01-15,Aston Villa,Everton,0,,,actual,fbref_soccerdata,2025-01-16
+2425_20250115_leicester_crystal_palace,2425,2025-01-15,Leicester,Crystal Palace,1,,,actual,fbref_soccerdata,2025-01-16
+2425_20250115_leicester_crystal_palace,2425,2025-01-15,Crystal Palace,Leicester,0,,,actual,fbref_soccerdata,2025-01-16
+2425_20250115_newcastle_wolves,2425,2025-01-15,Newcastle,Wolves,1,,,actual,fbref_soccerdata,2025-01-16
+2425_20250115_newcastle_wolves,2425,2025-01-15,Wolves,Newcastle,0,,,actual,fbref_soccerdata,2025-01-16
+2425_20250116_ipswich_brighton,2425,2025-01-16,Ipswich,Brighton,1,,,actual,fbref_soccerdata,2025-01-17
+2425_20250116_ipswich_brighton,2425,2025-01-16,Brighton,Ipswich,0,,,actual,fbref_soccerdata,2025-01-17
+2425_20250116_man_united_southampton,2425,2025-01-16,Man United,Southampton,1,,,actual,fbref_soccerdata,2025-01-17
+2425_20250116_man_united_southampton,2425,2025-01-16,Southampton,Man United,0,,,actual,fbref_soccerdata,2025-01-17
+2425_20250118_arsenal_aston_villa,2425,2025-01-18,Arsenal,Aston Villa,1,,,actual,fbref_soccerdata,2025-01-19
+2425_20250118_arsenal_aston_villa,2425,2025-01-18,Aston Villa,Arsenal,0,,,actual,fbref_soccerdata,2025-01-19
+2425_20250118_brentford_liverpool,2425,2025-01-18,Brentford,Liverpool,1,,,actual,fbref_soccerdata,2025-01-19
+2425_20250118_brentford_liverpool,2425,2025-01-18,Liverpool,Brentford,0,,,actual,fbref_soccerdata,2025-01-19
+2425_20250118_leicester_fulham,2425,2025-01-18,Leicester,Fulham,1,,,actual,fbref_soccerdata,2025-01-19
+2425_20250118_leicester_fulham,2425,2025-01-18,Fulham,Leicester,0,,,actual,fbref_soccerdata,2025-01-19
+2425_20250118_newcastle_bournemouth,2425,2025-01-18,Newcastle,Bournemouth,1,,,actual,fbref_soccerdata,2025-01-19
+2425_20250118_newcastle_bournemouth,2425,2025-01-18,Bournemouth,Newcastle,0,,,actual,fbref_soccerdata,2025-01-19
+2425_20250118_west_ham_crystal_palace,2425,2025-01-18,West Ham,Crystal Palace,1,,,actual,fbref_soccerdata,2025-01-19
+2425_20250118_west_ham_crystal_palace,2425,2025-01-18,Crystal Palace,West Ham,0,,,actual,fbref_soccerdata,2025-01-19
+2425_20250119_everton_tottenham,2425,2025-01-19,Everton,Tottenham,1,,,actual,fbref_soccerdata,2025-01-20
+2425_20250119_everton_tottenham,2425,2025-01-19,Tottenham,Everton,0,,,actual,fbref_soccerdata,2025-01-20
+2425_20250119_ipswich_man_city,2425,2025-01-19,Ipswich,Man City,1,,,actual,fbref_soccerdata,2025-01-20
+2425_20250119_ipswich_man_city,2425,2025-01-19,Man City,Ipswich,0,,,actual,fbref_soccerdata,2025-01-20
+2425_20250119_man_united_brighton,2425,2025-01-19,Man United,Brighton,1,,,actual,fbref_soccerdata,2025-01-20
+2425_20250119_man_united_brighton,2425,2025-01-19,Brighton,Man United,0,,,actual,fbref_soccerdata,2025-01-20
+2425_20250119_nottm_forest_southampton,2425,2025-01-19,Nott'm Forest,Southampton,1,,,actual,fbref_soccerdata,2025-01-20
+2425_20250119_nottm_forest_southampton,2425,2025-01-19,Southampton,Nott'm Forest,0,,,actual,fbref_soccerdata,2025-01-20
+2425_20250120_chelsea_wolves,2425,2025-01-20,Chelsea,Wolves,1,,,actual,fbref_soccerdata,2025-01-21
+2425_20250120_chelsea_wolves,2425,2025-01-20,Wolves,Chelsea,0,,,actual,fbref_soccerdata,2025-01-21
+2425_20250125_bournemouth_nottm_forest,2425,2025-01-25,Bournemouth,Nott'm Forest,1,,,actual,fbref_soccerdata,2025-01-26
+2425_20250125_bournemouth_nottm_forest,2425,2025-01-25,Nott'm Forest,Bournemouth,0,,,actual,fbref_soccerdata,2025-01-26
+2425_20250125_brighton_everton,2425,2025-01-25,Brighton,Everton,1,,,actual,fbref_soccerdata,2025-01-26
+2425_20250125_brighton_everton,2425,2025-01-25,Everton,Brighton,0,,,actual,fbref_soccerdata,2025-01-26
+2425_20250125_liverpool_ipswich,2425,2025-01-25,Liverpool,Ipswich,1,,,actual,fbref_soccerdata,2025-01-26
+2425_20250125_liverpool_ipswich,2425,2025-01-25,Ipswich,Liverpool,0,,,actual,fbref_soccerdata,2025-01-26
+2425_20250125_man_city_chelsea,2425,2025-01-25,Man City,Chelsea,1,,,actual,fbref_soccerdata,2025-01-26
+2425_20250125_man_city_chelsea,2425,2025-01-25,Chelsea,Man City,0,,,actual,fbref_soccerdata,2025-01-26
+2425_20250125_southampton_newcastle,2425,2025-01-25,Southampton,Newcastle,1,,,actual,fbref_soccerdata,2025-01-26
+2425_20250125_southampton_newcastle,2425,2025-01-25,Newcastle,Southampton,0,,,actual,fbref_soccerdata,2025-01-26
+2425_20250125_wolves_arsenal,2425,2025-01-25,Wolves,Arsenal,1,,,actual,fbref_soccerdata,2025-01-26
+2425_20250125_wolves_arsenal,2425,2025-01-25,Arsenal,Wolves,0,,,actual,fbref_soccerdata,2025-01-26
+2425_20250126_aston_villa_west_ham,2425,2025-01-26,Aston Villa,West Ham,1,,,actual,fbref_soccerdata,2025-01-27
+2425_20250126_aston_villa_west_ham,2425,2025-01-26,West Ham,Aston Villa,0,,,actual,fbref_soccerdata,2025-01-27
+2425_20250126_crystal_palace_brentford,2425,2025-01-26,Crystal Palace,Brentford,1,,,actual,fbref_soccerdata,2025-01-27
+2425_20250126_crystal_palace_brentford,2425,2025-01-26,Brentford,Crystal Palace,0,,,actual,fbref_soccerdata,2025-01-27
+2425_20250126_fulham_man_united,2425,2025-01-26,Fulham,Man United,1,,,actual,fbref_soccerdata,2025-01-27
+2425_20250126_fulham_man_united,2425,2025-01-26,Man United,Fulham,0,,,actual,fbref_soccerdata,2025-01-27
+2425_20250126_tottenham_leicester,2425,2025-01-26,Tottenham,Leicester,1,,,actual,fbref_soccerdata,2025-01-27
+2425_20250126_tottenham_leicester,2425,2025-01-26,Leicester,Tottenham,0,,,actual,fbref_soccerdata,2025-01-27
+2425_20250201_bournemouth_liverpool,2425,2025-02-01,Bournemouth,Liverpool,1,,,actual,fbref_soccerdata,2025-02-02
+2425_20250201_bournemouth_liverpool,2425,2025-02-01,Liverpool,Bournemouth,0,,,actual,fbref_soccerdata,2025-02-02
+2425_20250201_everton_leicester,2425,2025-02-01,Everton,Leicester,1,,,actual,fbref_soccerdata,2025-02-02
+2425_20250201_everton_leicester,2425,2025-02-01,Leicester,Everton,0,,,actual,fbref_soccerdata,2025-02-02
+2425_20250201_ipswich_southampton,2425,2025-02-01,Ipswich,Southampton,1,,,actual,fbref_soccerdata,2025-02-02
+2425_20250201_ipswich_southampton,2425,2025-02-01,Southampton,Ipswich,0,,,actual,fbref_soccerdata,2025-02-02
+2425_20250201_newcastle_fulham,2425,2025-02-01,Newcastle,Fulham,1,,,actual,fbref_soccerdata,2025-02-02
+2425_20250201_newcastle_fulham,2425,2025-02-01,Fulham,Newcastle,0,,,actual,fbref_soccerdata,2025-02-02
+2425_20250201_nottm_forest_brighton,2425,2025-02-01,Nott'm Forest,Brighton,1,,,actual,fbref_soccerdata,2025-02-02
+2425_20250201_nottm_forest_brighton,2425,2025-02-01,Brighton,Nott'm Forest,0,,,actual,fbref_soccerdata,2025-02-02
+2425_20250201_wolves_aston_villa,2425,2025-02-01,Wolves,Aston Villa,1,,,actual,fbref_soccerdata,2025-02-02
+2425_20250201_wolves_aston_villa,2425,2025-02-01,Aston Villa,Wolves,0,,,actual,fbref_soccerdata,2025-02-02
+2425_20250202_arsenal_man_city,2425,2025-02-02,Arsenal,Man City,1,,,actual,fbref_soccerdata,2025-02-03
+2425_20250202_arsenal_man_city,2425,2025-02-02,Man City,Arsenal,0,,,actual,fbref_soccerdata,2025-02-03
+2425_20250202_brentford_tottenham,2425,2025-02-02,Brentford,Tottenham,1,,,actual,fbref_soccerdata,2025-02-03
+2425_20250202_brentford_tottenham,2425,2025-02-02,Tottenham,Brentford,0,,,actual,fbref_soccerdata,2025-02-03
+2425_20250202_man_united_crystal_palace,2425,2025-02-02,Man United,Crystal Palace,1,,,actual,fbref_soccerdata,2025-02-03
+2425_20250202_man_united_crystal_palace,2425,2025-02-02,Crystal Palace,Man United,0,,,actual,fbref_soccerdata,2025-02-03
+2425_20250203_chelsea_west_ham,2425,2025-02-03,Chelsea,West Ham,1,,,actual,fbref_soccerdata,2025-02-04
+2425_20250203_chelsea_west_ham,2425,2025-02-03,West Ham,Chelsea,0,,,actual,fbref_soccerdata,2025-02-04
+2425_20250212_everton_liverpool,2425,2025-02-12,Everton,Liverpool,1,,,actual,fbref_soccerdata,2025-02-13
+2425_20250212_everton_liverpool,2425,2025-02-12,Liverpool,Everton,0,,,actual,fbref_soccerdata,2025-02-13
+2425_20250214_brighton_chelsea,2425,2025-02-14,Brighton,Chelsea,1,,,actual,fbref_soccerdata,2025-02-15
+2425_20250214_brighton_chelsea,2425,2025-02-14,Chelsea,Brighton,0,,,actual,fbref_soccerdata,2025-02-15
+2425_20250215_aston_villa_ipswich,2425,2025-02-15,Aston Villa,Ipswich,1,,,actual,fbref_soccerdata,2025-02-16
+2425_20250215_aston_villa_ipswich,2425,2025-02-15,Ipswich,Aston Villa,0,,,actual,fbref_soccerdata,2025-02-16
+2425_20250215_crystal_palace_everton,2425,2025-02-15,Crystal Palace,Everton,1,,,actual,fbref_soccerdata,2025-02-16
+2425_20250215_crystal_palace_everton,2425,2025-02-15,Everton,Crystal Palace,0,,,actual,fbref_soccerdata,2025-02-16
+2425_20250215_fulham_nottm_forest,2425,2025-02-15,Fulham,Nott'm Forest,1,,,actual,fbref_soccerdata,2025-02-16
+2425_20250215_fulham_nottm_forest,2425,2025-02-15,Nott'm Forest,Fulham,0,,,actual,fbref_soccerdata,2025-02-16
+2425_20250215_leicester_arsenal,2425,2025-02-15,Leicester,Arsenal,1,,,actual,fbref_soccerdata,2025-02-16
+2425_20250215_leicester_arsenal,2425,2025-02-15,Arsenal,Leicester,0,,,actual,fbref_soccerdata,2025-02-16
+2425_20250215_man_city_newcastle,2425,2025-02-15,Man City,Newcastle,1,,,actual,fbref_soccerdata,2025-02-16
+2425_20250215_man_city_newcastle,2425,2025-02-15,Newcastle,Man City,0,,,actual,fbref_soccerdata,2025-02-16
+2425_20250215_southampton_bournemouth,2425,2025-02-15,Southampton,Bournemouth,1,,,actual,fbref_soccerdata,2025-02-16
+2425_20250215_southampton_bournemouth,2425,2025-02-15,Bournemouth,Southampton,0,,,actual,fbref_soccerdata,2025-02-16
+2425_20250215_west_ham_brentford,2425,2025-02-15,West Ham,Brentford,1,,,actual,fbref_soccerdata,2025-02-16
+2425_20250215_west_ham_brentford,2425,2025-02-15,Brentford,West Ham,0,,,actual,fbref_soccerdata,2025-02-16
+2425_20250216_liverpool_wolves,2425,2025-02-16,Liverpool,Wolves,1,,,actual,fbref_soccerdata,2025-02-17
+2425_20250216_liverpool_wolves,2425,2025-02-16,Wolves,Liverpool,0,,,actual,fbref_soccerdata,2025-02-17
+2425_20250216_tottenham_man_united,2425,2025-02-16,Tottenham,Man United,1,,,actual,fbref_soccerdata,2025-02-17
+2425_20250216_tottenham_man_united,2425,2025-02-16,Man United,Tottenham,0,,,actual,fbref_soccerdata,2025-02-17
+2425_20250219_aston_villa_liverpool,2425,2025-02-19,Aston Villa,Liverpool,1,,,actual,fbref_soccerdata,2025-02-20
+2425_20250219_aston_villa_liverpool,2425,2025-02-19,Liverpool,Aston Villa,0,,,actual,fbref_soccerdata,2025-02-20
+2425_20250221_leicester_brentford,2425,2025-02-21,Leicester,Brentford,1,,,actual,fbref_soccerdata,2025-02-22
+2425_20250221_leicester_brentford,2425,2025-02-21,Brentford,Leicester,0,,,actual,fbref_soccerdata,2025-02-22
+2425_20250222_arsenal_west_ham,2425,2025-02-22,Arsenal,West Ham,1,,,actual,fbref_soccerdata,2025-02-23
+2425_20250222_arsenal_west_ham,2425,2025-02-22,West Ham,Arsenal,0,,,actual,fbref_soccerdata,2025-02-23
+2425_20250222_aston_villa_chelsea,2425,2025-02-22,Aston Villa,Chelsea,1,,,actual,fbref_soccerdata,2025-02-23
+2425_20250222_aston_villa_chelsea,2425,2025-02-22,Chelsea,Aston Villa,0,,,actual,fbref_soccerdata,2025-02-23
+2425_20250222_bournemouth_wolves,2425,2025-02-22,Bournemouth,Wolves,1,,,actual,fbref_soccerdata,2025-02-23
+2425_20250222_bournemouth_wolves,2425,2025-02-22,Wolves,Bournemouth,0,,,actual,fbref_soccerdata,2025-02-23
+2425_20250222_everton_man_united,2425,2025-02-22,Everton,Man United,1,,,actual,fbref_soccerdata,2025-02-23
+2425_20250222_everton_man_united,2425,2025-02-22,Man United,Everton,0,,,actual,fbref_soccerdata,2025-02-23
+2425_20250222_fulham_crystal_palace,2425,2025-02-22,Fulham,Crystal Palace,1,,,actual,fbref_soccerdata,2025-02-23
+2425_20250222_fulham_crystal_palace,2425,2025-02-22,Crystal Palace,Fulham,0,,,actual,fbref_soccerdata,2025-02-23
+2425_20250222_ipswich_tottenham,2425,2025-02-22,Ipswich,Tottenham,1,,,actual,fbref_soccerdata,2025-02-23
+2425_20250222_ipswich_tottenham,2425,2025-02-22,Tottenham,Ipswich,0,,,actual,fbref_soccerdata,2025-02-23
+2425_20250222_southampton_brighton,2425,2025-02-22,Southampton,Brighton,1,,,actual,fbref_soccerdata,2025-02-23
+2425_20250222_southampton_brighton,2425,2025-02-22,Brighton,Southampton,0,,,actual,fbref_soccerdata,2025-02-23
+2425_20250223_man_city_liverpool,2425,2025-02-23,Man City,Liverpool,1,,,actual,fbref_soccerdata,2025-02-24
+2425_20250223_man_city_liverpool,2425,2025-02-23,Liverpool,Man City,0,,,actual,fbref_soccerdata,2025-02-24
+2425_20250223_newcastle_nottm_forest,2425,2025-02-23,Newcastle,Nott'm Forest,1,,,actual,fbref_soccerdata,2025-02-24
+2425_20250223_newcastle_nottm_forest,2425,2025-02-23,Nott'm Forest,Newcastle,0,,,actual,fbref_soccerdata,2025-02-24
+2425_20250225_brighton_bournemouth,2425,2025-02-25,Brighton,Bournemouth,1,,,actual,fbref_soccerdata,2025-02-26
+2425_20250225_brighton_bournemouth,2425,2025-02-25,Bournemouth,Brighton,0,,,actual,fbref_soccerdata,2025-02-26
+2425_20250225_chelsea_southampton,2425,2025-02-25,Chelsea,Southampton,1,,,actual,fbref_soccerdata,2025-02-26
+2425_20250225_chelsea_southampton,2425,2025-02-25,Southampton,Chelsea,0,,,actual,fbref_soccerdata,2025-02-26
+2425_20250225_crystal_palace_aston_villa,2425,2025-02-25,Crystal Palace,Aston Villa,1,,,actual,fbref_soccerdata,2025-02-26
+2425_20250225_crystal_palace_aston_villa,2425,2025-02-25,Aston Villa,Crystal Palace,0,,,actual,fbref_soccerdata,2025-02-26
+2425_20250225_wolves_fulham,2425,2025-02-25,Wolves,Fulham,1,,,actual,fbref_soccerdata,2025-02-26
+2425_20250225_wolves_fulham,2425,2025-02-25,Fulham,Wolves,0,,,actual,fbref_soccerdata,2025-02-26
+2425_20250226_brentford_everton,2425,2025-02-26,Brentford,Everton,1,,,actual,fbref_soccerdata,2025-02-27
+2425_20250226_brentford_everton,2425,2025-02-26,Everton,Brentford,0,,,actual,fbref_soccerdata,2025-02-27
+2425_20250226_liverpool_newcastle,2425,2025-02-26,Liverpool,Newcastle,1,,,actual,fbref_soccerdata,2025-02-27
+2425_20250226_liverpool_newcastle,2425,2025-02-26,Newcastle,Liverpool,0,,,actual,fbref_soccerdata,2025-02-27
+2425_20250226_man_united_ipswich,2425,2025-02-26,Man United,Ipswich,1,,,actual,fbref_soccerdata,2025-02-27
+2425_20250226_man_united_ipswich,2425,2025-02-26,Ipswich,Man United,0,,,actual,fbref_soccerdata,2025-02-27
+2425_20250226_nottm_forest_arsenal,2425,2025-02-26,Nott'm Forest,Arsenal,1,,,actual,fbref_soccerdata,2025-02-27
+2425_20250226_nottm_forest_arsenal,2425,2025-02-26,Arsenal,Nott'm Forest,0,,,actual,fbref_soccerdata,2025-02-27
+2425_20250226_tottenham_man_city,2425,2025-02-26,Tottenham,Man City,1,,,actual,fbref_soccerdata,2025-02-27
+2425_20250226_tottenham_man_city,2425,2025-02-26,Man City,Tottenham,0,,,actual,fbref_soccerdata,2025-02-27
+2425_20250227_west_ham_leicester,2425,2025-02-27,West Ham,Leicester,1,,,actual,fbref_soccerdata,2025-02-28
+2425_20250227_west_ham_leicester,2425,2025-02-27,Leicester,West Ham,0,,,actual,fbref_soccerdata,2025-02-28
+2425_20250308_brentford_aston_villa,2425,2025-03-08,Brentford,Aston Villa,1,,,actual,fbref_soccerdata,2025-03-09
+2425_20250308_brentford_aston_villa,2425,2025-03-08,Aston Villa,Brentford,0,,,actual,fbref_soccerdata,2025-03-09
+2425_20250308_brighton_fulham,2425,2025-03-08,Brighton,Fulham,1,,,actual,fbref_soccerdata,2025-03-09
+2425_20250308_brighton_fulham,2425,2025-03-08,Fulham,Brighton,0,,,actual,fbref_soccerdata,2025-03-09
+2425_20250308_crystal_palace_ipswich,2425,2025-03-08,Crystal Palace,Ipswich,1,,,actual,fbref_soccerdata,2025-03-09
+2425_20250308_crystal_palace_ipswich,2425,2025-03-08,Ipswich,Crystal Palace,0,,,actual,fbref_soccerdata,2025-03-09
+2425_20250308_liverpool_southampton,2425,2025-03-08,Liverpool,Southampton,1,,,actual,fbref_soccerdata,2025-03-09
+2425_20250308_liverpool_southampton,2425,2025-03-08,Southampton,Liverpool,0,,,actual,fbref_soccerdata,2025-03-09
+2425_20250308_nottm_forest_man_city,2425,2025-03-08,Nott'm Forest,Man City,1,,,actual,fbref_soccerdata,2025-03-09
+2425_20250308_nottm_forest_man_city,2425,2025-03-08,Man City,Nott'm Forest,0,,,actual,fbref_soccerdata,2025-03-09
+2425_20250308_wolves_everton,2425,2025-03-08,Wolves,Everton,1,,,actual,fbref_soccerdata,2025-03-09
+2425_20250308_wolves_everton,2425,2025-03-08,Everton,Wolves,0,,,actual,fbref_soccerdata,2025-03-09
+2425_20250309_chelsea_leicester,2425,2025-03-09,Chelsea,Leicester,1,,,actual,fbref_soccerdata,2025-03-10
+2425_20250309_chelsea_leicester,2425,2025-03-09,Leicester,Chelsea,0,,,actual,fbref_soccerdata,2025-03-10
+2425_20250309_man_united_arsenal,2425,2025-03-09,Man United,Arsenal,1,,,actual,fbref_soccerdata,2025-03-10
+2425_20250309_man_united_arsenal,2425,2025-03-09,Arsenal,Man United,0,,,actual,fbref_soccerdata,2025-03-10
+2425_20250309_tottenham_bournemouth,2425,2025-03-09,Tottenham,Bournemouth,1,,,actual,fbref_soccerdata,2025-03-10
+2425_20250309_tottenham_bournemouth,2425,2025-03-09,Bournemouth,Tottenham,0,,,actual,fbref_soccerdata,2025-03-10
+2425_20250310_west_ham_newcastle,2425,2025-03-10,West Ham,Newcastle,1,,,actual,fbref_soccerdata,2025-03-11
+2425_20250310_west_ham_newcastle,2425,2025-03-10,Newcastle,West Ham,0,,,actual,fbref_soccerdata,2025-03-11
+2425_20250315_bournemouth_brentford,2425,2025-03-15,Bournemouth,Brentford,1,,,actual,fbref_soccerdata,2025-03-16
+2425_20250315_bournemouth_brentford,2425,2025-03-15,Brentford,Bournemouth,0,,,actual,fbref_soccerdata,2025-03-16
+2425_20250315_everton_west_ham,2425,2025-03-15,Everton,West Ham,1,,,actual,fbref_soccerdata,2025-03-16
+2425_20250315_everton_west_ham,2425,2025-03-15,West Ham,Everton,0,,,actual,fbref_soccerdata,2025-03-16
+2425_20250315_ipswich_nottm_forest,2425,2025-03-15,Ipswich,Nott'm Forest,1,,,actual,fbref_soccerdata,2025-03-16
+2425_20250315_ipswich_nottm_forest,2425,2025-03-15,Nott'm Forest,Ipswich,0,,,actual,fbref_soccerdata,2025-03-16
+2425_20250315_man_city_brighton,2425,2025-03-15,Man City,Brighton,1,,,actual,fbref_soccerdata,2025-03-16
+2425_20250315_man_city_brighton,2425,2025-03-15,Brighton,Man City,0,,,actual,fbref_soccerdata,2025-03-16
+2425_20250315_southampton_wolves,2425,2025-03-15,Southampton,Wolves,1,,,actual,fbref_soccerdata,2025-03-16
+2425_20250315_southampton_wolves,2425,2025-03-15,Wolves,Southampton,0,,,actual,fbref_soccerdata,2025-03-16
+2425_20250316_arsenal_chelsea,2425,2025-03-16,Arsenal,Chelsea,1,,,actual,fbref_soccerdata,2025-03-17
+2425_20250316_arsenal_chelsea,2425,2025-03-16,Chelsea,Arsenal,0,,,actual,fbref_soccerdata,2025-03-17
+2425_20250316_fulham_tottenham,2425,2025-03-16,Fulham,Tottenham,1,,,actual,fbref_soccerdata,2025-03-17
+2425_20250316_fulham_tottenham,2425,2025-03-16,Tottenham,Fulham,0,,,actual,fbref_soccerdata,2025-03-17
+2425_20250316_leicester_man_united,2425,2025-03-16,Leicester,Man United,1,,,actual,fbref_soccerdata,2025-03-17
+2425_20250316_leicester_man_united,2425,2025-03-16,Man United,Leicester,0,,,actual,fbref_soccerdata,2025-03-17
+2425_20250401_arsenal_fulham,2425,2025-04-01,Arsenal,Fulham,1,,,actual,fbref_soccerdata,2025-04-02
+2425_20250401_arsenal_fulham,2425,2025-04-01,Fulham,Arsenal,0,,,actual,fbref_soccerdata,2025-04-02
+2425_20250401_nottm_forest_man_united,2425,2025-04-01,Nott'm Forest,Man United,1,,,actual,fbref_soccerdata,2025-04-02
+2425_20250401_nottm_forest_man_united,2425,2025-04-01,Man United,Nott'm Forest,0,,,actual,fbref_soccerdata,2025-04-02
+2425_20250401_wolves_west_ham,2425,2025-04-01,Wolves,West Ham,1,,,actual,fbref_soccerdata,2025-04-02
+2425_20250401_wolves_west_ham,2425,2025-04-01,West Ham,Wolves,0,,,actual,fbref_soccerdata,2025-04-02
+2425_20250402_bournemouth_ipswich,2425,2025-04-02,Bournemouth,Ipswich,1,,,actual,fbref_soccerdata,2025-04-03
+2425_20250402_bournemouth_ipswich,2425,2025-04-02,Ipswich,Bournemouth,0,,,actual,fbref_soccerdata,2025-04-03
+2425_20250402_brighton_aston_villa,2425,2025-04-02,Brighton,Aston Villa,1,,,actual,fbref_soccerdata,2025-04-03
+2425_20250402_brighton_aston_villa,2425,2025-04-02,Aston Villa,Brighton,0,,,actual,fbref_soccerdata,2025-04-03
+2425_20250402_liverpool_everton,2425,2025-04-02,Liverpool,Everton,1,,,actual,fbref_soccerdata,2025-04-03
+2425_20250402_liverpool_everton,2425,2025-04-02,Everton,Liverpool,0,,,actual,fbref_soccerdata,2025-04-03
+2425_20250402_man_city_leicester,2425,2025-04-02,Man City,Leicester,1,,,actual,fbref_soccerdata,2025-04-03
+2425_20250402_man_city_leicester,2425,2025-04-02,Leicester,Man City,0,,,actual,fbref_soccerdata,2025-04-03
+2425_20250402_newcastle_brentford,2425,2025-04-02,Newcastle,Brentford,1,,,actual,fbref_soccerdata,2025-04-03
+2425_20250402_newcastle_brentford,2425,2025-04-02,Brentford,Newcastle,0,,,actual,fbref_soccerdata,2025-04-03
+2425_20250402_southampton_crystal_palace,2425,2025-04-02,Southampton,Crystal Palace,1,,,actual,fbref_soccerdata,2025-04-03
+2425_20250402_southampton_crystal_palace,2425,2025-04-02,Crystal Palace,Southampton,0,,,actual,fbref_soccerdata,2025-04-03
+2425_20250403_chelsea_tottenham,2425,2025-04-03,Chelsea,Tottenham,1,,,actual,fbref_soccerdata,2025-04-04
+2425_20250403_chelsea_tottenham,2425,2025-04-03,Tottenham,Chelsea,0,,,actual,fbref_soccerdata,2025-04-04
+2425_20250405_aston_villa_nottm_forest,2425,2025-04-05,Aston Villa,Nott'm Forest,1,,,actual,fbref_soccerdata,2025-04-06
+2425_20250405_aston_villa_nottm_forest,2425,2025-04-05,Nott'm Forest,Aston Villa,0,,,actual,fbref_soccerdata,2025-04-06
+2425_20250405_crystal_palace_brighton,2425,2025-04-05,Crystal Palace,Brighton,1,,,actual,fbref_soccerdata,2025-04-06
+2425_20250405_crystal_palace_brighton,2425,2025-04-05,Brighton,Crystal Palace,0,,,actual,fbref_soccerdata,2025-04-06
+2425_20250405_everton_arsenal,2425,2025-04-05,Everton,Arsenal,1,,,actual,fbref_soccerdata,2025-04-06
+2425_20250405_everton_arsenal,2425,2025-04-05,Arsenal,Everton,0,,,actual,fbref_soccerdata,2025-04-06
+2425_20250405_ipswich_wolves,2425,2025-04-05,Ipswich,Wolves,1,,,actual,fbref_soccerdata,2025-04-06
+2425_20250405_ipswich_wolves,2425,2025-04-05,Wolves,Ipswich,0,,,actual,fbref_soccerdata,2025-04-06
+2425_20250405_west_ham_bournemouth,2425,2025-04-05,West Ham,Bournemouth,1,,,actual,fbref_soccerdata,2025-04-06
+2425_20250405_west_ham_bournemouth,2425,2025-04-05,Bournemouth,West Ham,0,,,actual,fbref_soccerdata,2025-04-06
+2425_20250406_brentford_chelsea,2425,2025-04-06,Brentford,Chelsea,1,,,actual,fbref_soccerdata,2025-04-07
+2425_20250406_brentford_chelsea,2425,2025-04-06,Chelsea,Brentford,0,,,actual,fbref_soccerdata,2025-04-07
+2425_20250406_fulham_liverpool,2425,2025-04-06,Fulham,Liverpool,1,,,actual,fbref_soccerdata,2025-04-07
+2425_20250406_fulham_liverpool,2425,2025-04-06,Liverpool,Fulham,0,,,actual,fbref_soccerdata,2025-04-07
+2425_20250406_man_united_man_city,2425,2025-04-06,Man United,Man City,1,,,actual,fbref_soccerdata,2025-04-07
+2425_20250406_man_united_man_city,2425,2025-04-06,Man City,Man United,0,,,actual,fbref_soccerdata,2025-04-07
+2425_20250406_tottenham_southampton,2425,2025-04-06,Tottenham,Southampton,1,,,actual,fbref_soccerdata,2025-04-07
+2425_20250406_tottenham_southampton,2425,2025-04-06,Southampton,Tottenham,0,,,actual,fbref_soccerdata,2025-04-07
+2425_20250407_leicester_newcastle,2425,2025-04-07,Leicester,Newcastle,1,,,actual,fbref_soccerdata,2025-04-08
+2425_20250407_leicester_newcastle,2425,2025-04-07,Newcastle,Leicester,0,,,actual,fbref_soccerdata,2025-04-08
+2425_20250412_arsenal_brentford,2425,2025-04-12,Arsenal,Brentford,1,,,actual,fbref_soccerdata,2025-04-13
+2425_20250412_arsenal_brentford,2425,2025-04-12,Brentford,Arsenal,0,,,actual,fbref_soccerdata,2025-04-13
+2425_20250412_brighton_leicester,2425,2025-04-12,Brighton,Leicester,1,,,actual,fbref_soccerdata,2025-04-13
+2425_20250412_brighton_leicester,2425,2025-04-12,Leicester,Brighton,0,,,actual,fbref_soccerdata,2025-04-13
+2425_20250412_man_city_crystal_palace,2425,2025-04-12,Man City,Crystal Palace,1,,,actual,fbref_soccerdata,2025-04-13
+2425_20250412_man_city_crystal_palace,2425,2025-04-12,Crystal Palace,Man City,0,,,actual,fbref_soccerdata,2025-04-13
+2425_20250412_nottm_forest_everton,2425,2025-04-12,Nott'm Forest,Everton,1,,,actual,fbref_soccerdata,2025-04-13
+2425_20250412_nottm_forest_everton,2425,2025-04-12,Everton,Nott'm Forest,0,,,actual,fbref_soccerdata,2025-04-13
+2425_20250412_southampton_aston_villa,2425,2025-04-12,Southampton,Aston Villa,1,,,actual,fbref_soccerdata,2025-04-13
+2425_20250412_southampton_aston_villa,2425,2025-04-12,Aston Villa,Southampton,0,,,actual,fbref_soccerdata,2025-04-13
+2425_20250413_chelsea_ipswich,2425,2025-04-13,Chelsea,Ipswich,1,,,actual,fbref_soccerdata,2025-04-14
+2425_20250413_chelsea_ipswich,2425,2025-04-13,Ipswich,Chelsea,0,,,actual,fbref_soccerdata,2025-04-14
+2425_20250413_liverpool_west_ham,2425,2025-04-13,Liverpool,West Ham,1,,,actual,fbref_soccerdata,2025-04-14
+2425_20250413_liverpool_west_ham,2425,2025-04-13,West Ham,Liverpool,0,,,actual,fbref_soccerdata,2025-04-14
+2425_20250413_newcastle_man_united,2425,2025-04-13,Newcastle,Man United,1,,,actual,fbref_soccerdata,2025-04-14
+2425_20250413_newcastle_man_united,2425,2025-04-13,Man United,Newcastle,0,,,actual,fbref_soccerdata,2025-04-14
+2425_20250413_wolves_tottenham,2425,2025-04-13,Wolves,Tottenham,1,,,actual,fbref_soccerdata,2025-04-14
+2425_20250413_wolves_tottenham,2425,2025-04-13,Tottenham,Wolves,0,,,actual,fbref_soccerdata,2025-04-14
+2425_20250414_bournemouth_fulham,2425,2025-04-14,Bournemouth,Fulham,1,,,actual,fbref_soccerdata,2025-04-15
+2425_20250414_bournemouth_fulham,2425,2025-04-14,Fulham,Bournemouth,0,,,actual,fbref_soccerdata,2025-04-15
+2425_20250416_newcastle_crystal_palace,2425,2025-04-16,Newcastle,Crystal Palace,1,,,actual,fbref_soccerdata,2025-04-17
+2425_20250416_newcastle_crystal_palace,2425,2025-04-16,Crystal Palace,Newcastle,0,,,actual,fbref_soccerdata,2025-04-17
+2425_20250419_aston_villa_newcastle,2425,2025-04-19,Aston Villa,Newcastle,1,,,actual,fbref_soccerdata,2025-04-20
+2425_20250419_aston_villa_newcastle,2425,2025-04-19,Newcastle,Aston Villa,0,,,actual,fbref_soccerdata,2025-04-20
+2425_20250419_brentford_brighton,2425,2025-04-19,Brentford,Brighton,1,,,actual,fbref_soccerdata,2025-04-20
+2425_20250419_brentford_brighton,2425,2025-04-19,Brighton,Brentford,0,,,actual,fbref_soccerdata,2025-04-20
+2425_20250419_crystal_palace_bournemouth,2425,2025-04-19,Crystal Palace,Bournemouth,1,,,actual,fbref_soccerdata,2025-04-20
+2425_20250419_crystal_palace_bournemouth,2425,2025-04-19,Bournemouth,Crystal Palace,0,,,actual,fbref_soccerdata,2025-04-20
+2425_20250419_everton_man_city,2425,2025-04-19,Everton,Man City,1,,,actual,fbref_soccerdata,2025-04-20
+2425_20250419_everton_man_city,2425,2025-04-19,Man City,Everton,0,,,actual,fbref_soccerdata,2025-04-20
+2425_20250419_west_ham_southampton,2425,2025-04-19,West Ham,Southampton,1,,,actual,fbref_soccerdata,2025-04-20
+2425_20250419_west_ham_southampton,2425,2025-04-19,Southampton,West Ham,0,,,actual,fbref_soccerdata,2025-04-20
+2425_20250420_fulham_chelsea,2425,2025-04-20,Fulham,Chelsea,1,,,actual,fbref_soccerdata,2025-04-21
+2425_20250420_fulham_chelsea,2425,2025-04-20,Chelsea,Fulham,0,,,actual,fbref_soccerdata,2025-04-21
+2425_20250420_ipswich_arsenal,2425,2025-04-20,Ipswich,Arsenal,1,,,actual,fbref_soccerdata,2025-04-21
+2425_20250420_ipswich_arsenal,2425,2025-04-20,Arsenal,Ipswich,0,,,actual,fbref_soccerdata,2025-04-21
+2425_20250420_leicester_liverpool,2425,2025-04-20,Leicester,Liverpool,1,,,actual,fbref_soccerdata,2025-04-21
+2425_20250420_leicester_liverpool,2425,2025-04-20,Liverpool,Leicester,0,,,actual,fbref_soccerdata,2025-04-21
+2425_20250420_man_united_wolves,2425,2025-04-20,Man United,Wolves,1,,,actual,fbref_soccerdata,2025-04-21
+2425_20250420_man_united_wolves,2425,2025-04-20,Wolves,Man United,0,,,actual,fbref_soccerdata,2025-04-21
+2425_20250421_tottenham_nottm_forest,2425,2025-04-21,Tottenham,Nott'm Forest,1,,,actual,fbref_soccerdata,2025-04-22
+2425_20250421_tottenham_nottm_forest,2425,2025-04-21,Nott'm Forest,Tottenham,0,,,actual,fbref_soccerdata,2025-04-22
+2425_20250422_man_city_aston_villa,2425,2025-04-22,Man City,Aston Villa,1,,,actual,fbref_soccerdata,2025-04-23
+2425_20250422_man_city_aston_villa,2425,2025-04-22,Aston Villa,Man City,0,,,actual,fbref_soccerdata,2025-04-23
+2425_20250423_arsenal_crystal_palace,2425,2025-04-23,Arsenal,Crystal Palace,1,,,actual,fbref_soccerdata,2025-04-24
+2425_20250423_arsenal_crystal_palace,2425,2025-04-23,Crystal Palace,Arsenal,0,,,actual,fbref_soccerdata,2025-04-24
+2425_20250426_brighton_west_ham,2425,2025-04-26,Brighton,West Ham,1,,,actual,fbref_soccerdata,2025-04-27
+2425_20250426_brighton_west_ham,2425,2025-04-26,West Ham,Brighton,0,,,actual,fbref_soccerdata,2025-04-27
+2425_20250426_chelsea_everton,2425,2025-04-26,Chelsea,Everton,1,,,actual,fbref_soccerdata,2025-04-27
+2425_20250426_chelsea_everton,2425,2025-04-26,Everton,Chelsea,0,,,actual,fbref_soccerdata,2025-04-27
+2425_20250426_newcastle_ipswich,2425,2025-04-26,Newcastle,Ipswich,1,,,actual,fbref_soccerdata,2025-04-27
+2425_20250426_newcastle_ipswich,2425,2025-04-26,Ipswich,Newcastle,0,,,actual,fbref_soccerdata,2025-04-27
+2425_20250426_southampton_fulham,2425,2025-04-26,Southampton,Fulham,1,,,actual,fbref_soccerdata,2025-04-27
+2425_20250426_southampton_fulham,2425,2025-04-26,Fulham,Southampton,0,,,actual,fbref_soccerdata,2025-04-27
+2425_20250426_wolves_leicester,2425,2025-04-26,Wolves,Leicester,1,,,actual,fbref_soccerdata,2025-04-27
+2425_20250426_wolves_leicester,2425,2025-04-26,Leicester,Wolves,0,,,actual,fbref_soccerdata,2025-04-27
+2425_20250427_bournemouth_man_united,2425,2025-04-27,Bournemouth,Man United,1,,,actual,fbref_soccerdata,2025-04-28
+2425_20250427_bournemouth_man_united,2425,2025-04-27,Man United,Bournemouth,0,,,actual,fbref_soccerdata,2025-04-28
+2425_20250427_liverpool_tottenham,2425,2025-04-27,Liverpool,Tottenham,1,,,actual,fbref_soccerdata,2025-04-28
+2425_20250427_liverpool_tottenham,2425,2025-04-27,Tottenham,Liverpool,0,,,actual,fbref_soccerdata,2025-04-28
+2425_20250501_nottm_forest_brentford,2425,2025-05-01,Nott'm Forest,Brentford,1,,,actual,fbref_soccerdata,2025-05-02
+2425_20250501_nottm_forest_brentford,2425,2025-05-01,Brentford,Nott'm Forest,0,,,actual,fbref_soccerdata,2025-05-02
+2425_20250502_man_city_wolves,2425,2025-05-02,Man City,Wolves,1,,,actual,fbref_soccerdata,2025-05-03
+2425_20250502_man_city_wolves,2425,2025-05-02,Wolves,Man City,0,,,actual,fbref_soccerdata,2025-05-03
+2425_20250503_arsenal_bournemouth,2425,2025-05-03,Arsenal,Bournemouth,1,,,actual,fbref_soccerdata,2025-05-04
+2425_20250503_arsenal_bournemouth,2425,2025-05-03,Bournemouth,Arsenal,0,,,actual,fbref_soccerdata,2025-05-04
+2425_20250503_aston_villa_fulham,2425,2025-05-03,Aston Villa,Fulham,1,,,actual,fbref_soccerdata,2025-05-04
+2425_20250503_aston_villa_fulham,2425,2025-05-03,Fulham,Aston Villa,0,,,actual,fbref_soccerdata,2025-05-04
+2425_20250503_everton_ipswich,2425,2025-05-03,Everton,Ipswich,1,,,actual,fbref_soccerdata,2025-05-04
+2425_20250503_everton_ipswich,2425,2025-05-03,Ipswich,Everton,0,,,actual,fbref_soccerdata,2025-05-04
+2425_20250503_leicester_southampton,2425,2025-05-03,Leicester,Southampton,1,,,actual,fbref_soccerdata,2025-05-04
+2425_20250503_leicester_southampton,2425,2025-05-03,Southampton,Leicester,0,,,actual,fbref_soccerdata,2025-05-04
+2425_20250504_brentford_man_united,2425,2025-05-04,Brentford,Man United,1,,,actual,fbref_soccerdata,2025-05-05
+2425_20250504_brentford_man_united,2425,2025-05-04,Man United,Brentford,0,,,actual,fbref_soccerdata,2025-05-05
+2425_20250504_brighton_newcastle,2425,2025-05-04,Brighton,Newcastle,1,,,actual,fbref_soccerdata,2025-05-05
+2425_20250504_brighton_newcastle,2425,2025-05-04,Newcastle,Brighton,0,,,actual,fbref_soccerdata,2025-05-05
+2425_20250504_chelsea_liverpool,2425,2025-05-04,Chelsea,Liverpool,1,,,actual,fbref_soccerdata,2025-05-05
+2425_20250504_chelsea_liverpool,2425,2025-05-04,Liverpool,Chelsea,0,,,actual,fbref_soccerdata,2025-05-05
+2425_20250504_west_ham_tottenham,2425,2025-05-04,West Ham,Tottenham,1,,,actual,fbref_soccerdata,2025-05-05
+2425_20250504_west_ham_tottenham,2425,2025-05-04,Tottenham,West Ham,0,,,actual,fbref_soccerdata,2025-05-05
+2425_20250505_crystal_palace_nottm_forest,2425,2025-05-05,Crystal Palace,Nott'm Forest,1,,,actual,fbref_soccerdata,2025-05-06
+2425_20250505_crystal_palace_nottm_forest,2425,2025-05-05,Nott'm Forest,Crystal Palace,0,,,actual,fbref_soccerdata,2025-05-06
+2425_20250510_bournemouth_aston_villa,2425,2025-05-10,Bournemouth,Aston Villa,1,,,actual,fbref_soccerdata,2025-05-11
+2425_20250510_bournemouth_aston_villa,2425,2025-05-10,Aston Villa,Bournemouth,0,,,actual,fbref_soccerdata,2025-05-11
+2425_20250510_fulham_everton,2425,2025-05-10,Fulham,Everton,1,,,actual,fbref_soccerdata,2025-05-11
+2425_20250510_fulham_everton,2425,2025-05-10,Everton,Fulham,0,,,actual,fbref_soccerdata,2025-05-11
+2425_20250510_ipswich_brentford,2425,2025-05-10,Ipswich,Brentford,1,,,actual,fbref_soccerdata,2025-05-11
+2425_20250510_ipswich_brentford,2425,2025-05-10,Brentford,Ipswich,0,,,actual,fbref_soccerdata,2025-05-11
+2425_20250510_southampton_man_city,2425,2025-05-10,Southampton,Man City,1,,,actual,fbref_soccerdata,2025-05-11
+2425_20250510_southampton_man_city,2425,2025-05-10,Man City,Southampton,0,,,actual,fbref_soccerdata,2025-05-11
+2425_20250510_wolves_brighton,2425,2025-05-10,Wolves,Brighton,1,,,actual,fbref_soccerdata,2025-05-11
+2425_20250510_wolves_brighton,2425,2025-05-10,Brighton,Wolves,0,,,actual,fbref_soccerdata,2025-05-11
+2425_20250511_liverpool_arsenal,2425,2025-05-11,Liverpool,Arsenal,1,,,actual,fbref_soccerdata,2025-05-12
+2425_20250511_liverpool_arsenal,2425,2025-05-11,Arsenal,Liverpool,0,,,actual,fbref_soccerdata,2025-05-12
+2425_20250511_man_united_west_ham,2425,2025-05-11,Man United,West Ham,1,,,actual,fbref_soccerdata,2025-05-12
+2425_20250511_man_united_west_ham,2425,2025-05-11,West Ham,Man United,0,,,actual,fbref_soccerdata,2025-05-12
+2425_20250511_newcastle_chelsea,2425,2025-05-11,Newcastle,Chelsea,1,,,actual,fbref_soccerdata,2025-05-12
+2425_20250511_newcastle_chelsea,2425,2025-05-11,Chelsea,Newcastle,0,,,actual,fbref_soccerdata,2025-05-12
+2425_20250511_nottm_forest_leicester,2425,2025-05-11,Nott'm Forest,Leicester,1,,,actual,fbref_soccerdata,2025-05-12
+2425_20250511_nottm_forest_leicester,2425,2025-05-11,Leicester,Nott'm Forest,0,,,actual,fbref_soccerdata,2025-05-12
+2425_20250511_tottenham_crystal_palace,2425,2025-05-11,Tottenham,Crystal Palace,1,,,actual,fbref_soccerdata,2025-05-12
+2425_20250511_tottenham_crystal_palace,2425,2025-05-11,Crystal Palace,Tottenham,0,,,actual,fbref_soccerdata,2025-05-12
+2425_20250516_aston_villa_tottenham,2425,2025-05-16,Aston Villa,Tottenham,1,,,actual,fbref_soccerdata,2025-05-17
+2425_20250516_aston_villa_tottenham,2425,2025-05-16,Tottenham,Aston Villa,0,,,actual,fbref_soccerdata,2025-05-17
+2425_20250516_chelsea_man_united,2425,2025-05-16,Chelsea,Man United,1,,,actual,fbref_soccerdata,2025-05-17
+2425_20250516_chelsea_man_united,2425,2025-05-16,Man United,Chelsea,0,,,actual,fbref_soccerdata,2025-05-17
+2425_20250518_arsenal_newcastle,2425,2025-05-18,Arsenal,Newcastle,1,,,actual,fbref_soccerdata,2025-05-19
+2425_20250518_arsenal_newcastle,2425,2025-05-18,Newcastle,Arsenal,0,,,actual,fbref_soccerdata,2025-05-19
+2425_20250518_brentford_fulham,2425,2025-05-18,Brentford,Fulham,1,,,actual,fbref_soccerdata,2025-05-19
+2425_20250518_brentford_fulham,2425,2025-05-18,Fulham,Brentford,0,,,actual,fbref_soccerdata,2025-05-19
+2425_20250518_everton_southampton,2425,2025-05-18,Everton,Southampton,1,,,actual,fbref_soccerdata,2025-05-19
+2425_20250518_everton_southampton,2425,2025-05-18,Southampton,Everton,0,,,actual,fbref_soccerdata,2025-05-19
+2425_20250518_leicester_ipswich,2425,2025-05-18,Leicester,Ipswich,1,,,actual,fbref_soccerdata,2025-05-19
+2425_20250518_leicester_ipswich,2425,2025-05-18,Ipswich,Leicester,0,,,actual,fbref_soccerdata,2025-05-19
+2425_20250518_west_ham_nottm_forest,2425,2025-05-18,West Ham,Nott'm Forest,1,,,actual,fbref_soccerdata,2025-05-19
+2425_20250518_west_ham_nottm_forest,2425,2025-05-18,Nott'm Forest,West Ham,0,,,actual,fbref_soccerdata,2025-05-19
+2425_20250519_brighton_liverpool,2425,2025-05-19,Brighton,Liverpool,1,,,actual,fbref_soccerdata,2025-05-20
+2425_20250519_brighton_liverpool,2425,2025-05-19,Liverpool,Brighton,0,,,actual,fbref_soccerdata,2025-05-20
+2425_20250520_crystal_palace_wolves,2425,2025-05-20,Crystal Palace,Wolves,1,,,actual,fbref_soccerdata,2025-05-21
+2425_20250520_crystal_palace_wolves,2425,2025-05-20,Wolves,Crystal Palace,0,,,actual,fbref_soccerdata,2025-05-21
+2425_20250520_man_city_bournemouth,2425,2025-05-20,Man City,Bournemouth,1,,,actual,fbref_soccerdata,2025-05-21
+2425_20250520_man_city_bournemouth,2425,2025-05-20,Bournemouth,Man City,0,,,actual,fbref_soccerdata,2025-05-21
+2425_20250525_bournemouth_leicester,2425,2025-05-25,Bournemouth,Leicester,1,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_bournemouth_leicester,2425,2025-05-25,Leicester,Bournemouth,0,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_fulham_man_city,2425,2025-05-25,Fulham,Man City,1,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_fulham_man_city,2425,2025-05-25,Man City,Fulham,0,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_ipswich_west_ham,2425,2025-05-25,Ipswich,West Ham,1,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_ipswich_west_ham,2425,2025-05-25,West Ham,Ipswich,0,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_liverpool_crystal_palace,2425,2025-05-25,Liverpool,Crystal Palace,1,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_liverpool_crystal_palace,2425,2025-05-25,Crystal Palace,Liverpool,0,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_man_united_aston_villa,2425,2025-05-25,Man United,Aston Villa,1,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_man_united_aston_villa,2425,2025-05-25,Aston Villa,Man United,0,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_newcastle_everton,2425,2025-05-25,Newcastle,Everton,1,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_newcastle_everton,2425,2025-05-25,Everton,Newcastle,0,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_nottm_forest_chelsea,2425,2025-05-25,Nott'm Forest,Chelsea,1,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_nottm_forest_chelsea,2425,2025-05-25,Chelsea,Nott'm Forest,0,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_southampton_arsenal,2425,2025-05-25,Southampton,Arsenal,1,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_southampton_arsenal,2425,2025-05-25,Arsenal,Southampton,0,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_tottenham_brighton,2425,2025-05-25,Tottenham,Brighton,1,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_tottenham_brighton,2425,2025-05-25,Brighton,Tottenham,0,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_wolves_brentford,2425,2025-05-25,Wolves,Brentford,1,,,actual,fbref_soccerdata,2025-05-26
+2425_20250525_wolves_brentford,2425,2025-05-25,Brentford,Wolves,0,,,actual,fbref_soccerdata,2025-05-26

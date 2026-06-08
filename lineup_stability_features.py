@@ -221,6 +221,10 @@ def _team_lineup_features(
     repeated = current_players & previous_players
 
     def repeated_group(group_name: str) -> float:
+        if current.empty or "player" not in current.columns:
+            return 0.0
+        if previous.empty or "player" not in previous.columns:
+            return 0.0
         current_group = set(
             current[current.apply(lambda row: _position_group(row.get("position"), row.get("position_group")) == group_name, axis=1)][
                 "player"

@@ -1,2 +1,6 @@
 check,status,details
-player_appearances,missing,No historical lineup rows available.
+duplicate_player_appearances,pass,0 duplicated match/team/player rows.
+duplicate_team_lineups,pass,0 duplicated match/team rows.
+missing_dates,pass,0 appearance rows without date.
+starter_count,pass,"{""count"": 760.0, ""mean"": 11.0, ""std"": 0.0, ""min"": 11.0, ""25%"": 11.0, ""50%"": 11.0, ""75%"": 11.0, ""max"": 11.0}"
+two_team_lineups_per_match,pass,"{""2"": 380}"

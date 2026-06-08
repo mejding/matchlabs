@@ -193,6 +193,18 @@ def write_report(results: pd.DataFrame, shap_importance: pd.DataFrame, appearanc
         and _delta(results, baseline, full, "log_loss") < 0
         and _delta(results, baseline, full, "Brier_score") < 0
     )
+    production_decision = (
+        "Move lineup stability forward as a production candidate."
+        if production_ready
+        else (
+            "Do not activate lineup stability features. Real 2024/25 lineup rows are available, "
+            "but the full lineup model worsened out-of-sample log loss and Brier score versus "
+            "the current production baseline. Keep the features research-only until additional "
+            "seasons and a new validation run show measurable improvement."
+            if appearance_rows > 0
+            else "Do not activate lineup stability features. No historical player appearance rows are available locally yet."
+        )
+    )
     lineup_shap = shap_importance[shap_importance["feature_group"].isin(["continuity", "familiarity", "stability"])].head(12)
     lineup_lines = "\n".join(f"- `{row.feature}` ({row.feature_group}): {row.mean_abs_shap:.4f}" for row in lineup_shap.itertuples())
 
@@ -221,7 +233,7 @@ Top lineup SHAP features:
 
 ## Production Decision
 
-{'Move lineup stability forward as a production candidate.' if production_ready else 'Do not activate lineup stability features. Keep them research-only until real historical lineup rows exist and improve out-of-sample log loss/Brier.'}
+{production_decision}
 
 ## Leakage Controls
 
@@ -239,7 +251,12 @@ def main() -> None:
     full_result = next(result for result in results if result["model_version"] == "model_d_full_lineup_stability")
     shap_importance = shap_outputs(full_result)
     write_report(results_frame, shap_importance, appearance_rows)
-    print(json.dumps({"appearance_rows": appearance_rows, "activate": False if appearance_rows == 0 else None}, indent=2))
+    production_ready = (
+        appearance_rows > 0
+        and _delta(results_frame, "model_a_current_production", "model_d_full_lineup_stability", "log_loss") < 0
+        and _delta(results_frame, "model_a_current_production", "model_d_full_lineup_stability", "Brier_score") < 0
+    )
+    print(json.dumps({"appearance_rows": appearance_rows, "activate": production_ready}, indent=2))
 
 
 if __name__ == "__main__":
