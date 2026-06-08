@@ -7,6 +7,7 @@ These features are historically reproducible and safe for the current production
 - Rolling form: points last 5 and goals scored average.
 - xG strength: rolling xG, xGA and xG differential from Understat historical files.
 - Schedule and fatigue: days rest, days since last match, matches last 14 days and midweek indicator.
+- Elo rating: chronological team-strength features (`home_elo`, `away_elo`, `elo_difference`, Elo trends and rolling Elo form).
 - Home advantage.
 - Calibrated probabilities when the calibration layer improves out-of-sample log loss or Brier score.
 
