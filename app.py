@@ -767,12 +767,13 @@ def render_confidence_badge(probabilities, warnings: list[str]) -> None:
 
 def render_model_status(feature_columns: list[str], checks: dict[str, str] | None = None) -> None:
     checks = checks or {}
+    shot_volume_active = any("shots_avg" in feature or "shots_on_target_avg" in feature for feature in feature_columns)
     statuses = [
         ("Match results data", checks.get("Match results data", "Active"), "good"),
         ("xG data", checks.get("xG data", "Active"), "good" if any("xg" in feature for feature in feature_columns) else "warn"),
         ("Fatigue features", checks.get("Fatigue features", "Active"), "good" if any("days_rest" in feature for feature in feature_columns) else "warn"),
         ("Elo rating", checks.get("Elo rating", "Active"), "good" if any("elo" in feature for feature in feature_columns) else "warn"),
-        ("Shot volume", checks.get("Shot volume", "Active"), "good" if any("shots_avg" in feature for feature in feature_columns) else "warn"),
+        ("Shot volume", checks.get("Shot volume", "Active"), "good" if shot_volume_active else "warn"),
         ("Market odds", checks.get("Market odds", "Benchmark only"), "warn"),
     ]
     if checks.get("Injury data") == "Available":
