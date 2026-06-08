@@ -676,6 +676,14 @@ def fair_odds_from_probabilities(probabilities) -> list[float]:
 def render_model_fair_odds(probabilities, home_team: str, away_team: str) -> None:
     labels = [f"{home_team} win", "Draw", f"{away_team} win"]
     fair_odds = fair_odds_from_probabilities(probabilities)
+    st.markdown(
+        "<span class='badge warn'>Market odds: Benchmark only</span>",
+        unsafe_allow_html=True,
+    )
+    st.caption(
+        "Fair odds are derived only from the model probabilities shown above. "
+        "Bookmaker odds are not used as model inputs; they are only used for manual comparison."
+    )
     html = "<div class='odds-card-grid'>"
     for label, odds in zip(labels, fair_odds):
         html += dedent(
@@ -695,10 +703,10 @@ def render_bookmaker_odds_comparison(probabilities, home_team: str, away_team: s
     labels = [f"{home_team} win", "Draw", f"{away_team} win"]
     fair_odds = fair_odds_from_probabilities(probabilities)
 
-    with st.expander("Compare with bookmaker odds", expanded=False):
+    with st.expander("Manual bookmaker odds comparison", expanded=True):
         st.caption(
-            "Enter decimal bookmaker odds manually. If bookmaker odds are higher than model fair odds, "
-            "the model rates that outcome as better value. This is only a comparison tool, not betting advice."
+            "Enter decimal bookmaker odds from your bookmaker. If bookmaker odds are higher than model fair odds, "
+            "the model rates that outcome as better value. This does not change the prediction and is not betting advice."
         )
         columns = st.columns(3)
         offered_odds = []
@@ -720,7 +728,7 @@ def render_bookmaker_odds_comparison(probabilities, home_team: str, away_team: s
         for label, probability, fair, offered in zip(labels, probabilities, fair_odds, offered_odds):
             expected_return = (float(probability) * float(offered)) - 1.0
             edge_pct = expected_return * 100
-            value_label = "Better than fair odds" if offered > fair else "Worse than fair odds"
+            value_label = "Potential model value" if offered > fair else "No model value"
             rows.append(
                 {
                     "Outcome": label,
@@ -734,6 +742,15 @@ def render_bookmaker_odds_comparison(probabilities, home_team: str, away_team: s
 
         result = pd.DataFrame(rows)
         st.dataframe(result, width="stretch", hide_index=True)
+        best_edge = max(rows, key=lambda row: float(row["Model edge"].replace("%", "")))
+        best_edge_value = float(best_edge["Model edge"].replace("%", ""))
+        if best_edge_value > 0:
+            st.success(
+                f"Highest model edge: {best_edge['Outcome']} at {best_edge['Model edge']}. "
+                "Treat this as a comparison signal only."
+            )
+        else:
+            st.info("No entered bookmaker odds are currently above the model fair odds.")
         st.caption(
             "Formula: model fair odds = 1 / model probability. Model edge = probability * bookmaker odds - 1."
         )
