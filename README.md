@@ -112,7 +112,20 @@ What happens:
    - `home_elo_trend`
    - `away_elo_trend`
    - `rolling_elo_form`
-10. It can create these research-only injury features from `data/injuries.csv` when real historical rows exist:
+10. It creates these shot-volume features from football-data.co.uk shots and shots-on-target columns:
+   - `home_shots_avg_last5`
+   - `away_shots_avg_last5`
+   - `home_shots_on_target_avg_last5`
+   - `away_shots_on_target_avg_last5`
+   - `home_shots_avg_last10`
+   - `away_shots_avg_last10`
+   - `home_shots_on_target_avg_last10`
+   - `away_shots_on_target_avg_last10`
+   - `home_shots_avg_season`
+   - `away_shots_avg_season`
+   - `home_shots_on_target_avg_season`
+   - `away_shots_on_target_avg_season`
+11. It can create these research-only injury features from `data/injuries.csv` when real historical rows exist:
    - `home_number_of_injured_starters`
    - `away_number_of_injured_starters`
    - `home_missing_minutes_played`
@@ -121,18 +134,18 @@ What happens:
    - `away_missing_xg_contribution`
    - `home_missing_market_value`
    - `away_missing_market_value`
-11. It trains five XGBoost multiclass classifiers:
+12. It trains five XGBoost multiclass classifiers:
    - a baseline model without xG
    - an xG model with the extra Understat features
    - an xG + schedule model with fatigue features
-   - a production xG + schedule + Elo model
+   - a production xG + schedule + Elo + shot volume model
    - an xG + schedule + injuries model
-12. It evaluates the models with accuracy, log loss, Brier score, and calibration error.
-13. It saves the xG + schedule + Elo production model to `models/football_model.joblib`.
-14. It saves the xG + schedule model to `models/football_model_xg_schedule.joblib`.
-15. It saves the xG-only model to `models/football_model_xg.joblib`.
-16. It saves the baseline model to `models/football_model_baseline.joblib`.
-17. In research mode, it saves the injury model separately to `models/football_model_xg_schedule_injury_research.joblib`.
+13. It evaluates the models with accuracy, log loss, Brier score, and calibration error.
+14. It saves the xG + schedule + Elo + shot volume production model to `models/football_model.joblib`.
+15. It saves the xG + schedule model to `models/football_model_xg_schedule.joblib`.
+16. It saves the xG-only model to `models/football_model_xg.joblib`.
+17. It saves the baseline model to `models/football_model_baseline.joblib`.
+18. In research mode, it saves the injury model separately to `models/football_model_xg_schedule_injury_research.joblib`.
 
 The script also writes evaluation metrics to:
 
@@ -155,9 +168,13 @@ xG + schedule log loss: 1.0112
 xG + schedule Brier score: 0.6047
 xG + schedule calibration error: 0.0421
 
-xG + schedule + injuries log loss: 1.0112
-xG + schedule + injuries Brier score: 0.6047
-xG + schedule + injuries calibration error: 0.0421
+xG + schedule + Elo + shot volume log loss: 1.0453
+xG + schedule + Elo + shot volume Brier score: 0.6273
+xG + schedule + Elo + shot volume calibration error: 0.0475
+
+xG + schedule + injuries log loss: 1.0592
+xG + schedule + injuries Brier score: 0.6373
+xG + schedule + injuries calibration error: 0.0431
 ```
 
 Lower log loss, Brier score, and calibration error are better.
@@ -574,7 +591,7 @@ Sprint 3A reports:
 
 This is a learning prototype, not a production betting model.
 
-The production model uses recent form, goals, xG, rest/fatigue, and Elo team-strength ratings. Odds are benchmark-only, while injuries, lineups, and advanced tactical event data remain research/template pipelines until reliable historical data exists and improves out-of-sample metrics.
+The production model uses recent form, goals, xG, rest/fatigue, Elo team-strength ratings, and shot-volume trends. Odds are benchmark-only, while injuries, lineups, and advanced tactical event data remain research/template pipelines until reliable historical data exists and improves out-of-sample metrics.
 
 Team names must match the names used in the CSV files. Examples include:
 
@@ -600,7 +617,7 @@ The dashboard is designed for normal football users, not only model builders. It
 - Probability cards for home win, draw and away win, with the highest probability highlighted.
 - Model fair odds calculated from the displayed probabilities with `fair odds = 1 / probability`.
 - A manual bookmaker odds comparison tool that highlights whether an offered decimal odd is above or below the model's fair odds.
-- Compact home-vs-away feature groups for recent form, xG strength, schedule/fatigue and Elo team strength. Recent form and xG strength use each team's latest 5 matches in the saved dataset; schedule congestion uses recent 14-day match activity.
+- Compact home-vs-away feature groups for recent form, xG strength, schedule/fatigue, Elo team strength and shot volume. Recent form, xG strength and last-5 shot volume use each team's latest 5 matches in the saved dataset; schedule congestion uses recent 14-day match activity.
 - Plain-English key-factor explanations.
 - Recent meetings as historical head-to-head context.
 - A model/data status panel explaining Active, Candidate, Benchmark only, Research mode and Missing statuses.
@@ -671,7 +688,7 @@ Run the shot efficiency evaluation:
 python shot_efficiency_experiments.py
 ```
 
-This generates `shot_efficiency_report.md` and outputs in `evaluation/shot_efficiency/`. The latest run found that simple shot volume features are a production candidate because they improved out-of-sample log loss, Brier score, and ECE. Finishing-efficiency features such as `goals_minus_xg` remain research-only because they appear noisier and were not the best-performing feature family.
+This generates `shot_efficiency_report.md` and outputs in `evaluation/shot_efficiency/`. The latest run found that simple shot volume features improved out-of-sample log loss, Brier score, and ECE, so rolling shots and shots-on-target averages are now active in the production model. Finishing-efficiency features such as `goals_minus_xg` remain research-only because they appear noisier and were not the best-performing feature family.
 
 ## Robustness upgrade
 

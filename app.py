@@ -772,6 +772,7 @@ def render_model_status(feature_columns: list[str], checks: dict[str, str] | Non
         ("xG data", checks.get("xG data", "Active"), "good" if any("xg" in feature for feature in feature_columns) else "warn"),
         ("Fatigue features", checks.get("Fatigue features", "Active"), "good" if any("days_rest" in feature for feature in feature_columns) else "warn"),
         ("Elo rating", checks.get("Elo rating", "Active"), "good" if any("elo" in feature for feature in feature_columns) else "warn"),
+        ("Shot volume", checks.get("Shot volume", "Active"), "good" if any("shots_avg" in feature for feature in feature_columns) else "warn"),
         ("Market odds", checks.get("Market odds", "Benchmark only"), "warn"),
     ]
     if checks.get("Injury data") == "Available":
@@ -942,6 +943,25 @@ def grouped_feature_cards(row: dict[str, float], home_team: str, away_team: str)
             ],
         ),
     ]
+    if "home_shots_avg_last5" in row or "away_shots_avg_last5" in row:
+        cards.append(
+            (
+                "Shot Volume",
+                "Shooting pressure from each team's latest matches. These production features use shots and shots on target before the prediction.",
+                [
+                    ("Shots avg last 5", value(row, "home_shots_avg_last5"), value(row, "away_shots_avg_last5"), 1, True, "number"),
+                    (
+                        "Shots on target last 5",
+                        value(row, "home_shots_on_target_avg_last5"),
+                        value(row, "away_shots_on_target_avg_last5"),
+                        1,
+                        True,
+                        "number",
+                    ),
+                    ("Shots avg season", value(row, "home_shots_avg_season"), value(row, "away_shots_avg_season"), 1, True, "number"),
+                ],
+            )
+        )
 
     for start in range(0, len(cards), 2):
         columns = st.columns(2)
@@ -1404,7 +1424,12 @@ def main() -> None:
         if calibrated_layer is not None:
             st.caption(f"Calibrated probability layer: {calibrated_layer.get('method', 'available')}")
         if metrics:
-            latest = metrics.get("xg_schedule_elo_model") or metrics.get("xg_schedule_model") or {}
+            latest = (
+                metrics.get("xg_schedule_elo_shot_volume_model")
+                or metrics.get("xg_schedule_elo_model")
+                or metrics.get("xg_schedule_model")
+                or {}
+            )
             if latest.get("test_start_date"):
                 st.caption(f"Saved model test period starts: {latest['test_start_date']}")
 

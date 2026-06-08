@@ -74,7 +74,21 @@ SCHEDULE_FEATURE_COLUMNS = XG_FEATURE_COLUMNS + [
 ]
 ELO_CONFIG = EloConfig(k_factor=30.0, home_advantage=75.0, margin_of_victory=False)
 ELO_FEATURE_COLUMNS = elo_feature_columns()
-PRODUCTION_FEATURE_COLUMNS = SCHEDULE_FEATURE_COLUMNS + ELO_FEATURE_COLUMNS
+SHOT_VOLUME_FEATURE_COLUMNS = [
+    "home_shots_avg_last5",
+    "away_shots_avg_last5",
+    "home_shots_on_target_avg_last5",
+    "away_shots_on_target_avg_last5",
+    "home_shots_avg_last10",
+    "away_shots_avg_last10",
+    "home_shots_on_target_avg_last10",
+    "away_shots_on_target_avg_last10",
+    "home_shots_avg_season",
+    "away_shots_avg_season",
+    "home_shots_on_target_avg_season",
+    "away_shots_on_target_avg_season",
+]
+PRODUCTION_FEATURE_COLUMNS = SCHEDULE_FEATURE_COLUMNS + ELO_FEATURE_COLUMNS + SHOT_VOLUME_FEATURE_COLUMNS
 INJURY_FEATURE_COLUMNS = SCHEDULE_FEATURE_COLUMNS + [
     "home_number_of_injured_starters",
     "away_number_of_injured_starters",
@@ -195,7 +209,9 @@ def load_matches() -> pd.DataFrame:
 
     for season, path in paths:
         frame = pd.read_csv(path)
-        frame = frame[["Date", "HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR"]]
+        base_columns = ["Date", "HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR"]
+        shot_columns = [column for column in ["HS", "AS", "HST", "AST"] if column in frame.columns]
+        frame = frame[base_columns + shot_columns]
         frame["Season"] = season
         frames.append(frame)
 
@@ -333,6 +349,15 @@ def average(values: list[float]) -> float:
     return sum(values) / len(values) if values else 0.0
 
 
+def average_last(values: list[float], window: int) -> float:
+    return average(values[-window:])
+
+
+def average_current_season(values: list[float], seasons: list[str], current_season: str) -> float:
+    season_values = [value for value, season in zip(values, seasons) if str(season) == str(current_season)]
+    return average(season_values)
+
+
 def days_between(current_date, previous_date) -> float:
     return float((current_date - previous_date).days)
 
@@ -357,6 +382,7 @@ def build_features(
     include_xg: bool = False,
     include_schedule: bool = False,
     include_injuries: bool = False,
+    include_shot_volume: bool = False,
 ) -> tuple[pd.DataFrame, dict[str, dict[str, list[float]]]]:
     team_history: dict[str, dict[str, list[float]]] = {}
     feature_rows = []
@@ -366,7 +392,19 @@ def build_features(
         away_team = row["AwayTeam"]
 
         for team in (home_team, away_team):
-            team_history.setdefault(team, {"points": [], "goals_scored": [], "xg": [], "xga": [], "match_dates": []})
+            team_history.setdefault(
+                team,
+                {
+                    "points": [],
+                    "goals_scored": [],
+                    "xg": [],
+                    "xga": [],
+                    "match_dates": [],
+                    "shots": [],
+                    "shots_on_target": [],
+                    "shot_seasons": [],
+                },
+            )
 
         home_points = team_history[home_team]["points"][-5:]
         away_points = team_history[away_team]["points"][-5:]
@@ -421,6 +459,31 @@ def build_features(
                 }
             )
 
+        if include_shot_volume:
+            current_season = str(row["Season"])
+            home_shots = team_history[home_team]["shots"]
+            away_shots = team_history[away_team]["shots"]
+            home_sot = team_history[home_team]["shots_on_target"]
+            away_sot = team_history[away_team]["shots_on_target"]
+            home_shot_seasons = team_history[home_team]["shot_seasons"]
+            away_shot_seasons = team_history[away_team]["shot_seasons"]
+            feature_row.update(
+                {
+                    "home_shots_avg_last5": average_last(home_shots, 5),
+                    "away_shots_avg_last5": average_last(away_shots, 5),
+                    "home_shots_on_target_avg_last5": average_last(home_sot, 5),
+                    "away_shots_on_target_avg_last5": average_last(away_sot, 5),
+                    "home_shots_avg_last10": average_last(home_shots, 10),
+                    "away_shots_avg_last10": average_last(away_shots, 10),
+                    "home_shots_on_target_avg_last10": average_last(home_sot, 10),
+                    "away_shots_on_target_avg_last10": average_last(away_sot, 10),
+                    "home_shots_avg_season": average_current_season(home_shots, home_shot_seasons, current_season),
+                    "away_shots_avg_season": average_current_season(away_shots, away_shot_seasons, current_season),
+                    "home_shots_on_target_avg_season": average_current_season(home_sot, home_shot_seasons, current_season),
+                    "away_shots_on_target_avg_season": average_current_season(away_sot, away_shot_seasons, current_season),
+                }
+            )
+
         if include_injuries:
             feature_row.update(
                 {
@@ -449,6 +512,13 @@ def build_features(
         if include_schedule:
             team_history[home_team]["match_dates"].append(current_date)
             team_history[away_team]["match_dates"].append(current_date)
+        if include_shot_volume:
+            team_history[home_team]["shots"].append(float(row.get("HS", 0.0)))
+            team_history[away_team]["shots"].append(float(row.get("AS", 0.0)))
+            team_history[home_team]["shots_on_target"].append(float(row.get("HST", 0.0)))
+            team_history[away_team]["shots_on_target"].append(float(row.get("AST", 0.0)))
+            team_history[home_team]["shot_seasons"].append(str(row["Season"]))
+            team_history[away_team]["shot_seasons"].append(str(row["Season"]))
 
     return pd.DataFrame(feature_rows), team_history
 
@@ -566,8 +636,17 @@ def train(mode: str = "production") -> None:
     baseline_dataset, baseline_team_history = build_features(matches, include_xg=False)
     xg_dataset, xg_team_history = build_features(matches, include_xg=True)
     schedule_dataset, schedule_team_history = build_features(matches, include_xg=True, include_schedule=True)
+    production_base_dataset, production_team_history = build_features(
+        matches,
+        include_xg=True,
+        include_schedule=True,
+        include_shot_volume=True,
+    )
     elo_features, _ = build_elo_features(matches, ELO_CONFIG)
-    production_dataset = pd.concat([schedule_dataset.reset_index(drop=True), elo_features.reset_index(drop=True)], axis=1)
+    production_dataset = pd.concat(
+        [production_base_dataset.reset_index(drop=True), elo_features.reset_index(drop=True)],
+        axis=1,
+    )
     elo_state = build_current_elo_state(matches, ELO_CONFIG)
     injury_dataset, injury_team_history = build_features(
         matches_with_injuries,
@@ -616,7 +695,7 @@ def train(mode: str = "production") -> None:
             MODEL_PATH,
             production_model,
             PRODUCTION_FEATURE_COLUMNS,
-            schedule_team_history,
+            production_team_history,
             {
                 "elo_state": elo_state,
                 "elo_config": {
@@ -626,7 +705,7 @@ def train(mode: str = "production") -> None:
                     "initial_rating": ELO_CONFIG.initial_rating,
                     "name": ELO_CONFIG.name,
                 },
-                "production_model_version": "xg_schedule_elo",
+                "production_model_version": "xg_schedule_elo_shot_volume",
             },
         )
     else:
@@ -637,7 +716,7 @@ def train(mode: str = "production") -> None:
         "baseline": baseline_metrics,
         "xg_model": xg_metrics,
         "xg_schedule_model": schedule_metrics,
-        "xg_schedule_elo_model": production_metrics,
+        "xg_schedule_elo_shot_volume_model": production_metrics,
         "xg_schedule_injury_model": injury_metrics,
         "comparison": {
             "accuracy_change": xg_metrics["accuracy"] - baseline_metrics["accuracy"],
@@ -692,7 +771,7 @@ def train(mode: str = "production") -> None:
     print(f"Log loss: {schedule_metrics['log_loss']:.4f}")
     print(f"Brier score: {schedule_metrics['brier_score']:.4f}")
     print(f"Calibration error: {schedule_metrics['mean_absolute_calibration_error']:.4f}")
-    print("\nProduction xG + schedule + Elo model")
+    print("\nProduction xG + schedule + Elo + shot volume model")
     print(f"Accuracy: {production_metrics['accuracy']:.4f}")
     print(f"Log loss: {production_metrics['log_loss']:.4f}")
     print(f"Brier score: {production_metrics['brier_score']:.4f}")
@@ -716,7 +795,7 @@ def train(mode: str = "production") -> None:
     print(f"Elo calibration change vs schedule: {metrics['elo_comparison']['calibration_error_change_vs_schedule']:+.4f}")
     print(f"Training mode: {mode}")
     if mode == "production":
-        print(f"Saved production xG + schedule + Elo model to: {MODEL_PATH}")
+        print(f"Saved production xG + schedule + Elo + shot volume model to: {MODEL_PATH}")
     else:
         print(f"Saved research xG + schedule + injuries model to: {MODEL_DIR / 'football_model_xg_schedule_injury_research.joblib'}")
         print(f"Production model unchanged at: {MODEL_PATH}")

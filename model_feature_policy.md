@@ -8,10 +8,11 @@ These features are historically reproducible and safe for the current production
 - xG strength: rolling xG, xGA and xG differential from Understat historical files.
 - Schedule and fatigue: days rest, days since last match, matches last 14 days and midweek indicator.
 - Elo rating: chronological team-strength features (`home_elo`, `away_elo`, `elo_difference`, Elo trends and rolling Elo form).
+- Shot volume: rolling shots and shots-on-target averages from football-data.co.uk over last 5, last 10 and current season.
 - Home advantage.
 - Calibrated probabilities when the calibration layer improves out-of-sample log loss or Brier score.
 
-Shots-based tactical pressure is a production candidate, not yet the default production model feature. Sprint 3A showed improved log loss and Brier when available shots/on-target tactical pressure was used, but it still needs integration into the main training path and another backtest after calibration.
+Shot volume is active because Sprint 4 shot-efficiency evaluation and the production retrain improved out-of-sample log loss and Brier score. Finishing-efficiency, goals-minus-xG, defensive shot-prevention, and broader tactical-pressure features remain research-only until they beat the simpler production model.
 
 ## Market Odds Policy
 
@@ -43,7 +44,7 @@ These features should stay out of production unless real historical data is adde
 
 - Injuries and player availability: current CSV is template-only.
 - Lineup stability and player familiarity: the Historical Lineup Data Engine found no local FBref, Understat or available lineup rows; normalized lineup tables are template-only, so lineup SHAP contribution is zero.
-- Full tactical matchups and style embeddings: current experiments did not beat the simpler shots-based tactical pressure model.
+- Full tactical matchups and style embeddings: current experiments did not beat the simpler production model.
 - Advanced tactical profiles such as possession, passing, pressing and defensive shape until FBref/event data is populated with real historical rows.
 - Head-to-head features: Sprint 3.7 found measurable SHAP signal and better draw metrics, but worse overall log loss and Brier score than the current production baseline.
 - Market odds as model features until the timing of opening/closing odds is controlled.
@@ -56,7 +57,7 @@ Use:
 python train_model.py --mode production
 ```
 
-This trains the saved model with safe form, xG and schedule/fatigue features only.
+This trains the saved model with safe form, xG, schedule/fatigue, Elo and shot-volume features.
 
 Use:
 

@@ -22,6 +22,19 @@ def last_5_average(values: list[float]) -> float:
     return float(sum(recent) / len(recent)) if recent else 0.0
 
 
+def last_n_average(values: list[float], window: int) -> float:
+    recent = values[-window:]
+    return float(sum(recent) / len(recent)) if recent else 0.0
+
+
+def latest_season_average(values: list[float], seasons: list[str]) -> float:
+    if not values or not seasons:
+        return 0.0
+    latest_season = str(seasons[-1])
+    season_values = [value for value, season in zip(values, seasons) if str(season) == latest_season]
+    return float(sum(season_values) / len(season_values)) if season_values else 0.0
+
+
 def parse_match_date(value: str | date | None, team_history: dict[str, dict[str, list]]) -> date:
     if isinstance(value, date):
         return value
@@ -122,6 +135,29 @@ def build_prediction_features(
         "home_missing_market_value": 0.0,
         "away_missing_market_value": 0.0,
     }
+    if any("shots_avg" in column or "shots_on_target_avg" in column for column in feature_columns):
+        home_shots = home_history.get("shots", [])
+        away_shots = away_history.get("shots", [])
+        home_sot = home_history.get("shots_on_target", [])
+        away_sot = away_history.get("shots_on_target", [])
+        home_shot_seasons = home_history.get("shot_seasons", [])
+        away_shot_seasons = away_history.get("shot_seasons", [])
+        row.update(
+            {
+                "home_shots_avg_last5": last_n_average(home_shots, 5),
+                "away_shots_avg_last5": last_n_average(away_shots, 5),
+                "home_shots_on_target_avg_last5": last_n_average(home_sot, 5),
+                "away_shots_on_target_avg_last5": last_n_average(away_sot, 5),
+                "home_shots_avg_last10": last_n_average(home_shots, 10),
+                "away_shots_avg_last10": last_n_average(away_shots, 10),
+                "home_shots_on_target_avg_last10": last_n_average(home_sot, 10),
+                "away_shots_on_target_avg_last10": last_n_average(away_sot, 10),
+                "home_shots_avg_season": latest_season_average(home_shots, home_shot_seasons),
+                "away_shots_avg_season": latest_season_average(away_shots, away_shot_seasons),
+                "home_shots_on_target_avg_season": latest_season_average(home_sot, home_shot_seasons),
+                "away_shots_on_target_avg_season": latest_season_average(away_sot, away_shot_seasons),
+            }
+        )
     if any(column.startswith("elo_") or column.endswith("_elo") or column.endswith("_elo_trend") for column in feature_columns):
         row.update(build_prediction_elo_row(home_team, away_team, elo_state or {}))
     return pd.DataFrame([row], columns=feature_columns)

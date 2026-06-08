@@ -83,6 +83,10 @@ def has_elo_features(feature_columns: list[str]) -> bool:
     return any("elo" in feature for feature in feature_columns)
 
 
+def has_shot_volume_features(feature_columns: list[str]) -> bool:
+    return any("shots_avg" in feature or "shots_on_target_avg" in feature for feature in feature_columns)
+
+
 def load_current_dataset(feature_columns: list[str]) -> tuple[pd.DataFrame, pd.DataFrame]:
     matches = load_matches_with_xg()
     if has_injury_features(feature_columns):
@@ -93,6 +97,7 @@ def load_current_dataset(feature_columns: list[str]) -> tuple[pd.DataFrame, pd.D
         include_xg=any("xg" in feature for feature in feature_columns),
         include_schedule=has_schedule_features(feature_columns),
         include_injuries=has_injury_features(feature_columns),
+        include_shot_volume=has_shot_volume_features(feature_columns),
     )
     if has_elo_features(feature_columns):
         elo_features, _ = build_elo_features(
@@ -116,6 +121,7 @@ def model_comparison_from_metrics() -> pd.DataFrame:
         "xg_model": "xG",
         "xg_schedule_model": "xG + schedule",
         "xg_schedule_elo_model": "XG + schedule + Elo",
+        "xg_schedule_elo_shot_volume_model": "xG + schedule + Elo + shot volume",
         "xg_schedule_injury_model": "xG + schedule + injuries",
     }
     for key, label in labels.items():
