@@ -1,0 +1,2 @@
+model_version,accuracy,log_loss,Brier_score,calibration_score,expected_calibration_error,draw_recall,draw_log_loss,draw_mean_probability_on_draws,feature_columns,train_period,test_period
+model_b_poisson_only,0.4336448598130841,1.1742407081704602,0.7015820289990634,0.11257101134900023,0.11257101134900023,0.0,0.586780965884363,0.2093987746581276,"['poisson_home_win_prob', 'poisson_draw_prob', 'poisson_away_win_prob']",2019-08-09 to 2025-01-25,2025-01-26 to 2026-05-24

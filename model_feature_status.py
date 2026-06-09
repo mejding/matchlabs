@@ -115,6 +115,12 @@ FEATURE_STATUS: dict[str, FeatureStatusEntry] = {
         short_description="Bookmaker odds are used for comparison and fair-odds context, not as model inputs.",
         evidence="market_timing_audit_report.md keeps odds out of production because timing may reflect closing prices.",
     ),
+    "Opponent-adjusted xG": FeatureStatusEntry(
+        status="Candidate",
+        used_in_production=False,
+        short_description="Chronological xG attack and defense ratings adjusted for opponent strength.",
+        evidence="opponent_adjusted_xg_report.md shows a small Log Loss/Brier/ECE improvement, but lower accuracy and weaker draw recall.",
+    ),
     "Head-to-head": FeatureStatusEntry(
         status="Tested - Not adopted",
         used_in_production=False,

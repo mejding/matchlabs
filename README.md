@@ -36,6 +36,8 @@ It downloads historical Premier League CSV files from [football-data.co.uk](http
 - `tactical_features.py` - Tactical profiles, matchups, clusters, and style embeddings.
 - `tactical_analysis.py` - Tactical discovery and style matchup reports.
 - `tactical_intelligence_experiments.py` - Tactical Intelligence Engine model comparison runner.
+- `opponent_adjusted_xg_features.py` - Opponent-adjusted xG attack/defense ratings and Poisson baseline features.
+- `opponent_adjusted_xg_experiments.py` - Sprint 4D model comparison, SHAP, permutation and redundancy analysis.
 - `experiment_tracker.py` - CSV and JSON experiment tracking.
 - `shap_analysis.py` - Convenience wrapper for SHAP helpers.
 - `calibration/calibration.py` - Calibration metrics and plots.
@@ -634,6 +636,21 @@ Market odds are benchmark-only unless odds timing is verified as safe pre-match 
 
 The bookmaker comparison in the dashboard does not train the production model on odds. It is a safe display-only tool: enter current decimal odds manually, and the app compares them with the model's fair odds. A bookmaker odd above the model fair odd means the model sees that outcome as better value; a lower bookmaker odd means the market price is worse than the model's fair price.
 
+Run the opponent-adjusted xG evaluation:
+
+```bash
+python opponent_adjusted_xg_experiments.py
+```
+
+This generates `opponent_adjusted_xg_report.md` and outputs in `evaluation/opponent_adjusted_xg/`. The latest run found a small probability-quality gain from opponent-adjusted attack/defense ratings:
+
+- Best candidate: `model_c_production_plus_attack_defense_ratings`
+- Log Loss delta vs production: `-0.0021`
+- Brier delta vs production: `-0.0008`
+- ECE delta vs production: `-0.0014`
+
+The feature family is marked `Candidate`, not active production, because accuracy and draw recall were lower than the current production model. It should be confirmed with a broader backtest or reduced feature set before promotion.
+
 Run the historical betting validation backtest:
 
 ```bash
@@ -732,6 +749,7 @@ Current feature status:
 | Shot volume | Active | yes | Activated after shot_efficiency_report.md and production retrain improved Log Loss and Brier. |
 | Calibrated probabilities | Active | yes | models/calibrated_probability_layer.joblib is loaded by app.py when its feature list matches the production model. |
 | Market odds | Benchmark only | no | market_timing_audit_report.md keeps odds out of production because timing may reflect closing prices. |
+| Opponent-adjusted xG | Candidate | no | opponent_adjusted_xg_report.md shows a small Log Loss/Brier/ECE improvement, but lower accuracy and weaker draw recall. |
 | Head-to-head | Tested - Not adopted | no | head_to_head_intelligence_report.md keeps H2H research-only despite some draw-metric improvement. |
 | Manager consistency | Tested - Not adopted | no | manager_consistency_report.md shows worse Log Loss, Brier and ECE than production. |
 | Lineup stability | Research | no | lineup_stability_report.md shows worse out-of-sample Log Loss and Brier than production. |
