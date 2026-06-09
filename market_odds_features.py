@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from odds_timing_audit import safe_prematch_columns
+from odds_timing_audit import prematch_conditional_columns, safe_prematch_columns
 from train_model import DATA_DIR, SEASONS
 
 
@@ -23,6 +23,24 @@ ODDS_PRIORITY = [
     ("1XBCH", "1XBCD", "1XBCA", "1xBet closing odds"),
     ("AvgH", "AvgD", "AvgA", "average listed odds"),
     ("MaxH", "MaxD", "MaxA", "maximum listed odds"),
+]
+PRECLOSING_ODDS_PRIORITY = [
+    ("AvgH", "AvgD", "AvgA", "average pre-closing odds"),
+    ("MaxH", "MaxD", "MaxA", "maximum pre-closing odds"),
+    ("B365H", "B365D", "B365A", "Bet365 pre-closing odds"),
+    ("BWH", "BWD", "BWA", "Bwin pre-closing odds"),
+    ("IWH", "IWD", "IWA", "Interwetten pre-closing odds"),
+    ("PSH", "PSD", "PSA", "Pinnacle pre-closing odds"),
+    ("WHH", "WHD", "WHA", "William Hill pre-closing odds"),
+    ("VCH", "VCD", "VCA", "VC Bet pre-closing odds"),
+    ("BFH", "BFD", "BFA", "Betfair pre-closing odds"),
+    ("BFEH", "BFED", "BFEA", "Betfair Exchange pre-closing odds"),
+    ("1XBH", "1XBD", "1XBA", "1xBet pre-closing odds"),
+    ("BFDH", "BFDD", "BFDA", "Betfred pre-closing odds"),
+    ("BMGMH", "BMGMD", "BMGMA", "BetMGM pre-closing odds"),
+    ("BVH", "BVD", "BVA", "BetVictor pre-closing odds"),
+    ("CLH", "CLD", "CLA", "Coral pre-closing odds"),
+    ("LBH", "LBD", "LBA", "Ladbrokes pre-closing odds"),
 ]
 OPENING_ODDS_PATH = DATA_DIR / "oddsportal_opening_odds.csv"
 OPENING_ODDS_REQUIRED_COLUMNS = [
@@ -62,6 +80,13 @@ def decimal_odds_to_probabilities(home_odds: float, draw_odds: float, away_odds:
 def odds_priority_for_mode(market_mode: str) -> list[tuple[str, str, str, str]]:
     if market_mode in {"none", "opening"}:
         return []
+    if market_mode == "preclosing":
+        conditional_columns = set(prematch_conditional_columns())
+        return [
+            (home, draw, away, source)
+            for home, draw, away, source in PRECLOSING_ODDS_PRIORITY
+            if {home, draw, away} <= conditional_columns
+        ]
     if market_mode == "safe-prematch":
         safe_columns = set(safe_prematch_columns())
         return [
@@ -73,7 +98,7 @@ def odds_priority_for_mode(market_mode: str) -> list[tuple[str, str, str, str]]:
         return SINGLE_BOOKMAKER_LISTED_PRIORITY + ODDS_PRIORITY
     if market_mode == "benchmark":
         return ODDS_PRIORITY
-    raise ValueError("market_mode must be one of: none, benchmark, research, safe-prematch, opening")
+    raise ValueError("market_mode must be one of: none, benchmark, research, preclosing, safe-prematch, opening")
 
 
 def load_opening_market_odds() -> pd.DataFrame:

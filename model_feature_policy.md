@@ -52,8 +52,10 @@ OddsPortal opening odds status:
 Latest market production decision:
 
 - Benchmark and research-mode market-only probabilities beat the current production model on the time-based test.
-- Directly adding benchmark/research odds to the XGBoost feature set worsened out-of-sample Log Loss, Brier Score and calibration.
-- Keep market odds as benchmark/edge context only until the pre-closing odds integration is retested separately and direct integration or a calibrated blend improves out-of-sample metrics.
+- The dedicated pre-closing test found that market-only probabilities beat the model: Log Loss `1.0018` vs `1.0488`, Brier `0.6006` vs `0.6295`, ECE `0.0298` vs `0.0528`.
+- Directly adding pre-closing odds to the XGBoost feature set worsened out-of-sample Log Loss, Brier Score and calibration.
+- The calibrated model-market blend also worsened Log Loss, Brier Score and calibration.
+- Keep market odds as benchmark/edge context only. Move forward with a separate market-overlay probability layer only after a live/reproducible pre-closing odds feed is available.
 
 ## Research / Inactive Features
 

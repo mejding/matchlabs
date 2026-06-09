@@ -8,8 +8,8 @@ The strongest evidence is:
 
 - Market-only probabilities beat the current production model on benchmark and research-mode tests.
 - Adding market odds directly as XGBoost features makes the model worse out-of-sample.
-- No verified opening/pre-match odds dataset exists locally yet.
-- OddsPortal opening odds remain a strong candidate, but they need a reproducible and permitted data path before they can be used.
+- football-data non-`C` 1X2 odds are now verified as pre-closing odds, not opening odds.
+- The dedicated pre-closing test shows market-only odds beat the model, but direct XGBoost integration and blending both worsen performance.
 
 Production decision: keep market odds as `Benchmark only`. Do not train production predictions with odds yet.
 
@@ -19,7 +19,8 @@ Production decision: keep market odds as `Benchmark only`. Do not train producti
 | --- | --- | --- | --- |
 | `opening` | `data/oddsportal_opening_odds.csv` if present | Potentially safe | No data available yet |
 | `benchmark` | football-data closing/average odds | Not safe for live predictions | No |
-| `research` | football-data listed single-bookmaker odds | Unknown timing | No |
+| `preclosing` | football-data non-`C` 1X2 odds | Conditional pre-match | Not as XGBoost features |
+| `research` | historical offline odds experiments | Depends on selected mode | No |
 
 ## Results
 
@@ -48,9 +49,22 @@ Benchmark mode uses football-data closing/average odds. These are useful for com
 
 Conclusion: the market benchmark is stronger than the current model, but adding benchmark odds directly as features harms performance and creates leakage risk.
 
-### Research Mode
+### Pre-Closing Mode
 
-Research mode uses listed football-data single-bookmaker odds. Timing is unknown, so these are not production-safe.
+football-data non-`C` 1X2 odds are documented as pre-closing odds. They are collected before kickoff, but production use still requires an equivalent live/reproducible pre-closing odds feed.
+
+| model | accuracy | log_loss | brier_score | calibration_score | ece |
+| --- | --- | --- | --- | --- | --- |
+| Current production model | 0.4860 | 1.0488 | 0.6295 | 0.0528 | 0.0528 |
+| Market-only preclosing model | 0.5178 | 1.0018 | 0.6006 | 0.0298 | 0.0298 |
+| Production + preclosing odds | 0.4467 | 1.3175 | 0.7386 | 0.1740 | 0.1740 |
+| Calibrated model-market blend | 0.4860 | 1.1382 | 0.6763 | 0.1263 | 0.1263 |
+
+Conclusion: market-only pre-closing odds are stronger than the production model, but direct model integration and blending are worse.
+
+### Legacy Research Mode
+
+Legacy research mode used listed football-data single-bookmaker odds before the pre-closing timing audit was refined.
 
 | model | accuracy | log_loss | brier_score | calibration_score | ece |
 | --- | --- | --- | --- | --- | --- |
@@ -84,28 +98,27 @@ Do not activate market odds as production model features yet.
 
 Reasons:
 
-1. No verified opening odds dataset exists locally.
-2. Existing benchmark odds are likely closing/average prices and may leak late information.
-3. Existing listed odds have unknown timing.
-4. Directly adding odds features worsened Log Loss, Brier Score and calibration.
-5. The market-only benchmark is stronger, which means odds are useful as a comparison layer, but not automatically useful inside the current model architecture.
+1. Pre-closing odds are strong, but direct odds-as-XGBoost-features worsened Log Loss, Brier Score and calibration.
+2. The calibrated model-market blend also worsened Log Loss, Brier Score and calibration.
+3. Production use still requires a live/reproducible pre-closing odds feed with controlled timing.
+4. The market-only benchmark is stronger, which means odds are useful as a comparison layer, but not automatically useful inside the current model architecture.
 
 ## Recommended Next Step
 
-Build a small opening-odds proof of concept before any production activation:
+Build a market-overlay proof of concept before any production activation:
 
-1. Obtain or manually verify one full season of opening 1X2 odds.
-2. Save it as `data/oddsportal_opening_odds.csv`.
+1. Obtain or connect a live/reproducible pre-closing 1X2 odds feed.
+2. Keep market probabilities separate from the XGBoost feature set.
 3. Rerun:
 
 ```bash
-python market_intelligence_experiments.py --market-mode opening
+python market_intelligence_experiments.py --market-mode preclosing
 ```
 
 4. Promote only if:
-   - opening odds improve out-of-sample Log Loss or Brier,
+   - the market-informed probability layer improves out-of-sample Log Loss or Brier,
    - calibration does not materially worsen,
-   - timing is proven pre-match,
+   - timing is proven equivalent to the historical pre-closing odds,
    - the data source is reproducible and permitted.
 
 Until then, keep the frontend status as `Benchmark only`.

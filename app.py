@@ -1619,8 +1619,8 @@ def main() -> None:
                 "Missing = data unavailable."
             )
             st.caption(
-                "Market odds are currently used as a benchmark only because the available historical odds may represent "
-                "closing prices. They are not used in production predictions until pre-match timing is verified."
+                "Market odds are benchmark-only in the app. football-data pre-closing odds are strong historically, "
+                "but direct model integration did not improve the production model and live odds timing must be controlled."
             )
             st.markdown("#### Tested ideas")
             st.caption("These hypotheses were evaluated with time-based validation but are not used in the production model.")

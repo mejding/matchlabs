@@ -134,6 +134,39 @@ def fit_calibrated_blend(
     return normalize_probabilities((calibrated_test_model + test_market_probs) / 2.0)
 
 
+def fit_weighted_blend(
+    train_y: pd.Series,
+    train_model_probs: np.ndarray,
+    train_market_probs: np.ndarray,
+    test_model_probs: np.ndarray,
+    test_market_probs: np.ndarray,
+) -> tuple[np.ndarray, float, float]:
+    """Fit a simple model/market probability blend on the latest slice of the training period."""
+    split_index = max(int(len(train_y) * 0.8), 1)
+    tune_y = train_y.iloc[split_index:] if hasattr(train_y, "iloc") else train_y[split_index:]
+    tune_model_probs = train_model_probs[split_index:]
+    tune_market_probs = train_market_probs[split_index:]
+    if len(tune_y) < 30:
+        tune_y = train_y
+        tune_model_probs = train_model_probs
+        tune_market_probs = train_market_probs
+    temperature = choose_temperature(tune_y, tune_model_probs)
+    calibrated_tune_model = temperature_scale(tune_model_probs, temperature)
+    calibrated_test_model = temperature_scale(test_model_probs, temperature)
+    weights = np.linspace(0.0, 1.0, 41)
+    losses = [
+        log_loss(
+            tune_y,
+            normalize_probabilities((float(weight) * calibrated_tune_model) + ((1.0 - float(weight)) * tune_market_probs)),
+            labels=[0, 1, 2],
+        )
+        for weight in weights
+    ]
+    best_weight = float(weights[int(np.argmin(losses))])
+    test_blend = normalize_probabilities((best_weight * calibrated_test_model) + ((1.0 - best_weight) * test_market_probs))
+    return test_blend, best_weight, float(temperature)
+
+
 def disagreement_table(
     metadata: pd.DataFrame,
     y_true: pd.Series,
@@ -220,13 +253,24 @@ def write_report(
     summary: pd.DataFrame,
     shap_importance: pd.DataFrame,
     market_mode: str,
+    blend_weight: float | None = None,
+    blend_temperature: float | None = None,
 ) -> None:
     best = results.sort_values(["log_loss", "brier_score"]).iloc[0]
     model_a = results[results["model"].str.startswith("Model A")].iloc[0]
     model_b = results[results["model"].str.startswith("Model B")].iloc[0]
     model_c = results[results["model"].str.startswith("Model C")].iloc[0]
+    blend_rows = results[results["model"].str.startswith("Model D")]
+    model_d = blend_rows.iloc[0] if not blend_rows.empty else None
     market_beats_model = float(model_b["log_loss"]) < float(model_a["log_loss"]) and float(model_b["brier_score"]) < float(model_a["brier_score"])
     model_plus_market_improves = float(model_c["log_loss"]) < float(model_a["log_loss"]) and float(model_c["brier_score"]) < float(model_a["brier_score"])
+    blend_improves = (
+        model_d is not None
+        and pd.notna(model_d["log_loss"])
+        and float(model_d["log_loss"]) < float(model_a["log_loss"])
+        and float(model_d["brier_score"]) < float(model_a["brier_score"])
+        and float(model_d["ece"]) <= float(model_a["ece"]) + 0.01
+    )
     market_shap = shap_importance[shap_importance["feature_group"].isin(["market", "edge"])].head(12)
     shap_lines = "\n".join(f"- `{row.feature}` ({row.feature_group}): {row.mean_abs_shap:.4f}" for row in market_shap.itertuples())
 
@@ -244,11 +288,13 @@ Bookmaker odds are converted from decimal odds to normalized implied probabiliti
 
 Edges are calculated as model probability minus market probability.
 
-Important timing note: benchmark mode uses audited benchmark-only prices, preferring average closing odds when available. Research mode uses listed football-data odds with unknown timing. Opening mode requires a separate verified opening-odds file. Closing, average and maximum prices may contain information unavailable at early prediction time, so market odds should not be used in live production until odds timing is controlled.
+Important timing note: football-data non-C 1X2 odds are documented as pre-closing odds, not opening odds. C-suffixed odds are closing odds. Pre-closing odds do not leak the final result, but they are only production-safe if the live prediction path uses an equivalent pre-closing feed before kickoff.
 
 Market mode evaluated in this run: `{market_mode}`.
 
 Safe pre-match odds fields currently verified: {', '.join(safe_columns) if safe_columns else 'None'}.
+
+Blend parameters: {f'model weight={blend_weight:.2f}, temperature={blend_temperature:.2f}' if blend_weight is not None and blend_temperature is not None else 'not fitted for this run'}.
 
 ## Model Comparison
 
@@ -264,6 +310,10 @@ Model C vs Model A:
 - Brier score change: {float(model_c['brier_score'] - model_a['brier_score']):.4f}
 
 Answer: {'Yes, the model + market feature set improves the current model.' if model_plus_market_improves else 'No, adding market odds as model features did not improve the current model in this run.'}
+
+## 1b. Does a calibrated model-market blend improve predictions?
+
+Answer: {'Yes, the calibrated blend improves Log Loss and Brier without materially worsening ECE.' if blend_improves else 'No, the calibrated blend does not pass the production promotion rule in this run.'}
 
 ## 2. Is the market stronger than the model?
 
@@ -300,7 +350,7 @@ Full SHAP outputs:
 
 ## Production Decision
 
-{'Move market odds forward as a production candidate only if odds timing is controlled and the evaluated mode is opening/safe-prematch.' if model_plus_market_improves and market_mode in {'opening', 'safe-prematch'} else 'Do not move market odds into production. Keep as benchmark/research-only until model + market improves out-of-sample and odds timing is controlled.'}
+{'Move pre-closing market odds forward as a production candidate, but only if the app obtains an equivalent live pre-closing odds feed.' if (model_plus_market_improves or blend_improves) and market_mode in {'preclosing', 'opening', 'safe-prematch'} else 'Do not activate market odds as XGBoost production features. Keep them as benchmark/fair-odds context and test a separate market-overlay probability layer once live pre-closing odds timing is controlled.'}
 """
     )
     Path("market_intelligence_report.md").write_text(Path("market_timing_audit_report.md").read_text())
@@ -391,10 +441,19 @@ Do not move market odds into production. There is not enough verified opening/pr
     model_c = train_xgb(split_c.X_train, split_c.y_train)
     model_c_probs = normalize_probabilities(model_c.predict_proba(split_c.X_test))
 
+    blend_probs, blend_weight, blend_temperature = fit_weighted_blend(
+        benchmark_split.y_train,
+        benchmark_model_train_probs,
+        market_train_probs,
+        benchmark_model_test_probs,
+        market_test_probs,
+    )
+
     rows = [
         evaluate_probabilities("Model A: current production model", split.y_test, model_a_test_probs),
         evaluate_probabilities(f"Model B: market-only {evaluated_market_mode} model", benchmark_split.y_test, market_test_probs),
         evaluate_probabilities(f"Model C: current model + {evaluated_market_mode} odds (research only)", split_c.y_test, model_c_probs),
+        evaluate_probabilities(f"Model D: calibrated model-market blend ({evaluated_market_mode})", benchmark_split.y_test, blend_probs),
     ]
 
     safe_dataset, safe_metadata, safe_production_columns = build_market_dataset(market_mode="safe-prematch")
@@ -403,11 +462,11 @@ Do not move market odds into production. There is not enough verified opening/pr
         split_d = time_based_split(safe_dataset[safe_feature_columns], safe_dataset["target"], safe_metadata)
         model_d = train_xgb(split_d.X_train, split_d.y_train)
         model_d_probs = normalize_probabilities(model_d.predict_proba(split_d.X_test))
-        rows.append(evaluate_probabilities("Model D: production + safe-prematch odds", split_d.y_test, model_d_probs))
+        rows.append(evaluate_probabilities("Model E: production + safe-prematch odds", split_d.y_test, model_d_probs))
     else:
         rows.append(
             {
-                "model": "Model D: production + safe-prematch odds",
+                "model": "Model E: production + safe-prematch odds",
                 "accuracy": np.nan,
                 "log_loss": np.nan,
                 "brier_score": np.nan,
@@ -465,7 +524,7 @@ Do not move market odds into production. There is not enough verified opening/pr
     gain.to_csv(OUTPUT_DIR / "market_gain_importance.csv", index=False)
     plot_feature_importance(gain.head(35), "gain_importance", "Market Intelligence Gain Importance", OUTPUT_DIR / "market_gain_importance.png")
     shap_importance = shap_outputs(model_c, split_c.X_test)
-    write_report(results, disagreements, summary, shap_importance, evaluated_market_mode)
+    write_report(results, disagreements, summary, shap_importance, evaluated_market_mode, blend_weight, blend_temperature)
     (OUTPUT_DIR / f"market_timing_audit_report_{evaluated_market_mode}.md").write_text(
         Path("market_timing_audit_report.md").read_text()
     )
@@ -476,9 +535,9 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run market timing and odds intelligence experiments.")
     parser.add_argument(
         "--market-mode",
-        choices=["none", "benchmark", "research", "safe-prematch", "opening"],
+        choices=["none", "benchmark", "research", "preclosing", "safe-prematch", "opening"],
         default="benchmark",
-        help="Controls odds feature usage. Benchmark compares market without production training; research trains offline; safe-prematch only uses verified safe fields.",
+        help="Controls odds feature usage. preclosing uses football-data non-C 1X2 odds; benchmark uses closing/aggregate odds.",
     )
     return parser.parse_args()
 

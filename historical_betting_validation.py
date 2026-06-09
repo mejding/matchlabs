@@ -269,7 +269,7 @@ def write_report(
 
 This report tests whether model edges versus bookmaker odds would have produced profitable historical selections.
 
-Important timing policy: this is a research backtest using `market_mode={market_mode}`. The football-data odds may be closing or average market prices. They do not use match results, but their exact pre-kickoff availability is not fully verified, so these results should not be treated as live production betting evidence without a verified odds feed.
+Important timing policy: this is a research backtest using `market_mode={market_mode}`. football-data non-C 1X2 odds are documented as pre-closing, while C-suffixed odds are closing. These odds do not use match results, but production use still requires an equivalent live/reproducible odds feed with controlled timing.
 
 Test period starts: `{validation['Date'].min()}`  
 Test period ends: `{validation['Date'].max()}`  
@@ -402,9 +402,9 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Validate model betting edges against historical bookmaker odds.")
     parser.add_argument(
         "--market-mode",
-        choices=["benchmark", "research", "safe-prematch"],
+        choices=["benchmark", "research", "preclosing", "safe-prematch"],
         default="benchmark",
-        help="Odds mode. Benchmark uses audited benchmark odds; safe-prematch only uses verified safe fields if any exist.",
+        help="Odds mode. preclosing uses football-data non-C 1X2 odds; benchmark uses closing/aggregate odds.",
     )
     return parser.parse_args()
 

@@ -119,7 +119,7 @@ FEATURE_STATUS: dict[str, FeatureStatusEntry] = {
         status="Benchmark only",
         used_in_production=False,
         short_description="Bookmaker odds are used for comparison and fair-odds context, not as model inputs.",
-        evidence="market_odds_timing_discovery_report.md identifies football-data non-C odds as pre-closing production candidates, but app integration remains benchmark-only until timing and model lift are validated.",
+        evidence="market_preclosing_experiment_report.md shows market-only preclosing probabilities beat the model, but direct XGBoost integration and blending worsened performance.",
     ),
     "Opponent-adjusted xG": FeatureStatusEntry(
         status="Tested - Not adopted",
