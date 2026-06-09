@@ -478,6 +478,12 @@ def inject_styles() -> None:
             padding: 9px;
             background: var(--panel);
         }
+        .compact-status-grid {
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        }
+        .compact-status-grid .status-item {
+            padding: 7px 8px;
+        }
         .status-name {
             font-size: 0.78rem;
             color: var(--muted);
@@ -804,13 +810,10 @@ def render_model_status(feature_columns: list[str], checks: dict[str, str] | Non
         "Schedule and fatigue",
         "Elo rating",
         "Shot volume",
-        "Recency weighting",
         "Market odds",
         "Injuries and suspensions",
         "Lineup stability",
         "Tactical intelligence",
-        "Head-to-head",
-        "Manager consistency",
     ]
     statuses = []
     for name in names_to_show:
@@ -825,6 +828,24 @@ def render_model_status(feature_columns: list[str], checks: dict[str, str] | Non
         <div class="status-item" title="{html_lib.escape(tooltip)}">
             <div class="status-name">{name}</div>
             <div class="status-value"><span class="badge {tone}">{state}</span></div>
+        </div>
+        """
+        )
+    html += "</div>"
+    st.markdown(html, unsafe_allow_html=True)
+
+
+def render_tested_ideas_status() -> None:
+    tested = [(name, entry) for name, entry in FEATURE_STATUS.items() if entry.status == "Tested - Not adopted"]
+    if not tested:
+        return
+    html = '<div class="status-grid compact-status-grid">'
+    for name, entry in tested:
+        html += dedent(
+            f"""
+        <div class="status-item" title="{html_lib.escape(entry.evidence)}">
+            <div class="status-name">{name}</div>
+            <div class="status-value"><span class="badge bad">{entry.status}</span></div>
         </div>
         """
         )
@@ -1601,6 +1622,9 @@ def main() -> None:
                 "Market odds are currently used as a benchmark only because the available historical odds may represent "
                 "closing prices. They are not used in production predictions until pre-match timing is verified."
             )
+            st.markdown("#### Tested ideas")
+            st.caption("These hypotheses were evaluated with time-based validation but are not used in the production model.")
+            render_tested_ideas_status()
             render_validation_card(metrics)
 
     with technical_tab:
