@@ -116,10 +116,10 @@ FEATURE_STATUS: dict[str, FeatureStatusEntry] = {
         evidence="market_timing_audit_report.md keeps odds out of production because timing may reflect closing prices.",
     ),
     "Opponent-adjusted xG": FeatureStatusEntry(
-        status="Candidate",
+        status="Tested - Not adopted",
         used_in_production=False,
         short_description="Chronological xG attack and defense ratings adjusted for opponent strength.",
-        evidence="replacement_decision_report.md suggests ratings may replace xG-diff, but not xG/xGA averages; broader split confirmation is needed.",
+        evidence="rolling_validation_report.md shows the ratings candidate did not improve average rolling Log Loss/Brier versus production.",
     ),
     "Head-to-head": FeatureStatusEntry(
         status="Tested - Not adopted",

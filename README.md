@@ -668,6 +668,14 @@ This generates:
 
 Latest replacement finding: opponent-adjusted ratings should not replace all xG/xGA averages. The best tested configuration kept xG and xGA averages, removed xG differential, and added opponent-adjusted ratings. It improved Log Loss, Brier and ECE, but draw recall and accuracy fell, so it remains a candidate pending broader rolling-split validation.
 
+Run the rolling validation for the replacement candidate:
+
+```bash
+python opponent_adjusted_xg_rolling_validation.py
+```
+
+This generates `evaluation/opponent_adjusted_xg/rolling_validation_report.md`. The rolling validation tested 2021/22 through 2025/26 as separate forward test seasons. The ratings candidate did not improve average rolling Log Loss or Brier versus production, so opponent-adjusted xG is now `Tested - Not adopted`. The strongest follow-up is to separately test removing the existing xG-differential columns, because `production_minus_xg_diff` was the best average rolling model.
+
 Run the historical betting validation backtest:
 
 ```bash
@@ -766,7 +774,7 @@ Current feature status:
 | Shot volume | Active | yes | Activated after shot_efficiency_report.md and production retrain improved Log Loss and Brier. |
 | Calibrated probabilities | Active | yes | models/calibrated_probability_layer.joblib is loaded by app.py when its feature list matches the production model. |
 | Market odds | Benchmark only | no | market_timing_audit_report.md keeps odds out of production because timing may reflect closing prices. |
-| Opponent-adjusted xG | Candidate | no | opponent_adjusted_xg_report.md shows a small Log Loss/Brier/ECE improvement, but lower accuracy and weaker draw recall. |
+| Opponent-adjusted xG | Tested - Not adopted | no | rolling_validation_report.md shows the ratings candidate did not improve average rolling Log Loss/Brier versus production. |
 | Head-to-head | Tested - Not adopted | no | head_to_head_intelligence_report.md keeps H2H research-only despite some draw-metric improvement. |
 | Manager consistency | Tested - Not adopted | no | manager_consistency_report.md shows worse Log Loss, Brier and ECE than production. |
 | Lineup stability | Research | no | lineup_stability_report.md shows worse out-of-sample Log Loss and Brier than production. |
