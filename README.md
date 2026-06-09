@@ -618,7 +618,7 @@ The dashboard is designed for normal football users, not only model builders. It
 - Calibrated probabilities when a saved calibration layer improves out-of-sample metrics.
 - Probability cards for home win, draw and away win, with the highest probability highlighted.
 - Model fair odds calculated from the displayed probabilities with `fair odds = 1 / probability`.
-- A manual bookmaker odds comparison tool that highlights whether an offered decimal odd is above or below the model's fair odds.
+- A manual bookmaker odds comparison tool that converts entered decimal odds into market-implied probabilities, compares them with the model probabilities, and highlights whether an offered odd is above or below the model's fair odds.
 - Compact home-vs-away feature groups for recent form, xG strength, schedule/fatigue, Elo team strength and shot volume. Recent form, xG strength and last-5 shot volume use each team's latest 5 matches in the saved dataset; schedule congestion uses recent 14-day match activity.
 - Plain-English key-factor explanations.
 - Recent meetings as historical head-to-head context.
@@ -634,7 +634,7 @@ Head-to-head meetings are shown as context under "Recent meetings". They are onl
 
 Market odds are benchmark-only unless odds timing is verified as safe pre-match and out-of-sample performance improves without calibration deterioration.
 
-The bookmaker comparison in the dashboard does not train the production model on odds. It is a safe display-only tool: enter current decimal odds manually, and the app compares them with the model's fair odds. A bookmaker odd above the model fair odd means the model sees that outcome as better value; a lower bookmaker odd means the market price is worse than the model's fair price.
+The bookmaker comparison in the dashboard does not train the production model on odds. It is a safe display-only tool: enter current decimal odds manually, and the app compares them with the model's fair odds and normalized market-implied probabilities. A bookmaker odd above the model fair odd means the model sees that outcome as better value; a lower bookmaker odd means the market price is worse than the model's fair price.
 
 Run the opponent-adjusted xG evaluation:
 
@@ -723,7 +723,7 @@ Run the Elo layer evaluation:
 python elo_evaluation.py
 ```
 
-This generates `elo_evaluation_report.md`, `elo_parameter_search_report.md`, `data/elo_history.csv`, and detailed outputs in `evaluation/elo/`. Elo is now included in the production model because it improved out-of-sample log loss and Brier without materially hurting calibration in the Sprint 4B test.
+This generates `elo_evaluation_report.md`, `elo_parameter_search_report.md`, `data/elo_history.csv`, and detailed outputs in `evaluation/elo/`. Elo is now included in the production model because it improved out-of-sample log loss and Brier without materially hurting calibration in the Sprint 4B test. The current Elo layer has tested K-factor, home advantage and margin-of-victory settings; explicit season-weighted or decayed Elo has not been promoted and is documented in `evaluation/elo/weighted_elo_investigation_report.md`.
 
 Run historical season simulation validation:
 

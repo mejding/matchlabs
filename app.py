@@ -679,6 +679,15 @@ def fair_odds_from_probabilities(probabilities) -> list[float]:
     return [float(1.0 / probability) for probability in normalized]
 
 
+def market_probabilities_from_odds(offered_odds: list[float]) -> tuple[list[float], float]:
+    odds = np.asarray(offered_odds, dtype=float)
+    implied = 1.0 / np.clip(odds, 1.01, None)
+    total_implied = float(implied.sum())
+    normalized = implied / total_implied if total_implied else np.array([1 / 3, 1 / 3, 1 / 3])
+    margin = total_implied - 1.0
+    return [float(value) for value in normalized], margin
+
+
 def render_model_fair_odds(probabilities, home_team: str, away_team: str) -> None:
     labels = [f"{home_team} win", "Draw", f"{away_team} win"]
     fair_odds = fair_odds_from_probabilities(probabilities)
@@ -711,9 +720,19 @@ def render_bookmaker_odds_comparison(probabilities, home_team: str, away_team: s
 
     with st.expander("Manual bookmaker odds comparison", expanded=True):
         st.caption(
-            "Enter decimal bookmaker odds from your bookmaker. If bookmaker odds are higher than model fair odds, "
-            "the model rates that outcome as better value. This does not change the prediction and is not betting advice."
+            "Enter current decimal odds to compare the model with the market. The app converts those odds into "
+            "market-implied probabilities after removing bookmaker margin. This does not change the prediction."
         )
+        use_market_odds = st.checkbox(
+            "Compare with bookmaker odds",
+            value=False,
+            key="use_manual_bookmaker_odds",
+            help="Use this for live/manual comparison only. These odds are not used as production model inputs.",
+        )
+        if not use_market_odds:
+            st.info("Switch this on when you have bookmaker odds and want to compare them with the model probabilities.")
+            return
+
         columns = st.columns(3)
         offered_odds = []
         for column, label in zip(columns, labels):
@@ -730,8 +749,40 @@ def render_bookmaker_odds_comparison(probabilities, home_team: str, away_team: s
                     )
                 )
 
+        market_probabilities, market_margin = market_probabilities_from_odds(offered_odds)
+        market_favorite_index = int(np.argmax(market_probabilities))
+        model_favorite_index = int(np.argmax(probabilities))
+        market_html = "<div class='odds-card-grid'>"
+        for index, (label, probability) in enumerate(zip(labels, market_probabilities)):
+            highlight = " value" if index == market_favorite_index else ""
+            market_html += dedent(
+                f"""
+            <div class="odds-card{highlight}">
+                <div class="prob-label">{html_lib.escape(label)}</div>
+                <div class="odds-number">{probability * 100:.1f}%</div>
+                <div class="odds-detail">Market-implied probability</div>
+            </div>
+            """
+            )
+        market_html += "</div>"
+        st.markdown("##### Market-implied probabilities")
+        st.markdown(market_html, unsafe_allow_html=True)
+        st.caption(
+            f"Estimated bookmaker margin: {market_margin * 100:.1f}%. "
+            "Market probabilities are normalized so Home/Draw/Away sum to 100%."
+        )
+        if market_favorite_index == model_favorite_index:
+            st.info(f"Model and market agree that {labels[model_favorite_index]} is most likely.")
+        else:
+            st.warning(
+                f"Model favorite: {labels[model_favorite_index]}. "
+                f"Market favorite: {labels[market_favorite_index]}."
+            )
+
         rows = []
-        for label, probability, fair, offered in zip(labels, probabilities, fair_odds, offered_odds):
+        for label, probability, market_probability, fair, offered in zip(
+            labels, probabilities, market_probabilities, fair_odds, offered_odds
+        ):
             expected_return = (float(probability) * float(offered)) - 1.0
             edge_pct = expected_return * 100
             value_label = "Potential model value" if offered > fair else "No model value"
@@ -739,6 +790,8 @@ def render_bookmaker_odds_comparison(probabilities, home_team: str, away_team: s
                 {
                     "Outcome": label,
                     "Model probability": f"{float(probability) * 100:.1f}%",
+                    "Market probability": f"{float(market_probability) * 100:.1f}%",
+                    "Model vs market": f"{(float(probability) - float(market_probability)) * 100:+.1f} pp",
                     "Model fair odds": f"{fair:.2f}",
                     "Bookmaker odds": f"{float(offered):.2f}",
                     "Model edge": f"{edge_pct:+.1f}%",
@@ -758,7 +811,8 @@ def render_bookmaker_odds_comparison(probabilities, home_team: str, away_team: s
         else:
             st.info("No entered bookmaker odds are currently above the model fair odds.")
         st.caption(
-            "Formula: model fair odds = 1 / model probability. Model edge = probability * bookmaker odds - 1."
+            "Formula: model fair odds = 1 / model probability. Market probability = normalized 1 / bookmaker odds. "
+            "Model edge = model probability * bookmaker odds - 1."
         )
 
 
