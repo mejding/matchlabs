@@ -1,0 +1,9 @@
+feature_group,mean_abs_shap
+raw_rolling,0.58077264
+elo,0.13391836
+weighted_halflife5,0.12778251
+weighted_exponential,0.113828294
+weighted_linear,0.11156051
+weighted_halflife3,0.0872825
+fatigue,0.046811637
+other_production,0.0

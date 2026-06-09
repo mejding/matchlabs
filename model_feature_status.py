@@ -103,6 +103,12 @@ FEATURE_STATUS: dict[str, FeatureStatusEntry] = {
             "away_shots_on_target_avg_season",
         ),
     ),
+    "Recency weighting": FeatureStatusEntry(
+        status="Tested - Not adopted",
+        used_in_production=False,
+        short_description="Linear, exponential and half-life weighted versions of rolling form, xG/xGA and shot-volume features.",
+        evidence="evaluation/recency_weighting/recency_weighting_report.md shows the current production model kept the best Log Loss and better calibration.",
+    ),
     "Calibrated probabilities": FeatureStatusEntry(
         status="Active",
         used_in_production=True,

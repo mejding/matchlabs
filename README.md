@@ -649,7 +649,7 @@ This generates `opponent_adjusted_xg_report.md` and outputs in `evaluation/oppon
 - Brier delta vs production: `-0.0008`
 - ECE delta vs production: `-0.0014`
 
-The feature family is marked `Candidate`, not active production, because accuracy and draw recall were lower than the current production model. It should be confirmed with a broader backtest or reduced feature set before promotion.
+The feature family was initially marked as a candidate, but broader rolling-split validation later failed to confirm the gain. Opponent-adjusted xG is now `Tested - Not adopted`.
 
 Run the opponent-adjusted xG replacement test:
 
@@ -675,6 +675,23 @@ python opponent_adjusted_xg_rolling_validation.py
 ```
 
 This generates `evaluation/opponent_adjusted_xg/rolling_validation_report.md`. The rolling validation tested 2021/22 through 2025/26 as separate forward test seasons. The ratings candidate did not improve average rolling Log Loss or Brier versus production, so opponent-adjusted xG is now `Tested - Not adopted`. The strongest follow-up is to separately test removing the existing xG-differential columns, because `production_minus_xg_diff` was the best average rolling model.
+
+Run the recency-weighted rolling feature evaluation:
+
+```bash
+python recency_weighting_experiments.py
+```
+
+This generates:
+
+- `evaluation/recency_weighting/current_rolling_features.md`
+- `evaluation/recency_weighting/model_comparison.csv`
+- `evaluation/recency_weighting/correlation_analysis.csv`
+- `evaluation/recency_weighting/remove_one_tests.csv`
+- `evaluation/recency_weighting/regime_change_analysis.md`
+- `evaluation/recency_weighting/recency_weighting_report.md`
+
+The latest Sprint 4G run tested linear, exponential, half-life 3 and half-life 5 weighting for rolling form, goals, xG/xGA, shot volume and opponent-adjusted rating candidates. The current production model still had the best Log Loss and better ECE than the best recency model. Recency weighting is therefore `Tested - Not adopted`.
 
 Run the historical betting validation backtest:
 
@@ -775,6 +792,7 @@ Current feature status:
 | Calibrated probabilities | Active | yes | models/calibrated_probability_layer.joblib is loaded by app.py when its feature list matches the production model. |
 | Market odds | Benchmark only | no | market_timing_audit_report.md keeps odds out of production because timing may reflect closing prices. |
 | Opponent-adjusted xG | Tested - Not adopted | no | rolling_validation_report.md shows the ratings candidate did not improve average rolling Log Loss/Brier versus production. |
+| Recency weighting | Tested - Not adopted | no | recency_weighting_report.md shows weighted rolling features did not beat production Log Loss or calibration. |
 | Head-to-head | Tested - Not adopted | no | head_to_head_intelligence_report.md keeps H2H research-only despite some draw-metric improvement. |
 | Manager consistency | Tested - Not adopted | no | manager_consistency_report.md shows worse Log Loss, Brier and ECE than production. |
 | Lineup stability | Research | no | lineup_stability_report.md shows worse out-of-sample Log Loss and Brier than production. |
