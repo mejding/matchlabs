@@ -109,6 +109,12 @@ FEATURE_STATUS: dict[str, FeatureStatusEntry] = {
         short_description="Linear, exponential and half-life weighted versions of rolling form, xG/xGA and shot-volume features.",
         evidence="evaluation/recency_weighting/recency_weighting_report.md shows the current production model kept the best Log Loss and better calibration.",
     ),
+    "Decayed Elo": FeatureStatusEntry(
+        status="Tested - Not adopted",
+        used_in_production=False,
+        short_description="Season-boundary Elo regression toward league average, tested with carryover values from 0.50 to 0.90.",
+        evidence="decayed_elo_evaluation_report.md shows season decay did not improve Log Loss or Brier versus current Elo.",
+    ),
     "Calibrated probabilities": FeatureStatusEntry(
         status="Active",
         used_in_production=True,

@@ -16,11 +16,13 @@ class EloConfig:
     home_advantage: float = 50.0
     margin_of_victory: bool = False
     initial_rating: float = 1500.0
+    season_carryover: float = 1.0
 
     @property
     def name(self) -> str:
         mov = "mov" if self.margin_of_victory else "nomov"
-        return f"k{int(self.k_factor)}_ha{int(self.home_advantage)}_{mov}"
+        carry = int(round(self.season_carryover * 100))
+        return f"k{int(self.k_factor)}_ha{int(self.home_advantage)}_{mov}_carry{carry}"
 
 
 def expected_score(rating_a: float, rating_b: float) -> float:
@@ -66,9 +68,19 @@ def build_elo_features(matches: pd.DataFrame, config: EloConfig) -> tuple[pd.Dat
     rating_history: dict[str, list[float]] = {}
     feature_rows = []
     history_rows = []
+    previous_season: str | None = None
 
     ordered = matches.sort_values("Date").reset_index(drop=True)
     for index, match in ordered.iterrows():
+        current_season = str(match["Season"])
+        if previous_season is not None and current_season != previous_season and config.season_carryover < 1.0:
+            ratings = {
+                team: config.initial_rating + config.season_carryover * (rating - config.initial_rating)
+                for team, rating in ratings.items()
+            }
+            rating_history = {team: values + [float(ratings[team])] for team, values in rating_history.items()}
+        previous_season = current_season
+
         home_team = match["HomeTeam"]
         away_team = match["AwayTeam"]
         for team in (home_team, away_team):
@@ -130,9 +142,19 @@ def build_elo_features(matches: pd.DataFrame, config: EloConfig) -> tuple[pd.Dat
 def build_current_elo_state(matches: pd.DataFrame, config: EloConfig) -> dict[str, dict[str, object]]:
     ratings: dict[str, float] = {}
     rating_history: dict[str, list[float]] = {}
+    previous_season: str | None = None
 
     ordered = matches.sort_values("Date").reset_index(drop=True)
     for _, match in ordered.iterrows():
+        current_season = str(match["Season"])
+        if previous_season is not None and current_season != previous_season and config.season_carryover < 1.0:
+            ratings = {
+                team: config.initial_rating + config.season_carryover * (rating - config.initial_rating)
+                for team, rating in ratings.items()
+            }
+            rating_history = {team: values + [float(ratings[team])] for team, values in rating_history.items()}
+        previous_season = current_season
+
         home_team = match["HomeTeam"]
         away_team = match["AwayTeam"]
         for team in (home_team, away_team):

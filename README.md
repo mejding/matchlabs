@@ -104,7 +104,7 @@ What happens:
    - `away_had_midweek_match`
    - `home_days_since_last_match`
    - `away_days_since_last_match`
-9. It creates these Elo team-strength features with the validated `k30_ha75_nomov` configuration:
+9. It creates these Elo team-strength features with the validated `k30_ha75_nomov_carry100` configuration:
    - `home_elo`
    - `away_elo`
    - `elo_difference`
@@ -804,6 +804,7 @@ Current feature status:
 | xG strength | Active | yes | Present in models/football_model.joblib as home/away xG, xGA and xG differential columns. |
 | Schedule and fatigue | Active | yes | Present in models/football_model.joblib as rest and last-14-days scheduling columns. |
 | Elo rating | Active | yes | Elo was promoted after Sprint 4B and is present in models/football_model.joblib. |
+| Decayed Elo | Tested - Not adopted | no | decayed_elo_evaluation_report.md shows season carryover below 1.0 does not improve Log Loss or Brier versus current Elo. |
 | Shot volume | Active | yes | Activated after shot_efficiency_report.md and production retrain improved Log Loss and Brier. |
 | Calibrated probabilities | Active | yes | models/calibrated_probability_layer.joblib is loaded by app.py when its feature list matches the production model. |
 | Market odds | Benchmark only | no | market_overlay_report.md shows market-only preclosing probabilities remain best; logistic stacking improves Log Loss/Brier but fails the calibration promotion rule. |

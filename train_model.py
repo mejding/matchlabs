@@ -703,6 +703,7 @@ def train(mode: str = "production") -> None:
                     "home_advantage": ELO_CONFIG.home_advantage,
                     "margin_of_victory": ELO_CONFIG.margin_of_victory,
                     "initial_rating": ELO_CONFIG.initial_rating,
+                    "season_carryover": ELO_CONFIG.season_carryover,
                     "name": ELO_CONFIG.name,
                 },
                 "production_model_version": "xg_schedule_elo_shot_volume",

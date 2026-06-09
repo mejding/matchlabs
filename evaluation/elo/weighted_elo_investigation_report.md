@@ -6,9 +6,9 @@ Has the project tested a weighted Elo setup where recent seasons count more than
 
 ## Short Answer
 
-No. The current production Elo layer is chronological and dynamic, but it does not apply explicit season-level recency weighting, season decay, or regression to the league mean.
+Yes. The project has now tested explicit season-level recency weighting through a decayed Elo sprint. The current production Elo remains best on Log Loss and Brier Score.
 
-## What Has Been Tested
+## What Was Already Tested
 
 The Sprint 4B Elo evaluation tested:
 
@@ -16,7 +16,7 @@ The Sprint 4B Elo evaluation tested:
 - Fixed home Elo bonus: `0`, `50`, `75`, `100`
 - Margin-of-victory adjustment: enabled / disabled
 
-The selected production configuration is documented as `k30_ha75_nomov`.
+The selected production configuration is documented as `k30_ha75_nomov_carry100`.
 
 ## What The Current Elo Does
 
@@ -27,8 +27,9 @@ The current Elo engine:
 - stores each team's Elo before kickoff
 - updates ratings after each result
 - uses only information available before each match
+- carries ratings fully from one season into the next
 
-This means newer matches naturally move ratings more recently than older matches, but older seasons remain embedded in the rating unless later results move the team away from them.
+This means newer matches naturally move ratings more recently than older matches, but old seasons remain embedded until later results move the team away from them.
 
 The model also has Elo trend features:
 
@@ -37,50 +38,50 @@ The model also has Elo trend features:
 - `away_elo_trend`
 - `rolling_elo_form`
 
-These measure recent movement in Elo, but they are not the same as a season-weighted Elo system.
+These measure recent movement in Elo, but they are not the same as season-boundary decay.
 
-## What Has Not Been Tested
+## Decayed Elo Sprint
+
+The follow-up sprint tested this season-boundary formula:
+
+```text
+new_rating = 1500 + season_carryover * (old_rating - 1500)
+```
+
+Tested carryover values:
+
+- `1.00`: current behavior, no season decay
+- `0.90`
+- `0.85`
+- `0.75`
+- `0.65`
+- `0.50`
+
+Result:
+
+- Best Log Loss: current Elo with carryover `1.00`
+- Best Brier Score: current Elo with carryover `1.00`
+- Best ECE: decayed Elo with carryover `0.75`, but with worse Log Loss and Brier
+
+Production decision: keep current Elo in production and keep decayed Elo research-only.
+
+## What Still Has Not Been Tested
 
 The project has not yet tested:
 
-- season-start regression to the league mean
-- season carryover weighting
-- explicit decay of older seasons
 - separate promoted-team initialization
-- multi-year weighted Elo where the latest season is stronger than matches from 3-5 seasons ago
-
-## Recommended Next Elo Test
-
-Run a dedicated decayed-Elo sprint with season carryover:
-
-At each season boundary:
-
-```text
-new_rating = 1500 + carryover * (old_rating - 1500)
-```
-
-Candidate carryover values:
-
-- `1.00`: current behavior, no season decay
-- `0.85`: light regression
-- `0.75`: medium regression
-- `0.65`: stronger regression
-- `0.50`: aggressive regression
-
-The test should compare:
-
-- current production model
-- production + current Elo
-- production + decayed Elo
-- production + decayed Elo + Elo trend features
-
-Primary metrics:
-
-- Log Loss
-- Brier Score
-- ECE / calibration
-- draw recall and draw log loss
+- club-level multi-season priors
+- multi-year Elo weighting beyond simple season-boundary carryover
 
 ## Recommendation
 
-Weighted/decayed Elo is a reasonable next research sprint because it may improve future-match prediction by reducing the influence of very old seasons. It should not be assumed better than the current Elo. It should only replace or modify production Elo if it improves out-of-sample Log Loss or Brier Score without materially worsening calibration.
+Do not replace current Elo with simple season-decayed Elo. The best tested production setup remains carryover `1.00`, meaning no explicit season reset.
+
+If Elo is revisited, focus on promoted-team priors or league-strength priors rather than simple decay.
+
+## Artifacts
+
+- `decayed_elo_evaluation_report.md`
+- `evaluation/elo/decayed_elo_model_comparison.csv`
+- `evaluation/elo/decayed_elo_draw_analysis.csv`
+- `evaluation/elo/decayed_elo_model_comparison.png`
