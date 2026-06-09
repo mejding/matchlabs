@@ -55,7 +55,8 @@ Latest market production decision:
 - The dedicated pre-closing test found that market-only probabilities beat the model: Log Loss `1.0018` vs `1.0488`, Brier `0.6006` vs `0.6295`, ECE `0.0298` vs `0.0528`.
 - Directly adding pre-closing odds to the XGBoost feature set worsened out-of-sample Log Loss, Brier Score and calibration.
 - The calibrated model-market blend also worsened Log Loss, Brier Score and calibration.
-- Keep market odds as benchmark/edge context only. Move forward with a separate market-overlay probability layer only after a live/reproducible pre-closing odds feed is available.
+- The separate market overlay test found that logistic stacking improves Log Loss and Brier versus production, but ECE worsens and market-only remains best.
+- Keep market odds as benchmark/edge context only. Move forward with a separate market-overlay probability layer only after rolling validation and a live/reproducible pre-closing odds feed are available.
 
 ## Research / Inactive Features
 

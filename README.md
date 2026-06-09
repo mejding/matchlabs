@@ -709,6 +709,14 @@ python market_intelligence_experiments.py --market-mode preclosing
 
 This generates `market_preclosing_experiment_report.md`, `market_timing_audit_report.md`, and outputs in `evaluation/market_intelligence/`. The latest run found that market-only pre-closing probabilities beat the current model on Log Loss, Brier and ECE, but direct XGBoost integration and the calibrated blend both worsened performance. Market odds remain benchmark-only in the app.
 
+Run the market overlay / stacking test:
+
+```bash
+python market_overlay_experiments.py
+```
+
+This generates `evaluation/market_overlay/market_overlay_report.md`. The latest run found that market-only pre-closing probabilities were still best. Logistic stacking improved Log Loss and Brier versus production, but worsened ECE, so it is not production-ready.
+
 Run the Elo layer evaluation:
 
 ```bash
@@ -798,7 +806,7 @@ Current feature status:
 | Elo rating | Active | yes | Elo was promoted after Sprint 4B and is present in models/football_model.joblib. |
 | Shot volume | Active | yes | Activated after shot_efficiency_report.md and production retrain improved Log Loss and Brier. |
 | Calibrated probabilities | Active | yes | models/calibrated_probability_layer.joblib is loaded by app.py when its feature list matches the production model. |
-| Market odds | Benchmark only | no | market_preclosing_experiment_report.md shows market-only preclosing probabilities beat the model, but direct XGBoost integration and blending worsened performance. |
+| Market odds | Benchmark only | no | market_overlay_report.md shows market-only preclosing probabilities remain best; logistic stacking improves Log Loss/Brier but fails the calibration promotion rule. |
 | Opponent-adjusted xG | Tested - Not adopted | no | rolling_validation_report.md shows the ratings candidate did not improve average rolling Log Loss/Brier versus production. |
 | Recency weighting | Tested - Not adopted | no | recency_weighting_report.md shows weighted rolling features did not beat production Log Loss or calibration. |
 | Head-to-head | Tested - Not adopted | no | head_to_head_intelligence_report.md keeps H2H research-only despite some draw-metric improvement. |
