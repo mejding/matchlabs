@@ -1,0 +1,7 @@
+raw_xg_feature,opponent_adjusted_feature,pearson_correlation,absolute_correlation
+away_xg_avg,away_xg_attack_rating,0.4212758719935696,0.4212758719935696
+home_xg_avg,home_xg_attack_rating,0.3915963101364662,0.3915963101364662
+home_xga_avg,home_xg_defense_rating,0.37005978643755444,0.37005978643755444
+away_xga_avg,away_xg_defense_rating,0.35576160671351814,0.35576160671351814
+away_xg_diff,attack_defense_matchup_score,-0.32757776056933685,0.32757776056933685
+home_xg_diff,attack_defense_matchup_score,0.29991469934908793,0.29991469934908793

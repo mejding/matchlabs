@@ -119,7 +119,7 @@ FEATURE_STATUS: dict[str, FeatureStatusEntry] = {
         status="Candidate",
         used_in_production=False,
         short_description="Chronological xG attack and defense ratings adjusted for opponent strength.",
-        evidence="opponent_adjusted_xg_report.md shows a small Log Loss/Brier/ECE improvement, but lower accuracy and weaker draw recall.",
+        evidence="replacement_decision_report.md suggests ratings may replace xG-diff, but not xG/xGA averages; broader split confirmation is needed.",
     ),
     "Head-to-head": FeatureStatusEntry(
         status="Tested - Not adopted",

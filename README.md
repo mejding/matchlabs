@@ -651,6 +651,23 @@ This generates `opponent_adjusted_xg_report.md` and outputs in `evaluation/oppon
 
 The feature family is marked `Candidate`, not active production, because accuracy and draw recall were lower than the current production model. It should be confirmed with a broader backtest or reduced feature set before promotion.
 
+Run the opponent-adjusted xG replacement test:
+
+```bash
+python opponent_adjusted_xg_replacement_experiments.py
+```
+
+This generates:
+
+- `evaluation/opponent_adjusted_xg/current_xg_feature_inventory.md`
+- `evaluation/opponent_adjusted_xg/correlation_analysis.csv`
+- `evaluation/opponent_adjusted_xg/model_replacement_comparison.csv`
+- `evaluation/opponent_adjusted_xg/remove_one_analysis.md`
+- `evaluation/opponent_adjusted_xg/shap_replacement_report.md`
+- `evaluation/opponent_adjusted_xg/replacement_decision_report.md`
+
+Latest replacement finding: opponent-adjusted ratings should not replace all xG/xGA averages. The best tested configuration kept xG and xGA averages, removed xG differential, and added opponent-adjusted ratings. It improved Log Loss, Brier and ECE, but draw recall and accuracy fell, so it remains a candidate pending broader rolling-split validation.
+
 Run the historical betting validation backtest:
 
 ```bash
