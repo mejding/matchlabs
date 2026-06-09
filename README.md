@@ -790,7 +790,7 @@ Current feature status:
 | Elo rating | Active | yes | Elo was promoted after Sprint 4B and is present in models/football_model.joblib. |
 | Shot volume | Active | yes | Activated after shot_efficiency_report.md and production retrain improved Log Loss and Brier. |
 | Calibrated probabilities | Active | yes | models/calibrated_probability_layer.joblib is loaded by app.py when its feature list matches the production model. |
-| Market odds | Benchmark only | no | market_timing_audit_report.md keeps odds out of production because timing may reflect closing prices. |
+| Market odds | Benchmark only | no | market_odds_timing_discovery_report.md identifies football-data non-C odds as pre-closing production candidates, but app integration remains benchmark-only until timing and model lift are validated. |
 | Opponent-adjusted xG | Tested - Not adopted | no | rolling_validation_report.md shows the ratings candidate did not improve average rolling Log Loss/Brier versus production. |
 | Recency weighting | Tested - Not adopted | no | recency_weighting_report.md shows weighted rolling features did not beat production Log Loss or calibration. |
 | Head-to-head | Tested - Not adopted | no | head_to_head_intelligence_report.md keeps H2H research-only despite some draw-metric improvement. |

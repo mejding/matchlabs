@@ -10,7 +10,7 @@ Bookmaker odds are converted from decimal odds to normalized implied probabiliti
 
 Edges are calculated as model probability minus market probability.
 
-Important timing note: benchmark mode uses audited benchmark-only prices, preferring average closing odds when available. Research mode uses listed football-data odds with unknown timing. Opening mode requires a separate verified opening-odds file. Closing, average and maximum prices may contain information unavailable at early prediction time, so market odds should not be used in live production until odds timing is controlled.
+Important timing update: `market_odds_timing_discovery_report.md` is now the source of truth for column timing. football-data non-`C` 1X2 odds are documented as pre-closing odds, not opening odds. `C`-suffixed odds are closing odds. This historical model comparison remains useful, but production activation still requires a live/reproducible pre-closing odds feed and a fresh time-based model test.
 
 Market mode evaluated in this run: `research`.
 

@@ -20,14 +20,19 @@ Safe production odds fields:
 
 - None currently verified.
 
+Pre-match conditional candidate fields:
+
+- Non-`C` 1X2 football-data odds such as `B365H/B365D/B365A`, `BWH/BWD/BWA`, `PSH/PSD/PSA`, `AvgH/AvgD/AvgA`, and `MaxH/MaxD/MaxA`.
+- football-data.co.uk documents these as pre-closing odds, not opening odds.
+- They are collected before kickoff, but the app must reproduce the same prediction timing before they can be production features.
+
 Benchmark-only odds fields:
 
 - Closing odds columns such as `B365CH/B365CD/B365CA`, `BWCH/BWCD/BWCA`, `PSCH/PSCD/PSCA`, `WHCH/WHCD/WHCA`, `VCCH/VCCD/VCCA`, `MaxCH/MaxCD/MaxCA`, `AvgCH/AvgCD/AvgCA`.
-- Average and maximum listed odds such as `AvgH/AvgD/AvgA` and `MaxH/MaxD/MaxA`.
 
 Research-only / unknown timing odds fields:
 
-- Single-bookmaker listed odds such as `B365H/B365D/B365A`, `BWH/BWD/BWA`, `IWH/IWD/IWA`, `PSH/PSD/PSA`, `WHH/WHD/WHA`, `VCH/VCD/VCA`, `BFH/BFD/BFA`, `1XBH/1XBD/1XBA` until the data collection time is verified.
+- None among the currently audited football-data 1X2 odds columns. The local football-data files contain pre-closing and closing odds, but no documented opening odds.
 
 Activation requirements:
 
@@ -36,7 +41,7 @@ Activation requirements:
 - Calibration must not materially worsen.
 - The live prediction path must avoid closing-price leakage.
 
-Current decision: market odds remain benchmark-only. The market-only benchmark beats the model, but no odds fields are currently verified as safe pre-match production inputs.
+Current decision: market odds remain benchmark-only in the app, but non-`C` football-data 1X2 odds are now the next high-priority production candidate. They have no result leakage, but they can create timestamp leakage unless production predictions use an equivalent pre-closing odds feed.
 
 OddsPortal opening odds status:
 
@@ -48,7 +53,7 @@ Latest market production decision:
 
 - Benchmark and research-mode market-only probabilities beat the current production model on the time-based test.
 - Directly adding benchmark/research odds to the XGBoost feature set worsened out-of-sample Log Loss, Brier Score and calibration.
-- Keep market odds as benchmark/edge context only until a verified opening-odds dataset exists and direct integration or a calibrated blend improves out-of-sample metrics.
+- Keep market odds as benchmark/edge context only until the pre-closing odds integration is retested separately and direct integration or a calibrated blend improves out-of-sample metrics.
 
 ## Research / Inactive Features
 
