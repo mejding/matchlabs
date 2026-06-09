@@ -804,6 +804,7 @@ def render_model_status(feature_columns: list[str], checks: dict[str, str] | Non
         "Schedule and fatigue",
         "Elo rating",
         "Shot volume",
+        "Recency weighting",
         "Market odds",
         "Injuries and suspensions",
         "Lineup stability",
@@ -1592,6 +1593,7 @@ def main() -> None:
             render_model_status(feature_columns, quality_result.checks)
             st.caption(
                 "Status guide: Active = used in production, Candidate = promising but not fully production, "
+                "Tested - Not adopted = evaluated but not strong enough for production, "
                 "Benchmark only = evaluated but not used directly, Research mode = data or validation insufficient, "
                 "Missing = data unavailable."
             )
