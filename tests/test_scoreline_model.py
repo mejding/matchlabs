@@ -32,6 +32,14 @@ class ScorelineModelTests(unittest.TestCase):
         self.assertGreater(result["expected_away_goals"], 0)
         self.assertAlmostEqual(float(result["scoreline_matrix"].sum()), 1.0, places=8)
 
+    def test_predicted_outcome_scoreline_follows_top_1x2_bucket(self) -> None:
+        result = estimate_scorelines(
+            {"home_xg_avg": 2.0, "away_xg_avg": 1.1, "home_xga_avg": 1.0, "away_xga_avg": 1.8},
+            np.array([0.58, 0.30, 0.12]),
+        )
+        scoreline = result["most_likely_predicted_outcome"]
+        self.assertGreater(scoreline.home_goals, scoreline.away_goals)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -81,3 +81,10 @@ This prevents the scoreline layer from contradicting the main model.
 ## Production Status
 
 The scoreline layer is display/supporting context only. It is not a separate trained betting model and should not be presented as a correct-score edge.
+
+The app shows two related but different ideas:
+
+- `Scoreline for most likely outcome`: the most likely scoreline within the model's most likely 1X2 outcome bucket.
+- `Highest individual scoreline`: the single exact scoreline with the highest individual probability.
+
+These can differ. For example, a home win may be the most likely 1X2 outcome, while `1-1` can still be the highest single exact scoreline because the home-win probability is spread across many possible home-win scores.

@@ -617,7 +617,7 @@ The dashboard is designed for normal football users, not only model builders. It
 - A central match prediction card with team logo support, most likely result, confidence and data-quality badges.
 - Calibrated probabilities when a saved calibration layer improves out-of-sample metrics.
 - Probability cards for home win, draw and away win, with the highest probability highlighted.
-- A compact "Most likely scorelines" section below the 1X2 probabilities. This is supporting context, not the primary model target.
+- A compact "Most likely scorelines" section below the 1X2 probabilities. It highlights the scoreline for the model's most likely outcome plus the highest individual exact scoreline. This is supporting context, not the primary model target.
 - Model fair odds calculated from the displayed probabilities with `fair odds = 1 / probability`.
 - A manual bookmaker odds comparison tool that converts entered decimal odds into market-implied probabilities, compares them with the model probabilities, and highlights whether an offered odd is above or below the model's fair odds.
 - Compact home-vs-away feature groups for recent form, xG strength, schedule/fatigue, Elo team strength and shot volume. Recent form, xG strength and last-5 shot volume use each team's latest 5 matches in the saved dataset; schedule congestion uses recent 14-day match activity.
@@ -643,7 +643,7 @@ The production model predicts 1X2 probabilities: home win, draw and away win. Th
 
 The scoreline output is supporting context only:
 
-- It shows "Most likely scoreline", not "Predicted final score".
+- It shows "Scoreline for most likely outcome" and "Highest individual scoreline", not "Predicted final score".
 - Correct-score probabilities are naturally low.
 - It does not replace the main home/draw/away prediction.
 - It should not be treated as a correct-score betting edge.

@@ -430,7 +430,7 @@ def inject_styles() -> None:
         }
         .scoreline-grid {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 10px;
         }
         .scoreline-card {
@@ -878,12 +878,14 @@ def render_scoreline_section(row: dict[str, float], probabilities, home_team: st
         st.info("Scoreline estimate unavailable for this fixture.")
         return
 
+    model_outcome_scoreline = scoreline_result["most_likely_predicted_outcome"]
     most_likely = scoreline_result["most_likely"]
     home_win = scoreline_result["most_likely_home_win"]
     draw = scoreline_result["most_likely_draw"]
     away_win = scoreline_result["most_likely_away_win"]
     cards = [
-        ("Most likely scoreline", most_likely, "primary"),
+        ("Scoreline for most likely outcome", model_outcome_scoreline, "primary"),
+        ("Highest individual scoreline", most_likely, ""),
         ("Most likely home-win scoreline", home_win, ""),
         ("Most likely draw scoreline", draw, ""),
         ("Most likely away-win scoreline", away_win, ""),
@@ -920,7 +922,8 @@ def render_scoreline_section(row: dict[str, float], probabilities, home_team: st
     html += "</div></div>"
     st.markdown(html, unsafe_allow_html=True)
     st.caption(
-        "Correct-score probabilities are naturally low. The main prediction remains the home/draw/away probability."
+        "Correct-score probabilities are naturally low. The first card follows the model's most likely 1X2 outcome; "
+        "the highest individual exact score can still be a draw because win probabilities are spread across many scorelines."
     )
 
     with st.expander("Show scoreline details", expanded=False):

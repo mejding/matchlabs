@@ -158,9 +158,17 @@ def estimate_scorelines(
     probabilities = probabilities / probabilities.sum() if probabilities.sum() else np.array([1 / 3, 1 / 3, 1 / 3])
     aligned_matrix = align_scorelines_to_1x2(raw_matrix, probabilities[0], probabilities[1], probabilities[2])
     summary = summarize_scorelines(aligned_matrix)
+    predicted_outcome_index = int(np.argmax(probabilities))
+    predicted_outcome_scoreline = [
+        summary["most_likely_home_win"],
+        summary["most_likely_draw"],
+        summary["most_likely_away_win"],
+    ][predicted_outcome_index]
     return {
         "expected_home_goals": home_expected,
         "expected_away_goals": away_expected,
         "scoreline_matrix": aligned_matrix,
+        "predicted_outcome_index": predicted_outcome_index,
+        "most_likely_predicted_outcome": predicted_outcome_scoreline,
         **summary,
     }
