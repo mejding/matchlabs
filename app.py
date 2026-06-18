@@ -33,6 +33,7 @@ from season_simulation import (
     read_fixture_list,
     season_table_from_results,
 )
+from scoreline_model import ScorelineProbability, estimate_scorelines
 from train_model import load_matches
 
 
@@ -412,6 +413,47 @@ def inject_styles() -> None:
             font-size: 0.78rem;
             margin-top: 4px;
         }
+        .scoreline-section {
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            border-radius: 8px;
+            padding: 14px;
+            background: rgba(15, 23, 42, 0.38);
+            margin-top: 14px;
+        }
+        .scoreline-title-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .scoreline-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+        }
+        .scoreline-card {
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            border-radius: 8px;
+            padding: 10px;
+            background: rgba(2, 6, 23, 0.28);
+        }
+        .scoreline-card.primary {
+            border-color: rgba(34, 197, 94, 0.42);
+            background: rgba(22, 101, 52, 0.16);
+        }
+        .scoreline-number {
+            font-size: 1.28rem;
+            font-weight: 900;
+            margin-top: 3px;
+        }
+        .scoreline-prob {
+            color: var(--muted);
+            font-size: 0.82rem;
+            font-weight: 800;
+            margin-top: 2px;
+        }
         .bar-shell {
             height: 11px;
             border-radius: 999px;
@@ -512,6 +554,9 @@ def inject_styles() -> None:
                 grid-template-columns: 1fr;
             }
             .odds-card-grid {
+                grid-template-columns: 1fr;
+            }
+            .scoreline-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -813,6 +858,83 @@ def render_bookmaker_odds_comparison(probabilities, home_team: str, away_team: s
         st.caption(
             "Formula: model fair odds = 1 / model probability. Market probability = normalized 1 / bookmaker odds. "
             "Model edge = model probability * bookmaker odds - 1."
+        )
+
+
+def _format_scoreline(scoreline: ScorelineProbability | None, home_team: str, away_team: str) -> tuple[str, str]:
+    if scoreline is None:
+        return "Unavailable", ""
+    return (
+        f"{html_lib.escape(home_team)} {scoreline.home_goals}-{scoreline.away_goals} {html_lib.escape(away_team)}",
+        f"{scoreline.probability * 100:.1f}%",
+    )
+
+
+def render_scoreline_section(row: dict[str, float], probabilities, home_team: str, away_team: str) -> None:
+    try:
+        scoreline_result = estimate_scorelines(row, probabilities)
+    except Exception as exc:  # pragma: no cover - defensive Streamlit boundary
+        print(f"Scoreline estimate failed: {exc}")
+        st.info("Scoreline estimate unavailable for this fixture.")
+        return
+
+    most_likely = scoreline_result["most_likely"]
+    home_win = scoreline_result["most_likely_home_win"]
+    draw = scoreline_result["most_likely_draw"]
+    away_win = scoreline_result["most_likely_away_win"]
+    cards = [
+        ("Most likely scoreline", most_likely, "primary"),
+        ("Most likely home-win scoreline", home_win, ""),
+        ("Most likely draw scoreline", draw, ""),
+        ("Most likely away-win scoreline", away_win, ""),
+    ]
+
+    html = dedent(
+        f"""
+        <div class="scoreline-section">
+            <div class="scoreline-title-row">
+                <div>
+                    <div class="prob-label">Most likely scorelines</div>
+                    <div class="odds-detail">Estimated from expected goals and aligned with the model's 1X2 probabilities.</div>
+                </div>
+                <div class="odds-detail">
+                    Estimated goals: <strong>{html_lib.escape(home_team)} {float(scoreline_result['expected_home_goals']):.2f}</strong>
+                    -
+                    <strong>{float(scoreline_result['expected_away_goals']):.2f} {html_lib.escape(away_team)}</strong>
+                </div>
+            </div>
+            <div class="scoreline-grid">
+        """
+    )
+    for label, scoreline, tone in cards:
+        text, probability = _format_scoreline(scoreline, home_team, away_team)
+        html += dedent(
+            f"""
+            <div class="scoreline-card {tone}">
+                <div class="prob-label">{html_lib.escape(label)}</div>
+                <div class="scoreline-number">{text}</div>
+                <div class="scoreline-prob">{probability}</div>
+            </div>
+            """
+        )
+    html += "</div></div>"
+    st.markdown(html, unsafe_allow_html=True)
+    st.caption(
+        "Correct-score probabilities are naturally low. The main prediction remains the home/draw/away probability."
+    )
+
+    with st.expander("Show scoreline details", expanded=False):
+        top_rows = [
+            {
+                "Scoreline": f"{item.home_goals}-{item.away_goals}",
+                "Probability": f"{item.probability * 100:.1f}%",
+            }
+            for item in scoreline_result["top_scorelines"]
+        ]
+        st.dataframe(pd.DataFrame(top_rows), width="stretch", hide_index=True)
+        st.caption(
+            "This layer estimates expected goals from available xG/xGA features, creates scoreline probabilities, "
+            "and aligns the home-win/draw/away-win scoreline totals with the displayed model probabilities."
         )
 
 
@@ -1643,6 +1765,7 @@ def main() -> None:
                 "Fatigue inputs use the latest match date plus recent 14-day schedule activity."
             )
         render_probability_bar(probabilities, home_team, away_team)
+        render_scoreline_section(row, probabilities, home_team, away_team)
         st.subheader("Model Fair Odds")
         st.caption("Fair odds are calculated directly from the displayed model probabilities, before bookmaker margin.")
         render_model_fair_odds(probabilities, home_team, away_team)

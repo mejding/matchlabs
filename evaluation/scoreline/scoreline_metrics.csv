@@ -1,0 +1,2 @@
+test_matches,correct_score_accuracy,top_3_hit_rate,top_5_hit_rate,mean_probability_assigned_to_actual,scoreline_log_loss,mean_1x2_alignment_error,max_1x2_alignment_error
+535.0,0.11401869158878504,0.31962616822429907,0.44485981308411215,0.0651665324769165,2.9988658359043954,1.3195864450676263e-08,5.4242682123728514e-08
