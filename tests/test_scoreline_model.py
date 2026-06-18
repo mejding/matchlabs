@@ -39,6 +39,9 @@ class ScorelineModelTests(unittest.TestCase):
         )
         scoreline = result["most_likely_predicted_outcome"]
         self.assertGreater(scoreline.home_goals, scoreline.away_goals)
+        self.assertEqual(result["predicted_outcome_index"], 0)
+        for scoreline in result["top_home_win_scorelines"]:
+            self.assertGreater(scoreline.home_goals, scoreline.away_goals)
 
 
 if __name__ == "__main__":

@@ -454,6 +454,22 @@ def inject_styles() -> None:
             font-weight: 800;
             margin-top: 2px;
         }
+        .scoreline-list {
+            margin: 8px 0 0;
+            padding-left: 18px;
+        }
+        .scoreline-list li {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            color: var(--text);
+            font-size: 0.88rem;
+            margin: 5px 0;
+        }
+        .scoreline-list strong {
+            color: #86efac;
+            white-space: nowrap;
+        }
         .bar-shell {
             height: 11px;
             border-radius: 999px;
@@ -870,6 +886,18 @@ def _format_scoreline(scoreline: ScorelineProbability | None, home_team: str, aw
     )
 
 
+def _scoreline_list_html(scorelines: list[ScorelineProbability], home_team: str, away_team: str) -> str:
+    items = []
+    for scoreline in scorelines:
+        items.append(
+            "<li>"
+            f"<span>{html_lib.escape(home_team)} {scoreline.home_goals}-{scoreline.away_goals} {html_lib.escape(away_team)}</span>"
+            f"<strong>{scoreline.probability * 100:.1f}%</strong>"
+            "</li>"
+        )
+    return "<ol class='scoreline-list'>" + "".join(items) + "</ol>"
+
+
 def render_scoreline_section(row: dict[str, float], probabilities, home_team: str, away_team: str) -> None:
     try:
         scoreline_result = estimate_scorelines(row, probabilities)
@@ -878,13 +906,19 @@ def render_scoreline_section(row: dict[str, float], probabilities, home_team: st
         st.info("Scoreline estimate unavailable for this fixture.")
         return
 
-    model_outcome_scoreline = scoreline_result["most_likely_predicted_outcome"]
+    predicted_outcome_index = int(scoreline_result["predicted_outcome_index"])
+    predicted_outcome_label = ["home win", "draw", "away win"][predicted_outcome_index]
+    predicted_outcome_lists = [
+        scoreline_result["top_home_win_scorelines"],
+        scoreline_result["top_draw_scorelines"],
+        scoreline_result["top_away_win_scorelines"],
+    ]
+    predicted_outcome_scorelines = predicted_outcome_lists[predicted_outcome_index]
     most_likely = scoreline_result["most_likely"]
     home_win = scoreline_result["most_likely_home_win"]
     draw = scoreline_result["most_likely_draw"]
     away_win = scoreline_result["most_likely_away_win"]
     cards = [
-        ("Scoreline for most likely outcome", model_outcome_scoreline, "primary"),
         ("Highest individual scoreline", most_likely, ""),
         ("Most likely home-win scoreline", home_win, ""),
         ("Most likely draw scoreline", draw, ""),
@@ -905,6 +939,10 @@ def render_scoreline_section(row: dict[str, float], probabilities, home_team: st
                     <strong>{float(scoreline_result['expected_away_goals']):.2f} {html_lib.escape(away_team)}</strong>
                 </div>
             </div>
+            <div class="scoreline-card primary">
+                <div class="prob-label">Top scorelines for model's most likely outcome: {html_lib.escape(predicted_outcome_label)}</div>
+                {_scoreline_list_html(predicted_outcome_scorelines, home_team, away_team)}
+            </div>
             <div class="scoreline-grid">
         """
     )
@@ -922,8 +960,8 @@ def render_scoreline_section(row: dict[str, float], probabilities, home_team: st
     html += "</div></div>"
     st.markdown(html, unsafe_allow_html=True)
     st.caption(
-        "Correct-score probabilities are naturally low. The first card follows the model's most likely 1X2 outcome; "
-        "the highest individual exact score can still be a draw because win probabilities are spread across many scorelines."
+        "Correct-score probabilities are naturally low. The grouped list follows the model's most likely 1X2 outcome; "
+        "the highest individual exact score can still differ because win probabilities are spread across many scorelines."
     )
 
     with st.expander("Show scoreline details", expanded=False):
@@ -935,6 +973,21 @@ def render_scoreline_section(row: dict[str, float], probabilities, home_team: st
             for item in scoreline_result["top_scorelines"]
         ]
         st.dataframe(pd.DataFrame(top_rows), width="stretch", hide_index=True)
+        grouped_rows = []
+        for group_name, items in (
+            ("Home win", scoreline_result["top_home_win_scorelines"]),
+            ("Draw", scoreline_result["top_draw_scorelines"]),
+            ("Away win", scoreline_result["top_away_win_scorelines"]),
+        ):
+            for item in items:
+                grouped_rows.append(
+                    {
+                        "Outcome group": group_name,
+                        "Scoreline": item.scoreline,
+                        "Probability": f"{item.probability * 100:.1f}%",
+                    }
+                )
+        st.dataframe(pd.DataFrame(grouped_rows), width="stretch", hide_index=True)
         st.caption(
             "This layer estimates expected goals from available xG/xGA features, creates scoreline probabilities, "
             "and aligns the home-win/draw/away-win scoreline totals with the displayed model probabilities."

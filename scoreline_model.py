@@ -130,12 +130,25 @@ def _best_matching(scoreline_matrix: np.ndarray, predicate) -> ScorelineProbabil
     return max(candidates, key=lambda row: row.probability) if candidates else None
 
 
+def _top_matching(scoreline_matrix: np.ndarray, predicate, top_n: int = 3) -> list[ScorelineProbability]:
+    candidates = [
+        ScorelineProbability(home_goals, away_goals, float(scoreline_matrix[home_goals, away_goals]))
+        for home_goals in range(scoreline_matrix.shape[0])
+        for away_goals in range(scoreline_matrix.shape[1])
+        if predicate(home_goals, away_goals)
+    ]
+    return sorted(candidates, key=lambda row: row.probability, reverse=True)[:top_n]
+
+
 def summarize_scorelines(scoreline_matrix: np.ndarray, top_n: int = 5) -> dict[str, object]:
     return {
         "most_likely": get_top_scorelines(scoreline_matrix, 1)[0],
         "most_likely_home_win": _best_matching(scoreline_matrix, lambda home, away: home > away),
         "most_likely_draw": _best_matching(scoreline_matrix, lambda home, away: home == away),
         "most_likely_away_win": _best_matching(scoreline_matrix, lambda home, away: home < away),
+        "top_home_win_scorelines": _top_matching(scoreline_matrix, lambda home, away: home > away, top_n=3),
+        "top_draw_scorelines": _top_matching(scoreline_matrix, lambda home, away: home == away, top_n=3),
+        "top_away_win_scorelines": _top_matching(scoreline_matrix, lambda home, away: home < away, top_n=3),
         "top_scorelines": get_top_scorelines(scoreline_matrix, top_n),
     }
 
