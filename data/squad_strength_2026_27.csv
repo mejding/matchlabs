@@ -1,0 +1,21 @@
+season,team,squad_market_value_eur,average_player_value_eur,squad_size,source,source_url,last_updated,data_confidence,previous_season_finish,promoted_team_flag
+2026/27,Man City,1320000000,47142857,28,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,2,False
+2026/27,Arsenal,1250000000,52083333,24,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,1,False
+2026/27,Chelsea,1110000000,37000000,30,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,10,False
+2026/27,Liverpool,939500000,33553571,28,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,5,False
+2026/27,Man United,752100000,30084000,25,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,3,False
+2026/27,Tottenham,700000000,23333333,30,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,17,False
+2026/27,Newcastle,696350000,24012069,29,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,12,False
+2026/27,Nott'm Forest,577600000,19917241,29,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,16,False
+2026/27,Brighton,567000000,17181818,33,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,8,False
+2026/27,Bournemouth,565700000,21757692,26,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,6,False
+2026/27,Crystal Palace,553000000,18433333,30,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,15,False
+2026/27,Aston Villa,531500000,20442308,26,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,4,False
+2026/27,Brentford,490580000,15825161,31,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,9,False
+2026/27,Everton,443150000,17044231,26,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,13,False
+2026/27,Sunderland,386430000,13801071,28,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,7,False
+2026/27,Leeds,358800000,13800000,26,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,14,False
+2026/27,Fulham,356200000,14248000,25,Transfermarkt,https://www.transfermarkt.com/premier-league/startseite/wettbewerb/GB1,2026-06-21,High,11,False
+2026/27,Ipswich,212950000,7098333,30,Transfermarkt,https://www.transfermarkt.com/championship/startseite/wettbewerb/GB2,2026-06-21,Medium,2,True
+2026/27,Coventry,194250000,7471154,26,Transfermarkt,https://www.transfermarkt.com/championship/startseite/wettbewerb/GB2,2026-06-21,Medium,1,True
+2026/27,Hull,95900000,3551852,27,Transfermarkt,https://www.transfermarkt.com/championship/startseite/wettbewerb/GB2,2026-06-21,Medium,6,True

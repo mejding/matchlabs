@@ -626,7 +626,7 @@ The dashboard is designed for normal football users, not only model builders. It
 - A model/data status panel explaining Active, Candidate, Benchmark only, Research mode and Missing statuses.
 - A technical details tab with raw model feature values and raw/calibrated probabilities.
 - A season projection tab with upcoming-season Monte Carlo projections plus previous seasons' forecast-vs-result validation. If `data/upcoming_fixtures_2026_27.csv` is missing or invalid, the app clearly marks the projection as a neutral fixture-skeleton estimate.
-- A Season Projection audit section showing feature validation status, official fixture status, fallback teams, promoted-team adjustment status and season-start feature values.
+- A Season Projection audit section showing feature validation status, official fixture status, fallback teams, promoted-team adjustment status, squad-strength prior status and season-start feature values.
 
 The app intentionally does not invent missing data. Feature groups for injuries, lineups or advanced tactical data are only shown when real local rows exist. Otherwise they are kept out of the main dashboard to avoid implying that unavailable data influenced the prediction.
 
@@ -655,6 +655,21 @@ The app supports official 2026/27 Premier League fixtures from `data/upcoming_fi
 - If Championship data is missing, the app uses a transparent conservative promoted-team baseline instead of treating missing Premier League form as zero.
 - Predictions for promoted teams carry higher uncertainty until enough Premier League matches are available in the local dataset.
 
+### Squad Strength / Market Value
+
+The single-match production model does not currently rely on market value. Squad strength is used only by Season Projection as a transparent preseason prior.
+
+- Source file: `data/squad_strength_2026_27.csv`
+- Required fields include team, squad market value, average player value, squad size, source URL, last updated date and data confidence.
+- Squad strength is calculated as normalized `log(squad_market_value_eur)` across the 20 projected Premier League teams.
+- Squad strength is complementary to Elo and recent form:
+  - Elo represents historical performance strength.
+  - Squad strength represents current roster quality / resource level.
+- The prior is intentionally mild. It nudges early-season probabilities and should not dominate xG, Elo, form or shot volume.
+- Its influence is strongest in matchweeks 1-5, lower in matchweeks 6-12 and small after matchweek 12.
+- Missing squad values are not treated as zero. They are flagged as missing and excluded from the squad-strength prior.
+- Historical squad value snapshots are not currently stored locally, so this is classified as a preseason projection aid / research feature rather than proven model improvement.
+
 Validation and integration reports:
 
 - `evaluation/fixtures_2026_27/fixture_import_validation_report.md`
@@ -663,6 +678,9 @@ Validation and integration reports:
 - `evaluation/season_projection/promoted_team_baseline_report.md`
 - `evaluation/season_projection/promoted_team_adjustment_audit.csv`
 - `evaluation/season_projection/promoted_team_adjustment_report.md`
+- `evaluation/season_projection/squad_strength_audit.csv`
+- `evaluation/season_projection/squad_strength_report.md`
+- `evaluation/season_projection/everton_squad_strength_audit.md`
 - `evaluation/season_projection/season_projection_robustness_report.md`
 
 ### Scoreline prediction
@@ -801,6 +819,9 @@ This generates:
 - `evaluation/season_projection/promoted_team_baseline_report.md`
 - `evaluation/season_projection/promoted_team_adjustment_audit.csv`
 - `evaluation/season_projection/promoted_team_adjustment_report.md`
+- `evaluation/season_projection/squad_strength_audit.csv`
+- `evaluation/season_projection/squad_strength_report.md`
+- `evaluation/season_projection/everton_squad_strength_audit.md`
 - `evaluation/season_projection/team_feature_audit_tottenham_coventry_hull.csv`
 - `evaluation/season_projection/season_projection_robustness_report.md`
 

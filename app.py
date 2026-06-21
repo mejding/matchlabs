@@ -45,6 +45,12 @@ from season_simulation import (
     validate_projection_feature_inputs,
 )
 from scoreline_model import ScorelineProbability, estimate_scorelines
+from squad_strength import (
+    apply_squad_strength_prior,
+    load_squad_strength,
+    normalize_squad_strength,
+    squad_strength_lookup,
+)
 from train_model import load_matches
 
 
@@ -109,7 +115,7 @@ STATUS_EXPLANATIONS = {
     "Missing": "Required data is not available locally.",
     "Stale": "The local dataset should be refreshed before relying heavily on this input.",
 }
-SEASON_PROJECTION_VERSION = "balanced_round_robin_long_term_prior_championship_bridge_v4"
+SEASON_PROJECTION_VERSION = "balanced_round_robin_long_term_prior_squad_strength_v5"
 SEASON_PROJECTION_PRIOR_WEIGHT = 0.35
 
 
@@ -1547,6 +1553,30 @@ def upcoming_season_projection(
             calibrator = layer["calibrator"]
 
     feature_audit = season_start_feature_audit(teams, artifact["team_history"], artifact.get("elo_state", {}))
+    squad_strength = normalize_squad_strength(load_squad_strength(), teams)
+    if not squad_strength.empty:
+        feature_audit = feature_audit.merge(
+            squad_strength[
+                [
+                    "team",
+                    "squad_market_value_eur",
+                    "average_player_value_eur",
+                    "squad_size",
+                    "squad_strength_rank",
+                    "squad_strength_percentile",
+                    "squad_strength_score",
+                    "squad_strength_bucket",
+                    "squad_strength_used",
+                    "source",
+                    "source_url",
+                    "last_updated",
+                    "data_confidence",
+                    "promoted_team_flag",
+                ]
+            ],
+            on="team",
+            how="left",
+        )
     validation_status, validation = validate_projection_feature_inputs(feature_audit, artifact["feature_columns"])
     overrides = projection_feature_overrides(feature_audit)
 
@@ -1562,9 +1592,31 @@ def upcoming_season_projection(
     )
     long_term_strength = build_long_term_team_strength(teams, artifact.get("elo_state", {}))
     probabilities = blend_with_long_term_season_prior(probabilities, long_term_strength)
+    probabilities_before_squad_strength = probabilities.copy()
+    probabilities = apply_squad_strength_prior(probabilities, squad_strength_lookup(squad_strength))
     projection = monte_carlo_season(probabilities, n_simulations=simulations)
     expected = expected_points_from_probabilities(probabilities)
     projection = projection.merge(expected, on="team", how="left")
+    projection_before_squad_strength = monte_carlo_season(probabilities_before_squad_strength, n_simulations=simulations)
+    projection_before_squad_strength = projection_before_squad_strength.merge(
+        expected_points_from_probabilities(probabilities_before_squad_strength),
+        on="team",
+        how="left",
+        suffixes=("", "_deterministic"),
+    )
+    projection = projection.merge(
+        projection_before_squad_strength[
+            ["team", "expected_points", "expected_position", "relegation_probability"]
+        ].rename(
+            columns={
+                "expected_points": "expected_points_before_squad_strength",
+                "expected_position": "expected_position_before_squad_strength",
+                "relegation_probability": "relegation_probability_before_squad_strength",
+            }
+        ),
+        on="team",
+        how="left",
+    )
     projection["projected_position"] = range(1, len(projection) + 1)
     return projection, probabilities, source, validation_status, validation, feature_audit
 
@@ -1600,20 +1652,19 @@ def probability_percent_columns(frame: pd.DataFrame, columns: list[str]) -> pd.D
 
 
 def format_season_projection_display(frame: pd.DataFrame) -> pd.DataFrame:
+    base_columns = [
+        "team",
+        "expected_points",
+        "expected_points_deterministic",
+        "expected_position",
+        "projected_position",
+        "title_probability",
+        "top_4_probability",
+        "top_6_probability",
+        "relegation_probability",
+    ]
     display = probability_percent_columns(
-        frame[
-            [
-                "team",
-                "expected_points",
-                "expected_points_deterministic",
-                "expected_position",
-                "projected_position",
-                "title_probability",
-                "top_4_probability",
-                "top_6_probability",
-                "relegation_probability",
-            ]
-        ],
+        frame[[column for column in base_columns if column in frame.columns]],
         ["title_probability", "top_4_probability", "top_6_probability", "relegation_probability"],
     )
     display = display.rename(
@@ -1661,6 +1712,11 @@ def format_season_start_audit_display(frame: pd.DataFrame) -> pd.DataFrame:
             "shots_on_target_avg_latest_season": "SOT avg latest season",
             "elo_rating": "Elo",
             "elo_recent_change": "Elo recent change",
+            "squad_strength_rank": "Squad rank",
+            "squad_strength_bucket": "Squad bucket",
+            "squad_strength_score": "Squad score",
+            "squad_market_value_eur": "Squad value EUR",
+            "data_confidence": "Squad data confidence",
             "fallback_flags": "Fallback flags",
         }
     )
@@ -1688,6 +1744,11 @@ def format_season_start_audit_display(frame: pd.DataFrame) -> pd.DataFrame:
         "SOT avg latest season",
         "Elo",
         "Elo recent change",
+        "Squad rank",
+        "Squad bucket",
+        "Squad score",
+        "Squad value EUR",
+        "Squad data confidence",
         "Fallback flags",
     ]
     display = display[[column for column in columns if column in display.columns]]
@@ -1704,10 +1765,18 @@ def format_season_start_audit_display(frame: pd.DataFrame) -> pd.DataFrame:
         "SOT avg latest season",
         "Elo",
         "Elo recent change",
+        "Squad rank",
+        "Squad score",
+        "Squad value EUR",
     ]
     for column in numeric_columns:
         if column in display.columns:
-            display[column] = display[column].map(lambda value: f"{float(value):.2f}" if column != "Elo" else f"{float(value):.1f}")
+            if column == "Elo":
+                display[column] = display[column].map(lambda value: f"{float(value):.1f}")
+            elif column == "Squad value EUR":
+                display[column] = display[column].map(lambda value: "" if pd.isna(value) else f"€{float(value) / 1_000_000:.1f}m")
+            else:
+                display[column] = display[column].map(lambda value: "" if pd.isna(value) else f"{float(value):.2f}")
     return display
 
 
@@ -1741,16 +1810,18 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
     st.info(
         "Season projection is intentionally more conservative than a single-match prediction. "
         "It blends the match model with a long-term team-strength prior from the last two completed seasons and Elo, "
-        f"using a {SEASON_PROJECTION_PRIOR_WEIGHT:.0%} prior weight."
+        f"using a {SEASON_PROJECTION_PRIOR_WEIGHT:.0%} prior weight, then applies a mild squad-strength preseason prior when CSV values are available."
     )
     fallback_count = int(feature_audit["fallback_used"].sum()) if "fallback_used" in feature_audit else 0
     adjusted_count = int(feature_audit["promotion_adjustment_applied"].sum()) if "promotion_adjustment_applied" in feature_audit else 0
+    squad_strength_count = int(feature_audit["squad_strength_used"].fillna(False).sum()) if "squad_strength_used" in feature_audit else 0
     zero_history = feature_audit.loc[feature_audit["premier_league_matches_available"].eq(0), "team"].tolist()
-    cols = st.columns(4)
+    cols = st.columns(5)
     cols[0].metric("Feature parity", validation_status)
     cols[1].metric("Official fixtures", "OK" if mode.validation_ok else "Fallback")
     cols[2].metric("Fallback teams", fallback_count)
     cols[3].metric("Promoted adjustment", f"Active ({adjusted_count})")
+    cols[4].metric("Squad strength", f"Active ({squad_strength_count})" if squad_strength_count else "Missing")
     if validation_status == "Error":
         st.error("Season Projection feature validation found missing active production inputs. Check the audit table before using the projection.")
     elif validation_status == "Warning":
@@ -1843,6 +1914,71 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
                         "Relegation",
                     ]
                 ],
+                width="stretch",
+                hide_index=True,
+            )
+
+    with st.expander("Squad strength", expanded=True):
+        st.write(
+            "Squad strength is used as a preseason prior in Season Projection. "
+            "It helps the model account for current roster quality when there is limited current-season Premier League evidence. "
+            "Its influence decreases as the season produces new data."
+        )
+        if "squad_strength_used" not in feature_audit or not bool(feature_audit["squad_strength_used"].fillna(False).any()):
+            st.warning("Squad strength CSV is missing or has no usable team values, so this prior is not active.")
+        else:
+            squad_display = feature_audit.merge(
+                projection[
+                    [
+                        "team",
+                        "expected_points",
+                        "expected_points_before_squad_strength",
+                        "relegation_probability",
+                        "relegation_probability_before_squad_strength",
+                        "projected_position",
+                    ]
+                ],
+                on="team",
+                how="left",
+            )
+            squad_display = squad_display.sort_values("squad_strength_rank", na_position="last").copy()
+            for column in ["relegation_probability", "relegation_probability_before_squad_strength"]:
+                squad_display[column] = squad_display[column].map(lambda value: "" if pd.isna(value) else f"{float(value) * 100:.1f}%")
+            for column in ["expected_points", "expected_points_before_squad_strength"]:
+                squad_display[column] = squad_display[column].map(lambda value: "" if pd.isna(value) else f"{float(value):.1f}")
+            squad_display["squad_market_value_eur"] = squad_display["squad_market_value_eur"].map(
+                lambda value: "" if pd.isna(value) else f"€{float(value) / 1_000_000:.1f}m"
+            )
+            st.dataframe(
+                squad_display[
+                    [
+                        "team",
+                        "projected_position",
+                        "expected_points",
+                        "expected_points_before_squad_strength",
+                        "relegation_probability",
+                        "relegation_probability_before_squad_strength",
+                        "squad_strength_rank",
+                        "squad_strength_bucket",
+                        "squad_market_value_eur",
+                        "data_confidence",
+                        "last_updated",
+                    ]
+                ].rename(
+                    columns={
+                        "team": "Team",
+                        "projected_position": "Projected rank",
+                        "expected_points": "Expected points",
+                        "expected_points_before_squad_strength": "Points before squad prior",
+                        "relegation_probability": "Relegation",
+                        "relegation_probability_before_squad_strength": "Relegation before squad prior",
+                        "squad_strength_rank": "Squad rank",
+                        "squad_strength_bucket": "Bucket",
+                        "squad_market_value_eur": "Squad value",
+                        "data_confidence": "Data confidence",
+                        "last_updated": "Last updated",
+                    }
+                ),
                 width="stretch",
                 hide_index=True,
             )

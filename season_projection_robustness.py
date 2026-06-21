@@ -19,11 +19,13 @@ from season_simulation import (
     season_table_from_results,
     validate_projection_feature_inputs,
 )
+from squad_strength import apply_squad_strength_prior, load_squad_strength, normalize_squad_strength, squad_strength_lookup
 from train_model import MODEL_PATH, PRODUCTION_FEATURE_COLUMNS, load_matches, load_matches_with_xg
 
 
 OUTPUT_DIR = Path("evaluation") / "season_projection"
 TEAMS_TO_AUDIT = ["Tottenham", "Coventry", "Hull"]
+SQUAD_AUDIT_TEAM = "Everton"
 SEASON_PROJECTION_PRIOR_WEIGHT = 0.35
 
 
@@ -388,6 +390,155 @@ Projection:
     (OUTPUT_DIR / "season_projection_robustness_report.md").write_text(report)
 
 
+def write_squad_strength_report(
+    squad_strength: pd.DataFrame,
+    projection: pd.DataFrame,
+    projection_before_squad: pd.DataFrame,
+    audit: pd.DataFrame,
+) -> None:
+    if squad_strength.empty:
+        report = """# Squad Strength / Market Value Report
+
+## Recommendation
+
+`Missing data`
+
+The squad strength CSV is missing or empty, so no squad-strength prior was applied.
+"""
+        (OUTPUT_DIR / "squad_strength_report.md").write_text(report)
+        return
+
+    ranking = squad_strength.merge(
+        projection[["team", "expected_points", "expected_position", "relegation_probability"]],
+        on="team",
+        how="left",
+    ).sort_values("squad_strength_rank")
+    before = projection_before_squad[
+        ["team", "expected_points", "expected_position", "relegation_probability"]
+    ].rename(
+        columns={
+            "expected_points": "expected_points_before_squad_strength",
+            "expected_position": "expected_position_before_squad_strength",
+            "relegation_probability": "relegation_probability_before_squad_strength",
+        }
+    )
+    effect = projection.merge(before, on="team", how="left")
+    effect["expected_points_delta"] = effect["expected_points"] - effect["expected_points_before_squad_strength"]
+    effect["relegation_probability_delta"] = effect["relegation_probability"] - effect["relegation_probability_before_squad_strength"]
+    promoted = audit[audit.get("promoted_team_flag", pd.Series(False, index=audit.index)).fillna(False)].merge(
+        projection[["team", "expected_points", "relegation_probability"]],
+        on="team",
+        how="left",
+    )
+    report = f"""# Squad Strength / Market Value Report
+
+## 1. Data Source and Coverage
+
+The project uses a manually maintained CSV-first dataset:
+
+- File: `data/squad_strength_2026_27.csv`
+- Teams covered: `{int(squad_strength['squad_strength_used'].sum())}` of `{len(squad_strength)}`
+- Sources: Transfermarkt Premier League and Championship competition start pages
+- Historical validation: not available in this project, so this is classified as a Season Projection preseason prior / research feature.
+
+## 2. Team Squad Strength Ranking
+
+{_markdown_table(ranking[['team', 'squad_strength_rank', 'squad_strength_bucket', 'squad_market_value_eur', 'average_player_value_eur', 'squad_size', 'data_confidence', 'expected_points', 'expected_position', 'relegation_probability']])}
+
+## 3. Calculation
+
+`squad_strength_score = min-max normalized log(squad_market_value_eur)` across the 20 projected Premier League teams.
+
+The log transform prevents the richest squads from dominating the prior too aggressively. The score is converted into a mild pre-season probability prior, strongest in matchweeks 1-5, lower in matchweeks 6-12 and small after matchweek 12.
+
+## 4. Effect on Season Projection
+
+{_markdown_table(effect[['team', 'expected_points_before_squad_strength', 'expected_points', 'expected_points_delta', 'relegation_probability_before_squad_strength', 'relegation_probability', 'relegation_probability_delta']].sort_values('expected_points_delta', ascending=False))}
+
+## 5. Promoted Team Interaction
+
+{_markdown_table(promoted[['team', 'promoted_team_flag', 'squad_strength_rank', 'squad_strength_score', 'promotion_adjustment_applied', 'fallback_used', 'expected_points', 'relegation_probability']])}
+
+## 6. Validation
+
+Historical squad market value snapshots are not currently stored locally, so this sprint does not claim a proven model improvement. Validation remains required before using squad strength in the single-match production model.
+
+## 7. Limitations
+
+- Squad market values change during transfer windows and must be maintained manually.
+- Transfermarkt values are estimates, not audited financial values.
+- The prior does not include wages, injuries, suspensions or expected lineups.
+- The effect is intentionally mild and should not override xG, Elo or actual performance.
+
+## 8. Recommendation
+
+`Research / Season Projection prior`
+
+Use squad strength in Season Projection as a transparent preseason stabilizer. Do not add it to the single-match model until historical market-value snapshots are available for backtesting.
+"""
+    (OUTPUT_DIR / "squad_strength_report.md").write_text(report)
+
+
+def write_everton_squad_strength_audit(
+    squad_strength: pd.DataFrame,
+    projection: pd.DataFrame,
+    projection_before_squad: pd.DataFrame,
+    audit: pd.DataFrame,
+) -> None:
+    projection_after = projection[projection["team"] == SQUAD_AUDIT_TEAM]
+    projection_before = projection_before_squad[projection_before_squad["team"] == SQUAD_AUDIT_TEAM]
+    everton_audit = audit[audit["team"] == SQUAD_AUDIT_TEAM]
+    if projection_after.empty or projection_before.empty or everton_audit.empty:
+        report = f"# Everton Squad Strength Audit\n\nNo complete audit row was available for `{SQUAD_AUDIT_TEAM}`.\n"
+        (OUTPUT_DIR / "everton_squad_strength_audit.md").write_text(report)
+        return
+    ranking_base = audit.copy()
+    ranking_base["recent_form_rank"] = ranking_base["recent_form_points_last5"].rank(method="min", ascending=False)
+    ranking_base["xg_rank"] = ranking_base["xg_diff_last5"].rank(method="min", ascending=False)
+    ranking_base["shot_volume_rank"] = ranking_base["shots_avg_last5"].rank(method="min", ascending=False)
+    ranking_base["elo_rank"] = ranking_base["elo_rating"].rank(method="min", ascending=False)
+    row = everton_audit.merge(
+        ranking_base[["team", "recent_form_rank", "xg_rank", "shot_volume_rank", "elo_rank"]],
+        on="team",
+        how="left",
+    )
+    if "squad_strength_rank" not in row.columns and not squad_strength.empty:
+        row = row.merge(
+            squad_strength[["team", "squad_strength_rank", "squad_strength_bucket", "squad_strength_score"]],
+            on="team",
+            how="left",
+        )
+    before = projection_before.iloc[0]
+    after = projection_after.iloc[0]
+    report = f"""# Everton Squad Strength Audit
+
+## Before / After
+
+| Metric | Before squad strength | After squad strength |
+| --- | ---: | ---: |
+| Expected points | {float(before['expected_points']):.2f} | {float(after['expected_points']):.2f} |
+| Expected position | {float(before['expected_position']):.2f} | {float(after['expected_position']):.2f} |
+| Relegation probability | {float(before['relegation_probability']) * 100:.1f}% | {float(after['relegation_probability']) * 100:.1f}% |
+
+## Everton Feature Ranks
+
+{_markdown_table(row[['team', 'squad_strength_rank', 'squad_strength_bucket', 'elo_rank', 'recent_form_rank', 'xg_rank', 'shot_volume_rank', 'recent_form_points_last5', 'xg_diff_last5', 'shots_avg_last5', 'elo_rating']])}
+
+## Diagnosis
+
+1. Recent form is poor: Everton has low last-5 points in the local 2025/26 data.
+2. xG/shot profile is weak: Everton's recent xG differential is negative.
+3. Elo is not relegation-level, but the recent Elo movement is negative.
+4. Fixture difficulty contributes through the official fixture list, but it is not the only reason.
+5. Squad strength was previously missing from the Season Projection prior. Adding it gives Everton a mild resource-quality stabilizer, but it does not fully override recent form and xG.
+
+## Recommendation
+
+Keep the squad strength effect mild. It is useful as a preseason stabilizer, but not yet historically validated enough to dominate the forecast.
+"""
+    (OUTPUT_DIR / "everton_squad_strength_audit.md").write_text(report)
+
+
 def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     artifact = joblib.load(MODEL_PATH)
@@ -403,12 +554,38 @@ def main() -> None:
     matches = load_matches_with_xg()
 
     audit = season_start_feature_audit(teams, artifact["team_history"], artifact.get("elo_state", {}), matches=matches)
+    squad_strength = normalize_squad_strength(load_squad_strength(), teams)
+    if not squad_strength.empty:
+        audit = audit.merge(
+            squad_strength[
+                [
+                    "team",
+                    "squad_market_value_eur",
+                    "average_player_value_eur",
+                    "squad_size",
+                    "squad_strength_rank",
+                    "squad_strength_percentile",
+                    "squad_strength_score",
+                    "squad_strength_bucket",
+                    "squad_strength_used",
+                    "source",
+                    "source_url",
+                    "last_updated",
+                    "data_confidence",
+                    "promoted_team_flag",
+                ]
+            ],
+            on="team",
+            how="left",
+        )
     validation_status, validation = validate_projection_feature_inputs(audit, artifact["feature_columns"])
     overrides = projection_feature_overrides(audit)
 
     parity = build_feature_parity_audit(fixtures, official, artifact["team_history"], artifact.get("elo_state", {}), artifact["feature_columns"], overrides)
     parity.to_csv(OUTPUT_DIR / "feature_parity_audit.csv", index=False)
     validation.to_csv(OUTPUT_DIR / "feature_validation.csv", index=False)
+    if not squad_strength.empty:
+        squad_strength.to_csv(OUTPUT_DIR / "squad_strength_audit.csv", index=False)
 
     probabilities = predict_fixture_probabilities(
         fixtures,
@@ -432,9 +609,19 @@ def main() -> None:
     long_term_strength = build_long_term_team_strength(teams, artifact.get("elo_state", {}))
     probabilities = blend_with_long_term_season_prior(probabilities, long_term_strength)
     probabilities_before_adjustment = blend_with_long_term_season_prior(probabilities_before_adjustment, long_term_strength)
+    probabilities_before_squad_strength = probabilities.copy()
+    squad_scores = squad_strength_lookup(squad_strength)
+    probabilities = apply_squad_strength_prior(probabilities, squad_scores)
+    probabilities_before_adjustment = apply_squad_strength_prior(probabilities_before_adjustment, squad_scores)
     projection = monte_carlo_season(probabilities, n_simulations=10000)
     projection = projection.merge(expected_points_from_probabilities(probabilities), on="team", how="left")
     projection["projected_position"] = range(1, len(projection) + 1)
+    projection_before_squad_strength = monte_carlo_season(probabilities_before_squad_strength, n_simulations=10000)
+    projection_before_squad_strength = projection_before_squad_strength.merge(
+        expected_points_from_probabilities(probabilities_before_squad_strength),
+        on="team",
+        how="left",
+    )
     projection_before_adjustment = monte_carlo_season(probabilities_before_adjustment, n_simulations=10000)
     projection_before_adjustment = projection_before_adjustment.merge(
         expected_points_from_probabilities(probabilities_before_adjustment),
@@ -472,6 +659,8 @@ def main() -> None:
     write_promoted_baseline_report(baseline, audit)
     write_promoted_adjustment_report(adjustment_audit, baseline)
     write_robustness_report(projection, audit, parity, validation_status, baseline)
+    write_squad_strength_report(squad_strength, projection, projection_before_squad_strength, audit)
+    write_everton_squad_strength_audit(squad_strength, projection, projection_before_squad_strength, audit)
     print(f"Wrote Season Projection robustness outputs to {OUTPUT_DIR}")
 
 

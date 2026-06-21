@@ -77,8 +77,9 @@ def season_projection_text() -> str:
     return (
         "The season projection predicts every fixture with the match model and then simulates the season many times. "
         "The output includes expected points, expected position, and probabilities for title, top 4, top 6 and relegation. "
-        "If no official fixture list exists in `data/upcoming_fixtures.csv`, the app uses a neutral home/away fixture skeleton. "
-        "In that case, the projection is useful as a strength estimate, but not as a fully fixture-aware forecast."
+        "If no official fixture list exists in `data/upcoming_fixtures_2026_27.csv`, the app uses a neutral home/away fixture skeleton. "
+        "The projection also uses a mild squad-strength preseason prior when `data/squad_strength_2026_27.csv` is available. "
+        "That prior is used only for Season Projection, not for the single-match production model."
     )
 
 
