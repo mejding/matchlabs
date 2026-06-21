@@ -1578,6 +1578,41 @@ def probability_percent_columns(frame: pd.DataFrame, columns: list[str]) -> pd.D
     return output
 
 
+def format_season_projection_display(frame: pd.DataFrame) -> pd.DataFrame:
+    display = probability_percent_columns(
+        frame[
+            [
+                "team",
+                "expected_points",
+                "expected_points_deterministic",
+                "expected_position",
+                "projected_position",
+                "title_probability",
+                "top_4_probability",
+                "top_6_probability",
+                "relegation_probability",
+            ]
+        ],
+        ["title_probability", "top_4_probability", "top_6_probability", "relegation_probability"],
+    )
+    display = display.rename(
+        columns={
+            "team": "Team",
+            "expected_points": "Simulated points",
+            "expected_points_deterministic": "Probability points",
+            "expected_position": "Average simulated finish",
+            "projected_position": "Ordered table rank",
+            "title_probability": "Title",
+            "top_4_probability": "Top 4",
+            "top_6_probability": "Top 6",
+            "relegation_probability": "Relegation",
+        }
+    )
+    for column in ["Simulated points", "Probability points", "Average simulated finish"]:
+        display[column] = display[column].map(lambda value: f"{float(value):.1f}")
+    return display
+
+
 def render_season_projection_tab(home_team: str, away_team: str, teams: list[str]) -> None:
     st.subheader("Upcoming Season Projection")
     fixture_path = OFFICIAL_FIXTURE_PATH
@@ -1612,61 +1647,31 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
     )
 
     selected = projection[projection["team"].isin([home_team, away_team])].copy()
-    selected_display = probability_percent_columns(
-        selected[
-            [
-                "team",
-                "expected_position",
-                "projected_position",
-                "expected_points",
-                "title_probability",
-                "top_4_probability",
-                "top_6_probability",
-                "relegation_probability",
-            ]
-        ],
-        ["title_probability", "top_4_probability", "top_6_probability", "relegation_probability"],
-    )
-    selected_display = selected_display.rename(
-        columns={
-            "expected_position": "monte_carlo_expected_position",
-            "projected_position": "rank_by_expected_position",
-        }
-    )
-    selected_display["monte_carlo_expected_position"] = selected_display["monte_carlo_expected_position"].map(lambda value: f"{float(value):.1f}")
-    selected_display["expected_points"] = selected_display["expected_points"].map(lambda value: f"{float(value):.1f}")
     st.markdown("#### Selected Teams")
-    st.dataframe(selected_display, width="stretch", hide_index=True)
+    st.dataframe(format_season_projection_display(selected), width="stretch", hide_index=True)
     st.caption(
-        "Monte Carlo expected position is the average finishing position across simulations. "
-        "Rank by expected position is the ordered table rank, so close teams can look more decisive than the simulation really is."
+        "Average simulated finish is the main projection number. Ordered table rank is only the table order after sorting teams, "
+        "so tightly grouped teams can look more separated than the simulation really says."
     )
+    if not selected.empty:
+        max_rank_gap = (selected["projected_position"] - selected["expected_position"]).abs().max()
+        if max_rank_gap >= 3:
+            largest_gap = selected.assign(rank_gap=(selected["projected_position"] - selected["expected_position"]).abs()).sort_values(
+                "rank_gap", ascending=False
+            ).iloc[0]
+            st.warning(
+                f"{largest_gap['team']} is a good example of why the two numbers differ: "
+                f"its ordered table rank is {int(largest_gap['projected_position'])}, "
+                f"but its average simulated finish is {float(largest_gap['expected_position']):.1f}. "
+                "That means the model sees a wide range of season outcomes, not a fixed finishing position."
+            )
 
     with st.expander("Full upcoming season projection", expanded=True):
-        full_display = probability_percent_columns(
-            projection[
-                [
-                    "team",
-                    "expected_position",
-                    "projected_position",
-                    "expected_points",
-                    "title_probability",
-                    "top_4_probability",
-                    "top_6_probability",
-                    "relegation_probability",
-                ]
-            ],
-            ["title_probability", "top_4_probability", "top_6_probability", "relegation_probability"],
+        st.markdown(
+            "The table is sorted by average simulated finish. Use the probability columns to judge uncertainty, "
+            "especially for the lower-table cluster where a few expected points can move a team many places."
         )
-        full_display = full_display.rename(
-            columns={
-                "expected_position": "monte_carlo_expected_position",
-                "projected_position": "rank_by_expected_position",
-            }
-        )
-        for column in ["expected_points", "monte_carlo_expected_position"]:
-            full_display[column] = full_display[column].map(lambda value: f"{float(value):.1f}")
-        st.dataframe(full_display, width="stretch", hide_index=True)
+        st.dataframe(format_season_projection_display(projection), width="stretch", hide_index=True)
 
     st.subheader("Previous Seasons: Forecast vs Result")
     comparison, summary, by_season = load_historical_season_outputs()
