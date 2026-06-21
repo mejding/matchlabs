@@ -40,6 +40,7 @@ from season_simulation import (
     read_fixture_list,
     read_default_upcoming_fixtures,
     season_table_from_results,
+    season_start_feature_audit,
 )
 from scoreline_model import ScorelineProbability, estimate_scorelines
 from train_model import load_matches
@@ -106,7 +107,7 @@ STATUS_EXPLANATIONS = {
     "Missing": "Required data is not available locally.",
     "Stale": "The local dataset should be refreshed before relying heavily on this input.",
 }
-SEASON_PROJECTION_VERSION = "balanced_round_robin_long_term_prior_v1"
+SEASON_PROJECTION_VERSION = "balanced_round_robin_long_term_prior_shot_volume_v2"
 SEASON_PROJECTION_PRIOR_WEIGHT = 0.35
 
 
@@ -1559,6 +1560,16 @@ def upcoming_season_projection(
 
 
 @st.cache_data(show_spinner=False)
+def upcoming_season_start_feature_audit(
+    teams: tuple[str, ...],
+    model_mtime: float,
+    projection_version: str,
+) -> pd.DataFrame:
+    artifact = joblib.load(MODEL_PATH)
+    return season_start_feature_audit(teams, artifact["team_history"], artifact.get("elo_state", {}))
+
+
+@st.cache_data(show_spinner=False)
 def load_historical_season_outputs() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     base = Path("evaluation") / "season_simulation"
     comparison_path = base / "historical_season_comparison.csv"
@@ -1610,6 +1621,49 @@ def format_season_projection_display(frame: pd.DataFrame) -> pd.DataFrame:
     )
     for column in ["Simulated points", "Probability points", "Average simulated finish"]:
         display[column] = display[column].map(lambda value: f"{float(value):.1f}")
+    return display
+
+
+def format_season_start_audit_display(frame: pd.DataFrame) -> pd.DataFrame:
+    display = frame.copy()
+    display = display.rename(
+        columns={
+            "team": "Team",
+            "data_source_league": "Data source league",
+            "premier_league_matches_available": "PL matches available",
+            "latest_premier_league_match": "Latest PL match",
+            "recent_form_points_last5": "Points last 5",
+            "recent_goals_scored_avg_last5": "Goals avg last 5",
+            "xg_strength_last5": "xG avg last 5",
+            "xga_strength_last5": "xGA avg last 5",
+            "xg_diff_last5": "xG diff last 5",
+            "shots_avg_last5": "Shots avg last 5",
+            "shots_on_target_avg_last5": "SOT avg last 5",
+            "shots_avg_last10": "Shots avg last 10",
+            "shots_on_target_avg_last10": "SOT avg last 10",
+            "shots_avg_latest_season": "Shots avg latest season",
+            "shots_on_target_avg_latest_season": "SOT avg latest season",
+            "elo_rating": "Elo",
+            "elo_recent_change": "Elo recent change",
+            "fallback_flags": "Fallback flags",
+        }
+    )
+    numeric_columns = [
+        "Goals avg last 5",
+        "xG avg last 5",
+        "xGA avg last 5",
+        "xG diff last 5",
+        "Shots avg last 5",
+        "SOT avg last 5",
+        "Shots avg last 10",
+        "SOT avg last 10",
+        "Shots avg latest season",
+        "SOT avg latest season",
+        "Elo",
+        "Elo recent change",
+    ]
+    for column in numeric_columns:
+        display[column] = display[column].map(lambda value: f"{float(value):.2f}" if column != "Elo" else f"{float(value):.1f}")
     return display
 
 
@@ -1672,6 +1726,23 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
             "especially for the lower-table cluster where a few expected points can move a team many places."
         )
         st.dataframe(format_season_projection_display(projection), width="stretch", hide_index=True)
+
+    with st.expander("Season start feature audit", expanded=True):
+        st.markdown(
+            "These are the team-level feature values available before the 2026/27 season starts. "
+            "For an individual fixture, the model maps the home team into the `home_*` columns and the away team into the `away_*` columns. "
+            "Fallback flags show where the local Premier League dataset does not contain enough history."
+        )
+        audit = upcoming_season_start_feature_audit(
+            projection_teams,
+            Path(MODEL_PATH).stat().st_mtime if Path(MODEL_PATH).exists() else 0.0,
+            SEASON_PROJECTION_VERSION,
+        )
+        selected_audit = audit[audit["team"].isin([home_team, away_team])]
+        st.markdown("##### Selected teams")
+        st.dataframe(format_season_start_audit_display(selected_audit), width="stretch", hide_index=True)
+        st.markdown("##### All 2026/27 teams")
+        st.dataframe(format_season_start_audit_display(audit), width="stretch", hide_index=True)
 
     st.subheader("Previous Seasons: Forecast vs Result")
     comparison, summary, by_season = load_historical_season_outputs()

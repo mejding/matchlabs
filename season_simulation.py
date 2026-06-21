@@ -50,6 +50,18 @@ def last_5_average(values: list[float]) -> float:
     return average(values[-5:])
 
 
+def last_n_average(values: list[float], window: int) -> float:
+    return average(values[-window:])
+
+
+def latest_season_average(values: list[float], seasons: list[str]) -> float:
+    if not values or not seasons:
+        return 0.0
+    latest_season = str(seasons[-1])
+    season_values = [value for value, season in zip(values, seasons) if str(season) == latest_season]
+    return average(season_values)
+
+
 def days_since_last_match(match_dates: list, match_date) -> float:
     previous = [date for date in match_dates if date < match_date]
     return float((match_date - max(previous)).days) if previous else 14.0
@@ -73,7 +85,7 @@ def feature_row_for_fixture(
     home_team = fixture["HomeTeam"]
     away_team = fixture["AwayTeam"]
     match_date = fixture["Date"]
-    empty = {"points": [], "goals_scored": [], "xg": [], "xga": [], "match_dates": []}
+    empty = {"points": [], "goals_scored": [], "xg": [], "xga": [], "match_dates": [], "shots": [], "shots_on_target": [], "shot_seasons": []}
     home = team_history.get(home_team, empty)
     away = team_history.get(away_team, empty)
     home_xg = last_5_average(home.get("xg", []))
@@ -105,9 +117,89 @@ def feature_row_for_fixture(
         "home_days_since_last_match": home_rest,
         "away_days_since_last_match": away_rest,
     }
+    if any("shots_avg" in column or "shots_on_target_avg" in column for column in feature_columns):
+        home_shots = home.get("shots", [])
+        away_shots = away.get("shots", [])
+        home_sot = home.get("shots_on_target", [])
+        away_sot = away.get("shots_on_target", [])
+        home_shot_seasons = home.get("shot_seasons", [])
+        away_shot_seasons = away.get("shot_seasons", [])
+        row.update(
+            {
+                "home_shots_avg_last5": last_n_average(home_shots, 5),
+                "away_shots_avg_last5": last_n_average(away_shots, 5),
+                "home_shots_on_target_avg_last5": last_n_average(home_sot, 5),
+                "away_shots_on_target_avg_last5": last_n_average(away_sot, 5),
+                "home_shots_avg_last10": last_n_average(home_shots, 10),
+                "away_shots_avg_last10": last_n_average(away_shots, 10),
+                "home_shots_on_target_avg_last10": last_n_average(home_sot, 10),
+                "away_shots_on_target_avg_last10": last_n_average(away_sot, 10),
+                "home_shots_avg_season": latest_season_average(home_shots, home_shot_seasons),
+                "away_shots_avg_season": latest_season_average(away_shots, away_shot_seasons),
+                "home_shots_on_target_avg_season": latest_season_average(home_sot, home_shot_seasons),
+                "away_shots_on_target_avg_season": latest_season_average(away_sot, away_shot_seasons),
+            }
+        )
     if any("elo" in column for column in feature_columns):
         row.update(build_prediction_elo_row(home_team, away_team, elo_state))
     return {column: float(row.get(column, 0.0)) for column in feature_columns}
+
+
+def season_start_feature_audit(
+    teams: tuple[str, ...] | list[str],
+    team_history: dict[str, dict[str, list[float]]],
+    elo_state: dict[str, dict[str, object]],
+) -> pd.DataFrame:
+    rows = []
+    for team in sorted(teams):
+        history = team_history.get(
+            team,
+            {"points": [], "goals_scored": [], "xg": [], "xga": [], "match_dates": [], "shots": [], "shots_on_target": [], "shot_seasons": []},
+        )
+        points = history.get("points", [])
+        goals = history.get("goals_scored", [])
+        xg = history.get("xg", [])
+        xga = history.get("xga", [])
+        shots = history.get("shots", [])
+        shots_on_target = history.get("shots_on_target", [])
+        shot_seasons = history.get("shot_seasons", [])
+        match_dates = history.get("match_dates", [])
+        elo = elo_state.get(team, {})
+        elo_history = [float(value) for value in elo.get("history", [])]
+        elo_rating = float(elo.get("rating", 1500.0))
+        premier_league_matches = len(points)
+        xg_avg = last_5_average(xg)
+        xga_avg = last_5_average(xga)
+        flags = {
+            "no_premier_league_history": premier_league_matches == 0,
+            "limited_recent_form": 0 < premier_league_matches < 5,
+            "xg_fallback": len(xg) < 5,
+            "shot_volume_fallback": len(shots) < 5,
+            "elo_fallback": team not in elo_state,
+        }
+        rows.append(
+            {
+                "team": team,
+                "data_source_league": "Premier League historical data" if premier_league_matches else "No local Premier League history",
+                "premier_league_matches_available": premier_league_matches,
+                "latest_premier_league_match": max(match_dates).isoformat() if match_dates else "",
+                "recent_form_points_last5": last_5_sum(points),
+                "recent_goals_scored_avg_last5": last_5_average(goals),
+                "xg_strength_last5": xg_avg,
+                "xga_strength_last5": xga_avg,
+                "xg_diff_last5": xg_avg - xga_avg,
+                "shots_avg_last5": last_n_average(shots, 5),
+                "shots_on_target_avg_last5": last_n_average(shots_on_target, 5),
+                "shots_avg_last10": last_n_average(shots, 10),
+                "shots_on_target_avg_last10": last_n_average(shots_on_target, 10),
+                "shots_avg_latest_season": latest_season_average(shots, shot_seasons),
+                "shots_on_target_avg_latest_season": latest_season_average(shots_on_target, shot_seasons),
+                "elo_rating": elo_rating,
+                "elo_recent_change": float(elo_rating - elo_history[-5]) if len(elo_history) >= 5 else 0.0,
+                "fallback_flags": ", ".join(flag for flag, active in flags.items() if active) or "none",
+            }
+        )
+    return pd.DataFrame(rows)
 
 
 def predict_fixture_probabilities(
@@ -124,7 +216,10 @@ def predict_fixture_probabilities(
         home_team = fixture["HomeTeam"]
         away_team = fixture["AwayTeam"]
         for team in (home_team, away_team):
-            rolling_history.setdefault(team, {"points": [], "goals_scored": [], "xg": [], "xga": [], "match_dates": []})
+            rolling_history.setdefault(
+                team,
+                {"points": [], "goals_scored": [], "xg": [], "xga": [], "match_dates": [], "shots": [], "shots_on_target": [], "shot_seasons": []},
+            )
         row = feature_row_for_fixture(fixture, rolling_history, preseason_elo_state, feature_columns)
         X = pd.DataFrame([row], columns=feature_columns)
         probabilities = calibrator.predict_proba(X)[0] if calibrator is not None else model.predict_proba(X)[0]
