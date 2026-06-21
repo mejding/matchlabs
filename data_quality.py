@@ -100,7 +100,17 @@ def assess_prediction_data_quality(
                 f"{team} has a very large gap since its last match in the dataset. Prediction reliability may be reduced."
             )
         if team_history is not None and team not in team_history:
-            warnings.append(f"{team} is not present in the saved team history.")
+            adjusted_signal = any(
+                _as_float(feature_row.get(f"{side}_{suffix}")) > 0
+                for suffix in ["team_points_last_5", "goals_scored_avg", "xg_avg", "shots_avg_last5"]
+            )
+            if adjusted_signal:
+                warnings.append(
+                    f"{team} has limited or no local Premier League history. "
+                    "The prediction uses transparent Championship-adjusted or baseline values instead of zero-filled form."
+                )
+            else:
+                warnings.append(f"{team} is not present in the saved team history.")
 
     xg_keys = ["home_xg_avg", "away_xg_avg", "home_xga_avg", "away_xga_avg"]
     if any(key not in feature_row for key in xg_keys):

@@ -1397,6 +1397,36 @@ def build_insights(row: dict[str, float], home_team: str, away_team: str) -> lis
     return generate_plain_english_explanation(row, home_team, away_team)
 
 
+def render_low_history_prediction_notes(
+    row: dict[str, float],
+    home_team: str,
+    away_team: str,
+    team_history: dict[str, dict[str, list]],
+) -> None:
+    rows = []
+    for side, team in [("home", home_team), ("away", away_team)]:
+        if team in team_history:
+            continue
+        rows.append(
+            {
+                "Team": team,
+                "Source": "Championship-adjusted / promoted baseline",
+                "Points last 5": f"{value(row, f'{side}_team_points_last_5'):.2f}",
+                "xG": f"{value(row, f'{side}_xg_avg'):.2f}",
+                "xGA": f"{value(row, f'{side}_xga_avg'):.2f}",
+                "xG diff": f"{value(row, f'{side}_xg_diff'):.2f}",
+                "Shots last 5": f"{value(row, f'{side}_shots_avg_last5'):.2f}",
+            }
+        )
+    if not rows:
+        return
+    st.info(
+        "Low-history Premier League team adjustment: this team has limited or no local Premier League history, "
+        "so the prediction uses transparent Championship-adjusted or promoted-team baseline values instead of zero-filled form."
+    )
+    st.dataframe(pd.DataFrame(rows), width="stretch", hide_index=True)
+
+
 def warning_panel(warnings: list[str]) -> None:
     if not warnings:
         st.success("No major data-quality warnings detected for this prediction.")
@@ -2234,6 +2264,7 @@ def main() -> None:
         insights = build_insights(row, home_team, away_team)
         st.markdown("<ul class='insight-list'>" + "".join(f"<li>{item}</li>" for item in insights) + "</ul>", unsafe_allow_html=True)
         st.subheader("Feature Groups")
+        render_low_history_prediction_notes(row, home_team, away_team, team_history)
         grouped_feature_cards(row, home_team, away_team)
         render_recent_head_to_head(home_team, away_team)
 
