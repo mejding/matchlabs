@@ -25,12 +25,20 @@ from help_text import (
     validation_text,
 )
 from model_feature_status import FEATURE_STATUS, active_feature_statuses, inactive_feature_statuses, status_tone
+from official_fixtures import (
+    OFFICIAL_FIXTURE_PATH,
+    detect_fixture_mode,
+    fixtures_for_model,
+    load_official_fixtures,
+    schedule_context_for_fixture,
+)
 from predict import MODEL_PATH, build_prediction_features
 from season_simulation import (
     expected_points_from_probabilities,
     monte_carlo_season,
     predict_fixture_probabilities,
     read_fixture_list,
+    read_default_upcoming_fixtures,
     season_table_from_results,
 )
 from scoreline_model import ScorelineProbability, estimate_scorelines
@@ -51,11 +59,13 @@ CURRENT_PREMIER_LEAGUE_TEAMS = [
     "Bournemouth",
     "Brentford",
     "Brighton",
-    "Burnley",
     "Chelsea",
+    "Coventry",
     "Crystal Palace",
     "Everton",
     "Fulham",
+    "Hull",
+    "Ipswich",
     "Leeds",
     "Liverpool",
     "Man City",
@@ -64,8 +74,6 @@ CURRENT_PREMIER_LEAGUE_TEAMS = [
     "Nott'm Forest",
     "Sunderland",
     "Tottenham",
-    "West Ham",
-    "Wolves",
 ]
 LOGO_DIR = Path("assets") / "logos"
 team_logo_map = {
@@ -695,6 +703,22 @@ def load_recent_head_to_head(home_team: str, away_team: str, limit: int = 5) -> 
             }
         )
     return pd.DataFrame(rows)
+
+
+@st.cache_data(show_spinner=False)
+def load_official_fixture_data() -> tuple[pd.DataFrame, object]:
+    mode = detect_fixture_mode()
+    if not mode.validation_ok:
+        return pd.DataFrame(), mode
+    frame = load_official_fixtures(OFFICIAL_FIXTURE_PATH)
+    return frame, mode
+
+
+def fixture_label(row: pd.Series) -> str:
+    return (
+        f"MW{int(row['matchweek'])}: {row['home_team']} v {row['away_team']} — "
+        f"{row['date']} {row['kickoff_time_dk']} DK"
+    )
 
 
 def confidence_label(probabilities, warnings: list[str]) -> tuple[str, str]:
@@ -1500,10 +1524,12 @@ def upcoming_season_projection(
     projection_version: str,
 ) -> tuple[pd.DataFrame, pd.DataFrame, str]:
     artifact = joblib.load(MODEL_PATH)
-    fixture_path = Path("data") / "upcoming_fixtures.csv"
+    fixture_path = OFFICIAL_FIXTURE_PATH
     if fixture_path.exists():
-        fixtures = read_fixture_list(fixture_path)
-        source = "Loaded from data/upcoming_fixtures.csv"
+        official = load_official_fixtures(fixture_path)
+        fixtures = fixtures_for_model(official)
+        mode = detect_fixture_mode(fixture_path)
+        source = mode.message
     else:
         fixtures = build_fixture_skeleton(list(teams))
         source = "Fixture skeleton: official upcoming fixture list not found locally"
@@ -1554,9 +1580,14 @@ def probability_percent_columns(frame: pd.DataFrame, columns: list[str]) -> pd.D
 
 def render_season_projection_tab(home_team: str, away_team: str, teams: list[str]) -> None:
     st.subheader("Upcoming Season Projection")
-    fixture_path = Path("data") / "upcoming_fixtures.csv"
+    fixture_path = OFFICIAL_FIXTURE_PATH
+    mode = detect_fixture_mode(fixture_path)
+    projection_teams = tuple(teams)
+    if mode.validation_ok:
+        official = load_official_fixtures(fixture_path)
+        projection_teams = tuple(sorted(set(official["home_team"]).union(official["away_team"])))
     projection, probabilities, source = upcoming_season_projection(
-        tuple(teams),
+        projection_teams,
         10000,
         Path(MODEL_PATH).stat().st_mtime if Path(MODEL_PATH).exists() else 0.0,
         (Path("models") / "calibrated_probability_layer.joblib").stat().st_mtime
@@ -1565,13 +1596,15 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
         fixture_path.stat().st_mtime if fixture_path.exists() else 0.0,
         SEASON_PROJECTION_VERSION,
     )
-    if fixture_path.exists():
-        st.success(source)
+    if mode.validation_ok:
+        st.success(f"Fixture mode: {mode.mode}")
+        st.caption(source)
     else:
         st.warning(
-            "No official upcoming fixture list found at data/upcoming_fixtures.csv. "
+            "Official 2026/27 fixtures are not loaded. "
             "This projection uses a balanced 38-round home/away fixture skeleton, so exact fixture-order and fatigue effects remain illustrative."
         )
+    st.caption("Premier League fixtures do not include European or domestic cup fixtures, so congestion from those competitions is not included.")
     st.info(
         "Season projection is intentionally more conservative than a single-match prediction. "
         "It blends the match model with a long-term team-strength prior from the last two completed seasons and Elo, "
@@ -1705,25 +1738,65 @@ def main() -> None:
     missing_current_teams = unavailable_current_teams(team_history)
     stale_teams = stale_current_teams(team_history)
     latest_data_date = latest_dataset_date(team_history)
+    official_fixtures, fixture_mode = load_official_fixture_data()
+    official_teams = sorted(set(official_fixtures["home_team"]).union(official_fixtures["away_team"])) if not official_fixtures.empty else []
+    team_options = sorted(set(teams).union(official_teams))
 
-    if not teams:
+    if not team_options:
         st.error("No current Premier League teams are available in the saved model history.")
         return
 
     st.markdown("<div class='input-card'>", unsafe_allow_html=True)
     st.subheader("Match Setup")
-    input_cols = st.columns([1, 1, 0.7])
-    with input_cols[0]:
-        home_team = st.selectbox("Home team", teams, index=teams.index("Arsenal") if "Arsenal" in teams else 0)
-    with input_cols[1]:
-        away_default = teams.index("Brighton") if "Brighton" in teams else min(1, len(teams) - 1)
-        away_team = st.selectbox("Away team", teams, index=away_default)
-    with input_cols[2]:
-        predict_clicked = st.button("Predict", type="primary", width="stretch")
+    st.caption(f"Fixture mode: {fixture_mode.mode}")
+    predict_clicked = False
+    selected_fixture = None
+    if not official_fixtures.empty:
+        selector_cols = st.columns([0.55, 1.45, 0.55])
+        with selector_cols[0]:
+            matchweeks = sorted(official_fixtures["matchweek"].unique())
+            selected_matchweek = st.selectbox("Matchweek", matchweeks, format_func=lambda value: f"Matchweek {int(value)}")
+        week_fixtures = official_fixtures[official_fixtures["matchweek"] == selected_matchweek].reset_index(drop=True)
+        with selector_cols[1]:
+            selected_index = st.selectbox(
+                "Official fixture",
+                list(range(len(week_fixtures))),
+                format_func=lambda index: fixture_label(week_fixtures.iloc[int(index)]),
+            )
+            selected_fixture = week_fixtures.iloc[int(selected_index)]
+        with selector_cols[2]:
+            predict_clicked = st.button("Predict fixture", type="primary", width="stretch")
+        home_team = str(selected_fixture["home_team"])
+        away_team = str(selected_fixture["away_team"])
+        st.caption(
+            f"Selected: {home_team} v {away_team} · {selected_fixture['date']} · "
+            f"{selected_fixture['kickoff_time_uk']} UK / {selected_fixture['kickoff_time_dk']} DK"
+        )
+    else:
+        home_team = "Arsenal" if "Arsenal" in team_options else team_options[0]
+        away_team = "Brighton" if "Brighton" in team_options else team_options[min(1, len(team_options) - 1)]
+        st.warning("Official 2026/27 fixtures are not loaded. Use manual team selection below.")
+
+    with st.expander("Manual / custom fixture", expanded=official_fixtures.empty):
+        input_cols = st.columns([1, 1, 0.7])
+        with input_cols[0]:
+            home_team = st.selectbox("Home team", team_options, index=team_options.index(home_team) if home_team in team_options else 0)
+        with input_cols[1]:
+            away_default = team_options.index(away_team) if away_team in team_options else min(1, len(team_options) - 1)
+            away_team = st.selectbox("Away team", team_options, index=away_default)
+        with input_cols[2]:
+            manual_predict_clicked = st.button("Predict custom", type="secondary", width="stretch")
+        if manual_predict_clicked:
+            selected_fixture = None
+            predict_clicked = True
     if predict_clicked:
         st.session_state["active_prediction_match"] = {
             "home_team": home_team,
             "away_team": away_team,
+            "match_date": None if selected_fixture is None else str(selected_fixture["date"]),
+            "matchweek": None if selected_fixture is None else int(selected_fixture["matchweek"]),
+            "kickoff_time_uk": None if selected_fixture is None else str(selected_fixture["kickoff_time_uk"]),
+            "kickoff_time_dk": None if selected_fixture is None else str(selected_fixture["kickoff_time_dk"]),
         }
     if latest_data_date:
         st.caption(
@@ -1772,7 +1845,7 @@ def main() -> None:
 
     prediction_home_team = str(active_prediction["home_team"])
     prediction_away_team = str(active_prediction["away_team"])
-    if {prediction_home_team, prediction_away_team} - set(teams):
+    if {prediction_home_team, prediction_away_team} - set(team_options):
         st.session_state.pop("active_prediction_match", None)
         st.info("Choose a fixture and run a prediction.")
         render_model_status(feature_columns)
@@ -1786,8 +1859,15 @@ def main() -> None:
 
     home_team = prediction_home_team
     away_team = prediction_away_team
+    selected_match_date = active_prediction.get("match_date")
 
-    features = build_prediction_features(home_team, away_team, team_history, feature_columns, elo_state=elo_state)
+    features = build_prediction_features(home_team, away_team, team_history, feature_columns, match_date=selected_match_date, elo_state=elo_state)
+    if selected_match_date and not official_fixtures.empty:
+        match_date_for_schedule = pd.to_datetime(selected_match_date, errors="coerce").date()
+        schedule_context = schedule_context_for_fixture(official_fixtures, home_team, away_team, match_date_for_schedule)
+        for column, context_value in schedule_context.items():
+            if column in features.columns:
+                features.loc[:, column] = float(context_value)
     row = features.iloc[0].to_dict()
     raw_probabilities = model.predict_proba(features)[0]
     probabilities, is_calibrated, calibration_method = apply_calibration(raw_probabilities, calibrated_layer, features)
@@ -1796,6 +1876,7 @@ def main() -> None:
         home_team,
         away_team,
         team_history=team_history,
+        match_date=pd.to_datetime(selected_match_date, errors="coerce").date() if selected_match_date else None,
         latest_data_date=latest_data_date,
     )
     warnings = quality_result.warnings
@@ -1815,10 +1896,16 @@ def main() -> None:
         )
         if is_calibrated:
             st.caption(f"Primary probabilities are calibrated with `{calibration_method}`. Raw model output is available under technical details.")
+        if selected_match_date:
+            st.caption(
+                f"Official fixture: Matchweek {active_prediction.get('matchweek')} · {selected_match_date} · "
+                f"{active_prediction.get('kickoff_time_uk')} UK / {active_prediction.get('kickoff_time_dk')} DK. "
+                "Fixtures are scheduled subject to change."
+            )
         if latest_data_date:
             st.caption(
                 f"Form and xG inputs use each team's latest 5 matches available through {latest_data_date}. "
-                "Fatigue inputs use the latest match date plus recent 14-day schedule activity."
+                "Schedule and fatigue currently use Premier League fixtures only unless European and cup fixture files are added."
             )
         render_probability_bar(probabilities, home_team, away_team)
         render_scoreline_section(row, probabilities, home_team, away_team)

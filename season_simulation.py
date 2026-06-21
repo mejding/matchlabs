@@ -20,6 +20,7 @@ from sklearn.frozen import FrozenEstimator
 
 from elo_rating_features import EloConfig, build_current_elo_state, build_elo_features, build_prediction_elo_row, elo_feature_columns
 from feature_experiments import _markdown_table, train_xgb
+from official_fixtures import OFFICIAL_FIXTURE_PATH, fixtures_for_model, load_official_fixtures
 from train_model import ELO_CONFIG, MODEL_PATH, PRODUCTION_FEATURE_COLUMNS, SCHEDULE_FEATURE_COLUMNS, build_features, load_matches_with_xg
 
 matplotlib.use("Agg")
@@ -400,6 +401,16 @@ def project_fixture_list(fixture_path: Path, n_simulations: int) -> pd.DataFrame
     projection.to_csv(OUTPUT_DIR / f"custom_projection_{n_simulations}.csv", index=False)
     plot_projection_table(projection, OUTPUT_DIR / f"custom_projection_{n_simulations}.png")
     return projection
+
+
+def read_default_upcoming_fixtures() -> tuple[pd.DataFrame | None, str]:
+    if OFFICIAL_FIXTURE_PATH.exists():
+        try:
+            official = load_official_fixtures(OFFICIAL_FIXTURE_PATH)
+            return fixtures_for_model(official), "Official fixtures loaded"
+        except Exception as exc:
+            return None, f"Fixture data outdated: {exc}"
+    return None, "Missing fixtures"
 
 
 def run_historical_validation(n_simulations: int = 1000) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:

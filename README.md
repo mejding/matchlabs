@@ -637,6 +637,21 @@ Market odds are benchmark-only unless odds timing is verified as safe pre-match 
 
 The bookmaker comparison in the dashboard does not train the production model on odds. It is a safe display-only tool: enter current decimal odds manually, and the app compares them with the model's fair odds and normalized market-implied probabilities. A bookmaker odd above the model fair odd means the model sees that outcome as better value; a lower bookmaker odd means the market price is worse than the model's fair price.
 
+### Official 2026/27 fixtures
+
+The app supports official 2026/27 Premier League fixtures from `data/upcoming_fixtures_2026_27.csv`.
+
+- The Prediction tab can select a 2026/27 match by matchweek and fixture.
+- The Season Projection tab uses official fixtures when the file is present and valid.
+- If official fixtures are missing or invalid, the app falls back to a neutral fixture skeleton and shows a warning.
+- Fixtures are scheduled subject to change.
+- Premier League fixtures alone do not include European, FA Cup or EFL Cup fixtures, so schedule/fatigue currently uses Premier League fixtures only unless additional fixture files are added.
+
+Validation and integration reports:
+
+- `evaluation/fixtures_2026_27/fixture_import_validation_report.md`
+- `evaluation/fixtures_2026_27/official_fixtures_integration_report.md`
+
 ### Scoreline prediction
 
 The production model predicts 1X2 probabilities: home win, draw and away win. The scoreline layer is an additional interpretation layer that estimates likely scorelines from expected goals and aligns the scoreline totals with the displayed 1X2 probabilities.

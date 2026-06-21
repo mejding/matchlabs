@@ -1,0 +1,381 @@
+season,matchweek,date,kickoff_time_uk,kickoff_time_dk,home_team,away_team,source,source_url,fixture_status,last_updated
+2026/27,1,2026-08-21,20:00,21:00,Arsenal,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,1,2026-08-22,12:30,13:30,Hull,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,1,2026-08-22,15:00,16:00,Everton,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,1,2026-08-22,15:00,16:00,Ipswich,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,1,2026-08-22,15:00,16:00,Nott'm Forest,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,1,2026-08-22,17:30,18:30,Brentford,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,1,2026-08-23,14:00,15:00,Brighton,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,1,2026-08-23,14:00,15:00,Man City,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,1,2026-08-23,16:30,17:30,Newcastle,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,1,2026-08-24,20:00,21:00,Fulham,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,2,2026-08-29,15:00,16:00,Aston Villa,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,2,2026-08-29,15:00,16:00,Bournemouth,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,2,2026-08-29,15:00,16:00,Chelsea,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,2,2026-08-29,15:00,16:00,Coventry,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,2,2026-08-29,15:00,16:00,Crystal Palace,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,2,2026-08-29,15:00,16:00,Leeds,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,2,2026-08-29,15:00,16:00,Liverpool,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,2,2026-08-29,15:00,16:00,Man United,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,2,2026-08-29,15:00,16:00,Sunderland,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,2,2026-08-29,15:00,16:00,Tottenham,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,3,2026-09-05,15:00,16:00,Arsenal,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,3,2026-09-05,15:00,16:00,Brentford,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,3,2026-09-05,15:00,16:00,Brighton,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,3,2026-09-05,15:00,16:00,Everton,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,3,2026-09-05,15:00,16:00,Fulham,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,3,2026-09-05,15:00,16:00,Hull,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,3,2026-09-05,15:00,16:00,Ipswich,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,3,2026-09-05,15:00,16:00,Man City,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,3,2026-09-05,15:00,16:00,Newcastle,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,3,2026-09-05,15:00,16:00,Nott'm Forest,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,4,2026-09-12,15:00,16:00,Aston Villa,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,4,2026-09-12,15:00,16:00,Bournemouth,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,4,2026-09-12,15:00,16:00,Chelsea,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,4,2026-09-12,15:00,16:00,Coventry,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,4,2026-09-12,15:00,16:00,Crystal Palace,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,4,2026-09-12,15:00,16:00,Leeds,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,4,2026-09-12,15:00,16:00,Liverpool,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,4,2026-09-12,15:00,16:00,Man United,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,4,2026-09-12,15:00,16:00,Sunderland,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,4,2026-09-12,15:00,16:00,Tottenham,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,5,2026-09-19,15:00,16:00,Bournemouth,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,5,2026-09-19,15:00,16:00,Brentford,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,5,2026-09-19,15:00,16:00,Brighton,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,5,2026-09-19,15:00,16:00,Everton,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,5,2026-09-19,15:00,16:00,Fulham,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,5,2026-09-19,15:00,16:00,Leeds,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,5,2026-09-19,15:00,16:00,Man City,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,5,2026-09-19,15:00,16:00,Newcastle,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,5,2026-09-19,15:00,16:00,Nott'm Forest,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,5,2026-09-19,15:00,16:00,Tottenham,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,6,2026-10-10,15:00,16:00,Arsenal,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,6,2026-10-10,15:00,16:00,Aston Villa,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,6,2026-10-10,15:00,16:00,Chelsea,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,6,2026-10-10,15:00,16:00,Coventry,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,6,2026-10-10,15:00,16:00,Crystal Palace,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,6,2026-10-10,15:00,16:00,Hull,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,6,2026-10-10,15:00,16:00,Ipswich,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,6,2026-10-10,15:00,16:00,Liverpool,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,6,2026-10-10,15:00,16:00,Man United,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,6,2026-10-10,15:00,16:00,Sunderland,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,7,2026-10-17,15:00,16:00,Bournemouth,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,7,2026-10-17,15:00,16:00,Brentford,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,7,2026-10-17,15:00,16:00,Brighton,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,7,2026-10-17,15:00,16:00,Everton,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,7,2026-10-17,15:00,16:00,Fulham,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,7,2026-10-17,15:00,16:00,Leeds,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,7,2026-10-17,15:00,16:00,Man City,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,7,2026-10-17,15:00,16:00,Newcastle,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,7,2026-10-17,15:00,16:00,Nott'm Forest,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,7,2026-10-17,15:00,16:00,Tottenham,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,8,2026-10-24,15:00,16:00,Arsenal,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,8,2026-10-24,15:00,16:00,Aston Villa,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,8,2026-10-24,15:00,16:00,Chelsea,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,8,2026-10-24,15:00,16:00,Coventry,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,8,2026-10-24,15:00,16:00,Crystal Palace,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,8,2026-10-24,15:00,16:00,Hull,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,8,2026-10-24,15:00,16:00,Ipswich,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,8,2026-10-24,15:00,16:00,Liverpool,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,8,2026-10-24,15:00,16:00,Man United,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,8,2026-10-24,15:00,16:00,Sunderland,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,9,2026-10-31,15:00,16:00,Aston Villa,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,9,2026-10-31,15:00,16:00,Bournemouth,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,9,2026-10-31,15:00,16:00,Brentford,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,9,2026-10-31,15:00,16:00,Chelsea,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,9,2026-10-31,15:00,16:00,Coventry,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,9,2026-10-31,15:00,16:00,Hull,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,9,2026-10-31,15:00,16:00,Liverpool,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,9,2026-10-31,15:00,16:00,Man City,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,9,2026-10-31,15:00,16:00,Newcastle,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,9,2026-10-31,15:00,16:00,Tottenham,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,10,2026-11-07,15:00,16:00,Arsenal,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,10,2026-11-07,15:00,16:00,Brighton,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,10,2026-11-07,15:00,16:00,Crystal Palace,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,10,2026-11-07,15:00,16:00,Everton,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,10,2026-11-07,15:00,16:00,Fulham,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,10,2026-11-07,15:00,16:00,Ipswich,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,10,2026-11-07,15:00,16:00,Leeds,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,10,2026-11-07,15:00,16:00,Man United,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,10,2026-11-07,15:00,16:00,Nott'm Forest,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,10,2026-11-07,15:00,16:00,Sunderland,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,11,2026-11-21,15:00,16:00,Aston Villa,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,11,2026-11-21,15:00,16:00,Bournemouth,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,11,2026-11-21,15:00,16:00,Brentford,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,11,2026-11-21,15:00,16:00,Chelsea,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,11,2026-11-21,15:00,16:00,Coventry,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,11,2026-11-21,15:00,16:00,Hull,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,11,2026-11-21,15:00,16:00,Liverpool,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,11,2026-11-21,15:00,16:00,Man City,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,11,2026-11-21,15:00,16:00,Newcastle,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,11,2026-11-21,15:00,16:00,Tottenham,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,12,2026-11-28,15:00,16:00,Arsenal,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,12,2026-11-28,15:00,16:00,Brighton,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,12,2026-11-28,15:00,16:00,Crystal Palace,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,12,2026-11-28,15:00,16:00,Everton,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,12,2026-11-28,15:00,16:00,Fulham,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,12,2026-11-28,15:00,16:00,Ipswich,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,12,2026-11-28,15:00,16:00,Leeds,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,12,2026-11-28,15:00,16:00,Man United,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,12,2026-11-28,15:00,16:00,Nott'm Forest,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,12,2026-11-28,15:00,16:00,Sunderland,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,13,2026-12-02,20:00,21:00,Aston Villa,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,13,2026-12-02,20:00,21:00,Bournemouth,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,13,2026-12-02,20:00,21:00,Brentford,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,13,2026-12-02,20:00,21:00,Chelsea,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,13,2026-12-02,20:00,21:00,Coventry,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,13,2026-12-02,20:00,21:00,Hull,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,13,2026-12-02,20:00,21:00,Liverpool,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,13,2026-12-02,20:00,21:00,Man City,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,13,2026-12-02,20:00,21:00,Newcastle,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,13,2026-12-02,20:00,21:00,Tottenham,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,14,2026-12-05,15:00,16:00,Aston Villa,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,14,2026-12-05,15:00,16:00,Bournemouth,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,14,2026-12-05,15:00,16:00,Brentford,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,14,2026-12-05,15:00,16:00,Chelsea,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,14,2026-12-05,15:00,16:00,Everton,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,14,2026-12-05,15:00,16:00,Leeds,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,14,2026-12-05,15:00,16:00,Man United,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,14,2026-12-05,15:00,16:00,Newcastle,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,14,2026-12-05,15:00,16:00,Nott'm Forest,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,14,2026-12-05,15:00,16:00,Tottenham,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,15,2026-12-12,15:00,16:00,Arsenal,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,15,2026-12-12,15:00,16:00,Brighton,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,15,2026-12-12,15:00,16:00,Coventry,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,15,2026-12-12,15:00,16:00,Crystal Palace,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,15,2026-12-12,15:00,16:00,Fulham,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,15,2026-12-12,15:00,16:00,Hull,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,15,2026-12-12,15:00,16:00,Ipswich,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,15,2026-12-12,15:00,16:00,Liverpool,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,15,2026-12-12,15:00,16:00,Man City,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,15,2026-12-12,15:00,16:00,Sunderland,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,16,2026-12-19,15:00,16:00,Arsenal,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,16,2026-12-19,15:00,16:00,Bournemouth,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,16,2026-12-19,15:00,16:00,Brentford,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,16,2026-12-19,15:00,16:00,Brighton,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,16,2026-12-19,15:00,16:00,Chelsea,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,16,2026-12-19,15:00,16:00,Leeds,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,16,2026-12-19,15:00,16:00,Liverpool,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,16,2026-12-19,15:00,16:00,Man City,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,16,2026-12-19,15:00,16:00,Nott'm Forest,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,16,2026-12-19,15:00,16:00,Sunderland,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,17,2026-12-26,15:00,16:00,Aston Villa,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,17,2026-12-26,15:00,16:00,Coventry,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,17,2026-12-26,15:00,16:00,Crystal Palace,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,17,2026-12-26,15:00,16:00,Everton,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,17,2026-12-26,15:00,16:00,Fulham,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,17,2026-12-26,15:00,16:00,Hull,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,17,2026-12-26,15:00,16:00,Ipswich,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,17,2026-12-26,15:00,16:00,Man United,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,17,2026-12-26,15:00,16:00,Newcastle,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,17,2026-12-26,15:00,16:00,Tottenham,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,18,2026-12-30,20:00,21:00,Aston Villa,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,18,2026-12-30,20:00,21:00,Coventry,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,18,2026-12-30,20:00,21:00,Crystal Palace,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,18,2026-12-30,20:00,21:00,Everton,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,18,2026-12-30,20:00,21:00,Fulham,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,18,2026-12-30,20:00,21:00,Hull,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,18,2026-12-30,20:00,21:00,Ipswich,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,18,2026-12-30,20:00,21:00,Man United,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,18,2026-12-30,20:00,21:00,Newcastle,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,18,2026-12-30,20:00,21:00,Tottenham,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,19,2027-01-02,15:00,16:00,Arsenal,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,19,2027-01-02,15:00,16:00,Bournemouth,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,19,2027-01-02,15:00,16:00,Brentford,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,19,2027-01-02,15:00,16:00,Brighton,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,19,2027-01-02,15:00,16:00,Chelsea,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,19,2027-01-02,15:00,16:00,Leeds,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,19,2027-01-02,15:00,16:00,Liverpool,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,19,2027-01-02,15:00,16:00,Man City,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,19,2027-01-02,15:00,16:00,Nott'm Forest,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,19,2027-01-02,15:00,16:00,Sunderland,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,20,2027-01-06,20:00,21:00,Arsenal,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,20,2027-01-06,20:00,21:00,Brighton,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,20,2027-01-06,20:00,21:00,Crystal Palace,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,20,2027-01-06,20:00,21:00,Everton,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,20,2027-01-06,20:00,21:00,Fulham,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,20,2027-01-06,20:00,21:00,Ipswich,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,20,2027-01-06,20:00,21:00,Leeds,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,20,2027-01-06,20:00,21:00,Man United,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,20,2027-01-06,20:00,21:00,Nott'm Forest,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,20,2027-01-06,20:00,21:00,Sunderland,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,21,2027-01-16,15:00,16:00,Aston Villa,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,21,2027-01-16,15:00,16:00,Bournemouth,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,21,2027-01-16,15:00,16:00,Brentford,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,21,2027-01-16,15:00,16:00,Chelsea,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,21,2027-01-16,15:00,16:00,Coventry,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,21,2027-01-16,15:00,16:00,Hull,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,21,2027-01-16,15:00,16:00,Liverpool,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,21,2027-01-16,15:00,16:00,Man City,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,21,2027-01-16,15:00,16:00,Newcastle,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,21,2027-01-16,15:00,16:00,Tottenham,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,22,2027-01-23,15:00,16:00,Arsenal,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,22,2027-01-23,15:00,16:00,Brighton,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,22,2027-01-23,15:00,16:00,Crystal Palace,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,22,2027-01-23,15:00,16:00,Everton,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,22,2027-01-23,15:00,16:00,Fulham,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,22,2027-01-23,15:00,16:00,Ipswich,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,22,2027-01-23,15:00,16:00,Leeds,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,22,2027-01-23,15:00,16:00,Man United,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,22,2027-01-23,15:00,16:00,Nott'm Forest,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,22,2027-01-23,15:00,16:00,Sunderland,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,23,2027-01-30,15:00,16:00,Aston Villa,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,23,2027-01-30,15:00,16:00,Bournemouth,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,23,2027-01-30,15:00,16:00,Brentford,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,23,2027-01-30,15:00,16:00,Chelsea,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,23,2027-01-30,15:00,16:00,Coventry,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,23,2027-01-30,15:00,16:00,Hull,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,23,2027-01-30,15:00,16:00,Liverpool,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,23,2027-01-30,15:00,16:00,Man City,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,23,2027-01-30,15:00,16:00,Newcastle,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,23,2027-01-30,15:00,16:00,Tottenham,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,24,2027-02-06,15:00,16:00,Arsenal,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,24,2027-02-06,15:00,16:00,Brighton,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,24,2027-02-06,15:00,16:00,Crystal Palace,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,24,2027-02-06,15:00,16:00,Everton,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,24,2027-02-06,15:00,16:00,Fulham,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,24,2027-02-06,15:00,16:00,Ipswich,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,24,2027-02-06,15:00,16:00,Leeds,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,24,2027-02-06,15:00,16:00,Man United,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,24,2027-02-06,15:00,16:00,Nott'm Forest,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,24,2027-02-06,15:00,16:00,Sunderland,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,25,2027-02-10,20:00,21:00,Aston Villa,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,25,2027-02-10,20:00,21:00,Coventry,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,25,2027-02-10,20:00,21:00,Crystal Palace,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,25,2027-02-10,20:00,21:00,Everton,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,25,2027-02-10,20:00,21:00,Fulham,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,25,2027-02-10,20:00,21:00,Hull,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,25,2027-02-10,20:00,21:00,Ipswich,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,25,2027-02-10,20:00,21:00,Man United,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,25,2027-02-10,20:00,21:00,Newcastle,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,25,2027-02-10,20:00,21:00,Tottenham,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,26,2027-02-20,15:00,16:00,Arsenal,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,26,2027-02-20,15:00,16:00,Bournemouth,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,26,2027-02-20,15:00,16:00,Brentford,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,26,2027-02-20,15:00,16:00,Brighton,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,26,2027-02-20,15:00,16:00,Chelsea,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,26,2027-02-20,15:00,16:00,Leeds,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,26,2027-02-20,15:00,16:00,Liverpool,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,26,2027-02-20,15:00,16:00,Man City,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,26,2027-02-20,15:00,16:00,Nott'm Forest,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,26,2027-02-20,15:00,16:00,Sunderland,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,27,2027-02-27,15:00,16:00,Aston Villa,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,27,2027-02-27,15:00,16:00,Coventry,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,27,2027-02-27,15:00,16:00,Crystal Palace,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,27,2027-02-27,15:00,16:00,Everton,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,27,2027-02-27,15:00,16:00,Fulham,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,27,2027-02-27,15:00,16:00,Hull,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,27,2027-02-27,15:00,16:00,Ipswich,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,27,2027-02-27,15:00,16:00,Man United,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,27,2027-02-27,15:00,16:00,Newcastle,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,27,2027-02-27,15:00,16:00,Tottenham,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,28,2027-03-03,20:00,21:00,Arsenal,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,28,2027-03-03,20:00,21:00,Bournemouth,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,28,2027-03-03,20:00,21:00,Brentford,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,28,2027-03-03,20:00,21:00,Brighton,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,28,2027-03-03,20:00,21:00,Chelsea,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,28,2027-03-03,20:00,21:00,Leeds,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,28,2027-03-03,20:00,21:00,Liverpool,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,28,2027-03-03,20:00,21:00,Man City,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,28,2027-03-03,20:00,21:00,Nott'm Forest,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,28,2027-03-03,20:00,21:00,Sunderland,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,29,2027-03-13,15:00,16:00,Aston Villa,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,29,2027-03-13,15:00,16:00,Bournemouth,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,29,2027-03-13,15:00,16:00,Chelsea,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,29,2027-03-13,15:00,16:00,Coventry,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,29,2027-03-13,15:00,16:00,Crystal Palace,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,29,2027-03-13,15:00,16:00,Leeds,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,29,2027-03-13,15:00,16:00,Liverpool,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,29,2027-03-13,15:00,16:00,Man United,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,29,2027-03-13,15:00,16:00,Sunderland,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,29,2027-03-13,15:00,16:00,Tottenham,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,30,2027-03-20,15:00,16:00,Arsenal,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,30,2027-03-20,15:00,16:00,Brentford,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,30,2027-03-20,15:00,16:00,Brighton,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,30,2027-03-20,15:00,16:00,Everton,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,30,2027-03-20,15:00,16:00,Fulham,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,30,2027-03-20,15:00,16:00,Hull,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,30,2027-03-20,15:00,16:00,Ipswich,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,30,2027-03-20,15:00,16:00,Man City,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,30,2027-03-20,15:00,16:00,Newcastle,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,30,2027-03-20,15:00,16:00,Nott'm Forest,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,31,2027-04-10,15:00,16:00,Aston Villa,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,31,2027-04-10,15:00,16:00,Bournemouth,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,31,2027-04-10,15:00,16:00,Chelsea,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,31,2027-04-10,15:00,16:00,Coventry,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,31,2027-04-10,15:00,16:00,Crystal Palace,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,31,2027-04-10,15:00,16:00,Leeds,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,31,2027-04-10,15:00,16:00,Liverpool,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,31,2027-04-10,15:00,16:00,Man United,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,31,2027-04-10,15:00,16:00,Sunderland,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,31,2027-04-10,15:00,16:00,Tottenham,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,32,2027-04-17,15:00,16:00,Arsenal,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,32,2027-04-17,15:00,16:00,Brentford,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,32,2027-04-17,15:00,16:00,Brighton,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,32,2027-04-17,15:00,16:00,Everton,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,32,2027-04-17,15:00,16:00,Fulham,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,32,2027-04-17,15:00,16:00,Hull,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,32,2027-04-17,15:00,16:00,Ipswich,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,32,2027-04-17,15:00,16:00,Man City,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,32,2027-04-17,15:00,16:00,Newcastle,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,32,2027-04-17,15:00,16:00,Nott'm Forest,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,33,2027-04-24,15:00,16:00,Aston Villa,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,33,2027-04-24,15:00,16:00,Bournemouth,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,33,2027-04-24,15:00,16:00,Brentford,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,33,2027-04-24,15:00,16:00,Chelsea,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,33,2027-04-24,15:00,16:00,Everton,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,33,2027-04-24,15:00,16:00,Leeds,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,33,2027-04-24,15:00,16:00,Man United,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,33,2027-04-24,15:00,16:00,Newcastle,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,33,2027-04-24,15:00,16:00,Nott'm Forest,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,33,2027-04-24,15:00,16:00,Tottenham,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,34,2027-05-01,15:00,16:00,Arsenal,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,34,2027-05-01,15:00,16:00,Brighton,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,34,2027-05-01,15:00,16:00,Coventry,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,34,2027-05-01,15:00,16:00,Crystal Palace,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,34,2027-05-01,15:00,16:00,Fulham,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,34,2027-05-01,15:00,16:00,Hull,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,34,2027-05-01,15:00,16:00,Ipswich,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,34,2027-05-01,15:00,16:00,Liverpool,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,34,2027-05-01,15:00,16:00,Man City,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,34,2027-05-01,15:00,16:00,Sunderland,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,35,2027-05-08,15:00,16:00,Bournemouth,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,35,2027-05-08,15:00,16:00,Brentford,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,35,2027-05-08,15:00,16:00,Brighton,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,35,2027-05-08,15:00,16:00,Everton,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,35,2027-05-08,15:00,16:00,Fulham,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,35,2027-05-08,15:00,16:00,Leeds,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,35,2027-05-08,15:00,16:00,Man City,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,35,2027-05-08,15:00,16:00,Newcastle,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,35,2027-05-08,15:00,16:00,Nott'm Forest,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,35,2027-05-08,15:00,16:00,Tottenham,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,36,2027-05-15,15:00,16:00,Arsenal,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,36,2027-05-15,15:00,16:00,Aston Villa,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,36,2027-05-15,15:00,16:00,Chelsea,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,36,2027-05-15,15:00,16:00,Coventry,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,36,2027-05-15,15:00,16:00,Crystal Palace,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,36,2027-05-15,15:00,16:00,Hull,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,36,2027-05-15,15:00,16:00,Ipswich,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,36,2027-05-15,15:00,16:00,Liverpool,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,36,2027-05-15,15:00,16:00,Man United,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,36,2027-05-15,15:00,16:00,Sunderland,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,37,2027-05-23,15:00,16:00,Bournemouth,Chelsea,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,37,2027-05-23,15:00,16:00,Brentford,Hull,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,37,2027-05-23,15:00,16:00,Brighton,Liverpool,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,37,2027-05-23,15:00,16:00,Everton,Arsenal,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,37,2027-05-23,15:00,16:00,Fulham,Coventry,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,37,2027-05-23,15:00,16:00,Leeds,Sunderland,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,37,2027-05-23,15:00,16:00,Man City,Aston Villa,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,37,2027-05-23,15:00,16:00,Newcastle,Crystal Palace,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,37,2027-05-23,15:00,16:00,Nott'm Forest,Ipswich,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,37,2027-05-23,15:00,16:00,Tottenham,Man United,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,38,2027-05-30,16:00,17:00,Arsenal,Brighton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,38,2027-05-30,16:00,17:00,Aston Villa,Tottenham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,38,2027-05-30,16:00,17:00,Chelsea,Brentford,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,38,2027-05-30,16:00,17:00,Coventry,Nott'm Forest,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,38,2027-05-30,16:00,17:00,Crystal Palace,Leeds,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,38,2027-05-30,16:00,17:00,Hull,Newcastle,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,38,2027-05-30,16:00,17:00,Ipswich,Everton,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,38,2027-05-30,16:00,17:00,Liverpool,Bournemouth,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,38,2027-05-30,16:00,17:00,Man United,Fulham,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
+2026/27,38,2027-05-30,16:00,17:00,Sunderland,Man City,Premier League official fixtures,https://www.premierleague.com/fixtures?co=1&se=841,scheduled_subject_to_change,2026-06-21
