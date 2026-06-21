@@ -109,7 +109,7 @@ STATUS_EXPLANATIONS = {
     "Missing": "Required data is not available locally.",
     "Stale": "The local dataset should be refreshed before relying heavily on this input.",
 }
-SEASON_PROJECTION_VERSION = "balanced_round_robin_long_term_prior_promoted_adjustment_v3"
+SEASON_PROJECTION_VERSION = "balanced_round_robin_long_term_prior_championship_bridge_v4"
 SEASON_PROJECTION_PRIOR_WEIGHT = 0.35
 
 
@@ -1644,6 +1644,10 @@ def format_season_start_audit_display(frame: pd.DataFrame) -> pd.DataFrame:
             "latest_premier_league_match": "Latest PL match",
             "fallback_used": "Fallback used",
             "fallback_reason": "Fallback reason",
+            "championship_data_available": "Championship data",
+            "championship_match_count": "Championship matches",
+            "promotion_adjustment_applied": "Promotion adjustment",
+            "promoted_team_uncertainty_flag": "Higher uncertainty",
             "recent_form_points_last5": "Points last 5",
             "recent_goals_scored_avg_last5": "Goals avg last 5",
             "xg_strength_last5": "xG avg last 5",
@@ -1667,6 +1671,10 @@ def format_season_start_audit_display(frame: pd.DataFrame) -> pd.DataFrame:
         "Latest PL match",
         "Fallback used",
         "Fallback reason",
+        "Championship data",
+        "Championship matches",
+        "Promotion adjustment",
+        "Higher uncertainty",
         "Points last 5",
         "Goals avg last 5",
         "xG avg last 5",
@@ -1736,12 +1744,13 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
         f"using a {SEASON_PROJECTION_PRIOR_WEIGHT:.0%} prior weight."
     )
     fallback_count = int(feature_audit["fallback_used"].sum()) if "fallback_used" in feature_audit else 0
+    adjusted_count = int(feature_audit["promotion_adjustment_applied"].sum()) if "promotion_adjustment_applied" in feature_audit else 0
     zero_history = feature_audit.loc[feature_audit["premier_league_matches_available"].eq(0), "team"].tolist()
     cols = st.columns(4)
     cols[0].metric("Feature parity", validation_status)
     cols[1].metric("Official fixtures", "OK" if mode.validation_ok else "Fallback")
     cols[2].metric("Fallback teams", fallback_count)
-    cols[3].metric("Promoted adjustment", "Active")
+    cols[3].metric("Promoted adjustment", f"Active ({adjusted_count})")
     if validation_status == "Error":
         st.error("Season Projection feature validation found missing active production inputs. Check the audit table before using the projection.")
     elif validation_status == "Warning":
@@ -1792,6 +1801,51 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
             st.dataframe(validation, width="stretch", hide_index=True)
         st.markdown("##### All 2026/27 teams")
         st.dataframe(format_season_start_audit_display(feature_audit), width="stretch", hide_index=True)
+
+    with st.expander("Promoted team adjustment", expanded=True):
+        st.write(
+            "Promoted teams with limited Premier League history are handled separately. "
+            "If Championship data is available, it is converted into Premier League-equivalent values. "
+            "If not, the model uses a conservative promoted-team baseline instead of treating missing Premier League form as zero."
+        )
+        promoted_display = feature_audit[
+            feature_audit["promotion_adjustment_applied"] | feature_audit["fallback_used"] | feature_audit["premier_league_matches_available"].lt(5)
+        ].merge(
+            projection[["team", "expected_points", "relegation_probability"]],
+            on="team",
+            how="left",
+        )
+        if promoted_display.empty:
+            st.success("No promoted-team adjustments are active.")
+        else:
+            promoted_display = probability_percent_columns(promoted_display, ["relegation_probability"])
+            promoted_display = promoted_display.rename(
+                columns={
+                    "team": "Team",
+                    "source_league": "Source league",
+                    "premier_league_matches_available": "Local PL matches",
+                    "promotion_adjustment_applied": "Adjustment applied",
+                    "fallback_used": "Fallback used",
+                    "expected_points": "Expected points",
+                    "relegation_probability": "Relegation",
+                }
+            )
+            promoted_display["Expected points"] = promoted_display["Expected points"].map(lambda value: f"{float(value):.1f}")
+            st.dataframe(
+                promoted_display[
+                    [
+                        "Team",
+                        "Source league",
+                        "Local PL matches",
+                        "Adjustment applied",
+                        "Fallback used",
+                        "Expected points",
+                        "Relegation",
+                    ]
+                ],
+                width="stretch",
+                hide_index=True,
+            )
 
     st.subheader("Previous Seasons: Forecast vs Result")
     comparison, summary, by_season = load_historical_season_outputs()

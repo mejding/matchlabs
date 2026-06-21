@@ -250,7 +250,7 @@ The project does not currently contain reliable Championship xG, shot volume or 
 
 {_markdown_table(baseline_frame)}
 
-## Current Fallback Teams
+## Current Baseline Fallback Teams
 
 {_markdown_table(fallback[['team', 'local_pl_match_count', 'source_league', 'fallback_reason', 'recent_form_points_last5', 'xg_strength_last5', 'xga_strength_last5', 'shots_avg_last5', 'elo_rating']])}
 
@@ -263,6 +263,72 @@ The project does not currently contain reliable Championship xG, shot volume or 
 - Fallback teams carry higher uncertainty until they play enough Premier League matches.
 """
     (OUTPUT_DIR / "promoted_team_baseline_report.md").write_text(report)
+
+
+def write_promoted_adjustment_report(adjustment_audit: pd.DataFrame, baseline: dict[str, float]) -> None:
+    adjusted = adjustment_audit[adjustment_audit["promotion_adjustment_applied"]].copy()
+    fallback = adjustment_audit[adjustment_audit["fallback_used"]].copy()
+    report = f"""# Promoted-Team Adjustment Report
+
+## Summary
+
+- Adjusted promoted/low-history teams: `{len(adjusted)}`
+- Teams using Championship data: `{int(adjusted['championship_data_available'].sum()) if not adjusted.empty else 0}`
+- Teams using conservative baseline fallback: `{len(fallback)}`
+
+## Answers
+
+### 1. Which promoted teams were adjusted?
+
+{_markdown_table(adjusted[['team', 'source_league', 'local_pl_match_count', 'championship_match_count', 'promotion_adjustment_applied', 'fallback_used']])}
+
+### 2. Did they have Premier League data?
+
+{_markdown_table(adjusted[['team', 'local_pl_match_count', 'championship_data_available']])}
+
+### 3. Was Championship data available?
+
+{_markdown_table(adjusted[['team', 'championship_data_available', 'championship_match_count', 'championship_latest_match']])}
+
+### 4. If yes, how was it adjusted?
+
+Adjustment factors:
+
+- Recent form / points: Championship points last 5 x 0.55
+- xG for: Championship xG x 0.75 when xG exists
+- xGA: Championship xGA x 1.35 when xG exists
+- Shot volume: Championship shots x 0.75
+- Shots allowed: Championship shots allowed x 1.25 when used by future features
+
+Current adjustment values:
+
+{_markdown_table(adjusted[['team', 'raw_recent_form', 'adjusted_recent_form', 'raw_xg', 'adjusted_xg', 'raw_xga', 'adjusted_xga', 'raw_shot_volume', 'adjusted_shot_volume']])}
+
+### 5. If no, what fallback baseline was used?
+
+{_markdown_table(pd.DataFrame([baseline]))}
+
+Baseline fallback teams:
+
+{_markdown_table(fallback[['team', 'fallback_reason', 'recent_form_points_last5', 'xg_strength_last5', 'xga_strength_last5', 'shots_avg_last5']])}
+
+### 6. Did the change prevent missing PL form from becoming zero?
+
+Yes. Adjusted teams receive non-zero adjusted recent form from Championship data when available, or from the promoted-team baseline when Championship data is unavailable.
+
+### 7. Did the change prevent Championship form from being treated as Premier League form?
+
+Yes. Championship points, xG and shot volume are converted with explicit factors before entering the Season Projection feature rows.
+
+### 8. How did expected points and relegation probability change?
+
+{_markdown_table(adjustment_audit[['team', 'expected_points_before_adjustment', 'expected_points', 'relegation_probability_before_adjustment', 'relegation_probability']])}
+
+## Notes
+
+The current football-data Championship file provides results and shot volume, but not xG. Therefore Championship xG fields remain unavailable and xG/xGA are supplied by the transparent promoted-team baseline until a reliable Championship xG source is added.
+"""
+    (OUTPUT_DIR / "promoted_team_adjustment_report.md").write_text(report)
 
 
 def write_robustness_report(
@@ -280,9 +346,10 @@ def write_robustness_report(
 ## What Was Fixed
 
 - Season Projection now populates shot-volume features using the same active production feature family used by the Prediction tab.
-- Season Projection validates active feature groups before running and exposes fallback rows instead of silently filling missing active features.
-- Teams with zero local Premier League history are marked as fallback teams and receive a conservative promoted-team Premier League baseline.
-- Championship performance is not treated as Premier League-equivalent input.
+- Season Projection validates active feature groups before running and exposes Championship-adjusted or fallback rows instead of silently filling missing active features.
+- Teams with zero local Premier League history use adjusted Championship data when available.
+- If Championship data is missing, teams receive a conservative promoted-team Premier League baseline.
+- Championship performance is not treated as Premier League-equivalent input without conversion.
 
 ## Shot Volume
 
@@ -298,7 +365,7 @@ Shot volume is now populated in Season Projection. The feature parity audit chec
 
 {_markdown_table(pd.DataFrame([baseline]))}
 
-Fallback teams:
+Baseline fallback teams:
 
 {_markdown_table(audit[audit['fallback_used']][['team', 'source_league', 'fallback_reason', 'local_pl_match_count']])}
 
@@ -314,7 +381,7 @@ Projection:
 
 ## Remaining Limitations
 
-- The project still lacks reliable historical Championship xG and shot-volume data, so promoted-team inputs use a transparent conservative PL baseline.
+- The project has football-data Championship results and shot volume, but not Championship xG. Promoted-team xG/xGA therefore still use a transparent conservative PL baseline until a reliable Championship xG source is added.
 - The neutral fixture skeleton fallback remains available, but official fixtures are preferred when valid.
 - Season Projection is a preseason forecast, not a match-by-match simulated form updater; team strength features are fixed at season start while schedule/fatigue uses fixture timing.
 """
@@ -353,11 +420,28 @@ def main() -> None:
         team_feature_overrides=overrides,
         fixture_schedule_frame=official,
     )
+    probabilities_before_adjustment = predict_fixture_probabilities(
+        fixtures,
+        artifact["model"],
+        artifact["feature_columns"],
+        artifact["team_history"],
+        artifact.get("elo_state", {}),
+        calibrator=calibrator,
+        fixture_schedule_frame=official,
+    )
     long_term_strength = build_long_term_team_strength(teams, artifact.get("elo_state", {}))
     probabilities = blend_with_long_term_season_prior(probabilities, long_term_strength)
+    probabilities_before_adjustment = blend_with_long_term_season_prior(probabilities_before_adjustment, long_term_strength)
     projection = monte_carlo_season(probabilities, n_simulations=10000)
     projection = projection.merge(expected_points_from_probabilities(probabilities), on="team", how="left")
     projection["projected_position"] = range(1, len(projection) + 1)
+    projection_before_adjustment = monte_carlo_season(probabilities_before_adjustment, n_simulations=10000)
+    projection_before_adjustment = projection_before_adjustment.merge(
+        expected_points_from_probabilities(probabilities_before_adjustment),
+        on="team",
+        how="left",
+        suffixes=("", "_deterministic"),
+    )
 
     target_audit = audit[audit["team"].isin(TEAMS_TO_AUDIT)].merge(
         projection[["team", "expected_points", "expected_position", "projected_position", "relegation_probability"]],
@@ -365,10 +449,28 @@ def main() -> None:
         how="left",
     )
     target_audit.to_csv(OUTPUT_DIR / "team_feature_audit_tottenham_coventry_hull.csv", index=False)
+    adjustment_audit = audit[audit["promotion_adjustment_applied"] | audit["fallback_used"]].merge(
+        projection[["team", "expected_points", "expected_position", "projected_position", "relegation_probability"]],
+        on="team",
+        how="left",
+    )
+    adjustment_audit = adjustment_audit.merge(
+        projection_before_adjustment[["team", "expected_points", "expected_position", "relegation_probability"]].rename(
+            columns={
+                "expected_points": "expected_points_before_adjustment",
+                "expected_position": "expected_position_before_adjustment",
+                "relegation_probability": "relegation_probability_before_adjustment",
+            }
+        ),
+        on="team",
+        how="left",
+    )
+    adjustment_audit.to_csv(OUTPUT_DIR / "promoted_team_adjustment_audit.csv", index=False)
 
     baseline = promoted_team_baseline(matches)
     write_feature_parity_report(parity, validation_status, validation)
     write_promoted_baseline_report(baseline, audit)
+    write_promoted_adjustment_report(adjustment_audit, baseline)
     write_robustness_report(projection, audit, parity, validation_status, baseline)
     print(f"Wrote Season Projection robustness outputs to {OUTPUT_DIR}")
 

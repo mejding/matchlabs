@@ -649,8 +649,10 @@ The app supports official 2026/27 Premier League fixtures from `data/upcoming_fi
 - Premier League fixtures alone do not include European, FA Cup or EFL Cup fixtures, so schedule/fatigue currently uses Premier League fixtures only unless additional fixture files are added.
 - Season Projection uses the same active production feature groups as the Prediction tab: recent form, xG/xGA strength, schedule/fatigue, Elo and shot volume.
 - Season Projection runs a feature validation audit before projecting. Active feature groups must be populated or explicitly marked with fallback metadata.
-- Promoted or low-history teams with zero local Premier League matches are marked as fallback teams with `fallback_used`, `fallback_reason`, `source_league` and `local_pl_match_count`.
-- Championship form, xG, xGA and shot volume are not treated as Premier League-equivalent data. If reliable promoted-team source data is missing, the app uses a transparent conservative Premier League promoted-team baseline.
+- Promoted or low-history teams with zero local Premier League matches are handled separately with `source_league`, `local_pl_match_count`, `promotion_adjustment_applied`, `fallback_used` and `fallback_reason`.
+- If Championship data is available, recent form and shot volume are converted into Premier League-equivalent values before use. Championship points last 5 are multiplied by `0.55`, and Championship shot volume is multiplied by `0.75`.
+- Championship xG/xGA are used only if a reliable source provides them. The current football-data Championship file does not include xG, so promoted-team xG/xGA use a conservative promoted-team baseline.
+- If Championship data is missing, the app uses a transparent conservative promoted-team baseline instead of treating missing Premier League form as zero.
 - Predictions for promoted teams carry higher uncertainty until enough Premier League matches are available in the local dataset.
 
 Validation and integration reports:
@@ -659,6 +661,8 @@ Validation and integration reports:
 - `evaluation/fixtures_2026_27/official_fixtures_integration_report.md`
 - `evaluation/season_projection/feature_parity_audit_report.md`
 - `evaluation/season_projection/promoted_team_baseline_report.md`
+- `evaluation/season_projection/promoted_team_adjustment_audit.csv`
+- `evaluation/season_projection/promoted_team_adjustment_report.md`
 - `evaluation/season_projection/season_projection_robustness_report.md`
 
 ### Scoreline prediction
@@ -795,6 +799,8 @@ This generates:
 
 - `evaluation/season_projection/feature_parity_audit_report.md`
 - `evaluation/season_projection/promoted_team_baseline_report.md`
+- `evaluation/season_projection/promoted_team_adjustment_audit.csv`
+- `evaluation/season_projection/promoted_team_adjustment_report.md`
 - `evaluation/season_projection/team_feature_audit_tottenham_coventry_hull.csv`
 - `evaluation/season_projection/season_projection_robustness_report.md`
 

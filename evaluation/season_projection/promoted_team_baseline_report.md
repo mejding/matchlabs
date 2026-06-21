@@ -8,12 +8,9 @@ The project does not currently contain reliable Championship xG, shot volume or 
 | --- | --- | --- | --- | --- | --- | --- |
 | 32.2778 | 26.0000 | 16.2778 | 18.0000 | 0.6111 | 1.0395 | 1.8801 |
 
-## Current Fallback Teams
+## Current Baseline Fallback Teams
 
-| team | local_pl_match_count | source_league | fallback_reason | recent_form_points_last5 | xg_strength_last5 | xga_strength_last5 | shots_avg_last5 | elo_rating |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Coventry | 0 | Promoted-team conservative Premier League baseline | No local Premier League history; Championship data is not treated as Premier League-equivalent. | 3.4211 | 0.9875 | 1.7861 | 10.6600 | 1500.0000 |
-| Hull | 0 | Promoted-team conservative Premier League baseline | No local Premier League history; Championship data is not treated as Premier League-equivalent. | 3.4211 | 0.9875 | 1.7861 | 10.6600 | 1500.0000 |
+_No rows._
 
 ## Adjustment Policy
 

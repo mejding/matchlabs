@@ -26,6 +26,9 @@ from train_model import ELO_CONFIG, MODEL_PATH, PRODUCTION_FEATURE_COLUMNS, SCHE
 matplotlib.use("Agg")
 
 OUTPUT_DIR = Path("evaluation") / "season_simulation"
+CHAMPIONSHIP_DATA_DIR = Path("data")
+CHAMPIONSHIP_SEASONS = ["2526"]
+CHAMPIONSHIP_BASE_URL = "https://www.football-data.co.uk/mmz4281/{season}/E1.csv"
 VALIDATION_SEASONS = ["2122", "2223", "2324", "2425"]
 SEASON_LABELS = {
     "2122": "2021/22",
@@ -60,6 +63,14 @@ ACTIVE_FEATURE_GROUPS = {
         "shots_on_target_avg_season",
     ],
 }
+PROMOTED_ADJUSTMENT_FACTORS = {
+    "points": 0.55,
+    "goals": 0.75,
+    "xg": 0.75,
+    "xga": 1.35,
+    "shots": 0.75,
+    "shots_allowed": 1.25,
+}
 
 
 def average(values: list[float]) -> float:
@@ -88,6 +99,41 @@ def latest_season_average(values: list[float], seasons: list[str]) -> float:
 
 def _team_history(team_history: dict[str, dict[str, list[float]]], team: str) -> dict[str, list[float]]:
     return team_history.get(team, EMPTY_TEAM_HISTORY)
+
+
+def download_championship_csv(season: str) -> Path:
+    CHAMPIONSHIP_DATA_DIR.mkdir(exist_ok=True)
+    output_path = CHAMPIONSHIP_DATA_DIR / f"championship_{season}.csv"
+    if output_path.exists():
+        return output_path
+    import urllib.request
+
+    urllib.request.urlretrieve(CHAMPIONSHIP_BASE_URL.format(season=season), output_path)
+    return output_path
+
+
+def load_championship_matches(seasons: list[str] | None = None) -> pd.DataFrame:
+    seasons = seasons or CHAMPIONSHIP_SEASONS
+    frames = []
+    for season in seasons:
+        path = download_championship_csv(season)
+        frame = pd.read_csv(path)
+        required = ["Date", "HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR"]
+        missing = [column for column in required if column not in frame.columns]
+        if missing:
+            raise ValueError(f"Missing Championship columns in {path}: {missing}")
+        optional = [column for column in ["HS", "AS", "HST", "AST", "home_xg", "away_xg"] if column in frame.columns]
+        frame = frame[required + optional].copy()
+        frame["Season"] = season
+        frames.append(frame)
+    if not frames:
+        return pd.DataFrame()
+    matches = pd.concat(frames, ignore_index=True)
+    matches = matches.dropna(subset=["Date", "HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR"])
+    matches["Date"] = pd.to_datetime(matches["Date"], dayfirst=True, errors="coerce")
+    matches = matches.dropna(subset=["Date"]).copy()
+    matches["Date"] = matches["Date"].dt.date
+    return matches.sort_values("Date").reset_index(drop=True)
 
 
 def days_since_last_match(match_dates: list, match_date) -> float:
@@ -216,6 +262,69 @@ def _raw_team_feature_values(team: str, team_history: dict[str, dict[str, list[f
     }
 
 
+def points_for_match_result(home_goals: float, away_goals: float, is_home: bool) -> float:
+    team_goals = home_goals if is_home else away_goals
+    opponent_goals = away_goals if is_home else home_goals
+    if team_goals > opponent_goals:
+        return 3.0
+    if team_goals == opponent_goals:
+        return 1.0
+    return 0.0
+
+
+def championship_team_summary(team: str, championship_matches: pd.DataFrame | None) -> dict[str, object] | None:
+    if championship_matches is None or championship_matches.empty:
+        return None
+    rows = championship_matches[(championship_matches["HomeTeam"] == team) | (championship_matches["AwayTeam"] == team)].copy()
+    if rows.empty:
+        return None
+    rows = rows.sort_values("Date")
+    points: list[float] = []
+    goals_for: list[float] = []
+    goals_against: list[float] = []
+    shots_for: list[float] = []
+    shots_on_target_for: list[float] = []
+    shots_against: list[float] = []
+    shots_on_target_against: list[float] = []
+    xg_for: list[float] = []
+    xga: list[float] = []
+    for _, match in rows.iterrows():
+        is_home = match["HomeTeam"] == team
+        home_goals = float(match["FTHG"])
+        away_goals = float(match["FTAG"])
+        points.append(points_for_match_result(home_goals, away_goals, is_home))
+        goals_for.append(home_goals if is_home else away_goals)
+        goals_against.append(away_goals if is_home else home_goals)
+        if {"HS", "AS"}.issubset(rows.columns):
+            shots_for.append(float(match["HS"] if is_home else match["AS"]))
+            shots_against.append(float(match["AS"] if is_home else match["HS"]))
+        if {"HST", "AST"}.issubset(rows.columns):
+            shots_on_target_for.append(float(match["HST"] if is_home else match["AST"]))
+            shots_on_target_against.append(float(match["AST"] if is_home else match["HST"]))
+        if {"home_xg", "away_xg"}.issubset(rows.columns):
+            xg_for.append(float(match["home_xg"] if is_home else match["away_xg"]))
+            xga.append(float(match["away_xg"] if is_home else match["home_xg"]))
+    return {
+        "source_matches": int(len(rows)),
+        "latest_match": max(rows["Date"]).isoformat(),
+        "points_last5": last_5_sum(points),
+        "goals_for_avg_last5": last_5_average(goals_for),
+        "goals_against_avg_last5": last_5_average(goals_against),
+        "shots_avg_last5": last_n_average(shots_for, 5),
+        "shots_on_target_avg_last5": last_n_average(shots_on_target_for, 5),
+        "shots_avg_last10": last_n_average(shots_for, 10),
+        "shots_on_target_avg_last10": last_n_average(shots_on_target_for, 10),
+        "shots_avg_season": average(shots_for),
+        "shots_on_target_avg_season": average(shots_on_target_for),
+        "shots_allowed_avg_last5": last_n_average(shots_against, 5),
+        "shots_on_target_allowed_avg_last5": last_n_average(shots_on_target_against, 5),
+        "xg_avg_last5": last_5_average(xg_for) if xg_for else np.nan,
+        "xga_avg_last5": last_5_average(xga) if xga else np.nan,
+        "xg_available": bool(xg_for),
+        "shot_volume_available": bool(shots_for),
+    }
+
+
 def promoted_team_baseline(matches: pd.DataFrame | None = None) -> dict[str, float]:
     matches = load_matches_with_xg() if matches is None else matches.copy()
     season_tables = []
@@ -285,7 +394,12 @@ def _league_feature_medians(raw_rows: list[dict[str, object]]) -> dict[str, floa
     return {key: float(frame[key].median()) for key in keys}
 
 
-def _adjusted_values(raw: dict[str, object], medians: dict[str, float], promoted_baseline: dict[str, float]) -> tuple[dict[str, float], str, str, bool]:
+def _adjusted_values(
+    raw: dict[str, object],
+    medians: dict[str, float],
+    promoted_baseline: dict[str, float],
+    championship_summary: dict[str, object] | None = None,
+) -> tuple[dict[str, float], str, str, bool, bool, dict[str, object]]:
     local_count = int(raw["local_pl_match_count"])
     if local_count >= 5:
         adjusted = {
@@ -301,7 +415,36 @@ def _adjusted_values(raw: dict[str, object], medians: dict[str, float], promoted
             "shots_on_target_avg_season": float(raw["raw_shots_on_target_avg_latest_season"]),
         }
         adjusted["xg_diff"] = adjusted["xg_avg"] - adjusted["xga_avg"]
-        return adjusted, "Premier League historical data", "none", False
+        return adjusted, "Premier League historical data", "none", False, False, {}
+
+    if championship_summary is not None:
+        xg_available = bool(championship_summary.get("xg_available", False))
+        champ_xg = float(championship_summary["xg_avg_last5"]) if xg_available else np.nan
+        champ_xga = float(championship_summary["xga_avg_last5"]) if xg_available else np.nan
+        baseline_xg = min(medians.get("raw_xg_strength_last5", 1.25) * 0.82, promoted_baseline["goals_for_per_match"] * 0.95)
+        baseline_xga = max(medians.get("raw_xga_strength_last5", 1.45) * 1.18, promoted_baseline["goals_against_per_match"] * 0.95)
+        adjusted_xg = champ_xg * PROMOTED_ADJUSTMENT_FACTORS["xg"] if xg_available else baseline_xg
+        adjusted_xga = champ_xga * PROMOTED_ADJUSTMENT_FACTORS["xga"] if xg_available else baseline_xga
+        adjusted = {
+            "team_points_last_5": float(championship_summary["points_last5"]) * PROMOTED_ADJUSTMENT_FACTORS["points"],
+            "goals_scored_avg": float(championship_summary["goals_for_avg_last5"]) * PROMOTED_ADJUSTMENT_FACTORS["goals"],
+            "xg_avg": adjusted_xg,
+            "xga_avg": adjusted_xga,
+            "shots_avg_last5": float(championship_summary["shots_avg_last5"]) * PROMOTED_ADJUSTMENT_FACTORS["shots"],
+            "shots_on_target_avg_last5": float(championship_summary["shots_on_target_avg_last5"]) * PROMOTED_ADJUSTMENT_FACTORS["shots"],
+            "shots_avg_last10": float(championship_summary["shots_avg_last10"]) * PROMOTED_ADJUSTMENT_FACTORS["shots"],
+            "shots_on_target_avg_last10": float(championship_summary["shots_on_target_avg_last10"]) * PROMOTED_ADJUSTMENT_FACTORS["shots"],
+            "shots_avg_season": float(championship_summary["shots_avg_season"]) * PROMOTED_ADJUSTMENT_FACTORS["shots"],
+            "shots_on_target_avg_season": float(championship_summary["shots_on_target_avg_season"]) * PROMOTED_ADJUSTMENT_FACTORS["shots"],
+        }
+        adjusted["xg_diff"] = adjusted["xg_avg"] - adjusted["xga_avg"]
+        reason = (
+            "Championship recent form and shot volume converted to Premier League-equivalent values. "
+            "Championship xG unavailable, so xG/xGA use conservative promoted-team baseline."
+            if not xg_available
+            else "Championship recent form, xG/xGA and shot volume converted to Premier League-equivalent values."
+        )
+        return adjusted, "Championship adjusted to Premier League equivalent", reason, False, True, championship_summary
 
     points_from_promoted_baseline = promoted_baseline["median_points"] / 38.0 * 5.0
     goals_for = promoted_baseline["goals_for_per_match"]
@@ -323,7 +466,7 @@ def _adjusted_values(raw: dict[str, object], medians: dict[str, float], promoted
     adjusted["xg_diff"] = adjusted["xg_avg"] - adjusted["xga_avg"]
     source = "Promoted-team conservative Premier League baseline"
     reason = "No local Premier League history; Championship data is not treated as Premier League-equivalent."
-    return adjusted, source, reason, True
+    return adjusted, source, reason, True, True, {}
 
 
 def season_start_feature_audit(
@@ -331,13 +474,22 @@ def season_start_feature_audit(
     team_history: dict[str, dict[str, list[float]]],
     elo_state: dict[str, dict[str, object]],
     matches: pd.DataFrame | None = None,
+    championship_matches: pd.DataFrame | None = None,
 ) -> pd.DataFrame:
+    if championship_matches is None:
+        championship_matches = load_championship_matches()
     raw_rows = [_raw_team_feature_values(team, team_history, elo_state) for team in sorted(teams)]
     medians = _league_feature_medians(raw_rows)
     promoted_baseline = promoted_team_baseline(matches)
     rows = []
     for raw in raw_rows:
-        adjusted, source, fallback_reason, fallback_used = _adjusted_values(raw, medians, promoted_baseline)
+        champ_summary = championship_team_summary(str(raw["team"]), championship_matches)
+        adjusted, source, fallback_reason, fallback_used, promotion_adjustment_applied, adjustment_source = _adjusted_values(
+            raw,
+            medians,
+            promoted_baseline,
+            champ_summary,
+        )
         local_count = int(raw["local_pl_match_count"])
         flags = {
             "no_premier_league_history": local_count == 0,
@@ -351,8 +503,22 @@ def season_start_feature_audit(
             "data_source_league": source,
             "source_league": source,
             "premier_league_matches_available": local_count,
+            "championship_data_available": champ_summary is not None,
+            "championship_match_count": int(champ_summary["source_matches"]) if champ_summary else 0,
+            "championship_latest_match": str(champ_summary["latest_match"]) if champ_summary else "",
+            "promotion_adjustment_applied": bool(promotion_adjustment_applied),
             "fallback_used": bool(fallback_used),
             "fallback_reason": fallback_reason,
+            "raw_recent_form": float(champ_summary["points_last5"]) if champ_summary else raw["raw_recent_form_points_last5"],
+            "adjusted_recent_form": adjusted["team_points_last_5"],
+            "raw_xg": float(champ_summary["xg_avg_last5"]) if champ_summary and bool(champ_summary.get("xg_available")) else np.nan if champ_summary else raw["raw_xg_strength_last5"],
+            "adjusted_xg": adjusted["xg_avg"],
+            "raw_xga": float(champ_summary["xga_avg_last5"]) if champ_summary and bool(champ_summary.get("xg_available")) else np.nan if champ_summary else raw["raw_xga_strength_last5"],
+            "adjusted_xga": adjusted["xga_avg"],
+            "raw_shot_volume": float(champ_summary["shots_avg_last5"]) if champ_summary else raw["raw_shots_avg_last5"],
+            "adjusted_shot_volume": adjusted["shots_avg_last5"],
+            "promoted_team_uncertainty_flag": bool(local_count < 5),
+            "championship_xg_available": bool(champ_summary.get("xg_available", False)) if champ_summary else False,
             "recent_form_points_last5": adjusted["team_points_last_5"],
             "recent_goals_scored_avg_last5": adjusted["goals_scored_avg"],
             "xg_strength_last5": adjusted["xg_avg"],
@@ -373,7 +539,7 @@ def season_start_feature_audit(
 def projection_feature_overrides(feature_audit: pd.DataFrame) -> dict[str, dict[str, float]]:
     overrides: dict[str, dict[str, float]] = {}
     for row in feature_audit.itertuples(index=False):
-        if not bool(row.fallback_used):
+        if not bool(row.fallback_used) and not bool(row.promotion_adjustment_applied):
             continue
         overrides[str(row.team)] = {
             "team_points_last_5": float(row.recent_form_points_last5),
@@ -395,25 +561,28 @@ def validate_projection_feature_inputs(feature_audit: pd.DataFrame, feature_colu
     rows = []
     for row in feature_audit.itertuples(index=False):
         missing_groups = []
-        if int(row.premier_league_matches_available) < 5 and not bool(row.fallback_used):
+        if int(row.premier_league_matches_available) < 5 and not bool(row.fallback_used) and not bool(row.promotion_adjustment_applied):
             missing_groups.extend(["recent_form", "xg_strength", "shot_volume"])
         if bool(row.fallback_used) and not str(row.fallback_reason):
             missing_groups.append("fallback_reason")
+        marker = "explicit_fallback" if bool(row.fallback_used) else "championship_adjustment" if bool(row.promotion_adjustment_applied) else "none"
         rows.append(
             {
                 "team": row.team,
-                "feature_validation_status": "error" if missing_groups else ("warning" if bool(row.fallback_used) else "ok"),
+                "feature_validation_status": "error" if missing_groups else ("warning" if bool(row.fallback_used) or bool(row.promotion_adjustment_applied) else "ok"),
                 "fallback_used": bool(row.fallback_used),
                 "fallback_reason": row.fallback_reason,
                 "source_league": row.source_league,
                 "local_pl_match_count": int(row.premier_league_matches_available),
-                "missing_or_fallback_groups": ", ".join(missing_groups) if missing_groups else ("explicit_fallback" if bool(row.fallback_used) else "none"),
+                "championship_data_available": bool(row.championship_data_available),
+                "promotion_adjustment_applied": bool(row.promotion_adjustment_applied),
+                "missing_or_fallback_groups": ", ".join(missing_groups) if missing_groups else marker,
             }
         )
     validation = pd.DataFrame(rows)
     if (validation["feature_validation_status"] == "error").any():
         status = "Error"
-    elif (validation["feature_validation_status"] == "warning").any():
+    elif (validation["feature_validation_status"] == "warning").any() or validation["promotion_adjustment_applied"].any():
         status = "Warning"
     else:
         status = "OK"

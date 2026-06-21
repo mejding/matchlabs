@@ -1,8 +1,8 @@
 date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_value,season_projection_adjusted_value,raw_abs_diff,adjusted_abs_diff,intentional_promoted_adjustment
 2026-08-21,Arsenal v Coventry,home_team_points_last_5,Recent form,15.0,15.0,15.0,0.0,0.0,True
-2026-08-21,Arsenal v Coventry,away_team_points_last_5,Recent form,0.0,0.0,3.4210526315789473,0.0,3.4210526315789473,True
+2026-08-21,Arsenal v Coventry,away_team_points_last_5,Recent form,0.0,0.0,6.050000000000001,0.0,6.050000000000001,True
 2026-08-21,Arsenal v Coventry,home_goals_scored_avg,Recent form,1.6,1.6,1.6,0.0,0.0,True
-2026-08-21,Arsenal v Coventry,away_goals_scored_avg,Recent form,0.0,0.0,1.0394736842105265,0.0,1.0394736842105265,True
+2026-08-21,Arsenal v Coventry,away_goals_scored_avg,Recent form,0.0,0.0,1.9500000000000002,0.0,1.9500000000000002,True
 2026-08-21,Arsenal v Coventry,home_advantage,Home advantage,1.0,1.0,1.0,0.0,0.0,True
 2026-08-21,Arsenal v Coventry,home_xg_avg,xG/xGA,2.2585818,2.2585818,2.2585818,0.0,0.0,True
 2026-08-21,Arsenal v Coventry,away_xg_avg,xG/xGA,0.0,0.0,0.9875000000000002,0.0,0.9875000000000002,True
@@ -28,20 +28,20 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-08-21,Arsenal v Coventry,away_elo_trend,Elo,0.0,0.0,0.0,0.0,0.0,True
 2026-08-21,Arsenal v Coventry,rolling_elo_form,Elo,24.264060223677006,24.264060223677006,24.264060223677006,0.0,0.0,True
 2026-08-21,Arsenal v Coventry,home_shots_avg_last5,Shot volume,14.8,14.8,14.8,0.0,0.0,True
-2026-08-21,Arsenal v Coventry,away_shots_avg_last5,Shot volume,0.0,0.0,10.66,0.0,10.66,True
+2026-08-21,Arsenal v Coventry,away_shots_avg_last5,Shot volume,0.0,0.0,12.0,0.0,12.0,True
 2026-08-21,Arsenal v Coventry,home_shots_on_target_avg_last5,Shot volume,5.4,5.4,5.4,0.0,0.0,True
-2026-08-21,Arsenal v Coventry,away_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-08-21,Arsenal v Coventry,away_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.5999999999999996,0.0,3.5999999999999996,True
 2026-08-21,Arsenal v Coventry,home_shots_avg_last10,Shot volume,14.2,14.2,14.2,0.0,0.0,True
-2026-08-21,Arsenal v Coventry,away_shots_avg_last10,Shot volume,0.0,0.0,10.783,0.0,10.783,True
+2026-08-21,Arsenal v Coventry,away_shots_avg_last10,Shot volume,0.0,0.0,11.850000000000001,0.0,11.850000000000001,True
 2026-08-21,Arsenal v Coventry,home_shots_on_target_avg_last10,Shot volume,4.7,4.7,4.7,0.0,0.0,True
-2026-08-21,Arsenal v Coventry,away_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-08-21,Arsenal v Coventry,away_shots_on_target_avg_last10,Shot volume,0.0,0.0,4.050000000000001,0.0,4.050000000000001,True
 2026-08-21,Arsenal v Coventry,home_shots_avg_season,Shot volume,14.526315789473685,14.526315789473685,14.526315789473685,0.0,0.0,True
-2026-08-21,Arsenal v Coventry,away_shots_avg_season,Shot volume,0.0,0.0,10.401052631578947,0.0,10.401052631578947,True
+2026-08-21,Arsenal v Coventry,away_shots_avg_season,Shot volume,0.0,0.0,12.244565217391305,0.0,12.244565217391305,True
 2026-08-21,Arsenal v Coventry,home_shots_on_target_avg_season,Shot volume,4.894736842105263,4.894736842105263,4.894736842105263,0.0,0.0,True
-2026-08-21,Arsenal v Coventry,away_shots_on_target_avg_season,Shot volume,0.0,0.0,3.452631578947369,0.0,3.452631578947369,True
-2026-08-22,Hull v Man United,home_team_points_last_5,Recent form,0.0,0.0,3.4210526315789473,0.0,3.4210526315789473,True
+2026-08-21,Arsenal v Coventry,away_shots_on_target_avg_season,Shot volume,0.0,0.0,4.173913043478261,0.0,4.173913043478261,True
+2026-08-22,Hull v Man United,home_team_points_last_5,Recent form,0.0,0.0,2.75,0.0,2.75,True
 2026-08-22,Hull v Man United,away_team_points_last_5,Recent form,13.0,13.0,13.0,0.0,0.0,True
-2026-08-22,Hull v Man United,home_goals_scored_avg,Recent form,0.0,0.0,1.0394736842105265,0.0,1.0394736842105265,True
+2026-08-22,Hull v Man United,home_goals_scored_avg,Recent form,0.0,0.0,1.0499999999999998,0.0,1.0499999999999998,True
 2026-08-22,Hull v Man United,away_goals_scored_avg,Recent form,2.2,2.2,2.2,0.0,0.0,True
 2026-08-22,Hull v Man United,home_advantage,Home advantage,1.0,1.0,1.0,0.0,0.0,True
 2026-08-22,Hull v Man United,home_xg_avg,xG/xGA,0.0,0.0,0.9875000000000002,0.0,0.9875000000000002,True
@@ -67,17 +67,17 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-08-22,Hull v Man United,home_elo_trend,Elo,0.0,0.0,0.0,0.0,0.0,True
 2026-08-22,Hull v Man United,away_elo_trend,Elo,34.25154079872641,34.25154079872641,34.25154079872641,0.0,0.0,True
 2026-08-22,Hull v Man United,rolling_elo_form,Elo,-34.25154079872641,-34.25154079872641,-34.25154079872641,0.0,0.0,True
-2026-08-22,Hull v Man United,home_shots_avg_last5,Shot volume,0.0,0.0,10.66,0.0,10.66,True
+2026-08-22,Hull v Man United,home_shots_avg_last5,Shot volume,0.0,0.0,10.05,0.0,10.05,True
 2026-08-22,Hull v Man United,away_shots_avg_last5,Shot volume,16.0,16.0,16.0,0.0,0.0,True
-2026-08-22,Hull v Man United,home_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-08-22,Hull v Man United,home_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.1500000000000004,0.0,3.1500000000000004,True
 2026-08-22,Hull v Man United,away_shots_on_target_avg_last5,Shot volume,5.6,5.6,5.6,0.0,0.0,True
-2026-08-22,Hull v Man United,home_shots_avg_last10,Shot volume,0.0,0.0,10.783,0.0,10.783,True
+2026-08-22,Hull v Man United,home_shots_avg_last10,Shot volume,0.0,0.0,8.7,0.0,8.7,True
 2026-08-22,Hull v Man United,away_shots_avg_last10,Shot volume,14.8,14.8,14.8,0.0,0.0,True
-2026-08-22,Hull v Man United,home_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-08-22,Hull v Man United,home_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.0,0.0,3.0,True
 2026-08-22,Hull v Man United,away_shots_on_target_avg_last10,Shot volume,5.4,5.4,5.4,0.0,0.0,True
-2026-08-22,Hull v Man United,home_shots_avg_season,Shot volume,0.0,0.0,10.401052631578947,0.0,10.401052631578947,True
+2026-08-22,Hull v Man United,home_shots_avg_season,Shot volume,0.0,0.0,8.396739130434781,0.0,8.396739130434781,True
 2026-08-22,Hull v Man United,away_shots_avg_season,Shot volume,15.68421052631579,15.68421052631579,15.68421052631579,0.0,0.0,True
-2026-08-22,Hull v Man United,home_shots_on_target_avg_season,Shot volume,0.0,0.0,3.452631578947369,0.0,3.452631578947369,True
+2026-08-22,Hull v Man United,home_shots_on_target_avg_season,Shot volume,0.0,0.0,3.0815217391304346,0.0,3.0815217391304346,True
 2026-08-22,Hull v Man United,away_shots_on_target_avg_season,Shot volume,5.684210526315789,5.684210526315789,5.684210526315789,0.0,0.0,True
 2026-08-22,Everton v Crystal Palace,home_team_points_last_5,Recent form,2.0,2.0,2.0,0.0,0.0,False
 2026-08-22,Everton v Crystal Palace,away_team_points_last_5,Recent form,2.0,2.0,2.0,0.0,0.0,False
@@ -519,10 +519,10 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-08-29,Chelsea v Brighton,away_shots_avg_season,Shot volume,13.026315789473685,13.026315789473685,13.026315789473685,0.0,0.0,False
 2026-08-29,Chelsea v Brighton,home_shots_on_target_avg_season,Shot volume,4.315789473684211,4.315789473684211,4.315789473684211,0.0,0.0,False
 2026-08-29,Chelsea v Brighton,away_shots_on_target_avg_season,Shot volume,4.631578947368421,4.631578947368421,4.631578947368421,0.0,0.0,False
-2026-08-29,Coventry v Hull,home_team_points_last_5,Recent form,0.0,0.0,3.4210526315789473,0.0,3.4210526315789473,True
-2026-08-29,Coventry v Hull,away_team_points_last_5,Recent form,0.0,0.0,3.4210526315789473,0.0,3.4210526315789473,True
-2026-08-29,Coventry v Hull,home_goals_scored_avg,Recent form,0.0,0.0,1.0394736842105265,0.0,1.0394736842105265,True
-2026-08-29,Coventry v Hull,away_goals_scored_avg,Recent form,0.0,0.0,1.0394736842105265,0.0,1.0394736842105265,True
+2026-08-29,Coventry v Hull,home_team_points_last_5,Recent form,0.0,0.0,6.050000000000001,0.0,6.050000000000001,True
+2026-08-29,Coventry v Hull,away_team_points_last_5,Recent form,0.0,0.0,2.75,0.0,2.75,True
+2026-08-29,Coventry v Hull,home_goals_scored_avg,Recent form,0.0,0.0,1.9500000000000002,0.0,1.9500000000000002,True
+2026-08-29,Coventry v Hull,away_goals_scored_avg,Recent form,0.0,0.0,1.0499999999999998,0.0,1.0499999999999998,True
 2026-08-29,Coventry v Hull,home_advantage,Home advantage,1.0,1.0,1.0,0.0,0.0,True
 2026-08-29,Coventry v Hull,home_xg_avg,xG/xGA,0.0,0.0,0.9875000000000002,0.0,0.9875000000000002,True
 2026-08-29,Coventry v Hull,away_xg_avg,xG/xGA,0.0,0.0,0.9875000000000002,0.0,0.9875000000000002,True
@@ -547,18 +547,18 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-08-29,Coventry v Hull,home_elo_trend,Elo,0.0,0.0,0.0,0.0,0.0,True
 2026-08-29,Coventry v Hull,away_elo_trend,Elo,0.0,0.0,0.0,0.0,0.0,True
 2026-08-29,Coventry v Hull,rolling_elo_form,Elo,0.0,0.0,0.0,0.0,0.0,True
-2026-08-29,Coventry v Hull,home_shots_avg_last5,Shot volume,0.0,0.0,10.66,0.0,10.66,True
-2026-08-29,Coventry v Hull,away_shots_avg_last5,Shot volume,0.0,0.0,10.66,0.0,10.66,True
-2026-08-29,Coventry v Hull,home_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.69,0.0,3.69,True
-2026-08-29,Coventry v Hull,away_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.69,0.0,3.69,True
-2026-08-29,Coventry v Hull,home_shots_avg_last10,Shot volume,0.0,0.0,10.783,0.0,10.783,True
-2026-08-29,Coventry v Hull,away_shots_avg_last10,Shot volume,0.0,0.0,10.783,0.0,10.783,True
-2026-08-29,Coventry v Hull,home_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.69,0.0,3.69,True
-2026-08-29,Coventry v Hull,away_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.69,0.0,3.69,True
-2026-08-29,Coventry v Hull,home_shots_avg_season,Shot volume,0.0,0.0,10.401052631578947,0.0,10.401052631578947,True
-2026-08-29,Coventry v Hull,away_shots_avg_season,Shot volume,0.0,0.0,10.401052631578947,0.0,10.401052631578947,True
-2026-08-29,Coventry v Hull,home_shots_on_target_avg_season,Shot volume,0.0,0.0,3.452631578947369,0.0,3.452631578947369,True
-2026-08-29,Coventry v Hull,away_shots_on_target_avg_season,Shot volume,0.0,0.0,3.452631578947369,0.0,3.452631578947369,True
+2026-08-29,Coventry v Hull,home_shots_avg_last5,Shot volume,0.0,0.0,12.0,0.0,12.0,True
+2026-08-29,Coventry v Hull,away_shots_avg_last5,Shot volume,0.0,0.0,10.05,0.0,10.05,True
+2026-08-29,Coventry v Hull,home_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.5999999999999996,0.0,3.5999999999999996,True
+2026-08-29,Coventry v Hull,away_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.1500000000000004,0.0,3.1500000000000004,True
+2026-08-29,Coventry v Hull,home_shots_avg_last10,Shot volume,0.0,0.0,11.850000000000001,0.0,11.850000000000001,True
+2026-08-29,Coventry v Hull,away_shots_avg_last10,Shot volume,0.0,0.0,8.7,0.0,8.7,True
+2026-08-29,Coventry v Hull,home_shots_on_target_avg_last10,Shot volume,0.0,0.0,4.050000000000001,0.0,4.050000000000001,True
+2026-08-29,Coventry v Hull,away_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.0,0.0,3.0,True
+2026-08-29,Coventry v Hull,home_shots_avg_season,Shot volume,0.0,0.0,12.244565217391305,0.0,12.244565217391305,True
+2026-08-29,Coventry v Hull,away_shots_avg_season,Shot volume,0.0,0.0,8.396739130434781,0.0,8.396739130434781,True
+2026-08-29,Coventry v Hull,home_shots_on_target_avg_season,Shot volume,0.0,0.0,4.173913043478261,0.0,4.173913043478261,True
+2026-08-29,Coventry v Hull,away_shots_on_target_avg_season,Shot volume,0.0,0.0,3.0815217391304346,0.0,3.0815217391304346,True
 2026-08-29,Crystal Palace v Man City,home_team_points_last_5,Recent form,2.0,2.0,2.0,0.0,0.0,False
 2026-08-29,Crystal Palace v Man City,away_team_points_last_5,Recent form,8.0,8.0,8.0,0.0,0.0,False
 2026-08-29,Crystal Palace v Man City,home_goals_scored_avg,Recent form,1.0,1.0,1.0,0.0,0.0,False
@@ -999,9 +999,9 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-09-05,Fulham v Crystal Palace,away_shots_avg_season,Shot volume,11.631578947368421,11.631578947368421,11.631578947368421,0.0,0.0,False
 2026-09-05,Fulham v Crystal Palace,home_shots_on_target_avg_season,Shot volume,3.6315789473684212,3.6315789473684212,3.6315789473684212,0.0,0.0,False
 2026-09-05,Fulham v Crystal Palace,away_shots_on_target_avg_season,Shot volume,3.710526315789474,3.710526315789474,3.710526315789474,0.0,0.0,False
-2026-09-05,Hull v Aston Villa,home_team_points_last_5,Recent form,0.0,0.0,3.4210526315789473,0.0,3.4210526315789473,True
+2026-09-05,Hull v Aston Villa,home_team_points_last_5,Recent form,0.0,0.0,2.75,0.0,2.75,True
 2026-09-05,Hull v Aston Villa,away_team_points_last_5,Recent form,7.0,7.0,7.0,0.0,0.0,True
-2026-09-05,Hull v Aston Villa,home_goals_scored_avg,Recent form,0.0,0.0,1.0394736842105265,0.0,1.0394736842105265,True
+2026-09-05,Hull v Aston Villa,home_goals_scored_avg,Recent form,0.0,0.0,1.0499999999999998,0.0,1.0499999999999998,True
 2026-09-05,Hull v Aston Villa,away_goals_scored_avg,Recent form,1.8,1.8,1.8,0.0,0.0,True
 2026-09-05,Hull v Aston Villa,home_advantage,Home advantage,1.0,1.0,1.0,0.0,0.0,True
 2026-09-05,Hull v Aston Villa,home_xg_avg,xG/xGA,0.0,0.0,0.9875000000000002,0.0,0.9875000000000002,True
@@ -1027,17 +1027,17 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-09-05,Hull v Aston Villa,home_elo_trend,Elo,0.0,0.0,0.0,0.0,0.0,True
 2026-09-05,Hull v Aston Villa,away_elo_trend,Elo,6.1296549382177545,6.1296549382177545,6.1296549382177545,0.0,0.0,True
 2026-09-05,Hull v Aston Villa,rolling_elo_form,Elo,-6.1296549382177545,-6.1296549382177545,-6.1296549382177545,0.0,0.0,True
-2026-09-05,Hull v Aston Villa,home_shots_avg_last5,Shot volume,0.0,0.0,10.66,0.0,10.66,True
+2026-09-05,Hull v Aston Villa,home_shots_avg_last5,Shot volume,0.0,0.0,10.05,0.0,10.05,True
 2026-09-05,Hull v Aston Villa,away_shots_avg_last5,Shot volume,11.8,11.8,11.8,0.0,0.0,True
-2026-09-05,Hull v Aston Villa,home_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-09-05,Hull v Aston Villa,home_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.1500000000000004,0.0,3.1500000000000004,True
 2026-09-05,Hull v Aston Villa,away_shots_on_target_avg_last5,Shot volume,4.6,4.6,4.6,0.0,0.0,True
-2026-09-05,Hull v Aston Villa,home_shots_avg_last10,Shot volume,0.0,0.0,10.783,0.0,10.783,True
+2026-09-05,Hull v Aston Villa,home_shots_avg_last10,Shot volume,0.0,0.0,8.7,0.0,8.7,True
 2026-09-05,Hull v Aston Villa,away_shots_avg_last10,Shot volume,12.7,12.7,12.7,0.0,0.0,True
-2026-09-05,Hull v Aston Villa,home_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-09-05,Hull v Aston Villa,home_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.0,0.0,3.0,True
 2026-09-05,Hull v Aston Villa,away_shots_on_target_avg_last10,Shot volume,4.8,4.8,4.8,0.0,0.0,True
-2026-09-05,Hull v Aston Villa,home_shots_avg_season,Shot volume,0.0,0.0,10.401052631578947,0.0,10.401052631578947,True
+2026-09-05,Hull v Aston Villa,home_shots_avg_season,Shot volume,0.0,0.0,8.396739130434781,0.0,8.396739130434781,True
 2026-09-05,Hull v Aston Villa,away_shots_avg_season,Shot volume,12.710526315789474,12.710526315789474,12.710526315789474,0.0,0.0,True
-2026-09-05,Hull v Aston Villa,home_shots_on_target_avg_season,Shot volume,0.0,0.0,3.452631578947369,0.0,3.452631578947369,True
+2026-09-05,Hull v Aston Villa,home_shots_on_target_avg_season,Shot volume,0.0,0.0,3.0815217391304346,0.0,3.0815217391304346,True
 2026-09-05,Hull v Aston Villa,away_shots_on_target_avg_season,Shot volume,4.473684210526316,4.473684210526316,4.473684210526316,0.0,0.0,True
 2026-09-05,Ipswich v Liverpool,home_team_points_last_5,Recent form,1.0,1.0,1.0,0.0,0.0,False
 2026-09-05,Ipswich v Liverpool,away_team_points_last_5,Recent form,5.0,5.0,5.0,0.0,0.0,False
@@ -1080,9 +1080,9 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-09-05,Ipswich v Liverpool,home_shots_on_target_avg_season,Shot volume,3.3421052631578947,3.3421052631578947,3.3421052631578947,0.0,0.0,False
 2026-09-05,Ipswich v Liverpool,away_shots_on_target_avg_season,Shot volume,4.605263157894737,4.605263157894737,4.605263157894737,0.0,0.0,False
 2026-09-05,Man City v Coventry,home_team_points_last_5,Recent form,8.0,8.0,8.0,0.0,0.0,True
-2026-09-05,Man City v Coventry,away_team_points_last_5,Recent form,0.0,0.0,3.4210526315789473,0.0,3.4210526315789473,True
+2026-09-05,Man City v Coventry,away_team_points_last_5,Recent form,0.0,0.0,6.050000000000001,0.0,6.050000000000001,True
 2026-09-05,Man City v Coventry,home_goals_scored_avg,Recent form,2.2,2.2,2.2,0.0,0.0,True
-2026-09-05,Man City v Coventry,away_goals_scored_avg,Recent form,0.0,0.0,1.0394736842105265,0.0,1.0394736842105265,True
+2026-09-05,Man City v Coventry,away_goals_scored_avg,Recent form,0.0,0.0,1.9500000000000002,0.0,1.9500000000000002,True
 2026-09-05,Man City v Coventry,home_advantage,Home advantage,1.0,1.0,1.0,0.0,0.0,True
 2026-09-05,Man City v Coventry,home_xg_avg,xG/xGA,2.079632,2.079632,2.079632,0.0,0.0,True
 2026-09-05,Man City v Coventry,away_xg_avg,xG/xGA,0.0,0.0,0.9875000000000002,0.0,0.9875000000000002,True
@@ -1108,17 +1108,17 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-09-05,Man City v Coventry,away_elo_trend,Elo,0.0,0.0,0.0,0.0,0.0,True
 2026-09-05,Man City v Coventry,rolling_elo_form,Elo,-15.92404269623512,-15.92404269623512,-15.92404269623512,0.0,0.0,True
 2026-09-05,Man City v Coventry,home_shots_avg_last5,Shot volume,18.2,18.2,18.2,0.0,0.0,True
-2026-09-05,Man City v Coventry,away_shots_avg_last5,Shot volume,0.0,0.0,10.66,0.0,10.66,True
+2026-09-05,Man City v Coventry,away_shots_avg_last5,Shot volume,0.0,0.0,12.0,0.0,12.0,True
 2026-09-05,Man City v Coventry,home_shots_on_target_avg_last5,Shot volume,5.2,5.2,5.2,0.0,0.0,True
-2026-09-05,Man City v Coventry,away_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-09-05,Man City v Coventry,away_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.5999999999999996,0.0,3.5999999999999996,True
 2026-09-05,Man City v Coventry,home_shots_avg_last10,Shot volume,19.7,19.7,19.7,0.0,0.0,True
-2026-09-05,Man City v Coventry,away_shots_avg_last10,Shot volume,0.0,0.0,10.783,0.0,10.783,True
+2026-09-05,Man City v Coventry,away_shots_avg_last10,Shot volume,0.0,0.0,11.850000000000001,0.0,11.850000000000001,True
 2026-09-05,Man City v Coventry,home_shots_on_target_avg_last10,Shot volume,6.1,6.1,6.1,0.0,0.0,True
-2026-09-05,Man City v Coventry,away_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-09-05,Man City v Coventry,away_shots_on_target_avg_last10,Shot volume,0.0,0.0,4.050000000000001,0.0,4.050000000000001,True
 2026-09-05,Man City v Coventry,home_shots_avg_season,Shot volume,15.657894736842104,15.657894736842104,15.657894736842104,0.0,0.0,True
-2026-09-05,Man City v Coventry,away_shots_avg_season,Shot volume,0.0,0.0,10.401052631578947,0.0,10.401052631578947,True
+2026-09-05,Man City v Coventry,away_shots_avg_season,Shot volume,0.0,0.0,12.244565217391305,0.0,12.244565217391305,True
 2026-09-05,Man City v Coventry,home_shots_on_target_avg_season,Shot volume,5.394736842105263,5.394736842105263,5.394736842105263,0.0,0.0,True
-2026-09-05,Man City v Coventry,away_shots_on_target_avg_season,Shot volume,0.0,0.0,3.452631578947369,0.0,3.452631578947369,True
+2026-09-05,Man City v Coventry,away_shots_on_target_avg_season,Shot volume,0.0,0.0,4.173913043478261,0.0,4.173913043478261,True
 2026-09-05,Newcastle v Bournemouth,home_team_points_last_5,Recent form,7.0,7.0,7.0,0.0,0.0,False
 2026-09-05,Newcastle v Bournemouth,away_team_points_last_5,Recent form,9.0,9.0,9.0,0.0,0.0,False
 2026-09-05,Newcastle v Bournemouth,home_goals_scored_avg,Recent form,1.4,1.4,1.4,0.0,0.0,False
@@ -1280,9 +1280,9 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-09-12,Bournemouth v Brentford,home_shots_on_target_avg_season,Shot volume,4.684210526315789,4.684210526315789,4.684210526315789,0.0,0.0,False
 2026-09-12,Bournemouth v Brentford,away_shots_on_target_avg_season,Shot volume,3.8684210526315788,3.8684210526315788,3.8684210526315788,0.0,0.0,False
 2026-09-12,Chelsea v Hull,home_team_points_last_5,Recent form,4.0,4.0,4.0,0.0,0.0,True
-2026-09-12,Chelsea v Hull,away_team_points_last_5,Recent form,0.0,0.0,3.4210526315789473,0.0,3.4210526315789473,True
+2026-09-12,Chelsea v Hull,away_team_points_last_5,Recent form,0.0,0.0,2.75,0.0,2.75,True
 2026-09-12,Chelsea v Hull,home_goals_scored_avg,Recent form,1.0,1.0,1.0,0.0,0.0,True
-2026-09-12,Chelsea v Hull,away_goals_scored_avg,Recent form,0.0,0.0,1.0394736842105265,0.0,1.0394736842105265,True
+2026-09-12,Chelsea v Hull,away_goals_scored_avg,Recent form,0.0,0.0,1.0499999999999998,0.0,1.0499999999999998,True
 2026-09-12,Chelsea v Hull,home_advantage,Home advantage,1.0,1.0,1.0,0.0,0.0,True
 2026-09-12,Chelsea v Hull,home_xg_avg,xG/xGA,1.0159748,1.0159748,1.0159748,0.0,0.0,True
 2026-09-12,Chelsea v Hull,away_xg_avg,xG/xGA,0.0,0.0,0.9875000000000002,0.0,0.9875000000000002,True
@@ -1308,20 +1308,20 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-09-12,Chelsea v Hull,away_elo_trend,Elo,0.0,0.0,0.0,0.0,0.0,True
 2026-09-12,Chelsea v Hull,rolling_elo_form,Elo,-16.890905482397102,-16.890905482397102,-16.890905482397102,0.0,0.0,True
 2026-09-12,Chelsea v Hull,home_shots_avg_last5,Shot volume,10.4,10.4,10.4,0.0,0.0,True
-2026-09-12,Chelsea v Hull,away_shots_avg_last5,Shot volume,0.0,0.0,10.66,0.0,10.66,True
+2026-09-12,Chelsea v Hull,away_shots_avg_last5,Shot volume,0.0,0.0,10.05,0.0,10.05,True
 2026-09-12,Chelsea v Hull,home_shots_on_target_avg_last5,Shot volume,2.6,2.6,2.6,0.0,0.0,True
-2026-09-12,Chelsea v Hull,away_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-09-12,Chelsea v Hull,away_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.1500000000000004,0.0,3.1500000000000004,True
 2026-09-12,Chelsea v Hull,home_shots_avg_last10,Shot volume,13.4,13.4,13.4,0.0,0.0,True
-2026-09-12,Chelsea v Hull,away_shots_avg_last10,Shot volume,0.0,0.0,10.783,0.0,10.783,True
+2026-09-12,Chelsea v Hull,away_shots_avg_last10,Shot volume,0.0,0.0,8.7,0.0,8.7,True
 2026-09-12,Chelsea v Hull,home_shots_on_target_avg_last10,Shot volume,3.4,3.4,3.4,0.0,0.0,True
-2026-09-12,Chelsea v Hull,away_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-09-12,Chelsea v Hull,away_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.0,0.0,3.0,True
 2026-09-12,Chelsea v Hull,home_shots_avg_season,Shot volume,13.447368421052632,13.447368421052632,13.447368421052632,0.0,0.0,True
-2026-09-12,Chelsea v Hull,away_shots_avg_season,Shot volume,0.0,0.0,10.401052631578947,0.0,10.401052631578947,True
+2026-09-12,Chelsea v Hull,away_shots_avg_season,Shot volume,0.0,0.0,8.396739130434781,0.0,8.396739130434781,True
 2026-09-12,Chelsea v Hull,home_shots_on_target_avg_season,Shot volume,4.315789473684211,4.315789473684211,4.315789473684211,0.0,0.0,True
-2026-09-12,Chelsea v Hull,away_shots_on_target_avg_season,Shot volume,0.0,0.0,3.452631578947369,0.0,3.452631578947369,True
-2026-09-12,Coventry v Brighton,home_team_points_last_5,Recent form,0.0,0.0,3.4210526315789473,0.0,3.4210526315789473,True
+2026-09-12,Chelsea v Hull,away_shots_on_target_avg_season,Shot volume,0.0,0.0,3.0815217391304346,0.0,3.0815217391304346,True
+2026-09-12,Coventry v Brighton,home_team_points_last_5,Recent form,0.0,0.0,6.050000000000001,0.0,6.050000000000001,True
 2026-09-12,Coventry v Brighton,away_team_points_last_5,Recent form,6.0,6.0,6.0,0.0,0.0,True
-2026-09-12,Coventry v Brighton,home_goals_scored_avg,Recent form,0.0,0.0,1.0394736842105265,0.0,1.0394736842105265,True
+2026-09-12,Coventry v Brighton,home_goals_scored_avg,Recent form,0.0,0.0,1.9500000000000002,0.0,1.9500000000000002,True
 2026-09-12,Coventry v Brighton,away_goals_scored_avg,Recent form,1.4,1.4,1.4,0.0,0.0,True
 2026-09-12,Coventry v Brighton,home_advantage,Home advantage,1.0,1.0,1.0,0.0,0.0,True
 2026-09-12,Coventry v Brighton,home_xg_avg,xG/xGA,0.0,0.0,0.9875000000000002,0.0,0.9875000000000002,True
@@ -1347,17 +1347,17 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-09-12,Coventry v Brighton,home_elo_trend,Elo,0.0,0.0,0.0,0.0,0.0,True
 2026-09-12,Coventry v Brighton,away_elo_trend,Elo,-40.192581482319156,-40.192581482319156,-40.192581482319156,0.0,0.0,True
 2026-09-12,Coventry v Brighton,rolling_elo_form,Elo,40.192581482319156,40.192581482319156,40.192581482319156,0.0,0.0,True
-2026-09-12,Coventry v Brighton,home_shots_avg_last5,Shot volume,0.0,0.0,10.66,0.0,10.66,True
+2026-09-12,Coventry v Brighton,home_shots_avg_last5,Shot volume,0.0,0.0,12.0,0.0,12.0,True
 2026-09-12,Coventry v Brighton,away_shots_avg_last5,Shot volume,14.8,14.8,14.8,0.0,0.0,True
-2026-09-12,Coventry v Brighton,home_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-09-12,Coventry v Brighton,home_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.5999999999999996,0.0,3.5999999999999996,True
 2026-09-12,Coventry v Brighton,away_shots_on_target_avg_last5,Shot volume,5.8,5.8,5.8,0.0,0.0,True
-2026-09-12,Coventry v Brighton,home_shots_avg_last10,Shot volume,0.0,0.0,10.783,0.0,10.783,True
+2026-09-12,Coventry v Brighton,home_shots_avg_last10,Shot volume,0.0,0.0,11.850000000000001,0.0,11.850000000000001,True
 2026-09-12,Coventry v Brighton,away_shots_avg_last10,Shot volume,13.6,13.6,13.6,0.0,0.0,True
-2026-09-12,Coventry v Brighton,home_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-09-12,Coventry v Brighton,home_shots_on_target_avg_last10,Shot volume,0.0,0.0,4.050000000000001,0.0,4.050000000000001,True
 2026-09-12,Coventry v Brighton,away_shots_on_target_avg_last10,Shot volume,5.2,5.2,5.2,0.0,0.0,True
-2026-09-12,Coventry v Brighton,home_shots_avg_season,Shot volume,0.0,0.0,10.401052631578947,0.0,10.401052631578947,True
+2026-09-12,Coventry v Brighton,home_shots_avg_season,Shot volume,0.0,0.0,12.244565217391305,0.0,12.244565217391305,True
 2026-09-12,Coventry v Brighton,away_shots_avg_season,Shot volume,13.026315789473685,13.026315789473685,13.026315789473685,0.0,0.0,True
-2026-09-12,Coventry v Brighton,home_shots_on_target_avg_season,Shot volume,0.0,0.0,3.452631578947369,0.0,3.452631578947369,True
+2026-09-12,Coventry v Brighton,home_shots_on_target_avg_season,Shot volume,0.0,0.0,4.173913043478261,0.0,4.173913043478261,True
 2026-09-12,Coventry v Brighton,away_shots_on_target_avg_season,Shot volume,4.631578947368421,4.631578947368421,4.631578947368421,0.0,0.0,True
 2026-09-12,Crystal Palace v Ipswich,home_team_points_last_5,Recent form,2.0,2.0,2.0,0.0,0.0,False
 2026-09-12,Crystal Palace v Ipswich,away_team_points_last_5,Recent form,1.0,1.0,1.0,0.0,0.0,False
@@ -1880,9 +1880,9 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-09-19,Man City v Sunderland,home_shots_on_target_avg_season,Shot volume,5.394736842105263,5.394736842105263,5.394736842105263,0.0,0.0,False
 2026-09-19,Man City v Sunderland,away_shots_on_target_avg_season,Shot volume,3.3157894736842106,3.3157894736842106,3.3157894736842106,0.0,0.0,False
 2026-09-19,Newcastle v Hull,home_team_points_last_5,Recent form,7.0,7.0,7.0,0.0,0.0,True
-2026-09-19,Newcastle v Hull,away_team_points_last_5,Recent form,0.0,0.0,3.4210526315789473,0.0,3.4210526315789473,True
+2026-09-19,Newcastle v Hull,away_team_points_last_5,Recent form,0.0,0.0,2.75,0.0,2.75,True
 2026-09-19,Newcastle v Hull,home_goals_scored_avg,Recent form,1.4,1.4,1.4,0.0,0.0,True
-2026-09-19,Newcastle v Hull,away_goals_scored_avg,Recent form,0.0,0.0,1.0394736842105265,0.0,1.0394736842105265,True
+2026-09-19,Newcastle v Hull,away_goals_scored_avg,Recent form,0.0,0.0,1.0499999999999998,0.0,1.0499999999999998,True
 2026-09-19,Newcastle v Hull,home_advantage,Home advantage,1.0,1.0,1.0,0.0,0.0,True
 2026-09-19,Newcastle v Hull,home_xg_avg,xG/xGA,1.6049634000000002,1.6049634000000002,1.6049634000000002,0.0,0.0,True
 2026-09-19,Newcastle v Hull,away_xg_avg,xG/xGA,0.0,0.0,0.9875000000000002,0.0,0.9875000000000002,True
@@ -1908,21 +1908,21 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-09-19,Newcastle v Hull,away_elo_trend,Elo,0.0,0.0,0.0,0.0,0.0,True
 2026-09-19,Newcastle v Hull,rolling_elo_form,Elo,16.089510337973934,16.089510337973934,16.089510337973934,0.0,0.0,True
 2026-09-19,Newcastle v Hull,home_shots_avg_last5,Shot volume,12.8,12.8,12.8,0.0,0.0,True
-2026-09-19,Newcastle v Hull,away_shots_avg_last5,Shot volume,0.0,0.0,10.66,0.0,10.66,True
+2026-09-19,Newcastle v Hull,away_shots_avg_last5,Shot volume,0.0,0.0,10.05,0.0,10.05,True
 2026-09-19,Newcastle v Hull,home_shots_on_target_avg_last5,Shot volume,4.8,4.8,4.8,0.0,0.0,True
-2026-09-19,Newcastle v Hull,away_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-09-19,Newcastle v Hull,away_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.1500000000000004,0.0,3.1500000000000004,True
 2026-09-19,Newcastle v Hull,home_shots_avg_last10,Shot volume,11.8,11.8,11.8,0.0,0.0,True
-2026-09-19,Newcastle v Hull,away_shots_avg_last10,Shot volume,0.0,0.0,10.783,0.0,10.783,True
+2026-09-19,Newcastle v Hull,away_shots_avg_last10,Shot volume,0.0,0.0,8.7,0.0,8.7,True
 2026-09-19,Newcastle v Hull,home_shots_on_target_avg_last10,Shot volume,4.4,4.4,4.4,0.0,0.0,True
-2026-09-19,Newcastle v Hull,away_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-09-19,Newcastle v Hull,away_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.0,0.0,3.0,True
 2026-09-19,Newcastle v Hull,home_shots_avg_season,Shot volume,12.947368421052632,12.947368421052632,12.947368421052632,0.0,0.0,True
-2026-09-19,Newcastle v Hull,away_shots_avg_season,Shot volume,0.0,0.0,10.401052631578947,0.0,10.401052631578947,True
+2026-09-19,Newcastle v Hull,away_shots_avg_season,Shot volume,0.0,0.0,8.396739130434781,0.0,8.396739130434781,True
 2026-09-19,Newcastle v Hull,home_shots_on_target_avg_season,Shot volume,4.631578947368421,4.631578947368421,4.631578947368421,0.0,0.0,True
-2026-09-19,Newcastle v Hull,away_shots_on_target_avg_season,Shot volume,0.0,0.0,3.452631578947369,0.0,3.452631578947369,True
+2026-09-19,Newcastle v Hull,away_shots_on_target_avg_season,Shot volume,0.0,0.0,3.0815217391304346,0.0,3.0815217391304346,True
 2026-09-19,Nott'm Forest v Coventry,home_team_points_last_5,Recent form,8.0,8.0,8.0,0.0,0.0,True
-2026-09-19,Nott'm Forest v Coventry,away_team_points_last_5,Recent form,0.0,0.0,3.4210526315789473,0.0,3.4210526315789473,True
+2026-09-19,Nott'm Forest v Coventry,away_team_points_last_5,Recent form,0.0,0.0,6.050000000000001,0.0,6.050000000000001,True
 2026-09-19,Nott'm Forest v Coventry,home_goals_scored_avg,Recent form,2.4,2.4,2.4,0.0,0.0,True
-2026-09-19,Nott'm Forest v Coventry,away_goals_scored_avg,Recent form,0.0,0.0,1.0394736842105265,0.0,1.0394736842105265,True
+2026-09-19,Nott'm Forest v Coventry,away_goals_scored_avg,Recent form,0.0,0.0,1.9500000000000002,0.0,1.9500000000000002,True
 2026-09-19,Nott'm Forest v Coventry,home_advantage,Home advantage,1.0,1.0,1.0,0.0,0.0,True
 2026-09-19,Nott'm Forest v Coventry,home_xg_avg,xG/xGA,1.8438620000000001,1.8438620000000001,1.8438620000000001,0.0,0.0,True
 2026-09-19,Nott'm Forest v Coventry,away_xg_avg,xG/xGA,0.0,0.0,0.9875000000000002,0.0,0.9875000000000002,True
@@ -1948,17 +1948,17 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-09-19,Nott'm Forest v Coventry,away_elo_trend,Elo,0.0,0.0,0.0,0.0,0.0,True
 2026-09-19,Nott'm Forest v Coventry,rolling_elo_form,Elo,7.88457045601308,7.88457045601308,7.88457045601308,0.0,0.0,True
 2026-09-19,Nott'm Forest v Coventry,home_shots_avg_last5,Shot volume,11.8,11.8,11.8,0.0,0.0,True
-2026-09-19,Nott'm Forest v Coventry,away_shots_avg_last5,Shot volume,0.0,0.0,10.66,0.0,10.66,True
+2026-09-19,Nott'm Forest v Coventry,away_shots_avg_last5,Shot volume,0.0,0.0,12.0,0.0,12.0,True
 2026-09-19,Nott'm Forest v Coventry,home_shots_on_target_avg_last5,Shot volume,5.0,5.0,5.0,0.0,0.0,True
-2026-09-19,Nott'm Forest v Coventry,away_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-09-19,Nott'm Forest v Coventry,away_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.5999999999999996,0.0,3.5999999999999996,True
 2026-09-19,Nott'm Forest v Coventry,home_shots_avg_last10,Shot volume,11.2,11.2,11.2,0.0,0.0,True
-2026-09-19,Nott'm Forest v Coventry,away_shots_avg_last10,Shot volume,0.0,0.0,10.783,0.0,10.783,True
+2026-09-19,Nott'm Forest v Coventry,away_shots_avg_last10,Shot volume,0.0,0.0,11.850000000000001,0.0,11.850000000000001,True
 2026-09-19,Nott'm Forest v Coventry,home_shots_on_target_avg_last10,Shot volume,4.6,4.6,4.6,0.0,0.0,True
-2026-09-19,Nott'm Forest v Coventry,away_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-09-19,Nott'm Forest v Coventry,away_shots_on_target_avg_last10,Shot volume,0.0,0.0,4.050000000000001,0.0,4.050000000000001,True
 2026-09-19,Nott'm Forest v Coventry,home_shots_avg_season,Shot volume,12.526315789473685,12.526315789473685,12.526315789473685,0.0,0.0,True
-2026-09-19,Nott'm Forest v Coventry,away_shots_avg_season,Shot volume,0.0,0.0,10.401052631578947,0.0,10.401052631578947,True
+2026-09-19,Nott'm Forest v Coventry,away_shots_avg_season,Shot volume,0.0,0.0,12.244565217391305,0.0,12.244565217391305,True
 2026-09-19,Nott'm Forest v Coventry,home_shots_on_target_avg_season,Shot volume,4.105263157894737,4.105263157894737,4.105263157894737,0.0,0.0,True
-2026-09-19,Nott'm Forest v Coventry,away_shots_on_target_avg_season,Shot volume,0.0,0.0,3.452631578947369,0.0,3.452631578947369,True
+2026-09-19,Nott'm Forest v Coventry,away_shots_on_target_avg_season,Shot volume,0.0,0.0,4.173913043478261,0.0,4.173913043478261,True
 2026-09-19,Tottenham v Aston Villa,home_team_points_last_5,Recent form,10.0,10.0,10.0,0.0,0.0,False
 2026-09-19,Tottenham v Aston Villa,away_team_points_last_5,Recent form,7.0,7.0,7.0,0.0,0.0,False
 2026-09-19,Tottenham v Aston Villa,home_goals_scored_avg,Recent form,1.2,1.2,1.2,0.0,0.0,False
@@ -2119,9 +2119,9 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-10-10,Chelsea v Bournemouth,away_shots_avg_season,Shot volume,13.81578947368421,13.81578947368421,13.81578947368421,0.0,0.0,False
 2026-10-10,Chelsea v Bournemouth,home_shots_on_target_avg_season,Shot volume,4.315789473684211,4.315789473684211,4.315789473684211,0.0,0.0,False
 2026-10-10,Chelsea v Bournemouth,away_shots_on_target_avg_season,Shot volume,4.684210526315789,4.684210526315789,4.684210526315789,0.0,0.0,False
-2026-10-10,Coventry v Newcastle,home_team_points_last_5,Recent form,0.0,0.0,3.4210526315789473,0.0,3.4210526315789473,True
+2026-10-10,Coventry v Newcastle,home_team_points_last_5,Recent form,0.0,0.0,6.050000000000001,0.0,6.050000000000001,True
 2026-10-10,Coventry v Newcastle,away_team_points_last_5,Recent form,7.0,7.0,7.0,0.0,0.0,True
-2026-10-10,Coventry v Newcastle,home_goals_scored_avg,Recent form,0.0,0.0,1.0394736842105265,0.0,1.0394736842105265,True
+2026-10-10,Coventry v Newcastle,home_goals_scored_avg,Recent form,0.0,0.0,1.9500000000000002,0.0,1.9500000000000002,True
 2026-10-10,Coventry v Newcastle,away_goals_scored_avg,Recent form,1.4,1.4,1.4,0.0,0.0,True
 2026-10-10,Coventry v Newcastle,home_advantage,Home advantage,1.0,1.0,1.0,0.0,0.0,True
 2026-10-10,Coventry v Newcastle,home_xg_avg,xG/xGA,0.0,0.0,0.9875000000000002,0.0,0.9875000000000002,True
@@ -2147,17 +2147,17 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-10-10,Coventry v Newcastle,home_elo_trend,Elo,0.0,0.0,0.0,0.0,0.0,True
 2026-10-10,Coventry v Newcastle,away_elo_trend,Elo,16.089510337973934,16.089510337973934,16.089510337973934,0.0,0.0,True
 2026-10-10,Coventry v Newcastle,rolling_elo_form,Elo,-16.089510337973934,-16.089510337973934,-16.089510337973934,0.0,0.0,True
-2026-10-10,Coventry v Newcastle,home_shots_avg_last5,Shot volume,0.0,0.0,10.66,0.0,10.66,True
+2026-10-10,Coventry v Newcastle,home_shots_avg_last5,Shot volume,0.0,0.0,12.0,0.0,12.0,True
 2026-10-10,Coventry v Newcastle,away_shots_avg_last5,Shot volume,12.8,12.8,12.8,0.0,0.0,True
-2026-10-10,Coventry v Newcastle,home_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-10-10,Coventry v Newcastle,home_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.5999999999999996,0.0,3.5999999999999996,True
 2026-10-10,Coventry v Newcastle,away_shots_on_target_avg_last5,Shot volume,4.8,4.8,4.8,0.0,0.0,True
-2026-10-10,Coventry v Newcastle,home_shots_avg_last10,Shot volume,0.0,0.0,10.783,0.0,10.783,True
+2026-10-10,Coventry v Newcastle,home_shots_avg_last10,Shot volume,0.0,0.0,11.850000000000001,0.0,11.850000000000001,True
 2026-10-10,Coventry v Newcastle,away_shots_avg_last10,Shot volume,11.8,11.8,11.8,0.0,0.0,True
-2026-10-10,Coventry v Newcastle,home_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-10-10,Coventry v Newcastle,home_shots_on_target_avg_last10,Shot volume,0.0,0.0,4.050000000000001,0.0,4.050000000000001,True
 2026-10-10,Coventry v Newcastle,away_shots_on_target_avg_last10,Shot volume,4.4,4.4,4.4,0.0,0.0,True
-2026-10-10,Coventry v Newcastle,home_shots_avg_season,Shot volume,0.0,0.0,10.401052631578947,0.0,10.401052631578947,True
+2026-10-10,Coventry v Newcastle,home_shots_avg_season,Shot volume,0.0,0.0,12.244565217391305,0.0,12.244565217391305,True
 2026-10-10,Coventry v Newcastle,away_shots_avg_season,Shot volume,12.947368421052632,12.947368421052632,12.947368421052632,0.0,0.0,True
-2026-10-10,Coventry v Newcastle,home_shots_on_target_avg_season,Shot volume,0.0,0.0,3.452631578947369,0.0,3.452631578947369,True
+2026-10-10,Coventry v Newcastle,home_shots_on_target_avg_season,Shot volume,0.0,0.0,4.173913043478261,0.0,4.173913043478261,True
 2026-10-10,Coventry v Newcastle,away_shots_on_target_avg_season,Shot volume,4.631578947368421,4.631578947368421,4.631578947368421,0.0,0.0,True
 2026-10-10,Crystal Palace v Nott'm Forest,home_team_points_last_5,Recent form,2.0,2.0,2.0,0.0,0.0,False
 2026-10-10,Crystal Palace v Nott'm Forest,away_team_points_last_5,Recent form,8.0,8.0,8.0,0.0,0.0,False
@@ -2199,9 +2199,9 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-10-10,Crystal Palace v Nott'm Forest,away_shots_avg_season,Shot volume,12.526315789473685,12.526315789473685,12.526315789473685,0.0,0.0,False
 2026-10-10,Crystal Palace v Nott'm Forest,home_shots_on_target_avg_season,Shot volume,3.710526315789474,3.710526315789474,3.710526315789474,0.0,0.0,False
 2026-10-10,Crystal Palace v Nott'm Forest,away_shots_on_target_avg_season,Shot volume,4.105263157894737,4.105263157894737,4.105263157894737,0.0,0.0,False
-2026-10-10,Hull v Everton,home_team_points_last_5,Recent form,0.0,0.0,3.4210526315789473,0.0,3.4210526315789473,True
+2026-10-10,Hull v Everton,home_team_points_last_5,Recent form,0.0,0.0,2.75,0.0,2.75,True
 2026-10-10,Hull v Everton,away_team_points_last_5,Recent form,2.0,2.0,2.0,0.0,0.0,True
-2026-10-10,Hull v Everton,home_goals_scored_avg,Recent form,0.0,0.0,1.0394736842105265,0.0,1.0394736842105265,True
+2026-10-10,Hull v Everton,home_goals_scored_avg,Recent form,0.0,0.0,1.0499999999999998,0.0,1.0499999999999998,True
 2026-10-10,Hull v Everton,away_goals_scored_avg,Recent form,1.4,1.4,1.4,0.0,0.0,True
 2026-10-10,Hull v Everton,home_advantage,Home advantage,1.0,1.0,1.0,0.0,0.0,True
 2026-10-10,Hull v Everton,home_xg_avg,xG/xGA,0.0,0.0,0.9875000000000002,0.0,0.9875000000000002,True
@@ -2227,17 +2227,17 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-10-10,Hull v Everton,home_elo_trend,Elo,0.0,0.0,0.0,0.0,0.0,True
 2026-10-10,Hull v Everton,away_elo_trend,Elo,-28.65888779815782,-28.65888779815782,-28.65888779815782,0.0,0.0,True
 2026-10-10,Hull v Everton,rolling_elo_form,Elo,28.65888779815782,28.65888779815782,28.65888779815782,0.0,0.0,True
-2026-10-10,Hull v Everton,home_shots_avg_last5,Shot volume,0.0,0.0,10.66,0.0,10.66,True
+2026-10-10,Hull v Everton,home_shots_avg_last5,Shot volume,0.0,0.0,10.05,0.0,10.05,True
 2026-10-10,Hull v Everton,away_shots_avg_last5,Shot volume,11.2,11.2,11.2,0.0,0.0,True
-2026-10-10,Hull v Everton,home_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-10-10,Hull v Everton,home_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.1500000000000004,0.0,3.1500000000000004,True
 2026-10-10,Hull v Everton,away_shots_on_target_avg_last5,Shot volume,4.4,4.4,4.4,0.0,0.0,True
-2026-10-10,Hull v Everton,home_shots_avg_last10,Shot volume,0.0,0.0,10.783,0.0,10.783,True
+2026-10-10,Hull v Everton,home_shots_avg_last10,Shot volume,0.0,0.0,8.7,0.0,8.7,True
 2026-10-10,Hull v Everton,away_shots_avg_last10,Shot volume,11.3,11.3,11.3,0.0,0.0,True
-2026-10-10,Hull v Everton,home_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-10-10,Hull v Everton,home_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.0,0.0,3.0,True
 2026-10-10,Hull v Everton,away_shots_on_target_avg_last10,Shot volume,5.0,5.0,5.0,0.0,0.0,True
-2026-10-10,Hull v Everton,home_shots_avg_season,Shot volume,0.0,0.0,10.401052631578947,0.0,10.401052631578947,True
+2026-10-10,Hull v Everton,home_shots_avg_season,Shot volume,0.0,0.0,8.396739130434781,0.0,8.396739130434781,True
 2026-10-10,Hull v Everton,away_shots_avg_season,Shot volume,11.052631578947368,11.052631578947368,11.052631578947368,0.0,0.0,True
-2026-10-10,Hull v Everton,home_shots_on_target_avg_season,Shot volume,0.0,0.0,3.452631578947369,0.0,3.452631578947369,True
+2026-10-10,Hull v Everton,home_shots_on_target_avg_season,Shot volume,0.0,0.0,3.0815217391304346,0.0,3.0815217391304346,True
 2026-10-10,Hull v Everton,away_shots_on_target_avg_season,Shot volume,3.789473684210526,3.789473684210526,3.789473684210526,0.0,0.0,True
 2026-10-10,Ipswich v Fulham,home_team_points_last_5,Recent form,1.0,1.0,1.0,0.0,0.0,False
 2026-10-10,Ipswich v Fulham,away_team_points_last_5,Recent form,7.0,7.0,7.0,0.0,0.0,False
@@ -2560,9 +2560,9 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-10-17,Everton v Chelsea,home_shots_on_target_avg_season,Shot volume,3.789473684210526,3.789473684210526,3.789473684210526,0.0,0.0,False
 2026-10-17,Everton v Chelsea,away_shots_on_target_avg_season,Shot volume,4.315789473684211,4.315789473684211,4.315789473684211,0.0,0.0,False
 2026-10-17,Fulham v Hull,home_team_points_last_5,Recent form,7.0,7.0,7.0,0.0,0.0,True
-2026-10-17,Fulham v Hull,away_team_points_last_5,Recent form,0.0,0.0,3.4210526315789473,0.0,3.4210526315789473,True
+2026-10-17,Fulham v Hull,away_team_points_last_5,Recent form,0.0,0.0,2.75,0.0,2.75,True
 2026-10-17,Fulham v Hull,home_goals_scored_avg,Recent form,0.8,0.8,0.8,0.0,0.0,True
-2026-10-17,Fulham v Hull,away_goals_scored_avg,Recent form,0.0,0.0,1.0394736842105265,0.0,1.0394736842105265,True
+2026-10-17,Fulham v Hull,away_goals_scored_avg,Recent form,0.0,0.0,1.0499999999999998,0.0,1.0499999999999998,True
 2026-10-17,Fulham v Hull,home_advantage,Home advantage,1.0,1.0,1.0,0.0,0.0,True
 2026-10-17,Fulham v Hull,home_xg_avg,xG/xGA,1.2787288,1.2787288,1.2787288,0.0,0.0,True
 2026-10-17,Fulham v Hull,away_xg_avg,xG/xGA,0.0,0.0,0.9875000000000002,0.0,0.9875000000000002,True
@@ -2588,17 +2588,17 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-10-17,Fulham v Hull,away_elo_trend,Elo,0.0,0.0,0.0,0.0,0.0,True
 2026-10-17,Fulham v Hull,rolling_elo_form,Elo,-11.182111686063763,-11.182111686063763,-11.182111686063763,0.0,0.0,True
 2026-10-17,Fulham v Hull,home_shots_avg_last5,Shot volume,14.2,14.2,14.2,0.0,0.0,True
-2026-10-17,Fulham v Hull,away_shots_avg_last5,Shot volume,0.0,0.0,10.66,0.0,10.66,True
+2026-10-17,Fulham v Hull,away_shots_avg_last5,Shot volume,0.0,0.0,10.05,0.0,10.05,True
 2026-10-17,Fulham v Hull,home_shots_on_target_avg_last5,Shot volume,4.0,4.0,4.0,0.0,0.0,True
-2026-10-17,Fulham v Hull,away_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-10-17,Fulham v Hull,away_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.1500000000000004,0.0,3.1500000000000004,True
 2026-10-17,Fulham v Hull,home_shots_avg_last10,Shot volume,14.1,14.1,14.1,0.0,0.0,True
-2026-10-17,Fulham v Hull,away_shots_avg_last10,Shot volume,0.0,0.0,10.783,0.0,10.783,True
+2026-10-17,Fulham v Hull,away_shots_avg_last10,Shot volume,0.0,0.0,8.7,0.0,8.7,True
 2026-10-17,Fulham v Hull,home_shots_on_target_avg_last10,Shot volume,3.5,3.5,3.5,0.0,0.0,True
-2026-10-17,Fulham v Hull,away_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-10-17,Fulham v Hull,away_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.0,0.0,3.0,True
 2026-10-17,Fulham v Hull,home_shots_avg_season,Shot volume,12.657894736842104,12.657894736842104,12.657894736842104,0.0,0.0,True
-2026-10-17,Fulham v Hull,away_shots_avg_season,Shot volume,0.0,0.0,10.401052631578947,0.0,10.401052631578947,True
+2026-10-17,Fulham v Hull,away_shots_avg_season,Shot volume,0.0,0.0,8.396739130434781,0.0,8.396739130434781,True
 2026-10-17,Fulham v Hull,home_shots_on_target_avg_season,Shot volume,3.6315789473684212,3.6315789473684212,3.6315789473684212,0.0,0.0,True
-2026-10-17,Fulham v Hull,away_shots_on_target_avg_season,Shot volume,0.0,0.0,3.452631578947369,0.0,3.452631578947369,True
+2026-10-17,Fulham v Hull,away_shots_on_target_avg_season,Shot volume,0.0,0.0,3.0815217391304346,0.0,3.0815217391304346,True
 2026-10-17,Leeds v Man United,home_team_points_last_5,Recent form,8.0,8.0,8.0,0.0,0.0,False
 2026-10-17,Leeds v Man United,away_team_points_last_5,Recent form,13.0,13.0,13.0,0.0,0.0,False
 2026-10-17,Leeds v Man United,home_goals_scored_avg,Recent form,1.4,1.4,1.4,0.0,0.0,False
@@ -2760,9 +2760,9 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-10-17,Nott'm Forest v Arsenal,home_shots_on_target_avg_season,Shot volume,4.105263157894737,4.105263157894737,4.105263157894737,0.0,0.0,False
 2026-10-17,Nott'm Forest v Arsenal,away_shots_on_target_avg_season,Shot volume,4.894736842105263,4.894736842105263,4.894736842105263,0.0,0.0,False
 2026-10-17,Tottenham v Coventry,home_team_points_last_5,Recent form,10.0,10.0,10.0,0.0,0.0,True
-2026-10-17,Tottenham v Coventry,away_team_points_last_5,Recent form,0.0,0.0,3.4210526315789473,0.0,3.4210526315789473,True
+2026-10-17,Tottenham v Coventry,away_team_points_last_5,Recent form,0.0,0.0,6.050000000000001,0.0,6.050000000000001,True
 2026-10-17,Tottenham v Coventry,home_goals_scored_avg,Recent form,1.2,1.2,1.2,0.0,0.0,True
-2026-10-17,Tottenham v Coventry,away_goals_scored_avg,Recent form,0.0,0.0,1.0394736842105265,0.0,1.0394736842105265,True
+2026-10-17,Tottenham v Coventry,away_goals_scored_avg,Recent form,0.0,0.0,1.9500000000000002,0.0,1.9500000000000002,True
 2026-10-17,Tottenham v Coventry,home_advantage,Home advantage,1.0,1.0,1.0,0.0,0.0,True
 2026-10-17,Tottenham v Coventry,home_xg_avg,xG/xGA,1.446976,1.446976,1.446976,0.0,0.0,True
 2026-10-17,Tottenham v Coventry,away_xg_avg,xG/xGA,0.0,0.0,0.9875000000000002,0.0,0.9875000000000002,True
@@ -2788,17 +2788,17 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-10-17,Tottenham v Coventry,away_elo_trend,Elo,0.0,0.0,0.0,0.0,0.0,True
 2026-10-17,Tottenham v Coventry,rolling_elo_form,Elo,31.821793458162574,31.821793458162574,31.821793458162574,0.0,0.0,True
 2026-10-17,Tottenham v Coventry,home_shots_avg_last5,Shot volume,13.4,13.4,13.4,0.0,0.0,True
-2026-10-17,Tottenham v Coventry,away_shots_avg_last5,Shot volume,0.0,0.0,10.66,0.0,10.66,True
+2026-10-17,Tottenham v Coventry,away_shots_avg_last5,Shot volume,0.0,0.0,12.0,0.0,12.0,True
 2026-10-17,Tottenham v Coventry,home_shots_on_target_avg_last5,Shot volume,3.8,3.8,3.8,0.0,0.0,True
-2026-10-17,Tottenham v Coventry,away_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-10-17,Tottenham v Coventry,away_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.5999999999999996,0.0,3.5999999999999996,True
 2026-10-17,Tottenham v Coventry,home_shots_avg_last10,Shot volume,13.0,13.0,13.0,0.0,0.0,True
-2026-10-17,Tottenham v Coventry,away_shots_avg_last10,Shot volume,0.0,0.0,10.783,0.0,10.783,True
+2026-10-17,Tottenham v Coventry,away_shots_avg_last10,Shot volume,0.0,0.0,11.850000000000001,0.0,11.850000000000001,True
 2026-10-17,Tottenham v Coventry,home_shots_on_target_avg_last10,Shot volume,4.6,4.6,4.6,0.0,0.0,True
-2026-10-17,Tottenham v Coventry,away_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-10-17,Tottenham v Coventry,away_shots_on_target_avg_last10,Shot volume,0.0,0.0,4.050000000000001,0.0,4.050000000000001,True
 2026-10-17,Tottenham v Coventry,home_shots_avg_season,Shot volume,11.473684210526315,11.473684210526315,11.473684210526315,0.0,0.0,True
-2026-10-17,Tottenham v Coventry,away_shots_avg_season,Shot volume,0.0,0.0,10.401052631578947,0.0,10.401052631578947,True
+2026-10-17,Tottenham v Coventry,away_shots_avg_season,Shot volume,0.0,0.0,12.244565217391305,0.0,12.244565217391305,True
 2026-10-17,Tottenham v Coventry,home_shots_on_target_avg_season,Shot volume,3.9473684210526314,3.9473684210526314,3.9473684210526314,0.0,0.0,True
-2026-10-17,Tottenham v Coventry,away_shots_on_target_avg_season,Shot volume,0.0,0.0,3.452631578947369,0.0,3.452631578947369,True
+2026-10-17,Tottenham v Coventry,away_shots_on_target_avg_season,Shot volume,0.0,0.0,4.173913043478261,0.0,4.173913043478261,True
 2026-10-24,Arsenal v Everton,home_team_points_last_5,Recent form,15.0,15.0,15.0,0.0,0.0,False
 2026-10-24,Arsenal v Everton,away_team_points_last_5,Recent form,2.0,2.0,2.0,0.0,0.0,False
 2026-10-24,Arsenal v Everton,home_goals_scored_avg,Recent form,1.6,1.6,1.6,0.0,0.0,False
@@ -2919,9 +2919,9 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-10-24,Chelsea v Tottenham,away_shots_avg_season,Shot volume,11.473684210526315,11.473684210526315,11.473684210526315,0.0,0.0,False
 2026-10-24,Chelsea v Tottenham,home_shots_on_target_avg_season,Shot volume,4.315789473684211,4.315789473684211,4.315789473684211,0.0,0.0,False
 2026-10-24,Chelsea v Tottenham,away_shots_on_target_avg_season,Shot volume,3.9473684210526314,3.9473684210526314,3.9473684210526314,0.0,0.0,False
-2026-10-24,Coventry v Fulham,home_team_points_last_5,Recent form,0.0,0.0,3.4210526315789473,0.0,3.4210526315789473,True
+2026-10-24,Coventry v Fulham,home_team_points_last_5,Recent form,0.0,0.0,6.050000000000001,0.0,6.050000000000001,True
 2026-10-24,Coventry v Fulham,away_team_points_last_5,Recent form,7.0,7.0,7.0,0.0,0.0,True
-2026-10-24,Coventry v Fulham,home_goals_scored_avg,Recent form,0.0,0.0,1.0394736842105265,0.0,1.0394736842105265,True
+2026-10-24,Coventry v Fulham,home_goals_scored_avg,Recent form,0.0,0.0,1.9500000000000002,0.0,1.9500000000000002,True
 2026-10-24,Coventry v Fulham,away_goals_scored_avg,Recent form,0.8,0.8,0.8,0.0,0.0,True
 2026-10-24,Coventry v Fulham,home_advantage,Home advantage,1.0,1.0,1.0,0.0,0.0,True
 2026-10-24,Coventry v Fulham,home_xg_avg,xG/xGA,0.0,0.0,0.9875000000000002,0.0,0.9875000000000002,True
@@ -2947,17 +2947,17 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-10-24,Coventry v Fulham,home_elo_trend,Elo,0.0,0.0,0.0,0.0,0.0,True
 2026-10-24,Coventry v Fulham,away_elo_trend,Elo,-11.182111686063763,-11.182111686063763,-11.182111686063763,0.0,0.0,True
 2026-10-24,Coventry v Fulham,rolling_elo_form,Elo,11.182111686063763,11.182111686063763,11.182111686063763,0.0,0.0,True
-2026-10-24,Coventry v Fulham,home_shots_avg_last5,Shot volume,0.0,0.0,10.66,0.0,10.66,True
+2026-10-24,Coventry v Fulham,home_shots_avg_last5,Shot volume,0.0,0.0,12.0,0.0,12.0,True
 2026-10-24,Coventry v Fulham,away_shots_avg_last5,Shot volume,14.2,14.2,14.2,0.0,0.0,True
-2026-10-24,Coventry v Fulham,home_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-10-24,Coventry v Fulham,home_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.5999999999999996,0.0,3.5999999999999996,True
 2026-10-24,Coventry v Fulham,away_shots_on_target_avg_last5,Shot volume,4.0,4.0,4.0,0.0,0.0,True
-2026-10-24,Coventry v Fulham,home_shots_avg_last10,Shot volume,0.0,0.0,10.783,0.0,10.783,True
+2026-10-24,Coventry v Fulham,home_shots_avg_last10,Shot volume,0.0,0.0,11.850000000000001,0.0,11.850000000000001,True
 2026-10-24,Coventry v Fulham,away_shots_avg_last10,Shot volume,14.1,14.1,14.1,0.0,0.0,True
-2026-10-24,Coventry v Fulham,home_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-10-24,Coventry v Fulham,home_shots_on_target_avg_last10,Shot volume,0.0,0.0,4.050000000000001,0.0,4.050000000000001,True
 2026-10-24,Coventry v Fulham,away_shots_on_target_avg_last10,Shot volume,3.5,3.5,3.5,0.0,0.0,True
-2026-10-24,Coventry v Fulham,home_shots_avg_season,Shot volume,0.0,0.0,10.401052631578947,0.0,10.401052631578947,True
+2026-10-24,Coventry v Fulham,home_shots_avg_season,Shot volume,0.0,0.0,12.244565217391305,0.0,12.244565217391305,True
 2026-10-24,Coventry v Fulham,away_shots_avg_season,Shot volume,12.657894736842104,12.657894736842104,12.657894736842104,0.0,0.0,True
-2026-10-24,Coventry v Fulham,home_shots_on_target_avg_season,Shot volume,0.0,0.0,3.452631578947369,0.0,3.452631578947369,True
+2026-10-24,Coventry v Fulham,home_shots_on_target_avg_season,Shot volume,0.0,0.0,4.173913043478261,0.0,4.173913043478261,True
 2026-10-24,Coventry v Fulham,away_shots_on_target_avg_season,Shot volume,3.6315789473684212,3.6315789473684212,3.6315789473684212,0.0,0.0,True
 2026-10-24,Crystal Palace v Newcastle,home_team_points_last_5,Recent form,2.0,2.0,2.0,0.0,0.0,False
 2026-10-24,Crystal Palace v Newcastle,away_team_points_last_5,Recent form,7.0,7.0,7.0,0.0,0.0,False
@@ -2999,9 +2999,9 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-10-24,Crystal Palace v Newcastle,away_shots_avg_season,Shot volume,12.947368421052632,12.947368421052632,12.947368421052632,0.0,0.0,False
 2026-10-24,Crystal Palace v Newcastle,home_shots_on_target_avg_season,Shot volume,3.710526315789474,3.710526315789474,3.710526315789474,0.0,0.0,False
 2026-10-24,Crystal Palace v Newcastle,away_shots_on_target_avg_season,Shot volume,4.631578947368421,4.631578947368421,4.631578947368421,0.0,0.0,False
-2026-10-24,Hull v Brentford,home_team_points_last_5,Recent form,0.0,0.0,3.4210526315789473,0.0,3.4210526315789473,True
+2026-10-24,Hull v Brentford,home_team_points_last_5,Recent form,0.0,0.0,2.75,0.0,2.75,True
 2026-10-24,Hull v Brentford,away_team_points_last_5,Recent form,5.0,5.0,5.0,0.0,0.0,True
-2026-10-24,Hull v Brentford,home_goals_scored_avg,Recent form,0.0,0.0,1.0394736842105265,0.0,1.0394736842105265,True
+2026-10-24,Hull v Brentford,home_goals_scored_avg,Recent form,0.0,0.0,1.0499999999999998,0.0,1.0499999999999998,True
 2026-10-24,Hull v Brentford,away_goals_scored_avg,Recent form,1.4,1.4,1.4,0.0,0.0,True
 2026-10-24,Hull v Brentford,home_advantage,Home advantage,1.0,1.0,1.0,0.0,0.0,True
 2026-10-24,Hull v Brentford,home_xg_avg,xG/xGA,0.0,0.0,0.9875000000000002,0.0,0.9875000000000002,True
@@ -3027,17 +3027,17 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-10-24,Hull v Brentford,home_elo_trend,Elo,0.0,0.0,0.0,0.0,0.0,True
 2026-10-24,Hull v Brentford,away_elo_trend,Elo,4.525209084677272,4.525209084677272,4.525209084677272,0.0,0.0,True
 2026-10-24,Hull v Brentford,rolling_elo_form,Elo,-4.525209084677272,-4.525209084677272,-4.525209084677272,0.0,0.0,True
-2026-10-24,Hull v Brentford,home_shots_avg_last5,Shot volume,0.0,0.0,10.66,0.0,10.66,True
+2026-10-24,Hull v Brentford,home_shots_avg_last5,Shot volume,0.0,0.0,10.05,0.0,10.05,True
 2026-10-24,Hull v Brentford,away_shots_avg_last5,Shot volume,11.0,11.0,11.0,0.0,0.0,True
-2026-10-24,Hull v Brentford,home_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-10-24,Hull v Brentford,home_shots_on_target_avg_last5,Shot volume,0.0,0.0,3.1500000000000004,0.0,3.1500000000000004,True
 2026-10-24,Hull v Brentford,away_shots_on_target_avg_last5,Shot volume,3.4,3.4,3.4,0.0,0.0,True
-2026-10-24,Hull v Brentford,home_shots_avg_last10,Shot volume,0.0,0.0,10.783,0.0,10.783,True
+2026-10-24,Hull v Brentford,home_shots_avg_last10,Shot volume,0.0,0.0,8.7,0.0,8.7,True
 2026-10-24,Hull v Brentford,away_shots_avg_last10,Shot volume,10.6,10.6,10.6,0.0,0.0,True
-2026-10-24,Hull v Brentford,home_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.69,0.0,3.69,True
+2026-10-24,Hull v Brentford,home_shots_on_target_avg_last10,Shot volume,0.0,0.0,3.0,0.0,3.0,True
 2026-10-24,Hull v Brentford,away_shots_on_target_avg_last10,Shot volume,3.2,3.2,3.2,0.0,0.0,True
-2026-10-24,Hull v Brentford,home_shots_avg_season,Shot volume,0.0,0.0,10.401052631578947,0.0,10.401052631578947,True
+2026-10-24,Hull v Brentford,home_shots_avg_season,Shot volume,0.0,0.0,8.396739130434781,0.0,8.396739130434781,True
 2026-10-24,Hull v Brentford,away_shots_avg_season,Shot volume,10.657894736842104,10.657894736842104,10.657894736842104,0.0,0.0,True
-2026-10-24,Hull v Brentford,home_shots_on_target_avg_season,Shot volume,0.0,0.0,3.452631578947369,0.0,3.452631578947369,True
+2026-10-24,Hull v Brentford,home_shots_on_target_avg_season,Shot volume,0.0,0.0,3.0815217391304346,0.0,3.0815217391304346,True
 2026-10-24,Hull v Brentford,away_shots_on_target_avg_season,Shot volume,3.8684210526315788,3.8684210526315788,3.8684210526315788,0.0,0.0,True
 2026-10-24,Ipswich v Nott'm Forest,home_team_points_last_5,Recent form,1.0,1.0,1.0,0.0,0.0,False
 2026-10-24,Ipswich v Nott'm Forest,away_team_points_last_5,Recent form,8.0,8.0,8.0,0.0,0.0,False
