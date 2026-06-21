@@ -20,7 +20,7 @@ from sklearn.frozen import FrozenEstimator
 
 from elo_rating_features import EloConfig, build_current_elo_state, build_elo_features, build_prediction_elo_row, elo_feature_columns
 from feature_experiments import _markdown_table, train_xgb
-from official_fixtures import OFFICIAL_FIXTURE_PATH, fixtures_for_model, load_official_fixtures
+from official_fixtures import OFFICIAL_FIXTURE_PATH, fixtures_for_model, load_official_fixtures, schedule_context_for_fixture
 from train_model import ELO_CONFIG, MODEL_PATH, PRODUCTION_FEATURE_COLUMNS, SCHEDULE_FEATURE_COLUMNS, build_features, load_matches_with_xg
 
 matplotlib.use("Agg")
@@ -36,6 +36,30 @@ SEASON_LABELS = {
 }
 OUTCOME_LABELS = ["home", "draw", "away"]
 RANDOM_SEED = 42
+EMPTY_TEAM_HISTORY = {
+    "points": [],
+    "goals_scored": [],
+    "xg": [],
+    "xga": [],
+    "match_dates": [],
+    "shots": [],
+    "shots_on_target": [],
+    "shot_seasons": [],
+}
+ACTIVE_FEATURE_GROUPS = {
+    "recent_form": ["team_points_last_5", "goals_scored_avg"],
+    "xg_strength": ["xg_avg", "xga_avg", "xg_diff"],
+    "schedule_fatigue": ["days_rest", "matches_last_14_days", "had_midweek_match", "days_since_last_match"],
+    "elo": ["elo", "elo_recent_change"],
+    "shot_volume": [
+        "shots_avg_last5",
+        "shots_on_target_avg_last5",
+        "shots_avg_last10",
+        "shots_on_target_avg_last10",
+        "shots_avg_season",
+        "shots_on_target_avg_season",
+    ],
+}
 
 
 def average(values: list[float]) -> float:
@@ -62,6 +86,10 @@ def latest_season_average(values: list[float], seasons: list[str]) -> float:
     return average(season_values)
 
 
+def _team_history(team_history: dict[str, dict[str, list[float]]], team: str) -> dict[str, list[float]]:
+    return team_history.get(team, EMPTY_TEAM_HISTORY)
+
+
 def days_since_last_match(match_dates: list, match_date) -> float:
     previous = [date for date in match_dates if date < match_date]
     return float((match_date - max(previous)).days) if previous else 14.0
@@ -81,13 +109,13 @@ def feature_row_for_fixture(
     team_history: dict[str, dict[str, list[float]]],
     elo_state: dict[str, dict[str, object]],
     feature_columns: list[str],
+    team_feature_overrides: dict[str, dict[str, float]] | None = None,
 ) -> dict[str, float]:
     home_team = fixture["HomeTeam"]
     away_team = fixture["AwayTeam"]
     match_date = fixture["Date"]
-    empty = {"points": [], "goals_scored": [], "xg": [], "xga": [], "match_dates": [], "shots": [], "shots_on_target": [], "shot_seasons": []}
-    home = team_history.get(home_team, empty)
-    away = team_history.get(away_team, empty)
+    home = _team_history(team_history, home_team)
+    away = _team_history(team_history, away_team)
     home_xg = last_5_average(home.get("xg", []))
     away_xg = last_5_average(away.get("xg", []))
     home_xga = last_5_average(home.get("xga", []))
@@ -142,64 +170,257 @@ def feature_row_for_fixture(
         )
     if any("elo" in column for column in feature_columns):
         row.update(build_prediction_elo_row(home_team, away_team, elo_state))
+    if team_feature_overrides:
+        for prefix, team in [("home", home_team), ("away", away_team)]:
+            overrides = team_feature_overrides.get(team, {})
+            for key, value in overrides.items():
+                column = f"{prefix}_{key}"
+                if column in row:
+                    row[column] = float(value)
     return {column: float(row.get(column, 0.0)) for column in feature_columns}
+
+
+def _raw_team_feature_values(team: str, team_history: dict[str, dict[str, list[float]]], elo_state: dict[str, dict[str, object]]) -> dict[str, object]:
+    history = _team_history(team_history, team)
+    points = history.get("points", [])
+    goals = history.get("goals_scored", [])
+    xg = history.get("xg", [])
+    xga = history.get("xga", [])
+    shots = history.get("shots", [])
+    shots_on_target = history.get("shots_on_target", [])
+    shot_seasons = history.get("shot_seasons", [])
+    match_dates = history.get("match_dates", [])
+    elo = elo_state.get(team, {})
+    elo_history = [float(value) for value in elo.get("history", [])]
+    elo_rating = float(elo.get("rating", 1500.0))
+    xg_avg = last_5_average(xg)
+    xga_avg = last_5_average(xga)
+    return {
+        "team": team,
+        "local_pl_match_count": len(points),
+        "latest_premier_league_match": max(match_dates).isoformat() if match_dates else "",
+        "raw_recent_form_points_last5": last_5_sum(points),
+        "raw_recent_goals_scored_avg_last5": last_5_average(goals),
+        "raw_xg_strength_last5": xg_avg,
+        "raw_xga_strength_last5": xga_avg,
+        "raw_xg_diff_last5": xg_avg - xga_avg,
+        "raw_shots_avg_last5": last_n_average(shots, 5),
+        "raw_shots_on_target_avg_last5": last_n_average(shots_on_target, 5),
+        "raw_shots_avg_last10": last_n_average(shots, 10),
+        "raw_shots_on_target_avg_last10": last_n_average(shots_on_target, 10),
+        "raw_shots_avg_latest_season": latest_season_average(shots, shot_seasons),
+        "raw_shots_on_target_avg_latest_season": latest_season_average(shots_on_target, shot_seasons),
+        "elo_rating": elo_rating,
+        "elo_recent_change": float(elo_rating - elo_history[-5]) if len(elo_history) >= 5 else 0.0,
+        "elo_fallback": team not in elo_state,
+    }
+
+
+def promoted_team_baseline(matches: pd.DataFrame | None = None) -> dict[str, float]:
+    matches = load_matches_with_xg() if matches is None else matches.copy()
+    season_tables = []
+    seasons = sorted(matches["Season"].dropna().astype(str).unique())
+    for season_index, season in enumerate(seasons):
+        season_matches = matches[matches["Season"].astype(str) == season].copy()
+        if season_matches.empty:
+            continue
+        table = season_table_from_results(season_matches)
+        table["season"] = season
+        table["position"] = range(1, len(table) + 1)
+        previous_season = seasons[season_index - 1] if season_index else None
+        previous_matches = matches[matches["Season"].astype(str) == previous_season] if previous_season else pd.DataFrame()
+        previous_teams = set(previous_matches.get("HomeTeam", pd.Series(dtype=str))).union(
+            set(previous_matches.get("AwayTeam", pd.Series(dtype=str)))
+        )
+        if season_index == 0:
+            table["promoted_proxy"] = False
+        else:
+            table["promoted_proxy"] = ~table["team"].isin(previous_teams)
+        season_tables.append(table)
+
+    if not season_tables:
+        return {
+            "average_points": 34.0,
+            "median_points": 34.0,
+            "average_position": 17.0,
+            "median_position": 17.0,
+            "relegation_rate": 0.55,
+            "goals_for_per_match": 1.05,
+            "goals_against_per_match": 1.70,
+        }
+
+    promoted = pd.concat(season_tables, ignore_index=True).query("promoted_proxy == True")
+    if promoted.empty:
+        promoted = pd.concat(season_tables, ignore_index=True).sort_values("points").head(12)
+    promoted["goals_for_per_match"] = promoted["gf"] / 38.0
+    promoted["goals_against_per_match"] = promoted["ga"] / 38.0
+    return {
+        "average_points": float(promoted["points"].mean()),
+        "median_points": float(promoted["points"].median()),
+        "average_position": float(promoted["position"].mean()),
+        "median_position": float(promoted["position"].median()),
+        "relegation_rate": float((promoted["position"] >= 18).mean()),
+        "goals_for_per_match": float(promoted["goals_for_per_match"].mean()),
+        "goals_against_per_match": float(promoted["goals_against_per_match"].mean()),
+    }
+
+
+def _league_feature_medians(raw_rows: list[dict[str, object]]) -> dict[str, float]:
+    frame = pd.DataFrame(raw_rows)
+    frame = frame[frame["local_pl_match_count"] >= 5].copy()
+    if frame.empty:
+        return {}
+    keys = [
+        "raw_recent_form_points_last5",
+        "raw_recent_goals_scored_avg_last5",
+        "raw_xg_strength_last5",
+        "raw_xga_strength_last5",
+        "raw_shots_avg_last5",
+        "raw_shots_on_target_avg_last5",
+        "raw_shots_avg_last10",
+        "raw_shots_on_target_avg_last10",
+        "raw_shots_avg_latest_season",
+        "raw_shots_on_target_avg_latest_season",
+    ]
+    return {key: float(frame[key].median()) for key in keys}
+
+
+def _adjusted_values(raw: dict[str, object], medians: dict[str, float], promoted_baseline: dict[str, float]) -> tuple[dict[str, float], str, str, bool]:
+    local_count = int(raw["local_pl_match_count"])
+    if local_count >= 5:
+        adjusted = {
+            "team_points_last_5": float(raw["raw_recent_form_points_last5"]),
+            "goals_scored_avg": float(raw["raw_recent_goals_scored_avg_last5"]),
+            "xg_avg": float(raw["raw_xg_strength_last5"]),
+            "xga_avg": float(raw["raw_xga_strength_last5"]),
+            "shots_avg_last5": float(raw["raw_shots_avg_last5"]),
+            "shots_on_target_avg_last5": float(raw["raw_shots_on_target_avg_last5"]),
+            "shots_avg_last10": float(raw["raw_shots_avg_last10"]),
+            "shots_on_target_avg_last10": float(raw["raw_shots_on_target_avg_last10"]),
+            "shots_avg_season": float(raw["raw_shots_avg_latest_season"]),
+            "shots_on_target_avg_season": float(raw["raw_shots_on_target_avg_latest_season"]),
+        }
+        adjusted["xg_diff"] = adjusted["xg_avg"] - adjusted["xga_avg"]
+        return adjusted, "Premier League historical data", "none", False
+
+    points_from_promoted_baseline = promoted_baseline["median_points"] / 38.0 * 5.0
+    goals_for = promoted_baseline["goals_for_per_match"]
+    goals_against = promoted_baseline["goals_against_per_match"]
+    adjusted_xg = min(medians.get("raw_xg_strength_last5", 1.25) * 0.82, goals_for * 0.95)
+    adjusted_xga = max(medians.get("raw_xga_strength_last5", 1.45) * 1.18, goals_against * 0.95)
+    adjusted = {
+        "team_points_last_5": min(medians.get("raw_recent_form_points_last5", 5.0) * 0.85, points_from_promoted_baseline),
+        "goals_scored_avg": min(medians.get("raw_recent_goals_scored_avg_last5", 1.15) * 0.85, goals_for),
+        "xg_avg": adjusted_xg,
+        "xga_avg": adjusted_xga,
+        "shots_avg_last5": medians.get("raw_shots_avg_last5", 10.0) * 0.82,
+        "shots_on_target_avg_last5": medians.get("raw_shots_on_target_avg_last5", 3.5) * 0.82,
+        "shots_avg_last10": medians.get("raw_shots_avg_last10", 10.0) * 0.82,
+        "shots_on_target_avg_last10": medians.get("raw_shots_on_target_avg_last10", 3.5) * 0.82,
+        "shots_avg_season": medians.get("raw_shots_avg_latest_season", 10.0) * 0.82,
+        "shots_on_target_avg_season": medians.get("raw_shots_on_target_avg_latest_season", 3.5) * 0.82,
+    }
+    adjusted["xg_diff"] = adjusted["xg_avg"] - adjusted["xga_avg"]
+    source = "Promoted-team conservative Premier League baseline"
+    reason = "No local Premier League history; Championship data is not treated as Premier League-equivalent."
+    return adjusted, source, reason, True
 
 
 def season_start_feature_audit(
     teams: tuple[str, ...] | list[str],
     team_history: dict[str, dict[str, list[float]]],
     elo_state: dict[str, dict[str, object]],
+    matches: pd.DataFrame | None = None,
 ) -> pd.DataFrame:
+    raw_rows = [_raw_team_feature_values(team, team_history, elo_state) for team in sorted(teams)]
+    medians = _league_feature_medians(raw_rows)
+    promoted_baseline = promoted_team_baseline(matches)
     rows = []
-    for team in sorted(teams):
-        history = team_history.get(
-            team,
-            {"points": [], "goals_scored": [], "xg": [], "xga": [], "match_dates": [], "shots": [], "shots_on_target": [], "shot_seasons": []},
-        )
-        points = history.get("points", [])
-        goals = history.get("goals_scored", [])
-        xg = history.get("xg", [])
-        xga = history.get("xga", [])
-        shots = history.get("shots", [])
-        shots_on_target = history.get("shots_on_target", [])
-        shot_seasons = history.get("shot_seasons", [])
-        match_dates = history.get("match_dates", [])
-        elo = elo_state.get(team, {})
-        elo_history = [float(value) for value in elo.get("history", [])]
-        elo_rating = float(elo.get("rating", 1500.0))
-        premier_league_matches = len(points)
-        xg_avg = last_5_average(xg)
-        xga_avg = last_5_average(xga)
+    for raw in raw_rows:
+        adjusted, source, fallback_reason, fallback_used = _adjusted_values(raw, medians, promoted_baseline)
+        local_count = int(raw["local_pl_match_count"])
         flags = {
-            "no_premier_league_history": premier_league_matches == 0,
-            "limited_recent_form": 0 < premier_league_matches < 5,
-            "xg_fallback": len(xg) < 5,
-            "shot_volume_fallback": len(shots) < 5,
-            "elo_fallback": team not in elo_state,
+            "no_premier_league_history": local_count == 0,
+            "limited_recent_form": 0 < local_count < 5,
+            "xg_fallback": local_count < 5,
+            "shot_volume_fallback": local_count < 5,
+            "elo_fallback": bool(raw["elo_fallback"]),
         }
+        row = {
+            **raw,
+            "data_source_league": source,
+            "source_league": source,
+            "premier_league_matches_available": local_count,
+            "fallback_used": bool(fallback_used),
+            "fallback_reason": fallback_reason,
+            "recent_form_points_last5": adjusted["team_points_last_5"],
+            "recent_goals_scored_avg_last5": adjusted["goals_scored_avg"],
+            "xg_strength_last5": adjusted["xg_avg"],
+            "xga_strength_last5": adjusted["xga_avg"],
+            "xg_diff_last5": adjusted["xg_diff"],
+            "shots_avg_last5": adjusted["shots_avg_last5"],
+            "shots_on_target_avg_last5": adjusted["shots_on_target_avg_last5"],
+            "shots_avg_last10": adjusted["shots_avg_last10"],
+            "shots_on_target_avg_last10": adjusted["shots_on_target_avg_last10"],
+            "shots_avg_latest_season": adjusted["shots_avg_season"],
+            "shots_on_target_avg_latest_season": adjusted["shots_on_target_avg_season"],
+            "fallback_flags": ", ".join(flag for flag, active in flags.items() if active) or "none",
+        }
+        rows.append(row)
+    return pd.DataFrame(rows)
+
+
+def projection_feature_overrides(feature_audit: pd.DataFrame) -> dict[str, dict[str, float]]:
+    overrides: dict[str, dict[str, float]] = {}
+    for row in feature_audit.itertuples(index=False):
+        if not bool(row.fallback_used):
+            continue
+        overrides[str(row.team)] = {
+            "team_points_last_5": float(row.recent_form_points_last5),
+            "goals_scored_avg": float(row.recent_goals_scored_avg_last5),
+            "xg_avg": float(row.xg_strength_last5),
+            "xga_avg": float(row.xga_strength_last5),
+            "xg_diff": float(row.xg_diff_last5),
+            "shots_avg_last5": float(row.shots_avg_last5),
+            "shots_on_target_avg_last5": float(row.shots_on_target_avg_last5),
+            "shots_avg_last10": float(row.shots_avg_last10),
+            "shots_on_target_avg_last10": float(row.shots_on_target_avg_last10),
+            "shots_avg_season": float(row.shots_avg_latest_season),
+            "shots_on_target_avg_season": float(row.shots_on_target_avg_latest_season),
+        }
+    return overrides
+
+
+def validate_projection_feature_inputs(feature_audit: pd.DataFrame, feature_columns: list[str]) -> tuple[str, pd.DataFrame]:
+    rows = []
+    for row in feature_audit.itertuples(index=False):
+        missing_groups = []
+        if int(row.premier_league_matches_available) < 5 and not bool(row.fallback_used):
+            missing_groups.extend(["recent_form", "xg_strength", "shot_volume"])
+        if bool(row.fallback_used) and not str(row.fallback_reason):
+            missing_groups.append("fallback_reason")
         rows.append(
             {
-                "team": team,
-                "data_source_league": "Premier League historical data" if premier_league_matches else "No local Premier League history",
-                "premier_league_matches_available": premier_league_matches,
-                "latest_premier_league_match": max(match_dates).isoformat() if match_dates else "",
-                "recent_form_points_last5": last_5_sum(points),
-                "recent_goals_scored_avg_last5": last_5_average(goals),
-                "xg_strength_last5": xg_avg,
-                "xga_strength_last5": xga_avg,
-                "xg_diff_last5": xg_avg - xga_avg,
-                "shots_avg_last5": last_n_average(shots, 5),
-                "shots_on_target_avg_last5": last_n_average(shots_on_target, 5),
-                "shots_avg_last10": last_n_average(shots, 10),
-                "shots_on_target_avg_last10": last_n_average(shots_on_target, 10),
-                "shots_avg_latest_season": latest_season_average(shots, shot_seasons),
-                "shots_on_target_avg_latest_season": latest_season_average(shots_on_target, shot_seasons),
-                "elo_rating": elo_rating,
-                "elo_recent_change": float(elo_rating - elo_history[-5]) if len(elo_history) >= 5 else 0.0,
-                "fallback_flags": ", ".join(flag for flag, active in flags.items() if active) or "none",
+                "team": row.team,
+                "feature_validation_status": "error" if missing_groups else ("warning" if bool(row.fallback_used) else "ok"),
+                "fallback_used": bool(row.fallback_used),
+                "fallback_reason": row.fallback_reason,
+                "source_league": row.source_league,
+                "local_pl_match_count": int(row.premier_league_matches_available),
+                "missing_or_fallback_groups": ", ".join(missing_groups) if missing_groups else ("explicit_fallback" if bool(row.fallback_used) else "none"),
             }
         )
-    return pd.DataFrame(rows)
+    validation = pd.DataFrame(rows)
+    if (validation["feature_validation_status"] == "error").any():
+        status = "Error"
+    elif (validation["feature_validation_status"] == "warning").any():
+        status = "Warning"
+    else:
+        status = "OK"
+    active_missing = [column for column in feature_columns if column not in PRODUCTION_FEATURE_COLUMNS]
+    if active_missing:
+        status = "Error"
+    return status, validation
 
 
 def predict_fixture_probabilities(
@@ -209,6 +430,8 @@ def predict_fixture_probabilities(
     preseason_team_history: dict[str, dict[str, list[float]]],
     preseason_elo_state: dict[str, dict[str, object]],
     calibrator=None,
+    team_feature_overrides: dict[str, dict[str, float]] | None = None,
+    fixture_schedule_frame: pd.DataFrame | None = None,
 ) -> pd.DataFrame:
     rolling_history = deepcopy(preseason_team_history)
     rows = []
@@ -220,7 +443,12 @@ def predict_fixture_probabilities(
                 team,
                 {"points": [], "goals_scored": [], "xg": [], "xga": [], "match_dates": [], "shots": [], "shots_on_target": [], "shot_seasons": []},
             )
-        row = feature_row_for_fixture(fixture, rolling_history, preseason_elo_state, feature_columns)
+        row = feature_row_for_fixture(fixture, rolling_history, preseason_elo_state, feature_columns, team_feature_overrides=team_feature_overrides)
+        if fixture_schedule_frame is not None:
+            schedule_context = schedule_context_for_fixture(fixture_schedule_frame, home_team, away_team, fixture["Date"])
+            for column, value in schedule_context.items():
+                if column in row:
+                    row[column] = float(value)
         X = pd.DataFrame([row], columns=feature_columns)
         probabilities = calibrator.predict_proba(X)[0] if calibrator is not None else model.predict_proba(X)[0]
         probabilities = np.clip(probabilities, 1e-15, 1.0)
