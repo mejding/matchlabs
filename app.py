@@ -570,10 +570,37 @@ def inject_styles() -> None:
             min-height: 44px;
             font-weight: 850;
         }
+        div[data-testid="stSegmentedControl"] {
+            margin-bottom: 14px;
+        }
+        div[data-testid="stSegmentedControl"] label {
+            border-radius: 8px !important;
+            min-height: 44px;
+            font-weight: 850;
+        }
+        button[data-testid="stBaseButton-segmented_control"] {
+            background: #09172a !important;
+            border: 1px solid rgba(229, 231, 235, 0.22) !important;
+            border-radius: 8px !important;
+            color: #e5e7eb !important;
+            min-height: 44px !important;
+            font-weight: 850 !important;
+        }
+        button[data-testid="stBaseButton-segmented_controlActive"] {
+            background: #2dd4bf !important;
+            border: 1px solid #2dd4bf !important;
+            border-radius: 8px !important;
+            color: #052e2b !important;
+            min-height: 44px !important;
+            font-weight: 900 !important;
+            box-shadow: 0 10px 22px rgba(45, 212, 191, 0.18) !important;
+        }
         div[data-testid="stSelectbox"] [data-baseweb="select"],
         .stSelectbox [data-baseweb="select"],
         div[data-testid="stSelectbox"] [data-baseweb="select"] > div,
-        .stSelectbox [data-baseweb="select"] > div {
+        .stSelectbox [data-baseweb="select"] > div,
+        div[data-testid="stSelectbox"] .react-aria-ComboBox div[role="group"],
+        .stSelectbox .react-aria-ComboBox div[role="group"] {
             background: #f8fafc !important;
             border: 1px solid rgba(34, 197, 94, 0.78) !important;
             border-radius: 8px !important;
@@ -586,12 +613,18 @@ def inject_styles() -> None:
         div[data-testid="stSelectbox"] [data-baseweb="select"] input,
         .stSelectbox [data-baseweb="select"] span,
         .stSelectbox [data-baseweb="select"] div,
-        .stSelectbox [data-baseweb="select"] input {
+        .stSelectbox [data-baseweb="select"] input,
+        div[data-testid="stSelectbox"] .react-aria-ComboBox div,
+        div[data-testid="stSelectbox"] .react-aria-ComboBox input,
+        .stSelectbox .react-aria-ComboBox div,
+        .stSelectbox .react-aria-ComboBox input {
             color: #0f172a !important;
             -webkit-text-fill-color: #0f172a !important;
         }
         div[data-testid="stSelectbox"] [data-baseweb="select"] svg,
-        .stSelectbox [data-baseweb="select"] svg {
+        .stSelectbox [data-baseweb="select"] svg,
+        div[data-testid="stSelectbox"] .react-aria-ComboBox svg,
+        .stSelectbox .react-aria-ComboBox svg {
             color: #166534 !important;
             fill: #166534 !important;
         }
@@ -1245,18 +1278,16 @@ def render_dashboard_navigation() -> str:
         active = "Prediction"
 
     st.markdown("<div class='dashboard-nav-title'>Dashboard navigation</div>", unsafe_allow_html=True)
-    columns = st.columns([1.0, 1.35, 1.1, 1.25, 1.35, 0.8])
-    for column, label in zip(columns, DASHBOARD_NAV_ITEMS):
-        with column:
-            if st.button(
-                label,
-                key=f"dashboard_nav_{label}",
-                type="primary" if label == active else "secondary",
-                width="stretch",
-            ):
-                if label != active:
-                    st.session_state["dashboard_section"] = label
-                    st.rerun()
+    selected = st.segmented_control(
+        "Dashboard section",
+        DASHBOARD_NAV_ITEMS,
+        default=active,
+        key="dashboard_section_control",
+        label_visibility="collapsed",
+        width="stretch",
+    )
+    if selected in DASHBOARD_NAV_ITEMS:
+        active = str(selected)
     st.session_state["dashboard_section"] = active
     st.markdown("<div class='dashboard-nav-spacer'></div>", unsafe_allow_html=True)
     return active
