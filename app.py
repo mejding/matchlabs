@@ -554,6 +554,22 @@ def inject_styles() -> None:
         div[data-testid="stTabs"] div[role="tab"][data-testid="stTab"] * {
             color: inherit;
         }
+        .dashboard-nav-title {
+            color: #a7f3d0;
+            font-size: 0.78rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            margin: 8px 0 8px;
+            text-transform: uppercase;
+        }
+        .dashboard-nav-spacer {
+            height: 14px;
+        }
+        div[data-testid="stButton"] > button {
+            border-radius: 8px;
+            min-height: 44px;
+            font-weight: 850;
+        }
         div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
             background: #f8fafc;
             border: 1px solid rgba(34, 197, 94, 0.70);
@@ -1201,6 +1217,38 @@ def render_tested_ideas_status() -> None:
         )
     html += "</div>"
     st.markdown(html, unsafe_allow_html=True)
+
+
+DASHBOARD_NAV_ITEMS = [
+    "Prediction",
+    "Why / Key Factors",
+    "Data Quality",
+    "Technical Details",
+    "Season Projection",
+    "Info",
+]
+
+
+def render_dashboard_navigation() -> str:
+    active = st.session_state.get("dashboard_section", "Prediction")
+    if active not in DASHBOARD_NAV_ITEMS:
+        active = "Prediction"
+
+    st.markdown("<div class='dashboard-nav-title'>Dashboard navigation</div>", unsafe_allow_html=True)
+    columns = st.columns([1.0, 1.35, 1.1, 1.25, 1.35, 0.8])
+    for column, label in zip(columns, DASHBOARD_NAV_ITEMS):
+        with column:
+            if st.button(
+                label,
+                key=f"dashboard_nav_{label}",
+                type="primary" if label == active else "secondary",
+                width="stretch",
+            ):
+                active = label
+                st.session_state["dashboard_section"] = label
+    st.session_state["dashboard_section"] = active
+    st.markdown("<div class='dashboard-nav-spacer'></div>", unsafe_allow_html=True)
+    return active
 
 
 def render_model_help(feature_columns: list[str], metrics: dict) -> None:
@@ -2397,11 +2445,9 @@ def main() -> None:
     )
     warnings = quality_result.warnings
 
-    prediction_tab, why_tab, quality_tab, technical_tab, season_tab, info_tab = st.tabs(
-        ["Prediction", "Why / Key Factors", "Data Quality", "Technical Details", "Season Projection", "Info"]
-    )
+    active_section = render_dashboard_navigation()
 
-    with prediction_tab:
+    if active_section == "Prediction":
         summary_card(home_team, away_team, probabilities)
         render_probability_bar(probabilities, home_team, away_team)
         render_scoreline_section(row, probabilities, home_team, away_team)
@@ -2409,7 +2455,7 @@ def main() -> None:
         render_model_fair_odds(probabilities, home_team, away_team)
         render_bookmaker_odds_comparison(probabilities, home_team, away_team)
 
-    with why_tab:
+    elif active_section == "Why / Key Factors":
         st.subheader("Why The Model Thinks This")
         insights = build_insights(row, home_team, away_team)
         st.markdown("<ul class='insight-list'>" + "".join(f"<li>{item}</li>" for item in insights) + "</ul>", unsafe_allow_html=True)
@@ -2418,7 +2464,7 @@ def main() -> None:
         grouped_feature_cards(row, home_team, away_team)
         render_recent_head_to_head(home_team, away_team)
 
-    with quality_tab:
+    elif active_section == "Data Quality":
         left, right = st.columns([0.9, 1.1])
         with left:
             st.subheader("Confidence & Data Quality")
@@ -2432,7 +2478,7 @@ def main() -> None:
             render_tested_ideas_status()
             render_validation_card(metrics)
 
-    with technical_tab:
+    elif active_section == "Technical Details":
         st.subheader("Prediction Context")
         context_rows = [
             {"Item": "Calibration", "Value": str(calibration_method) if is_calibrated else "Not applied"},
@@ -2461,10 +2507,10 @@ def main() -> None:
         st.write("Feature values used by the saved model artifact")
         technical_details(features)
 
-    with season_tab:
+    elif active_section == "Season Projection":
         render_season_projection_tab(home_team, away_team, teams)
 
-    with info_tab:
+    elif active_section == "Info":
         render_prediction_info_tab(
             active_prediction,
             selected_match_date,
