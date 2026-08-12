@@ -488,38 +488,48 @@ def inject_styles() -> None:
             white-space: nowrap;
         }
         div[data-testid="stTabs"] div[role="tablist"] {
-            gap: 10px;
-            border-bottom: 0;
-            padding: 4px 0 12px;
-            margin-bottom: 16px;
+            gap: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 18px;
             flex-wrap: wrap;
+            background: rgba(2, 6, 23, 0.46);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 14px 34px rgba(0, 0, 0, 0.18);
         }
         div[data-testid="stTabs"] button[role="tab"] {
-            border: 1px solid rgba(34, 197, 94, 0.42);
-            border-radius: 8px;
-            background: linear-gradient(180deg, rgba(22, 101, 52, 0.62), rgba(15, 23, 42, 0.92));
-            color: #f8fafc;
-            padding: 10px 15px;
-            min-height: 44px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+            border: 2px solid rgba(34, 197, 94, 0.50) !important;
+            border-radius: 8px !important;
+            background: linear-gradient(180deg, #14532d 0%, #052e16 100%) !important;
+            color: #f8fafc !important;
+            padding: 12px 17px !important;
+            min-height: 48px;
+            min-width: 128px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.09);
             cursor: pointer;
-            transition: transform 120ms ease, border-color 120ms ease, background 120ms ease, color 120ms ease;
+            transition: transform 120ms ease, border-color 120ms ease, background 120ms ease, color 120ms ease, box-shadow 120ms ease;
         }
         div[data-testid="stTabs"] button[role="tab"]:hover {
-            transform: translateY(-1px);
-            border-color: rgba(45, 212, 191, 0.72);
-            background: linear-gradient(180deg, rgba(34, 197, 94, 0.64), rgba(20, 83, 45, 0.84));
-            color: #f8fafc;
+            transform: translateY(-2px);
+            border-color: rgba(134, 239, 172, 0.95) !important;
+            background: linear-gradient(180deg, #16a34a 0%, #166534 100%) !important;
+            color: #ffffff !important;
+            box-shadow: 0 13px 26px rgba(0, 0, 0, 0.34), 0 0 0 3px rgba(34, 197, 94, 0.14);
         }
         div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
-            border-color: rgba(34, 197, 94, 0.95);
-            background: linear-gradient(180deg, rgba(34, 197, 94, 0.88), rgba(22, 101, 52, 0.98));
-            color: #ffffff;
-            box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.20), 0 10px 24px rgba(21, 128, 61, 0.20);
+            border-color: rgba(187, 247, 208, 0.98) !important;
+            background: linear-gradient(180deg, #22c55e 0%, #15803d 100%) !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.22), 0 14px 30px rgba(21, 128, 61, 0.34);
         }
         div[data-testid="stTabs"] button[role="tab"] p {
             font-weight: 850;
             font-size: 0.92rem;
+            line-height: 1.1;
+            margin: 0;
         }
         div[data-testid="stTabs"] button[role="tab"] * {
             color: inherit;
