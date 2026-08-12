@@ -487,6 +487,56 @@ def inject_styles() -> None:
             color: #86efac;
             white-space: nowrap;
         }
+        div[data-testid="stTabs"] div[role="tablist"] {
+            gap: 8px;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+            padding: 0 0 10px;
+            margin-bottom: 16px;
+        }
+        div[data-testid="stTabs"] button[role="tab"] {
+            border: 1px solid rgba(148, 163, 184, 0.24);
+            border-radius: 8px;
+            background: rgba(15, 23, 42, 0.82);
+            color: #cbd5e1;
+            padding: 9px 13px;
+            min-height: 42px;
+            transition: border-color 120ms ease, background 120ms ease, color 120ms ease;
+        }
+        div[data-testid="stTabs"] button[role="tab"]:hover {
+            border-color: rgba(45, 212, 191, 0.46);
+            background: rgba(20, 83, 45, 0.24);
+            color: #f8fafc;
+        }
+        div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
+            border-color: rgba(34, 197, 94, 0.68);
+            background: rgba(22, 101, 52, 0.36);
+            color: #ffffff;
+        }
+        div[data-testid="stTabs"] button[role="tab"] p {
+            font-weight: 850;
+            font-size: 0.92rem;
+        }
+        .compact-note-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0 16px;
+        }
+        .info-card {
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            border-radius: 8px;
+            padding: 14px;
+            background: rgba(15, 23, 42, 0.58);
+            margin-bottom: 12px;
+        }
+        .info-card h4 {
+            margin: 0 0 6px;
+            font-size: 1rem;
+        }
+        .info-card p {
+            margin: 0;
+            color: var(--muted);
+        }
         .bar-shell {
             height: 11px;
             border-radius: 999px;
@@ -1442,6 +1492,71 @@ def technical_details(features: pd.DataFrame) -> None:
     st.dataframe(display, width="stretch", hide_index=True)
 
 
+def render_prediction_info_tab(
+    active_prediction: dict,
+    selected_match_date: str | None,
+    latest_data_date,
+    is_calibrated: bool,
+    calibration_method: str | None,
+) -> None:
+    st.subheader("Prediction Info")
+    st.markdown(
+        """
+        <div class="info-card">
+            <h4>Probabilities, not certainties</h4>
+            <p>
+                The model estimates probabilities. A 64% home win probability means the model rates the home win as
+                the most likely outcome based on historical data, but football results remain uncertain.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    if is_calibrated:
+        st.markdown(
+            f"""
+            <div class="info-card">
+                <h4>Calibration</h4>
+                <p>
+                    Primary probabilities are calibrated with <strong>{html_lib.escape(str(calibration_method))}</strong>.
+                    Raw model output is available under Technical Details.
+                </p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    if selected_match_date:
+        st.markdown(
+            f"""
+            <div class="info-card">
+                <h4>Fixture</h4>
+                <p>
+                    Official fixture: Matchweek {html_lib.escape(str(active_prediction.get('matchweek')))} ·
+                    {html_lib.escape(str(selected_match_date))} ·
+                    {html_lib.escape(str(active_prediction.get('kickoff_time_uk')))} UK /
+                    {html_lib.escape(str(active_prediction.get('kickoff_time_dk')))} DK.
+                    Fixtures are scheduled subject to change.
+                </p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    if latest_data_date:
+        st.markdown(
+            f"""
+            <div class="info-card">
+                <h4>Data window</h4>
+                <p>
+                    Form and xG inputs use each team's latest 5 matches available through
+                    {html_lib.escape(str(latest_data_date))}. Schedule and fatigue currently use Premier League fixtures only
+                    unless European and cup fixture files are added.
+                </p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+
 def zscore(series: pd.Series) -> pd.Series:
     std = float(series.std(ddof=0))
     if std == 0.0 or np.isnan(std):
@@ -2226,36 +2341,26 @@ def main() -> None:
     )
     warnings = quality_result.warnings
 
-    prediction_tab, why_tab, quality_tab, technical_tab, season_tab = st.tabs(
-        ["Prediction", "Why / Key Factors", "Data Quality", "Technical Details", "Season Projection"]
+    prediction_tab, why_tab, quality_tab, technical_tab, season_tab, info_tab = st.tabs(
+        ["Prediction", "Why / Key Factors", "Data Quality", "Technical Details", "Season Projection", "Info"]
     )
 
     with prediction_tab:
         summary_card(home_team, away_team, probabilities, warnings)
-        st.markdown("")
         st.markdown(
-            """
-            This model estimates probabilities, not certainties. A 64% home win probability means the model rates
-            home win as the most likely outcome based on historical data, but football results remain uncertain.
-            """
+            f"""
+            <div class="compact-note-row">
+                <span class="badge good">Calibrated: {html_lib.escape(str(calibration_method)) if is_calibrated else "No"}</span>
+                <span class="badge">Fixture: MW{html_lib.escape(str(active_prediction.get("matchweek", "")))}</span>
+                <span class="badge">Data through {html_lib.escape(str(latest_data_date)) if latest_data_date else "unknown"}</span>
+                <span class="badge warn">Details in Info</span>
+            </div>
+            """,
+            unsafe_allow_html=True,
         )
-        if is_calibrated:
-            st.caption(f"Primary probabilities are calibrated with `{calibration_method}`. Raw model output is available under technical details.")
-        if selected_match_date:
-            st.caption(
-                f"Official fixture: Matchweek {active_prediction.get('matchweek')} · {selected_match_date} · "
-                f"{active_prediction.get('kickoff_time_uk')} UK / {active_prediction.get('kickoff_time_dk')} DK. "
-                "Fixtures are scheduled subject to change."
-            )
-        if latest_data_date:
-            st.caption(
-                f"Form and xG inputs use each team's latest 5 matches available through {latest_data_date}. "
-                "Schedule and fatigue currently use Premier League fixtures only unless European and cup fixture files are added."
-            )
         render_probability_bar(probabilities, home_team, away_team)
         render_scoreline_section(row, probabilities, home_team, away_team)
         st.subheader("Model Fair Odds")
-        st.caption("Fair odds are calculated directly from the displayed model probabilities, before bookmaker margin.")
         render_model_fair_odds(probabilities, home_team, away_team)
         render_bookmaker_odds_comparison(probabilities, home_team, away_team)
 
@@ -2313,6 +2418,9 @@ def main() -> None:
 
     with season_tab:
         render_season_projection_tab(home_team, away_team, teams)
+
+    with info_tab:
+        render_prediction_info_tab(active_prediction, selected_match_date, latest_data_date, is_calibrated, calibration_method)
 
 
 if __name__ == "__main__":
