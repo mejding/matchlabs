@@ -513,7 +513,8 @@ def inject_styles() -> None:
             background: rgba(2, 6, 23, 0.46);
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 14px 34px rgba(0, 0, 0, 0.18);
         }
-        div[data-testid="stTabs"] button[role="tab"] {
+        div[data-testid="stTabs"] button[role="tab"],
+        div[data-testid="stTabs"] div[role="tab"][data-testid="stTab"] {
             border: 2px solid rgba(34, 197, 94, 0.50) !important;
             border-radius: 8px !important;
             background: linear-gradient(180deg, #14532d 0%, #052e16 100%) !important;
@@ -528,26 +529,30 @@ def inject_styles() -> None:
             cursor: pointer;
             transition: transform 120ms ease, border-color 120ms ease, background 120ms ease, color 120ms ease, box-shadow 120ms ease;
         }
-        div[data-testid="stTabs"] button[role="tab"]:hover {
+        div[data-testid="stTabs"] button[role="tab"]:hover,
+        div[data-testid="stTabs"] div[role="tab"][data-testid="stTab"]:hover {
             transform: translateY(-2px);
             border-color: rgba(134, 239, 172, 0.95) !important;
             background: linear-gradient(180deg, #16a34a 0%, #166534 100%) !important;
             color: #ffffff !important;
             box-shadow: 0 13px 26px rgba(0, 0, 0, 0.34), 0 0 0 3px rgba(34, 197, 94, 0.14);
         }
-        div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
+        div[data-testid="stTabs"] button[role="tab"][aria-selected="true"],
+        div[data-testid="stTabs"] div[role="tab"][data-testid="stTab"][aria-selected="true"] {
             border-color: rgba(187, 247, 208, 0.98) !important;
             background: linear-gradient(180deg, #22c55e 0%, #15803d 100%) !important;
             color: #ffffff !important;
             box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.22), 0 14px 30px rgba(21, 128, 61, 0.34);
         }
-        div[data-testid="stTabs"] button[role="tab"] p {
+        div[data-testid="stTabs"] button[role="tab"] p,
+        div[data-testid="stTabs"] div[role="tab"][data-testid="stTab"] p {
             font-weight: 850;
             font-size: 0.92rem;
             line-height: 1.1;
             margin: 0;
         }
-        div[data-testid="stTabs"] button[role="tab"] * {
+        div[data-testid="stTabs"] button[role="tab"] *,
+        div[data-testid="stTabs"] div[role="tab"][data-testid="stTab"] * {
             color: inherit;
         }
         div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
