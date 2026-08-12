@@ -16,6 +16,7 @@ It downloads historical Premier League CSV files from [football-data.co.uk](http
 - `train_model.py` - Downloads data, builds features, trains and evaluates the model.
 - `predict.py` - Loads the saved model and predicts probabilities for one fixture.
 - `app.py` - Simple Streamlit user interface for testing predictions.
+- `refresh_data.py` - Refreshes local data, validates coverage, and optionally retrains/calibrates/evaluates the model.
 - `evaluate_model.py` - Professional probabilistic evaluation runner.
 - `bootstrap_confidence.py` - Bootstrap and ensemble prediction intervals.
 - `prediction_confidence.py` - Match-level confidence labels and stability scoring.
@@ -204,6 +205,37 @@ For each match, the injury pipeline only uses rows where:
 - `expected_return_date` is blank or on/after match date
 
 That keeps the injury features historical and avoids using future information.
+
+## Refresh Data And Model
+
+Use the refresh pipeline when new matches have been played and the local data/model should be updated.
+
+Quick validation without downloading or retraining:
+
+```bash
+python refresh_data.py --dry-run --skip-train --skip-calibration --skip-evaluation
+```
+
+Force-refresh cached data and run the full model update:
+
+```bash
+python refresh_data.py --force
+```
+
+When a new season starts, include the new football-data season code. For example, for 2026/27:
+
+```bash
+python refresh_data.py --seasons 1920 2021 2122 2223 2324 2425 2526 2627 --force
+```
+
+The script writes `data_refresh_report.md` with:
+
+- which CSV/JSON files were kept, downloaded or failed
+- latest local match date
+- match count by season
+- whether training, calibration and evaluation commands ran successfully
+
+`refresh_data.py` passes the selected season list into `train_model.py`, `calibration_improvement.py` and `evaluate_model.py`, so a newly downloaded season is actually used in retraining. Streamlit Cloud still updates only after the resulting files are committed and pushed to GitHub.
 
 ## Make a prediction
 

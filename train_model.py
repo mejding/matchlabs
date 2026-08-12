@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import gzip
+import os
 import urllib.request
 from pathlib import Path
 
@@ -22,18 +23,34 @@ XG_MODEL_PATH = MODEL_DIR / "football_model_xg.joblib"
 XG_SCHEDULE_MODEL_PATH = MODEL_DIR / "football_model_xg_schedule.joblib"
 INJURY_DATA_PATH = DATA_DIR / "injuries.csv"
 
-SEASONS = ["1920", "2021", "2122", "2223", "2324", "2425", "2526"]
+DEFAULT_SEASONS = ["1920", "2021", "2122", "2223", "2324", "2425", "2526"]
 BASE_URL = "https://www.football-data.co.uk/mmz4281/{season}/E0.csv"
-UNDERSTAT_SEASONS = {
-    "1920": 2019,
-    "2021": 2020,
-    "2122": 2021,
-    "2223": 2022,
-    "2324": 2023,
-    "2425": 2024,
-    "2526": 2025,
-}
 UNDERSTAT_URL = "https://understat.com/getLeagueData/EPL/{season}"
+
+
+def season_code_to_understat_year(season: str) -> int:
+    return 2000 + int(str(season)[:2])
+
+
+def configured_seasons() -> list[str]:
+    raw = os.environ.get("FOOTBALL_DATA_SEASONS")
+    if not raw:
+        return list(DEFAULT_SEASONS)
+    return [season.strip() for season in raw.replace(",", " ").split() if season.strip()]
+
+
+def configured_understat_seasons(seasons: list[str]) -> dict[str, int]:
+    raw = os.environ.get("UNDERSTAT_SEASONS")
+    if raw:
+        years = [int(year.strip()) for year in raw.replace(",", " ").split() if year.strip()]
+        if len(years) != len(seasons):
+            raise ValueError("UNDERSTAT_SEASONS must have the same number of entries as FOOTBALL_DATA_SEASONS.")
+        return dict(zip(seasons, years))
+    return {season: season_code_to_understat_year(season) for season in seasons}
+
+
+SEASONS = configured_seasons()
+UNDERSTAT_SEASONS = configured_understat_seasons(SEASONS)
 
 UNDERSTAT_TO_FOOTBALL_DATA_TEAMS = {
     "Manchester City": "Man City",
