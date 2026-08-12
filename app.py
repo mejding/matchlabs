@@ -570,20 +570,30 @@ def inject_styles() -> None:
             min-height: 44px;
             font-weight: 850;
         }
-        div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
-            background: #f8fafc;
-            border: 1px solid rgba(34, 197, 94, 0.70);
-            color: #0f172a;
-            min-height: 46px;
-            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.12);
+        div[data-testid="stSelectbox"] [data-baseweb="select"],
+        .stSelectbox [data-baseweb="select"],
+        div[data-testid="stSelectbox"] [data-baseweb="select"] > div,
+        .stSelectbox [data-baseweb="select"] > div {
+            background: #f8fafc !important;
+            border: 1px solid rgba(34, 197, 94, 0.78) !important;
+            border-radius: 8px !important;
+            color: #0f172a !important;
+            min-height: 48px !important;
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.14) !important;
         }
-        div[data-testid="stSelectbox"] div[data-baseweb="select"] span,
-        div[data-testid="stSelectbox"] div[data-baseweb="select"] div {
-            color: #0f172a;
+        div[data-testid="stSelectbox"] [data-baseweb="select"] span,
+        div[data-testid="stSelectbox"] [data-baseweb="select"] div,
+        div[data-testid="stSelectbox"] [data-baseweb="select"] input,
+        .stSelectbox [data-baseweb="select"] span,
+        .stSelectbox [data-baseweb="select"] div,
+        .stSelectbox [data-baseweb="select"] input {
+            color: #0f172a !important;
+            -webkit-text-fill-color: #0f172a !important;
         }
-        div[data-testid="stSelectbox"] div[data-baseweb="select"] svg {
-            color: #166534;
-            fill: #166534;
+        div[data-testid="stSelectbox"] [data-baseweb="select"] svg,
+        .stSelectbox [data-baseweb="select"] svg {
+            color: #166534 !important;
+            fill: #166534 !important;
         }
         div[data-testid="stSelectbox"] label p {
             color: #e5e7eb;
