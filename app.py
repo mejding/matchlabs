@@ -58,7 +58,6 @@ from train_model import load_matches
 st.set_page_config(page_title="Football Analytics Dashboard", layout="wide")
 
 
-@st.cache_data(show_spinner=False)
 def app_version() -> str:
     try:
         result = subprocess.run(
