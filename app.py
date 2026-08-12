@@ -1244,8 +1244,9 @@ def render_dashboard_navigation() -> str:
                 type="primary" if label == active else "secondary",
                 width="stretch",
             ):
-                active = label
-                st.session_state["dashboard_section"] = label
+                if label != active:
+                    st.session_state["dashboard_section"] = label
+                    st.rerun()
     st.session_state["dashboard_section"] = active
     st.markdown("<div class='dashboard-nav-spacer'></div>", unsafe_allow_html=True)
     return active
