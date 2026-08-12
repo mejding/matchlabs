@@ -38,6 +38,8 @@ It downloads historical Premier League CSV files from [football-data.co.uk](http
 - `tactical_intelligence_experiments.py` - Tactical Intelligence Engine model comparison runner.
 - `opponent_adjusted_xg_features.py` - Opponent-adjusted xG attack/defense ratings and Poisson baseline features.
 - `opponent_adjusted_xg_experiments.py` - Sprint 4D model comparison, SHAP, permutation and redundancy analysis.
+- `non_pl_context_features.py` - Pre-season, cup, European and Championship context feature builder.
+- `non_pl_context_experiments.py` - Non-PL context model comparison and production-readiness report.
 - `experiment_tracker.py` - CSV and JSON experiment tracking.
 - `shap_analysis.py` - Convenience wrapper for SHAP helpers.
 - `calibration/calibration.py` - Calibration metrics and plots.
@@ -753,6 +755,14 @@ This generates:
 
 The latest Sprint 4G run tested linear, exponential, half-life 3 and half-life 5 weighting for rolling form, goals, xG/xGA, shot volume and opponent-adjusted rating candidates. The current production model still had the best Log Loss and better ECE than the best recency model. Recency weighting is therefore `Tested - Not adopted`.
 
+Run the non-PL match context evaluation:
+
+```bash
+python non_pl_context_experiments.py
+```
+
+This generates `evaluation/non_pl_context/non_pl_context_report.md` and outputs in `evaluation/non_pl_context/`. The feature layer can use pre-season friendlies, domestic cups, European qualifiers and Championship data when local historical rows are available. Non-PL competitions are down-weighted so they are not treated as Premier League-equivalent. The latest run found no out-of-sample change because the project does not yet contain reliable historical non-PL rows for Premier League teams; it remains `Tested - Not adopted`.
+
 Run the historical betting validation backtest:
 
 ```bash
@@ -896,6 +906,7 @@ Current feature status:
 | Market odds | Benchmark only | no | market_overlay_report.md shows market-only preclosing probabilities remain best; logistic stacking improves Log Loss/Brier but fails the calibration promotion rule. |
 | Opponent-adjusted xG | Tested - Not adopted | no | rolling_validation_report.md shows the ratings candidate did not improve average rolling Log Loss/Brier versus production. |
 | Recency weighting | Tested - Not adopted | no | recency_weighting_report.md shows weighted rolling features did not beat production Log Loss or calibration. |
+| Non-PL match context | Tested - Not adopted | no | non_pl_context_report.md shows no out-of-sample improvement with the currently available local source coverage. |
 | Head-to-head | Tested - Not adopted | no | head_to_head_intelligence_report.md keeps H2H research-only despite some draw-metric improvement. |
 | Manager consistency | Tested - Not adopted | no | manager_consistency_report.md shows worse Log Loss, Brier and ECE than production. |
 | Lineup stability | Research | no | lineup_stability_report.md shows worse out-of-sample Log Loss and Brier than production. |

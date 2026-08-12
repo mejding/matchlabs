@@ -115,6 +115,12 @@ FEATURE_STATUS: dict[str, FeatureStatusEntry] = {
         short_description="Season-boundary Elo regression toward league average, tested with carryover values from 0.50 to 0.90.",
         evidence="decayed_elo_evaluation_report.md shows season decay did not improve Log Loss or Brier versus current Elo.",
     ),
+    "Non-PL match context": FeatureStatusEntry(
+        status="Tested - Not adopted",
+        used_in_production=False,
+        short_description="Pre-season, cup, European and Championship context features with competition-specific down-weighting.",
+        evidence="evaluation/non_pl_context/non_pl_context_report.md shows no out-of-sample improvement with the currently available local source coverage.",
+    ),
     "Calibrated probabilities": FeatureStatusEntry(
         status="Active",
         used_in_production=True,
