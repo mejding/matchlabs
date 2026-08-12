@@ -488,33 +488,41 @@ def inject_styles() -> None:
             white-space: nowrap;
         }
         div[data-testid="stTabs"] div[role="tablist"] {
-            gap: 8px;
-            border-bottom: 1px solid rgba(148, 163, 184, 0.22);
-            padding: 0 0 10px;
+            gap: 10px;
+            border-bottom: 0;
+            padding: 4px 0 12px;
             margin-bottom: 16px;
+            flex-wrap: wrap;
         }
         div[data-testid="stTabs"] button[role="tab"] {
-            border: 1px solid rgba(148, 163, 184, 0.24);
+            border: 1px solid rgba(34, 197, 94, 0.42);
             border-radius: 8px;
-            background: rgba(15, 23, 42, 0.82);
-            color: #cbd5e1;
-            padding: 9px 13px;
-            min-height: 42px;
-            transition: border-color 120ms ease, background 120ms ease, color 120ms ease;
+            background: linear-gradient(180deg, rgba(22, 101, 52, 0.62), rgba(15, 23, 42, 0.92));
+            color: #f8fafc;
+            padding: 10px 15px;
+            min-height: 44px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+            cursor: pointer;
+            transition: transform 120ms ease, border-color 120ms ease, background 120ms ease, color 120ms ease;
         }
         div[data-testid="stTabs"] button[role="tab"]:hover {
-            border-color: rgba(45, 212, 191, 0.46);
-            background: rgba(20, 83, 45, 0.24);
+            transform: translateY(-1px);
+            border-color: rgba(45, 212, 191, 0.72);
+            background: linear-gradient(180deg, rgba(34, 197, 94, 0.64), rgba(20, 83, 45, 0.84));
             color: #f8fafc;
         }
         div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
-            border-color: rgba(34, 197, 94, 0.68);
-            background: rgba(22, 101, 52, 0.36);
+            border-color: rgba(34, 197, 94, 0.95);
+            background: linear-gradient(180deg, rgba(34, 197, 94, 0.88), rgba(22, 101, 52, 0.98));
             color: #ffffff;
+            box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.20), 0 10px 24px rgba(21, 128, 61, 0.20);
         }
         div[data-testid="stTabs"] button[role="tab"] p {
             font-weight: 850;
             font-size: 0.92rem;
+        }
+        div[data-testid="stTabs"] button[role="tab"] * {
+            color: inherit;
         }
         .compact-note-row {
             display: flex;
@@ -839,10 +847,6 @@ def render_model_fair_odds(probabilities, home_team: str, away_team: str) -> Non
         "<span class='badge warn'>Market odds: Benchmark only</span>",
         unsafe_allow_html=True,
     )
-    st.caption(
-        "Fair odds are derived only from the model probabilities shown above. "
-        "Bookmaker odds are not used as model inputs; they are only used for manual comparison."
-    )
     html = "<div class='odds-card-grid'>"
     for label, odds in zip(labels, fair_odds):
         html += dedent(
@@ -863,10 +867,6 @@ def render_bookmaker_odds_comparison(probabilities, home_team: str, away_team: s
     fair_odds = fair_odds_from_probabilities(probabilities)
 
     with st.expander("Manual bookmaker odds comparison", expanded=True):
-        st.caption(
-            "Enter current decimal odds to compare the model with the market. The app converts those odds into "
-            "market-implied probabilities after removing bookmaker margin. This does not change the prediction."
-        )
         use_market_odds = st.checkbox(
             "Compare with bookmaker odds",
             value=False,
@@ -874,7 +874,6 @@ def render_bookmaker_odds_comparison(probabilities, home_team: str, away_team: s
             help="Use this for live/manual comparison only. These odds are not used as production model inputs.",
         )
         if not use_market_odds:
-            st.info("Switch this on when you have bookmaker odds and want to compare them with the model probabilities.")
             return
 
         columns = st.columns(3)
@@ -954,11 +953,6 @@ def render_bookmaker_odds_comparison(probabilities, home_team: str, away_team: s
             )
         else:
             st.info("No entered bookmaker odds are currently above the model fair odds.")
-        st.caption(
-            "Formula: model fair odds = 1 / model probability. Market probability = normalized 1 / bookmaker odds. "
-            "Model edge = model probability * bookmaker odds - 1."
-        )
-
 
 def _format_scoreline(scoreline: ScorelineProbability | None, home_team: str, away_team: str) -> tuple[str, str]:
     if scoreline is None:
@@ -1010,11 +1004,10 @@ def render_scoreline_section(row: dict[str, float], probabilities, home_team: st
 
     html = dedent(
         f"""
-        <div class="scoreline-section">
+            <div class="scoreline-section">
             <div class="scoreline-title-row">
                 <div>
                     <div class="prob-label">Most likely scorelines</div>
-                    <div class="odds-detail">Estimated from expected goals and aligned with the model's 1X2 probabilities.</div>
                 </div>
                 <div class="odds-detail">
                     Estimated goals: <strong>{html_lib.escape(home_team)} {float(scoreline_result['expected_home_goals']):.2f}</strong>
@@ -1042,10 +1035,6 @@ def render_scoreline_section(row: dict[str, float], probabilities, home_team: st
         )
     html += "</div></div>"
     st.markdown(html, unsafe_allow_html=True)
-    st.caption(
-        "Correct-score probabilities are naturally low. The grouped list follows the model's most likely 1X2 outcome; "
-        "the highest individual exact score can still differ because win probabilities are spread across many scorelines."
-    )
 
     with st.expander("Show scoreline details", expanded=False):
         top_rows = [
@@ -1071,10 +1060,6 @@ def render_scoreline_section(row: dict[str, float], probabilities, home_team: st
                     }
                 )
         st.dataframe(pd.DataFrame(grouped_rows), width="stretch", hide_index=True)
-        st.caption(
-            "This layer estimates expected goals from available xG/xGA features, creates scoreline probabilities, "
-            "and aligns the home-win/draw/away-win scoreline totals with the displayed model probabilities."
-        )
 
 
 def build_warnings(row: dict[str, float]) -> list[str]:
@@ -1555,6 +1540,33 @@ def render_prediction_info_tab(
             """,
             unsafe_allow_html=True,
         )
+    st.markdown(
+        """
+        <div class="info-card">
+            <h4>Scorelines</h4>
+            <p>
+                Scoreline estimates are derived from expected goals and aligned with the model's 1X2 probabilities.
+                Correct-score probabilities are naturally low because each outcome is spread across many possible scorelines.
+            </p>
+        </div>
+        <div class="info-card">
+            <h4>Fair odds and bookmaker comparison</h4>
+            <p>
+                Model fair odds are calculated as 1 / displayed model probability. Manual bookmaker odds are converted into
+                market-implied probabilities after removing bookmaker margin. Entered bookmaker odds are not used as model inputs.
+            </p>
+        </div>
+        <div class="info-card">
+            <h4>Model and data statuses</h4>
+            <p>
+                Active = used in production. Candidate = promising but not fully production. Tested - Not adopted = evaluated but
+                not strong enough for production. Benchmark only = evaluated but not used directly. Research mode = data or
+                validation insufficient. Missing = data unavailable.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 def zscore(series: pd.Series) -> pd.Series:
@@ -2383,18 +2395,7 @@ def main() -> None:
         with right:
             st.subheader("Model & Data Status")
             render_model_status(feature_columns, quality_result.checks)
-            st.caption(
-                "Status guide: Active = used in production, Candidate = promising but not fully production, "
-                "Tested - Not adopted = evaluated but not strong enough for production, "
-                "Benchmark only = evaluated but not used directly, Research mode = data or validation insufficient, "
-                "Missing = data unavailable."
-            )
-            st.caption(
-                "Market odds are benchmark-only in the app. football-data pre-closing odds are strong historically, "
-                "but direct model integration did not improve the production model and live odds timing must be controlled."
-            )
             st.markdown("#### Tested ideas")
-            st.caption("These hypotheses were evaluated with time-based validation but are not used in the production model.")
             render_tested_ideas_status()
             render_validation_card(metrics)
 
