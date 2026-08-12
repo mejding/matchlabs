@@ -3,6 +3,7 @@ from __future__ import annotations
 import base64
 import html as html_lib
 import json
+import subprocess
 from datetime import date, timedelta
 from pathlib import Path
 from textwrap import dedent
@@ -55,6 +56,21 @@ from train_model import load_matches
 
 
 st.set_page_config(page_title="Football Analytics Dashboard", layout="wide")
+
+
+@st.cache_data(show_spinner=False)
+def app_version() -> str:
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=2,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return "unknown"
+    return result.stdout.strip() or "unknown"
 
 CLASS_LABELS = ["Home win", "Draw", "Away win"]
 RESULT_COPY = {
@@ -1503,8 +1519,21 @@ def render_prediction_info_tab(
     latest_data_date,
     is_calibrated: bool,
     calibration_method: str | None,
+    version: str,
 ) -> None:
     st.subheader("Prediction Info")
+    st.markdown(
+        f"""
+        <div class="info-card">
+            <h4>App version</h4>
+            <p>
+                Running commit: <strong>{html_lib.escape(version)}</strong>. Use this to confirm whether Streamlit Cloud
+                has deployed the latest GitHub version.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
     st.markdown(
         """
         <div class="info-card">
@@ -2289,6 +2318,7 @@ def main() -> None:
 
     with st.sidebar:
         st.header("Model Notes")
+        st.caption(f"App version: {app_version()}")
         st.caption("Training data currently loaded locally: Premier League 2019/20 to 2025/26.")
         if latest_data_date:
             st.caption(f"Latest match in model history: {latest_data_date}")
@@ -2431,7 +2461,14 @@ def main() -> None:
         render_season_projection_tab(home_team, away_team, teams)
 
     with info_tab:
-        render_prediction_info_tab(active_prediction, selected_match_date, latest_data_date, is_calibrated, calibration_method)
+        render_prediction_info_tab(
+            active_prediction,
+            selected_match_date,
+            latest_data_date,
+            is_calibrated,
+            calibration_method,
+            app_version(),
+        )
 
 
 if __name__ == "__main__":
