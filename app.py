@@ -524,6 +524,26 @@ def inject_styles() -> None:
         div[data-testid="stTabs"] button[role="tab"] * {
             color: inherit;
         }
+        div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
+            background: #f8fafc;
+            border: 1px solid rgba(34, 197, 94, 0.70);
+            color: #0f172a;
+            min-height: 46px;
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.12);
+        }
+        div[data-testid="stSelectbox"] div[data-baseweb="select"] span,
+        div[data-testid="stSelectbox"] div[data-baseweb="select"] div {
+            color: #0f172a;
+        }
+        div[data-testid="stSelectbox"] div[data-baseweb="select"] svg {
+            color: #166534;
+            fill: #166534;
+        }
+        div[data-testid="stSelectbox"] label p {
+            color: #e5e7eb;
+            font-size: 0.93rem;
+            font-weight: 850;
+        }
         .compact-note-row {
             display: flex;
             flex-wrap: wrap;
@@ -1204,12 +1224,9 @@ def summary_card(
     home_team: str,
     away_team: str,
     probabilities,
-    warnings: list[str],
 ) -> None:
     top_index = int(max(range(len(probabilities)), key=lambda idx: probabilities[idx]))
     outcome = RESULT_COPY[top_index]
-    confidence, confidence_tone = confidence_label(probabilities, warnings)
-    quality, quality_tone = data_quality_label(warnings)
     st.markdown(
         dedent(
             f"""
@@ -1221,13 +1238,6 @@ def summary_card(
                 <div class="team-side away"><div class="team-name">{html_lib.escape(away_team)}</div>{render_team_badge(away_team)}</div>
             </div>
             <div class="outcome-line">Most likely outcome: <strong>{outcome}</strong></div>
-            <div class="match-meta">
-                <span class="badge {confidence_tone}">Model confidence: {confidence}</span>
-                <span class="badge {quality_tone}">Data quality: {quality}</span>
-                <span class="badge">Home {probabilities[0] * 100:.1f}%</span>
-                <span class="badge">Draw {probabilities[1] * 100:.1f}%</span>
-                <span class="badge">Away {probabilities[2] * 100:.1f}%</span>
-            </div>
         </div>
         """,
         ),
@@ -2220,7 +2230,6 @@ def main() -> None:
 
     st.markdown("<div class='input-card'>", unsafe_allow_html=True)
     st.subheader("Match Setup")
-    st.caption(f"Fixture mode: {fixture_mode.mode}")
     predict_clicked = False
     selected_fixture = None
     if not official_fixtures.empty:
@@ -2240,10 +2249,6 @@ def main() -> None:
             predict_clicked = st.button("Predict fixture", type="primary", width="stretch")
         home_team = str(selected_fixture["home_team"])
         away_team = str(selected_fixture["away_team"])
-        st.caption(
-            f"Selected: {home_team} v {away_team} · {selected_fixture['date']} · "
-            f"{selected_fixture['kickoff_time_uk']} UK / {selected_fixture['kickoff_time_dk']} DK"
-        )
     else:
         home_team = "Arsenal" if "Arsenal" in team_options else team_options[0]
         away_team = "Brighton" if "Brighton" in team_options else team_options[min(1, len(team_options) - 1)]
@@ -2270,11 +2275,6 @@ def main() -> None:
             "kickoff_time_uk": None if selected_fixture is None else str(selected_fixture["kickoff_time_uk"]),
             "kickoff_time_dk": None if selected_fixture is None else str(selected_fixture["kickoff_time_dk"]),
         }
-    if latest_data_date:
-        st.caption(
-            f"Prediction uses the latest available form data through {latest_data_date}. "
-            "Update/retrain the model after new matches to refresh the form curve."
-        )
     st.markdown("</div>", unsafe_allow_html=True)
 
     with st.sidebar:
@@ -2358,18 +2358,7 @@ def main() -> None:
     )
 
     with prediction_tab:
-        summary_card(home_team, away_team, probabilities, warnings)
-        st.markdown(
-            f"""
-            <div class="compact-note-row">
-                <span class="badge good">Calibrated: {html_lib.escape(str(calibration_method)) if is_calibrated else "No"}</span>
-                <span class="badge">Fixture: MW{html_lib.escape(str(active_prediction.get("matchweek", "")))}</span>
-                <span class="badge">Data through {html_lib.escape(str(latest_data_date)) if latest_data_date else "unknown"}</span>
-                <span class="badge warn">Details in Info</span>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        summary_card(home_team, away_team, probabilities)
         render_probability_bar(probabilities, home_team, away_team)
         render_scoreline_section(row, probabilities, home_team, away_team)
         st.subheader("Model Fair Odds")
@@ -2400,6 +2389,17 @@ def main() -> None:
             render_validation_card(metrics)
 
     with technical_tab:
+        st.subheader("Prediction Context")
+        context_rows = [
+            {"Item": "Calibration", "Value": str(calibration_method) if is_calibrated else "Not applied"},
+            {
+                "Item": "Fixture",
+                "Value": f"MW{active_prediction.get('matchweek')}" if active_prediction.get("matchweek") else "Custom fixture",
+            },
+            {"Item": "Data through", "Value": str(latest_data_date) if latest_data_date else "Unknown"},
+        ]
+        st.dataframe(pd.DataFrame(context_rows), width="stretch", hide_index=True)
+        st.divider()
         st.subheader("Model Help")
         render_model_help(feature_columns, metrics)
         st.divider()
