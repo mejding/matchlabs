@@ -1,60 +1,60 @@
 {
   "baseline": {
-    "accuracy": 0.45981308411214955,
-    "log_loss": 1.0695873031769012,
-    "brier_score": 0.6448414945702321,
-    "mean_absolute_calibration_error": 0.03465249239237881,
-    "train_rows": 2125,
+    "accuracy": 0.4616822429906542,
+    "log_loss": 1.0683938341204093,
+    "brier_score": 0.644098113203319,
+    "mean_absolute_calibration_error": 0.03625482031582301,
+    "train_rows": 2135,
     "test_rows": 535,
-    "test_start_date": "2025-01-26"
+    "test_start_date": "2025-02-02"
   },
   "xg_model": {
-    "accuracy": 0.4897196261682243,
-    "log_loss": 1.0534076948381859,
-    "brier_score": 0.6335056253016076,
-    "mean_absolute_calibration_error": 0.03969574131976779,
-    "train_rows": 2125,
+    "accuracy": 0.48411214953271026,
+    "log_loss": 1.0467506776362965,
+    "brier_score": 0.6286050227986953,
+    "mean_absolute_calibration_error": 0.03936155698381109,
+    "train_rows": 2135,
     "test_rows": 535,
-    "test_start_date": "2025-01-26"
+    "test_start_date": "2025-02-02"
   },
   "xg_schedule_model": {
-    "accuracy": 0.47289719626168225,
-    "log_loss": 1.0591667546833183,
-    "brier_score": 0.637343444350773,
-    "mean_absolute_calibration_error": 0.043113275652176875,
-    "train_rows": 2125,
+    "accuracy": 0.4785046728971963,
+    "log_loss": 1.0565426108721916,
+    "brier_score": 0.6351025121688801,
+    "mean_absolute_calibration_error": 0.041091716526267676,
+    "train_rows": 2135,
     "test_rows": 535,
-    "test_start_date": "2025-01-26"
+    "test_start_date": "2025-02-02"
   },
   "xg_schedule_elo_shot_volume_model": {
-    "accuracy": 0.4822429906542056,
-    "log_loss": 1.0453088462042535,
-    "brier_score": 0.6272615024512352,
-    "mean_absolute_calibration_error": 0.04749440924957905,
-    "train_rows": 2125,
+    "accuracy": 0.4691588785046729,
+    "log_loss": 1.0458611741846666,
+    "brier_score": 0.6277186432024447,
+    "mean_absolute_calibration_error": 0.05366861372257689,
+    "train_rows": 2135,
     "test_rows": 535,
-    "test_start_date": "2025-01-26"
+    "test_start_date": "2025-02-02"
   },
   "xg_schedule_injury_model": {
-    "accuracy": 0.47289719626168225,
-    "log_loss": 1.0591667546833183,
-    "brier_score": 0.637343444350773,
-    "mean_absolute_calibration_error": 0.043113275652176875,
-    "train_rows": 2125,
+    "accuracy": 0.4785046728971963,
+    "log_loss": 1.0565426108721916,
+    "brier_score": 0.6351025121688801,
+    "mean_absolute_calibration_error": 0.041091716526267676,
+    "train_rows": 2135,
     "test_rows": 535,
-    "test_start_date": "2025-01-26"
+    "test_start_date": "2025-02-02"
   },
   "comparison": {
-    "accuracy_change": 0.029906542056074736,
-    "log_loss_change": -0.016179608338715346,
-    "brier_score_change": -0.01133586926862451,
-    "calibration_error_change": 0.005043248927388978
+    "accuracy_change": 0.022429906542056066,
+    "log_loss_change": -0.021643156484112858,
+    "brier_score_change": -0.015493090404623655,
+    "calibration_error_change": 0.0031067366679880803
   },
   "schedule_comparison": {
-    "accuracy_change_vs_xg": -0.016822429906542036,
-    "log_loss_change_vs_xg": 0.005759059845132475,
-    "brier_score_change_vs_xg": 0.0038378190491653585,
-    "calibration_error_change_vs_xg": 0.0034175343324090862
+    "accuracy_change_vs_xg": -0.005607476635513975,
+    "log_loss_change_vs_xg": 0.009791933235895112,
+    "brier_score_change_vs_xg": 0.006497489370184795,
+    "calibration_error_change_vs_xg": 0.0017301595424565885
   },
   "injury_comparison": {
     "accuracy_change_vs_schedule": 0.0,
@@ -63,9 +63,9 @@
     "calibration_error_change_vs_schedule": 0.0
   },
   "elo_comparison": {
-    "accuracy_change_vs_schedule": 0.009345794392523366,
-    "log_loss_change_vs_schedule": -0.013857908479064873,
-    "brier_score_change_vs_schedule": -0.010081941899537705,
-    "calibration_error_change_vs_schedule": 0.004381133597402179
+    "accuracy_change_vs_schedule": -0.009345794392523366,
+    "log_loss_change_vs_schedule": -0.01068143668752497,
+    "brier_score_change_vs_schedule": -0.007383868966435392,
+    "calibration_error_change_vs_schedule": 0.012576897196309215
   }
 }

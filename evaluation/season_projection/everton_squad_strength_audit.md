@@ -4,15 +4,15 @@
 
 | Metric | Before squad strength | After squad strength |
 | --- | ---: | ---: |
-| Expected points | 41.70 | 41.97 |
-| Expected position | 14.96 | 14.88 |
-| Relegation probability | 29.4% | 28.8% |
+| Expected points | 55.05 | 54.91 |
+| Expected position | 8.74 | 8.78 |
+| Relegation probability | 1.3% | 1.5% |
 
 ## Everton Feature Ranks
 
 | team | squad_strength_rank | squad_strength_bucket | elo_rank | recent_form_rank | xg_rank | shot_volume_rank | recent_form_points_last5 | xg_diff_last5 | shots_avg_last5 | elo_rating |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Everton | 14.0000 | Mid-table | 15.0000 | 18.0000 | 14.0000 | 17.0000 | 2.0000 | -0.5476 | 11.2000 | 1534.4633 |
+| Everton | 14.0000 | Mid-table | 12.0000 | 14.0000 | 17.0000 | 14.0000 | 5.0000 | -0.5593 | 12.2000 | 1545.8689 |
 
 ## Diagnosis
 

@@ -36,6 +36,8 @@ from official_fixtures import (
 from predict import MODEL_PATH, build_prediction_features
 from season_simulation import (
     expected_points_from_probabilities,
+    filter_unplayed_fixtures,
+    load_completed_current_season_matches,
     monte_carlo_season,
     predict_fixture_probabilities,
     projection_feature_overrides,
@@ -43,6 +45,7 @@ from season_simulation import (
     read_default_upcoming_fixtures,
     season_table_from_results,
     season_start_feature_audit,
+    starting_points_from_completed,
     validate_projection_feature_inputs,
 )
 from scoreline_model import ScorelineProbability, estimate_scorelines
@@ -1840,10 +1843,17 @@ def upcoming_season_projection(
         fixture_schedule_frame = official
         mode = detect_fixture_mode(fixture_path)
         source = mode.message
+        completed_matches = load_completed_current_season_matches()
+        starting_points = starting_points_from_completed(completed_matches)
+        played_count = len(completed_matches)
+        if played_count:
+            fixtures = filter_unplayed_fixtures(fixtures, completed_matches)
+            source = f"{source}; {played_count} completed fixtures included as actual table points"
     else:
         fixtures = build_fixture_skeleton(list(teams))
         fixture_schedule_frame = fixtures.rename(columns={"Season": "season", "Date": "date", "HomeTeam": "home_team", "AwayTeam": "away_team"})
         source = "Fixture skeleton: official upcoming fixture list not found locally"
+        starting_points = {}
 
     calibrator = None
     calibration_path = Path("models") / "calibrated_probability_layer.joblib"
@@ -1894,12 +1904,16 @@ def upcoming_season_projection(
     probabilities = blend_with_long_term_season_prior(probabilities, long_term_strength)
     probabilities_before_squad_strength = probabilities.copy()
     probabilities = apply_squad_strength_prior(probabilities, squad_strength_lookup(squad_strength))
-    projection = monte_carlo_season(probabilities, n_simulations=simulations)
-    expected = expected_points_from_probabilities(probabilities)
+    projection = monte_carlo_season(probabilities, n_simulations=simulations, starting_points=starting_points)
+    expected = expected_points_from_probabilities(probabilities, starting_points=starting_points)
     projection = projection.merge(expected, on="team", how="left")
-    projection_before_squad_strength = monte_carlo_season(probabilities_before_squad_strength, n_simulations=simulations)
+    projection_before_squad_strength = monte_carlo_season(
+        probabilities_before_squad_strength,
+        n_simulations=simulations,
+        starting_points=starting_points,
+    )
     projection_before_squad_strength = projection_before_squad_strength.merge(
-        expected_points_from_probabilities(probabilities_before_squad_strength),
+        expected_points_from_probabilities(probabilities_before_squad_strength, starting_points=starting_points),
         on="team",
         how="left",
         suffixes=("", "_deterministic"),

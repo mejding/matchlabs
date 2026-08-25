@@ -22,7 +22,7 @@ Shot volume is now populated in Season Projection. The feature parity audit chec
 
 | average_points | median_points | average_position | median_position | relegation_rate | goals_for_per_match | goals_against_per_match |
 | --- | --- | --- | --- | --- | --- | --- |
-| 32.2778 | 26.0000 | 16.2778 | 18.0000 | 0.6111 | 1.0395 | 1.8801 |
+| 27.9524 | 25.0000 | 15.3810 | 18.0000 | 0.5714 | 0.8960 | 1.6165 |
 
 Baseline fallback teams:
 
@@ -34,17 +34,17 @@ Feature audit:
 
 | team | local_pl_match_count | fallback_used | source_league | raw_recent_form_points_last5 | recent_form_points_last5 | raw_xg_strength_last5 | xg_strength_last5 | raw_xga_strength_last5 | xga_strength_last5 | raw_shots_avg_last5 | shots_avg_last5 | elo_rating |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Coventry | 0 | False | Championship adjusted to Premier League equivalent | 0.0000 | 6.0500 | 0.0000 | 0.9875 | 0.0000 | 1.7861 | 0.0000 | 12.0000 | 1500.0000 |
-| Hull | 0 | False | Championship adjusted to Premier League equivalent | 0.0000 | 2.7500 | 0.0000 | 0.9875 | 0.0000 | 1.7861 | 0.0000 | 10.0500 | 1500.0000 |
-| Tottenham | 266 | False | Premier League historical data | 10.0000 | 10.0000 | 1.4470 | 1.4470 | 0.9206 | 0.9206 | 13.4000 | 13.4000 | 1473.2938 |
+| Coventry | 1 | False | Championship adjusted to Premier League equivalent | 0.0000 | 6.0500 | 0.5583 | 0.8512 | 1.8542 | 1.9607 | 4.0000 | 12.0000 | 1496.4176 |
+| Hull | 1 | False | Championship adjusted to Premier League equivalent | 3.0000 | 2.7500 | 1.4963 | 0.8512 | 1.7787 | 1.9607 | 8.0000 | 10.0500 | 1519.2038 |
+| Tottenham | 267 | False | Premier League historical data | 7.0000 | 7.0000 | 1.3854 | 1.3854 | 1.5764 | 1.5764 | 13.0000 | 13.0000 | 1465.3653 |
 
 Projection:
 
 | team | expected_points | expected_position | projected_position | relegation_probability |
 | --- | --- | --- | --- | --- |
-| Tottenham | 45.9564 | 13.1642 | 13 | 0.1610 |
-| Coventry | 44.5006 | 13.5983 | 16 | 0.1824 |
-| Hull | 40.3834 | 15.6551 | 19 | 0.3822 |
+| Hull | 52.9424 | 9.7928 | 9 | 0.0294 |
+| Tottenham | 38.4466 | 16.7140 | 19 | 0.5013 |
+| Coventry | 30.6765 | 18.8865 | 20 | 0.8431 |
 
 ## Remaining Limitations
 

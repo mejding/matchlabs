@@ -11,12 +11,15 @@ from predict import build_prediction_features
 from season_simulation import (
     expected_points_from_probabilities,
     feature_row_for_fixture,
+    filter_unplayed_fixtures,
+    load_completed_current_season_matches,
     monte_carlo_season,
     predict_fixture_probabilities,
     projection_feature_overrides,
     promoted_team_baseline,
     season_start_feature_audit,
     season_table_from_results,
+    starting_points_from_completed,
     validate_projection_feature_inputs,
 )
 from squad_strength import apply_squad_strength_prior, load_squad_strength, normalize_squad_strength, squad_strength_lookup
@@ -54,6 +57,7 @@ def _prediction_tab_feature_row(
     team_history: dict[str, dict[str, list[float]]],
     feature_columns: list[str],
     elo_state: dict[str, dict[str, object]],
+    matches: pd.DataFrame,
 ) -> dict[str, float]:
     features = build_prediction_features(
         fixture["HomeTeam"],
@@ -62,6 +66,7 @@ def _prediction_tab_feature_row(
         feature_columns,
         match_date=fixture["Date"],
         elo_state=elo_state,
+        audit_matches=matches,
     )
     schedule_context = schedule_context_for_fixture(official_fixtures, fixture["HomeTeam"], fixture["AwayTeam"], fixture["Date"])
     for column, value in schedule_context.items():
@@ -163,10 +168,11 @@ def build_feature_parity_audit(
     elo_state: dict[str, dict[str, object]],
     feature_columns: list[str],
     overrides: dict[str, dict[str, float]],
+    matches: pd.DataFrame,
 ) -> pd.DataFrame:
     rows = []
     for _, fixture in fixtures.head(80).iterrows():
-        prediction_row = _prediction_tab_feature_row(fixture, official_fixtures, team_history, feature_columns, elo_state)
+        prediction_row = _prediction_tab_feature_row(fixture, official_fixtures, team_history, feature_columns, elo_state, matches)
         raw_projection_row = feature_row_for_fixture(fixture, team_history, elo_state, feature_columns)
         adjusted_projection_row = feature_row_for_fixture(
             fixture,
@@ -550,6 +556,10 @@ def main() -> None:
             calibrator = layer["calibrator"]
     official = load_official_fixtures(OFFICIAL_FIXTURE_PATH)
     fixtures = fixtures_for_model(official)
+    completed_matches = load_completed_current_season_matches()
+    starting_points = starting_points_from_completed(completed_matches)
+    if not completed_matches.empty:
+        fixtures = filter_unplayed_fixtures(fixtures, completed_matches)
     teams = tuple(sorted(set(fixtures["HomeTeam"]).union(fixtures["AwayTeam"])))
     matches = load_matches_with_xg()
 
@@ -581,7 +591,15 @@ def main() -> None:
     validation_status, validation = validate_projection_feature_inputs(audit, artifact["feature_columns"])
     overrides = projection_feature_overrides(audit)
 
-    parity = build_feature_parity_audit(fixtures, official, artifact["team_history"], artifact.get("elo_state", {}), artifact["feature_columns"], overrides)
+    parity = build_feature_parity_audit(
+        fixtures,
+        official,
+        artifact["team_history"],
+        artifact.get("elo_state", {}),
+        artifact["feature_columns"],
+        overrides,
+        matches,
+    )
     parity.to_csv(OUTPUT_DIR / "feature_parity_audit.csv", index=False)
     validation.to_csv(OUTPUT_DIR / "feature_validation.csv", index=False)
     if not squad_strength.empty:
@@ -613,18 +631,28 @@ def main() -> None:
     squad_scores = squad_strength_lookup(squad_strength)
     probabilities = apply_squad_strength_prior(probabilities, squad_scores)
     probabilities_before_adjustment = apply_squad_strength_prior(probabilities_before_adjustment, squad_scores)
-    projection = monte_carlo_season(probabilities, n_simulations=10000)
-    projection = projection.merge(expected_points_from_probabilities(probabilities), on="team", how="left")
+    projection = monte_carlo_season(probabilities, n_simulations=10000, starting_points=starting_points)
+    projection = projection.merge(expected_points_from_probabilities(probabilities, starting_points=starting_points), on="team", how="left")
     projection["projected_position"] = range(1, len(projection) + 1)
-    projection_before_squad_strength = monte_carlo_season(probabilities_before_squad_strength, n_simulations=10000)
+    projection.to_csv(OUTPUT_DIR / "current_season_projection.csv", index=False)
+    probabilities.to_csv(OUTPUT_DIR / "current_season_fixture_probabilities.csv", index=False)
+    projection_before_squad_strength = monte_carlo_season(
+        probabilities_before_squad_strength,
+        n_simulations=10000,
+        starting_points=starting_points,
+    )
     projection_before_squad_strength = projection_before_squad_strength.merge(
-        expected_points_from_probabilities(probabilities_before_squad_strength),
+        expected_points_from_probabilities(probabilities_before_squad_strength, starting_points=starting_points),
         on="team",
         how="left",
     )
-    projection_before_adjustment = monte_carlo_season(probabilities_before_adjustment, n_simulations=10000)
+    projection_before_adjustment = monte_carlo_season(
+        probabilities_before_adjustment,
+        n_simulations=10000,
+        starting_points=starting_points,
+    )
     projection_before_adjustment = projection_before_adjustment.merge(
-        expected_points_from_probabilities(probabilities_before_adjustment),
+        expected_points_from_probabilities(probabilities_before_adjustment, starting_points=starting_points),
         on="team",
         how="left",
         suffixes=("", "_deterministic"),

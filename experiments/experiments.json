@@ -43,5 +43,21 @@
     "bootstrap_runs": 30,
     "prediction_variance": 0.06374597549438477,
     "notes": "Professional probabilistic evaluation with time-based validation, calibration, uncertainty, and explainability."
+  },
+  {
+    "created_at": "2026-08-25T11:48:28.719519+00:00",
+    "experiment_id": "xg_schedule_injury_20260825_114828",
+    "model_version": "xg_schedule_injury",
+    "features_included": "home_team_points_last_5|away_team_points_last_5|home_goals_scored_avg|away_goals_scored_avg|home_advantage|home_xg_avg|away_xg_avg|home_xga_avg|away_xga_avg|home_xg_diff|away_xg_diff|home_days_rest|away_days_rest|home_matches_last_14_days|away_matches_last_14_days|home_had_midweek_match|away_had_midweek_match|home_days_since_last_match|away_days_since_last_match|home_elo|away_elo|elo_difference|elo_ratio|elo_gap_bucket|elo_recent_change|home_elo_trend|away_elo_trend|rolling_elo_form|home_shots_avg_last5|away_shots_avg_last5|home_shots_on_target_avg_last5|away_shots_on_target_avg_last5|home_shots_avg_last10|away_shots_avg_last10|home_shots_on_target_avg_last10|away_shots_on_target_avg_last10|home_shots_avg_season|away_shots_avg_season|home_shots_on_target_avg_season|away_shots_on_target_avg_season",
+    "train_period": "2019-08-09 to 2025-02-01",
+    "test_period": "2025-02-02 to 2026-08-24",
+    "accuracy": 0.4691588785046729,
+    "log_loss": 1.0458611741846666,
+    "brier_score": 0.6277186432024447,
+    "calibration_score": 0.05366861372257689,
+    "expected_calibration_error": 0.05366861372257689,
+    "bootstrap_runs": 30,
+    "prediction_variance": 0.06461488455533981,
+    "notes": "Professional probabilistic evaluation with time-based validation, calibration, uncertainty, and explainability."
   }
 ]

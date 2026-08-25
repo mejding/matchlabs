@@ -2,7 +2,7 @@
 
 ## Run Configuration
 
-- Force download: `True`
+- Force download: `False`
 - Dry run: `False`
 - Train model: `True`
 - Calibrate probabilities: `True`
@@ -12,32 +12,34 @@
 
 | Source | Season | Status | Rows | Latest date | Path |
 | --- | --- | --- | ---: | --- | --- |
-| football-data | 1920 | downloaded | 380 | 2020-07-26 | `data/premier_league_1920.csv` |
-| football-data | 2021 | downloaded | 380 | 2021-05-23 | `data/premier_league_2021.csv` |
-| football-data | 2122 | downloaded | 380 | 2022-05-22 | `data/premier_league_2122.csv` |
-| football-data | 2223 | downloaded | 380 | 2023-05-28 | `data/premier_league_2223.csv` |
-| football-data | 2324 | downloaded | 380 | 2024-05-19 | `data/premier_league_2324.csv` |
-| football-data | 2425 | downloaded | 380 | 2025-05-25 | `data/premier_league_2425.csv` |
-| football-data | 2526 | downloaded | 380 | 2026-05-24 | `data/premier_league_2526.csv` |
+| football-data | 1920 | kept_existing | 380 | 2020-07-26 | `data/premier_league_1920.csv` |
+| football-data | 2021 | kept_existing | 380 | 2021-05-23 | `data/premier_league_2021.csv` |
+| football-data | 2122 | kept_existing | 380 | 2022-05-22 | `data/premier_league_2122.csv` |
+| football-data | 2223 | kept_existing | 380 | 2023-05-28 | `data/premier_league_2223.csv` |
+| football-data | 2324 | kept_existing | 380 | 2024-05-19 | `data/premier_league_2324.csv` |
+| football-data | 2425 | kept_existing | 380 | 2025-05-25 | `data/premier_league_2425.csv` |
+| football-data | 2526 | kept_existing | 380 | 2026-05-24 | `data/premier_league_2526.csv` |
+| football-data | 2627 | kept_existing | 10 | 2026-08-24 | `data/premier_league_2627.csv` |
 
 ## Understat Refresh
 
 | Source | Season | Status | Rows | Latest date | Path |
 | --- | --- | --- | ---: | --- | --- |
-| understat | 2019 | downloaded | 380 | 2020-07-26 | `data/understat_epl_2019.json` |
-| understat | 2020 | downloaded | 380 | 2021-05-23 | `data/understat_epl_2020.json` |
-| understat | 2021 | downloaded | 380 | 2022-05-22 | `data/understat_epl_2021.json` |
-| understat | 2022 | downloaded | 380 | 2023-05-28 | `data/understat_epl_2022.json` |
-| understat | 2023 | downloaded | 380 | 2024-05-19 | `data/understat_epl_2023.json` |
-| understat | 2024 | downloaded | 380 | 2025-05-25 | `data/understat_epl_2024.json` |
-| understat | 2025 | downloaded | 380 | 2026-05-24 | `data/understat_epl_2025.json` |
+| understat | 2019 | kept_existing |  |  | `data/understat_epl_2019.json` |
+| understat | 2020 | kept_existing |  |  | `data/understat_epl_2020.json` |
+| understat | 2021 | kept_existing |  |  | `data/understat_epl_2021.json` |
+| understat | 2022 | kept_existing |  |  | `data/understat_epl_2022.json` |
+| understat | 2023 | kept_existing |  |  | `data/understat_epl_2023.json` |
+| understat | 2024 | kept_existing |  |  | `data/understat_epl_2024.json` |
+| understat | 2025 | kept_existing |  |  | `data/understat_epl_2025.json` |
+| understat | 2026 | kept_existing |  |  | `data/understat_epl_2026.json` |
 
 ## Validation
 
-- Football-data rows: `2660`
+- Football-data rows: `2670`
 - First local match date: `2019-08-09`
-- Latest local match date: `2026-05-24`
-- Local seasons: `1920, 2021, 2122, 2223, 2324, 2425, 2526`
+- Latest local match date: `2026-08-24`
+- Local seasons: `1920, 2021, 2122, 2223, 2324, 2425, 2526, 2627`
 - xG merge status: `checked_by_training`
 - xG rows: ``
 - xG missing rows: ``
@@ -53,6 +55,7 @@
 | 2324 | 380 |
 | 2425 | 380 |
 | 2526 | 380 |
+| 2627 | 10 |
 
 ## Commands
 
@@ -68,6 +71,7 @@ Using existing file: data/premier_league_2223.csv
 Using existing file: data/premier_league_2324.csv
 Using existing file: data/premier_league_2425.csv
 Using existing file: data/premier_league_2526.csv
+Using existing file: data/premier_league_2627.csv
 Using existing file: data/understat_epl_2019.json
 Using existing file: data/understat_epl_2020.json
 Using existing file: data/understat_epl_2021.json
@@ -75,49 +79,50 @@ Using existing file: data/understat_epl_2022.json
 Using existing file: data/understat_epl_2023.json
 Using existing file: data/understat_epl_2024.json
 Using existing file: data/understat_epl_2025.json
+Using existing file: data/understat_epl_2026.json
 No injury rows found. Created/used injury template at: data/injuries.csv
-Rows used: 2660
+Rows used: 2670
 
 Baseline model
-Accuracy: 0.4598
-Log loss: 1.0696
+Accuracy: 0.4617
+Log loss: 1.0684
 
 xG model
-Accuracy: 0.4897
-Log loss: 1.0534
-Brier score: 0.6335
-Calibration error: 0.0397
+Accuracy: 0.4841
+Log loss: 1.0468
+Brier score: 0.6286
+Calibration error: 0.0394
 
 xG + schedule model
-Accuracy: 0.4729
-Log loss: 1.0592
-Brier score: 0.6373
-Calibration error: 0.0431
+Accuracy: 0.4785
+Log loss: 1.0565
+Brier score: 0.6351
+Calibration error: 0.0411
 
 Production xG + schedule + Elo + shot volume model
-Accuracy: 0.4822
-Log loss: 1.0453
-Brier score: 0.6273
-Calibration error: 0.0475
+Accuracy: 0.4692
+Log loss: 1.0459
+Brier score: 0.6277
+Calibration error: 0.0537
 
 xG + schedule + injuries model
-Accuracy: 0.4729
-Log loss: 1.0592
-Brier score: 0.6373
-Calibration error: 0.0431
+Accuracy: 0.4785
+Log loss: 1.0565
+Brier score: 0.6351
+Calibration error: 0.0411
 
 Comparison
-Accuracy change: +0.0299
-Log loss change: -0.0162
-Schedule log loss change vs xG: +0.0058
-Schedule Brier change vs xG: +0.0038
-Schedule calibration change vs xG: +0.0034
+Accuracy change: +0.0224
+Log loss change: -0.0216
+Schedule log loss change vs xG: +0.0098
+Schedule Brier change vs xG: +0.0065
+Schedule calibration change vs xG: +0.0017
 Injury log loss change vs schedule: +0.0000
 Injury Brier change vs schedule: +0.0000
 Injury calibration change vs schedule: +0.0000
-Elo log loss change vs schedule: -0.0139
-Elo Brier change vs schedule: -0.0101
-Elo calibration change vs schedule: +0.0044
+Elo log loss change vs schedule: -0.0107
+Elo Brier change vs schedule: -0.0074
+Elo calibration change vs schedule: +0.0126
 Training mode: production
 Saved production xG + schedule + Elo + shot volume model to: models/football_model.joblib
 Saved xG + schedule model to: models/football_model_xg_schedule.joblib
@@ -136,6 +141,7 @@ Using existing file: data/premier_league_2223.csv
 Using existing file: data/premier_league_2324.csv
 Using existing file: data/premier_league_2425.csv
 Using existing file: data/premier_league_2526.csv
+Using existing file: data/premier_league_2627.csv
 Using existing file: data/understat_epl_2019.json
 Using existing file: data/understat_epl_2020.json
 Using existing file: data/understat_epl_2021.json
@@ -143,6 +149,7 @@ Using existing file: data/understat_epl_2022.json
 Using existing file: data/understat_epl_2023.json
 Using existing file: data/understat_epl_2024.json
 Using existing file: data/understat_epl_2025.json
+Using existing file: data/understat_epl_2026.json
 {
   "best_method": "sigmoid",
   "deployed": true
@@ -160,6 +167,7 @@ Using existing file: data/premier_league_2223.csv
 Using existing file: data/premier_league_2324.csv
 Using existing file: data/premier_league_2425.csv
 Using existing file: data/premier_league_2526.csv
+Using existing file: data/premier_league_2627.csv
 Using existing file: data/understat_epl_2019.json
 Using existing file: data/understat_epl_2020.json
 Using existing file: data/understat_epl_2021.json
@@ -167,18 +175,19 @@ Using existing file: data/understat_epl_2022.json
 Using existing file: data/understat_epl_2023.json
 Using existing file: data/understat_epl_2024.json
 Using existing file: data/understat_epl_2025.json
+Using existing file: data/understat_epl_2026.json
 Validation: time-based split, no random train/test split
-Train: 2019-08-09 to 2025-01-25
-Test:  2025-01-26 to 2026-05-24
+Train: 2019-08-09 to 2025-02-01
+Test:  2025-02-02 to 2026-08-24
 Rows evaluated: 535
-Accuracy: 0.4822
-Log loss: 1.0453
-Brier score: 0.6273
-Calibration error: 0.0475
-Expected calibration error: 0.0475
+Accuracy: 0.4692
+Log loss: 1.0459
+Brier score: 0.6277
+Calibration error: 0.0537
+Expected calibration error: 0.0537
 Bootstrap models: 30
-Mean bootstrap std: 0.0637
-Mean stability score: 0.6459
+Mean bootstrap std: 0.0646
+Mean stability score: 0.6410
 Saved evaluation outputs to: evaluation
 ```
 

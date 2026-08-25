@@ -91,6 +91,7 @@ def build_prediction_features(
     feature_columns: list[str],
     match_date: str | date | None = None,
     elo_state: dict[str, dict[str, object]] | None = None,
+    audit_matches: pd.DataFrame | None = None,
 ) -> pd.DataFrame:
     empty_history = {"points": [], "goals_scored": [], "xg": [], "xga": [], "match_dates": []}
     home_history = team_history.get(home_team, empty_history)
@@ -161,7 +162,7 @@ def build_prediction_features(
         )
     if any(column.startswith("elo_") or column.endswith("_elo") or column.endswith("_elo_trend") for column in feature_columns):
         row.update(build_prediction_elo_row(home_team, away_team, elo_state or {}))
-    fallback_audit = season_start_feature_audit([home_team, away_team], team_history, elo_state or {})
+    fallback_audit = season_start_feature_audit([home_team, away_team], team_history, elo_state or {}, matches=audit_matches)
     fallback_overrides = projection_feature_overrides(fallback_audit)
     for prefix, team in [("home", home_team), ("away", away_team)]:
         for key, fallback_value in fallback_overrides.get(team, {}).items():

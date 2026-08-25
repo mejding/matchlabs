@@ -12,15 +12,15 @@
 
 | team | source_league | local_pl_match_count | championship_match_count | promotion_adjustment_applied | fallback_used |
 | --- | --- | --- | --- | --- | --- |
-| Coventry | Championship adjusted to Premier League equivalent | 0 | 46 | True | False |
-| Hull | Championship adjusted to Premier League equivalent | 0 | 46 | True | False |
+| Coventry | Championship adjusted to Premier League equivalent | 1 | 46 | True | False |
+| Hull | Championship adjusted to Premier League equivalent | 1 | 46 | True | False |
 
 ### 2. Did they have Premier League data?
 
 | team | local_pl_match_count | championship_data_available |
 | --- | --- | --- |
-| Coventry | 0 | True |
-| Hull | 0 | True |
+| Coventry | 1 | True |
+| Hull | 1 | True |
 
 ### 3. Was Championship data available?
 
@@ -43,14 +43,14 @@ Current adjustment values:
 
 | team | raw_recent_form | adjusted_recent_form | raw_xg | adjusted_xg | raw_xga | adjusted_xga | raw_shot_volume | adjusted_shot_volume |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Coventry | 11.0000 | 6.0500 |  | 0.9875 |  | 1.7861 | 16.0000 | 12.0000 |
-| Hull | 5.0000 | 2.7500 |  | 0.9875 |  | 1.7861 | 13.4000 | 10.0500 |
+| Coventry | 11.0000 | 6.0500 |  | 0.8512 |  | 1.9607 | 16.0000 | 12.0000 |
+| Hull | 5.0000 | 2.7500 |  | 0.8512 |  | 1.9607 | 13.4000 | 10.0500 |
 
 ### 5. If no, what fallback baseline was used?
 
 | average_points | median_points | average_position | median_position | relegation_rate | goals_for_per_match | goals_against_per_match |
 | --- | --- | --- | --- | --- | --- | --- |
-| 32.2778 | 26.0000 | 16.2778 | 18.0000 | 0.6111 | 1.0395 | 1.8801 |
+| 27.9524 | 25.0000 | 15.3810 | 18.0000 | 0.5714 | 0.8960 | 1.6165 |
 
 Baseline fallback teams:
 
@@ -68,8 +68,8 @@ Yes. Championship points, xG and shot volume are converted with explicit factors
 
 | team | expected_points_before_adjustment | expected_points | relegation_probability_before_adjustment | relegation_probability |
 | --- | --- | --- | --- | --- |
-| Coventry | 42.5501 | 44.5006 | 0.2633 | 0.1824 |
-| Hull | 42.4349 | 40.3834 | 0.2795 | 0.3822 |
+| Coventry | 26.5668 | 30.6765 | 0.9416 | 0.8431 |
+| Hull | 56.1653 | 52.9424 | 0.0125 | 0.0294 |
 
 ## Notes
 

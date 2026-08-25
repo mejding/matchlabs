@@ -23,7 +23,7 @@ XG_MODEL_PATH = MODEL_DIR / "football_model_xg.joblib"
 XG_SCHEDULE_MODEL_PATH = MODEL_DIR / "football_model_xg_schedule.joblib"
 INJURY_DATA_PATH = DATA_DIR / "injuries.csv"
 
-DEFAULT_SEASONS = ["1920", "2021", "2122", "2223", "2324", "2425", "2526"]
+DEFAULT_SEASONS = ["1920", "2021", "2122", "2223", "2324", "2425", "2526", "2627"]
 BASE_URL = "https://www.football-data.co.uk/mmz4281/{season}/E0.csv"
 UNDERSTAT_URL = "https://understat.com/getLeagueData/EPL/{season}"
 

@@ -1,5 +1,5 @@
 {
-  "experiment_id": "xg_schedule_injury_20260812_081810",
+  "experiment_id": "xg_schedule_injury_20260825_114828",
   "model_version": "xg_schedule_injury",
   "features_included": [
     "home_team_points_last_5",
@@ -45,56 +45,56 @@
   ],
   "validation": {
     "split": "time_based_80_20_date_boundary_no_shuffle",
-    "train_rows": 2125,
+    "train_rows": 2135,
     "test_rows": 535,
     "train_start_date": "2019-08-09",
-    "train_end_date": "2025-01-25",
-    "test_start_date": "2025-01-26",
-    "test_end_date": "2026-05-24"
+    "train_end_date": "2025-02-01",
+    "test_start_date": "2025-02-02",
+    "test_end_date": "2026-08-24"
   },
-  "accuracy": 0.4822429906542056,
-  "log_loss": 1.0453088462042535,
-  "brier_score_multiclass": 0.6272615024512352,
+  "accuracy": 0.4691588785046729,
+  "log_loss": 1.0458611741846666,
+  "brier_score_multiclass": 0.6277186432024447,
   "brier_score_by_class": {
-    "home_win": 0.2255238244336342,
-    "draw": 0.1940341751095115,
-    "away_win": 0.2077035029080895
+    "home_win": 0.22627376381747355,
+    "draw": 0.19562721933248906,
+    "away_win": 0.20581766005248212
   },
   "confusion_matrix": [
     [
-      165,
-      3,
-      60
+      166,
+      5,
+      61
     ],
     [
-      77,
-      3,
-      57
+      81,
+      2,
+      54
     ],
     [
-      80,
-      0,
-      90
+      79,
+      4,
+      83
     ]
   ],
   "calibration": {
-    "mean_absolute_calibration_error": 0.04749440924957906,
+    "mean_absolute_calibration_error": 0.05366861372257689,
     "by_class": {
       "home_win": {
-        "mean_absolute_calibration_error": 0.05065002499896789,
-        "mean_signed_calibration_error": -0.004391254303611326
+        "mean_absolute_calibration_error": 0.05508925123749491,
+        "mean_signed_calibration_error": 0.0021714940249362834
       },
       "draw": {
-        "mean_absolute_calibration_error": 0.04059688805419709,
-        "mean_signed_calibration_error": 0.026430650570682265
+        "mean_absolute_calibration_error": 0.042641857767773544,
+        "mean_signed_calibration_error": 0.02765929634883023
       },
       "away_win": {
-        "mean_absolute_calibration_error": 0.05123631469557218,
-        "mean_signed_calibration_error": -0.022039403480904118
+        "mean_absolute_calibration_error": 0.06327473216246221,
+        "mean_signed_calibration_error": -0.029830773091204802
       }
     }
   },
-  "expected_calibration_error": 0.04749440924957905,
+  "expected_calibration_error": 0.05366861372257689,
   "calibration_diagnosis": {
     "home_win": "reasonably calibrated",
     "draw": "underconfident / underpredicted",
@@ -103,255 +103,255 @@
   "class_performance": [
     {
       "class": "home_win",
-      "support": 228,
-      "one_vs_rest_brier": 0.2255238244336342,
-      "actual_class_accuracy": 0.7236842105263158,
-      "actual_class_mean_probability": 0.48611196875572205,
-      "actual_class_log_loss": 0.7920987606048584
+      "support": 232,
+      "one_vs_rest_brier": 0.22627376381747355,
+      "actual_class_accuracy": 0.7155172413793104,
+      "actual_class_mean_probability": 0.484244704246521,
+      "actual_class_log_loss": 0.7896732091903687
     },
     {
       "class": "draw",
       "support": 137,
-      "one_vs_rest_brier": 0.1940341751095115,
-      "actual_class_accuracy": 0.021897810218978103,
-      "actual_class_mean_probability": 0.23126117885112762,
-      "actual_class_log_loss": 1.5065853595733643
+      "one_vs_rest_brier": 0.19562721933248906,
+      "actual_class_accuracy": 0.014598540145985401,
+      "actual_class_mean_probability": 0.22656069695949554,
+      "actual_class_log_loss": 1.5223907232284546
     },
     {
       "class": "away_win",
-      "support": 170,
-      "one_vs_rest_brier": 0.2077035029080895,
-      "actual_class_accuracy": 0.5294117647058824,
-      "actual_class_mean_probability": 0.3936336636543274,
-      "actual_class_log_loss": 1.0131739377975464
+      "support": 166,
+      "one_vs_rest_brier": 0.20581766005248212,
+      "actual_class_accuracy": 0.5,
+      "actual_class_mean_probability": 0.39107394218444824,
+      "actual_class_log_loss": 1.0106265544891357
     }
   ],
   "confidence_analysis": [
     {
       "bin_lower": 0.30000000000000004,
       "bin_upper": 0.4,
-      "count": 49,
-      "mean_confidence": 0.3764924108982086,
-      "accuracy": 0.3469387755102041,
-      "confidence_minus_accuracy": 0.02955363538800454
+      "count": 61,
+      "mean_confidence": 0.3779045045375824,
+      "accuracy": 0.4098360655737705,
+      "confidence_minus_accuracy": -0.031931561036188105
     },
     {
       "bin_lower": 0.4,
       "bin_upper": 0.5,
-      "count": 204,
-      "mean_confidence": 0.44901761412620544,
-      "accuracy": 0.4166666666666667,
-      "confidence_minus_accuracy": 0.03235094745953876
+      "count": 196,
+      "mean_confidence": 0.4510795474052429,
+      "accuracy": 0.3877551020408163,
+      "confidence_minus_accuracy": 0.06332444536442661
     },
     {
       "bin_lower": 0.5,
       "bin_upper": 0.6000000000000001,
-      "count": 145,
-      "mean_confidence": 0.5499011874198914,
-      "accuracy": 0.503448275862069,
-      "confidence_minus_accuracy": 0.046452911557822385
+      "count": 155,
+      "mean_confidence": 0.5447295904159546,
+      "accuracy": 0.432258064516129,
+      "confidence_minus_accuracy": 0.11247152589982556
     },
     {
       "bin_lower": 0.6000000000000001,
       "bin_upper": 0.7000000000000001,
-      "count": 101,
-      "mean_confidence": 0.6410342454910278,
-      "accuracy": 0.5643564356435643,
-      "confidence_minus_accuracy": 0.07667780984746353
+      "count": 85,
+      "mean_confidence": 0.6408661603927612,
+      "accuracy": 0.7058823529411765,
+      "confidence_minus_accuracy": -0.06501619254841529
     },
     {
       "bin_lower": 0.7000000000000001,
       "bin_upper": 0.8,
-      "count": 27,
-      "mean_confidence": 0.7397693395614624,
-      "accuracy": 0.7037037037037037,
-      "confidence_minus_accuracy": 0.03606563585775868
+      "count": 34,
+      "mean_confidence": 0.7417480945587158,
+      "accuracy": 0.6470588235294118,
+      "confidence_minus_accuracy": 0.09468927102930402
     },
     {
       "bin_lower": 0.8,
       "bin_upper": 0.9,
-      "count": 9,
-      "mean_confidence": 0.823755145072937,
-      "accuracy": 0.7777777777777778,
-      "confidence_minus_accuracy": 0.04597736729515922
+      "count": 4,
+      "mean_confidence": 0.8314023017883301,
+      "accuracy": 0.25,
+      "confidence_minus_accuracy": 0.5814023017883301
     }
   ],
   "top_features_by_gain": [
     {
-      "feature": "away_shots_on_target_avg_season",
-      "gain_importance": 0.05227052792906761
-    },
-    {
-      "feature": "away_xg_diff",
-      "gain_importance": 0.04858551174402237
-    },
-    {
-      "feature": "home_shots_on_target_avg_last10",
-      "gain_importance": 0.045816559344530106
-    },
-    {
       "feature": "home_shots_on_target_avg_season",
-      "gain_importance": 0.044703349471092224
+      "gain_importance": 0.05427931621670723
+    },
+    {
+      "feature": "away_shots_on_target_avg_season",
+      "gain_importance": 0.05353982001543045
     },
     {
       "feature": "home_shots_avg_last10",
-      "gain_importance": 0.043536774814128876
+      "gain_importance": 0.04521892964839935
     },
     {
-      "feature": "home_shots_avg_season",
-      "gain_importance": 0.03756250813603401
+      "feature": "away_xg_diff",
+      "gain_importance": 0.04510600492358208
     },
     {
       "feature": "home_xg_diff",
-      "gain_importance": 0.03751728683710098
+      "gain_importance": 0.03896206617355347
     },
     {
       "feature": "away_shots_avg_last10",
-      "gain_importance": 0.037375662475824356
+      "gain_importance": 0.035884737968444824
+    },
+    {
+      "feature": "home_shots_avg_season",
+      "gain_importance": 0.03570712357759476
     },
     {
       "feature": "home_team_points_last_5",
-      "gain_importance": 0.035049423575401306
+      "gain_importance": 0.034824881702661514
+    },
+    {
+      "feature": "home_shots_on_target_avg_last10",
+      "gain_importance": 0.032637741416692734
     },
     {
       "feature": "away_xga_avg",
-      "gain_importance": 0.03180089220404625
+      "gain_importance": 0.03209703415632248
     }
   ],
   "top_features_by_permutation": [
     {
       "feature": "home_shots_avg_season",
-      "permutation_importance": 0.00906525360141892,
-      "permutation_importance_std": 0.0025113322098539006
-    },
-    {
-      "feature": "home_shots_avg_last10",
-      "permutation_importance": 0.006314311068316769,
-      "permutation_importance_std": 0.001774952774885926
+      "permutation_importance": 0.008032910599852939,
+      "permutation_importance_std": 0.0034684818821592803
     },
     {
       "feature": "home_shots_on_target_avg_season",
-      "permutation_importance": 0.005391483304557321,
-      "permutation_importance_std": 0.0021482917384323622
+      "permutation_importance": 0.006965190998352311,
+      "permutation_importance_std": 0.002852493419921286
     },
     {
-      "feature": "elo_difference",
-      "permutation_importance": 0.00374819302499525,
-      "permutation_importance_std": 0.002428008342653484
-    },
-    {
-      "feature": "home_elo_trend",
-      "permutation_importance": 0.002198126404216616,
-      "permutation_importance_std": 0.001766757378387147
-    },
-    {
-      "feature": "away_goals_scored_avg",
-      "permutation_importance": 0.0021277073351493756,
-      "permutation_importance_std": 0.0024339700104825815
-    },
-    {
-      "feature": "home_team_points_last_5",
-      "permutation_importance": 0.0019099870231271022,
-      "permutation_importance_std": 0.0014310034179900201
-    },
-    {
-      "feature": "home_shots_on_target_avg_last10",
-      "permutation_importance": 0.0018087074847276563,
-      "permutation_importance_std": 0.0011348986615248846
+      "feature": "home_shots_avg_last10",
+      "permutation_importance": 0.004924273370009358,
+      "permutation_importance_std": 0.0020160437343829263
     },
     {
       "feature": "home_xga_avg",
-      "permutation_importance": 0.0014809022449510545,
-      "permutation_importance_std": 0.0016518820892677236
+      "permutation_importance": 0.004128883248904947,
+      "permutation_importance_std": 0.0011964051827510903
+    },
+    {
+      "feature": "elo_difference",
+      "permutation_importance": 0.0040122688714674835,
+      "permutation_importance_std": 0.0020559516813243076
+    },
+    {
+      "feature": "home_elo",
+      "permutation_importance": 0.0029587712266166966,
+      "permutation_importance_std": 0.00256932940017054
+    },
+    {
+      "feature": "home_team_points_last_5",
+      "permutation_importance": 0.0028766687269592196,
+      "permutation_importance_std": 0.0008463268725753091
     },
     {
       "feature": "away_shots_on_target_avg_season",
-      "permutation_importance": 0.0010270433988656346,
-      "permutation_importance_std": 0.003908447046835736
+      "permutation_importance": 0.0027431236892648146,
+      "permutation_importance_std": 0.0024199271273580873
+    },
+    {
+      "feature": "away_goals_scored_avg",
+      "permutation_importance": 0.0022926973686047346,
+      "permutation_importance_std": 0.0027165104205205755
+    },
+    {
+      "feature": "home_xg_diff",
+      "permutation_importance": 0.002132663829217263,
+      "permutation_importance_std": 0.002741331701804608
     }
   ],
   "top_features_by_shap": [
     {
-      "feature": "home_shots_avg_season",
-      "mean_abs_shap": 0.06742284446954727
-    },
-    {
       "feature": "away_shots_on_target_avg_season",
-      "mean_abs_shap": 0.06611774861812592
-    },
-    {
-      "feature": "home_xg_diff",
-      "mean_abs_shap": 0.061148643493652344
-    },
-    {
-      "feature": "away_xga_avg",
-      "mean_abs_shap": 0.05713484436273575
-    },
-    {
-      "feature": "home_shots_on_target_avg_season",
-      "mean_abs_shap": 0.05077964812517166
-    },
-    {
-      "feature": "away_shots_avg_last10",
-      "mean_abs_shap": 0.05076464265584946
-    },
-    {
-      "feature": "away_xg_diff",
-      "mean_abs_shap": 0.04558032006025314
+      "mean_abs_shap": 0.07516665011644363
     },
     {
       "feature": "home_elo",
-      "mean_abs_shap": 0.04536720737814903
+      "mean_abs_shap": 0.06002577394247055
     },
     {
-      "feature": "elo_recent_change",
-      "mean_abs_shap": 0.03958473354578018
+      "feature": "home_shots_avg_season",
+      "mean_abs_shap": 0.05817317217588425
+    },
+    {
+      "feature": "away_xg_diff",
+      "mean_abs_shap": 0.05719892680644989
+    },
+    {
+      "feature": "home_xg_diff",
+      "mean_abs_shap": 0.05601780489087105
+    },
+    {
+      "feature": "home_shots_on_target_avg_season",
+      "mean_abs_shap": 0.04839257895946503
+    },
+    {
+      "feature": "away_shots_avg_last10",
+      "mean_abs_shap": 0.047892168164253235
+    },
+    {
+      "feature": "away_xga_avg",
+      "mean_abs_shap": 0.047812290489673615
     },
     {
       "feature": "home_team_points_last_5",
-      "mean_abs_shap": 0.03574589267373085
+      "mean_abs_shap": 0.037904057651758194
+    },
+    {
+      "feature": "home_elo_trend",
+      "mean_abs_shap": 0.037417393177747726
     }
   ],
   "ensemble": {
     "n_models": 30,
-    "bootstrap_mean_probability_std": 0.06374597549438477,
-    "bootstrap_max_probability_std": 0.12968230247497559,
-    "subset_ensemble_mean_probability_std": 0.03575488552451134,
-    "subset_ensemble_max_probability_std": 0.11574119329452515
+    "bootstrap_mean_probability_std": 0.06461488455533981,
+    "bootstrap_max_probability_std": 0.12577426433563232,
+    "subset_ensemble_mean_probability_std": 0.03560628741979599,
+    "subset_ensemble_max_probability_std": 0.10088130831718445
   },
   "stability": {
-    "mean_stability_score": 0.6458557066686552,
-    "low_confidence_predictions": 12,
-    "medium_confidence_predictions": 500,
-    "high_confidence_predictions": 23
+    "mean_stability_score": 0.641028399524102,
+    "low_confidence_predictions": 18,
+    "medium_confidence_predictions": 497,
+    "high_confidence_predictions": 20
   },
-  "example_fixture": "Crystal Palace vs Brentford",
+  "example_fixture": "Brentford vs Tottenham",
   "example_prediction_intervals": [
     {
       "class": "home_win",
-      "mean_probability": 0.5360614657402039,
-      "std_probability": 0.055357832461595535,
-      "lower_95": 0.43004387617111206,
-      "upper_95": 0.6177005171775818
+      "mean_probability": 0.5545734763145447,
+      "std_probability": 0.11404689401388168,
+      "lower_95": 0.31341421604156494,
+      "upper_95": 0.6818006038665771
     },
     {
       "class": "draw",
-      "mean_probability": 0.2393702119588852,
-      "std_probability": 0.04746197536587715,
-      "lower_95": 0.16183233261108398,
-      "upper_95": 0.3292335867881775
+      "mean_probability": 0.15321269631385803,
+      "std_probability": 0.05941121652722359,
+      "lower_95": 0.07679611444473267,
+      "upper_95": 0.29569023847579956
     },
     {
       "class": "away_win",
-      "mean_probability": 0.2245681881904602,
-      "std_probability": 0.04077473282814026,
-      "lower_95": 0.15542514622211456,
-      "upper_95": 0.2867187559604645
+      "mean_probability": 0.2922138273715973,
+      "std_probability": 0.0964118018746376,
+      "lower_95": 0.14994443953037262,
+      "upper_95": 0.4942138195037842
     }
   ],
   "example_confidence": {
     "label": "Medium confidence",
-    "score": 0.7340842046671443,
+    "score": 0.5002408822377522,
     "explanation": "Moderate model disagreement; widest interval is for home_win."
   },
   "notes": "Professional probabilistic evaluation with time-based validation, calibration, uncertainty, and explainability."

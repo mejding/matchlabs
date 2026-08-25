@@ -29,6 +29,7 @@ OUTPUT_DIR = Path("evaluation") / "season_simulation"
 CHAMPIONSHIP_DATA_DIR = Path("data")
 CHAMPIONSHIP_SEASONS = ["2526"]
 CHAMPIONSHIP_BASE_URL = "https://www.football-data.co.uk/mmz4281/{season}/E1.csv"
+CURRENT_PREMIER_LEAGUE_SEASON = "2627"
 VALIDATION_SEASONS = ["2122", "2223", "2324", "2425"]
 SEASON_LABELS = {
     "2122": "2021/22",
@@ -664,9 +665,11 @@ def season_table_from_results(fixtures: pd.DataFrame) -> pd.DataFrame:
     return frame
 
 
-def expected_points_from_probabilities(probabilities: pd.DataFrame) -> pd.DataFrame:
+def expected_points_from_probabilities(probabilities: pd.DataFrame, starting_points: dict[str, float] | None = None) -> pd.DataFrame:
     teams = sorted(set(probabilities["HomeTeam"]).union(probabilities["AwayTeam"]))
-    points = {team: 0.0 for team in teams}
+    starting_points = starting_points or {}
+    teams = sorted(set(teams).union(starting_points.keys()))
+    points = {team: float(starting_points.get(team, 0.0)) for team in teams}
     for _, match in probabilities.iterrows():
         points[match["HomeTeam"]] += 3.0 * match["home_win_probability"] + match["draw_probability"]
         points[match["AwayTeam"]] += 3.0 * match["away_win_probability"] + match["draw_probability"]
@@ -674,11 +677,21 @@ def expected_points_from_probabilities(probabilities: pd.DataFrame) -> pd.DataFr
     return frame.sort_values(["expected_points_deterministic", "team"], ascending=[False, True]).reset_index(drop=True)
 
 
-def monte_carlo_season(probabilities: pd.DataFrame, n_simulations: int, seed: int = RANDOM_SEED) -> pd.DataFrame:
+def monte_carlo_season(
+    probabilities: pd.DataFrame,
+    n_simulations: int,
+    seed: int = RANDOM_SEED,
+    starting_points: dict[str, float] | None = None,
+) -> pd.DataFrame:
     rng = np.random.default_rng(seed)
     teams = sorted(set(probabilities["HomeTeam"]).union(probabilities["AwayTeam"]))
+    starting_points = starting_points or {}
+    teams = sorted(set(teams).union(starting_points.keys()))
     team_to_index = {team: index for index, team in enumerate(teams)}
     points = np.zeros((n_simulations, len(teams)), dtype=float)
+    for team, value in starting_points.items():
+        if team in team_to_index:
+            points[:, team_to_index[team]] = float(value)
     probs = probabilities[["home_win_probability", "draw_probability", "away_win_probability"]].to_numpy()
     probs = np.clip(probs, 1e-15, 1.0)
     probs = probs / probs.sum(axis=1, keepdims=True)
@@ -873,8 +886,44 @@ def read_fixture_list(path: Path) -> pd.DataFrame:
     return frame.sort_values("Date").reset_index(drop=True)
 
 
+def load_completed_current_season_matches(season: str = CURRENT_PREMIER_LEAGUE_SEASON) -> pd.DataFrame:
+    path = Path("data") / f"premier_league_{season}.csv"
+    if not path.exists():
+        return pd.DataFrame(columns=["Date", "HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR", "Season"])
+    frame = pd.read_csv(path)
+    required = ["Date", "HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR"]
+    missing = [column for column in required if column not in frame.columns]
+    if missing:
+        return pd.DataFrame(columns=required + ["Season"])
+    frame = frame[required].copy()
+    frame["Date"] = pd.to_datetime(frame["Date"], dayfirst=True, errors="coerce").dt.date
+    frame = frame.dropna(subset=["Date", "HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR"]).copy()
+    frame["Season"] = season
+    return frame.sort_values("Date").reset_index(drop=True)
+
+
+def filter_unplayed_fixtures(fixtures: pd.DataFrame, completed_matches: pd.DataFrame) -> pd.DataFrame:
+    if completed_matches.empty:
+        return fixtures.copy()
+    played_keys = set(zip(completed_matches["HomeTeam"], completed_matches["AwayTeam"]))
+    unplayed = fixtures[
+        ~fixtures[["HomeTeam", "AwayTeam"]].apply(lambda row: (row["HomeTeam"], row["AwayTeam"]) in played_keys, axis=1)
+    ].copy()
+    return unplayed.sort_values("Date").reset_index(drop=True)
+
+
+def starting_points_from_completed(completed_matches: pd.DataFrame) -> dict[str, float]:
+    if completed_matches.empty:
+        return {}
+    table = season_table_from_results(completed_matches)
+    return {str(row["team"]): float(row["points"]) for _, row in table.iterrows()}
+
+
 def project_fixture_list(fixture_path: Path, n_simulations: int) -> pd.DataFrame:
     fixtures = read_fixture_list(fixture_path)
+    completed = load_completed_current_season_matches()
+    fixtures = filter_unplayed_fixtures(fixtures, completed)
+    starting_points = starting_points_from_completed(completed)
     artifact = joblib.load(MODEL_PATH)
     model = artifact["model"]
     feature_columns = artifact["feature_columns"]
@@ -885,8 +934,8 @@ def project_fixture_list(fixture_path: Path, n_simulations: int) -> pd.DataFrame
         artifact["team_history"],
         artifact.get("elo_state", {}),
     )
-    projection = monte_carlo_season(probabilities, n_simulations=n_simulations, seed=RANDOM_SEED)
-    expected = expected_points_from_probabilities(probabilities)
+    projection = monte_carlo_season(probabilities, n_simulations=n_simulations, seed=RANDOM_SEED, starting_points=starting_points)
+    expected = expected_points_from_probabilities(probabilities, starting_points=starting_points)
     projection = projection.merge(expected, on="team", how="left")
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     probabilities.to_csv(OUTPUT_DIR / "custom_fixture_probabilities.csv", index=False)
