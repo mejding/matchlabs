@@ -682,6 +682,8 @@ The app supports official 2026/27 Premier League fixtures from `data/upcoming_fi
 - Fixtures are scheduled subject to change.
 - Premier League fixtures alone do not include European, FA Cup or EFL Cup fixtures, so schedule/fatigue currently uses Premier League fixtures only unless additional fixture files are added.
 - Season Projection uses the same active production feature groups as the Prediction tab: recent form, xG/xGA strength, schedule/fatigue, Elo and shot volume.
+- Rolling recent-form, xG/xGA and last-5/last-10 shot-volume inputs continue across season boundaries. Early in a new season, the first completed matches are added to the previous season's recent history instead of replacing it.
+- Shot-volume season averages use the current season only after at least 5 matches are available for the team. Before that, they fall back to the latest 10 available matches across the previous and current season to avoid overreacting to a single match.
 - Season Projection runs a feature validation audit before projecting. Active feature groups must be populated or explicitly marked with fallback metadata.
 - Promoted or low-history teams with zero local Premier League matches are handled separately with `source_league`, `local_pl_match_count`, `promotion_adjustment_applied`, `fallback_used` and `fallback_reason`.
 - If Championship data is available, recent form and shot volume are converted into Premier League-equivalent values before use. Championship points last 5 are multiplied by `0.55`, and Championship shot volume is multiplied by `0.75`.

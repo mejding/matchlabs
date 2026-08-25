@@ -90,11 +90,17 @@ def last_n_average(values: list[float], window: int) -> float:
     return average(values[-window:])
 
 
+MIN_SEASON_AVERAGE_MATCHES = 5
+SEASON_AVERAGE_FALLBACK_WINDOW = 10
+
+
 def latest_season_average(values: list[float], seasons: list[str]) -> float:
     if not values or not seasons:
         return 0.0
     latest_season = str(seasons[-1])
     season_values = [value for value, season in zip(values, seasons) if str(season) == latest_season]
+    if len(season_values) < MIN_SEASON_AVERAGE_MATCHES:
+        return last_n_average(values, SEASON_AVERAGE_FALLBACK_WINDOW)
     return average(season_values)
 
 

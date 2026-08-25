@@ -68,8 +68,8 @@ Yes. Championship points, xG and shot volume are converted with explicit factors
 
 | team | expected_points_before_adjustment | expected_points | relegation_probability_before_adjustment | relegation_probability |
 | --- | --- | --- | --- | --- |
-| Coventry | 26.5668 | 30.6765 | 0.9416 | 0.8431 |
-| Hull | 56.1653 | 52.9424 | 0.0125 | 0.0294 |
+| Coventry | 26.5865 | 32.2454 | 0.9561 | 0.8158 |
+| Hull | 55.8502 | 53.5360 | 0.0169 | 0.0289 |
 
 ## Notes
 

@@ -370,9 +370,15 @@ def average_last(values: list[float], window: int) -> float:
     return average(values[-window:])
 
 
+MIN_SEASON_AVERAGE_MATCHES = 5
+SEASON_AVERAGE_FALLBACK_WINDOW = 10
+
+
 def average_current_season(values: list[float], seasons: list[str], current_season: str) -> float:
     season_values = [value for value, season in zip(values, seasons) if str(season) == str(current_season)]
-    return average(season_values)
+    if len(season_values) >= MIN_SEASON_AVERAGE_MATCHES:
+        return average(season_values)
+    return average_last(values, SEASON_AVERAGE_FALLBACK_WINDOW)
 
 
 def days_between(current_date, previous_date) -> float:

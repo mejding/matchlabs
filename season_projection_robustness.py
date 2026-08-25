@@ -358,10 +358,13 @@ def write_robustness_report(
 - Teams with zero local Premier League history use adjusted Championship data when available.
 - If Championship data is missing, teams receive a conservative promoted-team Premier League baseline.
 - Championship performance is not treated as Premier League-equivalent input without conversion.
+- Early-season shot-volume season averages use a recent-history fallback until a team has at least five current-season matches.
 
 ## Shot Volume
 
 Shot volume is now populated in Season Projection. The feature parity audit checks `shots` and `shots_on_target` columns against the Prediction tab logic.
+
+For last-5 and last-10 features, the first completed matches of a new season are added to the previous season's recent history. For season-average shot-volume fields, the model uses the current season only after at least five team matches are available; before then it falls back to the latest 10 available matches across seasons.
 
 ## Feature Parity
 
@@ -391,7 +394,7 @@ Projection:
 
 - The project has football-data Championship results and shot volume, but not Championship xG. Promoted-team xG/xGA therefore still use a transparent conservative PL baseline until a reliable Championship xG source is added.
 - The neutral fixture skeleton fallback remains available, but official fixtures are preferred when valid.
-- Season Projection is a preseason forecast, not a match-by-match simulated form updater; team strength features are fixed at season start while schedule/fatigue uses fixture timing.
+- Season Projection is a forward projection from the latest completed local data. Completed current-season matches are included as actual table points, and remaining fixtures are simulated from feature values available at refresh time.
 """
     (OUTPUT_DIR / "season_projection_robustness_report.md").write_text(report)
 

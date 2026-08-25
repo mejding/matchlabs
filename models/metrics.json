@@ -27,10 +27,10 @@
     "test_start_date": "2025-02-02"
   },
   "xg_schedule_elo_shot_volume_model": {
-    "accuracy": 0.4691588785046729,
-    "log_loss": 1.0458611741846666,
-    "brier_score": 0.6277186432024447,
-    "mean_absolute_calibration_error": 0.05366861372257689,
+    "accuracy": 0.4635514018691589,
+    "log_loss": 1.0534340742004007,
+    "brier_score": 0.6337330928859118,
+    "mean_absolute_calibration_error": 0.05509975801840008,
     "train_rows": 2135,
     "test_rows": 535,
     "test_start_date": "2025-02-02"
@@ -63,9 +63,9 @@
     "calibration_error_change_vs_schedule": 0.0
   },
   "elo_comparison": {
-    "accuracy_change_vs_schedule": -0.009345794392523366,
-    "log_loss_change_vs_schedule": -0.01068143668752497,
-    "brier_score_change_vs_schedule": -0.007383868966435392,
-    "calibration_error_change_vs_schedule": 0.012576897196309215
+    "accuracy_change_vs_schedule": -0.014953271028037396,
+    "log_loss_change_vs_schedule": -0.0031085366717908958,
+    "brier_score_change_vs_schedule": -0.0013694192829682983,
+    "calibration_error_change_vs_schedule": 0.014008041492132403
   }
 }
