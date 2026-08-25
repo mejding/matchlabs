@@ -900,6 +900,24 @@ def fixture_label(row: pd.Series) -> str:
     )
 
 
+def default_matchweek_index(official_fixtures: pd.DataFrame) -> int:
+    matchweeks = sorted(official_fixtures["matchweek"].unique())
+    if not matchweeks:
+        return 0
+
+    completed = load_completed_current_season_matches()
+    if completed.empty:
+        return 0
+
+    completed_keys = set(zip(completed["HomeTeam"].astype(str), completed["AwayTeam"].astype(str)))
+    for index, matchweek in enumerate(matchweeks):
+        week = official_fixtures[official_fixtures["matchweek"] == matchweek]
+        week_keys = set(zip(week["home_team"].astype(str), week["away_team"].astype(str)))
+        if week_keys - completed_keys:
+            return index
+    return max(0, len(matchweeks) - 1)
+
+
 def confidence_label(probabilities, warnings: list[str]) -> tuple[str, str]:
     top_prob = float(max(probabilities))
     if len(warnings) >= 2:
@@ -2383,7 +2401,12 @@ def main() -> None:
         selector_cols = st.columns([0.55, 1.45, 0.55])
         with selector_cols[0]:
             matchweeks = sorted(official_fixtures["matchweek"].unique())
-            selected_matchweek = st.selectbox("Matchweek", matchweeks, format_func=lambda value: f"Matchweek {int(value)}")
+            selected_matchweek = st.selectbox(
+                "Matchweek",
+                matchweeks,
+                index=default_matchweek_index(official_fixtures),
+                format_func=lambda value: f"Matchweek {int(value)}",
+            )
         week_fixtures = official_fixtures[official_fixtures["matchweek"] == selected_matchweek].reset_index(drop=True)
         with selector_cols[1]:
             selected_index = st.selectbox(
