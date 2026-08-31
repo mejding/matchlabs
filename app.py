@@ -135,6 +135,8 @@ STATUS_EXPLANATIONS = {
 }
 SEASON_PROJECTION_VERSION = "balanced_round_robin_long_term_prior_squad_strength_v5"
 SEASON_PROJECTION_PRIOR_WEIGHT = 0.35
+SEASON_PROJECTION_DIR = Path("evaluation") / "season_projection"
+PRESEASON_PROJECTION_BASELINE_PATH = SEASON_PROJECTION_DIR / "preseason_projection_baseline.csv"
 
 
 @st.cache_resource
@@ -1803,6 +1805,114 @@ def blend_with_long_term_season_prior(
     return adjusted
 
 
+def completed_matches_with_matchweeks(completed_matches: pd.DataFrame, official_fixtures: pd.DataFrame) -> pd.DataFrame:
+    if completed_matches.empty or official_fixtures.empty or "matchweek" not in official_fixtures.columns:
+        return completed_matches.assign(matchweek=pd.NA)
+
+    completed = completed_matches.copy()
+    official = official_fixtures[["home_team", "away_team", "matchweek"]].copy()
+    official = official.rename(columns={"home_team": "HomeTeam", "away_team": "AwayTeam"})
+    return completed.merge(official[["HomeTeam", "AwayTeam", "matchweek"]], on=["HomeTeam", "AwayTeam"], how="left")
+
+
+def latest_fully_completed_matchweek(completed_matches: pd.DataFrame, official_fixtures: pd.DataFrame) -> int | None:
+    annotated = completed_matches_with_matchweeks(completed_matches, official_fixtures)
+    if annotated.empty or annotated["matchweek"].isna().all():
+        return None
+
+    fixture_counts = official_fixtures.groupby("matchweek").size()
+    completed_counts = annotated.dropna(subset=["matchweek"]).groupby("matchweek").size()
+    complete_weeks = [
+        int(matchweek)
+        for matchweek, fixture_count in fixture_counts.items()
+        if int(completed_counts.get(matchweek, 0)) >= int(fixture_count)
+    ]
+    return max(complete_weeks) if complete_weeks else None
+
+
+def completed_matches_through_matchweek(
+    completed_matches: pd.DataFrame,
+    official_fixtures: pd.DataFrame,
+    matchweek: int | None,
+) -> pd.DataFrame:
+    if matchweek is None:
+        return completed_matches.iloc[0:0].copy()
+
+    annotated = completed_matches_with_matchweeks(completed_matches, official_fixtures)
+    filtered = annotated[annotated["matchweek"].le(matchweek)].copy()
+    return filtered[[column for column in completed_matches.columns if column in filtered.columns]].reset_index(drop=True)
+
+
+def simulate_projection_snapshot(
+    fixtures: pd.DataFrame,
+    fixture_schedule_frame: pd.DataFrame,
+    artifact: dict,
+    calibrator: object | None,
+    teams: tuple[str, ...],
+    overrides: dict[str, dict[str, float]],
+    squad_strength: pd.DataFrame,
+    completed_matches: pd.DataFrame,
+    simulations: int,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    snapshot_fixtures = filter_unplayed_fixtures(fixtures, completed_matches)
+    starting_points = starting_points_from_completed(completed_matches)
+    probabilities = predict_fixture_probabilities(
+        snapshot_fixtures,
+        artifact["model"],
+        artifact["feature_columns"],
+        artifact["team_history"],
+        artifact.get("elo_state", {}),
+        calibrator=calibrator,
+        team_feature_overrides=overrides,
+        fixture_schedule_frame=fixture_schedule_frame,
+    )
+    long_term_strength = build_long_term_team_strength(teams, artifact.get("elo_state", {}))
+    probabilities = blend_with_long_term_season_prior(probabilities, long_term_strength)
+    probabilities = apply_squad_strength_prior(probabilities, squad_strength_lookup(squad_strength))
+    projection = monte_carlo_season(probabilities, n_simulations=simulations, starting_points=starting_points)
+    expected = expected_points_from_probabilities(probabilities, starting_points=starting_points)
+    projection = projection.merge(expected, on="team", how="left")
+    projection["projected_position"] = range(1, len(projection) + 1)
+    return projection, probabilities
+
+
+def load_projection_baseline(path: Path, teams: tuple[str, ...]) -> pd.DataFrame:
+    if not path.exists():
+        return pd.DataFrame()
+    try:
+        baseline = pd.read_csv(path)
+    except pd.errors.EmptyDataError:
+        return pd.DataFrame()
+
+    if "team" not in baseline.columns:
+        return pd.DataFrame()
+    if "projected_position" not in baseline.columns:
+        if "expected_position" not in baseline.columns:
+            return pd.DataFrame()
+        baseline = baseline.sort_values("expected_position").reset_index(drop=True).copy()
+        baseline["projected_position"] = range(1, len(baseline) + 1)
+
+    baseline = baseline[baseline["team"].isin(teams)].copy()
+    return baseline if len(baseline) == len(teams) else pd.DataFrame()
+
+
+def add_projection_position_movement(
+    projection: pd.DataFrame,
+    preseason_projection: pd.DataFrame,
+    previous_round_projection: pd.DataFrame | None,
+) -> pd.DataFrame:
+    output = projection.copy()
+    preseason_positions = preseason_projection.set_index("team")["projected_position"]
+    output["preseason_projected_position"] = output["team"].map(preseason_positions)
+    output["position_change_since_season_start"] = output["preseason_projected_position"] - output["projected_position"]
+
+    if previous_round_projection is not None and not previous_round_projection.empty:
+        previous_positions = previous_round_projection.set_index("team")["projected_position"]
+        output["previous_round_projected_position"] = output["team"].map(previous_positions)
+        output["position_change_since_previous_round"] = output["previous_round_projected_position"] - output["projected_position"]
+    return output
+
+
 def build_fixture_skeleton(teams: list[str]) -> pd.DataFrame:
     start = date(2026, 8, 15)
     rows = []
@@ -1862,16 +1972,14 @@ def upcoming_season_projection(
         mode = detect_fixture_mode(fixture_path)
         source = mode.message
         completed_matches = load_completed_current_season_matches()
-        starting_points = starting_points_from_completed(completed_matches)
         played_count = len(completed_matches)
         if played_count:
-            fixtures = filter_unplayed_fixtures(fixtures, completed_matches)
             source = f"{source}; {played_count} completed fixtures included as actual table points"
     else:
         fixtures = build_fixture_skeleton(list(teams))
         fixture_schedule_frame = fixtures.rename(columns={"Season": "season", "Date": "date", "HomeTeam": "home_team", "AwayTeam": "away_team"})
         source = "Fixture skeleton: official upcoming fixture list not found locally"
-        starting_points = {}
+        completed_matches = pd.DataFrame(columns=["Date", "HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR", "Season"])
 
     calibrator = None
     calibration_path = Path("models") / "calibrated_probability_layer.joblib"
@@ -1908,8 +2016,38 @@ def upcoming_season_projection(
     validation_status, validation = validate_projection_feature_inputs(feature_audit, artifact["feature_columns"])
     overrides = projection_feature_overrides(feature_audit)
 
-    probabilities = predict_fixture_probabilities(
-        fixtures,
+    preseason_projection = load_projection_baseline(PRESEASON_PROJECTION_BASELINE_PATH, teams)
+    if preseason_projection.empty:
+        preseason_projection, _ = simulate_projection_snapshot(
+            fixtures,
+            fixture_schedule_frame,
+            artifact,
+            calibrator,
+            teams,
+            overrides,
+            squad_strength,
+            completed_matches.iloc[0:0],
+            simulations,
+        )
+    previous_round_projection = None
+    if fixture_path.exists() and not completed_matches.empty:
+        latest_completed_round = latest_fully_completed_matchweek(completed_matches, fixture_schedule_frame)
+        previous_completed_round = None if latest_completed_round is None or latest_completed_round <= 1 else latest_completed_round - 1
+        previous_completed_matches = completed_matches_through_matchweek(completed_matches, fixture_schedule_frame, previous_completed_round)
+        previous_round_projection, _ = simulate_projection_snapshot(
+            fixtures,
+            fixture_schedule_frame,
+            artifact,
+            calibrator,
+            teams,
+            overrides,
+            squad_strength,
+            previous_completed_matches,
+            simulations,
+        )
+
+    probabilities_before_squad_strength = predict_fixture_probabilities(
+        filter_unplayed_fixtures(fixtures, completed_matches),
         artifact["model"],
         artifact["feature_columns"],
         artifact["team_history"],
@@ -1919,19 +2057,25 @@ def upcoming_season_projection(
         fixture_schedule_frame=fixture_schedule_frame,
     )
     long_term_strength = build_long_term_team_strength(teams, artifact.get("elo_state", {}))
-    probabilities = blend_with_long_term_season_prior(probabilities, long_term_strength)
-    probabilities_before_squad_strength = probabilities.copy()
-    probabilities = apply_squad_strength_prior(probabilities, squad_strength_lookup(squad_strength))
-    projection = monte_carlo_season(probabilities, n_simulations=simulations, starting_points=starting_points)
-    expected = expected_points_from_probabilities(probabilities, starting_points=starting_points)
-    projection = projection.merge(expected, on="team", how="left")
+    probabilities_before_squad_strength = blend_with_long_term_season_prior(probabilities_before_squad_strength, long_term_strength)
+    projection, probabilities = simulate_projection_snapshot(
+        fixtures,
+        fixture_schedule_frame,
+        artifact,
+        calibrator,
+        teams,
+        overrides,
+        squad_strength,
+        completed_matches,
+        simulations,
+    )
     projection_before_squad_strength = monte_carlo_season(
         probabilities_before_squad_strength,
         n_simulations=simulations,
-        starting_points=starting_points,
+        starting_points=starting_points_from_completed(completed_matches),
     )
     projection_before_squad_strength = projection_before_squad_strength.merge(
-        expected_points_from_probabilities(probabilities_before_squad_strength, starting_points=starting_points),
+        expected_points_from_probabilities(probabilities_before_squad_strength, starting_points=starting_points_from_completed(completed_matches)),
         on="team",
         how="left",
         suffixes=("", "_deterministic"),
@@ -1949,7 +2093,7 @@ def upcoming_season_projection(
         on="team",
         how="left",
     )
-    projection["projected_position"] = range(1, len(projection) + 1)
+    projection = add_projection_position_movement(projection, preseason_projection, previous_round_projection)
     return projection, probabilities, source, validation_status, validation, feature_audit
 
 
@@ -1983,6 +2127,22 @@ def probability_percent_columns(frame: pd.DataFrame, columns: list[str]) -> pd.D
     return output
 
 
+def format_position_change(value: object) -> str:
+    if pd.isna(value):
+        return ""
+    change = int(round(float(value)))
+    return f"+{change}" if change > 0 else str(change)
+
+
+def style_position_change(value: object) -> str:
+    text = str(value)
+    if text.startswith("+"):
+        return "color: #22c55e; font-weight: 700;"
+    if text.startswith("-"):
+        return "color: #ef4444; font-weight: 700;"
+    return "color: #9ca3af;"
+
+
 def format_season_projection_display(frame: pd.DataFrame) -> pd.DataFrame:
     base_columns = [
         "team",
@@ -1990,6 +2150,10 @@ def format_season_projection_display(frame: pd.DataFrame) -> pd.DataFrame:
         "expected_points_deterministic",
         "expected_position",
         "projected_position",
+        "preseason_projected_position",
+        "position_change_since_season_start",
+        "previous_round_projected_position",
+        "position_change_since_previous_round",
         "title_probability",
         "top_4_probability",
         "top_6_probability",
@@ -2006,6 +2170,10 @@ def format_season_projection_display(frame: pd.DataFrame) -> pd.DataFrame:
             "expected_points_deterministic": "Probability points",
             "expected_position": "Average simulated finish",
             "projected_position": "Ordered table rank",
+            "preseason_projected_position": "Pre-season rank",
+            "position_change_since_season_start": "Since season start",
+            "previous_round_projected_position": "Previous round rank",
+            "position_change_since_previous_round": "Since previous round",
             "title_probability": "Title",
             "top_4_probability": "Top 4",
             "top_6_probability": "Top 6",
@@ -2013,8 +2181,22 @@ def format_season_projection_display(frame: pd.DataFrame) -> pd.DataFrame:
         }
     )
     for column in ["Simulated points", "Probability points", "Average simulated finish"]:
-        display[column] = display[column].map(lambda value: f"{float(value):.1f}")
+        if column in display.columns:
+            display[column] = display[column].map(lambda value: f"{float(value):.1f}")
+    for column in ["Ordered table rank", "Pre-season rank", "Previous round rank"]:
+        if column in display.columns:
+            display[column] = display[column].map(lambda value: "" if pd.isna(value) else f"{int(round(float(value)))}")
+    for column in ["Since season start", "Since previous round"]:
+        if column in display.columns:
+            display[column] = display[column].map(format_position_change)
     return display
+
+
+def season_projection_display_style(display: pd.DataFrame):
+    movement_columns = [column for column in ["Since season start", "Since previous round"] if column in display.columns]
+    if not movement_columns:
+        return display
+    return display.style.map(style_position_change, subset=movement_columns)
 
 
 def format_season_start_audit_display(frame: pd.DataFrame) -> pd.DataFrame:
@@ -2164,12 +2346,25 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
     else:
         st.success("Season Projection feature validation passed with no fallback warnings.")
 
+    if mode.validation_ok:
+        completed_matches = load_completed_current_season_matches()
+        latest_completed_round = latest_fully_completed_matchweek(completed_matches, official) if not completed_matches.empty else None
+        if latest_completed_round and latest_completed_round > 1:
+            st.caption(
+                f"Movement columns compare the current projection after matchweek {latest_completed_round} "
+                f"with pre-season and after matchweek {latest_completed_round - 1}."
+            )
+        elif latest_completed_round == 1:
+            st.caption("Movement columns compare the current projection after matchweek 1 with pre-season.")
+
     selected = projection[projection["team"].isin([home_team, away_team])].copy()
     st.markdown("#### Selected Teams")
-    st.dataframe(format_season_projection_display(selected), width="stretch", hide_index=True)
+    selected_display = format_season_projection_display(selected)
+    st.dataframe(season_projection_display_style(selected_display), width="stretch", hide_index=True)
     st.caption(
         "Average simulated finish is the main projection number. Ordered table rank is only the table order after sorting teams, "
-        "so tightly grouped teams can look more separated than the simulation really says."
+        "so tightly grouped teams can look more separated than the simulation really says. "
+        "Position movement is positive when a team has moved up the projected table and negative when it has moved down."
     )
     if not selected.empty:
         max_rank_gap = (selected["projected_position"] - selected["expected_position"]).abs().max()
@@ -2189,7 +2384,8 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
             "The table is sorted by average simulated finish. Use the probability columns to judge uncertainty, "
             "especially for the lower-table cluster where a few expected points can move a team many places."
         )
-        st.dataframe(format_season_projection_display(projection), width="stretch", hide_index=True)
+        projection_display = format_season_projection_display(projection)
+        st.dataframe(season_projection_display_style(projection_display), width="stretch", hide_index=True)
 
     with st.expander("Season start feature audit", expanded=True):
         st.markdown(
