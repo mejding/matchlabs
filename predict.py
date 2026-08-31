@@ -5,13 +5,16 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 
 import joblib
+import numpy as np
 import pandas as pd
 
 from elo_rating_features import build_prediction_elo_row
+from official_fixtures import OFFICIAL_FIXTURE_PATH, load_official_fixtures, schedule_context_for_fixture
 from season_simulation import projection_feature_overrides, season_start_feature_audit
 
 
 MODEL_PATH = Path("models") / "football_model.joblib"
+CALIBRATION_PATH = Path("models") / "calibrated_probability_layer.joblib"
 
 
 def last_5_sum(values: list[float]) -> float:
@@ -178,6 +181,47 @@ def build_prediction_features(
     return pd.DataFrame([row], columns=feature_columns)
 
 
+def apply_probability_calibration(raw_probabilities, features: pd.DataFrame, calibration_path: Path = CALIBRATION_PATH):
+    if not calibration_path.exists():
+        return raw_probabilities, False, "raw"
+
+    layer = joblib.load(calibration_path)
+    if list(layer.get("feature_columns", [])) != list(features.columns):
+        return raw_probabilities, False, "raw"
+
+    method = layer.get("method")
+    if method in {"sigmoid", "isotonic"}:
+        probabilities = layer["calibrator"].predict_proba(features)[0]
+    elif method == "temperature":
+        temperature = float(layer["temperature"])
+        clipped = np.clip(raw_probabilities, 1e-15, 1.0)
+        logits = np.log(clipped) / temperature
+        logits = logits - logits.max()
+        probabilities = np.exp(logits)
+        probabilities = probabilities / probabilities.sum()
+    else:
+        return raw_probabilities, False, "raw"
+
+    probabilities = np.clip(np.asarray(probabilities, dtype=float), 1e-15, 1.0)
+    return probabilities / probabilities.sum(), True, str(method)
+
+
+def apply_official_schedule_context(features: pd.DataFrame, home_team: str, away_team: str, match_date: str | date | None) -> pd.DataFrame:
+    if match_date is None or not OFFICIAL_FIXTURE_PATH.exists():
+        return features
+    try:
+        parsed_date = pd.to_datetime(match_date, errors="coerce").date()
+        schedule_context = schedule_context_for_fixture(load_official_fixtures(), home_team, away_team, parsed_date)
+    except Exception:
+        return features
+
+    output = features.copy()
+    for column, value in schedule_context.items():
+        if column in output.columns:
+            output.loc[:, column] = float(value)
+    return output
+
+
 def predict(home_team: str, away_team: str, match_date: str | None = None) -> None:
     if not MODEL_PATH.exists():
         raise FileNotFoundError("Model not found. Run `python train_model.py` first.")
@@ -189,12 +233,20 @@ def predict(home_team: str, away_team: str, match_date: str | None = None) -> No
     elo_state = artifact.get("elo_state", {})
 
     features = build_prediction_features(home_team, away_team, team_history, feature_columns, match_date=match_date, elo_state=elo_state)
-    probabilities = model.predict_proba(features)[0]
+    features = apply_official_schedule_context(features, home_team, away_team, match_date)
+    raw_probabilities = model.predict_proba(features)[0]
+    probabilities, is_calibrated, calibration_method = apply_probability_calibration(raw_probabilities, features)
 
     print(f"\nPrediction: {home_team} vs {away_team}")
+    print(f"Calibration: {calibration_method if is_calibrated else 'not applied'}")
     print(f"Home win: {probabilities[0]:.3f}")
     print(f"Draw:     {probabilities[1]:.3f}")
     print(f"Away win: {probabilities[2]:.3f}")
+    if is_calibrated:
+        print("\nRaw model probabilities")
+        print(f"Home win: {raw_probabilities[0]:.3f}")
+        print(f"Draw:     {raw_probabilities[1]:.3f}")
+        print(f"Away win: {raw_probabilities[2]:.3f}")
 
 
 def parse_args() -> argparse.Namespace:
