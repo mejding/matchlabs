@@ -141,7 +141,7 @@ MIN_COMPLETED_SEASON_MATCHES = 300
 
 
 @st.cache_resource
-def load_model_artifact():
+def load_model_artifact(model_mtime: float):
     return joblib.load(MODEL_PATH)
 
 
@@ -154,7 +154,7 @@ def load_metrics() -> dict:
 
 
 @st.cache_resource
-def load_calibrated_layer():
+def load_calibrated_layer(calibration_mtime: float):
     path = Path("models") / "calibrated_probability_layer.joblib"
     if not path.exists():
         return None
@@ -943,6 +943,8 @@ def data_quality_label(warnings: list[str]) -> tuple[str, str]:
 def apply_calibration(raw_probabilities, calibrated_layer, features: pd.DataFrame):
     if calibrated_layer is None:
         return raw_probabilities, False, "raw"
+    if list(calibrated_layer.get("feature_columns", [])) != list(features.columns):
+        return raw_probabilities, False, "raw"
     method = calibrated_layer.get("method")
     if method in {"sigmoid", "isotonic"}:
         probabilities = calibrated_layer["calibrator"].predict_proba(features)[0]
@@ -1226,6 +1228,16 @@ def render_probability_bar(probabilities, home_team: str, away_team: str) -> Non
         )
     html += "</div>"
     st.markdown(html, unsafe_allow_html=True)
+
+
+def render_probability_source_badge(is_calibrated: bool, calibration_method: str | None) -> None:
+    if is_calibrated:
+        st.markdown(
+            f"<span class='badge good'>Displayed probabilities: {html_lib.escape(str(calibration_method))} calibrated</span>",
+            unsafe_allow_html=True,
+        )
+    else:
+        st.markdown("<span class='badge warn'>Displayed probabilities: raw model output</span>", unsafe_allow_html=True)
 
 
 def render_confidence_badge(probabilities, warnings: list[str]) -> None:
@@ -2572,13 +2584,16 @@ def main() -> None:
         show_missing_model_message()
         return
 
-    artifact = load_model_artifact()
+    model_mtime = Path(MODEL_PATH).stat().st_mtime if Path(MODEL_PATH).exists() else 0.0
+    calibration_path = Path("models") / "calibrated_probability_layer.joblib"
+    calibration_mtime = calibration_path.stat().st_mtime if calibration_path.exists() else 0.0
+    artifact = load_model_artifact(model_mtime)
     model = artifact["model"]
     feature_columns = artifact["feature_columns"]
     team_history = artifact["team_history"]
     elo_state = artifact.get("elo_state", {})
     metrics = load_metrics()
-    calibrated_layer = load_calibrated_layer()
+    calibrated_layer = load_calibrated_layer(calibration_mtime)
     teams = selectable_current_teams(team_history)
     missing_current_teams = unavailable_current_teams(team_history)
     stale_teams = stale_current_teams(team_history)
@@ -2726,6 +2741,7 @@ def main() -> None:
 
     if active_section == "Prediction":
         summary_card(home_team, away_team, probabilities)
+        render_probability_source_badge(is_calibrated, calibration_method)
         render_probability_bar(probabilities, home_team, away_team)
         render_scoreline_section(row, probabilities, home_team, away_team)
         st.subheader("Model Fair Odds")
