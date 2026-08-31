@@ -20,8 +20,8 @@ First-version weighting:
 - Championship: `0.55`
 - Champions League: `0.80`
 - Europa League: `0.75`
-- Conference League / European qualifier: `0.70`
-- Domestic cups: `0.45`
+- Conference League / European qualifier / UEFA Super Cup: `0.70`
+- Domestic cups / Community Shield: `0.45`
 - Friendlies / pre-season: `0.25`
 
 The intent is to let non-PL matches help with match rhythm and early-season context without treating them as Premier League-equivalent.
@@ -31,6 +31,7 @@ The intent is to let non-PL matches help with match rhythm and early-season cont
 | source_file | competition | team_rows | teams | first_date | last_date |
 | --- | --- | --- | --- | --- | --- |
 | championship_2526.csv | Championship | 1104 | 24 | 2025-08-08 | 2026-05-02 |
+| non_pl_matches.csv | Pre-season Friendly | 170 | 91 | 2026-07-11 | 2026-08-09 |
 
 Premier League training/evaluation rows with actual non-PL context available: `0`.
 

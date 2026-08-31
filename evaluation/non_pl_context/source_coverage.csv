@@ -1,2 +1,3 @@
 source_file,competition,team_rows,teams,first_date,last_date
 championship_2526.csv,Championship,1104,24,2025-08-08,2026-05-02
+non_pl_matches.csv,Pre-season Friendly,170,91,2026-07-11,2026-08-09

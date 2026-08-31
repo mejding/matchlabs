@@ -96,3 +96,36 @@ def test_championship_context_is_down_weighted() -> None:
     assert round(features["home_non_pl_goals_equiv_avg_last5"], 3) == 0.825
     assert round(features["home_non_pl_shots_equiv_avg_last5"], 2) == 4.95
     assert features["home_competitive_non_pl_matches_last_30_days"] == 2.0
+
+
+def test_uefa_super_cup_is_competitive_european_context() -> None:
+    pl_matches = pd.DataFrame(
+        [
+            {
+                "Date": date(2026, 8, 23),
+                "HomeTeam": "Aston Villa",
+                "AwayTeam": "Brighton",
+            }
+        ]
+    )
+    european = pd.DataFrame(
+        [
+            {
+                "Date": date(2026, 8, 12),
+                "team": "Aston Villa",
+                "opponent": "Paris Saint-Germain",
+                "competition": "UEFA Super Cup",
+                "source_file": "european_fixtures.csv",
+                "points": 3.0,
+                "goals_for": 2.0,
+                "shots_for": 11.0,
+                "weight": 0.70,
+            }
+        ]
+    )
+
+    features = build_non_pl_context_features(pl_matches, european).iloc[0]
+
+    assert features["home_competitive_non_pl_matches_last_30_days"] == 1.0
+    assert features["home_preseason_matches_last_60_days"] == 0.0
+    assert round(features["home_non_pl_points_equiv_last5"], 2) == 2.10

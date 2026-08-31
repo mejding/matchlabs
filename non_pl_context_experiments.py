@@ -166,8 +166,8 @@ First-version weighting:
 - Championship: `0.55`
 - Champions League: `0.80`
 - Europa League: `0.75`
-- Conference League / European qualifier: `0.70`
-- Domestic cups: `0.45`
+- Conference League / European qualifier / UEFA Super Cup: `0.70`
+- Domestic cups / Community Shield: `0.45`
 - Friendlies / pre-season: `0.25`
 
 The intent is to let non-PL matches help with match rhythm and early-season context without treating them as Premier League-equivalent.

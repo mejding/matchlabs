@@ -20,6 +20,8 @@ COMPETITION_WEIGHTS = {
     "Europa League": 0.75,
     "Conference League": 0.70,
     "European Qualifier": 0.70,
+    "UEFA Super Cup": 0.70,
+    "Community Shield": 0.45,
     "Domestic Cup": 0.45,
     "Friendly": 0.25,
     "Pre-season Friendly": 0.25,
