@@ -19,13 +19,13 @@ For last-5 and last-10 features, the first completed matches of a new season are
 
 - Validation status: `Warning`
 - Non-promoted max feature difference: `0.00000000`
-- Intentional promoted adjustment rows: `600`
+- Intentional promoted adjustment rows: `640`
 
 ## Promoted-Team Handling
 
 | average_points | median_points | average_position | median_position | relegation_rate | goals_for_per_match | goals_against_per_match |
 | --- | --- | --- | --- | --- | --- | --- |
-| 27.9524 | 25.0000 | 15.3810 | 18.0000 | 0.5714 | 0.8960 | 1.6165 |
+| 28.0952 | 25.0000 | 15.4762 | 18.0000 | 0.5238 | 0.8997 | 1.6241 |
 
 Baseline fallback teams:
 
@@ -37,17 +37,17 @@ Feature audit:
 
 | team | local_pl_match_count | fallback_used | source_league | raw_recent_form_points_last5 | recent_form_points_last5 | raw_xg_strength_last5 | xg_strength_last5 | raw_xga_strength_last5 | xga_strength_last5 | raw_shots_avg_last5 | shots_avg_last5 | elo_rating |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Coventry | 1 | False | Championship adjusted to Premier League equivalent | 0.0000 | 6.0500 | 0.5583 | 0.8512 | 1.8542 | 1.9607 | 4.0000 | 12.0000 | 1496.4176 |
-| Hull | 1 | False | Championship adjusted to Premier League equivalent | 3.0000 | 2.7500 | 1.4963 | 0.8512 | 1.7787 | 1.9607 | 8.0000 | 10.0500 | 1519.2038 |
-| Tottenham | 267 | False | Premier League historical data | 7.0000 | 7.0000 | 1.3854 | 1.3854 | 1.5764 | 1.5764 | 13.0000 | 13.0000 | 1465.3653 |
+| Coventry | 2 | False | Championship adjusted to Premier League equivalent | 0.0000 | 6.0500 | 0.8703 | 0.8548 | 1.1570 | 2.0192 | 7.5000 | 12.0000 | 1479.1801 |
+| Hull | 2 | False | Championship adjusted to Premier League equivalent | 6.0000 | 2.7500 | 0.9780 | 0.8548 | 1.4805 | 2.0192 | 7.0000 | 10.0500 | 1536.4413 |
+| Tottenham | 268 | False | Premier League historical data | 4.0000 | 4.0000 | 1.3851 | 1.3851 | 1.6564 | 1.6564 | 14.4000 | 14.4000 | 1450.7934 |
 
 Projection:
 
 | team | expected_points | expected_position | projected_position | relegation_probability |
 | --- | --- | --- | --- | --- |
-| Hull | 53.5360 | 9.2833 | 6 | 0.0289 |
-| Tottenham | 42.1480 | 15.3162 | 18 | 0.3481 |
-| Coventry | 32.2454 | 18.7005 | 20 | 0.8158 |
+| Hull | 45.3488 | 13.5658 | 16 | 0.1643 |
+| Coventry | 41.2028 | 15.3582 | 17 | 0.3107 |
+| Tottenham | 36.5473 | 17.4319 | 19 | 0.6227 |
 
 ## Remaining Limitations
 

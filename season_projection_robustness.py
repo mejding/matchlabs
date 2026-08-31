@@ -30,6 +30,7 @@ OUTPUT_DIR = Path("evaluation") / "season_projection"
 TEAMS_TO_AUDIT = ["Tottenham", "Coventry", "Hull"]
 SQUAD_AUDIT_TEAM = "Everton"
 SEASON_PROJECTION_PRIOR_WEIGHT = 0.35
+MIN_COMPLETED_SEASON_MATCHES = 300
 
 
 def _markdown_table(frame: pd.DataFrame) -> str:
@@ -100,7 +101,8 @@ def zscore(series: pd.Series) -> pd.Series:
 
 def build_long_term_team_strength(teams: tuple[str, ...], elo_state: dict[str, dict[str, object]]) -> dict[str, float]:
     matches = load_matches()
-    seasons = sorted(matches["Season"].dropna().unique())
+    season_counts = matches["Season"].dropna().value_counts()
+    seasons = sorted(season for season in season_counts.index if int(season_counts.loc[season]) >= MIN_COMPLETED_SEASON_MATCHES)
     recent_seasons = seasons[-2:]
     rows = []
     for season in recent_seasons:

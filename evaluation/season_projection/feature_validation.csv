@@ -1,21 +1,21 @@
 team,feature_validation_status,fallback_used,fallback_reason,source_league,local_pl_match_count,championship_data_available,promotion_adjustment_applied,missing_or_fallback_groups
-Arsenal,ok,False,none,Premier League historical data,267,False,False,none
-Aston Villa,ok,False,none,Premier League historical data,267,False,False,none
-Bournemouth,ok,False,none,Premier League historical data,191,False,False,none
-Brentford,ok,False,none,Premier League historical data,191,False,False,none
-Brighton,ok,False,none,Premier League historical data,267,False,False,none
-Chelsea,ok,False,none,Premier League historical data,267,False,False,none
-Coventry,warning,False,"Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline.",Championship adjusted to Premier League equivalent,1,True,True,championship_adjustment
-Crystal Palace,ok,False,none,Premier League historical data,267,False,False,none
-Everton,ok,False,none,Premier League historical data,267,False,False,none
-Fulham,ok,False,none,Premier League historical data,191,False,False,none
-Hull,warning,False,"Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline.",Championship adjusted to Premier League equivalent,1,True,True,championship_adjustment
-Ipswich,ok,False,none,Premier League historical data,39,True,False,none
-Leeds,ok,False,none,Premier League historical data,153,False,False,none
-Liverpool,ok,False,none,Premier League historical data,267,False,False,none
-Man City,ok,False,none,Premier League historical data,267,False,False,none
-Man United,ok,False,none,Premier League historical data,267,False,False,none
-Newcastle,ok,False,none,Premier League historical data,267,False,False,none
-Nott'm Forest,ok,False,none,Premier League historical data,153,False,False,none
-Sunderland,ok,False,none,Premier League historical data,39,False,False,none
-Tottenham,ok,False,none,Premier League historical data,267,False,False,none
+Arsenal,ok,False,none,Premier League historical data,268,False,False,none
+Aston Villa,ok,False,none,Premier League historical data,268,False,False,none
+Bournemouth,ok,False,none,Premier League historical data,192,False,False,none
+Brentford,ok,False,none,Premier League historical data,192,False,False,none
+Brighton,ok,False,none,Premier League historical data,268,False,False,none
+Chelsea,ok,False,none,Premier League historical data,268,False,False,none
+Coventry,warning,False,"Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline.",Championship adjusted to Premier League equivalent,2,True,True,championship_adjustment
+Crystal Palace,ok,False,none,Premier League historical data,268,False,False,none
+Everton,ok,False,none,Premier League historical data,268,False,False,none
+Fulham,ok,False,none,Premier League historical data,192,False,False,none
+Hull,warning,False,"Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline.",Championship adjusted to Premier League equivalent,2,True,True,championship_adjustment
+Ipswich,ok,False,none,Premier League historical data,40,True,False,none
+Leeds,ok,False,none,Premier League historical data,154,False,False,none
+Liverpool,ok,False,none,Premier League historical data,268,False,False,none
+Man City,ok,False,none,Premier League historical data,268,False,False,none
+Man United,ok,False,none,Premier League historical data,268,False,False,none
+Newcastle,ok,False,none,Premier League historical data,268,False,False,none
+Nott'm Forest,ok,False,none,Premier League historical data,154,False,False,none
+Sunderland,ok,False,none,Premier League historical data,40,False,False,none
+Tottenham,ok,False,none,Premier League historical data,268,False,False,none

@@ -137,6 +137,7 @@ SEASON_PROJECTION_VERSION = "balanced_round_robin_long_term_prior_squad_strength
 SEASON_PROJECTION_PRIOR_WEIGHT = 0.35
 SEASON_PROJECTION_DIR = Path("evaluation") / "season_projection"
 PRESEASON_PROJECTION_BASELINE_PATH = SEASON_PROJECTION_DIR / "preseason_projection_baseline.csv"
+MIN_COMPLETED_SEASON_MATCHES = 300
 
 
 @st.cache_resource
@@ -1744,7 +1745,8 @@ def zscore(series: pd.Series) -> pd.Series:
 
 def build_long_term_team_strength(teams: tuple[str, ...], elo_state: dict[str, dict[str, object]]) -> dict[str, float]:
     matches = load_matches()
-    seasons = sorted(matches["Season"].dropna().unique())
+    season_counts = matches["Season"].dropna().value_counts()
+    seasons = sorted(season for season in season_counts.index if int(season_counts.loc[season]) >= MIN_COMPLETED_SEASON_MATCHES)
     recent_seasons = seasons[-2:]
     rows = []
     for season in recent_seasons:
