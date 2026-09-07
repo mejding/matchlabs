@@ -2344,21 +2344,30 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
     adjusted_count = int(feature_audit["promotion_adjustment_applied"].sum()) if "promotion_adjustment_applied" in feature_audit else 0
     squad_strength_count = int(feature_audit["squad_strength_used"].fillna(False).sum()) if "squad_strength_used" in feature_audit else 0
     zero_history = feature_audit.loc[feature_audit["premier_league_matches_available"].eq(0), "team"].tolist()
-    cols = st.columns(5)
-    cols[0].metric("Feature parity", validation_status)
+    projection_input_label = {
+        "Ready": "Ready",
+        "Adjusted": "Ready",
+        "Fallback": "Fallback",
+        "Error": "Error",
+    }.get(validation_status, validation_status)
+    cols = st.columns(4)
+    cols[0].metric("Projection inputs", projection_input_label)
     cols[1].metric("Official fixtures", "OK" if mode.validation_ok else "Fallback")
-    cols[2].metric("Fallback teams", fallback_count)
-    cols[3].metric("Promoted adjustment", f"Active ({adjusted_count})")
-    cols[4].metric("Squad strength", f"Active ({squad_strength_count})" if squad_strength_count else "Missing")
+    cols[2].metric("Promoted teams", f"Adjusted ({adjusted_count})" if adjusted_count else "None")
+    cols[3].metric("Squad strength", f"Active ({squad_strength_count})" if squad_strength_count else "Missing")
     if validation_status == "Error":
         st.error("Season Projection feature validation found missing active production inputs. Check the audit table before using the projection.")
-    elif validation_status == "Warning":
+    elif validation_status == "Fallback":
         st.warning(
             "Season Projection uses explicit fallback assumptions for low-history teams. "
             f"Teams with 0 local Premier League matches: {', '.join(zero_history) if zero_history else 'none'}."
         )
+    elif validation_status == "Adjusted":
+        st.caption(
+            f"{adjusted_count} promoted teams use Championship-adjusted preseason inputs until enough Premier League matches are available."
+        )
     else:
-        st.success("Season Projection feature validation passed with no fallback warnings.")
+        st.caption("Projection inputs are complete.")
 
     if mode.validation_ok:
         completed_matches = load_completed_current_season_matches()
@@ -2405,7 +2414,7 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
         st.markdown(
             "These are the team-level feature values available before the 2026/27 season starts. "
             "For an individual fixture, the model maps the home team into the `home_*` columns and the away team into the `away_*` columns. "
-            "Fallback flags show where the local Premier League dataset does not contain enough history."
+            "Adjustment flags show where promoted-team assumptions are used until enough Premier League history is available."
         )
         selected_audit = feature_audit[feature_audit["team"].isin([home_team, away_team])]
         st.markdown("##### Selected teams")

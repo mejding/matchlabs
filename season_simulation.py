@@ -381,6 +381,26 @@ def promoted_team_baseline(matches: pd.DataFrame | None = None) -> dict[str, flo
     }
 
 
+def current_promoted_teams(matches: pd.DataFrame | None = None, current_season: str = CURRENT_PREMIER_LEAGUE_SEASON) -> set[str]:
+    matches = load_matches_with_xg() if matches is None else matches.copy()
+    seasons = sorted(matches["Season"].dropna().astype(str).unique())
+    if current_season not in seasons:
+        return set()
+    current_index = seasons.index(current_season)
+    if current_index == 0:
+        return set()
+    previous_season = seasons[current_index - 1]
+    current_matches = matches[matches["Season"].astype(str) == current_season]
+    previous_matches = matches[matches["Season"].astype(str) == previous_season]
+    current_teams = set(current_matches.get("HomeTeam", pd.Series(dtype=str))).union(
+        set(current_matches.get("AwayTeam", pd.Series(dtype=str)))
+    )
+    previous_teams = set(previous_matches.get("HomeTeam", pd.Series(dtype=str))).union(
+        set(previous_matches.get("AwayTeam", pd.Series(dtype=str)))
+    )
+    return current_teams - previous_teams
+
+
 def _league_feature_medians(raw_rows: list[dict[str, object]]) -> dict[str, float]:
     frame = pd.DataFrame(raw_rows)
     frame = frame[frame["local_pl_match_count"] >= 5].copy()
@@ -406,9 +426,10 @@ def _adjusted_values(
     medians: dict[str, float],
     promoted_baseline: dict[str, float],
     championship_summary: dict[str, object] | None = None,
+    is_current_promoted: bool = False,
 ) -> tuple[dict[str, float], str, str, bool, bool, dict[str, object]]:
     local_count = int(raw["local_pl_match_count"])
-    if local_count >= 5:
+    if local_count >= 5 and not is_current_promoted:
         adjusted = {
             "team_points_last_5": float(raw["raw_recent_form_points_last5"]),
             "goals_scored_avg": float(raw["raw_recent_goals_scored_avg_last5"]),
@@ -487,7 +508,9 @@ def season_start_feature_audit(
         championship_matches = load_championship_matches()
     raw_rows = [_raw_team_feature_values(team, team_history, elo_state) for team in sorted(teams)]
     medians = _league_feature_medians(raw_rows)
-    promoted_baseline = promoted_team_baseline(matches)
+    matches_for_promoted = load_matches_with_xg() if matches is None else matches
+    current_promoted = current_promoted_teams(matches_for_promoted)
+    promoted_baseline = promoted_team_baseline(matches_for_promoted)
     rows = []
     for raw in raw_rows:
         champ_summary = championship_team_summary(str(raw["team"]), championship_matches)
@@ -496,6 +519,7 @@ def season_start_feature_audit(
             medians,
             promoted_baseline,
             champ_summary,
+            str(raw["team"]) in current_promoted,
         )
         local_count = int(raw["local_pl_match_count"])
         flags = {
@@ -572,11 +596,12 @@ def validate_projection_feature_inputs(feature_audit: pd.DataFrame, feature_colu
             missing_groups.extend(["recent_form", "xg_strength", "shot_volume"])
         if bool(row.fallback_used) and not str(row.fallback_reason):
             missing_groups.append("fallback_reason")
-        marker = "explicit_fallback" if bool(row.fallback_used) else "championship_adjustment" if bool(row.promotion_adjustment_applied) else "none"
+        marker = "explicit_fallback" if bool(row.fallback_used) else "promoted_adjustment" if bool(row.promotion_adjustment_applied) else "none"
+        validation_status = "error" if missing_groups else ("fallback" if bool(row.fallback_used) else "adjusted" if bool(row.promotion_adjustment_applied) else "ok")
         rows.append(
             {
                 "team": row.team,
-                "feature_validation_status": "error" if missing_groups else ("warning" if bool(row.fallback_used) or bool(row.promotion_adjustment_applied) else "ok"),
+                "feature_validation_status": validation_status,
                 "fallback_used": bool(row.fallback_used),
                 "fallback_reason": row.fallback_reason,
                 "source_league": row.source_league,
@@ -589,10 +614,12 @@ def validate_projection_feature_inputs(feature_audit: pd.DataFrame, feature_colu
     validation = pd.DataFrame(rows)
     if (validation["feature_validation_status"] == "error").any():
         status = "Error"
-    elif (validation["feature_validation_status"] == "warning").any() or validation["promotion_adjustment_applied"].any():
-        status = "Warning"
+    elif (validation["feature_validation_status"] == "fallback").any():
+        status = "Fallback"
+    elif validation["promotion_adjustment_applied"].any():
+        status = "Adjusted"
     else:
-        status = "OK"
+        status = "Ready"
     active_missing = [column for column in feature_columns if column not in PRODUCTION_FEATURE_COLUMNS]
     if active_missing:
         status = "Error"

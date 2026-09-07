@@ -5,7 +5,7 @@ import unittest
 
 import pandas as pd
 
-from season_simulation import season_start_feature_audit
+from season_simulation import current_promoted_teams, season_start_feature_audit
 
 
 def championship_matches(team: str = "Promoted FC") -> pd.DataFrame:
@@ -105,6 +105,41 @@ class PromotedTeamAdjustmentTests(unittest.TestCase):
         self.assertFalse(row["fallback_used"])
         self.assertEqual(row["source_league"], "Premier League historical data")
         self.assertAlmostEqual(float(row["recent_form_points_last5"]), 8.0)
+
+    def test_current_promoted_team_with_old_premier_league_history_is_adjusted(self) -> None:
+        history = {
+            "Promoted FC": {
+                "points": [1, 3, 0, 3, 1, 3],
+                "goals_scored": [1, 2, 0, 3, 1, 2],
+                "xg": [1.1, 1.5, 0.8, 2.0, 1.2, 1.7],
+                "xga": [0.9, 1.0, 1.7, 0.7, 1.1, 0.8],
+                "match_dates": [date(2025, 4, day) for day in [1, 8, 15, 22, 29]] + [date(2026, 8, 22)],
+                "shots": [10, 12, 9, 15, 11, 13],
+                "shots_on_target": [3, 4, 2, 6, 3, 5],
+                "shot_seasons": ["2425"] * 5 + ["2627"],
+            }
+        }
+        matches = pd.DataFrame(
+            [
+                {"Season": "2526", "Date": date(2026, 5, 1), "HomeTeam": "Established FC", "AwayTeam": "Other FC", "FTHG": 1, "FTAG": 0, "FTR": "H"},
+                {"Season": "2627", "Date": date(2026, 8, 22), "HomeTeam": "Promoted FC", "AwayTeam": "Other FC", "FTHG": 2, "FTAG": 1, "FTR": "H"},
+            ]
+        )
+
+        audit = season_start_feature_audit(
+            ["Promoted FC"],
+            team_history=history,
+            elo_state={"Promoted FC": {"rating": 1500.0, "history": [1500.0]}},
+            matches=matches,
+            championship_matches=championship_matches(),
+        )
+        row = audit.iloc[0]
+        self.assertEqual(current_promoted_teams(matches), {"Promoted FC"})
+        self.assertEqual(row["local_pl_match_count"], 6)
+        self.assertTrue(row["championship_data_available"])
+        self.assertTrue(row["promotion_adjustment_applied"])
+        self.assertFalse(row["fallback_used"])
+        self.assertEqual(row["source_league"], "Championship adjusted to Premier League equivalent")
 
 
 if __name__ == "__main__":
