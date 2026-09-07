@@ -1387,10 +1387,10 @@ def render_validation_card(metrics: dict) -> None:
             st.caption("Validation metrics are not available yet. Run `python evaluate_model.py`.")
             return
         cols = st.columns(4)
-        cols[0].metric("Accuracy", f"{float(row.get('accuracy', 0.0)):.3f}")
-        cols[1].metric("Log Loss", f"{float(row.get('log_loss', 0.0)):.3f}")
-        cols[2].metric("Brier", f"{float(row.get('brier_score', 0.0)):.3f}")
-        cols[3].metric("ECE", f"{float(row.get('mean_absolute_calibration_error', 0.0)):.3f}")
+        cols[0].metric("Validation Accuracy", f"{float(row.get('accuracy', 0.0)):.4f}")
+        cols[1].metric("Log Loss", f"{float(row.get('log_loss', 0.0)):.4f}")
+        cols[2].metric("Brier", f"{float(row.get('brier_score', 0.0)):.4f}")
+        cols[3].metric("ECE", f"{float(row.get('mean_absolute_calibration_error', 0.0)):.4f}")
         st.caption(
             f"Trained on matches before {row.get('test_start_date', 'unknown')}. "
             f"Tested on {int(row.get('test_rows', 0))} later matches from {row.get('test_start_date', 'unknown')} onward."
