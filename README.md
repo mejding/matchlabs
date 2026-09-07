@@ -235,6 +235,8 @@ The script writes `data_refresh_report.md` with:
 - match count by season
 - whether training, calibration and evaluation commands ran successfully
 
+`refresh_data.py` also appends a timestamped upcoming-fixture forecast snapshot to `evaluation/fixtures_2026_27/forecast_log.csv` and writes the latest snapshot to `evaluation/fixtures_2026_27/latest_forecast_snapshot.csv`. Use `--skip-forecast-log` when a refresh should not create a new historical forecast record.
+
 `refresh_data.py` passes the selected season list into `train_model.py`, `calibration_improvement.py` and `evaluate_model.py`, so a newly downloaded season is actually used in retraining. Streamlit Cloud still updates only after the resulting files are committed and pushed to GitHub.
 
 ## Make a prediction
@@ -940,6 +942,7 @@ Current feature status:
 | Market odds | Benchmark only | no | market_overlay_report.md shows market-only preclosing probabilities remain best; logistic stacking improves Log Loss/Brier but fails the calibration promotion rule. |
 | Opponent-adjusted xG | Tested - Not adopted | no | rolling_validation_report.md shows the ratings candidate did not improve average rolling Log Loss/Brier versus production. |
 | Recency weighting | Tested - Not adopted | no | recency_weighting_report.md shows weighted rolling features did not beat production Log Loss or calibration. |
+| Draw propensity | Tested - Not adopted | no | draw_propensity_report.md shows worse Log Loss and Brier than calibrated production despite higher double-chance hit rate. |
 | Non-PL match context | Tested - Not adopted | no | non_pl_context_report.md shows no out-of-sample improvement with the currently available local source coverage. |
 | Head-to-head | Tested - Not adopted | no | head_to_head_intelligence_report.md keeps H2H research-only despite some draw-metric improvement. |
 | Manager consistency | Tested - Not adopted | no | manager_consistency_report.md shows worse Log Loss, Brier and ECE than production. |

@@ -1,0 +1,11 @@
+{
+  "promote": false,
+  "best_model": "model_b_draw_primary_sigmoid",
+  "deltas": {
+    "log_loss": 0.0012202798164693274,
+    "Brier_score": 0.0003130808270580543,
+    "expected_calibration_error": 0.006081286454298403,
+    "draw_log_loss": 0.0027077890693727458,
+    "double_chance_hit_rate": 0.018587360594795488
+  }
+}

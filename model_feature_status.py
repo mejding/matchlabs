@@ -109,6 +109,12 @@ FEATURE_STATUS: dict[str, FeatureStatusEntry] = {
         short_description="Linear, exponential and half-life weighted versions of rolling form, xG/xGA and shot-volume features.",
         evidence="evaluation/recency_weighting/recency_weighting_report.md shows the current production model kept the best Log Loss and better calibration.",
     ),
+    "Draw propensity": FeatureStatusEntry(
+        status="Tested - Not adopted",
+        used_in_production=False,
+        short_description="Pre-match signals for tight, low-event or historically draw-prone fixtures.",
+        evidence="evaluation/draw_propensity/draw_propensity_report.md shows worse Log Loss and Brier than calibrated production despite higher double-chance hit rate.",
+    ),
     "Decayed Elo": FeatureStatusEntry(
         status="Tested - Not adopted",
         used_in_production=False,

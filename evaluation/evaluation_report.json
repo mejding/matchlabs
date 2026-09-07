@@ -1,5 +1,5 @@
 {
-  "experiment_id": "xg_schedule_injury_20260907_063027",
+  "experiment_id": "xg_schedule_injury_20260907_064354",
   "model_version": "xg_schedule_injury",
   "features_included": [
     "home_team_points_last_5",

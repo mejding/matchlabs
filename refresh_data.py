@@ -4,6 +4,7 @@ import argparse
 import gzip
 import json
 import os
+import re
 import subprocess
 import sys
 import urllib.request
@@ -12,11 +13,13 @@ from pathlib import Path
 
 import pandas as pd
 
-from train_model import BASE_URL, DATA_DIR, SEASONS, UNDERSTAT_URL
+from train_model import BASE_URL, DATA_DIR, SEASONS, UNDERSTAT_URL, normalize_understat_team
 
 
 DEFAULT_UNDERSTAT_SEASONS = [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]
 REPORT_PATH = Path("data_refresh_report.md")
+SHOT_COLUMNS = ["HS", "AS", "HST", "AST"]
+UNDERSTAT_MATCH_URL = "https://understat.com/match/{match_id}"
 
 
 @dataclass(frozen=True)
@@ -45,6 +48,25 @@ def _download_bytes(url: str) -> bytes:
     request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(request, timeout=45) as response:
         return response.read()
+
+
+def _extract_understat_match_info(html: str) -> dict[str, object]:
+    match = re.search(r"var match_info\s*=\s*JSON.parse\('([^']+)'\)", html)
+    if not match:
+        raise ValueError("Understat match_info was not found in match page HTML.")
+    payload = match.group(1).encode("utf-8").decode("unicode_escape")
+    return json.loads(payload)
+
+
+def _download_understat_match_info(match_id: str) -> dict[str, object]:
+    raw = _download_bytes(UNDERSTAT_MATCH_URL.format(match_id=match_id))
+    return _extract_understat_match_info(raw.decode("utf-8", errors="ignore"))
+
+
+def _normalize_shot_columns(frame: pd.DataFrame) -> None:
+    for column in SHOT_COLUMNS:
+        if column in frame.columns:
+            frame[column] = pd.to_numeric(frame[column], errors="coerce").astype("Int64")
 
 
 def refresh_football_data_season(season: str, force: bool, dry_run: bool) -> DownloadResult:
@@ -105,6 +127,92 @@ def refresh_understat_season(season: int, force: bool, dry_run: bool) -> Downloa
         return DownloadResult("understat", str(season), path, "failed", message=str(exc))
 
 
+def backfill_understat_shots_for_season(football_data_season: str, understat_season: int, dry_run: bool) -> DownloadResult:
+    path = DATA_DIR / f"premier_league_{football_data_season}.csv"
+    understat_path = DATA_DIR / f"understat_epl_{understat_season}.json"
+    rows, latest = _read_csv_summary(path)
+    if not path.exists() or not understat_path.exists():
+        return DownloadResult("understat-shots", football_data_season, path, "skipped", rows, latest, "Missing CSV or Understat JSON.")
+
+    frame = pd.read_csv(path)
+    required = {"Date", "HomeTeam", "AwayTeam"}
+    if not required.issubset(frame.columns):
+        return DownloadResult("understat-shots", football_data_season, path, "skipped", rows, latest, "CSV is missing match identity columns.")
+
+    for column in SHOT_COLUMNS:
+        if column not in frame.columns:
+            frame[column] = pd.NA
+    _normalize_shot_columns(frame)
+
+    dates = pd.to_datetime(frame["Date"], dayfirst=True, errors="coerce").dt.date
+    missing_mask = frame[SHOT_COLUMNS].isna().any(axis=1)
+    if not missing_mask.any():
+        return DownloadResult("understat-shots", football_data_season, path, "complete", rows, latest, "No missing shot rows.")
+
+    data = json.loads(understat_path.read_text(encoding="utf-8"))
+    candidates: list[tuple[int, str]] = []
+    for match in data.get("dates", []):
+        if not match.get("isResult"):
+            continue
+        match_date = pd.to_datetime(match.get("datetime"), errors="coerce")
+        if pd.isna(match_date):
+            continue
+        home = normalize_understat_team(match["h"]["title"])
+        away = normalize_understat_team(match["a"]["title"])
+        row_mask = (
+            missing_mask
+            & (dates == match_date.date())
+            & (frame["HomeTeam"] == home)
+            & (frame["AwayTeam"] == away)
+        )
+        indexes = frame.index[row_mask].tolist()
+        if indexes:
+            candidates.append((indexes[0], str(match["id"])))
+
+    if dry_run:
+        return DownloadResult(
+            "understat-shots",
+            football_data_season,
+            path,
+            "dry_run",
+            len(candidates),
+            latest,
+            f"Would backfill shot columns for {len(candidates)} missing rows.",
+        )
+
+    backfilled = 0
+    failures: list[str] = []
+    for row_index, match_id in candidates:
+        try:
+            info = _download_understat_match_info(match_id)
+            values = {
+                "HS": info.get("h_shot"),
+                "AS": info.get("a_shot"),
+                "HST": info.get("h_shotOnTarget"),
+                "AST": info.get("a_shotOnTarget"),
+            }
+            if any(value is None for value in values.values()):
+                failures.append(f"{match_id}: missing shot values")
+                continue
+            for column, value in values.items():
+                frame.at[row_index, column] = int(value)
+            backfilled += 1
+        except Exception as exc:
+            failures.append(f"{match_id}: {exc}")
+
+    if backfilled:
+        _normalize_shot_columns(frame)
+        frame.to_csv(path, index=False)
+        rows, latest = _read_csv_summary(path)
+
+    remaining = int(frame[SHOT_COLUMNS].isna().any(axis=1).sum())
+    status = "updated" if backfilled and not failures else "partial" if backfilled else "failed"
+    message = f"Backfilled {backfilled} shot rows from Understat match pages. Remaining missing shot rows: {remaining}."
+    if failures:
+        message += " Failures: " + "; ".join(failures[:5])
+    return DownloadResult("understat-shots", football_data_season, path, status, rows, latest, message)
+
+
 def load_football_data_for_seasons(seasons: list[str]) -> pd.DataFrame:
     frames: list[pd.DataFrame] = []
     for season in seasons:
@@ -139,6 +247,10 @@ def validate_local_data(seasons: list[str]) -> dict[str, object]:
         if not matches.empty
         else []
     )
+    if matches.empty or not set(SHOT_COLUMNS).issubset(matches.columns):
+        validation["shot_missing_rows"] = ""
+    else:
+        validation["shot_missing_rows"] = int(matches[SHOT_COLUMNS].isna().any(axis=1).sum())
     xg_files = sorted(DATA_DIR.glob("understat_epl_*.json"))
     validation["understat_files"] = ", ".join(path.name for path in xg_files)
     validation["xg_merge_status"] = "checked_by_training"
@@ -191,6 +303,7 @@ def validation_section(validation: dict[str, object]) -> str:
         f"- First local match date: `{validation.get('football_data_first_date', '')}`",
         f"- Latest local match date: `{validation.get('football_data_latest_date', '')}`",
         f"- Local seasons: `{validation.get('football_data_seasons', '')}`",
+        f"- Rows missing shot data: `{validation.get('shot_missing_rows', '')}`",
         f"- xG merge status: `{validation.get('xg_merge_status', 'unknown')}`",
         f"- xG rows: `{validation.get('xg_rows', '')}`",
         f"- xG missing rows: `{validation.get('xg_missing_rows', '')}`",
@@ -204,6 +317,7 @@ def validation_section(validation: dict[str, object]) -> str:
 def write_report(
     football_results: list[DownloadResult],
     understat_results: list[DownloadResult],
+    shot_backfill_results: list[DownloadResult],
     validation: dict[str, object],
     commands: list[tuple[str, int, str]],
     args: argparse.Namespace,
@@ -222,6 +336,7 @@ def write_report(
 - Train model: `{not args.skip_train}`
 - Calibrate probabilities: `{not args.skip_calibration}`
 - Run full evaluation: `{not args.skip_evaluation}`
+- Log upcoming forecasts: `{not args.skip_forecast_log}`
 
 ## Football-Data Refresh
 
@@ -230,6 +345,10 @@ def write_report(
 ## Understat Refresh
 
 {result_table(understat_results)}
+
+## Understat Shot Backfill
+
+{result_table(shot_backfill_results)}
 
 {validation_section(validation)}
 
@@ -263,6 +382,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-train", action="store_true", help="Skip production model retraining.")
     parser.add_argument("--skip-calibration", action="store_true", help="Skip calibration refresh.")
     parser.add_argument("--skip-evaluation", action="store_true", help="Skip full model evaluation.")
+    parser.add_argument("--skip-forecast-log", action="store_true", help="Skip timestamped upcoming fixture forecast logging.")
     args = parser.parse_args()
     if args.understat_seasons is None:
         if args.seasons == SEASONS:
@@ -278,6 +398,10 @@ def main() -> None:
     args = parse_args()
     football_results = [refresh_football_data_season(season, args.force, args.dry_run) for season in args.seasons]
     understat_results = [refresh_understat_season(season, args.force, args.dry_run) for season in args.understat_seasons]
+    shot_backfill_results = [
+        backfill_understat_shots_for_season(season, understat_season, args.dry_run)
+        for season, understat_season in zip(args.seasons, args.understat_seasons, strict=True)
+    ]
     validation = validate_local_data(args.seasons)
 
     commands: list[tuple[str, int, str]] = []
@@ -287,8 +411,10 @@ def main() -> None:
         commands.append(run_command([sys.executable, "calibration_improvement.py"], args.seasons, args.understat_seasons))
     if not args.dry_run and not args.skip_evaluation:
         commands.append(run_command([sys.executable, "evaluate_model.py"], args.seasons, args.understat_seasons))
+    if not args.dry_run and not args.skip_forecast_log:
+        commands.append(run_command([sys.executable, "forecast_log.py"], args.seasons, args.understat_seasons))
 
-    write_report(football_results, understat_results, validation, commands, args)
+    write_report(football_results, understat_results, shot_backfill_results, validation, commands, args)
 
     print(f"Wrote {REPORT_PATH}")
     print(
