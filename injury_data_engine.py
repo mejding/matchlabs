@@ -24,10 +24,34 @@ PREMIER_INJURIES_CANDIDATES = [
     DATA_DIR / "premier_injuries_history.csv",
     DATA_DIR / "raw" / "premier_injuries.csv",
 ]
+AVAILABILITY_DATA_CANDIDATES = [
+    DATA_DIR / "availability-data",
+    DATA_DIR / "raw" / "availability-data",
+    Path("/tmp") / "availability-data",
+]
 API_FOOTBALL_BASE_URL = "https://v3.football.api-sports.io/injuries"
 SPORTMONKS_BASE_URL = "https://api.sportmonks.com/v3/football"
 DEFAULT_API_FOOTBALL_PREMIER_LEAGUE_ID = 39
 DEFAULT_API_FOOTBALL_SEASON = 2026
+AVAILABILITY_TEAM_ALIASES = {
+    "AFC Bournemouth": "Bournemouth",
+    "Arsenal FC": "Arsenal",
+    "Brighton & Hove Albion": "Brighton",
+    "Brentford FC": "Brentford",
+    "Burnley FC": "Burnley",
+    "Chelsea FC": "Chelsea",
+    "Everton FC": "Everton",
+    "Fulham FC": "Fulham",
+    "Liverpool FC": "Liverpool",
+    "Manchester City": "Man City",
+    "Manchester United": "Man United",
+    "Newcastle United": "Newcastle",
+    "Nottingham Forest": "Nott'm Forest",
+    "Sunderland AFC": "Sunderland",
+    "Tottenham Hotspur": "Tottenham",
+    "West Ham United": "West Ham",
+    "Wolverhampton Wanderers": "Wolves",
+}
 
 CANONICAL_INJURY_COLUMNS = [
     "report_date",
@@ -73,11 +97,11 @@ class RemoteFetchResult:
 
 
 def _read_csv_if_exists(path: Path) -> pd.DataFrame:
-    if not path.exists() or path.stat().st_size == 0:
+    if not path.exists() or path.is_dir() or path.stat().st_size == 0:
         return pd.DataFrame()
     try:
         return pd.read_csv(path)
-    except pd.errors.EmptyDataError:
+    except (pd.errors.EmptyDataError, IsADirectoryError):
         return pd.DataFrame()
 
 
@@ -106,7 +130,9 @@ def _to_number(series: pd.Series) -> pd.Series:
 
 
 def _as_date(value: object) -> date | pd.NaT:
-    parsed = pd.to_datetime(value, errors="coerce", utc=False)
+    text = str(value or "")
+    dayfirst = not bool(pd.Series([text]).str.match(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}").iloc[0])
+    parsed = pd.to_datetime(value, errors="coerce", utc=False, dayfirst=dayfirst)
     return parsed.date() if pd.notna(parsed) else pd.NaT
 
 
@@ -151,6 +177,21 @@ def _blank_canonical_row(source: str, collected_at: date) -> dict[str, object]:
         "source_url": pd.NA,
         "source_collected_at": collected_at,
     }
+
+
+def _season_start_to_code(season_start_year: int) -> str:
+    start = int(season_start_year) % 100
+    return f"{start:02d}{(start + 1) % 100:02d}"
+
+
+def _normalize_availability_team(team: str) -> str:
+    return AVAILABILITY_TEAM_ALIASES.get(str(team), str(team).removesuffix(" FC"))
+
+
+def _availability_detail_return_date(detail: object) -> date | pd.NaT:
+    text = str(detail or "")
+    match = pd.Series([text]).str.extract(r"Return expected on ([0-9]{2}/[0-9]{2}/[0-9]{4})", expand=False).iloc[0]
+    return _as_date(match)
 
 
 def _request_json(url: str, headers: dict[str, str] | None = None) -> dict[str, object]:
@@ -341,6 +382,92 @@ def normalize_sportmonks_payload(payload: dict[str, object], collected_at: date 
     return pd.DataFrame(rows, columns=CANONICAL_INJURY_COLUMNS) if rows else empty_canonical_frame()
 
 
+def _team_round_dates_for_availability(raw_root: Path) -> dict[tuple[int, str, int], date]:
+    seasons = sorted(path.name for path in (raw_root / "GB1").iterdir() if path.is_dir()) if (raw_root / "GB1").exists() else []
+    schedule: dict[tuple[int, str, int], date] = {}
+    for season_start in seasons:
+        season_code = _season_start_to_code(int(season_start))
+        match_path = DATA_DIR / f"premier_league_{season_code}.csv"
+        if not match_path.exists():
+            continue
+        matches = pd.read_csv(match_path)
+        if not {"Date", "HomeTeam", "AwayTeam"}.issubset(matches.columns):
+            continue
+        matches["Date"] = pd.to_datetime(matches["Date"], dayfirst=True, errors="coerce").dt.date
+        matches = matches.dropna(subset=["Date", "HomeTeam", "AwayTeam"]).sort_values(["Date", "HomeTeam", "AwayTeam"])
+        team_counts: dict[str, int] = {}
+        for match in matches.itertuples(index=False):
+            for team in (str(match.HomeTeam), str(match.AwayTeam)):
+                team_counts[team] = team_counts.get(team, 0) + 1
+                schedule[(int(season_start), team, team_counts[team])] = match.Date
+    return schedule
+
+
+def normalize_availability_data(raw_root: Path, collected_at: date | None = None) -> pd.DataFrame:
+    raw_root = Path(raw_root)
+    gb1_root = raw_root / "raw" / "GB1" if (raw_root / "raw" / "GB1").exists() else raw_root / "GB1"
+    if not gb1_root.exists():
+        return empty_canonical_frame()
+    schedule_dates = _team_round_dates_for_availability(raw_root / "raw" if (raw_root / "raw").exists() else raw_root)
+    rows: list[dict[str, object]] = []
+    for club_path in sorted(gb1_root.glob("*/*.json")):
+        payload = json.loads(club_path.read_text(encoding="utf-8"))
+        season_start = int(payload.get("season", club_path.parent.name))
+        team = _normalize_availability_team(str(payload.get("club", "")))
+        scraped_at = _as_date(payload.get("scrapedAt"))
+        collected = collected_at or (scraped_at if pd.notna(scraped_at) else date.today())
+        for competition in payload.get("competitions", []) or []:
+            if competition.get("code") != "GB1":
+                continue
+            for player in competition.get("players", []) or []:
+                prior_statuses: list[str] = []
+                prior_minutes = 0.0
+                matches = sorted(player.get("matches", []) or [], key=lambda item: int(str(item.get("round", "0")).split(".")[0] or 0))
+                for availability in matches:
+                    status = str(availability.get("status", "")).lower()
+                    try:
+                        round_number = int(str(availability.get("round", "0")).split(".")[0])
+                    except ValueError:
+                        continue
+                    match_date = schedule_dates.get((season_start, team, round_number))
+                    if match_date is None:
+                        if status in {"starting", "sub_in"}:
+                            prior_minutes += 90.0 if status == "starting" else 25.0
+                            prior_statuses.append(status)
+                        continue
+                    if status in {"injured", "suspended"}:
+                        detail = availability.get("detail")
+                        expected_return = _availability_detail_return_date(detail)
+                        recent_starts = prior_statuses[-5:].count("starting")
+                        row = _blank_canonical_row("availability-data", collected)
+                        row.update(
+                            {
+                                "report_date": match_date,
+                                "team": team,
+                                "player": player.get("name"),
+                                "unavailable_from": match_date,
+                                "expected_return_date": match_date,
+                                "status_type": "suspension" if status == "suspended" else "injury",
+                                "injury_or_suspension": detail or status,
+                                "is_expected_starter": 1.0 if recent_starts >= 3 or (prior_statuses[-1:] == ["starting"]) else 0.0,
+                                "is_key_player": 1.0 if prior_minutes >= 900 else 0.0,
+                                "is_long_term_injury": 1.0
+                                if pd.notna(expected_return) and (expected_return - match_date).days >= 30
+                                else 0.0,
+                                "is_suspended": 1.0 if status == "suspended" else 0.0,
+                                "minutes_played_last_365": prior_minutes,
+                                "source_url": "https://github.com/withqwerty/availability-data",
+                            }
+                        )
+                        rows.append(row)
+                    if status == "starting":
+                        prior_minutes += 90.0
+                    elif status == "sub_in":
+                        prior_minutes += 25.0
+                    prior_statuses.append(status)
+    return pd.DataFrame(rows, columns=CANONICAL_INJURY_COLUMNS) if rows else empty_canonical_frame()
+
+
 def fetch_sportmonks_sidelined(api_token: str, season_id: str | None = None, team_ids: list[str] | None = None) -> pd.DataFrame:
     frames: list[pd.DataFrame] = []
     if team_ids:
@@ -393,10 +520,15 @@ def discover_sources() -> list[SourceDiscovery]:
         ("existing injuries.csv", [INJURY_PATH]),
         ("Transfermarkt injury history", TRANSFERMARKT_CANDIDATES),
         ("Premier Injuries history", PREMIER_INJURIES_CANDIDATES),
+        ("withqwerty availability-data", AVAILABILITY_DATA_CANDIDATES),
     ]:
         path = _first_existing(candidates)
         if path is None:
             discoveries.append(SourceDiscovery(name, candidates[0], False, 0, False, "No local source file found."))
+            continue
+        if path.is_dir():
+            raw_files = list(path.glob("raw/GB1/*/*.json")) or list(path.glob("GB1/*/*.json"))
+            discoveries.append(SourceDiscovery(name, path, True, len(raw_files), bool(raw_files), "Found availability-data JSON files."))
             continue
         frame = _read_csv_if_exists(path)
         has_minimum_columns = {"team", "player"} & {column.lower() for column in frame.columns}
@@ -418,14 +550,33 @@ def build_injury_master_table(remote_frames: list[pd.DataFrame] | None = None) -
     frames.extend(remote_frames or [])
     transfermarkt_path = _first_existing(TRANSFERMARKT_CANDIDATES)
     premier_injuries_path = _first_existing(PREMIER_INJURIES_CANDIDATES)
+    availability_data_path = _first_existing(AVAILABILITY_DATA_CANDIDATES)
     if transfermarkt_path:
         frames.append(normalize_transfermarkt(transfermarkt_path))
     if premier_injuries_path:
         frames.append(normalize_premier_injuries(premier_injuries_path))
+    if availability_data_path:
+        frames.append(normalize_availability_data(availability_data_path))
 
     combined = pd.concat(frames, ignore_index=True) if frames else empty_canonical_frame()
     if combined.empty:
         return empty_canonical_frame()
+    for column in ["report_date", "unavailable_from", "expected_return_date", "source_collected_at"]:
+        combined[column] = pd.to_datetime(combined[column], errors="coerce").dt.date
+    numeric_columns = [
+        "is_expected_starter",
+        "is_key_player",
+        "is_long_term_injury",
+        "is_suspended",
+        "minutes_played_last_365",
+        "goals_last_365",
+        "xg_contribution_last_365",
+        "xa_contribution_last_365",
+        "defensive_contribution_last_365",
+        "market_value_eur",
+    ]
+    for column in numeric_columns:
+        combined[column] = pd.to_numeric(combined[column], errors="coerce").fillna(0.0)
     combined = combined.dropna(subset=["report_date", "team", "player", "unavailable_from"])
     combined = combined.drop_duplicates(
         subset=["report_date", "team", "player", "unavailable_from", "expected_return_date", "status_type"],

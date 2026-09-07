@@ -177,14 +177,14 @@ xG + schedule + Elo + shot volume log loss: 1.0453
 xG + schedule + Elo + shot volume Brier score: 0.6273
 xG + schedule + Elo + shot volume calibration error: 0.0475
 
-xG + schedule + injuries log loss: 1.0592
-xG + schedule + injuries Brier score: 0.6373
-xG + schedule + injuries calibration error: 0.0431
+xG + schedule + Elo + shot volume + injuries log loss: 1.0600
+xG + schedule + Elo + shot volume + injuries Brier score: 0.6349
+xG + schedule + Elo + shot volume + injuries calibration error: 0.0491
 ```
 
 Lower log loss, Brier score, and calibration error are better.
 
-The current `data/injuries.csv` file is an empty reproducible template, so injury features are not part of the production model. They stay research-only until historical availability data exists and improves out-of-sample log loss or Brier score.
+The current `data/injuries.csv` file contains historical availability rows imported from the public withqwerty/availability-data repository. Injury/suspension features are still not part of the production model because the latest out-of-sample test slightly worsened log loss and Brier score versus the current production feature set.
 
 Required injury CSV columns:
 
@@ -527,7 +527,7 @@ Model C log loss: 1.0129, Brier: 0.6053, calibration: 0.0393
 Model D log loss: 1.0129, Brier: 0.6053, calibration: 0.0393
 ```
 
-Fatigue features currently improve log loss, Brier score, and calibration. European and injury features are zero-impact until `data/european_fixtures.csv` and `data/injuries.csv` contain real historical rows.
+Fatigue features currently improve log loss, Brier score, and calibration. European fixture rows remain zero-impact until `data/european_fixtures.csv` contains real historical rows. Injury/suspension rows now exist, but remain research-only because they did not beat the current production baseline.
 
 ## Lineup Stability Engine
 
@@ -969,7 +969,7 @@ Current feature status:
 | Head-to-head | Tested - Not adopted | no | head_to_head_intelligence_report.md keeps H2H research-only despite some draw-metric improvement. |
 | Manager consistency | Tested - Not adopted | no | manager_consistency_report.md shows worse Log Loss, Brier and ECE than production. |
 | Lineup stability | Research | no | lineup_stability_report.md shows worse out-of-sample Log Loss and Brier than production. |
-| Injuries and suspensions | Missing | no | injury_data_quality_report.md and injury_engine_report.md say injury features should not be activated. |
+| Injuries and suspensions | Tested - Not adopted | no | injury_engine_report.md shows worse out-of-sample Log Loss and Brier score versus the current production feature set. |
 | Tactical intelligence | Research | no | tactical_intelligence_report.md says only limited shots-derived tactical data is available; broader tactics stay research-only. |
 | Venue-specific form | Tested - Not adopted | no | venue_specific_features_report.md says the venue-specific set did not improve both Log Loss and Brier robustly. |
 | Shot efficiency | Tested - Not adopted | no | shot_efficiency_report.md keeps finishing-efficiency and goals-minus-xG research-only/noisy. |

@@ -164,10 +164,10 @@ FEATURE_STATUS: dict[str, FeatureStatusEntry] = {
         evidence="lineup_stability_report.md shows worse out-of-sample Log Loss and Brier than production.",
     ),
     "Injuries and suspensions": FeatureStatusEntry(
-        status="Missing",
+        status="Tested - Not adopted",
         used_in_production=False,
-        short_description="Injury feature templates exist, but reliable historical injury rows are not available locally.",
-        evidence="injury_data_quality_report.md and injury_engine_report.md say injury features should not be activated.",
+        short_description="Historical availability rows now exist, but injury/suspension features did not beat the current production model.",
+        evidence="injury_engine_report.md shows worse out-of-sample log loss and Brier score versus the production feature set.",
     ),
     "Tactical intelligence": FeatureStatusEntry(
         status="Research",

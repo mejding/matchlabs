@@ -16,23 +16,14 @@ from evaluation.model_evaluation import evaluate_probabilities, time_based_split
 from explainability.shap_analysis import compute_shap_importance, plot_shap_importance, plot_shap_summary
 from feature_experiments import _markdown_table, train_xgb
 from injury_features import build_injury_features, historical_injury_pipeline_note, injury_feature_columns, load_historical_injuries
-from tactical_data import ensure_tactical_tables, load_team_match_tactics
-from tactical_features import build_tactical_features
-from train_model import SCHEDULE_FEATURE_COLUMNS, build_features, load_matches_with_xg
+from train_model import ELO_CONFIG, PRODUCTION_FEATURE_COLUMNS, build_features, load_matches_with_xg
+from elo_rating_features import build_elo_features
 from visualizations.plots import gain_importance, plot_feature_importance
 
 matplotlib.use("Agg")
 
 OUTPUT_DIR = Path("evaluation") / "injury_engine"
 RESULTS_PATH = Path("experiments") / "injury_engine_results.csv"
-TACTICAL_PRESSURE_COLUMNS = [
-    "home_attacking_pressure_score_last5",
-    "home_attacking_pressure_score_last10",
-    "home_attacking_pressure_score_season",
-    "away_attacking_pressure_score_last5",
-    "away_attacking_pressure_score_last10",
-    "away_attacking_pressure_score_season",
-]
 
 
 def available_columns(dataset: pd.DataFrame, columns: list[str]) -> list[str]:
@@ -41,24 +32,12 @@ def available_columns(dataset: pd.DataFrame, columns: list[str]) -> list[str]:
 
 def build_injury_experiment_dataset() -> tuple[pd.DataFrame, pd.DataFrame, dict[str, list[str]], pd.DataFrame]:
     matches = load_matches_with_xg().sort_values("Date").reset_index(drop=True)
-    base_dataset, _ = build_features(matches, include_xg=True, include_schedule=True)
+    base_dataset, _ = build_features(matches, include_xg=True, include_schedule=True, include_shot_volume=True)
+    elo_features, _ = build_elo_features(matches, ELO_CONFIG)
     injury_rows = build_injury_features(matches, load_historical_injuries())
+    dataset = pd.concat([base_dataset.reset_index(drop=True), elo_features.reset_index(drop=True), injury_rows], axis=1)
 
-    tactical_columns: list[str] = []
-    try:
-        ensure_tactical_tables()
-        tactics = load_team_match_tactics()
-        tactical_features, _ = build_tactical_features(matches, tactics)
-        tactical_columns = available_columns(tactical_features, TACTICAL_PRESSURE_COLUMNS)
-        dataset = pd.concat(
-            [base_dataset.reset_index(drop=True), tactical_features[tactical_columns].reset_index(drop=True), injury_rows],
-            axis=1,
-        )
-    except Exception as exc:
-        print(f"Warning: tactical pressure unavailable for injury experiment: {exc}")
-        dataset = pd.concat([base_dataset.reset_index(drop=True), injury_rows], axis=1)
-
-    production_columns = SCHEDULE_FEATURE_COLUMNS + tactical_columns
+    production_columns = list(PRODUCTION_FEATURE_COLUMNS)
     injury_columns = injury_feature_columns()
     feature_sets = {
         "model_a_current_production": production_columns,
@@ -158,6 +137,13 @@ def write_report(results: pd.DataFrame, shap_importance: pd.DataFrame, injury_ro
     log_loss_delta = float(injury_model["log_loss"] - baseline["log_loss"])
     brier_delta = float(injury_model["Brier_score"] - baseline["Brier_score"])
     activate = injury_rows_count > 0 and log_loss_delta < 0 and brier_delta < 0
+    production_decision = (
+        "Activate injury features as a production candidate."
+        if activate
+        else "Do not activate injury features. Historical availability rows exist, but they did not improve out-of-sample log loss and Brier score versus the current production feature set."
+        if injury_rows_count > 0
+        else "Do not activate injury features. Keep them research-only until real historical rows exist and out-of-sample log loss/Brier improve."
+    )
     injury_shap = shap_importance[shap_importance["feature_group"] == "injury"].head(12)
     injury_lines = "\n".join(f"- `{row.feature}`: {row.mean_abs_shap:.4f}" for row in injury_shap.itertuples())
 
@@ -187,7 +173,7 @@ Top injury/suspension features:
 
 ## Production Decision
 
-{'Activate injury features as a production candidate.' if activate else 'Do not activate injury features. Keep them research-only until real historical rows exist and out-of-sample log loss/Brier improve.'}
+{production_decision}
 
 ## Leakage Controls
 
@@ -206,7 +192,10 @@ def main() -> None:
     injury_result = next(result for result in results if result["model_version"] == "model_b_production_injury_features")
     shap_importance = shap_outputs(injury_result)
     write_report(results_frame, shap_importance, len(injuries))
-    print(json.dumps({"injury_rows": len(injuries), "activate": False if len(injuries) == 0 else None}, indent=2))
+    baseline = results_frame[results_frame["model_version"] == "model_a_current_production"].iloc[0]
+    injury_model = results_frame[results_frame["model_version"] == "model_b_production_injury_features"].iloc[0]
+    activate = len(injuries) > 0 and float(injury_model["log_loss"] - baseline["log_loss"]) < 0 and float(injury_model["Brier_score"] - baseline["Brier_score"]) < 0
+    print(json.dumps({"injury_rows": len(injuries), "activate": activate}, indent=2))
 
 
 if __name__ == "__main__":
