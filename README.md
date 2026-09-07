@@ -206,6 +206,28 @@ For each match, the injury pipeline only uses rows where:
 
 That keeps the injury features historical and avoids using future information.
 
+Optional injury/suspension ingestion:
+
+```bash
+python injury_data_engine.py --provider local
+python injury_data_engine.py --provider api-football --api-football-season 2026
+python injury_data_engine.py --provider sportmonks --sportmonks-season-id <season_id>
+python injury_data_engine.py --provider all --api-football-season 2026 --sportmonks-season-id <season_id>
+```
+
+Provider configuration:
+
+- API-Football/API-Sports: set `API_FOOTBALL_KEY` or `APISPORTS_KEY`.
+- Sportmonks: set `SPORTMONKS_API_TOKEN`; optionally set `SPORTMONKS_PREMIER_LEAGUE_SEASON_ID` or `SPORTMONKS_PREMIER_LEAGUE_TEAM_IDS`.
+
+The refresh pipeline can run the same ingestion before retraining:
+
+```bash
+python refresh_data.py --force --injury-provider api-football --api-football-season 2026
+```
+
+These rows still remain research-only until the injury engine has enough historical coverage and improves out-of-sample log loss or Brier score.
+
 ## Refresh Data And Model
 
 Use the refresh pipeline when new matches have been played and the local data/model should be updated.

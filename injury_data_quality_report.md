@@ -6,6 +6,11 @@
 - Transfermarkt injury history: missing at `data/transfermarkt_injuries.csv`; rows=0; usable=False; No local source file found.
 - Premier Injuries history: missing at `data/premier_injuries.csv`; rows=0; usable=False; No local source file found.
 
+## Remote Provider Refresh
+
+- api-football: skipped; rows=0; Set API_FOOTBALL_KEY or APISPORTS_KEY to enable.
+- sportmonks: skipped; rows=0; Set SPORTMONKS_API_TOKEN to enable.
+
 ## Coverage
 
 No historical injury/suspension rows are currently available locally.

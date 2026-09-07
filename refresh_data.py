@@ -337,6 +337,7 @@ def write_report(
 - Calibrate probabilities: `{not args.skip_calibration}`
 - Run full evaluation: `{not args.skip_evaluation}`
 - Log upcoming forecasts: `{not args.skip_forecast_log}`
+- Injury provider: `{args.injury_provider}`
 
 ## Football-Data Refresh
 
@@ -383,6 +384,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-calibration", action="store_true", help="Skip calibration refresh.")
     parser.add_argument("--skip-evaluation", action="store_true", help="Skip full model evaluation.")
     parser.add_argument("--skip-forecast-log", action="store_true", help="Skip timestamped upcoming fixture forecast logging.")
+    parser.add_argument(
+        "--injury-provider",
+        choices=["local", "api-football", "sportmonks", "all"],
+        default="local",
+        help="Optionally refresh data/injuries.csv before model training.",
+    )
+    parser.add_argument("--api-football-season", type=int, default=2026, help="API-Football season for injury refresh.")
+    parser.add_argument("--api-football-league-id", type=int, default=39, help="API-Football Premier League id.")
+    parser.add_argument("--sportmonks-season-id", default=os.environ.get("SPORTMONKS_PREMIER_LEAGUE_SEASON_ID"))
+    parser.add_argument("--sportmonks-team-ids", default=os.environ.get("SPORTMONKS_PREMIER_LEAGUE_TEAM_IDS", ""))
     args = parser.parse_args()
     if args.understat_seasons is None:
         if args.seasons == SEASONS:
@@ -405,6 +416,22 @@ def main() -> None:
     validation = validate_local_data(args.seasons)
 
     commands: list[tuple[str, int, str]] = []
+    if not args.dry_run and args.injury_provider != "local":
+        injury_command = [
+            sys.executable,
+            "injury_data_engine.py",
+            "--provider",
+            args.injury_provider,
+            "--api-football-season",
+            str(args.api_football_season),
+            "--api-football-league-id",
+            str(args.api_football_league_id),
+        ]
+        if args.sportmonks_season_id:
+            injury_command.extend(["--sportmonks-season-id", str(args.sportmonks_season_id)])
+        if args.sportmonks_team_ids:
+            injury_command.extend(["--sportmonks-team-ids", str(args.sportmonks_team_ids)])
+        commands.append(run_command(injury_command, args.seasons, args.understat_seasons))
     if not args.dry_run and not args.skip_train:
         commands.append(run_command([sys.executable, "train_model.py", "--mode", "production"], args.seasons, args.understat_seasons))
     if not args.dry_run and not args.skip_calibration:
