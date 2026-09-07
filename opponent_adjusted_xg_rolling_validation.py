@@ -35,6 +35,10 @@ SEASON_LABELS = {
     "2526": "2025/26",
 }
 
+ATTACK_RATING_COLUMNS = [column for column in RATING_FEATURE_COLUMNS if "attack" in column and "defense" not in column]
+DEFENSE_RATING_COLUMNS = [column for column in RATING_FEATURE_COLUMNS if "defense" in column and "attack" not in column]
+MATCHUP_RATING_COLUMNS = [column for column in RATING_FEATURE_COLUMNS if column not in set(ATTACK_RATING_COLUMNS + DEFENSE_RATING_COLUMNS)]
+
 
 def normalize_probabilities(probabilities: np.ndarray) -> np.ndarray:
     probabilities = np.clip(probabilities, 1e-15, 1.0)
@@ -60,13 +64,14 @@ def evaluate_probs(y_true: pd.Series, probabilities: np.ndarray) -> dict[str, fl
 
 
 def rolling_feature_sets() -> dict[str, list[str]]:
+    without_xg_diff = [column for column in PRODUCTION_FEATURE_COLUMNS if column not in set(XG_DIFF_COLUMNS)]
     return {
         "production": PRODUCTION_FEATURE_COLUMNS,
-        "production_minus_xg_diff": [column for column in PRODUCTION_FEATURE_COLUMNS if column not in set(XG_DIFF_COLUMNS)],
-        "candidate_minus_xg_diff_plus_ratings": [
-            column for column in PRODUCTION_FEATURE_COLUMNS if column not in set(XG_DIFF_COLUMNS)
-        ]
-        + RATING_FEATURE_COLUMNS,
+        "production_minus_xg_diff": without_xg_diff,
+        "candidate_minus_xg_diff_plus_ratings": without_xg_diff + RATING_FEATURE_COLUMNS,
+        "candidate_minus_xg_diff_plus_attack_ratings": without_xg_diff + ATTACK_RATING_COLUMNS,
+        "candidate_minus_xg_diff_plus_defense_ratings": without_xg_diff + DEFENSE_RATING_COLUMNS,
+        "candidate_minus_xg_diff_plus_matchup_ratings": without_xg_diff + MATCHUP_RATING_COLUMNS,
         "production_plus_full_ratings": PRODUCTION_FEATURE_COLUMNS + RATING_FEATURE_COLUMNS,
         "ratings_replace_all_raw_xg": NON_XG_PRODUCTION_COLUMNS + RATING_FEATURE_COLUMNS,
     }
@@ -171,17 +176,17 @@ def write_report(results: pd.DataFrame, summary: pd.DataFrame) -> None:
     best = summary.iloc[0]
     candidate = summary[summary["model_version"] == "candidate_minus_xg_diff_plus_ratings"]
     candidate_row = candidate.iloc[0] if not candidate.empty else best
-    stable_candidate = (
-        float(candidate_row["mean_log_loss_delta"]) < 0
-        and float(candidate_row["mean_Brier_delta"]) < 0
-        and int(candidate_row["seasons_log_loss_improved"]) >= 3
-        and int(candidate_row["seasons_Brier_improved"]) >= 3
-        and int(candidate_row["seasons_ECE_not_worse"]) >= 4
+    stable_best = (
+        float(best["mean_log_loss_delta"]) < 0
+        and float(best["mean_Brier_delta"]) < 0
+        and int(best["seasons_log_loss_improved"]) >= 3
+        and int(best["seasons_Brier_improved"]) >= 3
+        and int(best["seasons_ECE_not_worse"]) >= 4
     )
     decision = (
         "Promote to a production-candidate retrain, but do not overwrite production until the saved artifact is evaluated."
-        if stable_candidate
-        else "Do not promote yet. Keep as Candidate/Research until the improvement is stable across more seasons or a simpler feature subset."
+        if stable_best
+        else "Do not promote yet. The best focused variant improves average Log Loss/Brier, but the gain is not stable across enough seasons."
     )
     lines = [
         "# Sprint 4F: Rolling Validation for Opponent-Adjusted xG Candidate",
@@ -197,6 +202,9 @@ def write_report(results: pd.DataFrame, summary: pd.DataFrame) -> None:
         "- `production`: current production feature set.",
         "- `production_minus_xg_diff`: production without xG differential.",
         "- `candidate_minus_xg_diff_plus_ratings`: production without xG differential plus opponent-adjusted ratings.",
+        "- `candidate_minus_xg_diff_plus_attack_ratings`: production without xG differential plus attack-only ratings.",
+        "- `candidate_minus_xg_diff_plus_defense_ratings`: production without xG differential plus defense-only ratings.",
+        "- `candidate_minus_xg_diff_plus_matchup_ratings`: production without xG differential plus matchup-only ratings.",
         "- `production_plus_full_ratings`: production plus ratings.",
         "- `ratings_replace_all_raw_xg`: raw xG/xGA/xG-diff removed, ratings used instead.",
         "",
@@ -228,6 +236,11 @@ def write_report(results: pd.DataFrame, summary: pd.DataFrame) -> None:
         "## Decision",
         "",
         f"Best average Log Loss delta model: `{best['model_version']}`.",
+        "",
+        f"Best model mean Log Loss delta: {float(best['mean_log_loss_delta']):.4f}.",
+        f"Best model mean Brier delta: {float(best['mean_Brier_delta']):.4f}.",
+        f"Best model improved Log Loss in {int(best['seasons_log_loss_improved'])} of {int(best['seasons_tested'])} seasons.",
+        f"Best model improved Brier in {int(best['seasons_Brier_improved'])} of {int(best['seasons_tested'])} seasons.",
         "",
         f"Candidate `candidate_minus_xg_diff_plus_ratings` mean Log Loss delta: {float(candidate_row['mean_log_loss_delta']):.4f}.",
         f"Candidate mean Brier delta: {float(candidate_row['mean_Brier_delta']):.4f}.",

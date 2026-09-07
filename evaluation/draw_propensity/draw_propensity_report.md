@@ -40,8 +40,23 @@ No draw features had positive gain importance.
 | draw_propensity_score | -0.0015 | 0.0010 |
 | low_total_xg_profile | -0.0026 | 0.0006 |
 
+## Draw Overlay Test
+
+A separate post-calibration overlay was selected on an internal calibration slice, then evaluated on the holdout test period.
+
+| model_version | strategy | threshold | spread_threshold | boost | calibration_matches_adjusted | test_matches_adjusted | calibration_log_loss | test_log_loss | test_Brier_score | test_expected_calibration_error | test_mean_draw_probability | test_actual_draw_rate |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| draw_overlay_draw_score_and_low_spread | draw_score_and_low_spread | 0.4177 | 0.2000 | 0.0600 | 50 | 108 | 0.9906 | 1.0553 | 0.6351 | 0.0461 | 0.2717 | 0.2658 |
+
+- Test Log Loss delta vs no overlay: `-0.0002`
+- Test Brier delta vs no overlay: `0.0002`
+- Test ECE delta vs no overlay: `0.0014`
+- Overlay production decision: Do not promote
+
 ## Decision
 
 Do not promote draw-propensity features to production on this run.
+
+The overlay is also not promoted unless it improves holdout Log Loss and Brier without material calibration deterioration.
 
 Promotion rule: improve out-of-sample Log Loss, avoid Brier deterioration, and avoid material ECE deterioration. Accuracy alone is not enough.

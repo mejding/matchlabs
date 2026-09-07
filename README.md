@@ -817,7 +817,7 @@ Run the rolling validation for the replacement candidate:
 python opponent_adjusted_xg_rolling_validation.py
 ```
 
-This generates `evaluation/opponent_adjusted_xg/rolling_validation_report.md`. The rolling validation tested 2021/22 through 2025/26 as separate forward test seasons. The ratings candidate did not improve average rolling Log Loss or Brier versus production, so opponent-adjusted xG is now `Tested - Not adopted`. The strongest follow-up is to separately test removing the existing xG-differential columns, because `production_minus_xg_diff` was the best average rolling model.
+This generates `evaluation/opponent_adjusted_xg/rolling_validation_report.md`. The rolling validation tested 2021/22 through 2025/26 as separate forward test seasons. A focused retest found that `candidate_minus_xg_diff_plus_defense_ratings` improved average Log Loss by `0.0027` and Brier by `0.0020`, but only improved each metric in 2 of 5 seasons. Opponent-adjusted xG therefore remains `Tested - Not adopted` until the gain is more stable.
 
 Run the recency-weighted rolling feature evaluation:
 
@@ -934,7 +934,7 @@ python manager_intelligence_experiments.py
 
 This extracts locally cached FBref match-level manager rows and writes `manager_consistency_report.md`, `manager_data_quality_report.md`, `manager_bounce_analysis.md`, and outputs in `evaluation/manager_intelligence/`. The current local manager coverage is 2023/24 and 2024/25. Manager features remain research-only because the latest run worsened out-of-sample log loss and Brier score versus the production baseline.
 
-`feature_retest_opportunity_report.md` summarizes which tested-but-not-adopted features should be revisited with better data or a different test design. The latest manager retest includes a short-window segment for first-5 and first-10 matches after a manager change; it still does not improve log loss or Brier on the current local data.
+`feature_retest_opportunity_report.md` summarizes which tested-but-not-adopted features should be revisited with better data or a different test design. The latest retests cover manager short-window effects, focused opponent-adjusted xG replacement variants, and a draw-probability overlay; none currently pass the production promotion gate.
 
 Run the shot efficiency evaluation:
 

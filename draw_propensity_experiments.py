@@ -141,6 +141,140 @@ def evaluate_calibrated_feature_set(dataset: pd.DataFrame, metadata: pd.DataFram
     }
 
 
+def apply_draw_overlay(probabilities: np.ndarray, mask: np.ndarray, boost: float) -> np.ndarray:
+    adjusted = normalize_probabilities(probabilities.copy())
+    if boost <= 0 or int(mask.sum()) == 0:
+        return adjusted
+    original_draw = adjusted[mask, 1].copy()
+    new_draw = original_draw + boost * (1.0 - original_draw)
+    non_draw_total = np.clip(adjusted[mask, 0] + adjusted[mask, 2], 1e-15, 1.0)
+    scale = (1.0 - new_draw) / non_draw_total
+    adjusted[mask, 0] *= scale
+    adjusted[mask, 1] = new_draw
+    adjusted[mask, 2] *= scale
+    return normalize_probabilities(adjusted)
+
+
+def draw_overlay_mask(
+    draw_features: pd.DataFrame,
+    probabilities: np.ndarray,
+    strategy: str,
+    threshold: float,
+    spread_threshold: float,
+) -> np.ndarray:
+    draw_score = draw_features["draw_propensity_score"].to_numpy()
+    favorite_spread = np.abs(probabilities[:, 0] - probabilities[:, 2])
+    if strategy == "draw_score":
+        return draw_score >= threshold
+    if strategy == "low_spread":
+        return favorite_spread <= spread_threshold
+    if strategy == "draw_score_and_low_spread":
+        return (draw_score >= threshold) & (favorite_spread <= spread_threshold)
+    raise ValueError(f"Unknown draw overlay strategy: {strategy}")
+
+
+def evaluate_draw_overlay(dataset: pd.DataFrame, metadata: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, object]]:
+    columns = PRODUCTION_FEATURE_COLUMNS
+    split = time_based_split(dataset[columns], dataset["target"], metadata)
+    X_fit, X_cal, y_fit, y_cal = split_fit_and_calibration(
+        split.X_train,
+        split.y_train,
+        split.train_metadata["Date"].reset_index(drop=True),
+    )
+    fit_model = train_xgb(X_fit, y_fit)
+    calibrator = CalibratedClassifierCV(FrozenEstimator(fit_model), method="sigmoid")
+    calibrator.fit(X_cal, y_cal)
+    cal_probabilities = normalize_probabilities(calibrator.predict_proba(X_cal))
+    test_probabilities = normalize_probabilities(calibrator.predict_proba(split.X_test))
+    cal_draw_features = dataset.loc[X_cal.index, draw_propensity_feature_columns()].reset_index(drop=True)
+    test_draw_features = dataset.loc[split.X_test.index, draw_propensity_feature_columns()].reset_index(drop=True)
+    baseline_cal = evaluate_probs(y_cal, cal_probabilities)
+    baseline_test = evaluate_probs(split.y_test, test_probabilities)
+
+    rows: list[dict[str, object]] = [
+        {
+            "model_version": "production_sigmoid_no_overlay",
+            "strategy": "none",
+            "threshold": np.nan,
+            "spread_threshold": np.nan,
+            "boost": 0.0,
+            "calibration_matches_adjusted": 0,
+            "test_matches_adjusted": 0,
+            **{f"calibration_{key}": value for key, value in baseline_cal.items()},
+            **{f"test_{key}": value for key, value in baseline_test.items()},
+        }
+    ]
+    score_thresholds = [
+        float(cal_draw_features["draw_propensity_score"].quantile(q))
+        for q in [0.50, 0.60, 0.70, 0.80]
+    ]
+    spread_thresholds = [0.08, 0.12, 0.16, 0.20]
+    boosts = [0.01, 0.02, 0.03, 0.04, 0.05, 0.06]
+    for strategy in ["draw_score", "low_spread", "draw_score_and_low_spread"]:
+        for threshold in score_thresholds:
+            for spread_threshold in spread_thresholds:
+                if strategy == "draw_score" and spread_threshold != spread_thresholds[0]:
+                    continue
+                if strategy == "low_spread" and threshold != score_thresholds[0]:
+                    continue
+                cal_mask = draw_overlay_mask(cal_draw_features, cal_probabilities, strategy, threshold, spread_threshold)
+                test_mask = draw_overlay_mask(test_draw_features, test_probabilities, strategy, threshold, spread_threshold)
+                if int(cal_mask.sum()) < 20:
+                    continue
+                for boost in boosts:
+                    cal_adjusted = apply_draw_overlay(cal_probabilities, cal_mask, boost)
+                    test_adjusted = apply_draw_overlay(test_probabilities, test_mask, boost)
+                    cal_metrics = evaluate_probs(y_cal, cal_adjusted)
+                    test_metrics = evaluate_probs(split.y_test, test_adjusted)
+                    rows.append(
+                        {
+                            "model_version": f"draw_overlay_{strategy}",
+                            "strategy": strategy,
+                            "threshold": threshold,
+                            "spread_threshold": spread_threshold,
+                            "boost": boost,
+                            "calibration_matches_adjusted": int(cal_mask.sum()),
+                            "test_matches_adjusted": int(test_mask.sum()),
+                            **{f"calibration_{key}": value for key, value in cal_metrics.items()},
+                            **{f"test_{key}": value for key, value in test_metrics.items()},
+                        }
+                    )
+    output = pd.DataFrame(rows)
+    baseline = output[output["strategy"] == "none"].iloc[0]
+    candidates = output[output["strategy"] != "none"].copy()
+    if not candidates.empty:
+        candidates["calibration_log_loss_delta"] = candidates["calibration_log_loss"] - float(baseline["calibration_log_loss"])
+        candidates["calibration_Brier_delta"] = candidates["calibration_Brier_score"] - float(baseline["calibration_Brier_score"])
+        candidates["calibration_ECE_delta"] = candidates["calibration_expected_calibration_error"] - float(
+            baseline["calibration_expected_calibration_error"]
+        )
+        valid = candidates[
+            (candidates["calibration_log_loss_delta"] < 0)
+            & (candidates["calibration_Brier_delta"] <= 0.001)
+            & (candidates["calibration_ECE_delta"] <= 0.01)
+        ]
+        selection_pool = valid if not valid.empty else candidates
+        best = selection_pool.sort_values(["calibration_log_loss", "calibration_Brier_score"]).iloc[0]
+    else:
+        best = baseline
+    output["selected_on_calibration"] = False
+    if "strategy" in best:
+        output.loc[
+            (output["strategy"] == best["strategy"])
+            & (output["threshold"].fillna(-1) == pd.Series([best["threshold"]]).fillna(-1).iloc[0])
+            & (output["spread_threshold"].fillna(-1) == pd.Series([best["spread_threshold"]]).fillna(-1).iloc[0])
+            & (output["boost"] == best["boost"]),
+            "selected_on_calibration",
+        ] = True
+    output.to_csv(OUTPUT_DIR / "draw_overlay_results.csv", index=False)
+    return output, {
+        "baseline": baseline.to_dict(),
+        "selected": best.to_dict(),
+        "split": split,
+        "calibrator": calibrator,
+    }
+
+
 def compare_models(dataset: pd.DataFrame, metadata: pd.DataFrame, feature_sets: dict[str, list[str]]) -> tuple[pd.DataFrame, dict[str, dict[str, object]]]:
     rows = []
     lookup = {}
@@ -240,7 +374,16 @@ def production_decision(results: pd.DataFrame) -> tuple[bool, pd.Series, dict[st
     return promote, best, deltas
 
 
-def write_report(results: pd.DataFrame, gain: pd.DataFrame, permutation: pd.DataFrame, best: pd.Series, deltas: dict[str, float], promote: bool) -> None:
+def write_report(
+    results: pd.DataFrame,
+    gain: pd.DataFrame,
+    permutation: pd.DataFrame,
+    best: pd.Series,
+    deltas: dict[str, float],
+    promote: bool,
+    overlay_results: pd.DataFrame,
+    overlay_selection: dict[str, object],
+) -> None:
     draw_features = set(draw_propensity_feature_columns())
     draw_gain = gain[gain["feature"].isin(draw_features)].head(15)
     draw_perm = permutation[permutation["feature"].isin(draw_features)].head(15)
@@ -249,6 +392,13 @@ def write_report(results: pd.DataFrame, gain: pd.DataFrame, permutation: pd.Data
         if promote
         else "Do not promote draw-propensity features to production on this run."
     )
+    overlay_baseline = overlay_selection["baseline"]
+    overlay_best = overlay_selection["selected"]
+    overlay_test_log_loss_delta = float(overlay_best["test_log_loss"] - overlay_baseline["test_log_loss"])
+    overlay_test_brier_delta = float(overlay_best["test_Brier_score"] - overlay_baseline["test_Brier_score"])
+    overlay_test_ece_delta = float(overlay_best["test_expected_calibration_error"] - overlay_baseline["test_expected_calibration_error"])
+    overlay_promote = overlay_test_log_loss_delta < 0 and overlay_test_brier_delta <= 0 and overlay_test_ece_delta <= 0.01
+    selected_overlay = overlay_results[overlay_results["selected_on_calibration"]].copy()
     lines = [
         "# Draw Propensity Experiment",
         "",
@@ -293,9 +443,39 @@ def write_report(results: pd.DataFrame, gain: pd.DataFrame, permutation: pd.Data
         if not draw_perm.empty
         else "No draw features had positive permutation importance.",
         "",
+        "## Draw Overlay Test",
+        "",
+        "A separate post-calibration overlay was selected on an internal calibration slice, then evaluated on the holdout test period.",
+        "",
+        _markdown_table(
+            selected_overlay,
+            [
+                "model_version",
+                "strategy",
+                "threshold",
+                "spread_threshold",
+                "boost",
+                "calibration_matches_adjusted",
+                "test_matches_adjusted",
+                "calibration_log_loss",
+                "test_log_loss",
+                "test_Brier_score",
+                "test_expected_calibration_error",
+                "test_mean_draw_probability",
+                "test_actual_draw_rate",
+            ],
+        ),
+        "",
+        f"- Test Log Loss delta vs no overlay: `{overlay_test_log_loss_delta:.4f}`",
+        f"- Test Brier delta vs no overlay: `{overlay_test_brier_delta:.4f}`",
+        f"- Test ECE delta vs no overlay: `{overlay_test_ece_delta:.4f}`",
+        f"- Overlay production decision: {'Promote as candidate' if overlay_promote else 'Do not promote'}",
+        "",
         "## Decision",
         "",
         decision,
+        "",
+        "The overlay is also not promoted unless it improves holdout Log Loss and Brier without material calibration deterioration.",
         "",
         "Promotion rule: improve out-of-sample Log Loss, avoid Brier deterioration, and avoid material ECE deterioration. Accuracy alone is not enough.",
     ]
@@ -310,11 +490,12 @@ def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     dataset, metadata, feature_sets = build_dataset()
     results, lookup = compare_models(dataset, metadata, feature_sets)
+    overlay_results, overlay_selection = evaluate_draw_overlay(dataset, metadata)
     promote, best, deltas = production_decision(results)
     best_result = lookup[str(best["model_version"])]
     gain, permutation = explain_best_draw_model(best_result)
     plot_model_comparison(results)
-    write_report(results, gain, permutation, best, deltas, promote)
+    write_report(results, gain, permutation, best, deltas, promote, overlay_results, overlay_selection)
     print(results.to_string(index=False))
     print(f"Promotion decision: {'promote' if promote else 'do not promote'} {best['model_version']}")
     print(f"Wrote {OUTPUT_DIR / 'draw_propensity_report.md'}")
