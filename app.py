@@ -1467,9 +1467,9 @@ def grouped_feature_cards(row: dict[str, float], home_team: str, away_team: str)
     cards = [
         (
             "Recent Form",
-            "Points and scoring form from each team's latest 5 matches in the saved dataset.",
+            "Model form inputs from recent matches. Promoted teams can use adjusted values until five current-season Premier League matches are available.",
             [
-                ("Points last 5", value(row, "home_team_points_last_5"), value(row, "away_team_points_last_5"), 0, True, "number"),
+                ("Points form input", value(row, "home_team_points_last_5"), value(row, "away_team_points_last_5"), 1, True, "number"),
                 ("Goals avg", value(row, "home_goals_scored_avg"), value(row, "away_goals_scored_avg"), 1, True, "number"),
             ],
         ),
@@ -1603,27 +1603,40 @@ def render_low_history_prediction_notes(
     home_team: str,
     away_team: str,
     team_history: dict[str, dict[str, list]],
+    feature_audit: pd.DataFrame | None = None,
 ) -> None:
     rows = []
     for side, team in [("home", home_team), ("away", away_team)]:
-        if team in team_history:
+        audit_row = None
+        if feature_audit is not None and not feature_audit.empty and "team" in feature_audit.columns:
+            matches = feature_audit[feature_audit["team"].astype(str) == str(team)]
+            if not matches.empty:
+                audit_row = matches.iloc[0]
+        uses_adjusted_input = bool(audit_row["promotion_adjustment_applied"]) if audit_row is not None else False
+        uses_fallback = bool(audit_row["fallback_used"]) if audit_row is not None else team not in team_history
+        if team in team_history and not uses_adjusted_input and not uses_fallback:
             continue
+        current_matches = int(audit_row["current_season_pl_matches"]) if audit_row is not None and "current_season_pl_matches" in audit_row else 0
+        current_points = int(audit_row["current_season_points"]) if audit_row is not None and "current_season_points" in audit_row else 0
+        source = str(audit_row["source_league"]) if audit_row is not None and "source_league" in audit_row else "Championship-adjusted / promoted baseline"
+        adjustment = "Yes" if uses_adjusted_input or uses_fallback else "No"
         rows.append(
             {
                 "Team": team,
-                "Source": "Championship-adjusted / promoted baseline",
-                "Points last 5": f"{value(row, f'{side}_team_points_last_5'):.2f}",
+                "Source": source,
+                "Current PL matches": current_matches,
+                "Current PL points": current_points,
+                "Model points input": f"{value(row, f'{side}_team_points_last_5'):.2f}",
+                "Adjusted": adjustment,
                 "xG": f"{value(row, f'{side}_xg_avg'):.2f}",
                 "xGA": f"{value(row, f'{side}_xga_avg'):.2f}",
-                "xG diff": f"{value(row, f'{side}_xg_diff'):.2f}",
-                "Shots last 5": f"{value(row, f'{side}_shots_avg_last5'):.2f}",
             }
         )
     if not rows:
         return
     st.info(
-        "Low-history Premier League team adjustment: this team has limited or no local Premier League history, "
-        "so the prediction uses transparent Championship-adjusted or promoted-team baseline values instead of zero-filled form."
+        "Promoted-team adjustment: early in the season, model points input is not the literal current Premier League points. "
+        "It uses Championship-adjusted or promoted-team baseline values until five current-season Premier League matches are available."
     )
     st.dataframe(pd.DataFrame(rows), width="stretch", hide_index=True)
 
@@ -2762,7 +2775,8 @@ def main() -> None:
         insights = build_insights(row, home_team, away_team)
         st.markdown("<ul class='insight-list'>" + "".join(f"<li>{item}</li>" for item in insights) + "</ul>", unsafe_allow_html=True)
         st.subheader("Feature Groups")
-        render_low_history_prediction_notes(row, home_team, away_team, team_history)
+        prediction_feature_audit = season_start_feature_audit([home_team, away_team], team_history, artifact.get("elo_state", {}))
+        render_low_history_prediction_notes(row, home_team, away_team, team_history, prediction_feature_audit)
         grouped_feature_cards(row, home_team, away_team)
         render_recent_head_to_head(home_team, away_team)
 

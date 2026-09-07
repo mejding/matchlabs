@@ -140,6 +140,64 @@ class PromotedTeamAdjustmentTests(unittest.TestCase):
         self.assertTrue(row["promotion_adjustment_applied"])
         self.assertFalse(row["fallback_used"])
         self.assertEqual(row["source_league"], "Championship adjusted to Premier League equivalent")
+        self.assertEqual(row["current_season_pl_matches"], 1)
+        self.assertEqual(row["current_season_points"], 3)
+
+    def test_current_promoted_team_uses_current_pl_form_after_five_matches(self) -> None:
+        current_dates = [date(2026, 8, 15) + timedelta(days=index * 7) for index in range(5)]
+        history = {
+            "Promoted FC": {
+                "points": [1, 3, 0, 3, 1] + [3, 1, 0, 3, 1],
+                "goals_scored": [1, 2, 0, 3, 1] + [2, 1, 0, 2, 1],
+                "xg": [1.1, 1.5, 0.8, 2.0, 1.2] + [1.7, 1.2, 0.8, 1.9, 1.1],
+                "xga": [0.9, 1.0, 1.7, 0.7, 1.1] + [0.8, 1.0, 1.5, 0.9, 1.2],
+                "match_dates": [date(2025, 4, day) for day in [1, 8, 15, 22, 29]] + current_dates,
+                "shots": [10, 12, 9, 15, 11] + [13, 11, 8, 14, 10],
+                "shots_on_target": [3, 4, 2, 6, 3] + [5, 3, 2, 5, 3],
+                "shot_seasons": ["2425"] * 5 + ["2627"] * 5,
+            }
+        }
+        current_results = [
+            ("Promoted FC", "Other A", 2, 1),
+            ("Other B", "Promoted FC", 1, 1),
+            ("Promoted FC", "Other C", 0, 1),
+            ("Other D", "Promoted FC", 1, 2),
+            ("Promoted FC", "Other E", 1, 1),
+        ]
+        matches = pd.DataFrame(
+            [
+                {"Season": "2526", "Date": date(2026, 5, 1), "HomeTeam": "Established FC", "AwayTeam": opponent, "FTHG": 1, "FTAG": 0, "FTR": "H"}
+                for opponent in ["Other A", "Other B", "Other C", "Other D", "Other E"]
+            ]
+            + [
+                {
+                    "Season": "2627",
+                    "Date": current_dates[index],
+                    "HomeTeam": home,
+                    "AwayTeam": away,
+                    "FTHG": fthg,
+                    "FTAG": ftag,
+                    "FTR": "H" if fthg > ftag else "A" if ftag > fthg else "D",
+                }
+                for index, (home, away, fthg, ftag) in enumerate(current_results)
+            ]
+        )
+
+        audit = season_start_feature_audit(
+            ["Promoted FC"],
+            team_history=history,
+            elo_state={"Promoted FC": {"rating": 1500.0, "history": [1500.0]}},
+            matches=matches,
+            championship_matches=championship_matches(),
+        )
+        row = audit.iloc[0]
+        self.assertEqual(current_promoted_teams(matches), {"Promoted FC"})
+        self.assertEqual(row["current_season_pl_matches"], 5)
+        self.assertEqual(row["current_season_points"], 8)
+        self.assertFalse(row["promotion_adjustment_applied"])
+        self.assertFalse(row["fallback_used"])
+        self.assertEqual(row["source_league"], "Premier League historical data")
+        self.assertAlmostEqual(float(row["recent_form_points_last5"]), 8.0)
 
 
 if __name__ == "__main__":

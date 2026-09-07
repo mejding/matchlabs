@@ -401,6 +401,36 @@ def current_promoted_teams(matches: pd.DataFrame | None = None, current_season: 
     return current_teams - previous_teams
 
 
+def current_season_team_records(
+    matches: pd.DataFrame | None = None,
+    current_season: str = CURRENT_PREMIER_LEAGUE_SEASON,
+) -> dict[str, dict[str, int]]:
+    matches = load_matches_with_xg() if matches is None else matches.copy()
+    if matches.empty or "Season" not in matches.columns:
+        return {}
+    current_matches = matches[matches["Season"].astype(str) == current_season].copy()
+    if current_matches.empty:
+        return {}
+    records: dict[str, dict[str, int]] = {}
+
+    def ensure_team(team: str) -> dict[str, int]:
+        return records.setdefault(str(team), {"matches": 0, "points": 0})
+
+    for _, match in current_matches.iterrows():
+        home_team = str(match["HomeTeam"])
+        away_team = str(match["AwayTeam"])
+        home_goals = float(match["FTHG"])
+        away_goals = float(match["FTAG"])
+        home_record = ensure_team(home_team)
+        away_record = ensure_team(away_team)
+        home_record["matches"] += 1
+        away_record["matches"] += 1
+        home_record["points"] += int(points_for_match_result(home_goals, away_goals, True))
+        away_record["points"] += int(points_for_match_result(home_goals, away_goals, False))
+
+    return records
+
+
 def _league_feature_medians(raw_rows: list[dict[str, object]]) -> dict[str, float]:
     frame = pd.DataFrame(raw_rows)
     frame = frame[frame["local_pl_match_count"] >= 5].copy()
@@ -427,9 +457,11 @@ def _adjusted_values(
     promoted_baseline: dict[str, float],
     championship_summary: dict[str, object] | None = None,
     is_current_promoted: bool = False,
+    current_season_match_count: int = 0,
 ) -> tuple[dict[str, float], str, str, bool, bool, dict[str, object]]:
     local_count = int(raw["local_pl_match_count"])
-    if local_count >= 5 and not is_current_promoted:
+    needs_current_promoted_adjustment = is_current_promoted and current_season_match_count < MIN_SEASON_AVERAGE_MATCHES
+    if local_count >= 5 and not needs_current_promoted_adjustment:
         adjusted = {
             "team_points_last_5": float(raw["raw_recent_form_points_last5"]),
             "goals_scored_avg": float(raw["raw_recent_goals_scored_avg_last5"]),
@@ -510,23 +542,31 @@ def season_start_feature_audit(
     medians = _league_feature_medians(raw_rows)
     matches_for_promoted = load_matches_with_xg() if matches is None else matches
     current_promoted = current_promoted_teams(matches_for_promoted)
+    current_season_records = current_season_team_records(matches_for_promoted)
     promoted_baseline = promoted_team_baseline(matches_for_promoted)
     rows = []
     for raw in raw_rows:
+        team = str(raw["team"])
+        current_record = current_season_records.get(team, {"matches": 0, "points": 0})
+        current_match_count = int(current_record["matches"])
+        current_points = int(current_record["points"])
+        is_current_promoted = team in current_promoted
         champ_summary = championship_team_summary(str(raw["team"]), championship_matches)
         adjusted, source, fallback_reason, fallback_used, promotion_adjustment_applied, adjustment_source = _adjusted_values(
             raw,
             medians,
             promoted_baseline,
             champ_summary,
-            str(raw["team"]) in current_promoted,
+            is_current_promoted,
+            current_match_count,
         )
         local_count = int(raw["local_pl_match_count"])
+        active_recent_match_count = current_match_count if is_current_promoted else local_count
         flags = {
-            "no_premier_league_history": local_count == 0,
-            "limited_recent_form": 0 < local_count < 5,
-            "xg_fallback": local_count < 5,
-            "shot_volume_fallback": local_count < 5,
+            "no_premier_league_history": active_recent_match_count == 0,
+            "limited_recent_form": 0 < active_recent_match_count < 5,
+            "xg_fallback": active_recent_match_count < 5,
+            "shot_volume_fallback": active_recent_match_count < 5,
             "elo_fallback": bool(raw["elo_fallback"]),
         }
         row = {
@@ -534,6 +574,9 @@ def season_start_feature_audit(
             "data_source_league": source,
             "source_league": source,
             "premier_league_matches_available": local_count,
+            "current_promoted_team": bool(is_current_promoted),
+            "current_season_pl_matches": current_match_count,
+            "current_season_points": current_points,
             "championship_data_available": champ_summary is not None,
             "championship_match_count": int(champ_summary["source_matches"]) if champ_summary else 0,
             "championship_latest_match": str(champ_summary["latest_match"]) if champ_summary else "",
@@ -548,7 +591,7 @@ def season_start_feature_audit(
             "adjusted_xga": adjusted["xga_avg"],
             "raw_shot_volume": float(champ_summary["shots_avg_last5"]) if champ_summary else raw["raw_shots_avg_last5"],
             "adjusted_shot_volume": adjusted["shots_avg_last5"],
-            "promoted_team_uncertainty_flag": bool(local_count < 5),
+            "promoted_team_uncertainty_flag": bool(active_recent_match_count < 5),
             "championship_xg_available": bool(champ_summary.get("xg_available", False)) if champ_summary else False,
             "recent_form_points_last5": adjusted["team_points_last_5"],
             "recent_goals_scored_avg_last5": adjusted["goals_scored_avg"],
