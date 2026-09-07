@@ -133,6 +133,12 @@ FEATURE_STATUS: dict[str, FeatureStatusEntry] = {
         short_description="Displayed probabilities are adjusted by the saved calibration layer when it improves validation metrics.",
         evidence="models/calibrated_probability_layer.joblib is loaded by app.py when its feature list matches the production model.",
     ),
+    "Current suspension overlay": FeatureStatusEntry(
+        status="Active",
+        used_in_production=True,
+        short_description="Known current suspensions can apply a small transparent probability overlay after model calibration.",
+        evidence="current_suspensions.py reads data/current_suspensions.csv and app.py shows the before/after adjustment when active.",
+    ),
     "Market odds": FeatureStatusEntry(
         status="Benchmark only",
         used_in_production=False,

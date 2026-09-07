@@ -229,6 +229,28 @@ python refresh_data.py --force --injury-provider api-football --api-football-sea
 
 These rows still remain research-only until the injury engine has enough historical coverage and improves out-of-sample log loss or Brier score.
 
+Known current suspensions can be applied as a transparent post-model overlay from `data/current_suspensions.csv`.
+This does not retrain XGBoost; it adjusts displayed probabilities after calibration and shows the player/reason in the dashboard.
+
+Required current suspension columns:
+
+- `team`
+- `player`
+- `suspended_from`
+- `suspended_until`
+- `matches_remaining`
+- `reason`
+- `expected_starter`
+- `importance_score`
+- `source`
+- `last_updated`
+
+Example row:
+
+```csv
+Arsenal,Example Player,2026-09-01,2026-09-20,1,Red card suspension,1,0.80,manual,2026-09-07
+```
+
 ## Refresh Data And Model
 
 Use the refresh pipeline when new matches have been played and the local data/model should be updated.
@@ -962,6 +984,7 @@ Current feature status:
 | Decayed Elo | Tested - Not adopted | no | decayed_elo_evaluation_report.md shows season carryover below 1.0 does not improve Log Loss or Brier versus current Elo. |
 | Shot volume | Active | yes | Activated after shot_efficiency_report.md and production retrain improved Log Loss and Brier. |
 | Calibrated probabilities | Active | yes | models/calibrated_probability_layer.joblib is loaded by app.py when its feature list matches the production model. |
+| Current suspension overlay | Active | yes | current_suspensions.py reads data/current_suspensions.csv and app.py shows the before/after adjustment when active. |
 | Market odds | Benchmark only | no | market_overlay_report.md shows market-only preclosing probabilities remain best; logistic stacking improves Log Loss/Brier but fails the calibration promotion rule. |
 | Opponent-adjusted xG | Tested - Not adopted | no | rolling_validation_report.md shows the ratings candidate did not improve average rolling Log Loss/Brier versus production. |
 | Recency weighting | Tested - Not adopted | no | recency_weighting_report.md shows weighted rolling features did not beat production Log Loss or calibration. |

@@ -13,6 +13,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
+from current_suspensions import SuspensionAdjustment, apply_suspension_adjustment, suspension_row_impact
 from data_quality import assess_prediction_data_quality
 from help_text import (
     active_features_text,
@@ -1240,6 +1241,37 @@ def render_probability_source_badge(is_calibrated: bool, calibration_method: str
         st.markdown("<span class='badge warn'>Displayed probabilities: raw model output</span>", unsafe_allow_html=True)
 
 
+def render_suspension_adjustment(adjustment: SuspensionAdjustment, home_team: str, away_team: str) -> None:
+    if not adjustment.applied:
+        return
+    st.info(
+        "Known suspension adjustment: displayed probabilities include a small transparent overlay for active suspensions. "
+        "The saved model probabilities are unchanged."
+    )
+    display_rows = []
+    for suspension in adjustment.active_rows.itertuples(index=False):
+        values = suspension._asdict()
+        team = str(values.get("team", ""))
+        impact = suspension_row_impact(pd.Series(values))
+        direction = "Home win down" if team == home_team else "Away win down" if team == away_team else ""
+        last_updated = pd.to_datetime(values.get("last_updated"), errors="coerce")
+        display_rows.append(
+            {
+                "Team": team,
+                "Player": str(values.get("player", "")),
+                "Reason": str(values.get("reason", "")),
+                "Matches remaining": int(float(values.get("matches_remaining", 0))),
+                "Expected starter": "Yes" if float(values.get("expected_starter", 0.0)) >= 1 else "No",
+                "Importance": f"{float(values.get('importance_score', 0.0)):.2f}",
+                "Impact": f"{impact * 100:.1f} pp",
+                "Direction": direction,
+                "Source": str(values.get("source", "")),
+                "Last updated": str(last_updated.date()) if pd.notna(last_updated) else "",
+            }
+        )
+    st.dataframe(pd.DataFrame(display_rows), width="stretch", hide_index=True)
+
+
 def render_confidence_badge(probabilities, warnings: list[str]) -> None:
     label, tone = confidence_label(probabilities, warnings)
     st.markdown(f"<span class='badge {tone}'>Model confidence: {label}</span>", unsafe_allow_html=True)
@@ -1255,6 +1287,7 @@ def render_model_status(feature_columns: list[str], checks: dict[str, str] | Non
         "Schedule and fatigue",
         "Elo rating",
         "Shot volume",
+        "Current suspension overlay",
         "Market odds",
         "Injuries and suspensions",
         "Lineup stability",
@@ -2748,7 +2781,10 @@ def main() -> None:
                 features.loc[:, column] = float(context_value)
     row = features.iloc[0].to_dict()
     raw_probabilities = model.predict_proba(features)[0]
-    probabilities, is_calibrated, calibration_method = apply_calibration(raw_probabilities, calibrated_layer, features)
+    model_probabilities, is_calibrated, calibration_method = apply_calibration(raw_probabilities, calibrated_layer, features)
+    prediction_date = pd.to_datetime(selected_match_date, errors="coerce").date() if selected_match_date else date.today()
+    suspension_adjustment = apply_suspension_adjustment(model_probabilities, home_team, away_team, prediction_date)
+    probabilities = suspension_adjustment.probabilities
     quality_result = assess_prediction_data_quality(
         row,
         home_team,
@@ -2764,6 +2800,7 @@ def main() -> None:
     if active_section == "Prediction":
         summary_card(home_team, away_team, probabilities)
         render_probability_source_badge(is_calibrated, calibration_method)
+        render_suspension_adjustment(suspension_adjustment, home_team, away_team)
         render_probability_bar(probabilities, home_team, away_team)
         render_scoreline_section(row, probabilities, home_team, away_team)
         st.subheader("Model Fair Odds")
@@ -2777,6 +2814,7 @@ def main() -> None:
         st.subheader("Feature Groups")
         prediction_feature_audit = season_start_feature_audit([home_team, away_team], team_history, artifact.get("elo_state", {}))
         render_low_history_prediction_notes(row, home_team, away_team, team_history, prediction_feature_audit)
+        render_suspension_adjustment(suspension_adjustment, home_team, away_team)
         grouped_feature_cards(row, home_team, away_team)
         render_recent_head_to_head(home_team, away_team)
 
@@ -2799,6 +2837,10 @@ def main() -> None:
         context_rows = [
             {"Item": "Calibration", "Value": str(calibration_method) if is_calibrated else "Not applied"},
             {
+                "Item": "Suspension overlay",
+                "Value": "Applied" if suspension_adjustment.applied else "No active current suspensions",
+            },
+            {
                 "Item": "Fixture",
                 "Value": f"MW{active_prediction.get('matchweek')}" if active_prediction.get("matchweek") else "Custom fixture",
             },
@@ -2815,6 +2857,7 @@ def main() -> None:
                 {
                     "Outcome": [f"{home_team} win", "Draw", f"{away_team} win"],
                     "Raw probability": raw_probabilities,
+                    "Model probability": model_probabilities,
                     "Displayed probability": probabilities,
                     "Displayed fair odds": fair_odds_from_probabilities(probabilities),
                 }

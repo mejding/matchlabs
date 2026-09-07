@@ -8,6 +8,7 @@ import joblib
 import numpy as np
 import pandas as pd
 
+from current_suspensions import apply_suspension_adjustment
 from elo_rating_features import build_prediction_elo_row
 from official_fixtures import OFFICIAL_FIXTURE_PATH, load_official_fixtures, schedule_context_for_fixture
 from season_simulation import projection_feature_overrides, season_start_feature_audit
@@ -235,10 +236,18 @@ def predict(home_team: str, away_team: str, match_date: str | None = None) -> No
     features = build_prediction_features(home_team, away_team, team_history, feature_columns, match_date=match_date, elo_state=elo_state)
     features = apply_official_schedule_context(features, home_team, away_team, match_date)
     raw_probabilities = model.predict_proba(features)[0]
-    probabilities, is_calibrated, calibration_method = apply_probability_calibration(raw_probabilities, features)
+    model_probabilities, is_calibrated, calibration_method = apply_probability_calibration(raw_probabilities, features)
+    suspension_adjustment = apply_suspension_adjustment(
+        model_probabilities,
+        home_team,
+        away_team,
+        parse_match_date(match_date, team_history),
+    )
+    probabilities = suspension_adjustment.probabilities
 
     print(f"\nPrediction: {home_team} vs {away_team}")
     print(f"Calibration: {calibration_method if is_calibrated else 'not applied'}")
+    print(f"Suspension adjustment: {'applied' if suspension_adjustment.applied else 'not applied'}")
     print(f"Home win: {probabilities[0]:.3f}")
     print(f"Draw:     {probabilities[1]:.3f}")
     print(f"Away win: {probabilities[2]:.3f}")
@@ -247,6 +256,11 @@ def predict(home_team: str, away_team: str, match_date: str | None = None) -> No
         print(f"Home win: {raw_probabilities[0]:.3f}")
         print(f"Draw:     {raw_probabilities[1]:.3f}")
         print(f"Away win: {raw_probabilities[2]:.3f}")
+    if suspension_adjustment.applied:
+        print("\nCalibrated probabilities before suspension adjustment")
+        print(f"Home win: {model_probabilities[0]:.3f}")
+        print(f"Draw:     {model_probabilities[1]:.3f}")
+        print(f"Away win: {model_probabilities[2]:.3f}")
 
 
 def parse_args() -> argparse.Namespace:
