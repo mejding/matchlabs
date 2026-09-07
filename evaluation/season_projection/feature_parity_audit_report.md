@@ -24,7 +24,7 @@ For fixtures where neither team uses a promoted-team fallback, the Prediction ta
 
 | feature_group | max_adjusted_abs_diff | adjusted_rows |
 | --- | --- | --- |
-| xG/xGA | 0.5998 | 480 |
+| xG/xGA | 0.8949 | 480 |
 | Elo | 0.0000 | 720 |
 | Home advantage | 0.0000 | 80 |
 | Recent form | 0.0000 | 320 |
@@ -35,23 +35,23 @@ For fixtures where neither team uses a promoted-team fallback, the Prediction ta
 
 | team | feature_validation_status | fallback_used | fallback_reason | source_league | local_pl_match_count | championship_data_available | promotion_adjustment_applied | missing_or_fallback_groups |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Arsenal | ok | False | none | Premier League historical data | 268 | False | False | none |
-| Aston Villa | ok | False | none | Premier League historical data | 268 | False | False | none |
-| Bournemouth | ok | False | none | Premier League historical data | 192 | False | False | none |
-| Brentford | ok | False | none | Premier League historical data | 192 | False | False | none |
-| Brighton | ok | False | none | Premier League historical data | 268 | False | False | none |
-| Chelsea | ok | False | none | Premier League historical data | 268 | False | False | none |
-| Coventry | warning | False | Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline. | Championship adjusted to Premier League equivalent | 2 | True | True | championship_adjustment |
-| Crystal Palace | ok | False | none | Premier League historical data | 268 | False | False | none |
-| Everton | ok | False | none | Premier League historical data | 268 | False | False | none |
-| Fulham | ok | False | none | Premier League historical data | 192 | False | False | none |
-| Hull | warning | False | Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline. | Championship adjusted to Premier League equivalent | 2 | True | True | championship_adjustment |
-| Ipswich | ok | False | none | Premier League historical data | 40 | True | False | none |
-| Leeds | ok | False | none | Premier League historical data | 154 | False | False | none |
-| Liverpool | ok | False | none | Premier League historical data | 268 | False | False | none |
-| Man City | ok | False | none | Premier League historical data | 268 | False | False | none |
-| Man United | ok | False | none | Premier League historical data | 268 | False | False | none |
-| Newcastle | ok | False | none | Premier League historical data | 268 | False | False | none |
-| Nott'm Forest | ok | False | none | Premier League historical data | 154 | False | False | none |
-| Sunderland | ok | False | none | Premier League historical data | 40 | False | False | none |
-| Tottenham | ok | False | none | Premier League historical data | 268 | False | False | none |
+| Arsenal | ok | False | none | Premier League historical data | 269 | False | False | none |
+| Aston Villa | ok | False | none | Premier League historical data | 269 | False | False | none |
+| Bournemouth | ok | False | none | Premier League historical data | 193 | False | False | none |
+| Brentford | ok | False | none | Premier League historical data | 193 | False | False | none |
+| Brighton | ok | False | none | Premier League historical data | 269 | False | False | none |
+| Chelsea | ok | False | none | Premier League historical data | 269 | False | False | none |
+| Coventry | warning | False | Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline. | Championship adjusted to Premier League equivalent | 3 | True | True | championship_adjustment |
+| Crystal Palace | ok | False | none | Premier League historical data | 269 | False | False | none |
+| Everton | ok | False | none | Premier League historical data | 269 | False | False | none |
+| Fulham | ok | False | none | Premier League historical data | 193 | False | False | none |
+| Hull | warning | False | Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline. | Championship adjusted to Premier League equivalent | 3 | True | True | championship_adjustment |
+| Ipswich | ok | False | none | Premier League historical data | 41 | True | False | none |
+| Leeds | ok | False | none | Premier League historical data | 155 | False | False | none |
+| Liverpool | ok | False | none | Premier League historical data | 269 | False | False | none |
+| Man City | ok | False | none | Premier League historical data | 269 | False | False | none |
+| Man United | ok | False | none | Premier League historical data | 269 | False | False | none |
+| Newcastle | ok | False | none | Premier League historical data | 269 | False | False | none |
+| Nott'm Forest | ok | False | none | Premier League historical data | 155 | False | False | none |
+| Sunderland | ok | False | none | Premier League historical data | 41 | False | False | none |
+| Tottenham | ok | False | none | Premier League historical data | 269 | False | False | none |

@@ -536,12 +536,14 @@ def build_features(
             team_history[home_team]["match_dates"].append(current_date)
             team_history[away_team]["match_dates"].append(current_date)
         if include_shot_volume:
-            team_history[home_team]["shots"].append(float(row.get("HS", 0.0)))
-            team_history[away_team]["shots"].append(float(row.get("AS", 0.0)))
-            team_history[home_team]["shots_on_target"].append(float(row.get("HST", 0.0)))
-            team_history[away_team]["shots_on_target"].append(float(row.get("AST", 0.0)))
-            team_history[home_team]["shot_seasons"].append(str(row["Season"]))
-            team_history[away_team]["shot_seasons"].append(str(row["Season"]))
+            if pd.notna(row.get("HS")) and pd.notna(row.get("HST")):
+                team_history[home_team]["shots"].append(float(row["HS"]))
+                team_history[home_team]["shots_on_target"].append(float(row["HST"]))
+                team_history[home_team]["shot_seasons"].append(str(row["Season"]))
+            if pd.notna(row.get("AS")) and pd.notna(row.get("AST")):
+                team_history[away_team]["shots"].append(float(row["AS"]))
+                team_history[away_team]["shots_on_target"].append(float(row["AST"]))
+                team_history[away_team]["shot_seasons"].append(str(row["Season"]))
 
     return pd.DataFrame(feature_rows), team_history
 

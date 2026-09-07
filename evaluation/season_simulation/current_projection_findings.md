@@ -1,52 +1,63 @@
 # Current Season Projection Findings
 
-Refresh date: 2026-09-01
+Refresh date: 2026-09-07
 
 ## Data State
 
-- Completed Premier League 2026/27 matches included: `20`
-- Latest local match date: `2026-08-31`
-- Next default dashboard round: `3`
+- Completed Premier League 2026/27 matches included: `30`
+- Latest local match date: `2026-09-06`
+- Next default dashboard round: `4`
 - Projection simulations: `10000`
 
-The football-data.co.uk 2026/27 CSV was only updated through Matchweek 1 at refresh time, so Matchweek 2 was supplemented locally from current result/stat sources before retraining.
+Football-data.co.uk still served the 2026/27 CSV only through `2026-08-31` at refresh time. Understat had all 30 completed 2026/27 results through Matchweek 3, so Matchweek 3 was supplemented locally from Understat result/xG rows before retraining.
 
-## Matchweek 3 Probabilities
+The supplemental Matchweek 3 rows include final score and xG. Football-data-only fields such as referee, cards, odds and shot counts are left blank; missing shot counts are ignored by the shot-volume history rather than treated as zero.
+
+## Matchweek 4 Probabilities
 
 | Date | Fixture | Home | Draw | Away |
 | --- | --- | ---: | ---: | ---: |
-| 2026-09-05 | Ipswich v Liverpool | 24.2% | 13.6% | 62.2% |
-| 2026-09-05 | Nott'm Forest v Tottenham | 44.3% | 24.3% | 31.3% |
-| 2026-09-05 | Newcastle v Bournemouth | 36.1% | 28.3% | 35.6% |
-| 2026-09-05 | Man City v Coventry | 82.2% | 6.4% | 11.4% |
-| 2026-09-05 | Hull v Aston Villa | 39.0% | 24.7% | 36.3% |
-| 2026-09-05 | Brentford v Sunderland | 37.7% | 24.6% | 37.8% |
-| 2026-09-05 | Everton v Man United | 31.9% | 20.8% | 47.3% |
-| 2026-09-05 | Brighton v Leeds | 59.4% | 23.4% | 17.2% |
-| 2026-09-05 | Arsenal v Chelsea | 68.8% | 18.4% | 12.8% |
-| 2026-09-05 | Fulham v Crystal Palace | 52.8% | 24.2% | 23.0% |
+| 2026-09-12 | Aston Villa v Nott'm Forest | 45.9% | 27.1% | 27.0% |
+| 2026-09-12 | Bournemouth v Brentford | 39.9% | 25.3% | 34.8% |
+| 2026-09-12 | Chelsea v Hull | 57.9% | 22.8% | 19.3% |
+| 2026-09-12 | Coventry v Brighton | 25.7% | 28.9% | 45.4% |
+| 2026-09-12 | Crystal Palace v Ipswich | 57.6% | 21.1% | 21.3% |
+| 2026-09-12 | Leeds v Newcastle | 37.8% | 28.9% | 33.3% |
+| 2026-09-12 | Liverpool v Fulham | 57.1% | 23.6% | 19.3% |
+| 2026-09-12 | Man United v Man City | 43.7% | 23.7% | 32.7% |
+| 2026-09-12 | Sunderland v Arsenal | 14.3% | 27.3% | 58.4% |
+| 2026-09-12 | Tottenham v Everton | 25.7% | 29.8% | 44.5% |
 
 ## Updated Finish Outlook
 
 | Team | Expected points | Avg finish | Title | Top 4 | Relegation |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Man City | 83.0 | 1.6 | 62.0% | 98.6% | 0.0% |
-| Arsenal | 75.6 | 2.6 | 18.4% | 92.4% | 0.0% |
-| Man United | 75.8 | 2.7 | 16.3% | 91.1% | 0.0% |
-| Brighton | 65.2 | 5.0 | 1.7% | 48.5% | 0.0% |
-| Liverpool | 63.8 | 5.6 | 1.3% | 38.8% | 0.1% |
-| Chelsea | 52.8 | 9.7 | 0.1% | 4.3% | 2.3% |
-| Hull | 41.7 | 15.2 | 0.0% | 0.1% | 31.1% |
-| Tottenham | 42.8 | 14.9 | 0.0% | 0.1% | 28.3% |
-| Crystal Palace | 39.7 | 16.0 | 0.0% | 0.0% | 40.6% |
-| Ipswich | 36.4 | 17.4 | 0.0% | 0.0% | 60.9% |
-| Coventry | 33.0 | 18.3 | 0.0% | 0.0% | 75.0% |
+| Arsenal | 81.5 | 1.5 | 61.0% | 99.4% | 0.0% |
+| Man City | 78.4 | 2.0 | 34.3% | 97.5% | 0.0% |
+| Liverpool | 66.3 | 4.3 | 2.8% | 66.4% | 0.0% |
+| Man United | 63.5 | 5.1 | 1.2% | 50.7% | 0.1% |
+| Brighton | 57.8 | 7.1 | 0.4% | 24.0% | 0.4% |
+| Chelsea | 55.3 | 8.3 | 0.1% | 14.8% | 0.8% |
+| Brentford | 54.8 | 8.4 | 0.1% | 13.2% | 0.8% |
+| Aston Villa | 52.3 | 9.5 | 0.0% | 8.1% | 2.5% |
+| Everton | 52.0 | 9.9 | 0.0% | 6.6% | 2.4% |
+| Bournemouth | 51.3 | 10.1 | 0.0% | 6.5% | 2.9% |
+| Newcastle | 51.6 | 10.3 | 0.0% | 5.1% | 3.2% |
+| Sunderland | 49.9 | 11.2 | 0.0% | 3.7% | 5.0% |
+| Nott'm Forest | 46.7 | 12.8 | 0.0% | 1.3% | 11.5% |
+| Leeds | 46.2 | 13.0 | 0.0% | 1.3% | 11.2% |
+| Hull | 43.8 | 14.1 | 0.0% | 0.8% | 18.5% |
+| Fulham | 41.8 | 15.0 | 0.0% | 0.3% | 27.0% |
+| Crystal Palace | 40.4 | 15.6 | 0.0% | 0.1% | 33.1% |
+| Coventry | 39.5 | 15.8 | 0.0% | 0.1% | 36.8% |
+| Tottenham | 37.3 | 17.0 | 0.0% | 0.1% | 53.9% |
+| Ipswich | 28.9 | 19.2 | 0.0% | 0.0% | 90.2% |
 
 ## Findings
 
-- Man City remain the clear title favourite after two wins and strong underlying chance creation.
-- Arsenal's 2-0-0 start lifts them into the same elite band as Man City and Man United, but the model still sees City as meaningfully stronger.
-- Hull's perfect start is real table value, but the projection remains cautious: the model still prices them as a survival-side profile because long-term and promoted-team priors are deliberately conservative.
-- Tottenham's 0 points and 0 goals make their relegation tail materially larger, even though the model still expects enough regression toward mid-table quality to keep them above the highest-risk group.
-- Coventry and Ipswich are now the clearest relegation-risk teams. Coventry's two defeats without scoring push their relegation probability to roughly three in four.
-- Chelsea's six points are not enough to move the season model near title contention. Their top-four probability stays low because the projection blends early results with longer-term squad/form priors and remaining-fixture probabilities.
+- Arsenal move ahead of Man City in the season projection after beating Chelsea and opening 3-0-0 with strong xG control.
+- Man City remain very close on expected points and top-four security, but their narrow 1-0 home win over Coventry was less dominant than Arsenal's Chelsea win in xG terms.
+- Liverpool's win at Ipswich improves their top-four outlook, but the model still sees a clear gap to Arsenal and Man City.
+- Hull remain third in the actual table with 7 points and no goals conceded, but the projection stays cautious: their average finish is 14.1 and relegation probability is 18.5% because promoted-team uncertainty and long-term strength priors still matter.
+- Tottenham's 0-0 at Nott'm Forest stops the losing run but not the scoring concern; they remain a large relegation-tail outlier at 53.9%.
+- Ipswich are now the clearest relegation-risk team after starting 1-0-2 with eight goals conceded.
