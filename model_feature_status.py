@@ -103,30 +103,6 @@ FEATURE_STATUS: dict[str, FeatureStatusEntry] = {
             "away_shots_on_target_avg_season",
         ),
     ),
-    "Recency weighting": FeatureStatusEntry(
-        status="Tested - Not adopted",
-        used_in_production=False,
-        short_description="Linear, exponential and half-life weighted versions of rolling form, xG/xGA and shot-volume features.",
-        evidence="evaluation/recency_weighting/recency_weighting_report.md shows the current production model kept the best Log Loss and better calibration.",
-    ),
-    "Draw propensity": FeatureStatusEntry(
-        status="Tested - Not adopted",
-        used_in_production=False,
-        short_description="Pre-match signals for tight, low-event or historically draw-prone fixtures.",
-        evidence="evaluation/draw_propensity/draw_propensity_report.md shows worse Log Loss and Brier than calibrated production despite higher double-chance hit rate.",
-    ),
-    "Decayed Elo": FeatureStatusEntry(
-        status="Tested - Not adopted",
-        used_in_production=False,
-        short_description="Season-boundary Elo regression toward league average, tested with carryover values from 0.50 to 0.90.",
-        evidence="decayed_elo_evaluation_report.md shows season decay did not improve Log Loss or Brier versus current Elo.",
-    ),
-    "Non-PL match context": FeatureStatusEntry(
-        status="Tested - Not adopted",
-        used_in_production=False,
-        short_description="Pre-season, cup, European and Championship context features with competition-specific down-weighting.",
-        evidence="evaluation/non_pl_context/non_pl_context_report.md shows no out-of-sample improvement with the currently available local source coverage.",
-    ),
     "Calibrated probabilities": FeatureStatusEntry(
         status="Active",
         used_in_production=True,
@@ -145,11 +121,35 @@ FEATURE_STATUS: dict[str, FeatureStatusEntry] = {
         short_description="Bookmaker odds are used for comparison and fair-odds context, not as model inputs.",
         evidence="market_overlay_report.md shows market-only preclosing probabilities remain best; logistic stacking improves Log Loss/Brier but fails the calibration promotion rule.",
     ),
+    "Decayed Elo": FeatureStatusEntry(
+        status="Tested - Not adopted",
+        used_in_production=False,
+        short_description="Season-boundary Elo regression toward league average, tested with carryover values from 0.50 to 0.90.",
+        evidence="decayed_elo_evaluation_report.md shows season decay did not improve Log Loss or Brier versus current Elo.",
+    ),
     "Opponent-adjusted xG": FeatureStatusEntry(
         status="Tested - Not adopted",
         used_in_production=False,
         short_description="Chronological xG attack and defense ratings adjusted for opponent strength.",
         evidence="rolling_validation_report.md shows the ratings candidate did not improve average rolling Log Loss/Brier versus production.",
+    ),
+    "Recency weighting": FeatureStatusEntry(
+        status="Tested - Not adopted",
+        used_in_production=False,
+        short_description="Linear, exponential and half-life weighted versions of rolling form, xG/xGA and shot-volume features.",
+        evidence="evaluation/recency_weighting/recency_weighting_report.md shows the current production model kept the best Log Loss and better calibration.",
+    ),
+    "Draw propensity": FeatureStatusEntry(
+        status="Tested - Not adopted",
+        used_in_production=False,
+        short_description="Pre-match signals for tight, low-event or historically draw-prone fixtures.",
+        evidence="evaluation/draw_propensity/draw_propensity_report.md shows worse Log Loss and Brier than calibrated production despite higher double-chance hit rate.",
+    ),
+    "Non-PL match context": FeatureStatusEntry(
+        status="Tested - Not adopted",
+        used_in_production=False,
+        short_description="Pre-season, cup, European and Championship context features with competition-specific down-weighting.",
+        evidence="evaluation/non_pl_context/non_pl_context_report.md shows no out-of-sample improvement with the currently available local source coverage.",
     ),
     "Head-to-head": FeatureStatusEntry(
         status="Tested - Not adopted",
@@ -163,23 +163,11 @@ FEATURE_STATUS: dict[str, FeatureStatusEntry] = {
         short_description="Manager tenure, continuity and performance features were tested on cached FBref manager rows.",
         evidence="manager_consistency_report.md shows worse Log Loss, Brier and ECE than production.",
     ),
-    "Lineup stability": FeatureStatusEntry(
-        status="Research",
-        used_in_production=False,
-        short_description="Lineup continuity and familiarity features exist but are not active.",
-        evidence="lineup_stability_report.md shows worse out-of-sample Log Loss and Brier than production.",
-    ),
     "Injuries and suspensions": FeatureStatusEntry(
         status="Tested - Not adopted",
         used_in_production=False,
         short_description="Historical availability rows now exist, but injury/suspension features did not beat the current production model.",
         evidence="injury_engine_report.md shows worse out-of-sample log loss and Brier score versus the production feature set.",
-    ),
-    "Tactical intelligence": FeatureStatusEntry(
-        status="Research",
-        used_in_production=False,
-        short_description="Advanced possession, passing, pressing and matchup features are incomplete or not validated for production.",
-        evidence="tactical_intelligence_report.md says only limited shots-derived tactical data is available; broader tactics stay research-only.",
     ),
     "Venue-specific form": FeatureStatusEntry(
         status="Tested - Not adopted",
@@ -192,6 +180,18 @@ FEATURE_STATUS: dict[str, FeatureStatusEntry] = {
         used_in_production=False,
         short_description="Shot accuracy, goals per shot and goals-minus-xG were tested but not activated.",
         evidence="shot_efficiency_report.md keeps finishing-efficiency and goals-minus-xG research-only/noisy.",
+    ),
+    "Lineup stability": FeatureStatusEntry(
+        status="Research",
+        used_in_production=False,
+        short_description="Lineup continuity and familiarity features exist but are not active.",
+        evidence="lineup_stability_report.md shows worse out-of-sample Log Loss and Brier than production.",
+    ),
+    "Tactical intelligence": FeatureStatusEntry(
+        status="Research",
+        used_in_production=False,
+        short_description="Advanced possession, passing, pressing and matchup features are incomplete or not validated for production.",
+        evidence="tactical_intelligence_report.md says only limited shots-derived tactical data is available; broader tactics stay research-only.",
     ),
 }
 

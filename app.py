@@ -1289,7 +1289,6 @@ def render_model_status(feature_columns: list[str], checks: dict[str, str] | Non
         "Shot volume",
         "Current suspension overlay",
         "Market odds",
-        "Injuries and suspensions",
         "Lineup stability",
         "Tactical intelligence",
     ]

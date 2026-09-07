@@ -981,22 +981,22 @@ Current feature status:
 | xG strength | Active | yes | Present in models/football_model.joblib as home/away xG, xGA and xG differential columns. |
 | Schedule and fatigue | Active | yes | Present in models/football_model.joblib as rest and last-14-days scheduling columns. |
 | Elo rating | Active | yes | Elo was promoted after Sprint 4B and is present in models/football_model.joblib. |
-| Decayed Elo | Tested - Not adopted | no | decayed_elo_evaluation_report.md shows season carryover below 1.0 does not improve Log Loss or Brier versus current Elo. |
 | Shot volume | Active | yes | Activated after shot_efficiency_report.md and production retrain improved Log Loss and Brier. |
 | Calibrated probabilities | Active | yes | models/calibrated_probability_layer.joblib is loaded by app.py when its feature list matches the production model. |
 | Current suspension overlay | Active | yes | current_suspensions.py reads data/current_suspensions.csv and app.py shows the before/after adjustment when active. |
 | Market odds | Benchmark only | no | market_overlay_report.md shows market-only preclosing probabilities remain best; logistic stacking improves Log Loss/Brier but fails the calibration promotion rule. |
+| Decayed Elo | Tested - Not adopted | no | decayed_elo_evaluation_report.md shows season carryover below 1.0 does not improve Log Loss or Brier versus current Elo. |
 | Opponent-adjusted xG | Tested - Not adopted | no | rolling_validation_report.md shows the ratings candidate did not improve average rolling Log Loss/Brier versus production. |
 | Recency weighting | Tested - Not adopted | no | recency_weighting_report.md shows weighted rolling features did not beat production Log Loss or calibration. |
 | Draw propensity | Tested - Not adopted | no | draw_propensity_report.md shows worse Log Loss and Brier than calibrated production despite higher double-chance hit rate. |
 | Non-PL match context | Tested - Not adopted | no | non_pl_context_report.md shows no out-of-sample improvement with the currently available local source coverage. |
 | Head-to-head | Tested - Not adopted | no | head_to_head_intelligence_report.md keeps H2H research-only despite some draw-metric improvement. |
 | Manager consistency | Tested - Not adopted | no | manager_consistency_report.md shows worse Log Loss, Brier and ECE than production. |
-| Lineup stability | Research | no | lineup_stability_report.md shows worse out-of-sample Log Loss and Brier than production. |
 | Injuries and suspensions | Tested - Not adopted | no | injury_engine_report.md shows worse out-of-sample Log Loss and Brier score versus the current production feature set. |
-| Tactical intelligence | Research | no | tactical_intelligence_report.md says only limited shots-derived tactical data is available; broader tactics stay research-only. |
 | Venue-specific form | Tested - Not adopted | no | venue_specific_features_report.md says the venue-specific set did not improve both Log Loss and Brier robustly. |
 | Shot efficiency | Tested - Not adopted | no | shot_efficiency_report.md keeps finishing-efficiency and goals-minus-xG research-only/noisy. |
+| Lineup stability | Research | no | lineup_stability_report.md shows worse out-of-sample Log Loss and Brier than production. |
+| Tactical intelligence | Research | no | tactical_intelligence_report.md says only limited shots-derived tactical data is available; broader tactics stay research-only. |
 
 Refresh model metrics:
 
