@@ -25,6 +25,28 @@ matplotlib.use("Agg")
 OUTPUT_DIR = Path("evaluation") / "injury_engine"
 RESULTS_PATH = Path("experiments") / "injury_engine_results.csv"
 
+INJURY_ONLY_FEATURES = [
+    "injured_players_count",
+    "injured_starters_count",
+    "injured_expected_starters",
+    "injured_missing_minutes",
+    "injured_missing_goals",
+    "injured_missing_xg",
+    "injured_missing_xa",
+    "injured_missing_market_value",
+    "injured_missing_defensive_contribution",
+]
+SUSPENSION_ONLY_FEATURES = [
+    "suspended_players_count",
+    "suspended_expected_starters",
+    "suspended_missing_minutes",
+    "suspended_missing_goals",
+    "suspended_missing_xg",
+    "suspended_missing_xa",
+    "suspended_missing_market_value",
+    "suspended_missing_defensive_contribution",
+]
+
 
 def available_columns(dataset: pd.DataFrame, columns: list[str]) -> list[str]:
     return [column for column in columns if column in dataset.columns and dataset[column].notna().sum() > 0]
@@ -38,10 +60,14 @@ def build_injury_experiment_dataset() -> tuple[pd.DataFrame, pd.DataFrame, dict[
     dataset = pd.concat([base_dataset.reset_index(drop=True), elo_features.reset_index(drop=True), injury_rows], axis=1)
 
     production_columns = list(PRODUCTION_FEATURE_COLUMNS)
-    injury_columns = injury_feature_columns()
+    injury_columns = [f"{side}_{feature}" for side in ("home", "away") for feature in INJURY_ONLY_FEATURES]
+    suspension_columns = [f"{side}_{feature}" for side in ("home", "away") for feature in SUSPENSION_ONLY_FEATURES]
+    combined_columns = injury_feature_columns()
     feature_sets = {
         "model_a_current_production": production_columns,
-        "model_b_production_injury_features": production_columns + injury_columns,
+        "model_b_injury_only_features": production_columns + injury_columns,
+        "model_c_suspension_only_features": production_columns + suspension_columns,
+        "model_d_injury_suspension_features": production_columns + combined_columns,
     }
     metadata = matches[["Season", "Date", "HomeTeam", "AwayTeam", "FTR"]].reset_index(drop=True)
     return dataset, metadata, feature_sets, matches
@@ -131,14 +157,32 @@ def shap_outputs(result: dict[str, object]) -> pd.DataFrame:
     return shap_importance
 
 
-def write_report(results: pd.DataFrame, shap_importance: pd.DataFrame, injury_rows_count: int) -> None:
+def availability_signal_coverage(dataset: pd.DataFrame, metadata: pd.DataFrame, feature_sets: dict[str, list[str]]) -> str:
+    split = time_based_split(dataset[feature_sets["model_d_injury_suspension_features"]], dataset["target"], metadata)
+    rows = []
+    for label, feature_names in [
+        ("injury", [column for column in split.X_train.columns if "_injured_" in column]),
+        ("suspension", [column for column in split.X_train.columns if "_suspended_" in column]),
+    ]:
+        train_matches = int((split.X_train[feature_names].sum(axis=1) > 0).sum()) if feature_names else 0
+        test_matches = int((split.X_test[feature_names].sum(axis=1) > 0).sum()) if feature_names else 0
+        rows.append(f"- {label}: train matches with signal `{train_matches}` of `{len(split.X_train)}`; test matches with signal `{test_matches}` of `{len(split.X_test)}`")
+    return "\n".join(rows)
+
+
+def _availability_result(results: pd.DataFrame) -> pd.Series:
+    candidates = results[results["model_version"] != "model_a_current_production"].copy()
+    return candidates.sort_values(["log_loss", "Brier_score"]).iloc[0]
+
+
+def write_report(results: pd.DataFrame, shap_importance: pd.DataFrame, injury_rows_count: int, signal_coverage: str) -> None:
     baseline = results[results["model_version"] == "model_a_current_production"].iloc[0]
-    injury_model = results[results["model_version"] == "model_b_production_injury_features"].iloc[0]
-    log_loss_delta = float(injury_model["log_loss"] - baseline["log_loss"])
-    brier_delta = float(injury_model["Brier_score"] - baseline["Brier_score"])
+    availability_model = _availability_result(results)
+    log_loss_delta = float(availability_model["log_loss"] - baseline["log_loss"])
+    brier_delta = float(availability_model["Brier_score"] - baseline["Brier_score"])
     activate = injury_rows_count > 0 and log_loss_delta < 0 and brier_delta < 0
     production_decision = (
-        "Activate injury features as a production candidate."
+        f"Activate {availability_model['model_version']} as a production candidate."
         if activate
         else "Do not activate injury features. Historical availability rows exist, but they did not improve out-of-sample log loss and Brier score versus the current production feature set."
         if injury_rows_count > 0
@@ -158,12 +202,17 @@ def write_report(results: pd.DataFrame, shap_importance: pd.DataFrame, injury_ro
 
 - Historical injury/suspension rows available: {injury_rows_count}
 
+## Train/Test Signal Coverage
+
+{signal_coverage}
+
 ## Performance Impact
 
+- Best availability model: `{availability_model['model_version']}`
 - Log loss change: {log_loss_delta:.4f}
 - Brier score change: {brier_delta:.4f}
-- Calibration change: {float(injury_model['calibration_score'] - baseline['calibration_score']):.4f}
-- ECE change: {float(injury_model['expected_calibration_error'] - baseline['expected_calibration_error']):.4f}
+- Calibration change: {float(availability_model['calibration_score'] - baseline['calibration_score']):.4f}
+- ECE change: {float(availability_model['expected_calibration_error'] - baseline['expected_calibration_error']):.4f}
 
 ## SHAP
 
@@ -189,13 +238,15 @@ def main() -> None:
     results = [evaluate_feature_set(dataset, metadata, columns, version) for version, columns in feature_sets.items()]
     results_frame = save_results(results)
     plot_model_comparison(results_frame, OUTPUT_DIR / "model_comparison.png")
-    injury_result = next(result for result in results if result["model_version"] == "model_b_production_injury_features")
-    shap_importance = shap_outputs(injury_result)
-    write_report(results_frame, shap_importance, len(injuries))
+    best_model_version = str(_availability_result(results_frame)["model_version"])
+    best_result = next(result for result in results if result["model_version"] == best_model_version)
+    shap_importance = shap_outputs(best_result)
+    signal_coverage = availability_signal_coverage(dataset, metadata, feature_sets)
+    write_report(results_frame, shap_importance, len(injuries), signal_coverage)
     baseline = results_frame[results_frame["model_version"] == "model_a_current_production"].iloc[0]
-    injury_model = results_frame[results_frame["model_version"] == "model_b_production_injury_features"].iloc[0]
-    activate = len(injuries) > 0 and float(injury_model["log_loss"] - baseline["log_loss"]) < 0 and float(injury_model["Brier_score"] - baseline["Brier_score"]) < 0
-    print(json.dumps({"injury_rows": len(injuries), "activate": activate}, indent=2))
+    availability_model = _availability_result(results_frame)
+    activate = len(injuries) > 0 and float(availability_model["log_loss"] - baseline["log_loss"]) < 0 and float(availability_model["Brier_score"] - baseline["Brier_score"]) < 0
+    print(json.dumps({"injury_rows": len(injuries), "best_availability_model": str(availability_model["model_version"]), "activate": activate}, indent=2))
 
 
 if __name__ == "__main__":

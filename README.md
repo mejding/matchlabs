@@ -177,9 +177,10 @@ xG + schedule + Elo + shot volume log loss: 1.0453
 xG + schedule + Elo + shot volume Brier score: 0.6273
 xG + schedule + Elo + shot volume calibration error: 0.0475
 
-xG + schedule + Elo + shot volume + injuries log loss: 1.0600
-xG + schedule + Elo + shot volume + injuries Brier score: 0.6349
-xG + schedule + Elo + shot volume + injuries calibration error: 0.0491
+xG + schedule + Elo + shot volume + injuries-only log loss: 1.0598
+xG + schedule + Elo + shot volume + injuries-only Brier score: 0.6348
+xG + schedule + Elo + shot volume + suspensions-only log loss: 1.0595
+xG + schedule + Elo + shot volume + suspensions-only Brier score: 0.6338
 ```
 
 Lower log loss, Brier score, and calibration error are better.
