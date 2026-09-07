@@ -8,10 +8,10 @@ Manager features are tested against a production baseline that already contains 
 
 | feature_group | mean_abs_shap |
 | --- | --- |
-| production | 0.9474 |
-| manager_continuity | 0.1102 |
-| manager_performance | 0.0471 |
-| manager_change | 0.0117 |
+| production | 0.9271 |
+| manager_continuity | 0.0692 |
+| manager_performance | 0.0398 |
+| manager_change | 0.0094 |
 
 ## Redundancy Decision
 

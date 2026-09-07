@@ -934,6 +934,8 @@ python manager_intelligence_experiments.py
 
 This extracts locally cached FBref match-level manager rows and writes `manager_consistency_report.md`, `manager_data_quality_report.md`, `manager_bounce_analysis.md`, and outputs in `evaluation/manager_intelligence/`. The current local manager coverage is 2023/24 and 2024/25. Manager features remain research-only because the latest run worsened out-of-sample log loss and Brier score versus the production baseline.
 
+`feature_retest_opportunity_report.md` summarizes which tested-but-not-adopted features should be revisited with better data or a different test design. The latest manager retest includes a short-window segment for first-5 and first-10 matches after a manager change; it still does not improve log loss or Brier on the current local data.
+
 Run the shot efficiency evaluation:
 
 ```bash
