@@ -432,6 +432,7 @@ def write_report(
 - Calibrate probabilities: `{not args.skip_calibration}`
 - Run full evaluation: `{not args.skip_evaluation}`
 - Log upcoming forecasts: `{not args.skip_forecast_log}`
+- Refresh season projection: `{not args.skip_season_projection}`
 - Injury provider: `{args.injury_provider}`
 
 ## Football-Data Refresh
@@ -483,6 +484,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-calibration", action="store_true", help="Skip calibration refresh.")
     parser.add_argument("--skip-evaluation", action="store_true", help="Skip full model evaluation.")
     parser.add_argument("--skip-forecast-log", action="store_true", help="Skip timestamped upcoming fixture forecast logging.")
+    parser.add_argument("--skip-season-projection", action="store_true", help="Skip current season projection artifact refresh.")
     parser.add_argument(
         "--injury-provider",
         choices=["local", "api-football", "sportmonks", "all"],
@@ -543,6 +545,8 @@ def main() -> None:
         commands.append(run_command([sys.executable, "evaluate_model.py"], args.seasons, args.understat_seasons))
     if not args.dry_run and not args.skip_forecast_log:
         commands.append(run_command([sys.executable, "forecast_log.py"], args.seasons, args.understat_seasons))
+    if not args.dry_run and not args.skip_season_projection:
+        commands.append(run_command([sys.executable, "season_projection_robustness.py"], args.seasons, args.understat_seasons))
 
     write_report(football_results, understat_results, understat_import_results, shot_backfill_results, validation, commands, args)
 
