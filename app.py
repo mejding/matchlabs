@@ -2278,6 +2278,32 @@ def season_projection_display_style(display: pd.DataFrame):
     return display.style.map(style_position_change, subset=movement_columns)
 
 
+def season_projection_column_config(display: pd.DataFrame) -> dict[str, object]:
+    labels = {
+        "Team": "Team",
+        "Simulated points": "Sim\npts",
+        "Probability points": "Prob\npts",
+        "Average simulated finish": "Avg\nfinish",
+        "Ordered table rank": "Rank",
+        "Pre-season rank": "Pre\nrank",
+        "Since season start": "+/-\nstart",
+        "Previous round rank": "Prev\nrank",
+        "Since previous round": "+/-\nprev",
+        "Title": "Title",
+        "Top 4": "Top 4",
+        "Top 6": "Top 6",
+        "Relegation": "Releg.",
+    }
+    medium_columns = {"Team"}
+    return {
+        column: st.column_config.TextColumn(
+            label=labels.get(column, column),
+            width="medium" if column in medium_columns else "small",
+        )
+        for column in display.columns
+    }
+
+
 def format_season_start_audit_display(frame: pd.DataFrame) -> pd.DataFrame:
     display = frame.copy()
     display = display.rename(
@@ -2454,7 +2480,12 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
     selected = projection[projection["team"].isin([home_team, away_team])].copy()
     st.markdown("#### Selected Teams")
     selected_display = format_season_projection_display(selected)
-    st.dataframe(season_projection_display_style(selected_display), width="stretch", hide_index=True)
+    st.dataframe(
+        season_projection_display_style(selected_display),
+        width="stretch",
+        hide_index=True,
+        column_config=season_projection_column_config(selected_display),
+    )
     st.caption(
         "Average simulated finish is the main projection number. Ordered table rank is only the table order after sorting teams, "
         "so tightly grouped teams can look more separated than the simulation really says. "
@@ -2479,7 +2510,12 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
             "especially for the lower-table cluster where a few expected points can move a team many places."
         )
         projection_display = format_season_projection_display(projection)
-        st.dataframe(season_projection_display_style(projection_display), width="stretch", hide_index=True)
+        st.dataframe(
+            season_projection_display_style(projection_display),
+            width="stretch",
+            hide_index=True,
+            column_config=season_projection_column_config(projection_display),
+        )
 
     with st.expander("Season start feature audit", expanded=True):
         st.markdown(
