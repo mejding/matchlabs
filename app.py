@@ -134,7 +134,7 @@ STATUS_EXPLANATIONS = {
     "Missing": "Required data is not available locally.",
     "Stale": "The local dataset should be refreshed before relying heavily on this input.",
 }
-SEASON_PROJECTION_VERSION = "balanced_round_robin_long_term_prior_squad_strength_v5"
+SEASON_PROJECTION_VERSION = "balanced_round_robin_long_term_prior_squad_strength_v6"
 SEASON_PROJECTION_PRIOR_WEIGHT = 0.35
 SEASON_PROJECTION_DIR = Path("evaluation") / "season_projection"
 PRESEASON_PROJECTION_BASELINE_PATH = SEASON_PROJECTION_DIR / "preseason_projection_baseline.csv"
