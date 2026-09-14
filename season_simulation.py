@@ -451,6 +451,34 @@ def _league_feature_medians(raw_rows: list[dict[str, object]]) -> dict[str, floa
     return {key: float(frame[key].median()) for key in keys}
 
 
+def _raw_adjusted_values(raw: dict[str, object]) -> dict[str, float]:
+    adjusted = {
+        "team_points_last_5": float(raw["raw_recent_form_points_last5"]),
+        "goals_scored_avg": float(raw["raw_recent_goals_scored_avg_last5"]),
+        "xg_avg": float(raw["raw_xg_strength_last5"]),
+        "xga_avg": float(raw["raw_xga_strength_last5"]),
+        "shots_avg_last5": float(raw["raw_shots_avg_last5"]),
+        "shots_on_target_avg_last5": float(raw["raw_shots_on_target_avg_last5"]),
+        "shots_avg_last10": float(raw["raw_shots_avg_last10"]),
+        "shots_on_target_avg_last10": float(raw["raw_shots_on_target_avg_last10"]),
+        "shots_avg_season": float(raw["raw_shots_avg_latest_season"]),
+        "shots_on_target_avg_season": float(raw["raw_shots_on_target_avg_latest_season"]),
+    }
+    adjusted["xg_diff"] = adjusted["xg_avg"] - adjusted["xga_avg"]
+    return adjusted
+
+
+def _blend_adjusted_values(prior: dict[str, float], current: dict[str, float], current_weight: float) -> dict[str, float]:
+    weight = max(0.0, min(1.0, float(current_weight)))
+    blended = {
+        key: (1.0 - weight) * float(prior[key]) + weight * float(current[key])
+        for key in prior
+        if key in current
+    }
+    blended["xg_diff"] = blended["xg_avg"] - blended["xga_avg"]
+    return blended
+
+
 def _adjusted_values(
     raw: dict[str, object],
     medians: dict[str, float],
@@ -475,7 +503,7 @@ def _adjusted_values(
             "shots_on_target_avg_season": float(raw["raw_shots_on_target_avg_latest_season"]),
         }
         adjusted["xg_diff"] = adjusted["xg_avg"] - adjusted["xga_avg"]
-        return adjusted, "Premier League historical data", "none", False, False, {}
+        return adjusted, "Premier League historical data", "none", False, False, {"current_season_blend_weight": 1.0}
 
     if championship_summary is not None:
         xg_available = bool(championship_summary.get("xg_available", False))
@@ -504,7 +532,18 @@ def _adjusted_values(
             if not xg_available
             else "Championship recent form, xG/xGA and shot volume converted to Premier League-equivalent values."
         )
-        return adjusted, "Championship adjusted to Premier League equivalent", reason, False, True, championship_summary
+        adjustment_source = dict(championship_summary)
+        adjustment_source["current_season_blend_weight"] = 0.0
+        if needs_current_promoted_adjustment and current_season_match_count > 0:
+            blend_weight = min(1.0, current_season_match_count / MIN_SEASON_AVERAGE_MATCHES)
+            raw_adjusted = _raw_adjusted_values(raw)
+            adjusted = _blend_adjusted_values(adjusted, raw_adjusted, blend_weight)
+            adjustment_source["current_season_blend_weight"] = blend_weight
+            reason = (
+                f"{reason} Current-season Premier League form is blended in at {blend_weight:.0%} "
+                "until five PL matches are available."
+            )
+        return adjusted, "Championship adjusted to Premier League equivalent", reason, False, True, adjustment_source
 
     points_from_promoted_baseline = promoted_baseline["median_points"] / 38.0 * 5.0
     goals_for = promoted_baseline["goals_for_per_match"]
@@ -526,7 +565,17 @@ def _adjusted_values(
     adjusted["xg_diff"] = adjusted["xg_avg"] - adjusted["xga_avg"]
     source = "Promoted-team conservative Premier League baseline"
     reason = "No local Premier League history; Championship data is not treated as Premier League-equivalent."
-    return adjusted, source, reason, True, True, {}
+    adjustment_source = {"current_season_blend_weight": 0.0}
+    if needs_current_promoted_adjustment and current_season_match_count > 0:
+        blend_weight = min(1.0, current_season_match_count / MIN_SEASON_AVERAGE_MATCHES)
+        raw_adjusted = _raw_adjusted_values(raw)
+        adjusted = _blend_adjusted_values(adjusted, raw_adjusted, blend_weight)
+        adjustment_source["current_season_blend_weight"] = blend_weight
+        reason = (
+            f"{reason} Current-season Premier League form is blended in at {blend_weight:.0%} "
+            "until five PL matches are available."
+        )
+    return adjusted, source, reason, True, True, adjustment_source
 
 
 def season_start_feature_audit(
@@ -577,6 +626,7 @@ def season_start_feature_audit(
             "current_promoted_team": bool(is_current_promoted),
             "current_season_pl_matches": current_match_count,
             "current_season_points": current_points,
+            "current_season_blend_weight": float(adjustment_source.get("current_season_blend_weight", 1.0)),
             "championship_data_available": champ_summary is not None,
             "championship_match_count": int(champ_summary["source_matches"]) if champ_summary else 0,
             "championship_latest_match": str(champ_summary["latest_match"]) if champ_summary else "",

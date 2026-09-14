@@ -143,6 +143,57 @@ class PromotedTeamAdjustmentTests(unittest.TestCase):
         self.assertEqual(row["current_season_pl_matches"], 1)
         self.assertEqual(row["current_season_points"], 3)
 
+    def test_current_promoted_team_blends_current_form_before_five_matches(self) -> None:
+        current_dates = [date(2026, 8, 15) + timedelta(days=index * 7) for index in range(4)]
+        history = {
+            "Promoted FC": {
+                "points": [0, 0, 0, 0],
+                "goals_scored": [0, 0, 0, 0],
+                "xg": [0.4, 0.5, 0.6, 0.4],
+                "xga": [2.1, 1.8, 2.4, 2.2],
+                "match_dates": current_dates,
+                "shots": [5, 6, 7, 5],
+                "shots_on_target": [1, 1, 2, 1],
+                "shot_seasons": ["2627"] * 4,
+            }
+        }
+        matches = pd.DataFrame(
+            [
+                {"Season": "2526", "Date": date(2026, 5, 1), "HomeTeam": "Established FC", "AwayTeam": opponent, "FTHG": 1, "FTAG": 0, "FTR": "H"}
+                for opponent in ["Other A", "Other B", "Other C", "Other D"]
+            ]
+            + [
+                {
+                    "Season": "2627",
+                    "Date": current_dates[index],
+                    "HomeTeam": "Promoted FC" if index % 2 == 0 else opponent,
+                    "AwayTeam": opponent if index % 2 == 0 else "Promoted FC",
+                    "FTHG": 0 if index % 2 == 0 else 2,
+                    "FTAG": 2 if index % 2 == 0 else 0,
+                    "FTR": "A" if index % 2 == 0 else "H",
+                }
+                for index, opponent in enumerate(["Other A", "Other B", "Other C", "Other D"])
+            ]
+        )
+
+        audit = season_start_feature_audit(
+            ["Promoted FC"],
+            team_history=history,
+            elo_state={"Promoted FC": {"rating": 1500.0, "history": [1500.0]}},
+            matches=matches,
+            championship_matches=championship_matches(),
+        )
+        row = audit.iloc[0]
+        championship_prior = 13.0 * 0.55
+
+        self.assertEqual(current_promoted_teams(matches), {"Promoted FC"})
+        self.assertEqual(row["current_season_pl_matches"], 4)
+        self.assertEqual(row["current_season_points"], 0)
+        self.assertTrue(row["promotion_adjustment_applied"])
+        self.assertAlmostEqual(float(row["current_season_blend_weight"]), 0.8)
+        self.assertLess(float(row["recent_form_points_last5"]), championship_prior)
+        self.assertAlmostEqual(float(row["recent_form_points_last5"]), championship_prior * 0.2)
+
     def test_current_promoted_team_uses_current_pl_form_after_five_matches(self) -> None:
         current_dates = [date(2026, 8, 15) + timedelta(days=index * 7) for index in range(5)]
         history = {

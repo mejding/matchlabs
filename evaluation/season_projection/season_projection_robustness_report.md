@@ -37,17 +37,17 @@ Feature audit:
 
 | team | local_pl_match_count | fallback_used | source_league | raw_recent_form_points_last5 | recent_form_points_last5 | raw_xg_strength_last5 | xg_strength_last5 | raw_xga_strength_last5 | xga_strength_last5 | raw_shots_avg_last5 | shots_avg_last5 | elo_rating |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Coventry | 4 | False | Championship adjusted to Premier League equivalent | 0.0000 | 6.0500 | 1.0705 | 0.8607 | 1.8174 | 1.9245 | 10.2500 | 12.0000 | 1461.6978 |
-| Hull | 4 | False | Championship adjusted to Premier League equivalent | 8.0000 | 2.7500 | 1.1430 | 0.8607 | 1.4525 | 1.9245 | 9.5000 | 10.0500 | 1541.2237 |
+| Coventry | 4 | False | Championship adjusted to Premier League equivalent | 0.0000 | 1.2100 | 1.0705 | 1.0285 | 1.8174 | 1.8388 | 10.2500 | 10.6000 | 1461.6978 |
+| Hull | 4 | False | Championship adjusted to Premier League equivalent | 8.0000 | 6.9500 | 1.1430 | 1.0865 | 1.4525 | 1.5469 | 9.5000 | 9.6100 | 1541.2237 |
 | Tottenham | 270 | False | Premier League historical data | 5.0000 | 5.0000 | 1.1008 | 1.1008 | 1.5504 | 1.5504 | 14.4000 | 14.4000 | 1458.3066 |
 
 Projection:
 
 | team | expected_points | expected_position | projected_position | relegation_probability |
 | --- | --- | --- | --- | --- |
-| Hull | 43.8594 | 13.8697 | 15 | 0.1547 |
-| Coventry | 37.8913 | 16.3035 | 17 | 0.4169 |
-| Tottenham | 37.6104 | 16.7166 | 19 | 0.4793 |
+| Hull | 46.0977 | 12.7573 | 14 | 0.0890 |
+| Tottenham | 37.3625 | 16.7922 | 18 | 0.4870 |
+| Coventry | 36.1339 | 16.9582 | 19 | 0.5124 |
 
 ## Remaining Limitations
 

@@ -46,9 +46,9 @@ Current adjustment values:
 
 | team | raw_recent_form | adjusted_recent_form | raw_xg | adjusted_xg | raw_xga | adjusted_xga | raw_shot_volume | adjusted_shot_volume |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Coventry | 11.0000 | 6.0500 |  | 0.8607 |  | 1.9245 | 16.0000 | 12.0000 |
-| Hull | 5.0000 | 2.7500 |  | 0.8607 |  | 1.9245 | 13.4000 | 10.0500 |
-| Ipswich | 9.0000 | 4.9500 |  | 0.8607 |  | 1.9245 | 15.2000 | 11.4000 |
+| Coventry | 11.0000 | 1.2100 |  | 1.0285 |  | 1.8388 | 16.0000 | 10.6000 |
+| Hull | 5.0000 | 6.9500 |  | 1.0865 |  | 1.5469 | 13.4000 | 9.6100 |
+| Ipswich | 9.0000 | 5.7900 |  | 1.2786 |  | 1.7758 | 15.2000 | 11.7200 |
 
 ### 5. If no, what fallback baseline was used?
 
@@ -72,9 +72,9 @@ Yes. Championship points, xG and shot volume are converted with explicit factors
 
 | team | expected_points_before_adjustment | expected_points | relegation_probability_before_adjustment | relegation_probability |
 | --- | --- | --- | --- | --- |
-| Coventry | 36.3607 | 37.8913 | 0.5013 | 0.4169 |
-| Hull | 46.6896 | 43.8594 | 0.0790 | 0.1547 |
-| Ipswich | 32.0671 | 29.2544 | 0.7774 | 0.8871 |
+| Coventry | 36.3607 | 36.1339 | 0.5013 | 0.5124 |
+| Hull | 46.6896 | 46.0977 | 0.0790 | 0.0890 |
+| Ipswich | 32.0671 | 31.2248 | 0.7774 | 0.8096 |
 
 ## Notes
 

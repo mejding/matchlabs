@@ -24,7 +24,7 @@ For fixtures where neither team uses a promoted-team fallback, the Prediction ta
 
 | feature_group | max_adjusted_abs_diff | adjusted_rows |
 | --- | --- | --- |
-| xG/xGA | 1.1060 | 480 |
+| xG/xGA | 0.2212 | 480 |
 | Elo | 0.0000 | 720 |
 | Home advantage | 0.0000 | 80 |
 | Recent form | 0.0000 | 320 |
@@ -41,12 +41,12 @@ For fixtures where neither team uses a promoted-team fallback, the Prediction ta
 | Brentford | ok | False | none | Premier League historical data | 194 | False | False | none |
 | Brighton | ok | False | none | Premier League historical data | 270 | False | False | none |
 | Chelsea | ok | False | none | Premier League historical data | 270 | False | False | none |
-| Coventry | adjusted | False | Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline. | Championship adjusted to Premier League equivalent | 4 | True | True | promoted_adjustment |
+| Coventry | adjusted | False | Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline. Current-season Premier League form is blended in at 80% until five PL matches are available. | Championship adjusted to Premier League equivalent | 4 | True | True | promoted_adjustment |
 | Crystal Palace | ok | False | none | Premier League historical data | 270 | False | False | none |
 | Everton | ok | False | none | Premier League historical data | 270 | False | False | none |
 | Fulham | ok | False | none | Premier League historical data | 194 | False | False | none |
-| Hull | adjusted | False | Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline. | Championship adjusted to Premier League equivalent | 4 | True | True | promoted_adjustment |
-| Ipswich | adjusted | False | Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline. | Championship adjusted to Premier League equivalent | 42 | True | True | promoted_adjustment |
+| Hull | adjusted | False | Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline. Current-season Premier League form is blended in at 80% until five PL matches are available. | Championship adjusted to Premier League equivalent | 4 | True | True | promoted_adjustment |
+| Ipswich | adjusted | False | Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline. Current-season Premier League form is blended in at 80% until five PL matches are available. | Championship adjusted to Premier League equivalent | 42 | True | True | promoted_adjustment |
 | Leeds | ok | False | none | Premier League historical data | 155 | False | False | none |
 | Liverpool | ok | False | none | Premier League historical data | 270 | False | False | none |
 | Man City | ok | False | none | Premier League historical data | 270 | False | False | none |
