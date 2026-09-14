@@ -213,6 +213,100 @@ def backfill_understat_shots_for_season(football_data_season: str, understat_sea
     return DownloadResult("understat-shots", football_data_season, path, status, rows, latest, message)
 
 
+def import_understat_results_for_season(football_data_season: str, understat_season: int, dry_run: bool) -> DownloadResult:
+    path = DATA_DIR / f"premier_league_{football_data_season}.csv"
+    understat_path = DATA_DIR / f"understat_epl_{understat_season}.json"
+    rows, latest = _read_csv_summary(path)
+    if not path.exists() or not understat_path.exists():
+        return DownloadResult("understat-results", football_data_season, path, "skipped", rows, latest, "Missing CSV or Understat JSON.")
+
+    frame = pd.read_csv(path)
+    required = {"Date", "HomeTeam", "AwayTeam"}
+    if not required.issubset(frame.columns):
+        return DownloadResult("understat-results", football_data_season, path, "skipped", rows, latest, "CSV is missing match identity columns.")
+
+    existing = frame.copy()
+    existing["Date"] = pd.to_datetime(existing["Date"], dayfirst=True, errors="coerce").dt.date
+    existing_keys = {
+        (row.Date, row.HomeTeam, row.AwayTeam)
+        for row in existing.dropna(subset=["Date", "HomeTeam", "AwayTeam"])[["Date", "HomeTeam", "AwayTeam"]].itertuples(index=False)
+    }
+
+    data = json.loads(understat_path.read_text(encoding="utf-8"))
+    imported_rows: list[dict[str, object]] = []
+    failures: list[str] = []
+    for match in data.get("dates", []):
+        if not match.get("isResult"):
+            continue
+        match_date = pd.to_datetime(match.get("datetime"), errors="coerce")
+        if pd.isna(match_date):
+            continue
+        home = normalize_understat_team(match["h"]["title"])
+        away = normalize_understat_team(match["a"]["title"])
+        key = (match_date.date(), home, away)
+        if key in existing_keys:
+            continue
+
+        home_goals = int(match["goals"]["h"])
+        away_goals = int(match["goals"]["a"])
+        row = {column: pd.NA for column in frame.columns}
+        row.update(
+            {
+                "Div": "E0",
+                "Date": match_date.strftime("%d/%m/%Y"),
+                "Time": match_date.strftime("%H:%M"),
+                "HomeTeam": home,
+                "AwayTeam": away,
+                "FTHG": home_goals,
+                "FTAG": away_goals,
+                "FTR": "H" if home_goals > away_goals else "A" if away_goals > home_goals else "D",
+                "HxG": float(match["xG"]["h"]),
+                "AxG": float(match["xG"]["a"]),
+            }
+        )
+        if not dry_run:
+            try:
+                info = _download_understat_match_info(str(match["id"]))
+                shot_values = {
+                    "HS": info.get("h_shot"),
+                    "AS": info.get("a_shot"),
+                    "HST": info.get("h_shotOnTarget"),
+                    "AST": info.get("a_shotOnTarget"),
+                }
+                if all(value is not None for value in shot_values.values()):
+                    row.update({column: int(value) for column, value in shot_values.items()})
+                else:
+                    failures.append(f"{match['id']}: missing shot values")
+            except Exception as exc:
+                failures.append(f"{match['id']}: {exc}")
+        imported_rows.append(row)
+
+    if dry_run:
+        return DownloadResult(
+            "understat-results",
+            football_data_season,
+            path,
+            "dry_run",
+            len(imported_rows),
+            latest,
+            f"Would import {len(imported_rows)} completed Understat result rows missing from football-data.",
+        )
+
+    if imported_rows:
+        updated = pd.concat([frame, pd.DataFrame(imported_rows, columns=frame.columns)], ignore_index=True)
+        updated["_parsed_date"] = pd.to_datetime(updated["Date"], dayfirst=True, errors="coerce")
+        updated = updated.sort_values(["_parsed_date", "Time", "HomeTeam", "AwayTeam"]).drop(columns=["_parsed_date"])
+        _normalize_shot_columns(updated)
+        updated.to_csv(path, index=False)
+        rows, latest = _read_csv_summary(path)
+
+    status = "updated" if imported_rows and not failures else "partial" if imported_rows else "complete"
+    message = f"Imported {len(imported_rows)} completed Understat result rows missing from football-data."
+    if failures:
+        message += " Shot fetch issues: " + "; ".join(failures[:5])
+    return DownloadResult("understat-results", football_data_season, path, status, rows, latest, message)
+
+
 def load_football_data_for_seasons(seasons: list[str]) -> pd.DataFrame:
     frames: list[pd.DataFrame] = []
     for season in seasons:
@@ -317,6 +411,7 @@ def validation_section(validation: dict[str, object]) -> str:
 def write_report(
     football_results: list[DownloadResult],
     understat_results: list[DownloadResult],
+    understat_import_results: list[DownloadResult],
     shot_backfill_results: list[DownloadResult],
     validation: dict[str, object],
     commands: list[tuple[str, int, str]],
@@ -346,6 +441,10 @@ def write_report(
 ## Understat Refresh
 
 {result_table(understat_results)}
+
+## Understat Result Import
+
+{result_table(understat_import_results)}
 
 ## Understat Shot Backfill
 
@@ -409,6 +508,10 @@ def main() -> None:
     args = parse_args()
     football_results = [refresh_football_data_season(season, args.force, args.dry_run) for season in args.seasons]
     understat_results = [refresh_understat_season(season, args.force, args.dry_run) for season in args.understat_seasons]
+    understat_import_results = [
+        import_understat_results_for_season(season, understat_season, args.dry_run)
+        for season, understat_season in zip(args.seasons, args.understat_seasons, strict=True)
+    ]
     shot_backfill_results = [
         backfill_understat_shots_for_season(season, understat_season, args.dry_run)
         for season, understat_season in zip(args.seasons, args.understat_seasons, strict=True)
@@ -441,7 +544,7 @@ def main() -> None:
     if not args.dry_run and not args.skip_forecast_log:
         commands.append(run_command([sys.executable, "forecast_log.py"], args.seasons, args.understat_seasons))
 
-    write_report(football_results, understat_results, shot_backfill_results, validation, commands, args)
+    write_report(football_results, understat_results, understat_import_results, shot_backfill_results, validation, commands, args)
 
     print(f"Wrote {REPORT_PATH}")
     print(
