@@ -3,7 +3,13 @@ from __future__ import annotations
 import pandas as pd
 
 import app
-from app import add_projection_position_movement, completed_matches_with_matchweeks
+from app import (
+    add_projection_position_movement,
+    completed_matches_with_matchweeks,
+    latest_fully_completed_matchweek,
+    latest_started_matchweek,
+    previous_round_movement_reference_matchweek,
+)
 
 
 def test_completed_matchweeks_match_home_away_when_dates_move() -> None:
@@ -45,6 +51,63 @@ def test_projection_position_movement_uses_positive_numbers_for_moving_up() -> N
     assert int(team_a["position_change_since_previous_round"]) == 1
     assert int(team_b["position_change_since_season_start"]) == 1
     assert int(team_b["position_change_since_previous_round"]) == 0
+
+
+def test_previous_round_movement_waits_for_partial_matchweek_to_finish() -> None:
+    official_rows = []
+    completed_rows = []
+    for matchweek in [1, 2, 3, 4]:
+        for index in range(10):
+            home = f"Home {matchweek}-{index}"
+            away = f"Away {matchweek}-{index}"
+            official_rows.append({"home_team": home, "away_team": away, "matchweek": matchweek})
+            if matchweek < 4 or index < 9:
+                completed_rows.append(
+                    {
+                        "Date": f"2026-09-{matchweek:02d}",
+                        "HomeTeam": home,
+                        "AwayTeam": away,
+                        "FTHG": 1,
+                        "FTAG": 0,
+                        "FTR": "H",
+                        "Season": "2627",
+                    }
+                )
+
+    official = pd.DataFrame(official_rows)
+    completed = pd.DataFrame(completed_rows)
+
+    assert latest_fully_completed_matchweek(completed, official) == 3
+    assert latest_started_matchweek(completed, official) == 4
+    assert previous_round_movement_reference_matchweek(completed, official) is None
+
+
+def test_previous_round_movement_uses_previous_week_after_full_matchweek() -> None:
+    official_rows = []
+    completed_rows = []
+    for matchweek in [1, 2, 3, 4]:
+        for index in range(10):
+            home = f"Home {matchweek}-{index}"
+            away = f"Away {matchweek}-{index}"
+            official_rows.append({"home_team": home, "away_team": away, "matchweek": matchweek})
+            completed_rows.append(
+                {
+                    "Date": f"2026-09-{matchweek:02d}",
+                    "HomeTeam": home,
+                    "AwayTeam": away,
+                    "FTHG": 1,
+                    "FTAG": 0,
+                    "FTR": "H",
+                    "Season": "2627",
+                }
+            )
+
+    official = pd.DataFrame(official_rows)
+    completed = pd.DataFrame(completed_rows)
+
+    assert latest_fully_completed_matchweek(completed, official) == 4
+    assert latest_started_matchweek(completed, official) == 4
+    assert previous_round_movement_reference_matchweek(completed, official) == 3
 
 
 def test_long_term_strength_ignores_partial_current_season(monkeypatch) -> None:

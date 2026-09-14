@@ -1889,6 +1889,26 @@ def latest_fully_completed_matchweek(completed_matches: pd.DataFrame, official_f
     return max(complete_weeks) if complete_weeks else None
 
 
+def latest_started_matchweek(completed_matches: pd.DataFrame, official_fixtures: pd.DataFrame) -> int | None:
+    annotated = completed_matches_with_matchweeks(completed_matches, official_fixtures)
+    if annotated.empty or annotated["matchweek"].isna().all():
+        return None
+    return int(annotated["matchweek"].dropna().max())
+
+
+def previous_round_movement_reference_matchweek(
+    completed_matches: pd.DataFrame,
+    official_fixtures: pd.DataFrame,
+) -> int | None:
+    latest_completed_round = latest_fully_completed_matchweek(completed_matches, official_fixtures)
+    latest_started_round = latest_started_matchweek(completed_matches, official_fixtures)
+    if latest_completed_round is None or latest_completed_round <= 1:
+        return None
+    if latest_started_round != latest_completed_round:
+        return None
+    return latest_completed_round - 1
+
+
 def completed_matches_through_matchweek(
     completed_matches: pd.DataFrame,
     official_fixtures: pd.DataFrame,
@@ -2090,20 +2110,20 @@ def upcoming_season_projection(
         )
     previous_round_projection = None
     if fixture_path.exists() and not completed_matches.empty:
-        latest_completed_round = latest_fully_completed_matchweek(completed_matches, fixture_schedule_frame)
-        previous_completed_round = None if latest_completed_round is None or latest_completed_round <= 1 else latest_completed_round - 1
+        previous_completed_round = previous_round_movement_reference_matchweek(completed_matches, fixture_schedule_frame)
         previous_completed_matches = completed_matches_through_matchweek(completed_matches, fixture_schedule_frame, previous_completed_round)
-        previous_round_projection, _ = simulate_projection_snapshot(
-            fixtures,
-            fixture_schedule_frame,
-            artifact,
-            calibrator,
-            teams,
-            overrides,
-            squad_strength,
-            previous_completed_matches,
-            simulations,
-        )
+        if not previous_completed_matches.empty:
+            previous_round_projection, _ = simulate_projection_snapshot(
+                fixtures,
+                fixture_schedule_frame,
+                artifact,
+                calibrator,
+                teams,
+                overrides,
+                squad_strength,
+                previous_completed_matches,
+                simulations,
+            )
 
     probabilities_before_squad_strength = predict_fixture_probabilities(
         filter_unplayed_fixtures(fixtures, completed_matches),
@@ -2417,7 +2437,13 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
     if mode.validation_ok:
         completed_matches = load_completed_current_season_matches()
         latest_completed_round = latest_fully_completed_matchweek(completed_matches, official) if not completed_matches.empty else None
-        if latest_completed_round and latest_completed_round > 1:
+        latest_started_round = latest_started_matchweek(completed_matches, official) if not completed_matches.empty else None
+        if latest_started_round and latest_completed_round != latest_started_round:
+            st.caption(
+                f"Current projection includes partial matchweek {latest_started_round}. "
+                "Previous-round movement is hidden until that matchweek is complete."
+            )
+        elif latest_completed_round and latest_completed_round > 1:
             st.caption(
                 f"Movement columns compare the current projection after matchweek {latest_completed_round} "
                 f"with pre-season and after matchweek {latest_completed_round - 1}."
