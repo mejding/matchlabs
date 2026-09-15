@@ -5,17 +5,17 @@
 The evaluation uses a strict time-based split. No random train/test split is used.
 
 - Training dates: 2019-08-09 to 2025-02-22
-- Test dates: 2025-02-23 to 2026-09-13
+- Test dates: 2025-02-23 to 2026-09-14
 - Train rows: 2159
-- Test rows: 540
+- Test rows: 541
 
 ## Metrics
 
-- Accuracy: 0.4889
-- Multiclass log loss: 1.0617
-- Multiclass Brier score: 0.6368
-- Calibration error: 0.0531
-- Expected Calibration Error: 0.0531
+- Accuracy: 0.4898
+- Multiclass log loss: 1.0614
+- Multiclass Brier score: 0.6367
+- Calibration error: 0.0514
+- Expected Calibration Error: 0.0514
 
 ## Calibration
 
@@ -45,14 +45,14 @@ Mean prediction stability score: 0.6446
 
 Top SHAP features:
 
-- `home_shots_avg_season`: 0.0827
-- `away_shots_on_target_avg_season`: 0.0821
-- `home_elo`: 0.0625
-- `home_shots_on_target_avg_season`: 0.0602
-- `away_xga_avg`: 0.0597
-- `home_xg_diff`: 0.0508
-- `away_xg_diff`: 0.0432
-- `home_team_points_last_5`: 0.0413
+- `away_shots_on_target_avg_season`: 0.0826
+- `home_shots_avg_season`: 0.0817
+- `home_elo`: 0.0632
+- `away_xga_avg`: 0.0599
+- `home_shots_on_target_avg_season`: 0.0582
+- `home_xg_diff`: 0.0510
+- `away_xg_diff`: 0.0427
+- `home_team_points_last_5`: 0.0412
 
 The feature importance CSV files compare gain importance, permutation importance, and SHAP importance. Features with low or zero values across all three are candidates for removal or better data.
 
