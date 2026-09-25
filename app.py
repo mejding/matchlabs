@@ -2441,11 +2441,10 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
         "Fallback": "Fallback",
         "Error": "Error",
     }.get(validation_status, validation_status)
-    cols = st.columns(4)
+    cols = st.columns(3)
     cols[0].metric("Projection inputs", projection_input_label)
     cols[1].metric("Official fixtures", "OK" if mode.validation_ok else "Fallback")
-    cols[2].metric("Promoted teams", f"Adjusted ({adjusted_count})" if adjusted_count else "None")
-    cols[3].metric("Squad strength", f"Active ({squad_strength_count})" if squad_strength_count else "Missing")
+    cols[2].metric("Squad strength", f"Active ({squad_strength_count})" if squad_strength_count else "Missing")
     if validation_status == "Error":
         st.error("Season Projection feature validation found missing active production inputs. Check the audit table before using the projection.")
     elif validation_status == "Fallback":
@@ -2531,22 +2530,20 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
         st.markdown("##### All 2026/27 teams")
         st.dataframe(format_season_start_audit_display(feature_audit), width="stretch", hide_index=True)
 
-    with st.expander("Promoted team adjustment", expanded=True):
-        st.write(
-            "Promoted teams with limited Premier League history are handled separately. "
-            "If Championship data is available, it is converted into Premier League-equivalent values. "
-            "If not, the model uses a conservative promoted-team baseline instead of treating missing Premier League form as zero."
-        )
-        promoted_display = feature_audit[
-            feature_audit["promotion_adjustment_applied"] | feature_audit["fallback_used"] | feature_audit["premier_league_matches_available"].lt(5)
-        ].merge(
-            projection[["team", "expected_points", "relegation_probability"]],
-            on="team",
-            how="left",
-        )
-        if promoted_display.empty:
-            st.success("No promoted-team adjustments are active.")
-        else:
+    promoted_display = feature_audit[
+        feature_audit["promotion_adjustment_applied"] | feature_audit["fallback_used"] | feature_audit["premier_league_matches_available"].lt(5)
+    ].merge(
+        projection[["team", "expected_points", "relegation_probability"]],
+        on="team",
+        how="left",
+    )
+    if not promoted_display.empty:
+        with st.expander("Promoted team adjustment", expanded=True):
+            st.write(
+                "Promoted teams with limited Premier League history are handled separately. "
+                "If Championship data is available, it is converted into Premier League-equivalent values. "
+                "If not, the model uses a conservative promoted-team baseline instead of treating missing Premier League form as zero."
+            )
             promoted_display = probability_percent_columns(promoted_display, ["relegation_probability"])
             promoted_display = promoted_display.rename(
                 columns={
