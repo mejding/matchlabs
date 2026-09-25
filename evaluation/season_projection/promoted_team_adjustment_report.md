@@ -2,35 +2,23 @@
 
 ## Summary
 
-- Adjusted promoted/low-history teams: `3`
-- Teams using Championship data: `3`
+- Adjusted promoted/low-history teams: `0`
+- Teams using Championship data: `0`
 - Teams using conservative baseline fallback: `0`
 
 ## Answers
 
 ### 1. Which promoted teams were adjusted?
 
-| team | source_league | local_pl_match_count | championship_match_count | promotion_adjustment_applied | fallback_used |
-| --- | --- | --- | --- | --- | --- |
-| Coventry | Championship adjusted to Premier League equivalent | 4 | 46 | True | False |
-| Hull | Championship adjusted to Premier League equivalent | 4 | 46 | True | False |
-| Ipswich | Championship adjusted to Premier League equivalent | 42 | 46 | True | False |
+_No rows._
 
 ### 2. Did they have Premier League data?
 
-| team | local_pl_match_count | championship_data_available |
-| --- | --- | --- |
-| Coventry | 4 | True |
-| Hull | 4 | True |
-| Ipswich | 42 | True |
+_No rows._
 
 ### 3. Was Championship data available?
 
-| team | championship_data_available | championship_match_count | championship_latest_match |
-| --- | --- | --- | --- |
-| Coventry | True | 46 | 2026-05-02 |
-| Hull | True | 46 | 2026-05-02 |
-| Ipswich | True | 46 | 2026-05-02 |
+_No rows._
 
 ### 4. If yes, how was it adjusted?
 
@@ -44,17 +32,13 @@ Adjustment factors:
 
 Current adjustment values:
 
-| team | raw_recent_form | adjusted_recent_form | raw_xg | adjusted_xg | raw_xga | adjusted_xga | raw_shot_volume | adjusted_shot_volume |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Coventry | 11.0000 | 1.2100 |  | 1.0285 |  | 1.8262 | 16.0000 | 10.6000 |
-| Hull | 5.0000 | 6.9500 |  | 1.0865 |  | 1.5344 | 13.4000 | 9.8100 |
-| Ipswich | 9.0000 | 5.7900 |  | 1.2786 |  | 1.7632 | 15.2000 | 11.7200 |
+_No rows._
 
 ### 5. If no, what fallback baseline was used?
 
 | average_points | median_points | average_position | median_position | relegation_rate | goals_for_per_match | goals_against_per_match |
 | --- | --- | --- | --- | --- | --- | --- |
-| 28.3333 | 25.0000 | 15.5714 | 18.0000 | 0.5714 | 0.9060 | 1.6391 |
+| 28.4762 | 25.0000 | 15.7143 | 18.0000 | 0.5714 | 0.9085 | 1.6429 |
 
 Baseline fallback teams:
 
@@ -70,11 +54,7 @@ Yes. Championship points, xG and shot volume are converted with explicit factors
 
 ### 8. How did expected points and relegation probability change?
 
-| team | expected_points_before_adjustment | expected_points | relegation_probability_before_adjustment | relegation_probability |
-| --- | --- | --- | --- | --- |
-| Coventry | 36.2048 | 36.2792 | 0.5169 | 0.5110 |
-| Hull | 48.9962 | 45.3235 | 0.0447 | 0.1076 |
-| Ipswich | 31.8971 | 31.5589 | 0.7808 | 0.7977 |
+_No rows._
 
 ## Notes
 

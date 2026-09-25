@@ -2,7 +2,7 @@
 
 ## Summary
 
-- Feature validation status: `Adjusted`
+- Feature validation status: `Ready`
 - Fixtures checked: `80`
 - Production features checked: `40`
 - Non-promoted fixture max raw difference: `0.00000000`
@@ -13,45 +13,45 @@ For fixtures where neither team uses a promoted-team fallback, the Prediction ta
 
 | feature_group | max_raw_abs_diff | features_checked | rows_checked |
 | --- | --- | --- | --- |
-| Elo | 0.0000 | 9 | 513 |
-| Home advantage | 0.0000 | 1 | 57 |
-| Recent form | 0.0000 | 4 | 228 |
-| Schedule/fatigue | 0.0000 | 8 | 456 |
-| Shot volume | 0.0000 | 12 | 684 |
-| xG/xGA | 0.0000 | 6 | 342 |
+| Elo | 0.0000 | 9 | 720 |
+| Home advantage | 0.0000 | 1 | 80 |
+| Recent form | 0.0000 | 4 | 320 |
+| Schedule/fatigue | 0.0000 | 8 | 640 |
+| Shot volume | 0.0000 | 12 | 960 |
+| xG/xGA | 0.0000 | 6 | 480 |
 
 ## Adjusted Feature Group Differences
 
 | feature_group | max_adjusted_abs_diff | adjusted_rows |
 | --- | --- | --- |
-| xG/xGA | 0.2337 | 480 |
 | Elo | 0.0000 | 720 |
 | Home advantage | 0.0000 | 80 |
 | Recent form | 0.0000 | 320 |
 | Schedule/fatigue | 0.0000 | 640 |
 | Shot volume | 0.0000 | 960 |
+| xG/xGA | 0.0000 | 480 |
 
 ## Feature Validation Rows
 
 | team | feature_validation_status | fallback_used | fallback_reason | source_league | local_pl_match_count | championship_data_available | promotion_adjustment_applied | missing_or_fallback_groups |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Arsenal | ok | False | none | Premier League historical data | 270 | False | False | none |
-| Aston Villa | ok | False | none | Premier League historical data | 270 | False | False | none |
-| Bournemouth | ok | False | none | Premier League historical data | 194 | False | False | none |
-| Brentford | ok | False | none | Premier League historical data | 194 | False | False | none |
-| Brighton | ok | False | none | Premier League historical data | 270 | False | False | none |
-| Chelsea | ok | False | none | Premier League historical data | 270 | False | False | none |
-| Coventry | adjusted | False | Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline. Current-season Premier League form is blended in at 80% until five PL matches are available. | Championship adjusted to Premier League equivalent | 4 | True | True | promoted_adjustment |
-| Crystal Palace | ok | False | none | Premier League historical data | 270 | False | False | none |
-| Everton | ok | False | none | Premier League historical data | 270 | False | False | none |
-| Fulham | ok | False | none | Premier League historical data | 194 | False | False | none |
-| Hull | adjusted | False | Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline. Current-season Premier League form is blended in at 80% until five PL matches are available. | Championship adjusted to Premier League equivalent | 4 | True | True | promoted_adjustment |
-| Ipswich | adjusted | False | Championship recent form and shot volume converted to Premier League-equivalent values. Championship xG unavailable, so xG/xGA use conservative promoted-team baseline. Current-season Premier League form is blended in at 80% until five PL matches are available. | Championship adjusted to Premier League equivalent | 42 | True | True | promoted_adjustment |
-| Leeds | ok | False | none | Premier League historical data | 156 | False | False | none |
-| Liverpool | ok | False | none | Premier League historical data | 270 | False | False | none |
-| Man City | ok | False | none | Premier League historical data | 270 | False | False | none |
-| Man United | ok | False | none | Premier League historical data | 270 | False | False | none |
-| Newcastle | ok | False | none | Premier League historical data | 270 | False | False | none |
-| Nott'm Forest | ok | False | none | Premier League historical data | 156 | False | False | none |
-| Sunderland | ok | False | none | Premier League historical data | 42 | False | False | none |
-| Tottenham | ok | False | none | Premier League historical data | 270 | False | False | none |
+| Arsenal | ok | False | none | Premier League historical data | 271 | False | False | none |
+| Aston Villa | ok | False | none | Premier League historical data | 271 | False | False | none |
+| Bournemouth | ok | False | none | Premier League historical data | 195 | False | False | none |
+| Brentford | ok | False | none | Premier League historical data | 195 | False | False | none |
+| Brighton | ok | False | none | Premier League historical data | 271 | False | False | none |
+| Chelsea | ok | False | none | Premier League historical data | 271 | False | False | none |
+| Coventry | ok | False | none | Premier League historical data | 5 | True | False | none |
+| Crystal Palace | ok | False | none | Premier League historical data | 271 | False | False | none |
+| Everton | ok | False | none | Premier League historical data | 271 | False | False | none |
+| Fulham | ok | False | none | Premier League historical data | 195 | False | False | none |
+| Hull | ok | False | none | Premier League historical data | 5 | True | False | none |
+| Ipswich | ok | False | none | Premier League historical data | 43 | True | False | none |
+| Leeds | ok | False | none | Premier League historical data | 157 | False | False | none |
+| Liverpool | ok | False | none | Premier League historical data | 271 | False | False | none |
+| Man City | ok | False | none | Premier League historical data | 271 | False | False | none |
+| Man United | ok | False | none | Premier League historical data | 271 | False | False | none |
+| Newcastle | ok | False | none | Premier League historical data | 271 | False | False | none |
+| Nott'm Forest | ok | False | none | Premier League historical data | 157 | False | False | none |
+| Sunderland | ok | False | none | Premier League historical data | 43 | False | False | none |
+| Tottenham | ok | False | none | Premier League historical data | 271 | False | False | none |
