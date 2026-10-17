@@ -2281,27 +2281,50 @@ def season_projection_display_style(display: pd.DataFrame):
 def season_projection_column_config(display: pd.DataFrame) -> dict[str, object]:
     labels = {
         "Team": "Team",
-        "Simulated points": "Sim\npts",
-        "Probability points": "Prob\npts",
-        "Average simulated finish": "Avg\nfinish",
+        "Simulated points": "Sim pts",
+        "Probability points": "Prob pts",
+        "Average simulated finish": "Avg finish",
         "Ordered table rank": "Rank",
-        "Pre-season rank": "Pre\nrank",
-        "Since season start": "+/-\nstart",
-        "Previous round rank": "Prev\nrank",
-        "Since previous round": "+/-\nprev",
+        "Pre-season rank": "Pre rank",
+        "Since season start": "+/- start",
+        "Previous round rank": "Prev rank",
+        "Since previous round": "+/- prev",
         "Title": "Title",
         "Top 4": "Top 4",
         "Top 6": "Top 6",
         "Relegation": "Releg.",
     }
-    medium_columns = {"Team"}
+    widths = {
+        "Team": 126,
+        "Simulated points": 62,
+        "Probability points": 64,
+        "Average simulated finish": 68,
+        "Ordered table rank": 48,
+        "Pre-season rank": 58,
+        "Since season start": 58,
+        "Previous round rank": 62,
+        "Since previous round": 58,
+        "Title": 56,
+        "Top 4": 56,
+        "Top 6": 56,
+        "Relegation": 62,
+    }
     return {
         column: st.column_config.TextColumn(
             label=labels.get(column, column),
-            width="medium" if column in medium_columns else "small",
+            width=widths.get(column, 64),
         )
         for column in display.columns
     }
+
+
+SEASON_PROJECTION_ROW_HEIGHT = 32
+
+
+def season_projection_table_height(row_count: int) -> int:
+    header_height = 38
+    border_allowance = 4
+    return header_height + max(0, row_count) * SEASON_PROJECTION_ROW_HEIGHT + border_allowance
 
 
 def format_season_start_audit_display(frame: pd.DataFrame) -> pd.DataFrame:
@@ -2512,6 +2535,8 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
         st.dataframe(
             season_projection_display_style(projection_display),
             width="stretch",
+            height=season_projection_table_height(len(projection_display)),
+            row_height=SEASON_PROJECTION_ROW_HEIGHT,
             hide_index=True,
             column_config=season_projection_column_config(projection_display),
         )

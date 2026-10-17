@@ -9,6 +9,7 @@ from app import (
     latest_fully_completed_matchweek,
     latest_started_matchweek,
     previous_round_movement_reference_matchweek,
+    season_projection_table_height,
 )
 
 
@@ -51,6 +52,10 @@ def test_projection_position_movement_uses_positive_numbers_for_moving_up() -> N
     assert int(team_a["position_change_since_previous_round"]) == 1
     assert int(team_b["position_change_since_season_start"]) == 1
     assert int(team_b["position_change_since_previous_round"]) == 0
+
+
+def test_full_projection_table_height_shows_all_twenty_teams() -> None:
+    assert season_projection_table_height(20) == 682
 
 
 def test_previous_round_movement_waits_for_partial_matchweek_to_finish() -> None:
