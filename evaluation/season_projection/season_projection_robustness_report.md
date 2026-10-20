@@ -25,7 +25,7 @@ For last-5 and last-10 features, the first completed matches of a new season are
 
 | average_points | median_points | average_position | median_position | relegation_rate | goals_for_per_match | goals_against_per_match |
 | --- | --- | --- | --- | --- | --- | --- |
-| 28.8095 | 25.0000 | 15.4762 | 18.0000 | 0.5238 | 0.9185 | 1.6479 |
+| 28.8095 | 25.0000 | 15.6667 | 18.0000 | 0.5238 | 0.9223 | 1.6566 |
 
 Baseline fallback teams:
 
@@ -37,17 +37,17 @@ Feature audit:
 
 | team | local_pl_match_count | fallback_used | source_league | raw_recent_form_points_last5 | recent_form_points_last5 | raw_xg_strength_last5 | xg_strength_last5 | raw_xga_strength_last5 | xga_strength_last5 | raw_shots_avg_last5 | shots_avg_last5 | elo_rating |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Coventry | 6 | False | Premier League historical data | 6.0000 | 6.0000 | 1.2163 | 1.2163 | 1.7905 | 1.7905 | 11.2000 | 11.2000 | 1498.6317 |
-| Hull | 6 | False | Premier League historical data | 6.0000 | 6.0000 | 1.1534 | 1.1534 | 1.6405 | 1.6405 | 12.4000 | 12.4000 | 1527.8899 |
-| Tottenham | 272 | False | Premier League historical data | 3.0000 | 3.0000 | 1.4196 | 1.4196 | 1.2038 | 1.2038 | 14.8000 | 14.8000 | 1455.3324 |
+| Coventry | 7 | False | Premier League historical data | 6.0000 | 6.0000 | 1.2086 | 1.2086 | 1.8929 | 1.8929 | 11.4000 | 11.4000 | 1484.9966 |
+| Hull | 7 | False | Premier League historical data | 3.0000 | 3.0000 | 1.0877 | 1.0877 | 1.8589 | 1.8589 | 12.2000 | 12.2000 | 1514.8121 |
+| Tottenham | 273 | False | Premier League historical data | 6.0000 | 6.0000 | 1.3899 | 1.3899 | 1.2306 | 1.2306 | 14.6000 | 14.6000 | 1468.9676 |
 
 Projection:
 
 | team | expected_points | expected_position | projected_position | relegation_probability |
 | --- | --- | --- | --- | --- |
-| Hull | 47.1880 | 12.5403 | 13 | 0.0792 |
-| Coventry | 40.5439 | 15.5215 | 16 | 0.2979 |
-| Tottenham | 36.2948 | 17.4724 | 19 | 0.5933 |
+| Hull | 42.7535 | 14.3850 | 15 | 0.2040 |
+| Coventry | 40.0979 | 15.4628 | 16 | 0.3146 |
+| Tottenham | 39.1859 | 16.2275 | 19 | 0.4156 |
 
 ## Remaining Limitations
 
