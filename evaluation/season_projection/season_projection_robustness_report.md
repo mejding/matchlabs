@@ -25,7 +25,7 @@ For last-5 and last-10 features, the first completed matches of a new season are
 
 | average_points | median_points | average_position | median_position | relegation_rate | goals_for_per_match | goals_against_per_match |
 | --- | --- | --- | --- | --- | --- | --- |
-| 28.8095 | 25.0000 | 15.6667 | 18.0000 | 0.5238 | 0.9223 | 1.6566 |
+| 28.9048 | 25.0000 | 15.9048 | 18.0000 | 0.5714 | 0.9248 | 1.6604 |
 
 Baseline fallback teams:
 
@@ -37,17 +37,17 @@ Feature audit:
 
 | team | local_pl_match_count | fallback_used | source_league | raw_recent_form_points_last5 | recent_form_points_last5 | raw_xg_strength_last5 | xg_strength_last5 | raw_xga_strength_last5 | xga_strength_last5 | raw_shots_avg_last5 | shots_avg_last5 | elo_rating |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Coventry | 7 | False | Premier League historical data | 6.0000 | 6.0000 | 1.2086 | 1.2086 | 1.8929 | 1.8929 | 11.4000 | 11.4000 | 1484.9966 |
-| Hull | 7 | False | Premier League historical data | 3.0000 | 3.0000 | 1.0877 | 1.0877 | 1.8589 | 1.8589 | 12.2000 | 12.2000 | 1514.8121 |
-| Tottenham | 273 | False | Premier League historical data | 6.0000 | 6.0000 | 1.3899 | 1.3899 | 1.2306 | 1.2306 | 14.6000 | 14.6000 | 1468.9676 |
+| Coventry | 8 | False | Premier League historical data | 6.0000 | 6.0000 | 0.9905 | 0.9905 | 1.5694 | 1.5694 | 11.6000 | 11.6000 | 1467.8840 |
+| Hull | 8 | False | Premier League historical data | 3.0000 | 3.0000 | 1.3127 | 1.3127 | 1.8732 | 1.8732 | 12.4000 | 12.4000 | 1514.5586 |
+| Tottenham | 274 | False | Premier League historical data | 8.0000 | 8.0000 | 1.2889 | 1.2889 | 1.1564 | 1.1564 | 15.4000 | 15.4000 | 1491.8331 |
 
 Projection:
 
 | team | expected_points | expected_position | projected_position | relegation_probability |
 | --- | --- | --- | --- | --- |
-| Hull | 42.7535 | 14.3850 | 15 | 0.2040 |
-| Coventry | 40.0979 | 15.4628 | 16 | 0.3146 |
-| Tottenham | 39.1859 | 16.2275 | 19 | 0.4156 |
+| Tottenham | 43.3993 | 14.4498 | 15 | 0.2023 |
+| Hull | 42.0969 | 14.8717 | 16 | 0.2492 |
+| Coventry | 38.6505 | 16.2731 | 17 | 0.4093 |
 
 ## Remaining Limitations
 

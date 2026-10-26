@@ -35,7 +35,7 @@
 | understat | 2023 | downloaded | 380 | 2024-05-19 | `data/understat_epl_2023.json` |
 | understat | 2024 | downloaded | 380 | 2025-05-25 | `data/understat_epl_2024.json` |
 | understat | 2025 | downloaded | 380 | 2026-05-24 | `data/understat_epl_2025.json` |
-| understat | 2026 | downloaded | 70 | 2026-10-19 | `data/understat_epl_2026.json` |
+| understat | 2026 | downloaded | 80 | 2026-10-25 | `data/understat_epl_2026.json` |
 
 ## Understat Result Import
 
@@ -48,7 +48,7 @@
 | understat-results | 2324 | complete | 380 | 2024-05-19 | `data/premier_league_2324.csv` |
 | understat-results | 2425 | complete | 380 | 2025-05-25 | `data/premier_league_2425.csv` |
 | understat-results | 2526 | complete | 380 | 2026-05-24 | `data/premier_league_2526.csv` |
-| understat-results | 2627 | complete | 70 | 2026-10-19 | `data/premier_league_2627.csv` |
+| understat-results | 2627 | updated | 80 | 2026-10-25 | `data/premier_league_2627.csv` |
 
 ## Understat Shot Backfill
 
@@ -61,13 +61,13 @@
 | understat-shots | 2324 | complete | 380 | 2024-05-19 | `data/premier_league_2324.csv` |
 | understat-shots | 2425 | complete | 380 | 2025-05-25 | `data/premier_league_2425.csv` |
 | understat-shots | 2526 | complete | 380 | 2026-05-24 | `data/premier_league_2526.csv` |
-| understat-shots | 2627 | complete | 70 | 2026-10-19 | `data/premier_league_2627.csv` |
+| understat-shots | 2627 | complete | 80 | 2026-10-25 | `data/premier_league_2627.csv` |
 
 ## Validation
 
-- Football-data rows: `2730`
+- Football-data rows: `2740`
 - First local match date: `2019-08-09`
-- Latest local match date: `2026-10-19`
+- Latest local match date: `2026-10-25`
 - Local seasons: `1920, 2021, 2122, 2223, 2324, 2425, 2526, 2627`
 - Rows missing shot data: `0`
 - xG merge status: `checked_by_training`
@@ -85,7 +85,7 @@
 | 2324 | 380 |
 | 2425 | 380 |
 | 2526 | 380 |
-| 2627 | 70 |
+| 2627 | 80 |
 
 ## Commands
 
@@ -110,48 +110,48 @@ Using existing file: data/understat_epl_2023.json
 Using existing file: data/understat_epl_2024.json
 Using existing file: data/understat_epl_2025.json
 Using existing file: data/understat_epl_2026.json
-Rows used: 2730
+Rows used: 2740
 
 Baseline model
-Accuracy: 0.4572
-Log loss: 1.0646
+Accuracy: 0.4434
+Log loss: 1.0745
 
 xG model
-Accuracy: 0.4754
-Log loss: 1.0565
-Brier score: 0.6348
-Calibration error: 0.0427
+Accuracy: 0.4726
+Log loss: 1.0610
+Brier score: 0.6377
+Calibration error: 0.0479
 
 xG + schedule model
-Accuracy: 0.4681
-Log loss: 1.0674
-Brier score: 0.6424
-Calibration error: 0.0458
+Accuracy: 0.4599
+Log loss: 1.0723
+Brier score: 0.6457
+Calibration error: 0.0535
 
 Production xG + schedule + Elo + shot volume model
-Accuracy: 0.4681
-Log loss: 1.0678
-Brier score: 0.6412
-Calibration error: 0.0574
+Accuracy: 0.4544
+Log loss: 1.0637
+Brier score: 0.6408
+Calibration error: 0.0594
 
 xG + schedule + injuries model
-Accuracy: 0.4645
-Log loss: 1.0667
-Brier score: 0.6421
-Calibration error: 0.0516
+Accuracy: 0.4526
+Log loss: 1.0711
+Brier score: 0.6450
+Calibration error: 0.0619
 
 Comparison
-Accuracy change: +0.0182
-Log loss change: -0.0082
-Schedule log loss change vs xG: +0.0110
-Schedule Brier change vs xG: +0.0076
-Schedule calibration change vs xG: +0.0031
-Injury log loss change vs schedule: -0.0007
-Injury Brier change vs schedule: -0.0003
-Injury calibration change vs schedule: +0.0058
-Elo log loss change vs schedule: +0.0004
-Elo Brier change vs schedule: -0.0011
-Elo calibration change vs schedule: +0.0116
+Accuracy change: +0.0292
+Log loss change: -0.0135
+Schedule log loss change vs xG: +0.0113
+Schedule Brier change vs xG: +0.0080
+Schedule calibration change vs xG: +0.0056
+Injury log loss change vs schedule: -0.0012
+Injury Brier change vs schedule: -0.0007
+Injury calibration change vs schedule: +0.0084
+Elo log loss change vs schedule: -0.0086
+Elo Brier change vs schedule: -0.0049
+Elo calibration change vs schedule: +0.0059
 Training mode: production
 Saved production xG + schedule + Elo + shot volume model to: models/football_model.joblib
 Saved xG + schedule model to: models/football_model_xg_schedule.joblib
@@ -180,7 +180,7 @@ Using existing file: data/understat_epl_2024.json
 Using existing file: data/understat_epl_2025.json
 Using existing file: data/understat_epl_2026.json
 {
-  "best_method": "sigmoid",
+  "best_method": "temperature_1.12",
   "deployed": true
 }
 ```
@@ -206,17 +206,17 @@ Using existing file: data/understat_epl_2024.json
 Using existing file: data/understat_epl_2025.json
 Using existing file: data/understat_epl_2026.json
 Validation: time-based split, no random train/test split
-Train: 2019-08-09 to 2025-03-10
-Test:  2025-03-15 to 2026-10-19
-Rows evaluated: 549
-Accuracy: 0.4681
-Log loss: 1.0678
-Brier score: 0.6412
-Calibration error: 0.0574
-Expected calibration error: 0.0574
+Train: 2019-08-09 to 2025-04-01
+Test:  2025-04-02 to 2026-10-25
+Rows evaluated: 548
+Accuracy: 0.4544
+Log loss: 1.0637
+Brier score: 0.6408
+Calibration error: 0.0594
+Expected calibration error: 0.0594
 Bootstrap models: 30
-Mean bootstrap std: 0.0612
-Mean stability score: 0.6602
+Mean bootstrap std: 0.0623
+Mean stability score: 0.6540
 Saved evaluation outputs to: evaluation
 ```
 ### `/Users/sunemejding/Documents/Codex/2026-05-19/build-a-minimal-football-prediction-prototype/.venv/bin/python forecast_log.py`
@@ -224,7 +224,7 @@ Saved evaluation outputs to: evaluation
 Exit code: `0`
 
 ```text
-Logged 310 upcoming fixture forecasts to evaluation/fixtures_2026_27/forecast_log.csv
+Logged 300 upcoming fixture forecasts to evaluation/fixtures_2026_27/forecast_log.csv
 Wrote latest snapshot to evaluation/fixtures_2026_27/latest_forecast_snapshot.csv
 ```
 ### `/Users/sunemejding/Documents/Codex/2026-05-19/build-a-minimal-football-prediction-prototype/.venv/bin/python season_projection_robustness.py`
