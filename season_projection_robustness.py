@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 
 from official_fixtures import OFFICIAL_FIXTURE_PATH, fixtures_for_model, load_official_fixtures, schedule_context_for_fixture
+from probability_ensemble import calibrated_predictor
 from predict import build_prediction_features
 from season_simulation import (
     expected_points_from_probabilities,
@@ -557,8 +558,7 @@ def main() -> None:
     calibration_path = Path("models") / "calibrated_probability_layer.joblib"
     if calibration_path.exists():
         layer = joblib.load(calibration_path)
-        if list(layer.get("feature_columns", [])) == list(artifact["feature_columns"]) and layer.get("method") in {"sigmoid", "isotonic"}:
-            calibrator = layer["calibrator"]
+        calibrator, _ = calibrated_predictor(artifact["model"], layer, artifact["feature_columns"])
     official = load_official_fixtures(OFFICIAL_FIXTURE_PATH)
     fixtures = fixtures_for_model(official)
     completed_matches = load_completed_current_season_matches()

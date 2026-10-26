@@ -13,6 +13,7 @@ from sklearn.metrics import accuracy_score, log_loss
 from sklearn.preprocessing import label_binarize
 
 from elo_rating_features import EloConfig, build_current_elo_state, build_elo_features, elo_feature_columns
+from probability_ensemble import BlendedProbabilityClassifier
 
 
 DATA_DIR = Path("data")
@@ -627,6 +628,41 @@ def train_and_evaluate_model(
     }
 
 
+def evaluate_blended_model(
+    primary_model,
+    auxiliary_model,
+    dataset: pd.DataFrame,
+    feature_columns: list[str],
+    dates: pd.Series,
+    primary_weight: float = 0.5,
+):
+    split_index = int(len(dataset) * 0.8)
+    cutoff_date = dates.iloc[split_index]
+    test_mask = dates >= cutoff_date
+    model = BlendedProbabilityClassifier(
+        primary_model,
+        auxiliary_model,
+        tuple(feature_columns),
+        tuple(XG_FEATURE_COLUMNS),
+        primary_weight,
+    )
+    model.classes_ = primary_model.classes_
+    X_test = dataset.loc[test_mask, feature_columns]
+    y_test = dataset.loc[test_mask, "target"]
+    probabilities = model.predict_proba(X_test)
+    predictions = probabilities.argmax(axis=1)
+    return model, {
+        "accuracy": float(accuracy_score(y_test, predictions)),
+        "log_loss": float(log_loss(y_test, probabilities, labels=[0, 1, 2])),
+        "brier_score": multiclass_brier_score(y_test, probabilities),
+        "mean_absolute_calibration_error": mean_absolute_calibration_error(y_test, probabilities),
+        "train_rows": int((dates < cutoff_date).sum()),
+        "test_rows": int(test_mask.sum()),
+        "test_start_date": str(cutoff_date),
+        "primary_weight": float(primary_weight),
+    }
+
+
 def save_model(
     path: Path,
     model,
@@ -704,6 +740,13 @@ def train(mode: str = "production") -> None:
         PRODUCTION_FEATURE_COLUMNS,
         matches["Date"],
     )
+    robust_model, robust_metrics = evaluate_blended_model(
+        production_model,
+        xg_model,
+        production_dataset,
+        PRODUCTION_FEATURE_COLUMNS,
+        matches["Date"],
+    )
     injury_model, injury_metrics = train_and_evaluate_model(
         XGBClassifier,
         injury_dataset,
@@ -718,7 +761,7 @@ def train(mode: str = "production") -> None:
     if mode == "production":
         save_model(
             MODEL_PATH,
-            production_model,
+            robust_model,
             PRODUCTION_FEATURE_COLUMNS,
             production_team_history,
             {
@@ -731,7 +774,7 @@ def train(mode: str = "production") -> None:
                     "season_carryover": ELO_CONFIG.season_carryover,
                     "name": ELO_CONFIG.name,
                 },
-                "production_model_version": "xg_schedule_elo_shot_volume",
+                "production_model_version": "robust_xg_ensemble_v1",
             },
         )
     else:
@@ -743,6 +786,7 @@ def train(mode: str = "production") -> None:
         "xg_model": xg_metrics,
         "xg_schedule_model": schedule_metrics,
         "xg_schedule_elo_shot_volume_model": production_metrics,
+        "robust_xg_ensemble_model": robust_metrics,
         "xg_schedule_injury_model": injury_metrics,
         "comparison": {
             "accuracy_change": xg_metrics["accuracy"] - baseline_metrics["accuracy"],
@@ -780,6 +824,15 @@ def train(mode: str = "production") -> None:
                 - schedule_metrics["mean_absolute_calibration_error"]
             ),
         },
+        "robust_ensemble_comparison": {
+            "accuracy_change_vs_complex": robust_metrics["accuracy"] - production_metrics["accuracy"],
+            "log_loss_change_vs_complex": robust_metrics["log_loss"] - production_metrics["log_loss"],
+            "brier_score_change_vs_complex": robust_metrics["brier_score"] - production_metrics["brier_score"],
+            "calibration_error_change_vs_complex": (
+                robust_metrics["mean_absolute_calibration_error"]
+                - production_metrics["mean_absolute_calibration_error"]
+            ),
+        },
     }
     (MODEL_DIR / "metrics.json").write_text(json.dumps(metrics, indent=2))
 
@@ -802,6 +855,11 @@ def train(mode: str = "production") -> None:
     print(f"Log loss: {production_metrics['log_loss']:.4f}")
     print(f"Brier score: {production_metrics['brier_score']:.4f}")
     print(f"Calibration error: {production_metrics['mean_absolute_calibration_error']:.4f}")
+    print("\nRobust 50/50 production + xG ensemble")
+    print(f"Accuracy: {robust_metrics['accuracy']:.4f}")
+    print(f"Log loss: {robust_metrics['log_loss']:.4f}")
+    print(f"Brier score: {robust_metrics['brier_score']:.4f}")
+    print(f"Calibration error: {robust_metrics['mean_absolute_calibration_error']:.4f}")
     print("\nxG + schedule + injuries model")
     print(f"Accuracy: {injury_metrics['accuracy']:.4f}")
     print(f"Log loss: {injury_metrics['log_loss']:.4f}")
@@ -821,7 +879,7 @@ def train(mode: str = "production") -> None:
     print(f"Elo calibration change vs schedule: {metrics['elo_comparison']['calibration_error_change_vs_schedule']:+.4f}")
     print(f"Training mode: {mode}")
     if mode == "production":
-        print(f"Saved production xG + schedule + Elo + shot volume model to: {MODEL_PATH}")
+        print(f"Saved robust production ensemble model to: {MODEL_PATH}")
     else:
         print(f"Saved research xG + schedule + injuries model to: {MODEL_DIR / 'football_model_xg_schedule_injury_research.joblib'}")
         print(f"Production model unchanged at: {MODEL_PATH}")

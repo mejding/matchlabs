@@ -122,6 +122,7 @@ def model_comparison_from_metrics() -> pd.DataFrame:
         "xg_schedule_model": "xG + schedule",
         "xg_schedule_elo_model": "XG + schedule + Elo",
         "xg_schedule_elo_shot_volume_model": "xG + schedule + Elo + shot volume",
+        "robust_xg_ensemble_model": "Robust production ensemble",
         "xg_schedule_injury_model": "xG + schedule + injuries",
     }
     for key, label in labels.items():
@@ -221,7 +222,8 @@ def evaluate() -> None:
     artifact = joblib.load(MODEL_PATH)
     model = artifact["model"]
     feature_columns = artifact["feature_columns"]
-    model_version = "xg_schedule_injury"
+    model_version = str(artifact.get("production_model_version", "unknown"))
+    explanation_model = model._primary() if hasattr(model, "_primary") else model
 
     dataset, metadata = load_current_dataset(feature_columns)
     X = dataset[feature_columns]
@@ -247,7 +249,7 @@ def evaluate() -> None:
     worst = worst_predictions(split.test_metadata, split.y_test, probabilities, predictions)
     worst.to_csv(EVALUATION_DIR / "worst_predictions.csv", index=False)
 
-    gain = gain_importance(model, feature_columns)
+    gain = gain_importance(explanation_model, feature_columns)
     gain.to_csv(EVALUATION_DIR / "gain_importance.csv", index=False)
     plot_feature_importance(gain, "gain_importance", "XGBoost Gain Importance", EVALUATION_DIR / "feature_importance.png")
 
@@ -260,12 +262,12 @@ def evaluate() -> None:
         EVALUATION_DIR / "permutation_importance.png",
     )
 
-    shap_importance, _, _ = compute_shap_importance(model, split.X_test)
+    shap_importance, _, _ = compute_shap_importance(explanation_model, split.X_test)
     shap_importance.to_csv(EVALUATION_DIR / "shap_importance.csv", index=False)
     plot_shap_importance(shap_importance, EVALUATION_DIR / "shap_importance.png")
-    compute_shap_class_importance(model, split.X_test).to_csv(EVALUATION_DIR / "shap_class_importance.csv", index=False)
-    plot_shap_summary(model, split.X_test, EVALUATION_DIR / "shap_summary.png")
-    plot_local_waterfall(model, split.X_test.reset_index(drop=True), EVALUATION_DIR / "shap_waterfall_home_win.png", row_index=0, class_index=0)
+    compute_shap_class_importance(explanation_model, split.X_test).to_csv(EVALUATION_DIR / "shap_class_importance.csv", index=False)
+    plot_shap_summary(explanation_model, split.X_test, EVALUATION_DIR / "shap_summary.png")
+    plot_local_waterfall(explanation_model, split.X_test.reset_index(drop=True), EVALUATION_DIR / "shap_waterfall_home_win.png", row_index=0, class_index=0)
 
     plot_calibration_curve(calibration, EVALUATION_DIR / "calibration_curve.png")
     plot_reliability_diagram(calibration, EVALUATION_DIR / "reliability_diagram.png")
@@ -349,7 +351,10 @@ def evaluate() -> None:
             "score": example_confidence.score,
             "explanation": example_confidence.explanation,
         },
-        "notes": "Professional probabilistic evaluation with time-based validation, calibration, uncertainty, and explainability.",
+        "notes": (
+            "Probabilistic metrics and permutation importance evaluate the complete robust ensemble. "
+            "Gain and SHAP explain the feature-rich primary component."
+        ),
     }
 
     (EVALUATION_DIR / "evaluation_report.json").write_text(json.dumps(report, indent=2))

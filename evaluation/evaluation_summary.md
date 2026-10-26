@@ -11,11 +11,11 @@ The evaluation uses a strict time-based split. No random train/test split is use
 
 ## Metrics
 
-- Accuracy: 0.4544
-- Multiclass log loss: 1.0637
-- Multiclass Brier score: 0.6408
-- Calibration error: 0.0594
-- Expected Calibration Error: 0.0594
+- Accuracy: 0.4526
+- Multiclass log loss: 1.0530
+- Multiclass Brier score: 0.6336
+- Calibration error: 0.0434
+- Expected Calibration Error: 0.0434
 
 ## Calibration
 
@@ -58,8 +58,8 @@ The feature importance CSV files compare gain importance, permutation importance
 
 ## Weak Spots
 
-The weakest actual class by log loss is `draw` with actual-class log loss 1.4962.
+The weakest actual class by log loss is `draw` with actual-class log loss 1.4887.
 
-The most overconfident confidence bin has mean confidence 0.8453, accuracy 0.6000, and 5 matches.
+The most overconfident confidence bin has mean confidence 0.3810, accuracy 0.2632, and 57 matches.
 
 Inspect `evaluation/worst_predictions.csv` for the specific highest-loss predictions.

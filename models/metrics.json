@@ -35,6 +35,16 @@
     "test_rows": 548,
     "test_start_date": "2025-04-02"
   },
+  "robust_xg_ensemble_model": {
+    "accuracy": 0.45255474452554745,
+    "log_loss": 1.0530147098661438,
+    "brier_score": 0.6336272204231311,
+    "mean_absolute_calibration_error": 0.04337229827419519,
+    "train_rows": 2192,
+    "test_rows": 548,
+    "test_start_date": "2025-04-02",
+    "primary_weight": 0.5
+  },
   "xg_schedule_injury_model": {
     "accuracy": 0.45255474452554745,
     "log_loss": 1.0710771328768474,
@@ -67,5 +77,11 @@
     "log_loss_change_vs_schedule": -0.00858444703296879,
     "brier_score_change_vs_schedule": -0.004879494424529951,
     "calibration_error_change_vs_schedule": 0.005898921426449093
+  },
+  "robust_ensemble_comparison": {
+    "accuracy_change_vs_complex": -0.0018248175182481452,
+    "log_loss_change_vs_complex": -0.01067164660259512,
+    "brier_score_change_vs_complex": -0.0071994929832003285,
+    "calibration_error_change_vs_complex": -0.016055500109304684
   }
 }

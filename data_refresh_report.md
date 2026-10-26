@@ -134,6 +134,12 @@ Log loss: 1.0637
 Brier score: 0.6408
 Calibration error: 0.0594
 
+Robust 50/50 production + xG ensemble
+Accuracy: 0.4526
+Log loss: 1.0530
+Brier score: 0.6336
+Calibration error: 0.0434
+
 xG + schedule + injuries model
 Accuracy: 0.4526
 Log loss: 1.0711
@@ -153,7 +159,7 @@ Elo log loss change vs schedule: -0.0086
 Elo Brier change vs schedule: -0.0049
 Elo calibration change vs schedule: +0.0059
 Training mode: production
-Saved production xG + schedule + Elo + shot volume model to: models/football_model.joblib
+Saved robust production ensemble model to: models/football_model.joblib
 Saved xG + schedule model to: models/football_model_xg_schedule.joblib
 Saved xG model to: models/football_model_xg.joblib
 Saved baseline model to: models/football_model_baseline.joblib
@@ -180,13 +186,13 @@ Using existing file: data/understat_epl_2024.json
 Using existing file: data/understat_epl_2025.json
 Using existing file: data/understat_epl_2026.json
 {
-  "best_method": "temperature_1.12",
+  "best_method": "temperature_1.07",
   "deployed": true
 }
 ```
 ### `/Users/sunemejding/Documents/Codex/2026-05-19/build-a-minimal-football-prediction-prototype/.venv/bin/python evaluate_model.py`
 
-Exit code: `0`
+Exit code: `1`
 
 ```text
 Using existing file: data/premier_league_1920.csv
@@ -205,19 +211,16 @@ Using existing file: data/understat_epl_2023.json
 Using existing file: data/understat_epl_2024.json
 Using existing file: data/understat_epl_2025.json
 Using existing file: data/understat_epl_2026.json
-Validation: time-based split, no random train/test split
-Train: 2019-08-09 to 2025-04-01
-Test:  2025-04-02 to 2026-10-25
-Rows evaluated: 548
-Accuracy: 0.4544
-Log loss: 1.0637
-Brier score: 0.6408
-Calibration error: 0.0594
-Expected calibration error: 0.0594
-Bootstrap models: 30
-Mean bootstrap std: 0.0623
-Mean stability score: 0.6540
-Saved evaluation outputs to: evaluation
+Traceback (most recent call last):
+  File "/Users/sunemejding/Documents/Codex/2026-05-19/build-a-minimal-football-prediction-prototype/evaluate_model.py", line 393, in <module>
+    evaluate()
+  File "/Users/sunemejding/Documents/Codex/2026-05-19/build-a-minimal-football-prediction-prototype/evaluate_model.py", line 251, in evaluate
+    gain = gain_importance(model, feature_columns)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sunemejding/Documents/Codex/2026-05-19/build-a-minimal-football-prediction-prototype/visualizations/plots.py", line 71, in gain_importance
+    return pd.DataFrame({"feature": feature_columns, "gain_importance": model.feature_importances_}).sort_values(
+                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'BlendedProbabilityClassifier' object has no attribute 'feature_importances_'
 ```
 ### `/Users/sunemejding/Documents/Codex/2026-05-19/build-a-minimal-football-prediction-prototype/.venv/bin/python forecast_log.py`
 

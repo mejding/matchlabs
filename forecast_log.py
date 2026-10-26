@@ -8,6 +8,7 @@ import joblib
 import pandas as pd
 
 from official_fixtures import OFFICIAL_FIXTURE_PATH, fixtures_for_model, load_official_fixtures
+from probability_ensemble import calibrated_predictor
 from season_simulation import filter_unplayed_fixtures, load_completed_current_season_matches, predict_fixture_probabilities
 from train_model import MODEL_PATH
 
@@ -17,16 +18,11 @@ LATEST_FORECAST_PATH = Path("evaluation") / "fixtures_2026_27" / "latest_forecas
 CALIBRATION_PATH = Path("models") / "calibrated_probability_layer.joblib"
 
 
-def load_calibrator(feature_columns: list[str], calibration_path: Path = CALIBRATION_PATH):
+def load_calibrator(model, feature_columns: list[str], calibration_path: Path = CALIBRATION_PATH):
     if not calibration_path.exists():
         return None, "raw"
     layer = joblib.load(calibration_path)
-    if list(layer.get("feature_columns", [])) != list(feature_columns):
-        return None, "raw"
-    method = str(layer.get("method", "calibrated"))
-    if method in {"sigmoid", "isotonic"}:
-        return layer["calibrator"], method
-    return None, "raw"
+    return calibrated_predictor(model, layer, feature_columns)
 
 
 def build_forecast_snapshot(snapshot_time: datetime | None = None) -> pd.DataFrame:
@@ -43,7 +39,7 @@ def build_forecast_snapshot(snapshot_time: datetime | None = None) -> pd.DataFra
 
     artifact = joblib.load(MODEL_PATH)
     feature_columns = artifact["feature_columns"]
-    calibrator, calibration_method = load_calibrator(feature_columns)
+    calibrator, calibration_method = load_calibrator(artifact["model"], feature_columns)
     probabilities = predict_fixture_probabilities(
         upcoming,
         artifact["model"],

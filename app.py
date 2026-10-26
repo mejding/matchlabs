@@ -34,6 +34,7 @@ from official_fixtures import (
     load_official_fixtures,
     schedule_context_for_fixture,
 )
+from probability_ensemble import calibrated_predictor
 from predict import MODEL_PATH, build_prediction_features
 from season_simulation import (
     expected_points_from_probabilities,
@@ -2064,8 +2065,7 @@ def upcoming_season_projection(
     calibration_path = Path("models") / "calibrated_probability_layer.joblib"
     if calibration_path.exists():
         layer = joblib.load(calibration_path)
-        if list(layer.get("feature_columns", [])) == list(artifact["feature_columns"]) and layer.get("method") in {"sigmoid", "isotonic"}:
-            calibrator = layer["calibrator"]
+        calibrator, _ = calibrated_predictor(artifact["model"], layer, artifact["feature_columns"])
 
     feature_audit = season_start_feature_audit(teams, artifact["team_history"], artifact.get("elo_state", {}))
     squad_strength = normalize_squad_strength(load_squad_strength(), teams)
@@ -2816,7 +2816,8 @@ def main() -> None:
             st.caption(f"Calibrated probability layer: {calibrated_layer.get('method', 'available')}")
         if metrics:
             latest = (
-                metrics.get("xg_schedule_elo_shot_volume_model")
+                metrics.get("robust_xg_ensemble_model")
+                or metrics.get("xg_schedule_elo_shot_volume_model")
                 or metrics.get("xg_schedule_elo_model")
                 or metrics.get("xg_schedule_model")
                 or {}
