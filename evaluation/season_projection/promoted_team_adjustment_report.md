@@ -38,7 +38,7 @@ _No rows._
 
 | average_points | median_points | average_position | median_position | relegation_rate | goals_for_per_match | goals_against_per_match |
 | --- | --- | --- | --- | --- | --- | --- |
-| 28.9048 | 25.0000 | 15.9048 | 18.0000 | 0.5714 | 0.9248 | 1.6604 |
+| 29.1429 | 25.0000 | 15.8095 | 18.0000 | 0.5238 | 0.9336 | 1.6667 |
 
 Baseline fallback teams:
 

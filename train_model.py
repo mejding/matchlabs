@@ -229,7 +229,9 @@ def load_matches() -> pd.DataFrame:
         frame = pd.read_csv(path)
         base_columns = ["Date", "HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR"]
         shot_columns = [column for column in ["HS", "AS", "HST", "AST"] if column in frame.columns]
-        frame = frame[base_columns + shot_columns]
+        xg_columns = [column for column in ["HxG", "AxG"] if column in frame.columns]
+        frame = frame[base_columns + shot_columns + xg_columns]
+        frame = frame.rename(columns={"HxG": "football_data_home_xg", "AxG": "football_data_away_xg"})
         frame["Season"] = season
         frames.append(frame)
 
@@ -253,6 +255,15 @@ def load_matches_with_xg() -> pd.DataFrame:
         validate="one_to_one",
     )
 
+    # Recent football-data files include provider xG before Understat has
+    # published the corresponding league rows. Keep Understat as the primary
+    # historical source and use those values as a freshness fallback.
+    for side in ("home", "away"):
+        fallback_column = f"football_data_{side}_xg"
+        if fallback_column in merged.columns:
+            merged[fallback_column] = pd.to_numeric(merged[fallback_column], errors="coerce")
+            merged[f"{side}_xg"] = merged[f"{side}_xg"].fillna(merged[fallback_column])
+
     missing = merged[merged[["home_xg", "away_xg"]].isna().any(axis=1)]
     if not missing.empty:
         examples = missing[["Season", "Date", "HomeTeam", "AwayTeam"]].head(10).to_dict("records")
@@ -261,7 +272,7 @@ def load_matches_with_xg() -> pd.DataFrame:
             f"Missing rows: {len(missing)}. Examples: {examples}"
         )
 
-    return merged
+    return merged.drop(columns=["football_data_home_xg", "football_data_away_xg"], errors="ignore")
 
 
 def ensure_injury_template() -> None:

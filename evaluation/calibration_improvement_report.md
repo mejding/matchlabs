@@ -6,17 +6,17 @@ Validation uses a strict chronological split. The model is fitted on the earlier
 
 | Method | Accuracy | Log Loss | Brier | ECE |
 | --- | ---: | ---: | ---: | ---: |
-| raw | 0.4617 | 1.0626 | 0.6398 | 0.0535 |
-| sigmoid | 0.4617 | 1.0667 | 0.6436 | 0.0588 |
-| isotonic | 0.4599 | 1.2484 | 0.6498 | 0.0657 |
-| temperature_1.07 | 0.4617 | 1.0592 | 0.6378 | 0.0500 |
+| raw | 0.4582 | 1.0723 | 0.6447 | 0.0569 |
+| sigmoid | 0.4582 | 1.0730 | 0.6473 | 0.0599 |
+| isotonic | 0.4618 | 1.4419 | 0.6610 | 0.0802 |
+| temperature_1.05 | 0.4582 | 1.0694 | 0.6431 | 0.0560 |
 
 ## Decision
 
-- Best method by log loss: `temperature_1.07`.
+- Best method by log loss: `temperature_1.05`.
 - Deployed calibrated probability layer: Yes.
-- Raw log loss/Brier: 1.0626 / 0.6398.
-- Best log loss/Brier: 1.0592 / 0.6378.
+- Raw log loss/Brier: 1.0723 / 0.6447.
+- Best log loss/Brier: 1.0694 / 0.6431.
 
 A calibrator is saved only if it improves out-of-sample log loss or Brier score. If not, raw model probabilities remain the honest production output.
 

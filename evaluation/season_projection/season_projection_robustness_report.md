@@ -25,7 +25,7 @@ For last-5 and last-10 features, the first completed matches of a new season are
 
 | average_points | median_points | average_position | median_position | relegation_rate | goals_for_per_match | goals_against_per_match |
 | --- | --- | --- | --- | --- | --- | --- |
-| 28.9048 | 25.0000 | 15.9048 | 18.0000 | 0.5714 | 0.9248 | 1.6604 |
+| 29.1429 | 25.0000 | 15.8095 | 18.0000 | 0.5238 | 0.9336 | 1.6667 |
 
 Baseline fallback teams:
 
@@ -37,17 +37,17 @@ Feature audit:
 
 | team | local_pl_match_count | fallback_used | source_league | raw_recent_form_points_last5 | recent_form_points_last5 | raw_xg_strength_last5 | xg_strength_last5 | raw_xga_strength_last5 | xga_strength_last5 | raw_shots_avg_last5 | shots_avg_last5 | elo_rating |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Coventry | 8 | False | Premier League historical data | 6.0000 | 6.0000 | 0.9905 | 0.9905 | 1.5694 | 1.5694 | 11.6000 | 11.6000 | 1467.8840 |
-| Hull | 8 | False | Premier League historical data | 3.0000 | 3.0000 | 1.3127 | 1.3127 | 1.8732 | 1.8732 | 12.4000 | 12.4000 | 1514.5586 |
-| Tottenham | 274 | False | Premier League historical data | 8.0000 | 8.0000 | 1.2889 | 1.2889 | 1.1564 | 1.1564 | 15.4000 | 15.4000 | 1491.8331 |
+| Coventry | 9 | False | Premier League historical data | 9.0000 | 9.0000 | 0.9189 | 0.9189 | 1.3803 | 1.3803 | 11.2000 | 11.2000 | 1481.8415 |
+| Hull | 9 | False | Premier League historical data | 3.0000 | 3.0000 | 1.1079 | 1.1079 | 1.8425 | 1.8425 | 11.4000 | 11.4000 | 1507.3078 |
+| Tottenham | 275 | False | Premier League historical data | 10.0000 | 10.0000 | 1.8355 | 1.8355 | 0.8643 | 0.8643 | 19.4000 | 19.4000 | 1503.7196 |
 
 Projection:
 
 | team | expected_points | expected_position | projected_position | relegation_probability |
 | --- | --- | --- | --- | --- |
-| Hull | 43.6375 | 14.3136 | 15 | 0.2211 |
-| Tottenham | 44.0112 | 14.3492 | 16 | 0.2247 |
-| Coventry | 40.5203 | 15.6934 | 17 | 0.3577 |
+| Tottenham | 52.8561 | 9.8375 | 9 | 0.0226 |
+| Coventry | 43.3937 | 14.3051 | 16 | 0.1887 |
+| Hull | 43.4643 | 14.3984 | 17 | 0.1993 |
 
 ## Remaining Limitations
 
