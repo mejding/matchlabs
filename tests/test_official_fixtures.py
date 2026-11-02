@@ -1,6 +1,10 @@
 from __future__ import annotations
 
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
+
+import pandas as pd
 
 from official_fixtures import (
     OFFICIAL_FIXTURE_PATH,
@@ -51,6 +55,37 @@ class OfficialFixtureTests(unittest.TestCase):
         context = schedule_context_for_fixture(self.fixtures, first["home_team"], first["away_team"], first["date"])
         self.assertIn("home_days_rest", context)
         self.assertIn("away_matches_next_14_days", context)
+
+    def test_schedule_context_includes_domestic_cup_match(self) -> None:
+        fixtures = pd.DataFrame(
+            [
+                {"date": "2026-10-25", "home_team": "Everton", "away_team": "Hull"},
+                {"date": "2026-11-02", "home_team": "Newcastle", "away_team": "Everton"},
+            ]
+        )
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "non_pl_matches.csv"
+            pd.DataFrame(
+                [
+                    {
+                        "Date": "2026-10-29",
+                        "HomeTeam": "Everton",
+                        "AwayTeam": "Newcastle",
+                    }
+                ]
+            ).to_csv(path, index=False)
+            context = schedule_context_for_fixture(
+                fixtures,
+                "Newcastle",
+                "Everton",
+                "2026-11-02",
+                supplemental_path=path,
+            )
+
+        self.assertEqual(context["home_had_midweek_match"], 1.0)
+        self.assertEqual(context["away_had_midweek_match"], 1.0)
+        self.assertEqual(context["home_days_rest"], 4.0)
+        self.assertEqual(context["away_days_rest"], 4.0)
 
 
 if __name__ == "__main__":

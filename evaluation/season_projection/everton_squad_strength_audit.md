@@ -4,9 +4,9 @@
 
 | Metric | Before squad strength | After squad strength |
 | --- | ---: | ---: |
-| Expected points | 48.18 | 48.22 |
-| Expected position | 11.90 | 11.88 |
-| Relegation probability | 6.8% | 6.8% |
+| Expected points | 48.09 | 48.14 |
+| Expected position | 11.94 | 11.91 |
+| Relegation probability | 6.8% | 6.9% |
 
 ## Everton Feature Ranks
 

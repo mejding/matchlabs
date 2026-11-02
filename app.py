@@ -2448,7 +2448,7 @@ def render_season_projection_tab(home_team: str, away_team: str, teams: list[str
             "Official 2026/27 fixtures are not loaded. "
             "This projection uses a balanced 38-round home/away fixture skeleton, so exact fixture-order and fatigue effects remain illustrative."
         )
-    st.caption("Premier League fixtures do not include European or domestic cup fixtures, so congestion from those competitions is not included.")
+    st.caption("Schedule congestion includes locally verified Premier League, European and domestic cup fixtures when available.")
     st.info(
         "Season projection is intentionally more conservative than a single-match prediction. "
         "It blends the match model with a long-term team-strength prior from the last two completed seasons and Elo, "

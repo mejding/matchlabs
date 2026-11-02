@@ -45,9 +45,9 @@ Projection:
 
 | team | expected_points | expected_position | projected_position | relegation_probability |
 | --- | --- | --- | --- | --- |
-| Tottenham | 52.8561 | 9.8375 | 9 | 0.0226 |
-| Coventry | 43.3937 | 14.3051 | 16 | 0.1887 |
-| Hull | 43.4643 | 14.3984 | 17 | 0.1993 |
+| Tottenham | 52.6370 | 9.9196 | 9 | 0.0236 |
+| Coventry | 43.4178 | 14.2901 | 16 | 0.1883 |
+| Hull | 43.5089 | 14.3817 | 17 | 0.2044 |
 
 ## Remaining Limitations
 

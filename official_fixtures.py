@@ -11,6 +11,7 @@ import pandas as pd
 
 
 OFFICIAL_FIXTURE_PATH = Path("data") / "upcoming_fixtures_2026_27.csv"
+SUPPLEMENTAL_FIXTURE_PATH = Path("data") / "non_pl_matches.csv"
 LEGACY_FIXTURE_PATH = Path("data") / "upcoming_fixtures.csv"
 FIXTURE_EVALUATION_DIR = Path("evaluation") / "fixtures_2026_27"
 PREMIER_LEAGUE_FIXTURE_API_URL = (
@@ -238,8 +239,29 @@ def fixtures_for_model(frame: pd.DataFrame) -> pd.DataFrame:
 
 def team_fixture_dates(frame: pd.DataFrame, team: str) -> list:
     team_rows = frame[(frame["home_team"] == team) | (frame["away_team"] == team)].copy()
-    dates = pd.to_datetime(team_rows["date"], errors="coerce").dt.date.dropna().tolist()
+    dates = pd.to_datetime(team_rows["date"], format="mixed", dayfirst=True, errors="coerce").dt.date.dropna().tolist()
     return sorted(dates)
+
+
+def add_supplemental_fixtures(frame: pd.DataFrame, path: Path = SUPPLEMENTAL_FIXTURE_PATH) -> pd.DataFrame:
+    """Add known cup/European dates for schedule features without changing league form."""
+    if not path.exists():
+        return frame
+    supplemental = pd.read_csv(path)
+    required = {"Date", "HomeTeam", "AwayTeam"}
+    if supplemental.empty or not required.issubset(supplemental.columns):
+        return frame
+    supplemental = supplemental.rename(
+        columns={"Date": "date", "HomeTeam": "home_team", "AwayTeam": "away_team"}
+    )[["date", "home_team", "away_team"]]
+    supplemental["home_team"] = supplemental["home_team"].map(normalize_team_name)
+    supplemental["away_team"] = supplemental["away_team"].map(normalize_team_name)
+    combined = pd.concat([frame, supplemental], ignore_index=True)
+    combined["date"] = pd.to_datetime(
+        combined["date"], format="mixed", dayfirst=True, errors="coerce"
+    ).dt.date
+    combined = combined.dropna(subset=["date"])
+    return combined.drop_duplicates(subset=["date", "home_team", "away_team"], keep="first")
 
 
 def _matches_between(dates: list, match_date, start_days: int, end_days: int) -> int:
@@ -255,7 +277,7 @@ def schedule_context_for_team(frame: pd.DataFrame, team: str, match_date) -> dic
     last_14 = _matches_between(dates, match_date, -14, -1)
     next_7 = _matches_between(dates, match_date, 1, 7)
     next_14 = _matches_between(dates, match_date, 1, 14)
-    midweek = int(match_date.weekday() in {1, 2, 3})
+    midweek = int(any(date.weekday() in {1, 2, 3} and 1 <= (match_date - date).days <= 7 for date in previous))
     festive = int(match_date.month == 12 and match_date.day >= 20 or match_date.month == 1 and match_date.day <= 4)
     return {
         "days_rest": days_since,
@@ -269,9 +291,16 @@ def schedule_context_for_team(frame: pd.DataFrame, team: str, match_date) -> dic
     }
 
 
-def schedule_context_for_fixture(frame: pd.DataFrame, home_team: str, away_team: str, match_date) -> dict[str, float]:
-    home = schedule_context_for_team(frame, home_team, match_date)
-    away = schedule_context_for_team(frame, away_team, match_date)
+def schedule_context_for_fixture(
+    frame: pd.DataFrame,
+    home_team: str,
+    away_team: str,
+    match_date,
+    supplemental_path: Path = SUPPLEMENTAL_FIXTURE_PATH,
+) -> dict[str, float]:
+    schedule = add_supplemental_fixtures(frame, supplemental_path)
+    home = schedule_context_for_team(schedule, home_team, match_date)
+    away = schedule_context_for_team(schedule, away_team, match_date)
     return {
         "home_days_rest": home["days_rest"],
         "away_days_rest": away["days_rest"],
