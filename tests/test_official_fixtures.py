@@ -87,6 +87,34 @@ class OfficialFixtureTests(unittest.TestCase):
         self.assertEqual(context["home_days_rest"], 4.0)
         self.assertEqual(context["away_days_rest"], 4.0)
 
+    def test_schedule_context_supports_team_level_european_fixture_rows(self) -> None:
+        fixtures = pd.DataFrame(
+            [{"date": "2026-11-08", "home_team": "Arsenal", "away_team": "Chelsea"}]
+        )
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "european_fixtures.csv"
+            pd.DataFrame(
+                [
+                    {
+                        "date": "2026-11-04",
+                        "team": "Arsenal",
+                        "competition": "Champions League",
+                        "opponent": "Slavia Praha",
+                    }
+                ]
+            ).to_csv(path, index=False)
+            context = schedule_context_for_fixture(
+                fixtures,
+                "Arsenal",
+                "Chelsea",
+                "2026-11-08",
+                supplemental_path=path,
+            )
+
+        self.assertEqual(context["home_had_midweek_match"], 1.0)
+        self.assertEqual(context["home_days_rest"], 4.0)
+        self.assertEqual(context["home_matches_last_14_days"], 1.0)
+
 
 if __name__ == "__main__":
     unittest.main()

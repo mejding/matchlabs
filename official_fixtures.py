@@ -12,6 +12,9 @@ import pandas as pd
 
 OFFICIAL_FIXTURE_PATH = Path("data") / "upcoming_fixtures_2026_27.csv"
 SUPPLEMENTAL_FIXTURE_PATH = Path("data") / "non_pl_matches.csv"
+EUROPEAN_FIXTURE_PATH = Path("data") / "european_fixtures.csv"
+FA_CUP_FIXTURE_PATH = Path("data") / "fa_cup_fixtures.csv"
+SUPPLEMENTAL_FIXTURE_PATHS = (SUPPLEMENTAL_FIXTURE_PATH, EUROPEAN_FIXTURE_PATH, FA_CUP_FIXTURE_PATH)
 LEGACY_FIXTURE_PATH = Path("data") / "upcoming_fixtures.csv"
 FIXTURE_EVALUATION_DIR = Path("evaluation") / "fixtures_2026_27"
 PREMIER_LEAGUE_FIXTURE_API_URL = (
@@ -239,27 +242,45 @@ def fixtures_for_model(frame: pd.DataFrame) -> pd.DataFrame:
 
 def team_fixture_dates(frame: pd.DataFrame, team: str) -> list:
     team_rows = frame[(frame["home_team"] == team) | (frame["away_team"] == team)].copy()
-    dates = pd.to_datetime(team_rows["date"], format="mixed", dayfirst=True, errors="coerce").dt.date.dropna().tolist()
+    dates = pd.to_datetime(team_rows["date"], errors="coerce").dt.date.dropna().tolist()
     return sorted(dates)
 
 
-def add_supplemental_fixtures(frame: pd.DataFrame, path: Path = SUPPLEMENTAL_FIXTURE_PATH) -> pd.DataFrame:
+def add_supplemental_fixtures(frame: pd.DataFrame, path: Path | None = None) -> pd.DataFrame:
     """Add known cup/European dates for schedule features without changing league form."""
-    if not path.exists():
+    supplemental_frames = []
+    for fixture_path in ([path] if path is not None else SUPPLEMENTAL_FIXTURE_PATHS):
+        if not fixture_path.exists():
+            continue
+        supplemental = pd.read_csv(fixture_path)
+        if supplemental.empty:
+            continue
+        if {"Date", "HomeTeam", "AwayTeam"}.issubset(supplemental.columns):
+            supplemental = supplemental.rename(
+                columns={"Date": "date", "HomeTeam": "home_team", "AwayTeam": "away_team"}
+            )[["date", "home_team", "away_team"]]
+        elif {"date", "team", "opponent"}.issubset(supplemental.columns):
+            supplemental = supplemental.rename(columns={"team": "home_team", "opponent": "away_team"})[
+                ["date", "home_team", "away_team"]
+            ]
+        else:
+            continue
+        supplemental["home_team"] = supplemental["home_team"].map(normalize_team_name)
+        supplemental["away_team"] = supplemental["away_team"].map(normalize_team_name)
+        supplemental_frames.append(supplemental)
+    if not supplemental_frames:
         return frame
-    supplemental = pd.read_csv(path)
-    required = {"Date", "HomeTeam", "AwayTeam"}
-    if supplemental.empty or not required.issubset(supplemental.columns):
-        return frame
-    supplemental = supplemental.rename(
-        columns={"Date": "date", "HomeTeam": "home_team", "AwayTeam": "away_team"}
-    )[["date", "home_team", "away_team"]]
-    supplemental["home_team"] = supplemental["home_team"].map(normalize_team_name)
-    supplemental["away_team"] = supplemental["away_team"].map(normalize_team_name)
-    combined = pd.concat([frame, supplemental], ignore_index=True)
-    combined["date"] = pd.to_datetime(
-        combined["date"], format="mixed", dayfirst=True, errors="coerce"
-    ).dt.date
+    combined = pd.concat([frame, *supplemental_frames], ignore_index=True)
+    date_text = combined["date"].astype(str)
+    slash_dates = date_text.str.contains("/", regex=False)
+    parsed_dates = pd.Series(pd.NaT, index=combined.index, dtype="datetime64[ns]")
+    parsed_dates.loc[slash_dates] = pd.to_datetime(
+        date_text.loc[slash_dates], format="%d/%m/%Y", errors="coerce"
+    )
+    parsed_dates.loc[~slash_dates] = pd.to_datetime(
+        date_text.loc[~slash_dates], format="%Y-%m-%d", errors="coerce"
+    )
+    combined["date"] = parsed_dates.dt.date
     combined = combined.dropna(subset=["date"])
     return combined.drop_duplicates(subset=["date", "home_team", "away_team"], keep="first")
 
@@ -296,7 +317,7 @@ def schedule_context_for_fixture(
     home_team: str,
     away_team: str,
     match_date,
-    supplemental_path: Path = SUPPLEMENTAL_FIXTURE_PATH,
+    supplemental_path: Path | None = None,
 ) -> dict[str, float]:
     schedule = add_supplemental_fixtures(frame, supplemental_path)
     home = schedule_context_for_team(schedule, home_team, match_date)

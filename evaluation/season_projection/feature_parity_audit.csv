@@ -50,13 +50,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-06,Everton v Coventry,away_xga_avg,xG/xGA,1.3803481999999998,1.3803481999999998,1.3803481999999998,0.0,0.0,False
 2026-11-06,Everton v Coventry,home_xg_diff,xG/xGA,0.20251759999999996,0.20251759999999996,0.20251759999999996,0.0,0.0,False
 2026-11-06,Everton v Coventry,away_xg_diff,xG/xGA,-0.46146679999999995,-0.46146679999999995,-0.46146679999999995,0.0,0.0,False
-2026-11-06,Everton v Coventry,home_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-11-06,Everton v Coventry,home_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-11-06,Everton v Coventry,away_days_rest,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
-2026-11-06,Everton v Coventry,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-11-06,Everton v Coventry,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-06,Everton v Coventry,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-11-06,Everton v Coventry,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-11-06,Everton v Coventry,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-06,Everton v Coventry,home_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-11-06,Everton v Coventry,home_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-11-06,Everton v Coventry,away_days_since_last_match,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
 2026-11-06,Everton v Coventry,home_elo,Elo,1539.5320274431779,1539.5320274431779,1539.5320274431779,0.0,0.0,False
 2026-11-06,Everton v Coventry,away_elo,Elo,1481.8414540023068,1481.8414540023068,1481.8414540023068,0.0,0.0,False
@@ -130,13 +130,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-07,Arsenal v Hull,away_xga_avg,xG/xGA,1.842482,1.842482,1.842482,0.0,0.0,False
 2026-11-07,Arsenal v Hull,home_xg_diff,xG/xGA,0.3783409999999998,0.3783409999999998,0.3783409999999998,0.0,0.0,False
 2026-11-07,Arsenal v Hull,away_xg_diff,xG/xGA,-0.7345341999999999,-0.7345341999999999,-0.7345341999999999,0.0,0.0,False
-2026-11-07,Arsenal v Hull,home_days_rest,Schedule/fatigue,11.0,11.0,11.0,0.0,0.0,False
+2026-11-07,Arsenal v Hull,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-07,Arsenal v Hull,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-11-07,Arsenal v Hull,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-11-07,Arsenal v Hull,home_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-11-07,Arsenal v Hull,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-11-07,Arsenal v Hull,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-07,Arsenal v Hull,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-07,Arsenal v Hull,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-07,Arsenal v Hull,home_days_since_last_match,Schedule/fatigue,11.0,11.0,11.0,0.0,0.0,False
+2026-11-07,Arsenal v Hull,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-07,Arsenal v Hull,away_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
 2026-11-07,Arsenal v Hull,home_elo,Elo,1808.566878783693,1808.566878783693,1808.566878783693,0.0,0.0,False
 2026-11-07,Arsenal v Hull,away_elo,Elo,1507.3078087806803,1507.3078087806803,1507.3078087806803,0.0,0.0,False
@@ -171,13 +171,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-07,Fulham v Newcastle,home_xg_diff,xG/xGA,0.567118,0.567118,0.567118,0.0,0.0,False
 2026-11-07,Fulham v Newcastle,away_xg_diff,xG/xGA,-0.5239563999999999,-0.5239563999999999,-0.5239563999999999,0.0,0.0,False
 2026-11-07,Fulham v Newcastle,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-11-07,Fulham v Newcastle,away_days_rest,Schedule/fatigue,9.0,9.0,9.0,0.0,0.0,False
+2026-11-07,Fulham v Newcastle,away_days_rest,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
 2026-11-07,Fulham v Newcastle,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
-2026-11-07,Fulham v Newcastle,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-11-07,Fulham v Newcastle,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-07,Fulham v Newcastle,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-11-07,Fulham v Newcastle,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-11-07,Fulham v Newcastle,home_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-11-07,Fulham v Newcastle,away_days_since_last_match,Schedule/fatigue,9.0,9.0,9.0,0.0,0.0,False
+2026-11-07,Fulham v Newcastle,away_days_since_last_match,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
 2026-11-07,Fulham v Newcastle,home_elo,Elo,1534.9163767727955,1534.9163767727955,1534.9163767727955,0.0,0.0,False
 2026-11-07,Fulham v Newcastle,away_elo,Elo,1549.317010535809,1549.317010535809,1549.317010535809,0.0,0.0,False
 2026-11-07,Fulham v Newcastle,elo_difference,Elo,-14.400633763013502,-14.400633763013502,-14.400633763013502,0.0,0.0,False
@@ -211,13 +211,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-07,Nott'm Forest v Man City,home_xg_diff,xG/xGA,0.8541656000000002,0.8541656000000002,0.8541656000000002,0.0,0.0,False
 2026-11-07,Nott'm Forest v Man City,away_xg_diff,xG/xGA,1.0610911999999997,1.0610911999999997,1.0610911999999997,0.0,0.0,False
 2026-11-07,Nott'm Forest v Man City,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-11-07,Nott'm Forest v Man City,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-11-07,Nott'm Forest v Man City,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-07,Nott'm Forest v Man City,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-11-07,Nott'm Forest v Man City,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-11-07,Nott'm Forest v Man City,away_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-11-07,Nott'm Forest v Man City,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-07,Nott'm Forest v Man City,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-07,Nott'm Forest v Man City,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-07,Nott'm Forest v Man City,home_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-11-07,Nott'm Forest v Man City,away_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-11-07,Nott'm Forest v Man City,away_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-07,Nott'm Forest v Man City,home_elo,Elo,1501.6565491201227,1501.6565491201227,1501.6565491201227,0.0,0.0,False
 2026-11-07,Nott'm Forest v Man City,away_elo,Elo,1750.0691960679571,1750.0691960679571,1750.0691960679571,0.0,0.0,False
 2026-11-07,Nott'm Forest v Man City,elo_difference,Elo,-248.41264694783445,-248.41264694783445,-248.41264694783445,0.0,0.0,False
@@ -250,13 +250,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-08,Brighton v Brentford,away_xga_avg,xG/xGA,1.4140701999999998,1.4140701999999998,1.4140701999999998,0.0,0.0,False
 2026-11-08,Brighton v Brentford,home_xg_diff,xG/xGA,0.5322275999999997,0.5322275999999997,0.5322275999999997,0.0,0.0,False
 2026-11-08,Brighton v Brentford,away_xg_diff,xG/xGA,-0.05678559999999977,-0.05678559999999977,-0.05678559999999977,0.0,0.0,False
-2026-11-08,Brighton v Brentford,home_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-11-08,Brighton v Brentford,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-08,Brighton v Brentford,away_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-11-08,Brighton v Brentford,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-11-08,Brighton v Brentford,home_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-11-08,Brighton v Brentford,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
-2026-11-08,Brighton v Brentford,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-08,Brighton v Brentford,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-08,Brighton v Brentford,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-08,Brighton v Brentford,home_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-11-08,Brighton v Brentford,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-08,Brighton v Brentford,away_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
 2026-11-08,Brighton v Brentford,home_elo,Elo,1644.0828060982851,1644.0828060982851,1644.0828060982851,0.0,0.0,False
 2026-11-08,Brighton v Brentford,away_elo,Elo,1593.1440028558675,1593.1440028558675,1593.1440028558675,0.0,0.0,False
@@ -290,14 +290,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-08,Crystal Palace v Liverpool,away_xga_avg,xG/xGA,1.1327978,1.1327978,1.1327978,0.0,0.0,False
 2026-11-08,Crystal Palace v Liverpool,home_xg_diff,xG/xGA,-1.1390762,-1.1390762,-1.1390762,0.0,0.0,False
 2026-11-08,Crystal Palace v Liverpool,away_xg_diff,xG/xGA,0.05349420000000005,0.05349420000000005,0.05349420000000005,0.0,0.0,False
-2026-11-08,Crystal Palace v Liverpool,home_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-11-08,Crystal Palace v Liverpool,away_days_rest,Schedule/fatigue,11.0,11.0,11.0,0.0,0.0,False
-2026-11-08,Crystal Palace v Liverpool,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
-2026-11-08,Crystal Palace v Liverpool,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-11-08,Crystal Palace v Liverpool,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-08,Crystal Palace v Liverpool,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-08,Crystal Palace v Liverpool,home_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-11-08,Crystal Palace v Liverpool,away_days_since_last_match,Schedule/fatigue,11.0,11.0,11.0,0.0,0.0,False
+2026-11-08,Crystal Palace v Liverpool,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-11-08,Crystal Palace v Liverpool,away_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-11-08,Crystal Palace v Liverpool,home_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-11-08,Crystal Palace v Liverpool,away_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-11-08,Crystal Palace v Liverpool,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-08,Crystal Palace v Liverpool,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-08,Crystal Palace v Liverpool,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-11-08,Crystal Palace v Liverpool,away_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-11-08,Crystal Palace v Liverpool,home_elo,Elo,1481.7674759165361,1481.7674759165361,1481.7674759165361,0.0,0.0,False
 2026-11-08,Crystal Palace v Liverpool,away_elo,Elo,1642.1777953690855,1642.1777953690855,1642.1777953690855,0.0,0.0,False
 2026-11-08,Crystal Palace v Liverpool,elo_difference,Elo,-160.4103194525494,-160.4103194525494,-160.4103194525494,0.0,0.0,False
@@ -331,13 +331,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-08,Ipswich v Bournemouth,home_xg_diff,xG/xGA,-1.2509716000000002,-1.2509716000000002,-1.2509716000000002,0.0,0.0,False
 2026-11-08,Ipswich v Bournemouth,away_xg_diff,xG/xGA,1.3091749199999998,1.3091749199999998,1.3091749199999998,0.0,0.0,False
 2026-11-08,Ipswich v Bournemouth,home_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-11-08,Ipswich v Bournemouth,away_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-11-08,Ipswich v Bournemouth,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-08,Ipswich v Bournemouth,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-11-08,Ipswich v Bournemouth,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-11-08,Ipswich v Bournemouth,away_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-11-08,Ipswich v Bournemouth,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-08,Ipswich v Bournemouth,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-08,Ipswich v Bournemouth,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-08,Ipswich v Bournemouth,home_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-11-08,Ipswich v Bournemouth,away_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-11-08,Ipswich v Bournemouth,away_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-08,Ipswich v Bournemouth,home_elo,Elo,1413.573491411097,1413.573491411097,1413.573491411097,0.0,0.0,False
 2026-11-08,Ipswich v Bournemouth,away_elo,Elo,1627.0308913166452,1627.0308913166452,1627.0308913166452,0.0,0.0,False
 2026-11-08,Ipswich v Bournemouth,elo_difference,Elo,-213.4573999055483,-213.4573999055483,-213.4573999055483,0.0,0.0,False
@@ -370,13 +370,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-08,Sunderland v Chelsea,away_xga_avg,xG/xGA,1.3889580000000001,1.3889580000000001,1.3889580000000001,0.0,0.0,False
 2026-11-08,Sunderland v Chelsea,home_xg_diff,xG/xGA,-0.7073991199999998,-0.7073991199999998,-0.7073991199999998,0.0,0.0,False
 2026-11-08,Sunderland v Chelsea,away_xg_diff,xG/xGA,0.07519739999999975,0.07519739999999975,0.07519739999999975,0.0,0.0,False
-2026-11-08,Sunderland v Chelsea,home_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-11-08,Sunderland v Chelsea,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-08,Sunderland v Chelsea,away_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-11-08,Sunderland v Chelsea,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-11-08,Sunderland v Chelsea,home_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-11-08,Sunderland v Chelsea,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-11-08,Sunderland v Chelsea,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-08,Sunderland v Chelsea,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-08,Sunderland v Chelsea,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-08,Sunderland v Chelsea,home_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-11-08,Sunderland v Chelsea,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-08,Sunderland v Chelsea,away_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
 2026-11-08,Sunderland v Chelsea,home_elo,Elo,1504.7402337563926,1504.7402337563926,1504.7402337563926,0.0,0.0,False
 2026-11-08,Sunderland v Chelsea,away_elo,Elo,1586.8833718780515,1586.8833718780515,1586.8833718780515,0.0,0.0,False
@@ -410,14 +410,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-08,Man United v Aston Villa,away_xga_avg,xG/xGA,1.6897306,1.6897306,1.6897306,0.0,0.0,False
 2026-11-08,Man United v Aston Villa,home_xg_diff,xG/xGA,-0.9134026000000002,-0.9134026000000002,-0.9134026000000002,0.0,0.0,False
 2026-11-08,Man United v Aston Villa,away_xg_diff,xG/xGA,-0.06857380000000002,-0.06857380000000002,-0.06857380000000002,0.0,0.0,False
-2026-11-08,Man United v Aston Villa,home_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-11-08,Man United v Aston Villa,away_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-11-08,Man United v Aston Villa,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-11-08,Man United v Aston Villa,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-11-08,Man United v Aston Villa,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-08,Man United v Aston Villa,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-08,Man United v Aston Villa,home_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-11-08,Man United v Aston Villa,away_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-11-08,Man United v Aston Villa,home_days_rest,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
+2026-11-08,Man United v Aston Villa,away_days_rest,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
+2026-11-08,Man United v Aston Villa,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-11-08,Man United v Aston Villa,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-11-08,Man United v Aston Villa,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-08,Man United v Aston Villa,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-08,Man United v Aston Villa,home_days_since_last_match,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
+2026-11-08,Man United v Aston Villa,away_days_since_last_match,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
 2026-11-08,Man United v Aston Villa,home_elo,Elo,1599.065738963313,1599.065738963313,1599.065738963313,0.0,0.0,False
 2026-11-08,Man United v Aston Villa,away_elo,Elo,1623.5181808601637,1623.5181808601637,1623.5181808601637,0.0,0.0,False
 2026-11-08,Man United v Aston Villa,elo_difference,Elo,-24.452441896850814,-24.452441896850814,-24.452441896850814,0.0,0.0,False
@@ -450,14 +450,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-21,Tottenham v Ipswich,away_xga_avg,xG/xGA,2.380844,2.380844,2.380844,0.0,0.0,False
 2026-11-21,Tottenham v Ipswich,home_xg_diff,xG/xGA,0.9712425999999998,0.9712425999999998,0.9712425999999998,0.0,0.0,False
 2026-11-21,Tottenham v Ipswich,away_xg_diff,xG/xGA,-1.2509716000000002,-1.2509716000000002,-1.2509716000000002,0.0,0.0,False
-2026-11-21,Tottenham v Ipswich,home_days_rest,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
-2026-11-21,Tottenham v Ipswich,away_days_rest,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
-2026-11-21,Tottenham v Ipswich,home_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-21,Tottenham v Ipswich,away_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-21,Tottenham v Ipswich,home_days_rest,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
+2026-11-21,Tottenham v Ipswich,away_days_rest,Schedule/fatigue,13.0,13.0,13.0,0.0,0.0,False
+2026-11-21,Tottenham v Ipswich,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-21,Tottenham v Ipswich,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-21,Tottenham v Ipswich,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-11-21,Tottenham v Ipswich,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-21,Tottenham v Ipswich,home_days_since_last_match,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
-2026-11-21,Tottenham v Ipswich,away_days_since_last_match,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
+2026-11-21,Tottenham v Ipswich,home_days_since_last_match,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
+2026-11-21,Tottenham v Ipswich,away_days_since_last_match,Schedule/fatigue,13.0,13.0,13.0,0.0,0.0,False
 2026-11-21,Tottenham v Ipswich,home_elo,Elo,1503.7195871879765,1503.7195871879765,1503.7195871879765,0.0,0.0,False
 2026-11-21,Tottenham v Ipswich,away_elo,Elo,1413.573491411097,1413.573491411097,1413.573491411097,0.0,0.0,False
 2026-11-21,Tottenham v Ipswich,elo_difference,Elo,90.14609577687952,90.14609577687952,90.14609577687952,0.0,0.0,False
@@ -490,14 +490,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-21,Coventry v Crystal Palace,away_xga_avg,xG/xGA,2.373812,2.373812,2.373812,0.0,0.0,False
 2026-11-21,Coventry v Crystal Palace,home_xg_diff,xG/xGA,-0.46146679999999995,-0.46146679999999995,-0.46146679999999995,0.0,0.0,False
 2026-11-21,Coventry v Crystal Palace,away_xg_diff,xG/xGA,-1.1390762,-1.1390762,-1.1390762,0.0,0.0,False
-2026-11-21,Coventry v Crystal Palace,home_days_rest,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
-2026-11-21,Coventry v Crystal Palace,away_days_rest,Schedule/fatigue,11.0,11.0,11.0,0.0,0.0,False
+2026-11-21,Coventry v Crystal Palace,home_days_rest,Schedule/fatigue,15.0,15.0,15.0,0.0,0.0,False
+2026-11-21,Coventry v Crystal Palace,away_days_rest,Schedule/fatigue,13.0,13.0,13.0,0.0,0.0,False
 2026-11-21,Coventry v Crystal Palace,home_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-11-21,Coventry v Crystal Palace,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-21,Coventry v Crystal Palace,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-11-21,Coventry v Crystal Palace,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-21,Coventry v Crystal Palace,home_days_since_last_match,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
-2026-11-21,Coventry v Crystal Palace,away_days_since_last_match,Schedule/fatigue,11.0,11.0,11.0,0.0,0.0,False
+2026-11-21,Coventry v Crystal Palace,home_days_since_last_match,Schedule/fatigue,15.0,15.0,15.0,0.0,0.0,False
+2026-11-21,Coventry v Crystal Palace,away_days_since_last_match,Schedule/fatigue,13.0,13.0,13.0,0.0,0.0,False
 2026-11-21,Coventry v Crystal Palace,home_elo,Elo,1481.8414540023068,1481.8414540023068,1481.8414540023068,0.0,0.0,False
 2026-11-21,Coventry v Crystal Palace,away_elo,Elo,1481.7674759165361,1481.7674759165361,1481.7674759165361,0.0,0.0,False
 2026-11-21,Coventry v Crystal Palace,elo_difference,Elo,0.07397808577070464,0.07397808577070464,0.07397808577070464,0.0,0.0,False
@@ -530,14 +530,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-21,Chelsea v Leeds,away_xga_avg,xG/xGA,1.368916,1.368916,1.368916,0.0,0.0,False
 2026-11-21,Chelsea v Leeds,home_xg_diff,xG/xGA,0.07519739999999975,0.07519739999999975,0.07519739999999975,0.0,0.0,False
 2026-11-21,Chelsea v Leeds,away_xg_diff,xG/xGA,-0.27507000000000015,-0.27507000000000015,-0.27507000000000015,0.0,0.0,False
-2026-11-21,Chelsea v Leeds,home_days_rest,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
-2026-11-21,Chelsea v Leeds,away_days_rest,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
-2026-11-21,Chelsea v Leeds,home_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-21,Chelsea v Leeds,away_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-21,Chelsea v Leeds,home_days_rest,Schedule/fatigue,13.0,13.0,13.0,0.0,0.0,False
+2026-11-21,Chelsea v Leeds,away_days_rest,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
+2026-11-21,Chelsea v Leeds,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-21,Chelsea v Leeds,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-21,Chelsea v Leeds,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-11-21,Chelsea v Leeds,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-21,Chelsea v Leeds,home_days_since_last_match,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
-2026-11-21,Chelsea v Leeds,away_days_since_last_match,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
+2026-11-21,Chelsea v Leeds,home_days_since_last_match,Schedule/fatigue,13.0,13.0,13.0,0.0,0.0,False
+2026-11-21,Chelsea v Leeds,away_days_since_last_match,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
 2026-11-21,Chelsea v Leeds,home_elo,Elo,1586.8833718780515,1586.8833718780515,1586.8833718780515,0.0,0.0,False
 2026-11-21,Chelsea v Leeds,away_elo,Elo,1550.5976522620308,1550.5976522620308,1550.5976522620308,0.0,0.0,False
 2026-11-21,Chelsea v Leeds,elo_difference,Elo,36.28571961602074,36.28571961602074,36.28571961602074,0.0,0.0,False
@@ -570,14 +570,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-21,Newcastle v Arsenal,away_xga_avg,xG/xGA,1.165993,1.165993,1.165993,0.0,0.0,False
 2026-11-21,Newcastle v Arsenal,home_xg_diff,xG/xGA,-0.5239563999999999,-0.5239563999999999,-0.5239563999999999,0.0,0.0,False
 2026-11-21,Newcastle v Arsenal,away_xg_diff,xG/xGA,0.3783409999999998,0.3783409999999998,0.3783409999999998,0.0,0.0,False
-2026-11-21,Newcastle v Arsenal,home_days_rest,Schedule/fatigue,23.0,23.0,23.0,0.0,0.0,False
-2026-11-21,Newcastle v Arsenal,away_days_rest,Schedule/fatigue,25.0,25.0,25.0,0.0,0.0,False
-2026-11-21,Newcastle v Arsenal,home_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-21,Newcastle v Arsenal,away_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-21,Newcastle v Arsenal,home_days_rest,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
+2026-11-21,Newcastle v Arsenal,away_days_rest,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
+2026-11-21,Newcastle v Arsenal,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-21,Newcastle v Arsenal,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-21,Newcastle v Arsenal,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-11-21,Newcastle v Arsenal,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-21,Newcastle v Arsenal,home_days_since_last_match,Schedule/fatigue,23.0,23.0,23.0,0.0,0.0,False
-2026-11-21,Newcastle v Arsenal,away_days_since_last_match,Schedule/fatigue,25.0,25.0,25.0,0.0,0.0,False
+2026-11-21,Newcastle v Arsenal,home_days_since_last_match,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
+2026-11-21,Newcastle v Arsenal,away_days_since_last_match,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
 2026-11-21,Newcastle v Arsenal,home_elo,Elo,1549.317010535809,1549.317010535809,1549.317010535809,0.0,0.0,False
 2026-11-21,Newcastle v Arsenal,away_elo,Elo,1808.566878783693,1808.566878783693,1808.566878783693,0.0,0.0,False
 2026-11-21,Newcastle v Arsenal,elo_difference,Elo,-259.249868247884,-259.249868247884,-259.249868247884,0.0,0.0,False
@@ -610,14 +610,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-21,Aston Villa v Sunderland,away_xga_avg,xG/xGA,2.090258,2.090258,2.090258,0.0,0.0,False
 2026-11-21,Aston Villa v Sunderland,home_xg_diff,xG/xGA,-0.06857380000000002,-0.06857380000000002,-0.06857380000000002,0.0,0.0,False
 2026-11-21,Aston Villa v Sunderland,away_xg_diff,xG/xGA,-0.7073991199999998,-0.7073991199999998,-0.7073991199999998,0.0,0.0,False
-2026-11-21,Aston Villa v Sunderland,home_days_rest,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
-2026-11-21,Aston Villa v Sunderland,away_days_rest,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
-2026-11-21,Aston Villa v Sunderland,home_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-21,Aston Villa v Sunderland,away_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-21,Aston Villa v Sunderland,home_days_rest,Schedule/fatigue,13.0,13.0,13.0,0.0,0.0,False
+2026-11-21,Aston Villa v Sunderland,away_days_rest,Schedule/fatigue,13.0,13.0,13.0,0.0,0.0,False
+2026-11-21,Aston Villa v Sunderland,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-21,Aston Villa v Sunderland,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-21,Aston Villa v Sunderland,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-11-21,Aston Villa v Sunderland,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-21,Aston Villa v Sunderland,home_days_since_last_match,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
-2026-11-21,Aston Villa v Sunderland,away_days_since_last_match,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
+2026-11-21,Aston Villa v Sunderland,home_days_since_last_match,Schedule/fatigue,13.0,13.0,13.0,0.0,0.0,False
+2026-11-21,Aston Villa v Sunderland,away_days_since_last_match,Schedule/fatigue,13.0,13.0,13.0,0.0,0.0,False
 2026-11-21,Aston Villa v Sunderland,home_elo,Elo,1623.5181808601637,1623.5181808601637,1623.5181808601637,0.0,0.0,False
 2026-11-21,Aston Villa v Sunderland,away_elo,Elo,1504.7402337563926,1504.7402337563926,1504.7402337563926,0.0,0.0,False
 2026-11-21,Aston Villa v Sunderland,elo_difference,Elo,118.77794710377111,118.77794710377111,118.77794710377111,0.0,0.0,False
@@ -650,14 +650,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-21,Man City v Fulham,away_xga_avg,xG/xGA,1.1494332,1.1494332,1.1494332,0.0,0.0,False
 2026-11-21,Man City v Fulham,home_xg_diff,xG/xGA,1.0610911999999997,1.0610911999999997,1.0610911999999997,0.0,0.0,False
 2026-11-21,Man City v Fulham,away_xg_diff,xG/xGA,0.567118,0.567118,0.567118,0.0,0.0,False
-2026-11-21,Man City v Fulham,home_days_rest,Schedule/fatigue,11.0,11.0,11.0,0.0,0.0,False
-2026-11-21,Man City v Fulham,away_days_rest,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
+2026-11-21,Man City v Fulham,home_days_rest,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
+2026-11-21,Man City v Fulham,away_days_rest,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
 2026-11-21,Man City v Fulham,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-11-21,Man City v Fulham,away_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-21,Man City v Fulham,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-21,Man City v Fulham,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-11-21,Man City v Fulham,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-21,Man City v Fulham,home_days_since_last_match,Schedule/fatigue,11.0,11.0,11.0,0.0,0.0,False
-2026-11-21,Man City v Fulham,away_days_since_last_match,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
+2026-11-21,Man City v Fulham,home_days_since_last_match,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
+2026-11-21,Man City v Fulham,away_days_since_last_match,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
 2026-11-21,Man City v Fulham,home_elo,Elo,1750.0691960679571,1750.0691960679571,1750.0691960679571,0.0,0.0,False
 2026-11-21,Man City v Fulham,away_elo,Elo,1534.9163767727955,1534.9163767727955,1534.9163767727955,0.0,0.0,False
 2026-11-21,Man City v Fulham,elo_difference,Elo,215.15281929516163,215.15281929516163,215.15281929516163,0.0,0.0,False
@@ -690,14 +690,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-21,Bournemouth v Nott'm Forest,away_xga_avg,xG/xGA,1.0347564,1.0347564,1.0347564,0.0,0.0,False
 2026-11-21,Bournemouth v Nott'm Forest,home_xg_diff,xG/xGA,1.3091749199999998,1.3091749199999998,1.3091749199999998,0.0,0.0,False
 2026-11-21,Bournemouth v Nott'm Forest,away_xg_diff,xG/xGA,0.8541656000000002,0.8541656000000002,0.8541656000000002,0.0,0.0,False
-2026-11-21,Bournemouth v Nott'm Forest,home_days_rest,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
-2026-11-21,Bournemouth v Nott'm Forest,away_days_rest,Schedule/fatigue,11.0,11.0,11.0,0.0,0.0,False
-2026-11-21,Bournemouth v Nott'm Forest,home_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-21,Bournemouth v Nott'm Forest,home_days_rest,Schedule/fatigue,13.0,13.0,13.0,0.0,0.0,False
+2026-11-21,Bournemouth v Nott'm Forest,away_days_rest,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
+2026-11-21,Bournemouth v Nott'm Forest,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-21,Bournemouth v Nott'm Forest,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-21,Bournemouth v Nott'm Forest,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-11-21,Bournemouth v Nott'm Forest,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-21,Bournemouth v Nott'm Forest,home_days_since_last_match,Schedule/fatigue,21.0,21.0,21.0,0.0,0.0,False
-2026-11-21,Bournemouth v Nott'm Forest,away_days_since_last_match,Schedule/fatigue,11.0,11.0,11.0,0.0,0.0,False
+2026-11-21,Bournemouth v Nott'm Forest,home_days_since_last_match,Schedule/fatigue,13.0,13.0,13.0,0.0,0.0,False
+2026-11-21,Bournemouth v Nott'm Forest,away_days_since_last_match,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
 2026-11-21,Bournemouth v Nott'm Forest,home_elo,Elo,1627.0308913166452,1627.0308913166452,1627.0308913166452,0.0,0.0,False
 2026-11-21,Bournemouth v Nott'm Forest,away_elo,Elo,1501.6565491201227,1501.6565491201227,1501.6565491201227,0.0,0.0,False
 2026-11-21,Bournemouth v Nott'm Forest,elo_difference,Elo,125.37434219652255,125.37434219652255,125.37434219652255,0.0,0.0,False
@@ -730,14 +730,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-22,Hull v Brighton,away_xga_avg,xG/xGA,1.1317764000000001,1.1317764000000001,1.1317764000000001,0.0,0.0,False
 2026-11-22,Hull v Brighton,home_xg_diff,xG/xGA,-0.7345341999999999,-0.7345341999999999,-0.7345341999999999,0.0,0.0,False
 2026-11-22,Hull v Brighton,away_xg_diff,xG/xGA,0.5322275999999997,0.5322275999999997,0.5322275999999997,0.0,0.0,False
-2026-11-22,Hull v Brighton,home_days_rest,Schedule/fatigue,12.0,12.0,12.0,0.0,0.0,False
-2026-11-22,Hull v Brighton,away_days_rest,Schedule/fatigue,22.0,22.0,22.0,0.0,0.0,False
-2026-11-22,Hull v Brighton,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-11-22,Hull v Brighton,away_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-22,Hull v Brighton,home_days_rest,Schedule/fatigue,15.0,15.0,15.0,0.0,0.0,False
+2026-11-22,Hull v Brighton,away_days_rest,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
+2026-11-22,Hull v Brighton,home_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-22,Hull v Brighton,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-22,Hull v Brighton,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-11-22,Hull v Brighton,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-22,Hull v Brighton,home_days_since_last_match,Schedule/fatigue,12.0,12.0,12.0,0.0,0.0,False
-2026-11-22,Hull v Brighton,away_days_since_last_match,Schedule/fatigue,22.0,22.0,22.0,0.0,0.0,False
+2026-11-22,Hull v Brighton,home_days_since_last_match,Schedule/fatigue,15.0,15.0,15.0,0.0,0.0,False
+2026-11-22,Hull v Brighton,away_days_since_last_match,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
 2026-11-22,Hull v Brighton,home_elo,Elo,1507.3078087806803,1507.3078087806803,1507.3078087806803,0.0,0.0,False
 2026-11-22,Hull v Brighton,away_elo,Elo,1644.0828060982851,1644.0828060982851,1644.0828060982851,0.0,0.0,False
 2026-11-22,Hull v Brighton,elo_difference,Elo,-136.77499731760486,-136.77499731760486,-136.77499731760486,0.0,0.0,False
@@ -770,14 +770,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-22,Liverpool v Man United,away_xga_avg,xG/xGA,2.144886,2.144886,2.144886,0.0,0.0,False
 2026-11-22,Liverpool v Man United,home_xg_diff,xG/xGA,0.05349420000000005,0.05349420000000005,0.05349420000000005,0.0,0.0,False
 2026-11-22,Liverpool v Man United,away_xg_diff,xG/xGA,-0.9134026000000002,-0.9134026000000002,-0.9134026000000002,0.0,0.0,False
-2026-11-22,Liverpool v Man United,home_days_rest,Schedule/fatigue,12.0,12.0,12.0,0.0,0.0,False
-2026-11-22,Liverpool v Man United,away_days_rest,Schedule/fatigue,22.0,22.0,22.0,0.0,0.0,False
+2026-11-22,Liverpool v Man United,home_days_rest,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
+2026-11-22,Liverpool v Man United,away_days_rest,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
 2026-11-22,Liverpool v Man United,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-11-22,Liverpool v Man United,away_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-22,Liverpool v Man United,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-22,Liverpool v Man United,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-11-22,Liverpool v Man United,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-22,Liverpool v Man United,home_days_since_last_match,Schedule/fatigue,12.0,12.0,12.0,0.0,0.0,False
-2026-11-22,Liverpool v Man United,away_days_since_last_match,Schedule/fatigue,22.0,22.0,22.0,0.0,0.0,False
+2026-11-22,Liverpool v Man United,home_days_since_last_match,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
+2026-11-22,Liverpool v Man United,away_days_since_last_match,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
 2026-11-22,Liverpool v Man United,home_elo,Elo,1642.1777953690855,1642.1777953690855,1642.1777953690855,0.0,0.0,False
 2026-11-22,Liverpool v Man United,away_elo,Elo,1599.065738963313,1599.065738963313,1599.065738963313,0.0,0.0,False
 2026-11-22,Liverpool v Man United,elo_difference,Elo,43.11205640577259,43.11205640577259,43.11205640577259,0.0,0.0,False
@@ -810,14 +810,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-23,Brentford v Everton,away_xga_avg,xG/xGA,1.4518532,1.4518532,1.4518532,0.0,0.0,False
 2026-11-23,Brentford v Everton,home_xg_diff,xG/xGA,-0.05678559999999977,-0.05678559999999977,-0.05678559999999977,0.0,0.0,False
 2026-11-23,Brentford v Everton,away_xg_diff,xG/xGA,0.20251759999999996,0.20251759999999996,0.20251759999999996,0.0,0.0,False
-2026-11-23,Brentford v Everton,home_days_rest,Schedule/fatigue,23.0,23.0,23.0,0.0,0.0,False
-2026-11-23,Brentford v Everton,away_days_rest,Schedule/fatigue,13.0,13.0,13.0,0.0,0.0,False
+2026-11-23,Brentford v Everton,home_days_rest,Schedule/fatigue,15.0,15.0,15.0,0.0,0.0,False
+2026-11-23,Brentford v Everton,away_days_rest,Schedule/fatigue,17.0,17.0,17.0,0.0,0.0,False
 2026-11-23,Brentford v Everton,home_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-23,Brentford v Everton,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-23,Brentford v Everton,away_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-11-23,Brentford v Everton,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-11-23,Brentford v Everton,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-23,Brentford v Everton,home_days_since_last_match,Schedule/fatigue,23.0,23.0,23.0,0.0,0.0,False
-2026-11-23,Brentford v Everton,away_days_since_last_match,Schedule/fatigue,13.0,13.0,13.0,0.0,0.0,False
+2026-11-23,Brentford v Everton,home_days_since_last_match,Schedule/fatigue,15.0,15.0,15.0,0.0,0.0,False
+2026-11-23,Brentford v Everton,away_days_since_last_match,Schedule/fatigue,17.0,17.0,17.0,0.0,0.0,False
 2026-11-23,Brentford v Everton,home_elo,Elo,1593.1440028558675,1593.1440028558675,1593.1440028558675,0.0,0.0,False
 2026-11-23,Brentford v Everton,away_elo,Elo,1539.5320274431779,1539.5320274431779,1539.5320274431779,0.0,0.0,False
 2026-11-23,Brentford v Everton,elo_difference,Elo,53.61197541268962,53.61197541268962,53.61197541268962,0.0,0.0,False
@@ -890,13 +890,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-28,Man United v Brentford,away_xga_avg,xG/xGA,1.4140701999999998,1.4140701999999998,1.4140701999999998,0.0,0.0,False
 2026-11-28,Man United v Brentford,home_xg_diff,xG/xGA,-0.9134026000000002,-0.9134026000000002,-0.9134026000000002,0.0,0.0,False
 2026-11-28,Man United v Brentford,away_xg_diff,xG/xGA,-0.05678559999999977,-0.05678559999999977,-0.05678559999999977,0.0,0.0,False
-2026-11-28,Man United v Brentford,home_days_rest,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
+2026-11-28,Man United v Brentford,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-28,Man United v Brentford,away_days_rest,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
-2026-11-28,Man United v Brentford,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-28,Man United v Brentford,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-11-28,Man United v Brentford,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-11-28,Man United v Brentford,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-28,Man United v Brentford,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-28,Man United v Brentford,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-28,Man United v Brentford,home_days_since_last_match,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
+2026-11-28,Man United v Brentford,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-28,Man United v Brentford,away_days_since_last_match,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
 2026-11-28,Man United v Brentford,home_elo,Elo,1599.065738963313,1599.065738963313,1599.065738963313,0.0,0.0,False
 2026-11-28,Man United v Brentford,away_elo,Elo,1593.1440028558675,1593.1440028558675,1593.1440028558675,0.0,0.0,False
@@ -931,13 +931,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-28,Ipswich v Aston Villa,home_xg_diff,xG/xGA,-1.2509716000000002,-1.2509716000000002,-1.2509716000000002,0.0,0.0,False
 2026-11-28,Ipswich v Aston Villa,away_xg_diff,xG/xGA,-0.06857380000000002,-0.06857380000000002,-0.06857380000000002,0.0,0.0,False
 2026-11-28,Ipswich v Aston Villa,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-11-28,Ipswich v Aston Villa,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-11-28,Ipswich v Aston Villa,away_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-11-28,Ipswich v Aston Villa,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-11-28,Ipswich v Aston Villa,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-28,Ipswich v Aston Villa,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-11-28,Ipswich v Aston Villa,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-28,Ipswich v Aston Villa,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-28,Ipswich v Aston Villa,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-28,Ipswich v Aston Villa,home_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-11-28,Ipswich v Aston Villa,away_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-11-28,Ipswich v Aston Villa,away_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-11-28,Ipswich v Aston Villa,home_elo,Elo,1413.573491411097,1413.573491411097,1413.573491411097,0.0,0.0,False
 2026-11-28,Ipswich v Aston Villa,away_elo,Elo,1623.5181808601637,1623.5181808601637,1623.5181808601637,0.0,0.0,False
 2026-11-28,Ipswich v Aston Villa,elo_difference,Elo,-209.9446894490668,-209.9446894490668,-209.9446894490668,0.0,0.0,False
@@ -1011,13 +1011,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-29,Everton v Liverpool,home_xg_diff,xG/xGA,0.20251759999999996,0.20251759999999996,0.20251759999999996,0.0,0.0,False
 2026-11-29,Everton v Liverpool,away_xg_diff,xG/xGA,0.05349420000000005,0.05349420000000005,0.05349420000000005,0.0,0.0,False
 2026-11-29,Everton v Liverpool,home_days_rest,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
-2026-11-29,Everton v Liverpool,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-11-29,Everton v Liverpool,away_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-11-29,Everton v Liverpool,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-11-29,Everton v Liverpool,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-29,Everton v Liverpool,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-11-29,Everton v Liverpool,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-29,Everton v Liverpool,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-29,Everton v Liverpool,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-29,Everton v Liverpool,home_days_since_last_match,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
-2026-11-29,Everton v Liverpool,away_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-11-29,Everton v Liverpool,away_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-11-29,Everton v Liverpool,home_elo,Elo,1539.5320274431779,1539.5320274431779,1539.5320274431779,0.0,0.0,False
 2026-11-29,Everton v Liverpool,away_elo,Elo,1642.1777953690855,1642.1777953690855,1642.1777953690855,0.0,0.0,False
 2026-11-29,Everton v Liverpool,elo_difference,Elo,-102.64576792590765,-102.64576792590765,-102.64576792590765,0.0,0.0,False
@@ -1050,13 +1050,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-29,Brighton v Newcastle,away_xga_avg,xG/xGA,1.8449079999999998,1.8449079999999998,1.8449079999999998,0.0,0.0,False
 2026-11-29,Brighton v Newcastle,home_xg_diff,xG/xGA,0.5322275999999997,0.5322275999999997,0.5322275999999997,0.0,0.0,False
 2026-11-29,Brighton v Newcastle,away_xg_diff,xG/xGA,-0.5239563999999999,-0.5239563999999999,-0.5239563999999999,0.0,0.0,False
-2026-11-29,Brighton v Newcastle,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-11-29,Brighton v Newcastle,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-29,Brighton v Newcastle,away_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-11-29,Brighton v Newcastle,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-29,Brighton v Newcastle,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-11-29,Brighton v Newcastle,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-11-29,Brighton v Newcastle,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-29,Brighton v Newcastle,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-29,Brighton v Newcastle,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-29,Brighton v Newcastle,home_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-11-29,Brighton v Newcastle,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-29,Brighton v Newcastle,away_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
 2026-11-29,Brighton v Newcastle,home_elo,Elo,1644.0828060982851,1644.0828060982851,1644.0828060982851,0.0,0.0,False
 2026-11-29,Brighton v Newcastle,away_elo,Elo,1549.317010535809,1549.317010535809,1549.317010535809,0.0,0.0,False
@@ -1090,13 +1090,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-29,Crystal Palace v Hull,away_xga_avg,xG/xGA,1.842482,1.842482,1.842482,0.0,0.0,False
 2026-11-29,Crystal Palace v Hull,home_xg_diff,xG/xGA,-1.1390762,-1.1390762,-1.1390762,0.0,0.0,False
 2026-11-29,Crystal Palace v Hull,away_xg_diff,xG/xGA,-0.7345341999999999,-0.7345341999999999,-0.7345341999999999,0.0,0.0,False
-2026-11-29,Crystal Palace v Hull,home_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-11-29,Crystal Palace v Hull,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-29,Crystal Palace v Hull,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-11-29,Crystal Palace v Hull,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-29,Crystal Palace v Hull,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-11-29,Crystal Palace v Hull,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-11-29,Crystal Palace v Hull,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-29,Crystal Palace v Hull,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-29,Crystal Palace v Hull,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-29,Crystal Palace v Hull,home_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-11-29,Crystal Palace v Hull,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-29,Crystal Palace v Hull,away_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
 2026-11-29,Crystal Palace v Hull,home_elo,Elo,1481.7674759165361,1481.7674759165361,1481.7674759165361,0.0,0.0,False
 2026-11-29,Crystal Palace v Hull,away_elo,Elo,1507.3078087806803,1507.3078087806803,1507.3078087806803,0.0,0.0,False
@@ -1131,13 +1131,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-29,Fulham v Bournemouth,home_xg_diff,xG/xGA,0.567118,0.567118,0.567118,0.0,0.0,False
 2026-11-29,Fulham v Bournemouth,away_xg_diff,xG/xGA,1.3091749199999998,1.3091749199999998,1.3091749199999998,0.0,0.0,False
 2026-11-29,Fulham v Bournemouth,home_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-11-29,Fulham v Bournemouth,away_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-11-29,Fulham v Bournemouth,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-29,Fulham v Bournemouth,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-11-29,Fulham v Bournemouth,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-29,Fulham v Bournemouth,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-11-29,Fulham v Bournemouth,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-29,Fulham v Bournemouth,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-29,Fulham v Bournemouth,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-29,Fulham v Bournemouth,home_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-11-29,Fulham v Bournemouth,away_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-11-29,Fulham v Bournemouth,away_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-29,Fulham v Bournemouth,home_elo,Elo,1534.9163767727955,1534.9163767727955,1534.9163767727955,0.0,0.0,False
 2026-11-29,Fulham v Bournemouth,away_elo,Elo,1627.0308913166452,1627.0308913166452,1627.0308913166452,0.0,0.0,False
 2026-11-29,Fulham v Bournemouth,elo_difference,Elo,-92.11451454384974,-92.11451454384974,-92.11451454384974,0.0,0.0,False
@@ -1170,13 +1170,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-29,Sunderland v Tottenham,away_xga_avg,xG/xGA,0.8642766,0.8642766,0.8642766,0.0,0.0,False
 2026-11-29,Sunderland v Tottenham,home_xg_diff,xG/xGA,-0.7073991199999998,-0.7073991199999998,-0.7073991199999998,0.0,0.0,False
 2026-11-29,Sunderland v Tottenham,away_xg_diff,xG/xGA,0.9712425999999998,0.9712425999999998,0.9712425999999998,0.0,0.0,False
-2026-11-29,Sunderland v Tottenham,home_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-11-29,Sunderland v Tottenham,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-29,Sunderland v Tottenham,away_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-11-29,Sunderland v Tottenham,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-29,Sunderland v Tottenham,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-11-29,Sunderland v Tottenham,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-11-29,Sunderland v Tottenham,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-11-29,Sunderland v Tottenham,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-11-29,Sunderland v Tottenham,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-29,Sunderland v Tottenham,home_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-11-29,Sunderland v Tottenham,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-11-29,Sunderland v Tottenham,away_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
 2026-11-29,Sunderland v Tottenham,home_elo,Elo,1504.7402337563926,1504.7402337563926,1504.7402337563926,0.0,0.0,False
 2026-11-29,Sunderland v Tottenham,away_elo,Elo,1503.7195871879765,1503.7195871879765,1503.7195871879765,0.0,0.0,False
@@ -1210,14 +1210,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-11-29,Arsenal v Man City,away_xga_avg,xG/xGA,1.3766548,1.3766548,1.3766548,0.0,0.0,False
 2026-11-29,Arsenal v Man City,home_xg_diff,xG/xGA,0.3783409999999998,0.3783409999999998,0.3783409999999998,0.0,0.0,False
 2026-11-29,Arsenal v Man City,away_xg_diff,xG/xGA,1.0610911999999997,1.0610911999999997,1.0610911999999997,0.0,0.0,False
-2026-11-29,Arsenal v Man City,home_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-11-29,Arsenal v Man City,away_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-11-29,Arsenal v Man City,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-11-29,Arsenal v Man City,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-11-29,Arsenal v Man City,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-29,Arsenal v Man City,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-11-29,Arsenal v Man City,home_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-11-29,Arsenal v Man City,away_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-11-29,Arsenal v Man City,home_days_rest,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
+2026-11-29,Arsenal v Man City,away_days_rest,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
+2026-11-29,Arsenal v Man City,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-11-29,Arsenal v Man City,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-11-29,Arsenal v Man City,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-29,Arsenal v Man City,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-11-29,Arsenal v Man City,home_days_since_last_match,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
+2026-11-29,Arsenal v Man City,away_days_since_last_match,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
 2026-11-29,Arsenal v Man City,home_elo,Elo,1808.566878783693,1808.566878783693,1808.566878783693,0.0,0.0,False
 2026-11-29,Arsenal v Man City,away_elo,Elo,1750.0691960679571,1750.0691960679571,1750.0691960679571,0.0,0.0,False
 2026-11-29,Arsenal v Man City,elo_difference,Elo,58.49768271573589,58.49768271573589,58.49768271573589,0.0,0.0,False
@@ -1293,7 +1293,7 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-02,Brentford v Arsenal,home_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-12-02,Brentford v Arsenal,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Brentford v Arsenal,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-02,Brentford v Arsenal,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-02,Brentford v Arsenal,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Brentford v Arsenal,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-12-02,Brentford v Arsenal,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-12-02,Brentford v Arsenal,home_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
@@ -1333,9 +1333,9 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-02,Newcastle v Man United,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Newcastle v Man United,away_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-12-02,Newcastle v Man United,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-02,Newcastle v Man United,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-02,Newcastle v Man United,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Newcastle v Man United,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-02,Newcastle v Man United,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-12-02,Newcastle v Man United,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-12-02,Newcastle v Man United,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Newcastle v Man United,away_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-12-02,Newcastle v Man United,home_elo,Elo,1549.317010535809,1549.317010535809,1549.317010535809,0.0,0.0,False
@@ -1372,10 +1372,10 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-02,Bournemouth v Brighton,away_xg_diff,xG/xGA,0.5322275999999997,0.5322275999999997,0.5322275999999997,0.0,0.0,False
 2026-12-02,Bournemouth v Brighton,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Bournemouth v Brighton,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
-2026-12-02,Bournemouth v Brighton,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-02,Bournemouth v Brighton,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-02,Bournemouth v Brighton,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-02,Bournemouth v Brighton,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-12-02,Bournemouth v Brighton,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-02,Bournemouth v Brighton,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-02,Bournemouth v Brighton,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-02,Bournemouth v Brighton,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-12-02,Bournemouth v Brighton,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Bournemouth v Brighton,away_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Bournemouth v Brighton,home_elo,Elo,1627.0308913166452,1627.0308913166452,1627.0308913166452,0.0,0.0,False
@@ -1412,7 +1412,7 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-02,Aston Villa v Everton,away_xg_diff,xG/xGA,0.20251759999999996,0.20251759999999996,0.20251759999999996,0.0,0.0,False
 2026-12-02,Aston Villa v Everton,home_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-12-02,Aston Villa v Everton,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
-2026-12-02,Aston Villa v Everton,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-02,Aston Villa v Everton,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Aston Villa v Everton,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-12-02,Aston Villa v Everton,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-12-02,Aston Villa v Everton,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
@@ -1452,10 +1452,10 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-02,Liverpool v Sunderland,away_xg_diff,xG/xGA,-0.7073991199999998,-0.7073991199999998,-0.7073991199999998,0.0,0.0,False
 2026-12-02,Liverpool v Sunderland,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Liverpool v Sunderland,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
-2026-12-02,Liverpool v Sunderland,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-02,Liverpool v Sunderland,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-02,Liverpool v Sunderland,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-02,Liverpool v Sunderland,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-12-02,Liverpool v Sunderland,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-02,Liverpool v Sunderland,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-02,Liverpool v Sunderland,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-02,Liverpool v Sunderland,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-12-02,Liverpool v Sunderland,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Liverpool v Sunderland,away_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Liverpool v Sunderland,home_elo,Elo,1642.1777953690855,1642.1777953690855,1642.1777953690855,0.0,0.0,False
@@ -1533,9 +1533,9 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-02,Chelsea v Crystal Palace,home_days_rest,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
 2026-12-02,Chelsea v Crystal Palace,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Chelsea v Crystal Palace,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-02,Chelsea v Crystal Palace,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-02,Chelsea v Crystal Palace,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Chelsea v Crystal Palace,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-02,Chelsea v Crystal Palace,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-12-02,Chelsea v Crystal Palace,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-12-02,Chelsea v Crystal Palace,home_days_since_last_match,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
 2026-12-02,Chelsea v Crystal Palace,away_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Chelsea v Crystal Palace,home_elo,Elo,1586.8833718780515,1586.8833718780515,1586.8833718780515,0.0,0.0,False
@@ -1572,7 +1572,7 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-02,Man City v Leeds,away_xg_diff,xG/xGA,-0.27507000000000015,-0.27507000000000015,-0.27507000000000015,0.0,0.0,False
 2026-12-02,Man City v Leeds,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Man City v Leeds,away_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
-2026-12-02,Man City v Leeds,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-02,Man City v Leeds,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-02,Man City v Leeds,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-12-02,Man City v Leeds,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-12-02,Man City v Leeds,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
@@ -1650,14 +1650,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-05,Chelsea v Liverpool,away_xga_avg,xG/xGA,1.1327978,1.1327978,1.1327978,0.0,0.0,False
 2026-12-05,Chelsea v Liverpool,home_xg_diff,xG/xGA,0.07519739999999975,0.07519739999999975,0.07519739999999975,0.0,0.0,False
 2026-12-05,Chelsea v Liverpool,away_xg_diff,xG/xGA,0.05349420000000005,0.05349420000000005,0.05349420000000005,0.0,0.0,False
-2026-12-05,Chelsea v Liverpool,home_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-12-05,Chelsea v Liverpool,away_days_rest,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
-2026-12-05,Chelsea v Liverpool,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-05,Chelsea v Liverpool,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-05,Chelsea v Liverpool,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-05,Chelsea v Liverpool,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-05,Chelsea v Liverpool,home_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-12-05,Chelsea v Liverpool,away_days_since_last_match,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
+2026-12-05,Chelsea v Liverpool,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Chelsea v Liverpool,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Chelsea v Liverpool,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Chelsea v Liverpool,away_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-05,Chelsea v Liverpool,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-05,Chelsea v Liverpool,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-05,Chelsea v Liverpool,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Chelsea v Liverpool,away_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-05,Chelsea v Liverpool,home_elo,Elo,1586.8833718780515,1586.8833718780515,1586.8833718780515,0.0,0.0,False
 2026-12-05,Chelsea v Liverpool,away_elo,Elo,1642.1777953690855,1642.1777953690855,1642.1777953690855,0.0,0.0,False
 2026-12-05,Chelsea v Liverpool,elo_difference,Elo,-55.29442349103397,-55.29442349103397,-55.29442349103397,0.0,0.0,False
@@ -1690,14 +1690,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-05,Aston Villa v Crystal Palace,away_xga_avg,xG/xGA,2.373812,2.373812,2.373812,0.0,0.0,False
 2026-12-05,Aston Villa v Crystal Palace,home_xg_diff,xG/xGA,-0.06857380000000002,-0.06857380000000002,-0.06857380000000002,0.0,0.0,False
 2026-12-05,Aston Villa v Crystal Palace,away_xg_diff,xG/xGA,-1.1390762,-1.1390762,-1.1390762,0.0,0.0,False
-2026-12-05,Aston Villa v Crystal Palace,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-05,Aston Villa v Crystal Palace,away_days_rest,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
-2026-12-05,Aston Villa v Crystal Palace,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-05,Aston Villa v Crystal Palace,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-05,Aston Villa v Crystal Palace,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-05,Aston Villa v Crystal Palace,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-05,Aston Villa v Crystal Palace,home_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-05,Aston Villa v Crystal Palace,away_days_since_last_match,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
+2026-12-05,Aston Villa v Crystal Palace,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Aston Villa v Crystal Palace,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Aston Villa v Crystal Palace,home_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-05,Aston Villa v Crystal Palace,away_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-05,Aston Villa v Crystal Palace,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-05,Aston Villa v Crystal Palace,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-05,Aston Villa v Crystal Palace,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Aston Villa v Crystal Palace,away_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-05,Aston Villa v Crystal Palace,home_elo,Elo,1623.5181808601637,1623.5181808601637,1623.5181808601637,0.0,0.0,False
 2026-12-05,Aston Villa v Crystal Palace,away_elo,Elo,1481.7674759165361,1481.7674759165361,1481.7674759165361,0.0,0.0,False
 2026-12-05,Aston Villa v Crystal Palace,elo_difference,Elo,141.75070494362762,141.75070494362762,141.75070494362762,0.0,0.0,False
@@ -1730,14 +1730,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-05,Bournemouth v Hull,away_xga_avg,xG/xGA,1.842482,1.842482,1.842482,0.0,0.0,False
 2026-12-05,Bournemouth v Hull,home_xg_diff,xG/xGA,1.3091749199999998,1.3091749199999998,1.3091749199999998,0.0,0.0,False
 2026-12-05,Bournemouth v Hull,away_xg_diff,xG/xGA,-0.7345341999999999,-0.7345341999999999,-0.7345341999999999,0.0,0.0,False
-2026-12-05,Bournemouth v Hull,home_days_rest,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
-2026-12-05,Bournemouth v Hull,away_days_rest,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
-2026-12-05,Bournemouth v Hull,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-05,Bournemouth v Hull,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-05,Bournemouth v Hull,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-05,Bournemouth v Hull,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-05,Bournemouth v Hull,home_days_since_last_match,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
-2026-12-05,Bournemouth v Hull,away_days_since_last_match,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
+2026-12-05,Bournemouth v Hull,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Bournemouth v Hull,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Bournemouth v Hull,home_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-05,Bournemouth v Hull,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Bournemouth v Hull,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-05,Bournemouth v Hull,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-05,Bournemouth v Hull,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Bournemouth v Hull,away_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-05,Bournemouth v Hull,home_elo,Elo,1627.0308913166452,1627.0308913166452,1627.0308913166452,0.0,0.0,False
 2026-12-05,Bournemouth v Hull,away_elo,Elo,1507.3078087806803,1507.3078087806803,1507.3078087806803,0.0,0.0,False
 2026-12-05,Bournemouth v Hull,elo_difference,Elo,119.72308253596498,119.72308253596498,119.72308253596498,0.0,0.0,False
@@ -1770,14 +1770,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-05,Leeds v Ipswich,away_xga_avg,xG/xGA,2.380844,2.380844,2.380844,0.0,0.0,False
 2026-12-05,Leeds v Ipswich,home_xg_diff,xG/xGA,-0.27507000000000015,-0.27507000000000015,-0.27507000000000015,0.0,0.0,False
 2026-12-05,Leeds v Ipswich,away_xg_diff,xG/xGA,-1.2509716000000002,-1.2509716000000002,-1.2509716000000002,0.0,0.0,False
-2026-12-05,Leeds v Ipswich,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-05,Leeds v Ipswich,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-05,Leeds v Ipswich,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-05,Leeds v Ipswich,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-05,Leeds v Ipswich,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-05,Leeds v Ipswich,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-05,Leeds v Ipswich,home_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-05,Leeds v Ipswich,away_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-12-05,Leeds v Ipswich,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Leeds v Ipswich,away_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-05,Leeds v Ipswich,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Leeds v Ipswich,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Leeds v Ipswich,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-05,Leeds v Ipswich,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-05,Leeds v Ipswich,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Leeds v Ipswich,away_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-12-05,Leeds v Ipswich,home_elo,Elo,1550.5976522620308,1550.5976522620308,1550.5976522620308,0.0,0.0,False
 2026-12-05,Leeds v Ipswich,away_elo,Elo,1413.573491411097,1413.573491411097,1413.573491411097,0.0,0.0,False
 2026-12-05,Leeds v Ipswich,elo_difference,Elo,137.02416085093387,137.02416085093387,137.02416085093387,0.0,0.0,False
@@ -1810,14 +1810,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-05,Man United v Coventry,away_xga_avg,xG/xGA,1.3803481999999998,1.3803481999999998,1.3803481999999998,0.0,0.0,False
 2026-12-05,Man United v Coventry,home_xg_diff,xG/xGA,-0.9134026000000002,-0.9134026000000002,-0.9134026000000002,0.0,0.0,False
 2026-12-05,Man United v Coventry,away_xg_diff,xG/xGA,-0.46146679999999995,-0.46146679999999995,-0.46146679999999995,0.0,0.0,False
-2026-12-05,Man United v Coventry,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-05,Man United v Coventry,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-05,Man United v Coventry,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-05,Man United v Coventry,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-05,Man United v Coventry,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-05,Man United v Coventry,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-05,Man United v Coventry,home_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-05,Man United v Coventry,away_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-12-05,Man United v Coventry,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Man United v Coventry,away_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-05,Man United v Coventry,home_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-05,Man United v Coventry,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Man United v Coventry,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-05,Man United v Coventry,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-05,Man United v Coventry,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Man United v Coventry,away_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-12-05,Man United v Coventry,home_elo,Elo,1599.065738963313,1599.065738963313,1599.065738963313,0.0,0.0,False
 2026-12-05,Man United v Coventry,away_elo,Elo,1481.8414540023068,1481.8414540023068,1481.8414540023068,0.0,0.0,False
 2026-12-05,Man United v Coventry,elo_difference,Elo,117.2242849610061,117.2242849610061,117.2242849610061,0.0,0.0,False
@@ -1850,14 +1850,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-05,Nott'm Forest v Brighton,away_xga_avg,xG/xGA,1.1317764000000001,1.1317764000000001,1.1317764000000001,0.0,0.0,False
 2026-12-05,Nott'm Forest v Brighton,home_xg_diff,xG/xGA,0.8541656000000002,0.8541656000000002,0.8541656000000002,0.0,0.0,False
 2026-12-05,Nott'm Forest v Brighton,away_xg_diff,xG/xGA,0.5322275999999997,0.5322275999999997,0.5322275999999997,0.0,0.0,False
-2026-12-05,Nott'm Forest v Brighton,home_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-12-05,Nott'm Forest v Brighton,away_days_rest,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
-2026-12-05,Nott'm Forest v Brighton,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-05,Nott'm Forest v Brighton,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-05,Nott'm Forest v Brighton,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-05,Nott'm Forest v Brighton,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-05,Nott'm Forest v Brighton,home_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-12-05,Nott'm Forest v Brighton,away_days_since_last_match,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
+2026-12-05,Nott'm Forest v Brighton,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Nott'm Forest v Brighton,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Nott'm Forest v Brighton,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Nott'm Forest v Brighton,away_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-05,Nott'm Forest v Brighton,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-05,Nott'm Forest v Brighton,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-05,Nott'm Forest v Brighton,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Nott'm Forest v Brighton,away_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-05,Nott'm Forest v Brighton,home_elo,Elo,1501.6565491201227,1501.6565491201227,1501.6565491201227,0.0,0.0,False
 2026-12-05,Nott'm Forest v Brighton,away_elo,Elo,1644.0828060982851,1644.0828060982851,1644.0828060982851,0.0,0.0,False
 2026-12-05,Nott'm Forest v Brighton,elo_difference,Elo,-142.42625697816243,-142.42625697816243,-142.42625697816243,0.0,0.0,False
@@ -1890,14 +1890,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-05,Brentford v Man City,away_xga_avg,xG/xGA,1.3766548,1.3766548,1.3766548,0.0,0.0,False
 2026-12-05,Brentford v Man City,home_xg_diff,xG/xGA,-0.05678559999999977,-0.05678559999999977,-0.05678559999999977,0.0,0.0,False
 2026-12-05,Brentford v Man City,away_xg_diff,xG/xGA,1.0610911999999997,1.0610911999999997,1.0610911999999997,0.0,0.0,False
-2026-12-05,Brentford v Man City,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-05,Brentford v Man City,away_days_rest,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
-2026-12-05,Brentford v Man City,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-05,Brentford v Man City,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-05,Brentford v Man City,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-05,Brentford v Man City,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-05,Brentford v Man City,home_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-05,Brentford v Man City,away_days_since_last_match,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
+2026-12-05,Brentford v Man City,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Brentford v Man City,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Brentford v Man City,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Brentford v Man City,away_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-05,Brentford v Man City,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-05,Brentford v Man City,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-05,Brentford v Man City,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-05,Brentford v Man City,away_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-05,Brentford v Man City,home_elo,Elo,1593.1440028558675,1593.1440028558675,1593.1440028558675,0.0,0.0,False
 2026-12-05,Brentford v Man City,away_elo,Elo,1750.0691960679571,1750.0691960679571,1750.0691960679571,0.0,0.0,False
 2026-12-05,Brentford v Man City,elo_difference,Elo,-156.92519321208965,-156.92519321208965,-156.92519321208965,0.0,0.0,False
@@ -1930,14 +1930,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-06,Everton v Fulham,away_xga_avg,xG/xGA,1.1494332,1.1494332,1.1494332,0.0,0.0,False
 2026-12-06,Everton v Fulham,home_xg_diff,xG/xGA,0.20251759999999996,0.20251759999999996,0.20251759999999996,0.0,0.0,False
 2026-12-06,Everton v Fulham,away_xg_diff,xG/xGA,0.567118,0.567118,0.567118,0.0,0.0,False
-2026-12-06,Everton v Fulham,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-06,Everton v Fulham,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-06,Everton v Fulham,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-06,Everton v Fulham,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-06,Everton v Fulham,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-06,Everton v Fulham,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-06,Everton v Fulham,home_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-06,Everton v Fulham,away_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-12-06,Everton v Fulham,home_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-06,Everton v Fulham,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-06,Everton v Fulham,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-06,Everton v Fulham,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-06,Everton v Fulham,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-06,Everton v Fulham,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-06,Everton v Fulham,home_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-06,Everton v Fulham,away_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-06,Everton v Fulham,home_elo,Elo,1539.5320274431779,1539.5320274431779,1539.5320274431779,0.0,0.0,False
 2026-12-06,Everton v Fulham,away_elo,Elo,1534.9163767727955,1534.9163767727955,1534.9163767727955,0.0,0.0,False
 2026-12-06,Everton v Fulham,elo_difference,Elo,4.615650670382365,4.615650670382365,4.615650670382365,0.0,0.0,False
@@ -1970,14 +1970,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-06,Newcastle v Sunderland,away_xga_avg,xG/xGA,2.090258,2.090258,2.090258,0.0,0.0,False
 2026-12-06,Newcastle v Sunderland,home_xg_diff,xG/xGA,-0.5239563999999999,-0.5239563999999999,-0.5239563999999999,0.0,0.0,False
 2026-12-06,Newcastle v Sunderland,away_xg_diff,xG/xGA,-0.7073991199999998,-0.7073991199999998,-0.7073991199999998,0.0,0.0,False
-2026-12-06,Newcastle v Sunderland,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-06,Newcastle v Sunderland,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-06,Newcastle v Sunderland,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-06,Newcastle v Sunderland,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-06,Newcastle v Sunderland,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-06,Newcastle v Sunderland,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-06,Newcastle v Sunderland,home_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-06,Newcastle v Sunderland,away_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-12-06,Newcastle v Sunderland,home_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-06,Newcastle v Sunderland,away_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-06,Newcastle v Sunderland,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-06,Newcastle v Sunderland,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-06,Newcastle v Sunderland,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-06,Newcastle v Sunderland,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-06,Newcastle v Sunderland,home_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-06,Newcastle v Sunderland,away_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-12-06,Newcastle v Sunderland,home_elo,Elo,1549.317010535809,1549.317010535809,1549.317010535809,0.0,0.0,False
 2026-12-06,Newcastle v Sunderland,away_elo,Elo,1504.7402337563926,1504.7402337563926,1504.7402337563926,0.0,0.0,False
 2026-12-06,Newcastle v Sunderland,elo_difference,Elo,44.57677677941638,44.57677677941638,44.57677677941638,0.0,0.0,False
@@ -2010,14 +2010,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-06,Tottenham v Arsenal,away_xga_avg,xG/xGA,1.165993,1.165993,1.165993,0.0,0.0,False
 2026-12-06,Tottenham v Arsenal,home_xg_diff,xG/xGA,0.9712425999999998,0.9712425999999998,0.9712425999999998,0.0,0.0,False
 2026-12-06,Tottenham v Arsenal,away_xg_diff,xG/xGA,0.3783409999999998,0.3783409999999998,0.3783409999999998,0.0,0.0,False
-2026-12-06,Tottenham v Arsenal,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-06,Tottenham v Arsenal,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-06,Tottenham v Arsenal,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-06,Tottenham v Arsenal,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-06,Tottenham v Arsenal,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-06,Tottenham v Arsenal,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-06,Tottenham v Arsenal,home_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-06,Tottenham v Arsenal,away_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-12-06,Tottenham v Arsenal,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-06,Tottenham v Arsenal,away_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-06,Tottenham v Arsenal,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-06,Tottenham v Arsenal,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-06,Tottenham v Arsenal,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-06,Tottenham v Arsenal,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-06,Tottenham v Arsenal,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-06,Tottenham v Arsenal,away_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-12-06,Tottenham v Arsenal,home_elo,Elo,1503.7195871879765,1503.7195871879765,1503.7195871879765,0.0,0.0,False
 2026-12-06,Tottenham v Arsenal,away_elo,Elo,1808.566878783693,1808.566878783693,1808.566878783693,0.0,0.0,False
 2026-12-06,Tottenham v Arsenal,elo_difference,Elo,-304.84729159571657,-304.84729159571657,-304.84729159571657,0.0,0.0,False
@@ -2050,14 +2050,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-12,Man City v Chelsea,away_xga_avg,xG/xGA,1.3889580000000001,1.3889580000000001,1.3889580000000001,0.0,0.0,False
 2026-12-12,Man City v Chelsea,home_xg_diff,xG/xGA,1.0610911999999997,1.0610911999999997,1.0610911999999997,0.0,0.0,False
 2026-12-12,Man City v Chelsea,away_xg_diff,xG/xGA,0.07519739999999975,0.07519739999999975,0.07519739999999975,0.0,0.0,False
-2026-12-12,Man City v Chelsea,home_days_rest,Schedule/fatigue,13.0,13.0,13.0,0.0,0.0,False
-2026-12-12,Man City v Chelsea,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
-2026-12-12,Man City v Chelsea,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-12,Man City v Chelsea,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-12,Man City v Chelsea,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-12,Man City v Chelsea,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-12,Man City v Chelsea,home_days_since_last_match,Schedule/fatigue,13.0,13.0,13.0,0.0,0.0,False
-2026-12-12,Man City v Chelsea,away_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-12,Man City v Chelsea,home_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-12,Man City v Chelsea,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-12-12,Man City v Chelsea,home_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-12,Man City v Chelsea,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-12,Man City v Chelsea,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-12,Man City v Chelsea,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-12-12,Man City v Chelsea,home_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-12,Man City v Chelsea,away_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
 2026-12-12,Man City v Chelsea,home_elo,Elo,1750.0691960679571,1750.0691960679571,1750.0691960679571,0.0,0.0,False
 2026-12-12,Man City v Chelsea,away_elo,Elo,1586.8833718780515,1586.8833718780515,1586.8833718780515,0.0,0.0,False
 2026-12-12,Man City v Chelsea,elo_difference,Elo,163.1858241899056,163.1858241899056,163.1858241899056,0.0,0.0,False
@@ -2091,13 +2091,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-12,Liverpool v Leeds,home_xg_diff,xG/xGA,0.05349420000000005,0.05349420000000005,0.05349420000000005,0.0,0.0,False
 2026-12-12,Liverpool v Leeds,away_xg_diff,xG/xGA,-0.27507000000000015,-0.27507000000000015,-0.27507000000000015,0.0,0.0,False
 2026-12-12,Liverpool v Leeds,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
-2026-12-12,Liverpool v Leeds,away_days_rest,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
-2026-12-12,Liverpool v Leeds,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-12,Liverpool v Leeds,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-12,Liverpool v Leeds,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-12-12,Liverpool v Leeds,home_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-12,Liverpool v Leeds,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-12,Liverpool v Leeds,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-12-12,Liverpool v Leeds,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-12-12,Liverpool v Leeds,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
-2026-12-12,Liverpool v Leeds,away_days_since_last_match,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
+2026-12-12,Liverpool v Leeds,away_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
 2026-12-12,Liverpool v Leeds,home_elo,Elo,1642.1777953690855,1642.1777953690855,1642.1777953690855,0.0,0.0,False
 2026-12-12,Liverpool v Leeds,away_elo,Elo,1550.5976522620308,1550.5976522620308,1550.5976522620308,0.0,0.0,False
 2026-12-12,Liverpool v Leeds,elo_difference,Elo,91.58014310705471,91.58014310705471,91.58014310705471,0.0,0.0,False
@@ -2130,14 +2130,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-12,Fulham v Brentford,away_xga_avg,xG/xGA,1.4140701999999998,1.4140701999999998,1.4140701999999998,0.0,0.0,False
 2026-12-12,Fulham v Brentford,home_xg_diff,xG/xGA,0.567118,0.567118,0.567118,0.0,0.0,False
 2026-12-12,Fulham v Brentford,away_xg_diff,xG/xGA,-0.05678559999999977,-0.05678559999999977,-0.05678559999999977,0.0,0.0,False
-2026-12-12,Fulham v Brentford,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
-2026-12-12,Fulham v Brentford,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
-2026-12-12,Fulham v Brentford,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-12,Fulham v Brentford,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-12,Fulham v Brentford,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-12,Fulham v Brentford,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-12,Fulham v Brentford,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
-2026-12-12,Fulham v Brentford,away_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-12,Fulham v Brentford,home_days_rest,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
+2026-12-12,Fulham v Brentford,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-12-12,Fulham v Brentford,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-12,Fulham v Brentford,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-12,Fulham v Brentford,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-12-12,Fulham v Brentford,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-12-12,Fulham v Brentford,home_days_since_last_match,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
+2026-12-12,Fulham v Brentford,away_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
 2026-12-12,Fulham v Brentford,home_elo,Elo,1534.9163767727955,1534.9163767727955,1534.9163767727955,0.0,0.0,False
 2026-12-12,Fulham v Brentford,away_elo,Elo,1593.1440028558675,1593.1440028558675,1593.1440028558675,0.0,0.0,False
 2026-12-12,Fulham v Brentford,elo_difference,Elo,-58.22762608307198,-58.22762608307198,-58.22762608307198,0.0,0.0,False
@@ -2170,14 +2170,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-12,Ipswich v Newcastle,away_xga_avg,xG/xGA,1.8449079999999998,1.8449079999999998,1.8449079999999998,0.0,0.0,False
 2026-12-12,Ipswich v Newcastle,home_xg_diff,xG/xGA,-1.2509716000000002,-1.2509716000000002,-1.2509716000000002,0.0,0.0,False
 2026-12-12,Ipswich v Newcastle,away_xg_diff,xG/xGA,-0.5239563999999999,-0.5239563999999999,-0.5239563999999999,0.0,0.0,False
-2026-12-12,Ipswich v Newcastle,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
-2026-12-12,Ipswich v Newcastle,away_days_rest,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-12,Ipswich v Newcastle,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-12,Ipswich v Newcastle,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-12,Ipswich v Newcastle,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-12,Ipswich v Newcastle,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-12,Ipswich v Newcastle,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
-2026-12-12,Ipswich v Newcastle,away_days_since_last_match,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-12,Ipswich v Newcastle,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-12-12,Ipswich v Newcastle,away_days_rest,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
+2026-12-12,Ipswich v Newcastle,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-12,Ipswich v Newcastle,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-12,Ipswich v Newcastle,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-12-12,Ipswich v Newcastle,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-12-12,Ipswich v Newcastle,home_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-12-12,Ipswich v Newcastle,away_days_since_last_match,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
 2026-12-12,Ipswich v Newcastle,home_elo,Elo,1413.573491411097,1413.573491411097,1413.573491411097,0.0,0.0,False
 2026-12-12,Ipswich v Newcastle,away_elo,Elo,1549.317010535809,1549.317010535809,1549.317010535809,0.0,0.0,False
 2026-12-12,Ipswich v Newcastle,elo_difference,Elo,-135.74351912471207,-135.74351912471207,-135.74351912471207,0.0,0.0,False
@@ -2211,13 +2211,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-13,Arsenal v Bournemouth,home_xg_diff,xG/xGA,0.3783409999999998,0.3783409999999998,0.3783409999999998,0.0,0.0,False
 2026-12-13,Arsenal v Bournemouth,away_xg_diff,xG/xGA,1.3091749199999998,1.3091749199999998,1.3091749199999998,0.0,0.0,False
 2026-12-13,Arsenal v Bournemouth,home_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
-2026-12-13,Arsenal v Bournemouth,away_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
-2026-12-13,Arsenal v Bournemouth,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-13,Arsenal v Bournemouth,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-13,Arsenal v Bournemouth,away_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-13,Arsenal v Bournemouth,home_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-13,Arsenal v Bournemouth,away_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
 2026-12-13,Arsenal v Bournemouth,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-12-13,Arsenal v Bournemouth,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-12-13,Arsenal v Bournemouth,home_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
-2026-12-13,Arsenal v Bournemouth,away_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-13,Arsenal v Bournemouth,away_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-13,Arsenal v Bournemouth,home_elo,Elo,1808.566878783693,1808.566878783693,1808.566878783693,0.0,0.0,False
 2026-12-13,Arsenal v Bournemouth,away_elo,Elo,1627.0308913166452,1627.0308913166452,1627.0308913166452,0.0,0.0,False
 2026-12-13,Arsenal v Bournemouth,elo_difference,Elo,181.5359874670478,181.5359874670478,181.5359874670478,0.0,0.0,False
@@ -2250,14 +2250,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-13,Brighton v Everton,away_xga_avg,xG/xGA,1.4518532,1.4518532,1.4518532,0.0,0.0,False
 2026-12-13,Brighton v Everton,home_xg_diff,xG/xGA,0.5322275999999997,0.5322275999999997,0.5322275999999997,0.0,0.0,False
 2026-12-13,Brighton v Everton,away_xg_diff,xG/xGA,0.20251759999999996,0.20251759999999996,0.20251759999999996,0.0,0.0,False
-2026-12-13,Brighton v Everton,home_days_rest,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
-2026-12-13,Brighton v Everton,away_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
-2026-12-13,Brighton v Everton,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-13,Brighton v Everton,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-13,Brighton v Everton,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-13,Brighton v Everton,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-13,Brighton v Everton,home_days_since_last_match,Schedule/fatigue,14.0,14.0,14.0,0.0,0.0,False
-2026-12-13,Brighton v Everton,away_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-13,Brighton v Everton,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-13,Brighton v Everton,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-12-13,Brighton v Everton,home_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-13,Brighton v Everton,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-13,Brighton v Everton,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-13,Brighton v Everton,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-12-13,Brighton v Everton,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-13,Brighton v Everton,away_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
 2026-12-13,Brighton v Everton,home_elo,Elo,1644.0828060982851,1644.0828060982851,1644.0828060982851,0.0,0.0,False
 2026-12-13,Brighton v Everton,away_elo,Elo,1539.5320274431779,1539.5320274431779,1539.5320274431779,0.0,0.0,False
 2026-12-13,Brighton v Everton,elo_difference,Elo,104.55077865510725,104.55077865510725,104.55077865510725,0.0,0.0,False
@@ -2290,14 +2290,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-13,Sunderland v Nott'm Forest,away_xga_avg,xG/xGA,1.0347564,1.0347564,1.0347564,0.0,0.0,False
 2026-12-13,Sunderland v Nott'm Forest,home_xg_diff,xG/xGA,-0.7073991199999998,-0.7073991199999998,-0.7073991199999998,0.0,0.0,False
 2026-12-13,Sunderland v Nott'm Forest,away_xg_diff,xG/xGA,0.8541656000000002,0.8541656000000002,0.8541656000000002,0.0,0.0,False
-2026-12-13,Sunderland v Nott'm Forest,home_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
-2026-12-13,Sunderland v Nott'm Forest,away_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
-2026-12-13,Sunderland v Nott'm Forest,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-13,Sunderland v Nott'm Forest,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-13,Sunderland v Nott'm Forest,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-13,Sunderland v Nott'm Forest,away_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-12-13,Sunderland v Nott'm Forest,home_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-13,Sunderland v Nott'm Forest,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-12-13,Sunderland v Nott'm Forest,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-13,Sunderland v Nott'm Forest,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-13,Sunderland v Nott'm Forest,home_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
-2026-12-13,Sunderland v Nott'm Forest,away_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-13,Sunderland v Nott'm Forest,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-12-13,Sunderland v Nott'm Forest,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-13,Sunderland v Nott'm Forest,away_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
 2026-12-13,Sunderland v Nott'm Forest,home_elo,Elo,1504.7402337563926,1504.7402337563926,1504.7402337563926,0.0,0.0,False
 2026-12-13,Sunderland v Nott'm Forest,away_elo,Elo,1501.6565491201227,1501.6565491201227,1501.6565491201227,0.0,0.0,False
 2026-12-13,Sunderland v Nott'm Forest,elo_difference,Elo,3.083684636269936,3.083684636269936,3.083684636269936,0.0,0.0,False
@@ -2330,14 +2330,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-13,Coventry v Aston Villa,away_xga_avg,xG/xGA,1.6897306,1.6897306,1.6897306,0.0,0.0,False
 2026-12-13,Coventry v Aston Villa,home_xg_diff,xG/xGA,-0.46146679999999995,-0.46146679999999995,-0.46146679999999995,0.0,0.0,False
 2026-12-13,Coventry v Aston Villa,away_xg_diff,xG/xGA,-0.06857380000000002,-0.06857380000000002,-0.06857380000000002,0.0,0.0,False
-2026-12-13,Coventry v Aston Villa,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
-2026-12-13,Coventry v Aston Villa,away_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
-2026-12-13,Coventry v Aston Villa,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-13,Coventry v Aston Villa,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-13,Coventry v Aston Villa,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-13,Coventry v Aston Villa,home_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-12-13,Coventry v Aston Villa,away_days_rest,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
+2026-12-13,Coventry v Aston Villa,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-13,Coventry v Aston Villa,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-13,Coventry v Aston Villa,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-12-13,Coventry v Aston Villa,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-13,Coventry v Aston Villa,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
-2026-12-13,Coventry v Aston Villa,away_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-13,Coventry v Aston Villa,home_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-12-13,Coventry v Aston Villa,away_days_since_last_match,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
 2026-12-13,Coventry v Aston Villa,home_elo,Elo,1481.8414540023068,1481.8414540023068,1481.8414540023068,0.0,0.0,False
 2026-12-13,Coventry v Aston Villa,away_elo,Elo,1623.5181808601637,1623.5181808601637,1623.5181808601637,0.0,0.0,False
 2026-12-13,Coventry v Aston Villa,elo_difference,Elo,-141.67672685785692,-141.67672685785692,-141.67672685785692,0.0,0.0,False
@@ -2370,14 +2370,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-13,Crystal Palace v Man United,away_xga_avg,xG/xGA,2.144886,2.144886,2.144886,0.0,0.0,False
 2026-12-13,Crystal Palace v Man United,home_xg_diff,xG/xGA,-1.1390762,-1.1390762,-1.1390762,0.0,0.0,False
 2026-12-13,Crystal Palace v Man United,away_xg_diff,xG/xGA,-0.9134026000000002,-0.9134026000000002,-0.9134026000000002,0.0,0.0,False
-2026-12-13,Crystal Palace v Man United,home_days_rest,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
-2026-12-13,Crystal Palace v Man United,away_days_rest,Schedule/fatigue,15.0,15.0,15.0,0.0,0.0,False
-2026-12-13,Crystal Palace v Man United,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-13,Crystal Palace v Man United,away_matches_last_14_days,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-12-13,Crystal Palace v Man United,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-13,Crystal Palace v Man United,away_days_rest,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
+2026-12-13,Crystal Palace v Man United,home_matches_last_14_days,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
+2026-12-13,Crystal Palace v Man United,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-13,Crystal Palace v Man United,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-13,Crystal Palace v Man United,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-13,Crystal Palace v Man United,home_days_since_last_match,Schedule/fatigue,4.0,4.0,4.0,0.0,0.0,False
-2026-12-13,Crystal Palace v Man United,away_days_since_last_match,Schedule/fatigue,15.0,15.0,15.0,0.0,0.0,False
+2026-12-13,Crystal Palace v Man United,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-13,Crystal Palace v Man United,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-13,Crystal Palace v Man United,away_days_since_last_match,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
 2026-12-13,Crystal Palace v Man United,home_elo,Elo,1481.7674759165361,1481.7674759165361,1481.7674759165361,0.0,0.0,False
 2026-12-13,Crystal Palace v Man United,away_elo,Elo,1599.065738963313,1599.065738963313,1599.065738963313,0.0,0.0,False
 2026-12-13,Crystal Palace v Man United,elo_difference,Elo,-117.29826304677681,-117.29826304677681,-117.29826304677681,0.0,0.0,False
@@ -2410,14 +2410,14 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-14,Hull v Tottenham,away_xga_avg,xG/xGA,0.8642766,0.8642766,0.8642766,0.0,0.0,False
 2026-12-14,Hull v Tottenham,home_xg_diff,xG/xGA,-0.7345341999999999,-0.7345341999999999,-0.7345341999999999,0.0,0.0,False
 2026-12-14,Hull v Tottenham,away_xg_diff,xG/xGA,0.9712425999999998,0.9712425999999998,0.9712425999999998,0.0,0.0,False
-2026-12-14,Hull v Tottenham,home_days_rest,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
-2026-12-14,Hull v Tottenham,away_days_rest,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
-2026-12-14,Hull v Tottenham,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-14,Hull v Tottenham,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-14,Hull v Tottenham,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-14,Hull v Tottenham,away_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-14,Hull v Tottenham,home_days_since_last_match,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
-2026-12-14,Hull v Tottenham,away_days_since_last_match,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
+2026-12-14,Hull v Tottenham,home_days_rest,Schedule/fatigue,9.0,9.0,9.0,0.0,0.0,False
+2026-12-14,Hull v Tottenham,away_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
+2026-12-14,Hull v Tottenham,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-14,Hull v Tottenham,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-14,Hull v Tottenham,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-12-14,Hull v Tottenham,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-12-14,Hull v Tottenham,home_days_since_last_match,Schedule/fatigue,9.0,9.0,9.0,0.0,0.0,False
+2026-12-14,Hull v Tottenham,away_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
 2026-12-14,Hull v Tottenham,home_elo,Elo,1507.3078087806803,1507.3078087806803,1507.3078087806803,0.0,0.0,False
 2026-12-14,Hull v Tottenham,away_elo,Elo,1503.7195871879765,1503.7195871879765,1503.7195871879765,0.0,0.0,False
 2026-12-14,Hull v Tottenham,elo_difference,Elo,3.5882215927038033,3.5882215927038033,3.5882215927038033,0.0,0.0,False
@@ -2492,7 +2492,7 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-19,Bournemouth v Coventry,away_xg_diff,xG/xGA,-0.46146679999999995,-0.46146679999999995,-0.46146679999999995,0.0,0.0,False
 2026-12-19,Bournemouth v Coventry,home_days_rest,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
 2026-12-19,Bournemouth v Coventry,away_days_rest,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
-2026-12-19,Bournemouth v Coventry,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-19,Bournemouth v Coventry,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-19,Bournemouth v Coventry,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-12-19,Bournemouth v Coventry,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-12-19,Bournemouth v Coventry,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
@@ -2532,7 +2532,7 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-19,Leeds v Fulham,away_xg_diff,xG/xGA,0.567118,0.567118,0.567118,0.0,0.0,False
 2026-12-19,Leeds v Fulham,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
 2026-12-19,Leeds v Fulham,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-19,Leeds v Fulham,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-19,Leeds v Fulham,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-12-19,Leeds v Fulham,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-12-19,Leeds v Fulham,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-12-19,Leeds v Fulham,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
@@ -2572,7 +2572,7 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-19,Man City v Hull,away_xg_diff,xG/xGA,-0.7345341999999999,-0.7345341999999999,-0.7345341999999999,0.0,0.0,False
 2026-12-19,Man City v Hull,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
 2026-12-19,Man City v Hull,away_days_rest,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
-2026-12-19,Man City v Hull,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-19,Man City v Hull,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-19,Man City v Hull,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-12-19,Man City v Hull,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-12-19,Man City v Hull,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
@@ -2652,7 +2652,7 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-19,Liverpool v Tottenham,away_xg_diff,xG/xGA,0.9712425999999998,0.9712425999999998,0.9712425999999998,0.0,0.0,False
 2026-12-19,Liverpool v Tottenham,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
 2026-12-19,Liverpool v Tottenham,away_days_rest,Schedule/fatigue,5.0,5.0,5.0,0.0,0.0,False
-2026-12-19,Liverpool v Tottenham,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-19,Liverpool v Tottenham,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-19,Liverpool v Tottenham,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-12-19,Liverpool v Tottenham,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-12-19,Liverpool v Tottenham,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
@@ -2692,7 +2692,7 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-20,Sunderland v Crystal Palace,away_xg_diff,xG/xGA,-1.1390762,-1.1390762,-1.1390762,0.0,0.0,False
 2026-12-20,Sunderland v Crystal Palace,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
 2026-12-20,Sunderland v Crystal Palace,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-20,Sunderland v Crystal Palace,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-20,Sunderland v Crystal Palace,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-20,Sunderland v Crystal Palace,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-12-20,Sunderland v Crystal Palace,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-12-20,Sunderland v Crystal Palace,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
@@ -2732,8 +2732,8 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-20,Arsenal v Man United,away_xg_diff,xG/xGA,-0.9134026000000002,-0.9134026000000002,-0.9134026000000002,0.0,0.0,False
 2026-12-20,Arsenal v Man United,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
 2026-12-20,Arsenal v Man United,away_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
-2026-12-20,Arsenal v Man United,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-20,Arsenal v Man United,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-20,Arsenal v Man United,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-20,Arsenal v Man United,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-12-20,Arsenal v Man United,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-12-20,Arsenal v Man United,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-12-20,Arsenal v Man United,home_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
@@ -2770,13 +2770,13 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-20,Brighton v Ipswich,away_xga_avg,xG/xGA,2.380844,2.380844,2.380844,0.0,0.0,False
 2026-12-20,Brighton v Ipswich,home_xg_diff,xG/xGA,0.5322275999999997,0.5322275999999997,0.5322275999999997,0.0,0.0,False
 2026-12-20,Brighton v Ipswich,away_xg_diff,xG/xGA,-1.2509716000000002,-1.2509716000000002,-1.2509716000000002,0.0,0.0,False
-2026-12-20,Brighton v Ipswich,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-12-20,Brighton v Ipswich,home_days_rest,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-20,Brighton v Ipswich,away_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-12-20,Brighton v Ipswich,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
-2026-12-20,Brighton v Ipswich,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-20,Brighton v Ipswich,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
+2026-12-20,Brighton v Ipswich,home_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
+2026-12-20,Brighton v Ipswich,away_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
+2026-12-20,Brighton v Ipswich,home_had_midweek_match,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-12-20,Brighton v Ipswich,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
-2026-12-20,Brighton v Ipswich,home_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
+2026-12-20,Brighton v Ipswich,home_days_since_last_match,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-20,Brighton v Ipswich,away_days_since_last_match,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
 2026-12-20,Brighton v Ipswich,home_elo,Elo,1644.0828060982851,1644.0828060982851,1644.0828060982851,0.0,0.0,False
 2026-12-20,Brighton v Ipswich,away_elo,Elo,1413.573491411097,1413.573491411097,1413.573491411097,0.0,0.0,False
@@ -2812,7 +2812,7 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-21,Chelsea v Aston Villa,away_xg_diff,xG/xGA,-0.06857380000000002,-0.06857380000000002,-0.06857380000000002,0.0,0.0,False
 2026-12-21,Chelsea v Aston Villa,home_days_rest,Schedule/fatigue,9.0,9.0,9.0,0.0,0.0,False
 2026-12-21,Chelsea v Aston Villa,away_days_rest,Schedule/fatigue,8.0,8.0,8.0,0.0,0.0,False
-2026-12-21,Chelsea v Aston Villa,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-21,Chelsea v Aston Villa,home_matches_last_14_days,Schedule/fatigue,1.0,1.0,1.0,0.0,0.0,False
 2026-12-21,Chelsea v Aston Villa,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
 2026-12-21,Chelsea v Aston Villa,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-12-21,Chelsea v Aston Villa,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
@@ -3013,7 +3013,7 @@ date,fixture,feature,feature_group,prediction_tab_value,season_projection_raw_va
 2026-12-26,Fulham v Brighton,home_days_rest,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
 2026-12-26,Fulham v Brighton,away_days_rest,Schedule/fatigue,6.0,6.0,6.0,0.0,0.0,False
 2026-12-26,Fulham v Brighton,home_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
-2026-12-26,Fulham v Brighton,away_matches_last_14_days,Schedule/fatigue,2.0,2.0,2.0,0.0,0.0,False
+2026-12-26,Fulham v Brighton,away_matches_last_14_days,Schedule/fatigue,3.0,3.0,3.0,0.0,0.0,False
 2026-12-26,Fulham v Brighton,home_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-12-26,Fulham v Brighton,away_had_midweek_match,Schedule/fatigue,0.0,0.0,0.0,0.0,0.0,False
 2026-12-26,Fulham v Brighton,home_days_since_last_match,Schedule/fatigue,7.0,7.0,7.0,0.0,0.0,False
