@@ -4,18 +4,18 @@
 
 The evaluation uses a strict time-based split. No random train/test split is used.
 
-- Training dates: 2019-08-09 to 2025-04-03
-- Test dates: 2025-04-05 to 2026-11-01
-- Train rows: 2199
-- Test rows: 550
+- Training dates: 2019-08-09 to 2025-04-06
+- Test dates: 2025-04-07 to 2026-11-08
+- Train rows: 2208
+- Test rows: 552
 
 ## Metrics
 
-- Accuracy: 0.4527
-- Multiclass log loss: 1.0639
-- Multiclass Brier score: 0.6397
-- Calibration error: 0.0529
-- Expected Calibration Error: 0.0529
+- Accuracy: 0.4801
+- Multiclass log loss: 1.0529
+- Multiclass Brier score: 0.6315
+- Calibration error: 0.0419
+- Expected Calibration Error: 0.0419
 
 ## Calibration
 
@@ -27,39 +27,39 @@ Negative signed calibration error means the model is generally overpredicting th
 
 ## Confidence Intervals
 
-Bootstrap interval example for `Aston Villa vs Nott'm Forest`:
+Bootstrap interval example for `Leicester vs Newcastle`:
 
-- `home_win`: mean 0.545, 95% CI 0.437-0.687
-- `draw`: mean 0.255, 95% CI 0.159-0.357
-- `away_win`: mean 0.200, 95% CI 0.123-0.271
+- `home_win`: mean 0.222, 95% CI 0.100-0.344
+- `draw`: mean 0.198, 95% CI 0.074-0.349
+- `away_win`: mean 0.579, 95% CI 0.400-0.795
 
 Confidence label: Medium confidence
 
-Uncertainty explanation: Moderate model disagreement; widest interval is for home_win.
+Uncertainty explanation: Moderate model disagreement; widest interval is for away_win.
 
-Mean bootstrap standard deviation across the test set: 0.0647
+Mean bootstrap standard deviation across the test set: 0.0636
 
-Mean prediction stability score: 0.6408
+Mean prediction stability score: 0.6468
 
 ## Feature Contributions
 
 Top SHAP features:
 
-- `home_shots_avg_season`: 0.0886
-- `away_xga_avg`: 0.0649
-- `away_shots_on_target_avg_season`: 0.0623
-- `elo_ratio`: 0.0562
-- `home_shots_on_target_avg_season`: 0.0542
-- `elo_recent_change`: 0.0527
-- `away_xg_diff`: 0.0445
-- `elo_difference`: 0.0401
+- `home_shots_avg_season`: 0.0830
+- `away_shots_on_target_avg_season`: 0.0661
+- `home_shots_on_target_avg_season`: 0.0622
+- `away_xga_avg`: 0.0536
+- `home_team_points_last_5`: 0.0465
+- `away_xg_diff`: 0.0461
+- `home_xg_diff`: 0.0447
+- `away_goals_scored_avg`: 0.0432
 
 The feature importance CSV files compare gain importance, permutation importance, and SHAP importance. Features with low or zero values across all three are candidates for removal or better data.
 
 ## Weak Spots
 
-The weakest actual class by log loss is `draw` with actual-class log loss 1.5044.
+The weakest actual class by log loss is `draw` with actual-class log loss 1.5037.
 
-The most overconfident confidence bin has mean confidence 0.8099, accuracy 0.5000, and 2 matches.
+The most overconfident confidence bin has mean confidence 0.8134, accuracy 0.5000, and 2 matches.
 
 Inspect `evaluation/worst_predictions.csv` for the specific highest-loss predictions.

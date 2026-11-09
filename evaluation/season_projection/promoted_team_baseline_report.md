@@ -6,7 +6,7 @@ The project does not currently contain reliable Championship xG, shot volume or 
 
 | average_points | median_points | average_position | median_position | relegation_rate | goals_for_per_match | goals_against_per_match |
 | --- | --- | --- | --- | --- | --- | --- |
-| 29.1429 | 25.0000 | 15.8095 | 18.0000 | 0.5238 | 0.9336 | 1.6667 |
+| 29.1429 | 25.0000 | 16.0476 | 18.0000 | 0.5238 | 0.9361 | 1.6742 |
 
 ## Current Baseline Fallback Teams
 

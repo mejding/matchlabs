@@ -115,8 +115,10 @@ def refresh_understat_season(season: int, force: bool, dry_run: bool) -> Downloa
             text = gzip.decompress(raw).decode("utf-8")
         except gzip.BadGzipFile:
             text = raw.decode("utf-8")
-        path.write_text(text, encoding="utf-8")
         data = json.loads(text)
+        if not isinstance(data, dict) or not isinstance(data.get("dates"), list):
+            raise ValueError("Understat response did not contain the expected dates list.")
+        path.write_text(text, encoding="utf-8")
         result_rows = [match for match in data.get("dates", []) if match.get("isResult")]
         latest = None
         if result_rows:

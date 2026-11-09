@@ -283,5 +283,21 @@
     "bootstrap_runs": 30,
     "prediction_variance": 0.06465126574039459,
     "notes": "Probabilistic metrics and permutation importance evaluate the complete robust ensemble. Gain and SHAP explain the feature-rich primary component."
+  },
+  {
+    "created_at": "2026-11-09T20:41:22.171445+00:00",
+    "experiment_id": "robust_xg_ensemble_v1_20261109_204122",
+    "model_version": "robust_xg_ensemble_v1",
+    "features_included": "home_team_points_last_5|away_team_points_last_5|home_goals_scored_avg|away_goals_scored_avg|home_advantage|home_xg_avg|away_xg_avg|home_xga_avg|away_xga_avg|home_xg_diff|away_xg_diff|home_days_rest|away_days_rest|home_matches_last_14_days|away_matches_last_14_days|home_had_midweek_match|away_had_midweek_match|home_days_since_last_match|away_days_since_last_match|home_elo|away_elo|elo_difference|elo_ratio|elo_gap_bucket|elo_recent_change|home_elo_trend|away_elo_trend|rolling_elo_form|home_shots_avg_last5|away_shots_avg_last5|home_shots_on_target_avg_last5|away_shots_on_target_avg_last5|home_shots_avg_last10|away_shots_avg_last10|home_shots_on_target_avg_last10|away_shots_on_target_avg_last10|home_shots_avg_season|away_shots_avg_season|home_shots_on_target_avg_season|away_shots_on_target_avg_season",
+    "train_period": "2019-08-09 to 2025-04-06",
+    "test_period": "2025-04-07 to 2026-11-08",
+    "accuracy": 0.48007246376811596,
+    "log_loss": 1.0529272373326597,
+    "brier_score": 0.6315196237600451,
+    "calibration_score": 0.04191604380303963,
+    "expected_calibration_error": 0.04191604380303963,
+    "bootstrap_runs": 30,
+    "prediction_variance": 0.06357318162918091,
+    "notes": "Probabilistic metrics and permutation importance evaluate the complete robust ensemble. Gain and SHAP explain the feature-rich primary component."
   }
 ]

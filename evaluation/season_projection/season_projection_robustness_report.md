@@ -25,7 +25,7 @@ For last-5 and last-10 features, the first completed matches of a new season are
 
 | average_points | median_points | average_position | median_position | relegation_rate | goals_for_per_match | goals_against_per_match |
 | --- | --- | --- | --- | --- | --- | --- |
-| 29.1429 | 25.0000 | 15.8095 | 18.0000 | 0.5238 | 0.9336 | 1.6667 |
+| 29.1429 | 25.0000 | 16.0476 | 18.0000 | 0.5238 | 0.9361 | 1.6742 |
 
 Baseline fallback teams:
 
@@ -37,17 +37,17 @@ Feature audit:
 
 | team | local_pl_match_count | fallback_used | source_league | raw_recent_form_points_last5 | recent_form_points_last5 | raw_xg_strength_last5 | xg_strength_last5 | raw_xga_strength_last5 | xga_strength_last5 | raw_shots_avg_last5 | shots_avg_last5 | elo_rating |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Coventry | 9 | False | Premier League historical data | 9.0000 | 9.0000 | 0.9189 | 0.9189 | 1.3803 | 1.3803 | 11.2000 | 11.2000 | 1481.8415 |
-| Hull | 9 | False | Premier League historical data | 3.0000 | 3.0000 | 1.1079 | 1.1079 | 1.8425 | 1.8425 | 11.4000 | 11.4000 | 1507.3078 |
-| Tottenham | 275 | False | Premier League historical data | 10.0000 | 10.0000 | 1.8355 | 1.8355 | 0.8643 | 0.8643 | 19.4000 | 19.4000 | 1503.7196 |
+| Coventry | 10 | False | Premier League historical data | 6.0000 | 6.0000 | 1.0221 | 1.0221 | 1.4026 | 1.4026 | 12.2000 | 12.2000 | 1472.9891 |
+| Hull | 10 | False | Premier League historical data | 3.0000 | 3.0000 | 0.9482 | 0.9482 | 1.8194 | 1.8194 | 8.4000 | 8.4000 | 1504.2222 |
+| Tottenham | 276 | False | Premier League historical data | 10.0000 | 10.0000 | 1.6352 | 1.6352 | 0.9144 | 0.9144 | 16.8000 | 16.8000 | 1493.7758 |
 
 Projection:
 
 | team | expected_points | expected_position | projected_position | relegation_probability |
 | --- | --- | --- | --- | --- |
-| Tottenham | 52.7268 | 9.8782 | 8 | 0.0240 |
-| Coventry | 43.3436 | 14.3206 | 16 | 0.1918 |
-| Hull | 43.3139 | 14.4760 | 17 | 0.2132 |
+| Tottenham | 47.6303 | 12.3191 | 11 | 0.0908 |
+| Coventry | 42.5247 | 14.6181 | 16 | 0.2344 |
+| Hull | 41.9469 | 15.0493 | 17 | 0.2783 |
 
 ## Remaining Limitations
 

@@ -1,87 +1,87 @@
 {
   "baseline": {
-    "accuracy": 0.4490909090909091,
-    "log_loss": 1.074309970342121,
-    "brier_score": 0.6473645143474656,
-    "mean_absolute_calibration_error": 0.044117740164652024,
-    "train_rows": 2199,
-    "test_rows": 550,
-    "test_start_date": "2025-04-05"
+    "accuracy": 0.4420289855072464,
+    "log_loss": 1.074524177238871,
+    "brier_score": 0.6481121571134384,
+    "mean_absolute_calibration_error": 0.04319839921424499,
+    "train_rows": 2208,
+    "test_rows": 552,
+    "test_start_date": "2025-04-07"
   },
   "xg_model": {
-    "accuracy": 0.4690909090909091,
-    "log_loss": 1.0654788489206564,
-    "brier_score": 0.6403262129582219,
-    "mean_absolute_calibration_error": 0.043579324316797834,
-    "train_rows": 2199,
-    "test_rows": 550,
-    "test_start_date": "2025-04-05"
+    "accuracy": 0.4746376811594203,
+    "log_loss": 1.0593138932748731,
+    "brier_score": 0.6364839006562477,
+    "mean_absolute_calibration_error": 0.044699786797813744,
+    "train_rows": 2208,
+    "test_rows": 552,
+    "test_start_date": "2025-04-07"
   },
   "xg_schedule_model": {
-    "accuracy": 0.4527272727272727,
-    "log_loss": 1.0720555454107736,
-    "brier_score": 0.6454457375862803,
-    "mean_absolute_calibration_error": 0.04975240710106763,
-    "train_rows": 2199,
-    "test_rows": 550,
-    "test_start_date": "2025-04-05"
+    "accuracy": 0.46195652173913043,
+    "log_loss": 1.0693887248825285,
+    "brier_score": 0.64329909730705,
+    "mean_absolute_calibration_error": 0.04974010664573758,
+    "train_rows": 2208,
+    "test_rows": 552,
+    "test_start_date": "2025-04-07"
   },
   "xg_schedule_elo_shot_volume_model": {
-    "accuracy": 0.4527272727272727,
-    "log_loss": 1.0838467638073308,
-    "brier_score": 0.6527583402618662,
-    "mean_absolute_calibration_error": 0.06273467735810713,
-    "train_rows": 2199,
-    "test_rows": 550,
-    "test_start_date": "2025-04-05"
+    "accuracy": 0.47282608695652173,
+    "log_loss": 1.062302756028732,
+    "brier_score": 0.6368874832237565,
+    "mean_absolute_calibration_error": 0.055365918654102626,
+    "train_rows": 2208,
+    "test_rows": 552,
+    "test_start_date": "2025-04-07"
   },
   "robust_xg_ensemble_model": {
-    "accuracy": 0.4527272727272727,
-    "log_loss": 1.063855096903864,
-    "brier_score": 0.6397069018866894,
-    "mean_absolute_calibration_error": 0.05293654482671011,
-    "train_rows": 2199,
-    "test_rows": 550,
-    "test_start_date": "2025-04-05",
+    "accuracy": 0.48007246376811596,
+    "log_loss": 1.0529272373326597,
+    "brier_score": 0.6315196237600451,
+    "mean_absolute_calibration_error": 0.04191604380303963,
+    "train_rows": 2208,
+    "test_rows": 552,
+    "test_start_date": "2025-04-07",
     "primary_weight": 0.5
   },
   "xg_schedule_injury_model": {
-    "accuracy": 0.4490909090909091,
-    "log_loss": 1.0711453841334606,
-    "brier_score": 0.6452147294544555,
-    "mean_absolute_calibration_error": 0.06086145718440865,
-    "train_rows": 2199,
-    "test_rows": 550,
-    "test_start_date": "2025-04-05"
+    "accuracy": 0.45471014492753625,
+    "log_loss": 1.0751677386873644,
+    "brier_score": 0.6469712580906155,
+    "mean_absolute_calibration_error": 0.058518175395646535,
+    "train_rows": 2208,
+    "test_rows": 552,
+    "test_start_date": "2025-04-07"
   },
   "comparison": {
-    "accuracy_change": 0.020000000000000018,
-    "log_loss_change": -0.008831121421464694,
-    "brier_score_change": -0.007038301389243662,
-    "calibration_error_change": -0.0005384158478541901
+    "accuracy_change": 0.03260869565217389,
+    "log_loss_change": -0.015210283963997817,
+    "brier_score_change": -0.011628256457190678,
+    "calibration_error_change": 0.0015013875835687557
   },
   "schedule_comparison": {
-    "accuracy_change_vs_xg": -0.016363636363636413,
-    "log_loss_change_vs_xg": 0.006576696490117273,
-    "brier_score_change_vs_xg": 0.005119524628058425,
-    "calibration_error_change_vs_xg": 0.006173082784269798
+    "accuracy_change_vs_xg": -0.012681159420289856,
+    "log_loss_change_vs_xg": 0.010074831607655321,
+    "brier_score_change_vs_xg": 0.006815196650802324,
+    "calibration_error_change_vs_xg": 0.005040319847923837
   },
   "injury_comparison": {
-    "accuracy_change_vs_schedule": -0.0036363636363636043,
-    "log_loss_change_vs_schedule": -0.0009101612773130263,
-    "brier_score_change_vs_schedule": -0.00023100813182486135,
-    "calibration_error_change_vs_schedule": 0.011109050083341017
+    "accuracy_change_vs_schedule": -0.00724637681159418,
+    "log_loss_change_vs_schedule": 0.00577901380483592,
+    "brier_score_change_vs_schedule": 0.00367216078356547,
+    "calibration_error_change_vs_schedule": 0.008778068749908954
   },
   "elo_comparison": {
-    "accuracy_change_vs_schedule": 0.0,
-    "log_loss_change_vs_schedule": 0.011791218396557168,
-    "brier_score_change_vs_schedule": 0.007312602675585866,
-    "calibration_error_change_vs_schedule": 0.012982270257039498
+    "accuracy_change_vs_schedule": 0.010869565217391297,
+    "log_loss_change_vs_schedule": -0.0070859688537965315,
+    "brier_score_change_vs_schedule": -0.006411614083293493,
+    "calibration_error_change_vs_schedule": 0.005625812008365046
   },
   "robust_ensemble_comparison": {
-    "accuracy_change_vs_complex": 0.0,
-    "log_loss_change_vs_complex": -0.019991666903466765,
-    "brier_score_change_vs_complex": -0.01305143837517675,
-    "calibration_error_change_vs_complex": -0.009798132531397018
+    "accuracy_change_vs_complex": 0.007246376811594235,
+    "log_loss_change_vs_complex": -0.009375518696072227,
+    "brier_score_change_vs_complex": -0.005367859463711433,
+    "calibration_error_change_vs_complex": -0.013449874851062998
   }
 }

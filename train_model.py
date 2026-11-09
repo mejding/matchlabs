@@ -185,6 +185,9 @@ def download_understat_json(season: int) -> Path:
     except gzip.BadGzipFile:
         text = raw.decode("utf-8")
 
+    data = json.loads(text)
+    if not isinstance(data, dict) or not isinstance(data.get("dates"), list):
+        raise ValueError("Understat response did not contain the expected dates list.")
     output_path.write_text(text)
     return output_path
 
